@@ -1,4 +1,4 @@
-import { ABILITY_LABELS, SKILLS } from "@shared/schema/character";
+import { ABILITY_LABELS, SKILLS } from "../schema/character";
 
 export function SkillsInput({ proficiencies, expertise, onChange }) {
   function toggleProficiency(id) {

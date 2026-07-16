@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ALIGNMENTS, createEmptyCharacter } from "@shared/schema/character";
+import { ALIGNMENTS, createEmptyCharacter } from "../schema/character";
 import { AbilitiesInput } from "./AbilitiesInput";
 import { SkillsInput } from "./SkillsInput";
 import { ListEditor } from "./ListEditor";

@@ -1,4 +1,4 @@
-import { ABILITIES, ABILITY_LABELS } from "@shared/schema/character";
+import { ABILITIES, ABILITY_LABELS } from "../schema/character";
 
 export function AbilitiesInput({ abilities, onChange }) {
   function update(key, value) {
