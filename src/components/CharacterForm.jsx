@@ -9,6 +9,7 @@ import { ClassesInput } from "./ClassesInput";
 import racesData from "../data/srd/races.json";
 import backgroundsData from "../data/srd/backgrounds.json";
 import classesData from "../data/srd/classes.json";
+import { useCustomBackgrounds, useCustomClasses, useCustomRaces } from "../data/customContent";
 
 const CURRENCIES = [
   { key: "pp", label: "Platina" },
@@ -32,6 +33,13 @@ const APPEARANCE_FIELDS = [
 export function CharacterForm({ initialValue, onSubmit, onCancel }) {
   const [character, setCharacter] = useState(initialValue ?? createEmptyCharacter());
   const [feedback, setFeedback] = useState(null);
+
+  const customRaces = useCustomRaces();
+  const customBackgrounds = useCustomBackgrounds();
+  const customClasses = useCustomClasses();
+  const allRaces = [...racesData, ...customRaces];
+  const allBackgrounds = [...backgroundsData, ...customBackgrounds];
+  const allClasses = [...classesData, ...customClasses];
 
   useEffect(() => {
     if (!feedback) return;
@@ -105,7 +113,7 @@ export function CharacterForm({ initialValue, onSubmit, onCancel }) {
 
         <OriginPicker
           label="Raça"
-          items={racesData}
+          items={allRaces}
           value={character.race}
           onChange={(text) => set("race", text)}
           placeholder="Digite pra buscar (ex: Elfo)"
@@ -117,7 +125,7 @@ export function CharacterForm({ initialValue, onSubmit, onCancel }) {
 
         <OriginPicker
           label="Antecedente"
-          items={backgroundsData}
+          items={allBackgrounds}
           value={character.background}
           onChange={(text) => set("background", text)}
           placeholder="Digite pra buscar (ex: Acólito)"
@@ -152,7 +160,7 @@ export function CharacterForm({ initialValue, onSubmit, onCancel }) {
         <legend>Classes</legend>
         <ClassesInput
           classes={character.classes}
-          classesData={classesData}
+          classesData={allClasses}
           onChange={(items) => set("classes", items)}
           onApplyEquipment={applyEquipmentGrants}
           onApplySkills={applySkills}
