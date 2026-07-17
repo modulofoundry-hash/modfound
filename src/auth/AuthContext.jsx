@@ -4,15 +4,21 @@ import { auth } from "../firebase";
 
 const STORAGE_KEY = "oos_authenticated";
 const AuthContext = createContext(null);
+const isLocalhost = ["localhost", "127.0.0.1"].includes(window.location.hostname);
 
 export function AuthProvider({ children }) {
   const [isAuthenticated, setIsAuthenticated] = useState(
-    () => sessionStorage.getItem(STORAGE_KEY) === "1",
+    () => isLocalhost || sessionStorage.getItem(STORAGE_KEY) === "1",
   );
+
+  // Em localhost (dev) pula a tela de senha — só entra anônimo direto no Firebase.
+  useEffect(() => {
+    if (isLocalhost) signInAnonymously(auth).catch(() => {});
+  }, []);
 
   useEffect(() => {
     return onAuthStateChanged(auth, (user) => {
-      if (!user && sessionStorage.getItem(STORAGE_KEY) === "1") {
+      if (!user && !isLocalhost && sessionStorage.getItem(STORAGE_KEY) === "1") {
         sessionStorage.removeItem(STORAGE_KEY);
         setIsAuthenticated(false);
       }

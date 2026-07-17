@@ -46,6 +46,7 @@ export function createEmptyCharacter() {
   return {
     name: "",
     imageUrl: "",
+    tokenImageUrl: "",
     alignment: "",
     race: "",
     background: "",
@@ -53,11 +54,15 @@ export function createEmptyCharacter() {
     abilities: { str: 10, dex: 10, con: 10, int: 10, wis: 10, cha: 10 },
     skillProficiencies: [],
     skillExpertise: [],
+    toolProficiencies: [],
     languages: [],
+    currency: { pp: 0, gp: 0, ep: 0, sp: 0, cp: 0 },
     equipment: [],
     feats: [],
     spells: [],
-    personality: { traits: "", ideals: "", bonds: "", flaws: "" },
+    inspiration: false,
+    personality: { trait: "", ideal: "", bond: "", flaw: "" },
+    appearance: { gender: "", age: "", height: "", weight: "", eyes: "", hair: "", skin: "", faith: "", description: "" },
     notes: "",
   };
 }

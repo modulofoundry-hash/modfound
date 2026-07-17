@@ -1,19 +1,78 @@
-import { useState } from "react";
-import { ALIGNMENTS, createEmptyCharacter } from "../schema/character";
+import { useEffect, useState } from "react";
+import { ALIGNMENTS, createEmptyCharacter, SKILLS } from "../schema/character";
 import { AbilitiesInput } from "./AbilitiesInput";
 import { SkillsInput } from "./SkillsInput";
 import { ListEditor } from "./ListEditor";
 import { TagListInput } from "./TagListInput";
+import { OriginPicker } from "./OriginPicker";
+import { ClassesInput } from "./ClassesInput";
+import racesData from "../data/srd/races.json";
+import backgroundsData from "../data/srd/backgrounds.json";
+import classesData from "../data/srd/classes.json";
+
+const CURRENCIES = [
+  { key: "pp", label: "Platina" },
+  { key: "gp", label: "Ouro" },
+  { key: "ep", label: "Electro" },
+  { key: "sp", label: "Prata" },
+  { key: "cp", label: "Cobre" },
+];
+
+const APPEARANCE_FIELDS = [
+  { key: "gender", label: "Gênero" },
+  { key: "age", label: "Idade" },
+  { key: "height", label: "Altura" },
+  { key: "weight", label: "Peso" },
+  { key: "eyes", label: "Olhos" },
+  { key: "hair", label: "Cabelo" },
+  { key: "skin", label: "Pele" },
+  { key: "faith", label: "Fé" },
+];
 
 export function CharacterForm({ initialValue, onSubmit, onCancel }) {
   const [character, setCharacter] = useState(initialValue ?? createEmptyCharacter());
+  const [feedback, setFeedback] = useState(null);
+
+  useEffect(() => {
+    if (!feedback) return;
+    const timer = setTimeout(() => setFeedback(null), 2500);
+    return () => clearTimeout(timer);
+  }, [feedback]);
 
   function set(key, value) {
     setCharacter((prev) => ({ ...prev, [key]: value }));
   }
 
-  function setPersonality(key, value) {
-    setCharacter((prev) => ({ ...prev, personality: { ...prev.personality, [key]: value } }));
+  function setNested(group, key, value) {
+    setCharacter((prev) => ({ ...prev, [group]: { ...prev[group], [key]: value } }));
+  }
+
+  function applySkills(skillLabels) {
+    const ids = skillLabels.map((label) => SKILLS.find((s) => s.label === label)?.id).filter(Boolean);
+    setCharacter((prev) => ({
+      ...prev,
+      skillProficiencies: Array.from(new Set([...prev.skillProficiencies, ...ids])),
+    }));
+    setFeedback(`${skillLabels.join(", ")} adicionado(s) em Perícias`);
+  }
+
+  function applyTools(toolLabels) {
+    setCharacter((prev) => ({
+      ...prev,
+      toolProficiencies: Array.from(new Set([...prev.toolProficiencies, ...toolLabels])),
+    }));
+    setFeedback(`${toolLabels.join(", ")} adicionado(s) em Proficiências em Ferramentas`);
+  }
+
+  function applyLanguages(text) {
+    setCharacter((prev) => ({ ...prev, languages: [...prev.languages, text] }));
+    setFeedback(`"${text}" adicionado em Idiomas`);
+  }
+
+  function applyEquipmentGrants(grants) {
+    setCharacter((prev) => ({ ...prev, equipment: [...prev.equipment, ...grants] }));
+    const labels = grants.map((item) => (item.quantity > 1 ? `${item.quantity}x ${item.name}` : item.name));
+    setFeedback(`${labels.join(", ")} adicionado(s) em Equipamento`);
   }
 
   function handleSubmit(event) {
@@ -23,6 +82,7 @@ export function CharacterForm({ initialValue, onSubmit, onCancel }) {
 
   return (
     <form className="sheet-form" onSubmit={handleSubmit}>
+      {feedback && <div className="toast">{feedback}</div>}
       <fieldset>
         <legend>Identidade</legend>
         <label>
@@ -30,21 +90,43 @@ export function CharacterForm({ initialValue, onSubmit, onCancel }) {
           <input type="text" required value={character.name} onChange={(e) => set("name", e.target.value)} />
         </label>
         <label>
-          Link da imagem
+          Link do retrato (ficha)
           <input type="text" value={character.imageUrl} onChange={(e) => set("imageUrl", e.target.value)} />
         </label>
         <label>
-          Raça
-          <input type="text" value={character.race} onChange={(e) => set("race", e.target.value)} />
-        </label>
-        <label>
-          Antecedente
+          Link do token (mapa)
           <input
             type="text"
-            value={character.background}
-            onChange={(e) => set("background", e.target.value)}
+            placeholder="Deixe em branco pra usar o mesmo do retrato"
+            value={character.tokenImageUrl}
+            onChange={(e) => set("tokenImageUrl", e.target.value)}
           />
         </label>
+
+        <OriginPicker
+          label="Raça"
+          items={racesData}
+          value={character.race}
+          onChange={(text) => set("race", text)}
+          placeholder="Digite pra buscar (ex: Elfo)"
+          onApplySkills={applySkills}
+          onApplyTools={applyTools}
+          onApplyLanguages={applyLanguages}
+          onApplyEquipment={applyEquipmentGrants}
+        />
+
+        <OriginPicker
+          label="Antecedente"
+          items={backgroundsData}
+          value={character.background}
+          onChange={(text) => set("background", text)}
+          placeholder="Digite pra buscar (ex: Acólito)"
+          onApplySkills={applySkills}
+          onApplyTools={applyTools}
+          onApplyLanguages={applyLanguages}
+          onApplyEquipment={applyEquipmentGrants}
+        />
+
         <label>
           Alinhamento
           <select value={character.alignment} onChange={(e) => set("alignment", e.target.value)}>
@@ -56,19 +138,24 @@ export function CharacterForm({ initialValue, onSubmit, onCancel }) {
             ))}
           </select>
         </label>
+        <label className="skill-expertise">
+          <input
+            type="checkbox"
+            checked={character.inspiration}
+            onChange={(e) => set("inspiration", e.target.checked)}
+          />
+          Inspiração
+        </label>
       </fieldset>
 
       <fieldset>
         <legend>Classes</legend>
-        <ListEditor
-          items={character.classes}
+        <ClassesInput
+          classes={character.classes}
+          classesData={classesData}
           onChange={(items) => set("classes", items)}
-          addLabel="Adicionar classe"
-          fields={[
-            { key: "name", label: "Classe" },
-            { key: "subclass", label: "Subclasse" },
-            { key: "level", label: "Nível", type: "number", default: 1 },
-          ]}
+          onApplyEquipment={applyEquipmentGrants}
+          onApplySkills={applySkills}
         />
       </fieldset>
 
@@ -90,6 +177,16 @@ export function CharacterForm({ initialValue, onSubmit, onCancel }) {
       </fieldset>
 
       <fieldset>
+        <legend>Proficiências em Ferramentas</legend>
+        <TagListInput
+          items={character.toolProficiencies}
+          onChange={(value) => set("toolProficiencies", value)}
+          placeholder="Ex: Ferramentas de Ladrão"
+          addLabel="Adicionar ferramenta"
+        />
+      </fieldset>
+
+      <fieldset>
         <legend>Idiomas</legend>
         <TagListInput
           items={character.languages}
@@ -97,6 +194,21 @@ export function CharacterForm({ initialValue, onSubmit, onCancel }) {
           placeholder="Ex: Élfico"
           addLabel="Adicionar idioma"
         />
+      </fieldset>
+
+      <fieldset>
+        <legend>Dinheiro</legend>
+        {CURRENCIES.map((currency) => (
+          <label key={currency.key}>
+            {currency.label}
+            <input
+              type="number"
+              min="0"
+              value={character.currency[currency.key]}
+              onChange={(e) => setNested("currency", currency.key, Number(e.target.value))}
+            />
+          </label>
+        ))}
       </fieldset>
 
       <fieldset>
@@ -138,20 +250,41 @@ export function CharacterForm({ initialValue, onSubmit, onCancel }) {
       <fieldset>
         <legend>Personalidade</legend>
         <label>
-          Traços
-          <textarea value={character.personality.traits} onChange={(e) => setPersonality("traits", e.target.value)} />
+          Traço de Personalidade
+          <textarea value={character.personality.trait} onChange={(e) => setNested("personality", "trait", e.target.value)} />
         </label>
         <label>
-          Ideais
-          <textarea value={character.personality.ideals} onChange={(e) => setPersonality("ideals", e.target.value)} />
+          Ideal
+          <textarea value={character.personality.ideal} onChange={(e) => setNested("personality", "ideal", e.target.value)} />
         </label>
         <label>
-          Vínculos
-          <textarea value={character.personality.bonds} onChange={(e) => setPersonality("bonds", e.target.value)} />
+          Vínculo
+          <textarea value={character.personality.bond} onChange={(e) => setNested("personality", "bond", e.target.value)} />
         </label>
         <label>
-          Defeitos
-          <textarea value={character.personality.flaws} onChange={(e) => setPersonality("flaws", e.target.value)} />
+          Defeito
+          <textarea value={character.personality.flaw} onChange={(e) => setNested("personality", "flaw", e.target.value)} />
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Aparência</legend>
+        {APPEARANCE_FIELDS.map((field) => (
+          <label key={field.key}>
+            {field.label}
+            <input
+              type="text"
+              value={character.appearance[field.key]}
+              onChange={(e) => setNested("appearance", field.key, e.target.value)}
+            />
+          </label>
+        ))}
+        <label>
+          Descrição física
+          <textarea
+            value={character.appearance.description}
+            onChange={(e) => setNested("appearance", "description", e.target.value)}
+          />
         </label>
       </fieldset>
 

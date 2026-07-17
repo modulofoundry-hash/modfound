@@ -30,6 +30,11 @@ export function ListEditor({ label, items, fields, onChange, addLabel = "Adicion
                   checked={!!item[field.key]}
                   onChange={(event) => updateItem(index, field.key, event.target.checked)}
                 />
+              ) : field.type === "textarea" ? (
+                <textarea
+                  value={item[field.key] ?? ""}
+                  onChange={(event) => updateItem(index, field.key, event.target.value)}
+                />
               ) : (
                 <input
                   type={field.type ?? "text"}

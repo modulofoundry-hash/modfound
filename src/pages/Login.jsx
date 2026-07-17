@@ -1,13 +1,18 @@
 import { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../auth/AuthContext";
 
 export function Login() {
-  const { login } = useAuth();
+  const { login, isAuthenticated } = useAuth();
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
+
+  if (isAuthenticated) {
+    const redirectTo = location.state?.from?.pathname ?? "/perfis";
+    return <Navigate to={redirectTo} replace />;
+  }
 
   async function handleSubmit(event) {
     event.preventDefault();
