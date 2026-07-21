@@ -1,13 +1,20 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import { createNpc, deleteNpc, subscribeToNpcs, updateNpc } from "../data/npcs";
 import { NpcForm } from "../components/NpcForm";
+import { SheetCardGrid } from "../components/SheetCardGrid";
+import { SheetCard } from "../components/SheetCard";
+import { GUEST_PROFILE_ID } from "../constants/profiles";
 
 export function Npcs() {
   const { profileId } = useParams();
   const [npcs, setNpcs] = useState([]);
   const [error, setError] = useState(null);
   const [editing, setEditing] = useState(null);
+
+  // Perfil visitante só cria Personagem — bloqueia acesso direto por URL
+  // (o menu já esconde o link, ver ProfileLayout.jsx).
+  const isGuest = profileId === GUEST_PROFILE_ID;
 
   useEffect(() => {
     setError(null);
@@ -37,6 +44,10 @@ export function Npcs() {
     }
   }
 
+  if (isGuest) {
+    return <Navigate to={`/perfis/${profileId}`} replace />;
+  }
+
   if (editing) {
     return (
       <div>
@@ -59,21 +70,10 @@ export function Npcs() {
         </button>
       </div>
       {error && <p className="error">Erro ao carregar do banco: {error}</p>}
-      <ul className="sheet-list">
-        {npcs.map((npc) => (
-          <li key={npc.id}>
-            <span>{npc.name || "(sem nome)"}</span>
-            <div>
-              <button type="button" onClick={() => setEditing(npc)}>
-                Editar
-              </button>
-              <button type="button" onClick={() => handleDelete(npc.id)}>
-                Excluir
-              </button>
-            </div>
-          </li>
-        ))}
-      </ul>
+      <SheetCardGrid
+        items={npcs}
+        renderCard={(npc) => <SheetCard key={npc.id} item={npc} onEdit={setEditing} onDelete={handleDelete} />}
+      />
     </div>
   );
 }

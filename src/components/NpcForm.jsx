@@ -1,11 +1,15 @@
 import { useState } from "react";
-import { ABILITIES, ABILITY_LABELS } from "../schema/character";
-import { CREATURE_TYPES, createEmptyNpc, SIZES } from "../schema/npc";
+import { ABILITIES, ABILITY_LABELS, SKILLS } from "../schema/character";
+import { CREATURE_TYPES, createEmptyNpc, SIZE_LETTER_TO_KEY, SIZES } from "../schema/npc";
 import { AbilitiesInput } from "./AbilitiesInput";
 import { SkillsInput } from "./SkillsInput";
 import { SavingThrowsInput } from "./SavingThrowsInput";
 import { ListEditor } from "./ListEditor";
 import { TagListInput } from "./TagListInput";
+import { OriginPicker } from "./OriginPicker";
+import { RulesModeToggle } from "./RulesModeToggle";
+import racesData from "../data/content/races.json";
+import { useCustomRaces } from "../data/customContent";
 
 const ACTION_FIELDS = [
   { key: "name", label: "Nome" },
@@ -17,8 +21,31 @@ const SPELL_FIELDS = [
   { key: "prepared", label: "Preparada", type: "checkbox", default: false },
 ];
 
+// Texto livre (mesmo padrão de "Resistências a Dano" etc) — os 13 tipos de
+// dano padrão do 5e que o Foundry reconhece de verdade estão documentados no
+// placeholder; ver DAMAGE_TYPE_CODE_PT em module/scripts/actors/buildNpc.js
+// pra tradução PT-BR→código na hora de montar o Item.
+const WEAPON_FIELDS = [
+  { key: "name", label: "Nome" },
+  { key: "attackBonus", label: "Bônus de Ataque (ex: +4)" },
+  { key: "reach", label: "Alcance corpo a corpo (pés)", type: "number" },
+  { key: "rangeNormal", label: "Alcance à distância normal (pés)", type: "number" },
+  { key: "rangeLong", label: "Alcance à distância longo (pés)", type: "number" },
+  { key: "damageFormula", label: "Dano (ex: 1d6 + 2)" },
+  {
+    key: "damageType",
+    label: "Tipo de dano (ácido/contundente/frio/fogo/força/elétrico/necrótico/perfurante/veneno/psíquico/radiante/cortante/trovejante)",
+  },
+  { key: "description", label: "Efeito extra (além do dano)", type: "textarea" },
+];
+
 export function NpcForm({ initialValue, onSubmit, onCancel }) {
-  const [npc, setNpc] = useState(initialValue ?? createEmptyNpc());
+  // Mesma proteção de CharacterForm.jsx: NPC salvo antes de um campo novo
+  // existir no schema não tem essa chave — mescla com os padrões pra não
+  // quebrar a tela ao abrir pra editar uma ficha antiga.
+  const [npc, setNpc] = useState(() => ({ ...createEmptyNpc(), ...initialValue }));
+  const customRaces = useCustomRaces();
+  const allRaces = [...racesData, ...customRaces];
 
   function set(key, value) {
     setNpc((prev) => ({ ...prev, [key]: value }));
@@ -26,6 +53,41 @@ export function NpcForm({ initialValue, onSubmit, onCancel }) {
 
   function setNested(group, key, value) {
     setNpc((prev) => ({ ...prev, [group]: { ...prev[group], [key]: value } }));
+  }
+
+  // Sugestões do OriginPicker (perícia/idioma/tamanho da raça escolhida) — mesmo
+  // padrão do CharacterForm, só que aplicando em skillProficiencies/languages/size
+  // do NPC em vez dos campos do Personagem. Ferramenta/equipamento não têm campo
+  // correspondente no NPC — no-op em vez de omitir a prop, porque o OriginPicker
+  // renderiza o botão "Adicionar" sempre que a raça tiver esse dado, mesmo sem
+  // callback (deixar undefined quebraria o clique).
+  function applySkills(skillLabels) {
+    const ids = skillLabels.map((label) => SKILLS.find((s) => s.label === label)?.id).filter(Boolean);
+    setNpc((prev) => ({
+      ...prev,
+      skillProficiencies: Array.from(new Set([...prev.skillProficiencies, ...ids])),
+    }));
+  }
+
+  // Mesmo tratamento de CharacterForm.jsx: idioma de raça vem como texto solto
+  // separado por vírgula ("comum, anão"), precisa virar entradas separadas.
+  function applyLanguages(text) {
+    const parts = text.split(",").map((part) => part.trim()).filter(Boolean);
+    setNpc((prev) => ({ ...prev, languages: [...prev.languages, ...parts] }));
+  }
+
+  function applySize(letter) {
+    // letter vem crua do banco (T/S/M/L/H/G) — o <select> de Tamanho usa
+    // chave de Foundry (tiny/sm/med/...), precisa traduzir (ver SIZE_LETTER_TO_KEY).
+    set("size", SIZE_LETTER_TO_KEY[letter] ?? "");
+  }
+
+  function applySpellChoices(names) {
+    setNpc((prev) => {
+      const existing = new Set(prev.spells.map((s) => s.name));
+      const additions = names.filter((name) => !existing.has(name)).map((name) => ({ name, prepared: false }));
+      return { ...prev, spells: [...prev.spells, ...additions] };
+    });
   }
 
   function handleSubmit(event) {
@@ -55,8 +117,37 @@ export function NpcForm({ initialValue, onSubmit, onCancel }) {
           />
         </label>
         <label>
+          Edição das regras
+          <RulesModeToggle value={npc.rulesMode} onChange={(value) => set("rulesMode", value)} />
+        </label>
+        <OriginPicker
+          label="Raça/Espécie"
+          items={allRaces}
+          value={npc.race}
+          onChange={(text) => set("race", text)}
+          placeholder="Digite pra buscar (ex: Elfo) — deixe em branco se não se aplica"
+          onApplySkills={applySkills}
+          onApplyLanguages={applyLanguages}
+          onApplyTools={() => {}}
+          onApplyEquipment={() => {}}
+          onApplySize={applySize}
+          onApplySpells={applySpellChoices}
+          // SizeChoice compara contra a LETRA crua (T/S/M/...), não a chave de
+          // Foundry que npc.size guarda (ver applySize/SIZE_LETTER_TO_KEY) —
+          // sem essa tradução reversa, o botão da opção atual nunca aparecia
+          // marcado como selecionado.
+          sizeValue={Object.entries(SIZE_LETTER_TO_KEY).find(([, key]) => key === npc.size)?.[0] ?? ""}
+          onMatch={(item) => set("raceRules", item?.rules ?? "")}
+        />
+        <label>
           Tamanho
           <select value={npc.size} onChange={(e) => set("size", e.target.value)}>
+            {/* raça com tamanho de escolha (ex: "S/M") limpa npc.size pra "" até o
+                usuário clicar numa opção acima (ver OriginPicker/SizeChoice) — sem
+                essa opção em branco, o <select> mostraria a primeira opção real
+                ("Miúdo") como se estivesse selecionada, escondendo que o tamanho
+                ainda não foi escolhido de verdade. */}
+            {!npc.size && <option value="">(escolha um tamanho)</option>}
             {SIZES.map((size) => (
               <option key={size.id} value={size.id}>
                 {size.label}
@@ -392,6 +483,16 @@ export function NpcForm({ initialValue, onSubmit, onCancel }) {
       <fieldset>
         <legend>Traços</legend>
         <ListEditor items={npc.traits} onChange={(value) => set("traits", value)} addLabel="Adicionar traço" fields={ACTION_FIELDS} />
+      </fieldset>
+
+      <fieldset>
+        <legend>Armas</legend>
+        <p className="field-hint">
+          Ataques com arma (Mordida, Cimitarra etc) — viram Item de arma de verdade no
+          Foundry, com bônus de ataque e dano que rolam sozinhos. Ações que NÃO são
+          ataque de arma (Investida Múltipla, sopros, etc) continuam em "Ações" abaixo.
+        </p>
+        <ListEditor items={npc.weapons} onChange={(value) => set("weapons", value)} addLabel="Adicionar arma" fields={WEAPON_FIELDS} />
       </fieldset>
 
       <fieldset>

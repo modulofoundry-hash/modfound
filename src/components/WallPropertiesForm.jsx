@@ -1,4 +1,4 @@
-import { DIRECTIONS, DOOR_STATES, DOOR_TYPES, SENSE_TYPES } from "../schema/wall";
+import { DIRECTIONS, DOOR_STATES, DOOR_TYPES, MOVEMENT_TYPES, SENSE_TYPES } from "../schema/wall";
 
 export function WallPropertiesForm({ wall, onChange, onRemove }) {
   function set(key, value) {
@@ -45,7 +45,7 @@ export function WallPropertiesForm({ wall, onChange, onRemove }) {
         <label>
           Movimento
           <select value={wall.move} onChange={(e) => set("move", e.target.value)}>
-            {SENSE_TYPES.map((t) => (
+            {MOVEMENT_TYPES.map((t) => (
               <option key={t.id} value={t.id}>
                 {t.label}
               </option>

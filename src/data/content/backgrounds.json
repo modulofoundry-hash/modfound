@@ -1,0 +1,1998 @@
+[
+  {
+    "name": "Acolyte",
+    "source": "PHB",
+    "rules": "2014",
+    "skills": [
+      "Intuição",
+      "Religião"
+    ],
+    "skillChoice": null,
+    "tools": [],
+    "toolChoice": null,
+    "languages": "+2 idioma à escolha",
+    "equipmentSlots": [
+      {
+        "choice": false,
+        "options": [
+          {
+            "label": "",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "Holy symbol (a gift to you when you entered the priesthood)",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Sticks of incense",
+                "quantity": 5
+              },
+              {
+                "type": "fixed",
+                "name": "Vestments",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Common Clothes",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Pouch (contém 15 po)",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "choice": true,
+        "options": [
+          {
+            "label": "a",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "Prayer book",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "b",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "Prayer wheel",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "abilityBonus": null,
+    "description": "<p>You have spent your life in the service of a temple to a specific god or pantheon of gods. You act as an intermediary between the realm of the holy and the mortal world, performing sacred rites and offering sacrifices in order to conduct worshipers into the presence of the divine. You are not necessarily a cleric—performing sacred rites is not the same thing as channeling divine power.</p><p>Choose a god, a pantheon of gods, or some other quasi-divine being, and work with your DM to detail the nature of your religious service. The Gods of the Multiverse section contains a sample pantheon, from the Forgotten Realms setting. Were you a lesser functionary in a temple, raised from childhood to assist the priests in the sacred rites? Or were you a high priest who suddenly experienced a call to serve your god in a different way? Perhaps you were the leader of a small cult outside of any established temple structure, or even an occult group that served a fiendish master that you now deny.</p>"
+  },
+  {
+    "name": "Acolyte",
+    "source": "XPHB",
+    "rules": "2024",
+    "skills": [
+      "Intuição",
+      "Religião"
+    ],
+    "skillChoice": null,
+    "tools": [
+      "Calligrapher's supplies"
+    ],
+    "toolChoice": null,
+    "languages": "",
+    "equipmentSlots": [
+      {
+        "choice": true,
+        "options": [
+          {
+            "label": "A",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "Book (Prayers)",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Calligrapher's Supplies",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Holy Symbol",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Parchment",
+                "quantity": 10
+              },
+              {
+                "type": "fixed",
+                "name": "Robe",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "8 po",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "B",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "50 po",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
+    "description": "<p>You devoted yourself to service in a temple, either nestled in a town or secluded in a sacred grove. There you performed rites in honor of a god or pantheon. You served under a priest and studied religion. Thanks to your priest's instruction and your own devotion, you also learned how to channel a modicum of divine power in service to your place of worship and the people who prayed there.</p>"
+  },
+  {
+    "name": "Artisan",
+    "source": "XPHB",
+    "rules": "2024",
+    "skills": [
+      "Investigação",
+      "Persuasão"
+    ],
+    "skillChoice": null,
+    "tools": [],
+    "toolChoice": {
+      "count": 1,
+      "category": "anyArtisansTool",
+      "label": "qualquer ferramenta de artesão"
+    },
+    "languages": "",
+    "equipmentSlots": [
+      {
+        "choice": true,
+        "options": [
+          {
+            "label": "A",
+            "grants": [
+              {
+                "type": "category",
+                "category": "toolArtisan",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Pouch",
+                "quantity": 2
+              },
+              {
+                "type": "fixed",
+                "name": "Traveler's Clothes",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "32 po",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "B",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "50 po",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "int"
+      ]
+    },
+    "description": "<p>You began mopping floors and scrubbing counters in an artisan's workshop for a few coppers per day as soon as you were strong enough to carry a bucket. When you were old enough to apprentice, you learned to create basic crafts of your own, as well as how to sweet-talk the occasional demanding customer. Your trade has also given you a keen eye for detail.</p>"
+  },
+  {
+    "name": "Charlatan",
+    "source": "PHB",
+    "rules": "2014",
+    "skills": [
+      "Enganação",
+      "Prestidigitação"
+    ],
+    "skillChoice": null,
+    "tools": [
+      "disguise kit",
+      "forgery kit"
+    ],
+    "toolChoice": null,
+    "languages": "",
+    "equipmentSlots": [
+      {
+        "choice": false,
+        "options": [
+          {
+            "label": "",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "Fine Clothes",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Disguise Kit",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Pouch (contém 15 po)",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "choice": true,
+        "options": [
+          {
+            "label": "a",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "Stoppered bottles filled with colored liquid",
+                "quantity": 10
+              }
+            ]
+          },
+          {
+            "label": "b",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "Set of weighted dice",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "c",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "Deck of marked cards",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "d",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "Signet ring of an imaginary duke",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "abilityBonus": null,
+    "description": "<p>You have always had a way with people. You know what makes them tick, you can tease out their hearts' desires after a few minutes of conversation, and with a few leading questions you can read like they were children's books. It's a useful talent, and one that you're perfectly willing to use for your advantage</p><p>You know what people want and you deliver, or rather, you promise to deliver. Common sense should steer people away from things that sound too good to be true, but common sense seems to be in short supply when you're around. The bottle of pink-colored liquid will surely cure that unseemly rash, this ointment–nothing more than a bit of fat with a sprinkle of silver dust–can restore youth and vigor, and there's a bridge in the city that just happens to be for sale. These marvels sound implausible, but you can make them sound like the real deal.</p>"
+  },
+  {
+    "name": "Charlatan",
+    "source": "XPHB",
+    "rules": "2024",
+    "skills": [
+      "Enganação",
+      "Prestidigitação"
+    ],
+    "skillChoice": null,
+    "tools": [
+      "Forgery kit"
+    ],
+    "toolChoice": null,
+    "languages": "",
+    "equipmentSlots": [
+      {
+        "choice": true,
+        "options": [
+          {
+            "label": "A",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "Forgery Kit",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Costume",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Fine Clothes",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "15 po",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "B",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "50 po",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "dex",
+        "con",
+        "cha"
+      ]
+    },
+    "description": "<p>Once you were old enough to order an ale, you soon had a favorite stool in every tavern within ten miles of where you were born. As you traveled the circuit from public house to watering hole, you learned to prey on unfortunates who were in the market for a comforting lie or two—perhaps a sham potion or forged ancestry records.</p>"
+  },
+  {
+    "name": "Criminal",
+    "source": "PHB",
+    "rules": "2014",
+    "skills": [
+      "Enganação",
+      "Furtividade"
+    ],
+    "skillChoice": null,
+    "tools": [
+      "thieves' tools"
+    ],
+    "toolChoice": null,
+    "languages": "",
+    "equipmentSlots": [
+      {
+        "choice": false,
+        "options": [
+          {
+            "label": "",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "Crowbar",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Dark common clothes including a hood",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Pouch (contém 15 po)",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "abilityBonus": null,
+    "description": "<p>You are an experienced criminal with a history of breaking the law. You have spent a lot of time among other criminals and still have contacts within the criminal underworld. You're far closer than most people to the world of murder, theft, and violence that pervades the underbelly of civilization, and you have survived up to this point by flouting the rules and regulations of society.</p>"
+  },
+  {
+    "name": "Criminal",
+    "source": "XPHB",
+    "rules": "2024",
+    "skills": [
+      "Prestidigitação",
+      "Furtividade"
+    ],
+    "skillChoice": null,
+    "tools": [
+      "Thieves' tools"
+    ],
+    "toolChoice": null,
+    "languages": "",
+    "equipmentSlots": [
+      {
+        "choice": true,
+        "options": [
+          {
+            "label": "A",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "Dagger",
+                "quantity": 2
+              },
+              {
+                "type": "fixed",
+                "name": "Thieves' Tools",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Crowbar",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Pouch",
+                "quantity": 2
+              },
+              {
+                "type": "fixed",
+                "name": "Traveler's Clothes",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "16 po",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "B",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "50 po",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "dex",
+        "con",
+        "int"
+      ]
+    },
+    "description": "<p>You eked out a living in dark alleyways, cutting purses or burgling shops. Perhaps you were part of a small gang of like-minded wrongdoers who looked out for each other. Or maybe you were a lone wolf, fending for yourself against the local thieves' guild and more fearsome lawbreakers.</p>"
+  },
+  {
+    "name": "Entertainer",
+    "source": "PHB",
+    "rules": "2014",
+    "skills": [
+      "Acrobacia",
+      "Atuação"
+    ],
+    "skillChoice": null,
+    "tools": [
+      "disguise kit"
+    ],
+    "toolChoice": null,
+    "languages": "",
+    "equipmentSlots": [
+      {
+        "choice": false,
+        "options": [
+          {
+            "label": "",
+            "grants": [
+              {
+                "type": "category",
+                "category": "instrumentMusical",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "The favor of an admirer (love letter, lock of hair, or trinket)",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Costume Clothes",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Pouch (contém 15 po)",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "abilityBonus": null,
+    "description": "<p>You thrive in front of an audience. You know how to entrance them, entertain them, and even inspire them. Your poetics can stir the hearts of those who hear you, awakening grief or joy, laughter or anger. Your music raises their spirits or captures their sorrow. Your dance steps captivate, your humor cuts to the quick. Whatever techniques you use, your art is your life.</p>"
+  },
+  {
+    "name": "Entertainer",
+    "source": "XPHB",
+    "rules": "2024",
+    "skills": [
+      "Acrobacia",
+      "Atuação"
+    ],
+    "skillChoice": null,
+    "tools": [],
+    "toolChoice": {
+      "count": 1,
+      "category": "anyMusicalInstrument",
+      "label": "qualquer instrumento musical"
+    },
+    "languages": "",
+    "equipmentSlots": [
+      {
+        "choice": true,
+        "options": [
+          {
+            "label": "A",
+            "grants": [
+              {
+                "type": "category",
+                "category": "instrumentMusical",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Costume",
+                "quantity": 2
+              },
+              {
+                "type": "fixed",
+                "name": "Mirror",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Perfume",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Traveler's Clothes",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "11 po",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "B",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "50 po",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "cha"
+      ]
+    },
+    "description": "<p>You spent much of your youth following roving fairs and carnivals, performing odd jobs for musicians and acrobats in exchange for lessons. You may have learned how to walk a tightrope, how to play a lute in a distinct style, or how to recite poetry with impeccable diction. To this day, you thrive on applause and long for the stage.</p>"
+  },
+  {
+    "name": "Farmer",
+    "source": "XPHB",
+    "rules": "2024",
+    "skills": [
+      "Adestrar Animais",
+      "Natureza"
+    ],
+    "skillChoice": null,
+    "tools": [
+      "Carpenter's tools"
+    ],
+    "toolChoice": null,
+    "languages": "",
+    "equipmentSlots": [
+      {
+        "choice": true,
+        "options": [
+          {
+            "label": "A",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "Sickle",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Carpenter's Tools",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Healer's Kit",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Iron Pot",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Shovel",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Traveler's Clothes",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "30 po",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "B",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "50 po",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "con",
+        "wis"
+      ]
+    },
+    "description": "<p>You grew up close to the land. Years tending animals and cultivating the earth rewarded you with patience and good health. You have a keen appreciation for nature's bounty alongside a healthy respect for nature's wrath.</p>"
+  },
+  {
+    "name": "Folk Hero",
+    "source": "PHB",
+    "rules": "2014",
+    "skills": [
+      "Adestrar Animais",
+      "Sobrevivência"
+    ],
+    "skillChoice": null,
+    "tools": [
+      "vehicles (land)"
+    ],
+    "toolChoice": null,
+    "languages": "",
+    "equipmentSlots": [
+      {
+        "choice": false,
+        "options": [
+          {
+            "label": "",
+            "grants": [
+              {
+                "type": "category",
+                "category": "toolArtisan",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Shovel",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Iron Pot",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Common Clothes",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Pouch (contém 10 po)",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "abilityBonus": null,
+    "description": "<p>You come from a humble social rank, but you are destined for so much more. Already the people of your home village regard you as their champion, and your destiny calls you to stand against the tyrants and monsters that threaten the common folk everywhere.</p>"
+  },
+  {
+    "name": "Guard",
+    "source": "XPHB",
+    "rules": "2024",
+    "skills": [
+      "Atletismo",
+      "Percepção"
+    ],
+    "skillChoice": null,
+    "tools": [],
+    "toolChoice": {
+      "count": 1,
+      "category": "anyGamingSet",
+      "label": "qualquer jogo de tabuleiro/dados"
+    },
+    "languages": "",
+    "equipmentSlots": [
+      {
+        "choice": true,
+        "options": [
+          {
+            "label": "A",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "Spear",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Light Crossbow",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Bolts (20)",
+                "quantity": 1
+              },
+              {
+                "type": "category",
+                "category": "setGaming",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Hooded Lantern",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Manacles",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Quiver",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Traveler's Clothes",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "12 po",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "B",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "50 po",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "int",
+        "wis"
+      ]
+    },
+    "description": "<p>Your feet ache when you remember the countless hours you spent at your post in the tower. You were trained to keep one eye looking outside the wall, watching for marauders sweeping from the nearby forest, and your other eye looking inside the wall, searching for cutpurses and troublemakers.</p>"
+  },
+  {
+    "name": "Guide",
+    "source": "XPHB",
+    "rules": "2024",
+    "skills": [
+      "Furtividade",
+      "Sobrevivência"
+    ],
+    "skillChoice": null,
+    "tools": [
+      "Cartographer's tools"
+    ],
+    "toolChoice": null,
+    "languages": "",
+    "equipmentSlots": [
+      {
+        "choice": true,
+        "options": [
+          {
+            "label": "A",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "Shortbow",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Arrows (20)",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Cartographer's Tools",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Bedroll",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Quiver",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Tent",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Traveler's Clothes",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "3 po",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "B",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "50 po",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "dex",
+        "con",
+        "wis"
+      ]
+    },
+    "description": "<p>You came of age outdoors, far from settled lands. Your home was anywhere you chose to spread your bedroll. There are wonders in the wilderness—strange monsters, pristine forests and streams, overgrown ruins of great halls once trod by giants—and you learned to fend for yourself as you explored them. From time to time, you guided friendly nature priests who instructed you in the fundamentals of channeling the magic of the wild.</p>"
+  },
+  {
+    "name": "Guild Artisan",
+    "source": "PHB",
+    "rules": "2014",
+    "skills": [
+      "Intuição",
+      "Persuasão"
+    ],
+    "skillChoice": null,
+    "tools": [],
+    "toolChoice": null,
+    "languages": "+1 idioma à escolha",
+    "equipmentSlots": [
+      {
+        "choice": false,
+        "options": [
+          {
+            "label": "",
+            "grants": [
+              {
+                "type": "category",
+                "category": "toolArtisan",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Letter of introduction from your guild",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Traveler's Clothes",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Pouch (contém 15 po)",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "abilityBonus": null,
+    "description": "<p>You are a member of an artisan's guild, skilled in a particular field and closely associated with other artisans. You are a well-established part of the mercantile world, freed by talent and wealth from the constraints of a feudal social order. You learned your skills as an apprentice to a master artisan, under the sponsorship of your guild, until you became a master in your own right.</p>"
+  },
+  {
+    "name": "Hermit",
+    "source": "PHB",
+    "rules": "2014",
+    "skills": [
+      "Medicina",
+      "Religião"
+    ],
+    "skillChoice": null,
+    "tools": [
+      "herbalism kit"
+    ],
+    "toolChoice": null,
+    "languages": "+1 idioma à escolha",
+    "equipmentSlots": [
+      {
+        "choice": false,
+        "options": [
+          {
+            "label": "",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "Scroll case stuffed full of notes from your studies or prayers",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Winter blanket",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Common Clothes",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Herbalism Kit",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "5 po",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "abilityBonus": null,
+    "description": "<p>You lived in seclusion–either in a sheltered community such as a monastery, or entirely alone–for a formative part of your life. In your time apart from the clamor of society, you found quiet, solitude, and perhaps some of the answers you were looking for.</p>"
+  },
+  {
+    "name": "Hermit",
+    "source": "XPHB",
+    "rules": "2024",
+    "skills": [
+      "Medicina",
+      "Religião"
+    ],
+    "skillChoice": null,
+    "tools": [
+      "Herbalism kit"
+    ],
+    "toolChoice": null,
+    "languages": "",
+    "equipmentSlots": [
+      {
+        "choice": true,
+        "options": [
+          {
+            "label": "A",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "Quarterstaff",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Herbalism Kit",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Bedroll",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Book",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Lamp",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Oil",
+                "quantity": 3
+              },
+              {
+                "type": "fixed",
+                "name": "Traveler's Clothes",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "16 po",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "B",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "50 po",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "con",
+        "wis",
+        "cha"
+      ]
+    },
+    "description": "<p>You spent your early years secluded in a hut or monastery located well beyond the outskirts of the nearest settlement. In those days, your only companions were the creatures of the forest and those who would occasionally visit to bring news of the outside world and supplies. The solitude allowed you to spend many hours pondering the mysteries of creation.</p>"
+  },
+  {
+    "name": "Merchant",
+    "source": "XPHB",
+    "rules": "2024",
+    "skills": [
+      "Adestrar Animais",
+      "Persuasão"
+    ],
+    "skillChoice": null,
+    "tools": [
+      "Navigator's tools"
+    ],
+    "toolChoice": null,
+    "languages": "",
+    "equipmentSlots": [
+      {
+        "choice": true,
+        "options": [
+          {
+            "label": "A",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "Navigator's Tools",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Pouch",
+                "quantity": 2
+              },
+              {
+                "type": "fixed",
+                "name": "Traveler's Clothes",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "22 po",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "B",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "50 po",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "con",
+        "int",
+        "cha"
+      ]
+    },
+    "description": "<p>You were apprenticed to a trader, caravan master, or shopkeeper, learning the fundamentals of commerce. You traveled broadly, and you earned a living by buying and selling the raw materials artisans need to practice their craft or finished works from such crafters. You might have transported goods from one place to another (by ship, wagon, or caravan) or bought them from traveling traders and sold them in your own shop.</p>"
+  },
+  {
+    "name": "Noble",
+    "source": "PHB",
+    "rules": "2014",
+    "skills": [
+      "História",
+      "Persuasão"
+    ],
+    "skillChoice": null,
+    "tools": [],
+    "toolChoice": null,
+    "languages": "+1 idioma à escolha",
+    "equipmentSlots": [
+      {
+        "choice": false,
+        "options": [
+          {
+            "label": "",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "Fine Clothes",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Signet Ring",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Scroll of pedigree",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Purse",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "abilityBonus": null,
+    "description": "<p>You understand wealth, power, and privilege. You carry a noble title, and your family owns land, collects taxes, and wields significant political influence. You might be a pampered aristocrat unfamiliar with work or discomfort, a former merchant just elevated to the nobility, or a disinherited scoundrel with a disproportionate sense of entitlement. Or you could be an honest, hard-working landowner who cares deeply about the people who live and work on your land, keenly aware of your responsibility to them.</p><p>Work with your DM to come up with an appropriate title and determine how much authority that title carries. A noble title doesn't stand on its own—it's connected to an entire family, and whatever title you hold, you will pass it down to your own children. Not only do you need to determine your noble title, but you should also work with the DM to describe your family and their influence on you.</p><p>Is your family old and established, or was your title only recently bestowed? How much influence do they wield, and over what area? What kind of reputation does your family have among the other aristocrats of the region? How do the common people regard them?</p><p>What's your position in the family? Are you the heir to the head of the family? Have you already inherited the title? How do you feel about that responsibility? Or are you so far down the line of inheritance that no one cares what you do, as long as you don't embarrass the family? How does the head of your family feel about your adventuring career? Are you in your family's good graces, or shunned by the rest of your family?</p><p>Does your family have a coat of arms? An insignia you might wear on a signet ring? Particular colors you wear all the time? An animal you regard as a symbol of your line or even a spiritual member of the family?</p><p>These details help establish your family and your title as features of the world of the campaign.</p>"
+  },
+  {
+    "name": "Noble",
+    "source": "XPHB",
+    "rules": "2024",
+    "skills": [
+      "História",
+      "Persuasão"
+    ],
+    "skillChoice": null,
+    "tools": [],
+    "toolChoice": {
+      "count": 1,
+      "category": "anyGamingSet",
+      "label": "qualquer jogo de tabuleiro/dados"
+    },
+    "languages": "",
+    "equipmentSlots": [
+      {
+        "choice": true,
+        "options": [
+          {
+            "label": "A",
+            "grants": [
+              {
+                "type": "category",
+                "category": "setGaming",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Fine Clothes",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Perfume",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "29 po",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "B",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "50 po",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "int",
+        "cha"
+      ]
+    },
+    "description": "<p>You were raised in a castle, surrounded by wealth, power, and privilege. Your family of minor aristocrats ensured that you received a first-class education, some of which you appreciated and some of which you resented. Your time in the castle, especially the many hours you spent observing your family at court, also taught you a great deal about leadership.</p>"
+  },
+  {
+    "name": "Outlander",
+    "source": "PHB",
+    "rules": "2014",
+    "skills": [
+      "Atletismo",
+      "Sobrevivência"
+    ],
+    "skillChoice": null,
+    "tools": [],
+    "toolChoice": null,
+    "languages": "+1 idioma à escolha",
+    "equipmentSlots": [
+      {
+        "choice": false,
+        "options": [
+          {
+            "label": "",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "Staff",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Hunting Trap",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Trophy from an animal you killed",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Traveler's Clothes",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Pouch (contém 10 po)",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "abilityBonus": null,
+    "description": "<p>You grew up in the wilds, far from civilization and the comforts of town and technology. You've witnessed the migration of herds larger than forests, survived weather more extreme than any city-dweller could comprehend, and enjoyed the solitude of being the only thinking creature for miles in any direction. The wilds are in your blood, whether you were a nomad, an explorer, a recluse, a hunter-gatherer, or even a marauder. Even in places where you don't know the specific features of the terrain, you know the ways of the wild.</p>"
+  },
+  {
+    "name": "Sage",
+    "source": "PHB",
+    "rules": "2014",
+    "skills": [
+      "Arcanismo",
+      "História"
+    ],
+    "skillChoice": null,
+    "tools": [],
+    "toolChoice": null,
+    "languages": "+2 idioma à escolha",
+    "equipmentSlots": [
+      {
+        "choice": false,
+        "options": [
+          {
+            "label": "",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "Ink (1-ounce Bottle)",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Quill",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Small knife",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Letter from a dead colleague posing a question you have not yet been able to answer",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Common Clothes",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Pouch (contém 10 po)",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "abilityBonus": null,
+    "description": "<p>You spent years learning the lore of the multiverse. You scoured manuscripts, studied scrolls, and listened to the greatest experts on the subjects that interest you. Your efforts have made you a master in your fields of study.</p>"
+  },
+  {
+    "name": "Sage",
+    "source": "XPHB",
+    "rules": "2024",
+    "skills": [
+      "Arcanismo",
+      "História"
+    ],
+    "skillChoice": null,
+    "tools": [
+      "Calligrapher's supplies"
+    ],
+    "toolChoice": null,
+    "languages": "",
+    "equipmentSlots": [
+      {
+        "choice": true,
+        "options": [
+          {
+            "label": "A",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "Quarterstaff",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Calligrapher's Supplies",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Book",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Parchment",
+                "quantity": 8
+              },
+              {
+                "type": "fixed",
+                "name": "Robe",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "8 po",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "B",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "50 po",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "con",
+        "int",
+        "wis"
+      ]
+    },
+    "description": "<p>You spent your formative years traveling between manors and monasteries, performing various odd jobs and services in exchange for access to their libraries. You whiled away many a long evening studying books and scrolls, learning the lore of the multiverse—even the rudiments of magic—and your mind yearns for more.</p>"
+  },
+  {
+    "name": "Sailor",
+    "source": "PHB",
+    "rules": "2014",
+    "skills": [
+      "Atletismo",
+      "Percepção"
+    ],
+    "skillChoice": null,
+    "tools": [
+      "navigator's tools",
+      "vehicles (water)"
+    ],
+    "toolChoice": null,
+    "languages": "",
+    "equipmentSlots": [
+      {
+        "choice": false,
+        "options": [
+          {
+            "label": "",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "Belaying pin",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Silk Rope (50 Feet)",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Lucky charm",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Common Clothes",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Pouch (contém 10 po)",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "abilityBonus": null,
+    "description": "<p>You sailed on a seagoing vessel for years. In that time, you faced down mighty storms, monsters of the deep, and those who wanted to sink your craft to the bottomless depths. Your first love is the distant line of the horizon, but the time has come to try your hand at something new.</p><p>Discuss the nature of the ship you previously sailed with your Dungeon Master. Was it a merchant ship, a naval vessel, a ship of discovery, or a pirate ship? How famous (or infamous) is it? Is it widely traveled? Is it still sailing, or is it missing and presumed lost with all hands?</p><p>What were your duties on board–boatswain, captain, navigator, cook, or some other position? Who were the captain and first mate? Did you leave your ship on good terms with your fellows, or on the run?</p>"
+  },
+  {
+    "name": "Sailor",
+    "source": "XPHB",
+    "rules": "2024",
+    "skills": [
+      "Acrobacia",
+      "Percepção"
+    ],
+    "skillChoice": null,
+    "tools": [
+      "Navigator's tools"
+    ],
+    "toolChoice": null,
+    "languages": "",
+    "equipmentSlots": [
+      {
+        "choice": true,
+        "options": [
+          {
+            "label": "A",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "Dagger",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Navigator's Tools",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Rope",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Traveler's Clothes",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "20 po",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "B",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "50 po",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "wis"
+      ]
+    },
+    "description": "<p>You lived as a seafarer, wind at your back and decks swaying beneath your feet. You've perched on barstools in more ports of call than you can remember, faced mighty storms, and swapped stories with folk who live beneath the waves.</p>"
+  },
+  {
+    "name": "Scribe",
+    "source": "XPHB",
+    "rules": "2024",
+    "skills": [
+      "Investigação",
+      "Percepção"
+    ],
+    "skillChoice": null,
+    "tools": [
+      "Calligrapher's supplies"
+    ],
+    "toolChoice": null,
+    "languages": "",
+    "equipmentSlots": [
+      {
+        "choice": true,
+        "options": [
+          {
+            "label": "A",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "Calligrapher's Supplies",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Fine Clothes",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Lamp",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Oil",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Parchment",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "23 po",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "B",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "50 po",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "dex",
+        "int",
+        "wis"
+      ]
+    },
+    "description": "<p>You spent formative years in a scriptorium, a monastery dedicated to the preservation of knowledge, or a government agency, where you learned to write with a clear hand and produce finely written texts. Perhaps you scribed government documents or copied tomes of literature. You might have some skill as a writer of poetry, narrative, or scholarly research. Above all, you have a careful attention to detail, helping you avoid introducing mistakes to the documents you copy and create.</p>"
+  },
+  {
+    "name": "Soldier",
+    "source": "PHB",
+    "rules": "2014",
+    "skills": [
+      "Atletismo",
+      "Intimidação"
+    ],
+    "skillChoice": null,
+    "tools": [
+      "vehicles (land)"
+    ],
+    "toolChoice": null,
+    "languages": "",
+    "equipmentSlots": [
+      {
+        "choice": false,
+        "options": [
+          {
+            "label": "",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "Insignia of rank",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Trophy taken from a fallen enemy (a dagger, broken blade, or piece of a banner)",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Common Clothes",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Pouch (contém 10 po)",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "choice": true,
+        "options": [
+          {
+            "label": "a",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "Bone dice set",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "b",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "Playing Card Set",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "abilityBonus": null,
+    "description": "<p>War has been your life for as long as you care to remember. You trained as a youth, studied the use of weapons and armor, learned basic survival techniques, including how to stay alive on the battlefield. You might have been part of a standing national army or a mercenary company, or perhaps a member of a local militia who rose to prominence during a recent war.</p><p>When you choose this background, work with your DM to determine which military organization you were a part of, how far through its ranks you progressed, and what kind of experiences you had during your military career. Was it a standing army, a town guard, or a village militia? Or it might have been a noble's or merchant's private army, or a mercenary company.</p>"
+  },
+  {
+    "name": "Soldier",
+    "source": "XPHB",
+    "rules": "2024",
+    "skills": [
+      "Atletismo",
+      "Intimidação"
+    ],
+    "skillChoice": null,
+    "tools": [],
+    "toolChoice": {
+      "count": 1,
+      "category": "anyGamingSet",
+      "label": "qualquer jogo de tabuleiro/dados"
+    },
+    "languages": "",
+    "equipmentSlots": [
+      {
+        "choice": true,
+        "options": [
+          {
+            "label": "A",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "Spear",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Shortbow",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Arrows (20)",
+                "quantity": 1
+              },
+              {
+                "type": "category",
+                "category": "setGaming",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Healer's Kit",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Quiver",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Traveler's Clothes",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "14 po",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "B",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "50 po",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con"
+      ]
+    },
+    "description": "<p>You began training for war as soon as you reached adulthood and carry precious few memories of life before you took up arms. Battle is in your blood. Sometimes you catch yourself reflexively performing the basic fighting exercises you learned first. Eventually, you put that training to use on the battlefield, protecting the realm by waging war.</p>"
+  },
+  {
+    "name": "Urchin",
+    "source": "PHB",
+    "rules": "2014",
+    "skills": [
+      "Prestidigitação",
+      "Furtividade"
+    ],
+    "skillChoice": null,
+    "tools": [
+      "disguise kit",
+      "thieves' tools"
+    ],
+    "toolChoice": null,
+    "languages": "",
+    "equipmentSlots": [
+      {
+        "choice": false,
+        "options": [
+          {
+            "label": "",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "Small knife",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Map of the city you grew up in",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Pet mouse",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Token to remember your parents by",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Common Clothes",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Pouch (contém 10 po)",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "abilityBonus": null,
+    "description": "<p>You grew up on the streets alone, orphaned, and poor. You had no one to watch over you or to provide for you, so you learned to provide for yourself. You fought fiercely over food and kept a constant watch out for other desperate souls who might steal from you. You slept on rooftops and in alleyways, exposed to the elements, and endured sickness without the advantage of medicine or a place to recuperate. You've survived despite all odds, and did so through cunning, strength, speed, or some combination of each.</p><p>You begin your adventuring career with enough money to live modestly but securely for at least ten days. How did you come by that money? What allowed you to break free of your desperate circumstances and embark on a better life?</p>"
+  },
+  {
+    "name": "Wayfarer",
+    "source": "XPHB",
+    "rules": "2024",
+    "skills": [
+      "Intuição",
+      "Furtividade"
+    ],
+    "skillChoice": null,
+    "tools": [
+      "Thieves' tools"
+    ],
+    "toolChoice": null,
+    "languages": "",
+    "equipmentSlots": [
+      {
+        "choice": true,
+        "options": [
+          {
+            "label": "A",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "Dagger",
+                "quantity": 2
+              },
+              {
+                "type": "fixed",
+                "name": "Thieves' Tools",
+                "quantity": 1
+              },
+              {
+                "type": "category",
+                "category": "setGaming",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Bedroll",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Pouch",
+                "quantity": 2
+              },
+              {
+                "type": "fixed",
+                "name": "Traveler's Clothes",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "16 po",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "B",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "50 po",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "dex",
+        "wis",
+        "cha"
+      ]
+    },
+    "description": "<p>You grew up on the streets surrounded by similarly ill-fated castoffs, a few of them friends and a few of them rivals. You slept where you could and did odd jobs for food. At times, when the hunger became unbearable, you resorted to theft. Still, you never lost your pride and never abandoned hope. Fate is not yet finished with you.</p>"
+  }
+]

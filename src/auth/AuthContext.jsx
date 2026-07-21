@@ -25,12 +25,18 @@ export function AuthProvider({ children }) {
     });
   }, []);
 
+  // Devolve "main" (senha normal, mostra os 6 perfis fixos), "guest" (senha de
+  // visitante, pula direto pro perfil efêmero) ou false (senha errada).
   async function login(password) {
-    if (password !== import.meta.env.VITE_SITE_PASSWORD) return false;
+    let kind;
+    if (password === import.meta.env.VITE_SITE_PASSWORD) kind = "main";
+    else if (password === import.meta.env.VITE_GUEST_PASSWORD) kind = "guest";
+    else return false;
+
     await signInAnonymously(auth);
     sessionStorage.setItem(STORAGE_KEY, "1");
     setIsAuthenticated(true);
-    return true;
+    return kind;
   }
 
   async function logout() {

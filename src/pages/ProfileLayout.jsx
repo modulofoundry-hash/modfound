@@ -1,11 +1,14 @@
 import { Navigate, NavLink, Outlet, useParams } from "react-router-dom";
-import { getProfile } from "../constants/profiles";
+import { useProfiles } from "../hooks/useProfiles";
+import { GUEST_PROFILE_ID } from "../constants/profiles";
 import { useAuth } from "../auth/AuthContext";
 
 export function ProfileLayout() {
   const { profileId } = useParams();
-  const profile = getProfile(profileId);
+  const profiles = useProfiles();
+  const profile = profiles.find((p) => p.id === profileId);
   const { logout } = useAuth();
+  const isGuest = profileId === GUEST_PROFILE_ID;
 
   if (!profile) {
     return <Navigate to="/perfis" replace />;
@@ -17,8 +20,8 @@ export function ProfileLayout() {
         <span className="profile-name">{profile.name}</span>
         <nav>
           <NavLink to="personagens">Personagens</NavLink>
-          <NavLink to="npcs">NPCs</NavLink>
-          <NavLink to="cenas">Cenas</NavLink>
+          {!isGuest && <NavLink to="npcs">NPCs</NavLink>}
+          {!isGuest && <NavLink to="cenas">Cenas</NavLink>}
         </nav>
         <div className="profile-header-actions">
           <NavLink to="/perfis">Trocar perfil</NavLink>
@@ -28,7 +31,7 @@ export function ProfileLayout() {
         </div>
       </header>
       <main>
-        <Outlet />
+        <Outlet context={profile} />
       </main>
     </div>
   );

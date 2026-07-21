@@ -1,0 +1,9703 @@
+[
+  {
+    "name": "Acid Arrow",
+    "level": 2,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "90 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Acid Arrow",
+    "level": 2,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "90 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Acid Splash",
+    "level": 0,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Acid Splash",
+    "level": 0,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Aid",
+    "level": 2,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Paladin",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Aid",
+    "level": 2,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Druid",
+      "Paladin",
+      "Ranger",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Alarm",
+    "level": 1,
+    "school": "Abjuration",
+    "time": "1 minute",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Ranger",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Alarm",
+    "level": 1,
+    "school": "Abjuration",
+    "time": "1 minute",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Ranger",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Alter Self",
+    "level": 2,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Alter Self",
+    "level": 2,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Animal Friendship",
+    "level": 1,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Druid",
+      "Ranger"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Animal Friendship",
+    "level": 1,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Druid",
+      "Ranger"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Animal Messenger",
+    "level": 2,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Bard",
+      "Druid",
+      "Ranger"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Animal Messenger",
+    "level": 2,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Bard",
+      "Druid",
+      "Ranger"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Animal Shapes",
+    "level": 8,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Animal Shapes",
+    "level": 8,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Druid"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Animate Dead",
+    "level": 3,
+    "school": "Necromancy",
+    "time": "1 minute",
+    "range": "10 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Animate Dead",
+    "level": 3,
+    "school": "Necromancy",
+    "time": "1 minute",
+    "range": "10 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Animate Objects",
+    "level": 5,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Animate Objects",
+    "level": 5,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Antilife Shell",
+    "level": 5,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Antilife Shell",
+    "level": 5,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Antimagic Field",
+    "level": 8,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Antimagic Field",
+    "level": 8,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Antipathy/Sympathy",
+    "level": 8,
+    "school": "Enchantment",
+    "time": "1 hour",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Antipathy/Sympathy",
+    "level": 8,
+    "school": "Enchantment",
+    "time": "1 hour",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Druid",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Arcane Eye",
+    "level": 4,
+    "school": "Divination",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Arcane Eye",
+    "level": 4,
+    "school": "Divination",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Arcane Hand",
+    "level": 5,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Arcane Hand",
+    "level": 5,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Arcane Lock",
+    "level": 2,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Arcane Lock",
+    "level": 2,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Arcane Sword",
+    "level": 7,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Arcane Sword",
+    "level": 7,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "90 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Arcane Vigor",
+    "level": 2,
+    "school": "Abjuration",
+    "time": "Bonus Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Arcanist's Magic Aura",
+    "level": 2,
+    "school": "Illusion",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Arcanist's Magic Aura",
+    "level": 2,
+    "school": "Illusion",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Astral Projection",
+    "level": 9,
+    "school": "Necromancy",
+    "time": "1 hour",
+    "range": "10 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Astral Projection",
+    "level": 9,
+    "school": "Necromancy",
+    "time": "1 hour",
+    "range": "10 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Augury",
+    "level": 2,
+    "school": "Divination",
+    "time": "1 minute",
+    "range": "Self",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Cleric"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Augury",
+    "level": 2,
+    "school": "Divination",
+    "time": "1 minute",
+    "range": "Self",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Cleric",
+      "Druid",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Aura of Life",
+    "level": 4,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Paladin"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Awaken",
+    "level": 5,
+    "school": "Transmutation",
+    "time": "8 hours",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Druid"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Awaken",
+    "level": 5,
+    "school": "Transmutation",
+    "time": "8 hours",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Druid"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Bane",
+    "level": 1,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Bane",
+    "level": 1,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Warlock"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Banishment",
+    "level": 4,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Paladin",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Banishment",
+    "level": 4,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Paladin",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Barkskin",
+    "level": 2,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Ranger"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Barkskin",
+    "level": 2,
+    "school": "Transmutation",
+    "time": "Bonus Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Ranger"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Beacon of Hope",
+    "level": 3,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Cleric"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Beacon of Hope",
+    "level": 3,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Cleric"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Befuddlement",
+    "level": 8,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "150 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Druid",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Bestow Curse",
+    "level": 3,
+    "school": "Necromancy",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Bestow Curse",
+    "level": 3,
+    "school": "Necromancy",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Black Tentacles",
+    "level": 4,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "90 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Black Tentacles",
+    "level": 4,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "90 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Blade Barrier",
+    "level": 6,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "90 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Cleric"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Blade Barrier",
+    "level": 6,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "90 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Cleric"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Bless",
+    "level": 1,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Paladin"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Bless",
+    "level": 1,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Paladin"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Blight",
+    "level": 4,
+    "school": "Necromancy",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Blight",
+    "level": 4,
+    "school": "Necromancy",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Blindness/Deafness",
+    "level": 2,
+    "school": "Necromancy",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Blindness/Deafness",
+    "level": 2,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Blink",
+    "level": 3,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Blink",
+    "level": 3,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Blur",
+    "level": 2,
+    "school": "Illusion",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Blur",
+    "level": 2,
+    "school": "Illusion",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Branding Smite",
+    "level": 2,
+    "school": "Evocation",
+    "time": "Bonus Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Paladin"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Burning Hands",
+    "level": 1,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Burning Hands",
+    "level": 1,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Call Lightning",
+    "level": 3,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Call Lightning",
+    "level": 3,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Calm Emotions",
+    "level": 2,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Calm Emotions",
+    "level": 2,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Chain Lightning",
+    "level": 6,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "150 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Chain Lightning",
+    "level": 6,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "150 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Charm Monster",
+    "level": 4,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Druid",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Charm Person",
+    "level": 1,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Druid",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Charm Person",
+    "level": 1,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Druid",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Chill Touch",
+    "level": 0,
+    "school": "Necromancy",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Chill Touch",
+    "level": 0,
+    "school": "Necromancy",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Chromatic Orb",
+    "level": 1,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "90 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Circle of Death",
+    "level": 6,
+    "school": "Necromancy",
+    "time": "Action",
+    "range": "150 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Circle of Death",
+    "level": 6,
+    "school": "Necromancy",
+    "time": "Action",
+    "range": "150 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Clairvoyance",
+    "level": 3,
+    "school": "Divination",
+    "time": "10 minutes",
+    "range": "1 mi",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Clairvoyance",
+    "level": 3,
+    "school": "Divination",
+    "time": "10 minutes",
+    "range": "1 mi",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Clone",
+    "level": 8,
+    "school": "Necromancy",
+    "time": "1 hour",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Clone",
+    "level": 8,
+    "school": "Necromancy",
+    "time": "1 hour",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Cloudkill",
+    "level": 5,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Cloudkill",
+    "level": 5,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Color Spray",
+    "level": 1,
+    "school": "Illusion",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Color Spray",
+    "level": 1,
+    "school": "Illusion",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Command",
+    "level": 1,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Paladin"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Command",
+    "level": 1,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Paladin"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Commune",
+    "level": 5,
+    "school": "Divination",
+    "time": "1 minute",
+    "range": "Self",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Cleric"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Commune",
+    "level": 5,
+    "school": "Divination",
+    "time": "1 minute",
+    "range": "Self",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Cleric"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Commune with Nature",
+    "level": 5,
+    "school": "Divination",
+    "time": "1 minute",
+    "range": "Self",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Druid",
+      "Ranger"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Commune with Nature",
+    "level": 5,
+    "school": "Divination",
+    "time": "1 minute",
+    "range": "Self",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Druid",
+      "Ranger"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Comprehend Languages",
+    "level": 1,
+    "school": "Divination",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Comprehend Languages",
+    "level": 1,
+    "school": "Divination",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Compulsion",
+    "level": 4,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Compulsion",
+    "level": 4,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Cone of Cold",
+    "level": 5,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Cone of Cold",
+    "level": 5,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Confusion",
+    "level": 4,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "90 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Confusion",
+    "level": 4,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "90 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Conjure Animals",
+    "level": 3,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Ranger"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Conjure Animals",
+    "level": 3,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Ranger"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Conjure Celestial",
+    "level": 7,
+    "school": "Conjuration",
+    "time": "1 minute",
+    "range": "90 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Cleric"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Conjure Celestial",
+    "level": 7,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "90 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Cleric"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Conjure Elemental",
+    "level": 5,
+    "school": "Conjuration",
+    "time": "1 minute",
+    "range": "90 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Conjure Elemental",
+    "level": 5,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Conjure Fey",
+    "level": 6,
+    "school": "Conjuration",
+    "time": "1 minute",
+    "range": "90 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Warlock"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Conjure Fey",
+    "level": 6,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Conjure Minor Elementals",
+    "level": 4,
+    "school": "Conjuration",
+    "time": "1 minute",
+    "range": "90 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Conjure Minor Elementals",
+    "level": 4,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Conjure Woodland Beings",
+    "level": 4,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Ranger"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Conjure Woodland Beings",
+    "level": 4,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Ranger"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Contact Other Plane",
+    "level": 5,
+    "school": "Divination",
+    "time": "1 minute",
+    "range": "Self",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Contact Other Plane",
+    "level": 5,
+    "school": "Divination",
+    "time": "1 minute",
+    "range": "Self",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Contagion",
+    "level": 5,
+    "school": "Necromancy",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Druid"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Contagion",
+    "level": 5,
+    "school": "Necromancy",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Druid"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Contingency",
+    "level": 6,
+    "school": "Evocation",
+    "time": "10 minutes",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Contingency",
+    "level": 6,
+    "school": "Abjuration",
+    "time": "10 minutes",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Continual Flame",
+    "level": 2,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Continual Flame",
+    "level": 2,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Druid",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Control Water",
+    "level": 4,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "300 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Druid",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Control Water",
+    "level": 4,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "300 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Druid",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Control Weather",
+    "level": 8,
+    "school": "Transmutation",
+    "time": "10 minutes",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Druid",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Control Weather",
+    "level": 8,
+    "school": "Transmutation",
+    "time": "10 minutes",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Druid",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Counterspell",
+    "level": 3,
+    "school": "Abjuration",
+    "time": "Reaction",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Counterspell",
+    "level": 3,
+    "school": "Abjuration",
+    "time": "Reaction",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Create Food and Water",
+    "level": 3,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Paladin",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Create Food and Water",
+    "level": 3,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Paladin",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Create or Destroy Water",
+    "level": 1,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Druid"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Create or Destroy Water",
+    "level": 1,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Druid"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Create Undead",
+    "level": 6,
+    "school": "Necromancy",
+    "time": "1 minute",
+    "range": "10 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Create Undead",
+    "level": 6,
+    "school": "Necromancy",
+    "time": "1 minute",
+    "range": "10 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Creation",
+    "level": 5,
+    "school": "Illusion",
+    "time": "1 minute",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Creation",
+    "level": 5,
+    "school": "Illusion",
+    "time": "1 minute",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Cure Wounds",
+    "level": 1,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Druid",
+      "Paladin",
+      "Ranger",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Cure Wounds",
+    "level": 1,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Druid",
+      "Paladin",
+      "Ranger",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Dancing Lights",
+    "level": 0,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Dancing Lights",
+    "level": 0,
+    "school": "Illusion",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Darkness",
+    "level": 2,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Darkness",
+    "level": 2,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Darkvision",
+    "level": 2,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Ranger",
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Darkvision",
+    "level": 2,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Ranger",
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Daylight",
+    "level": 3,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Druid",
+      "Paladin",
+      "Ranger",
+      "Sorcerer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Daylight",
+    "level": 3,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Druid",
+      "Paladin",
+      "Ranger",
+      "Sorcerer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Death Ward",
+    "level": 4,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Paladin"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Death Ward",
+    "level": 4,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Paladin"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Delayed Blast Fireball",
+    "level": 7,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "150 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Delayed Blast Fireball",
+    "level": 7,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "150 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Demiplane",
+    "level": 8,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Demiplane",
+    "level": 8,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Detect Evil and Good",
+    "level": 1,
+    "school": "Divination",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Paladin"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Detect Evil and Good",
+    "level": 1,
+    "school": "Divination",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Paladin"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Detect Magic",
+    "level": 1,
+    "school": "Divination",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": true,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Druid",
+      "Paladin",
+      "Ranger",
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Detect Magic",
+    "level": 1,
+    "school": "Divination",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": true,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Druid",
+      "Paladin",
+      "Ranger",
+      "Sorcerer",
+      "Warlock",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Detect Poison and Disease",
+    "level": 1,
+    "school": "Divination",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": true,
+    "classes": [
+      "Cleric",
+      "Druid",
+      "Paladin",
+      "Ranger"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Detect Poison and Disease",
+    "level": 1,
+    "school": "Divination",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": true,
+    "classes": [
+      "Cleric",
+      "Druid",
+      "Paladin",
+      "Ranger"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Detect Thoughts",
+    "level": 2,
+    "school": "Divination",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Detect Thoughts",
+    "level": 2,
+    "school": "Divination",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Dimension Door",
+    "level": 4,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "500 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Dimension Door",
+    "level": 4,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "500 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Disguise Self",
+    "level": 1,
+    "school": "Illusion",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Disguise Self",
+    "level": 1,
+    "school": "Illusion",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Disintegrate",
+    "level": 6,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Disintegrate",
+    "level": 6,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Dispel Evil and Good",
+    "level": 5,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Paladin"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Dispel Evil and Good",
+    "level": 5,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Paladin"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Dispel Magic",
+    "level": 3,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Druid",
+      "Paladin",
+      "Sorcerer",
+      "Warlock",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Dispel Magic",
+    "level": 3,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Druid",
+      "Paladin",
+      "Ranger",
+      "Sorcerer",
+      "Warlock",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Dissonant Whispers",
+    "level": 1,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Divination",
+    "level": 4,
+    "school": "Divination",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Cleric"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Divination",
+    "level": 4,
+    "school": "Divination",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Cleric",
+      "Druid",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Divine Favor",
+    "level": 1,
+    "school": "Evocation",
+    "time": "Bonus Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Paladin"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Divine Favor",
+    "level": 1,
+    "school": "Transmutation",
+    "time": "Bonus Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Paladin"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Divine Smite",
+    "level": 1,
+    "school": "Evocation",
+    "time": "Bonus Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Paladin"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Divine Word",
+    "level": 7,
+    "school": "Evocation",
+    "time": "Bonus Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Divine Word",
+    "level": 7,
+    "school": "Evocation",
+    "time": "Bonus Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Dominate Beast",
+    "level": 4,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Sorcerer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Dominate Beast",
+    "level": 4,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Ranger",
+      "Sorcerer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Dominate Monster",
+    "level": 8,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Dominate Monster",
+    "level": 8,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Dominate Person",
+    "level": 5,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Dominate Person",
+    "level": 5,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Dragon's Breath",
+    "level": 2,
+    "school": "Transmutation",
+    "time": "Bonus Action",
+    "range": "Touch",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Dream",
+    "level": 5,
+    "school": "Illusion",
+    "time": "1 minute",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Dream",
+    "level": 5,
+    "school": "Illusion",
+    "time": "1 minute",
+    "range": "Special",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Druidcraft",
+    "level": 0,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Druid"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Druidcraft",
+    "level": 0,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Druid"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Earthquake",
+    "level": 8,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "500 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Druid",
+      "Sorcerer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Earthquake",
+    "level": 8,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "500 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Druid",
+      "Sorcerer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Eldritch Blast",
+    "level": 0,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Warlock"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Eldritch Blast",
+    "level": 0,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Warlock"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Elementalism",
+    "level": 0,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Enhance Ability",
+    "level": 2,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Druid",
+      "Sorcerer",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Enhance Ability",
+    "level": 2,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Druid",
+      "Ranger",
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Enlarge/Reduce",
+    "level": 2,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Enlarge/Reduce",
+    "level": 2,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Druid",
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Ensnaring Strike",
+    "level": 1,
+    "school": "Conjuration",
+    "time": "Bonus Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Ranger"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Entangle",
+    "level": 1,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "90 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Entangle",
+    "level": 1,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "90 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Ranger"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Enthrall",
+    "level": 2,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Warlock"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Enthrall",
+    "level": 2,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Warlock"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Etherealness",
+    "level": 7,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Etherealness",
+    "level": 7,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Expeditious Retreat",
+    "level": 1,
+    "school": "Transmutation",
+    "time": "Bonus Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Warlock",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Expeditious Retreat",
+    "level": 1,
+    "school": "Transmutation",
+    "time": "Bonus Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Warlock",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Eyebite",
+    "level": 6,
+    "school": "Necromancy",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Eyebite",
+    "level": 6,
+    "school": "Necromancy",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Fabricate",
+    "level": 4,
+    "school": "Transmutation",
+    "time": "10 minutes",
+    "range": "120 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Fabricate",
+    "level": 4,
+    "school": "Transmutation",
+    "time": "10 minutes",
+    "range": "120 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Faerie Fire",
+    "level": 1,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Druid",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Faerie Fire",
+    "level": 1,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Druid",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Faithful Hound",
+    "level": 4,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Faithful Hound",
+    "level": 4,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "False Life",
+    "level": 1,
+    "school": "Necromancy",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "False Life",
+    "level": 1,
+    "school": "Necromancy",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Fear",
+    "level": 3,
+    "school": "Illusion",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Fear",
+    "level": 3,
+    "school": "Illusion",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Feather Fall",
+    "level": 1,
+    "school": "Transmutation",
+    "time": "Reaction",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Feather Fall",
+    "level": 1,
+    "school": "Transmutation",
+    "time": "Reaction",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Feeblemind",
+    "level": 8,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "150 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Druid",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Find Familiar",
+    "level": 1,
+    "school": "Conjuration",
+    "time": "1 hour",
+    "range": "10 ft",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Find Familiar",
+    "level": 1,
+    "school": "Conjuration",
+    "time": "1 hour",
+    "range": "10 ft",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Find Steed",
+    "level": 2,
+    "school": "Conjuration",
+    "time": "10 minutes",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Paladin"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Find Steed",
+    "level": 2,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Paladin"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Find the Path",
+    "level": 6,
+    "school": "Divination",
+    "time": "1 minute",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Druid"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Find the Path",
+    "level": 6,
+    "school": "Divination",
+    "time": "1 minute",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Druid"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Find Traps",
+    "level": 2,
+    "school": "Divination",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Druid",
+      "Ranger"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Find Traps",
+    "level": 2,
+    "school": "Divination",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Druid",
+      "Ranger"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Finger of Death",
+    "level": 7,
+    "school": "Necromancy",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Finger of Death",
+    "level": 7,
+    "school": "Necromancy",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Fire Bolt",
+    "level": 0,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Fire Bolt",
+    "level": 0,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Fire Shield",
+    "level": 4,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Fire Shield",
+    "level": 4,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Fire Storm",
+    "level": 7,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "150 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Druid",
+      "Sorcerer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Fire Storm",
+    "level": 7,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "150 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Druid",
+      "Sorcerer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Fireball",
+    "level": 3,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "150 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Fireball",
+    "level": 3,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "150 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Flame Blade",
+    "level": 2,
+    "school": "Evocation",
+    "time": "Bonus Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Flame Blade",
+    "level": 2,
+    "school": "Evocation",
+    "time": "Bonus Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Sorcerer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Flame Strike",
+    "level": 5,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Flame Strike",
+    "level": 5,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Flaming Sphere",
+    "level": 2,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Flaming Sphere",
+    "level": 2,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Flesh to Stone",
+    "level": 6,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Flesh to Stone",
+    "level": 6,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Floating Disk",
+    "level": 1,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Floating Disk",
+    "level": 1,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Fly",
+    "level": 3,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Warlock",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Fly",
+    "level": 3,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Warlock",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Fog Cloud",
+    "level": 1,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Ranger",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Fog Cloud",
+    "level": 1,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Ranger",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Forbiddance",
+    "level": 6,
+    "school": "Abjuration",
+    "time": "10 minutes",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Cleric"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Forbiddance",
+    "level": 6,
+    "school": "Abjuration",
+    "time": "10 minutes",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Forcecage",
+    "level": 7,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "100 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Forcecage",
+    "level": 7,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "100 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Foresight",
+    "level": 9,
+    "school": "Divination",
+    "time": "1 minute",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Druid",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Foresight",
+    "level": 9,
+    "school": "Divination",
+    "time": "1 minute",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Druid",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Freedom of Movement",
+    "level": 4,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Druid",
+      "Ranger",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Freedom of Movement",
+    "level": 4,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Druid",
+      "Ranger",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Freezing Sphere",
+    "level": 6,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "300 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Freezing Sphere",
+    "level": 6,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "300 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Gaseous Form",
+    "level": 3,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Gaseous Form",
+    "level": 3,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Gate",
+    "level": 9,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Gate",
+    "level": 9,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Geas",
+    "level": 5,
+    "school": "Enchantment",
+    "time": "1 minute",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Druid",
+      "Paladin",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Geas",
+    "level": 5,
+    "school": "Enchantment",
+    "time": "1 minute",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Druid",
+      "Paladin",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Gentle Repose",
+    "level": 2,
+    "school": "Necromancy",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Cleric",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Gentle Repose",
+    "level": 2,
+    "school": "Necromancy",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Cleric",
+      "Paladin",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Giant Insect",
+    "level": 4,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Giant Insect",
+    "level": 4,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Glibness",
+    "level": 8,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Warlock"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Glibness",
+    "level": 8,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Warlock"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Globe of Invulnerability",
+    "level": 6,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Globe of Invulnerability",
+    "level": 6,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Glyph of Warding",
+    "level": 3,
+    "school": "Abjuration",
+    "time": "1 hour",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Glyph of Warding",
+    "level": 3,
+    "school": "Abjuration",
+    "time": "1 hour",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Goodberry",
+    "level": 1,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Ranger"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Goodberry",
+    "level": 1,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Ranger"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Grease",
+    "level": 1,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Grease",
+    "level": 1,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Greater Invisibility",
+    "level": 4,
+    "school": "Illusion",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Greater Invisibility",
+    "level": 4,
+    "school": "Illusion",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Greater Restoration",
+    "level": 5,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Druid",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Greater Restoration",
+    "level": 5,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Druid",
+      "Paladin",
+      "Ranger",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Guardian of Faith",
+    "level": 4,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Guardian of Faith",
+    "level": 4,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Guards and Wards",
+    "level": 6,
+    "school": "Abjuration",
+    "time": "10 minutes",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Guards and Wards",
+    "level": 6,
+    "school": "Abjuration",
+    "time": "1 hour",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Guidance",
+    "level": 0,
+    "school": "Divination",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Druid",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Guidance",
+    "level": 0,
+    "school": "Divination",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Druid",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Guiding Bolt",
+    "level": 1,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Guiding Bolt",
+    "level": 1,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Gust of Wind",
+    "level": 2,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Gust of Wind",
+    "level": 2,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Ranger",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Hallow",
+    "level": 5,
+    "school": "Evocation",
+    "time": "24 hours",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Hallow",
+    "level": 5,
+    "school": "Abjuration",
+    "time": "24 hours",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Hallucinatory Terrain",
+    "level": 4,
+    "school": "Illusion",
+    "time": "10 minutes",
+    "range": "300 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Druid",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Hallucinatory Terrain",
+    "level": 4,
+    "school": "Illusion",
+    "time": "10 minutes",
+    "range": "300 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Druid",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Harm",
+    "level": 6,
+    "school": "Necromancy",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Harm",
+    "level": 6,
+    "school": "Necromancy",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Haste",
+    "level": 3,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Haste",
+    "level": 3,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Heal",
+    "level": 6,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Druid"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Heal",
+    "level": 6,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Druid"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Healing Word",
+    "level": 1,
+    "school": "Evocation",
+    "time": "Bonus Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Druid"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Healing Word",
+    "level": 1,
+    "school": "Abjuration",
+    "time": "Bonus Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Druid"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Heat Metal",
+    "level": 2,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Druid",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Heat Metal",
+    "level": 2,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Druid",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Hellish Rebuke",
+    "level": 1,
+    "school": "Evocation",
+    "time": "Reaction",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Warlock"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Hellish Rebuke",
+    "level": 1,
+    "school": "Evocation",
+    "time": "Reaction",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Warlock"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Heroes' Feast",
+    "level": 6,
+    "school": "Conjuration",
+    "time": "10 minutes",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Druid"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Heroes' Feast",
+    "level": 6,
+    "school": "Conjuration",
+    "time": "10 minutes",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Druid"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Heroism",
+    "level": 1,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Paladin"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Heroism",
+    "level": 1,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Paladin"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Hex",
+    "level": 1,
+    "school": "Enchantment",
+    "time": "Bonus Action",
+    "range": "90 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Warlock"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Hideous Laughter",
+    "level": 1,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Hideous Laughter",
+    "level": 1,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Hold Monster",
+    "level": 5,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "90 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Hold Monster",
+    "level": 5,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "90 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Hold Person",
+    "level": 2,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Druid",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Hold Person",
+    "level": 2,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Druid",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Holy Aura",
+    "level": 8,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Cleric"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Holy Aura",
+    "level": 8,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Cleric"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Hunter's Mark",
+    "level": 1,
+    "school": "Divination",
+    "time": "Bonus Action",
+    "range": "90 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Ranger"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Hunter's Mark",
+    "level": 1,
+    "school": "Divination",
+    "time": "Bonus Action",
+    "range": "90 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Ranger"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Hypnotic Pattern",
+    "level": 3,
+    "school": "Illusion",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Hypnotic Pattern",
+    "level": 3,
+    "school": "Illusion",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Ice Knife",
+    "level": 1,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Ice Storm",
+    "level": 4,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "300 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Ice Storm",
+    "level": 4,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "300 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Identify",
+    "level": 1,
+    "school": "Divination",
+    "time": "1 minute",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Bard",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Identify",
+    "level": 1,
+    "school": "Divination",
+    "time": "1 minute",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Bard",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Illusory Script",
+    "level": 1,
+    "school": "Illusion",
+    "time": "1 minute",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Bard",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Illusory Script",
+    "level": 1,
+    "school": "Illusion",
+    "time": "1 minute",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Bard",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Imprisonment",
+    "level": 9,
+    "school": "Abjuration",
+    "time": "1 minute",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Imprisonment",
+    "level": 9,
+    "school": "Abjuration",
+    "time": "1 minute",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Incendiary Cloud",
+    "level": 8,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "150 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Incendiary Cloud",
+    "level": 8,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "150 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Inflict Wounds",
+    "level": 1,
+    "school": "Necromancy",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Inflict Wounds",
+    "level": 1,
+    "school": "Necromancy",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Insect Plague",
+    "level": 5,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "300 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Druid",
+      "Sorcerer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Insect Plague",
+    "level": 5,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "300 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Druid",
+      "Sorcerer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Instant Summons",
+    "level": 6,
+    "school": "Conjuration",
+    "time": "1 minute",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Instant Summons",
+    "level": 6,
+    "school": "Conjuration",
+    "time": "1 minute",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Invisibility",
+    "level": 2,
+    "school": "Illusion",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Invisibility",
+    "level": 2,
+    "school": "Illusion",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Irresistible Dance",
+    "level": 6,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Irresistible Dance",
+    "level": 6,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Jump",
+    "level": 1,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Ranger",
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Jump",
+    "level": 1,
+    "school": "Transmutation",
+    "time": "Bonus Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Ranger",
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Knock",
+    "level": 2,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Knock",
+    "level": 2,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Legend Lore",
+    "level": 5,
+    "school": "Divination",
+    "time": "10 minutes",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Legend Lore",
+    "level": 5,
+    "school": "Divination",
+    "time": "10 minutes",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Lesser Restoration",
+    "level": 2,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Druid",
+      "Paladin",
+      "Ranger",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Lesser Restoration",
+    "level": 2,
+    "school": "Abjuration",
+    "time": "Bonus Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Druid",
+      "Paladin",
+      "Ranger",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Levitate",
+    "level": 2,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Levitate",
+    "level": 2,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Light",
+    "level": 0,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Light",
+    "level": 0,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Lightning Bolt",
+    "level": 3,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Lightning Bolt",
+    "level": 3,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Locate Animals or Plants",
+    "level": 2,
+    "school": "Divination",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Bard",
+      "Druid",
+      "Ranger"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Locate Animals or Plants",
+    "level": 2,
+    "school": "Divination",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Bard",
+      "Druid",
+      "Ranger"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Locate Creature",
+    "level": 4,
+    "school": "Divination",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Druid",
+      "Paladin",
+      "Ranger",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Locate Creature",
+    "level": 4,
+    "school": "Divination",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Druid",
+      "Paladin",
+      "Ranger",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Locate Object",
+    "level": 2,
+    "school": "Divination",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Druid",
+      "Paladin",
+      "Ranger",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Locate Object",
+    "level": 2,
+    "school": "Divination",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Druid",
+      "Paladin",
+      "Ranger",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Longstrider",
+    "level": 1,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Druid",
+      "Ranger",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Longstrider",
+    "level": 1,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Druid",
+      "Ranger",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Mage Armor",
+    "level": 1,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Mage Armor",
+    "level": 1,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Mage Hand",
+    "level": 0,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Mage Hand",
+    "level": 0,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Magic Circle",
+    "level": 3,
+    "school": "Abjuration",
+    "time": "1 minute",
+    "range": "10 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Paladin",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Magic Circle",
+    "level": 3,
+    "school": "Abjuration",
+    "time": "1 minute",
+    "range": "10 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Paladin",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Magic Jar",
+    "level": 6,
+    "school": "Necromancy",
+    "time": "1 minute",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Magic Jar",
+    "level": 6,
+    "school": "Necromancy",
+    "time": "1 minute",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Magic Missile",
+    "level": 1,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Magic Missile",
+    "level": 1,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Magic Mouth",
+    "level": 2,
+    "school": "Illusion",
+    "time": "1 minute",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Bard",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Magic Mouth",
+    "level": 2,
+    "school": "Illusion",
+    "time": "1 minute",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Bard",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Magic Weapon",
+    "level": 2,
+    "school": "Transmutation",
+    "time": "Bonus Action",
+    "range": "Touch",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Paladin",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Magic Weapon",
+    "level": 2,
+    "school": "Transmutation",
+    "time": "Bonus Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Paladin",
+      "Ranger",
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Magnificent Mansion",
+    "level": 7,
+    "school": "Conjuration",
+    "time": "1 minute",
+    "range": "300 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Magnificent Mansion",
+    "level": 7,
+    "school": "Conjuration",
+    "time": "1 minute",
+    "range": "300 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Major Image",
+    "level": 3,
+    "school": "Illusion",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Major Image",
+    "level": 3,
+    "school": "Illusion",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Mass Cure Wounds",
+    "level": 5,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Druid"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Mass Cure Wounds",
+    "level": 5,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Druid"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Mass Heal",
+    "level": 9,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Mass Heal",
+    "level": 9,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Mass Healing Word",
+    "level": 3,
+    "school": "Evocation",
+    "time": "Bonus Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Mass Healing Word",
+    "level": 3,
+    "school": "Abjuration",
+    "time": "Bonus Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Mass Suggestion",
+    "level": 6,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Mass Suggestion",
+    "level": 6,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Maze",
+    "level": 8,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Maze",
+    "level": 8,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Meld into Stone",
+    "level": 3,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Cleric",
+      "Druid"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Meld into Stone",
+    "level": 3,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Cleric",
+      "Druid",
+      "Ranger"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Mending",
+    "level": 0,
+    "school": "Transmutation",
+    "time": "1 minute",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Druid",
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Mending",
+    "level": 0,
+    "school": "Transmutation",
+    "time": "1 minute",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Message",
+    "level": 0,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Message",
+    "level": 0,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Druid",
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Meteor Swarm",
+    "level": 9,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "1 mi",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Meteor Swarm",
+    "level": 9,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "1 mi",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Mind Blank",
+    "level": 8,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Mind Blank",
+    "level": 8,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Mind Spike",
+    "level": 2,
+    "school": "Divination",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Minor Illusion",
+    "level": 0,
+    "school": "Illusion",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Minor Illusion",
+    "level": 0,
+    "school": "Illusion",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Mirage Arcane",
+    "level": 7,
+    "school": "Illusion",
+    "time": "10 minutes",
+    "range": "Special",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Druid",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Mirage Arcane",
+    "level": 7,
+    "school": "Illusion",
+    "time": "10 minutes",
+    "range": "Any",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Druid",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Mirror Image",
+    "level": 2,
+    "school": "Illusion",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Mirror Image",
+    "level": 2,
+    "school": "Illusion",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Mislead",
+    "level": 5,
+    "school": "Illusion",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Mislead",
+    "level": 5,
+    "school": "Illusion",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Misty Step",
+    "level": 2,
+    "school": "Conjuration",
+    "time": "Bonus Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Misty Step",
+    "level": 2,
+    "school": "Conjuration",
+    "time": "Bonus Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Modify Memory",
+    "level": 5,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Modify Memory",
+    "level": 5,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Moonbeam",
+    "level": 2,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Moonbeam",
+    "level": 2,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Move Earth",
+    "level": 6,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Move Earth",
+    "level": 6,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Nondetection",
+    "level": 3,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Ranger",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Nondetection",
+    "level": 3,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Ranger",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Pass without Trace",
+    "level": 2,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Ranger"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Pass without Trace",
+    "level": 2,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Ranger"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Passwall",
+    "level": 5,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Passwall",
+    "level": 5,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Phantasmal Force",
+    "level": 2,
+    "school": "Illusion",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Phantasmal Killer",
+    "level": 4,
+    "school": "Illusion",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Phantasmal Killer",
+    "level": 4,
+    "school": "Illusion",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Phantom Steed",
+    "level": 3,
+    "school": "Illusion",
+    "time": "1 minute",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Phantom Steed",
+    "level": 3,
+    "school": "Illusion",
+    "time": "1 minute",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Planar Ally",
+    "level": 6,
+    "school": "Conjuration",
+    "time": "10 minutes",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Planar Ally",
+    "level": 6,
+    "school": "Conjuration",
+    "time": "10 minutes",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Planar Binding",
+    "level": 5,
+    "school": "Abjuration",
+    "time": "1 hour",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Druid",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Planar Binding",
+    "level": 5,
+    "school": "Abjuration",
+    "time": "1 hour",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Druid",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Plane Shift",
+    "level": 7,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Druid",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Plane Shift",
+    "level": 7,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Druid",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Plant Growth",
+    "level": 3,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "150 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Druid",
+      "Ranger"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Plant Growth",
+    "level": 3,
+    "school": "Transmutation",
+    "time": "Special",
+    "range": "150 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Druid",
+      "Ranger"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Poison Spray",
+    "level": 0,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "10 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Sorcerer",
+      "Warlock",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Poison Spray",
+    "level": 0,
+    "school": "Necromancy",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Sorcerer",
+      "Warlock",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Polymorph",
+    "level": 4,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Polymorph",
+    "level": 4,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Power Word Heal",
+    "level": 9,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Power Word Kill",
+    "level": 9,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Power Word Kill",
+    "level": 9,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Power Word Stun",
+    "level": 8,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Power Word Stun",
+    "level": 8,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Prayer of Healing",
+    "level": 2,
+    "school": "Evocation",
+    "time": "10 minutes",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Prayer of Healing",
+    "level": 2,
+    "school": "Abjuration",
+    "time": "10 minutes",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Paladin"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Prestidigitation",
+    "level": 0,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "10 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Prestidigitation",
+    "level": 0,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "10 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Prismatic Spray",
+    "level": 7,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Prismatic Spray",
+    "level": 7,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Prismatic Wall",
+    "level": 9,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Prismatic Wall",
+    "level": 9,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Private Sanctum",
+    "level": 4,
+    "school": "Abjuration",
+    "time": "10 minutes",
+    "range": "120 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Private Sanctum",
+    "level": 4,
+    "school": "Abjuration",
+    "time": "10 minutes",
+    "range": "120 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Produce Flame",
+    "level": 0,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Druid"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Produce Flame",
+    "level": 0,
+    "school": "Conjuration",
+    "time": "Bonus Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Druid"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Programmed Illusion",
+    "level": 6,
+    "school": "Illusion",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Programmed Illusion",
+    "level": 6,
+    "school": "Illusion",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Project Image",
+    "level": 7,
+    "school": "Illusion",
+    "time": "Action",
+    "range": "500 mi",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Project Image",
+    "level": 7,
+    "school": "Illusion",
+    "time": "Action",
+    "range": "500 mi",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Protection from Energy",
+    "level": 3,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Druid",
+      "Ranger",
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Protection from Energy",
+    "level": 3,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Druid",
+      "Ranger",
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Protection from Evil and Good",
+    "level": 1,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Paladin",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Protection from Evil and Good",
+    "level": 1,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Druid",
+      "Paladin",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Protection from Poison",
+    "level": 2,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Druid",
+      "Paladin",
+      "Ranger",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Protection from Poison",
+    "level": 2,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Druid",
+      "Paladin",
+      "Ranger",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Purify Food and Drink",
+    "level": 1,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "10 ft",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Cleric",
+      "Druid",
+      "Paladin",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Purify Food and Drink",
+    "level": 1,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "10 ft",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Cleric",
+      "Druid",
+      "Paladin",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Raise Dead",
+    "level": 5,
+    "school": "Necromancy",
+    "time": "1 hour",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Paladin"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Raise Dead",
+    "level": 5,
+    "school": "Necromancy",
+    "time": "1 hour",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Paladin"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Ray of Enfeeblement",
+    "level": 2,
+    "school": "Necromancy",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Ray of Enfeeblement",
+    "level": 2,
+    "school": "Necromancy",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Ray of Frost",
+    "level": 0,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Ray of Frost",
+    "level": 0,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Ray of Sickness",
+    "level": 1,
+    "school": "Necromancy",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Regenerate",
+    "level": 7,
+    "school": "Transmutation",
+    "time": "1 minute",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Druid"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Regenerate",
+    "level": 7,
+    "school": "Transmutation",
+    "time": "1 minute",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Druid"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Reincarnate",
+    "level": 5,
+    "school": "Transmutation",
+    "time": "1 hour",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Druid"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Reincarnate",
+    "level": 5,
+    "school": "Necromancy",
+    "time": "1 hour",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Druid"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Remove Curse",
+    "level": 3,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Paladin",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Remove Curse",
+    "level": 3,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Paladin",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Resilient Sphere",
+    "level": 4,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Resilient Sphere",
+    "level": 4,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Resistance",
+    "level": 0,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Druid",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Resistance",
+    "level": 0,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Druid",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Resurrection",
+    "level": 7,
+    "school": "Necromancy",
+    "time": "1 hour",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Resurrection",
+    "level": 7,
+    "school": "Necromancy",
+    "time": "1 hour",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Reverse Gravity",
+    "level": 7,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "100 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Reverse Gravity",
+    "level": 7,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "100 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Revivify",
+    "level": 3,
+    "school": "Necromancy",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Paladin",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Revivify",
+    "level": 3,
+    "school": "Necromancy",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Druid",
+      "Paladin",
+      "Ranger",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Rope Trick",
+    "level": 2,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Rope Trick",
+    "level": 2,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Sacred Flame",
+    "level": 0,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Sacred Flame",
+    "level": 0,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Sanctuary",
+    "level": 1,
+    "school": "Abjuration",
+    "time": "Bonus Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Sanctuary",
+    "level": 1,
+    "school": "Abjuration",
+    "time": "Bonus Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Scorching Ray",
+    "level": 2,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Scorching Ray",
+    "level": 2,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Scrying",
+    "level": 5,
+    "school": "Divination",
+    "time": "10 minutes",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Druid",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Scrying",
+    "level": 5,
+    "school": "Divination",
+    "time": "10 minutes",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Druid",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Searing Smite",
+    "level": 1,
+    "school": "Evocation",
+    "time": "Bonus Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Paladin"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Secret Chest",
+    "level": 4,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Secret Chest",
+    "level": 4,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "See Invisibility",
+    "level": 2,
+    "school": "Divination",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "See Invisibility",
+    "level": 2,
+    "school": "Divination",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Seeming",
+    "level": 5,
+    "school": "Illusion",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Seeming",
+    "level": 5,
+    "school": "Illusion",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Sending",
+    "level": 3,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "Any",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Sending",
+    "level": 3,
+    "school": "Divination",
+    "time": "Action",
+    "range": "Any",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Sequester",
+    "level": 7,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Sequester",
+    "level": 7,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Shapechange",
+    "level": 9,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Shapechange",
+    "level": 9,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Shatter",
+    "level": 2,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Shatter",
+    "level": 2,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Shield",
+    "level": 1,
+    "school": "Abjuration",
+    "time": "Reaction",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Shield",
+    "level": 1,
+    "school": "Abjuration",
+    "time": "Reaction",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Shield of Faith",
+    "level": 1,
+    "school": "Abjuration",
+    "time": "Bonus Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Paladin"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Shield of Faith",
+    "level": 1,
+    "school": "Abjuration",
+    "time": "Bonus Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Paladin"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Shillelagh",
+    "level": 0,
+    "school": "Transmutation",
+    "time": "Bonus Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Druid"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Shillelagh",
+    "level": 0,
+    "school": "Transmutation",
+    "time": "Bonus Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Druid"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Shining Smite",
+    "level": 2,
+    "school": "Transmutation",
+    "time": "Bonus Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Paladin"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Shocking Grasp",
+    "level": 0,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Shocking Grasp",
+    "level": 0,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Silence",
+    "level": 2,
+    "school": "Illusion",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": true,
+    "ritual": true,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Ranger"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Silence",
+    "level": 2,
+    "school": "Illusion",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": true,
+    "ritual": true,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Ranger"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Silent Image",
+    "level": 1,
+    "school": "Illusion",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Silent Image",
+    "level": 1,
+    "school": "Illusion",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Simulacrum",
+    "level": 7,
+    "school": "Illusion",
+    "time": "12 hours",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Simulacrum",
+    "level": 7,
+    "school": "Illusion",
+    "time": "12 hours",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Sleep",
+    "level": 1,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "90 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Sleep",
+    "level": 1,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Sleet Storm",
+    "level": 3,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "150 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Sleet Storm",
+    "level": 3,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "150 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Slow",
+    "level": 3,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Slow",
+    "level": 3,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Sorcerous Burst",
+    "level": 0,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Spare the Dying",
+    "level": 0,
+    "school": "Necromancy",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Spare the Dying",
+    "level": 0,
+    "school": "Necromancy",
+    "time": "Action",
+    "range": "15 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Druid",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Speak with Animals",
+    "level": 1,
+    "school": "Divination",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Bard",
+      "Druid",
+      "Ranger"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Speak with Animals",
+    "level": 1,
+    "school": "Divination",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Bard",
+      "Druid",
+      "Ranger",
+      "Warlock"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Speak with Dead",
+    "level": 3,
+    "school": "Necromancy",
+    "time": "Action",
+    "range": "10 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Speak with Dead",
+    "level": 3,
+    "school": "Necromancy",
+    "time": "Action",
+    "range": "10 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Speak with Plants",
+    "level": 3,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Druid",
+      "Ranger"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Speak with Plants",
+    "level": 3,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Druid",
+      "Ranger"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Spider Climb",
+    "level": 2,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Warlock",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Spider Climb",
+    "level": 2,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Warlock",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Spike Growth",
+    "level": 2,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "150 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Ranger"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Spike Growth",
+    "level": 2,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "150 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Ranger"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Spirit Guardians",
+    "level": 3,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Cleric"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Spirit Guardians",
+    "level": 3,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Cleric"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Spiritual Weapon",
+    "level": 2,
+    "school": "Evocation",
+    "time": "Bonus Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Spiritual Weapon",
+    "level": 2,
+    "school": "Evocation",
+    "time": "Bonus Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Cleric"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Starry Wisp",
+    "level": 0,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Druid"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Stinking Cloud",
+    "level": 3,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "90 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Stinking Cloud",
+    "level": 3,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "90 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Stone Shape",
+    "level": 4,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Druid",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Stone Shape",
+    "level": 4,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Druid",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Stoneskin",
+    "level": 4,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Ranger",
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Stoneskin",
+    "level": 4,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Ranger",
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Storm of Vengeance",
+    "level": 9,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "Special",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Storm of Vengeance",
+    "level": 9,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "1 mi",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Suggestion",
+    "level": 2,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Suggestion",
+    "level": 2,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Summon Dragon",
+    "level": 5,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Sunbeam",
+    "level": 6,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Sunbeam",
+    "level": 6,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Sunburst",
+    "level": 8,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "150 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Sunburst",
+    "level": 8,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "150 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Symbol",
+    "level": 7,
+    "school": "Abjuration",
+    "time": "1 minute",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Symbol",
+    "level": 7,
+    "school": "Abjuration",
+    "time": "1 minute",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Druid",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Telekinesis",
+    "level": 5,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Telekinesis",
+    "level": 5,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Telepathic Bond",
+    "level": 5,
+    "school": "Divination",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Telepathic Bond",
+    "level": 5,
+    "school": "Divination",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Bard",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Teleport",
+    "level": 7,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "10 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Teleport",
+    "level": 7,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "10 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Teleportation Circle",
+    "level": 5,
+    "school": "Conjuration",
+    "time": "1 minute",
+    "range": "10 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Teleportation Circle",
+    "level": 5,
+    "school": "Conjuration",
+    "time": "1 minute",
+    "range": "10 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Thaumaturgy",
+    "level": 0,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Thaumaturgy",
+    "level": 0,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Thunderwave",
+    "level": 1,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Thunderwave",
+    "level": 1,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Time Stop",
+    "level": 9,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Time Stop",
+    "level": 9,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Tiny Hut",
+    "level": 3,
+    "school": "Evocation",
+    "time": "1 minute",
+    "range": "Self",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Bard",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Tiny Hut",
+    "level": 3,
+    "school": "Evocation",
+    "time": "1 minute",
+    "range": "Self",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Bard",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Tongues",
+    "level": 3,
+    "school": "Divination",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Tongues",
+    "level": 3,
+    "school": "Divination",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Transport via Plants",
+    "level": 6,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "10 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Druid"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Transport via Plants",
+    "level": 6,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "10 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Druid"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Tree Stride",
+    "level": 5,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Ranger"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Tree Stride",
+    "level": 5,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Ranger"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "True Polymorph",
+    "level": 9,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "True Polymorph",
+    "level": 9,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "True Resurrection",
+    "level": 9,
+    "school": "Necromancy",
+    "time": "1 hour",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Druid"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "True Resurrection",
+    "level": 9,
+    "school": "Necromancy",
+    "time": "1 hour",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Druid"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "True Seeing",
+    "level": 6,
+    "school": "Divination",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "True Seeing",
+    "level": 6,
+    "school": "Divination",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "True Strike",
+    "level": 0,
+    "school": "Divination",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "True Strike",
+    "level": 0,
+    "school": "Divination",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Tsunami",
+    "level": 8,
+    "school": "Conjuration",
+    "time": "1 minute",
+    "range": "1 mi",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Unseen Servant",
+    "level": 1,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Bard",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Unseen Servant",
+    "level": 1,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Bard",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Vampiric Touch",
+    "level": 3,
+    "school": "Necromancy",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Vampiric Touch",
+    "level": 3,
+    "school": "Necromancy",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Vicious Mockery",
+    "level": 0,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Vicious Mockery",
+    "level": 0,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Vitriolic Sphere",
+    "level": 4,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "150 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Wall of Fire",
+    "level": 4,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Wall of Fire",
+    "level": 4,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Wall of Force",
+    "level": 5,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Wall of Force",
+    "level": 5,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Wall of Ice",
+    "level": 6,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Wall of Ice",
+    "level": 6,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Wall of Stone",
+    "level": 5,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Wall of Stone",
+    "level": 5,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Wall of Thorns",
+    "level": 6,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Wall of Thorns",
+    "level": 6,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Warding Bond",
+    "level": 2,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Warding Bond",
+    "level": 2,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Paladin"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Water Breathing",
+    "level": 3,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Druid",
+      "Ranger",
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Water Breathing",
+    "level": 3,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Druid",
+      "Ranger",
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Water Walk",
+    "level": 3,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Cleric",
+      "Druid",
+      "Ranger",
+      "Sorcerer",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Water Walk",
+    "level": 3,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Cleric",
+      "Druid",
+      "Ranger",
+      "Sorcerer",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Web",
+    "level": 2,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Web",
+    "level": 2,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Weird",
+    "level": 9,
+    "school": "Illusion",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Weird",
+    "level": 9,
+    "school": "Illusion",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Wind Walk",
+    "level": 6,
+    "school": "Transmutation",
+    "time": "1 minute",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Druid"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Wind Walk",
+    "level": 6,
+    "school": "Transmutation",
+    "time": "1 minute",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Druid"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Wind Wall",
+    "level": 3,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Ranger"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Wind Wall",
+    "level": 3,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Ranger"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Wish",
+    "level": 9,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Wish",
+    "level": 9,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Word of Recall",
+    "level": 6,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "5 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Word of Recall",
+    "level": 6,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "5 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Zone of Truth",
+    "level": 2,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Paladin"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Zone of Truth",
+    "level": 2,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Paladin"
+    ],
+    "rules": "2024"
+  }
+]

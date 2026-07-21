@@ -10,6 +10,16 @@ export const SENSE_TYPES = [
   { id: "distance", label: "Proximidade Reversa" },
 ];
 
+// Diferente de light/sight/sound (5 níveis via SENSE_TYPES), o Foundry só tem
+// CONST.WALL_MOVEMENT_TYPES.NONE/NORMAL pra movimento — sem "limitada"/"proximidade"
+// (ver module/scripts/scenes/buildScene.js#buildWallData). Usar SENSE_TYPES aqui
+// oferecia opções que não existem de verdade: qualquer coisa != "none" virava
+// "normal" (bloqueia) silenciosamente ao sincronizar, sem avisar o usuário.
+export const MOVEMENT_TYPES = [
+  { id: "none", label: "Nenhuma (não bloqueia)" },
+  { id: "normal", label: "Normal (bloqueia)" },
+];
+
 export const DOOR_TYPES = [
   { id: "none", label: "Não é porta" },
   { id: "door", label: "Porta" },

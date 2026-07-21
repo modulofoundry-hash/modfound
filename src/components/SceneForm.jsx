@@ -1,9 +1,12 @@
 import { useState } from "react";
-import { createEmptyScene } from "../schema/scene";
+import { createEmptyScene, FOG_EXPLORATION_MODES } from "../schema/scene";
 import { ScenePreviewEditor } from "./ScenePreviewEditor";
 
 export function SceneForm({ initialValue, onSubmit, onCancel }) {
-  const [scene, setScene] = useState(initialValue ?? createEmptyScene());
+  // Mesma proteção de CharacterForm.jsx: cena salva antes de um campo novo
+  // existir no schema não tem essa chave — mescla com os padrões pra não
+  // quebrar a tela ao abrir pra editar uma cena antiga.
+  const [scene, setScene] = useState(() => ({ ...createEmptyScene(), ...initialValue }));
   const [editorOpen, setEditorOpen] = useState(false);
 
   function set(key, value) {
@@ -88,13 +91,15 @@ export function SceneForm({ initialValue, onSubmit, onCancel }) {
           />
           Global Illumination — Enabled
         </label>
-        <label className="skill-expertise">
-          <input
-            type="checkbox"
-            checked={scene.fogExploration}
-            onChange={(e) => set("fogExploration", e.target.checked)}
-          />
+        <label>
           Fog of War
+          <select value={scene.fogExploration} onChange={(e) => set("fogExploration", e.target.value)}>
+            {FOG_EXPLORATION_MODES.map((mode) => (
+              <option key={mode.key} value={mode.key}>
+                {mode.label}
+              </option>
+            ))}
+          </select>
         </label>
       </fieldset>
 

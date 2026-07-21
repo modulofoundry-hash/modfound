@@ -1,3 +1,11 @@
+// Mesmas chaves de CONST.FOG_EXPLORATION_MODES do Foundry — não é boolean porque o
+// Foundry tem 3 modos, não 2 (ver módulo scenes/buildScene.js).
+export const FOG_EXPLORATION_MODES = [
+  { key: "DISABLED", label: "Nenhum" },
+  { key: "INDIVIDUAL", label: "Individual" },
+  { key: "SHARED", label: "Compartilhado" },
+];
+
 export function createEmptyScene() {
   return {
     name: "",
@@ -9,7 +17,7 @@ export function createEmptyScene() {
     gridUnits: "ft",
     tokenVision: true,
     globalLight: false,
-    fogExploration: true,
+    fogExploration: "INDIVIDUAL",
     walls: [],
     lights: [],
   };

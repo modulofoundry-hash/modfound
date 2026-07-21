@@ -6,10 +6,28 @@ import { ListEditor } from "./ListEditor";
 import { TagListInput } from "./TagListInput";
 import { OriginPicker } from "./OriginPicker";
 import { ClassesInput } from "./ClassesInput";
-import racesData from "../data/srd/races.json";
-import backgroundsData from "../data/srd/backgrounds.json";
-import classesData from "../data/srd/classes.json";
+import { FeatsInput } from "./FeatsInput";
+import { AbilityBonusPicker } from "./AbilityBonusPicker";
+import { RulesModeToggle } from "./RulesModeToggle";
+import { DescriptionPanel } from "./DescriptionPanel";
+import { SpellBrowser } from "./SpellBrowser";
+import racesData from "../data/content/races.json";
+import backgroundsData from "../data/content/backgrounds.json";
+import classesData from "../data/content/classes.json";
+import subclassesData from "../data/content/subclasses.json";
+import featsData from "../data/content/feats.json";
+import spellsData from "../data/content/spells.json";
 import { useCustomBackgrounds, useCustomClasses, useCustomRaces } from "../data/customContent";
+
+// Classes conjuradoras "de verdade" (concedem magia por padrão nas regras) --
+// a seção de Magias só aparece se o personagem tiver alguma dessas. Artificer
+// entra mesmo sem lista oficial de magia no compêndio do Foundry (não é
+// classe do PHB original, SRD gratuito não inclui a lista dela) -- o filtro
+// por classe no navegador de magias fica incompleto só pra ela (ver
+// shared/schema/README.md), mas ela continua sendo conjuradora de verdade.
+const SPELLCASTING_CLASSES = new Set([
+  "Artificer", "Bard", "Cleric", "Druid", "Paladin", "Ranger", "Sorcerer", "Warlock", "Wizard",
+]);
 
 const CURRENCIES = [
   { key: "pp", label: "Platina" },
@@ -31,15 +49,63 @@ const APPEARANCE_FIELDS = [
 ];
 
 export function CharacterForm({ initialValue, onSubmit, onCancel }) {
-  const [character, setCharacter] = useState(initialValue ?? createEmptyCharacter());
+  // Mescla com os padrões em vez de usar `initialValue` cru — uma ficha salva
+  // ANTES de um campo novo existir no schema (ex: `senses`, adicionado depois)
+  // não tem essa chave no Firestore, e acessar `character.senses.algo` direto
+  // quebra a tela inteira ao abrir pra editar. `createEmptyCharacter()`
+  // primeiro garante que todo campo novo tem valor padrão mesmo em ficha antiga.
+  const [character, setCharacter] = useState(() => ({ ...createEmptyCharacter(), ...initialValue }));
   const [feedback, setFeedback] = useState(null);
+  const [spellBrowserOpen, setSpellBrowserOpen] = useState(false);
+  const hasSpellcasting = character.classes.some((entry) => SPELLCASTING_CLASSES.has(entry.name));
 
   const customRaces = useCustomRaces();
   const customBackgrounds = useCustomBackgrounds();
   const customClasses = useCustomClasses();
+  // Raça/antecedente/subclasse/feat mostram as duas edições juntas (com tag) —
+  // só CLASSE é filtrada de verdade pelo modo do personagem. Customizado
+  // (`Enviar Itens`) não tem `rules` marcado, então nunca é excluído pelo
+  // filtro — sempre aparece nos dois modos.
   const allRaces = [...racesData, ...customRaces];
   const allBackgrounds = [...backgroundsData, ...customBackgrounds];
-  const allClasses = [...classesData, ...customClasses];
+  // Personagem já existente de antes dessa feature não tem `rulesMode`
+  // (`undefined`, não "") — filtrar por igualdade estrita contra isso batia
+  // com NENHUMA classe (`"2014" === undefined` é sempre falso), esvaziando o
+  // seletor de quem já tinha ficha pronta. Sem `rulesMode` escolhido, mostra
+  // tudo sem filtrar (mesmo degrau permissivo que o módulo já usa pra Item
+  // sem `rules` marcado) — só filtra de verdade depois que o modo é setado.
+  const allClasses = character.rulesMode
+    ? [...classesData.filter((c) => c.rules === character.rulesMode), ...customClasses]
+    : [...classesData, ...customClasses];
+  const allFeats = featsData;
+
+  // Guarda o item exato clicado em cada picker (não só o nome) — necessário
+  // pro card de descrição certo quando há mais de uma entrada com o mesmo
+  // nome (ex: "Human" oficial e "Human [custom]").
+  const [raceMatch, setRaceMatchState] = useState(null);
+  const [backgroundMatch, setBackgroundMatchState] = useState(null);
+  const [classMatches, setClassMatches] = useState([]);
+
+  // Grava também a edição do item clicado (`raceRules`/`backgroundRules`) —
+  // sem isso o módulo não sabe qual "Human"/"Life Domain" etc. (mesmo nome,
+  // edições diferentes) foi escolhido de verdade na hora de buscar o Item.
+  function setRaceMatch(item) {
+    setRaceMatchState(item);
+    set("raceRules", item?.rules ?? "");
+  }
+  function setBackgroundMatch(item) {
+    setBackgroundMatchState(item);
+    set("backgroundRules", item?.rules ?? "");
+  }
+
+  const descriptionCards = [
+    { title: "Raça", item: raceMatch },
+    { title: "Antecedente", item: backgroundMatch },
+  ];
+  for (const entry of classMatches) {
+    descriptionCards.push({ title: "Classe", item: entry?.classData });
+    descriptionCards.push({ title: "Subclasse", item: entry?.subclassData });
+  }
 
   useEffect(() => {
     if (!feedback) return;
@@ -72,9 +138,27 @@ export function CharacterForm({ initialValue, onSubmit, onCancel }) {
     setFeedback(`${toolLabels.join(", ")} adicionado(s) em Proficiências em Ferramentas`);
   }
 
+  // O banco guarda idiomas de raça/antecedente como texto solto (ex: "comum,
+  // anão"), não lista — sem separar por vírgula aqui, o idioma inteiro virava
+  // UMA entrada só em vez de duas, e chegava assim no Actor sincronizado
+  // (achado testando com um personagem real, ver shared/schema/README.md).
   function applyLanguages(text) {
-    setCharacter((prev) => ({ ...prev, languages: [...prev.languages, text] }));
-    setFeedback(`"${text}" adicionado em Idiomas`);
+    const parts = text.split(",").map((part) => part.trim()).filter(Boolean);
+    setCharacter((prev) => ({ ...prev, languages: [...prev.languages, ...parts] }));
+    setFeedback(`${parts.join(", ")} adicionado(s) em Idiomas`);
+  }
+
+  function applySize(size) {
+    set("size", size);
+  }
+
+  function applySpellChoices(names) {
+    setCharacter((prev) => {
+      const existing = new Set(prev.spells.map((s) => s.name));
+      const additions = names.filter((name) => !existing.has(name)).map((name) => ({ name, prepared: false }));
+      return { ...prev, spells: [...prev.spells, ...additions] };
+    });
+    setFeedback(`${names.join(", ")} adicionado(s) em Magias`);
   }
 
   function applyEquipmentGrants(grants) {
@@ -83,12 +167,28 @@ export function CharacterForm({ initialValue, onSubmit, onCancel }) {
     setFeedback(`${labels.join(", ")} adicionado(s) em Equipamento`);
   }
 
+  // Soma o bônus escolhido em cima do que já estiver digitado em Atributos —
+  // não existe "atributo base" guardado separado, o campo já é sempre o
+  // valor final (mesmo padrão de toda sugestão de OriginPicker: aplica uma
+  // vez, o jogador ainda pode ajustar o número à mão depois).
+  function applyAbilityBonus(picks) {
+    setCharacter((prev) => ({
+      ...prev,
+      abilities: Object.fromEntries(
+        Object.entries(prev.abilities).map(([key, value]) => [key, value + (picks[key] ?? 0)]),
+      ),
+    }));
+    const labels = Object.entries(picks).map(([key, amount]) => `+${amount} ${key.toUpperCase()}`);
+    setFeedback(`${labels.join(", ")} aplicado em Atributos`);
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
     onSubmit(character);
   }
 
   return (
+    <div className="sheet-layout">
     <form className="sheet-form" onSubmit={handleSubmit}>
       {feedback && <div className="toast">{feedback}</div>}
       <fieldset>
@@ -110,6 +210,15 @@ export function CharacterForm({ initialValue, onSubmit, onCancel }) {
             onChange={(e) => set("tokenImageUrl", e.target.value)}
           />
         </label>
+        <label>
+          Edição das regras
+          <RulesModeToggle value={character.rulesMode} onChange={(value) => set("rulesMode", value)} />
+        </label>
+        <p className="field-hint">
+          Só Classe é filtrada pela edição — Raça/Antecedente/Subclasse/Feat mostram as duas
+          juntas, marcadas com a tag. Bônus de atributo: em 2014 vem da Raça, em 2024 vem do
+          Antecedente — escolher a fonte errada pro modo não dá bônus.
+        </p>
 
         <OriginPicker
           label="Raça"
@@ -121,7 +230,14 @@ export function CharacterForm({ initialValue, onSubmit, onCancel }) {
           onApplyTools={applyTools}
           onApplyLanguages={applyLanguages}
           onApplyEquipment={applyEquipmentGrants}
+          onApplySize={applySize}
+          onApplySpells={applySpellChoices}
+          sizeValue={character.size}
+          onMatch={setRaceMatch}
         />
+        {character.rulesMode === "2014" && raceMatch?.abilityBonus && (
+          <AbilityBonusPicker label="Bônus de atributo (Raça)" abilityBonus={raceMatch.abilityBonus} onApply={applyAbilityBonus} />
+        )}
 
         <OriginPicker
           label="Antecedente"
@@ -133,7 +249,16 @@ export function CharacterForm({ initialValue, onSubmit, onCancel }) {
           onApplyTools={applyTools}
           onApplyLanguages={applyLanguages}
           onApplyEquipment={applyEquipmentGrants}
+          onApplySpells={applySpellChoices}
+          onMatch={setBackgroundMatch}
         />
+        {character.rulesMode === "2024" && backgroundMatch?.abilityBonus && (
+          <AbilityBonusPicker
+            label="Bônus de atributo (Antecedente)"
+            abilityBonus={backgroundMatch.abilityBonus}
+            onApply={applyAbilityBonus}
+          />
+        )}
 
         <label>
           Alinhamento
@@ -161,9 +286,12 @@ export function CharacterForm({ initialValue, onSubmit, onCancel }) {
         <ClassesInput
           classes={character.classes}
           classesData={allClasses}
+          subclassesData={subclassesData}
           onChange={(items) => set("classes", items)}
           onApplyEquipment={applyEquipmentGrants}
           onApplySkills={applySkills}
+          onApplySpells={applySpellChoices}
+          onMatchChange={setClassMatches}
         />
       </fieldset>
 
@@ -205,6 +333,63 @@ export function CharacterForm({ initialValue, onSubmit, onCancel }) {
       </fieldset>
 
       <fieldset>
+        <legend>Sentidos</legend>
+        <p className="field-hint">
+          O Foundry não deriva isso da Raça sozinho (nem Visão no Escuro tem automação
+          no compêndio oficial) — preencha manualmente o que a Raça/Feat conceder.
+        </p>
+        <label>
+          Visão no Escuro
+          <input
+            type="number"
+            value={character.senses.darkvision}
+            onChange={(e) => setNested("senses", "darkvision", Number(e.target.value))}
+          />
+        </label>
+        <label>
+          Visão Cega
+          <input
+            type="number"
+            value={character.senses.blindsight}
+            onChange={(e) => setNested("senses", "blindsight", Number(e.target.value))}
+          />
+        </label>
+        <label>
+          Percepção por Tremor
+          <input
+            type="number"
+            value={character.senses.tremorsense}
+            onChange={(e) => setNested("senses", "tremorsense", Number(e.target.value))}
+          />
+        </label>
+        <label>
+          Visão Verdadeira
+          <input
+            type="number"
+            value={character.senses.truesight}
+            onChange={(e) => setNested("senses", "truesight", Number(e.target.value))}
+          />
+        </label>
+        <label>
+          Unidade
+          <input
+            type="text"
+            placeholder="ft"
+            value={character.senses.units}
+            onChange={(e) => setNested("senses", "units", e.target.value)}
+          />
+        </label>
+        <label>
+          Sentido especial (texto livre)
+          <input
+            type="text"
+            value={character.senses.special}
+            onChange={(e) => setNested("senses", "special", e.target.value)}
+          />
+        </label>
+      </fieldset>
+
+      <fieldset>
         <legend>Dinheiro</legend>
         {CURRENCIES.map((currency) => (
           <label key={currency.key}>
@@ -234,26 +419,54 @@ export function CharacterForm({ initialValue, onSubmit, onCancel }) {
 
       <fieldset>
         <legend>Feats</legend>
-        <TagListInput
-          items={character.feats}
+        <FeatsInput
+          items={allFeats}
+          feats={character.feats}
           onChange={(feats) => set("feats", feats)}
-          placeholder="Ex: Atirador Élite"
-          addLabel="Adicionar feat"
+          onApplySpells={applySpellChoices}
         />
       </fieldset>
 
-      <fieldset>
-        <legend>Magias</legend>
-        <ListEditor
-          items={character.spells}
-          onChange={(items) => set("spells", items)}
-          addLabel="Adicionar magia"
-          fields={[
-            { key: "name", label: "Magia" },
-            { key: "prepared", label: "Preparada", type: "checkbox", default: false },
-          ]}
-        />
-      </fieldset>
+      {hasSpellcasting && (
+        <fieldset>
+          <legend>Magias</legend>
+          <ListEditor
+            items={character.spells}
+            onChange={(items) => set("spells", items)}
+            addLabel="Adicionar magia"
+            fields={[
+              { key: "name", label: "Magia" },
+              { key: "prepared", label: "Preparada", type: "checkbox", default: false },
+            ]}
+          />
+          <button type="button" onClick={() => setSpellBrowserOpen(true)}>
+            Buscar magia
+          </button>
+        </fieldset>
+      )}
+
+      {spellBrowserOpen && (
+        <div
+          className="modal-backdrop"
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) setSpellBrowserOpen(false);
+          }}
+        >
+          <div className="modal-panel modal-panel-wide" onMouseDown={(event) => event.stopPropagation()}>
+            <div className="modal-header">
+              <h3>Magias</h3>
+              <button type="button" onClick={() => setSpellBrowserOpen(false)}>
+                Fechar
+              </button>
+            </div>
+            <SpellBrowser
+              spells={spellsData}
+              rulesMode={character.rulesMode}
+              onAdd={(name) => applySpellChoices([name])}
+            />
+          </div>
+        </div>
+      )}
 
       <fieldset>
         <legend>Personalidade</legend>
@@ -308,5 +521,7 @@ export function CharacterForm({ initialValue, onSubmit, onCancel }) {
         </button>
       </div>
     </form>
+    <DescriptionPanel cards={descriptionCards} />
+    </div>
   );
 }

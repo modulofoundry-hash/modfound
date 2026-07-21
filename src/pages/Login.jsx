@@ -18,12 +18,13 @@ export function Login() {
     event.preventDefault();
     setError("");
     try {
-      const ok = await login(password);
-      if (!ok) {
+      const kind = await login(password);
+      if (!kind) {
         setError("Senha incorreta.");
         return;
       }
-      const redirectTo = location.state?.from?.pathname ?? "/perfis";
+      const fallback = kind === "guest" ? "/perfis/visitante" : "/perfis";
+      const redirectTo = location.state?.from?.pathname ?? fallback;
       navigate(redirectTo, { replace: true });
     } catch {
       setError("Não foi possível conectar ao banco. Verifique a configuração do Firebase.");

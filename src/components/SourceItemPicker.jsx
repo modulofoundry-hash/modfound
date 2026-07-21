@@ -30,9 +30,11 @@ export function SourceItemPicker({ items, value, onChange, placeholder }) {
       {open && matches.length > 0 && (
         <ul className="source-picker-list">
           {matches.map((item) => (
-            <li key={`${item.name}-${item.source}`}>
+            <li key={`${item.name}-${item.source}-${item.rules ?? ""}`}>
               <button type="button" onMouseDown={() => selectItem(item)}>
-                {item.name} <span className="source-tag">[{item.source}]</span>
+                {item.name}{" "}
+                {item.rules && <span className={`rules-tag rules-tag-${item.rules}`}>{item.rules}</span>}
+                <span className="source-tag">[{item.source}]</span>
               </button>
             </li>
           ))}

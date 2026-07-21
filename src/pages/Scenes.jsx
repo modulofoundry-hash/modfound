@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import {
   createSceneFolder,
   deleteSceneFolder,
@@ -8,9 +8,13 @@ import {
 } from "../data/sceneFolders";
 import { createScene, deleteScene, subscribeToScenes, updateScene } from "../data/scenes";
 import { SceneForm } from "../components/SceneForm";
+import { GUEST_PROFILE_ID } from "../constants/profiles";
 
 export function Scenes() {
   const { profileId } = useParams();
+  // Perfil visitante só cria Personagem — bloqueia acesso direto por URL
+  // (o menu já esconde o link, ver ProfileLayout.jsx).
+  const isGuest = profileId === GUEST_PROFILE_ID;
   const [folders, setFolders] = useState([]);
   const [folderCounts, setFolderCounts] = useState({});
   const [error, setError] = useState(null);
@@ -55,6 +59,10 @@ export function Scenes() {
     } catch (err) {
       setError(err.message);
     }
+  }
+
+  if (isGuest) {
+    return <Navigate to={`/perfis/${profileId}`} replace />;
   }
 
   if (openFolder) {

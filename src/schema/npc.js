@@ -7,6 +7,17 @@ export const SIZES = [
   { id: "grg", label: "Descomunal" },
 ];
 
+// `OriginPicker`/`SizeChoice` devolvem a letra crua do banco de conteúdo
+// (T/S/M/L/H/G, mesmo formato de `character.size` — ver SIZE_KEY_MAP em
+// buildCharacter.js) — mas o <select> de Tamanho do NPC usa as chaves de
+// verdade do Foundry (tiny/sm/med/...), igual `system.traits.size` espera.
+// Sem traduzir aqui, `npc.size` ficava com "M" solto, que não bate com
+// nenhuma <option>, e o navegador mostrava a primeira opção da lista
+// ("Miúdo") como se estivesse selecionada — mesma armadilha já corrigida
+// antes pro caso de tamanho vazio, agora achada pro caso de tamanho com
+// valor errado.
+export const SIZE_LETTER_TO_KEY = { T: "tiny", S: "sm", M: "med", L: "lg", H: "huge", G: "grg" };
+
 // Corresponde a CONFIG.DND5E.creatureTypes (dnd5e/module/data/shared/creature-type-field.mjs)
 export const CREATURE_TYPES = [
   "aberration",
@@ -30,7 +41,10 @@ export function createEmptyNpc() {
     name: "",
     imageUrl: "",
     tokenImageUrl: "",
+    rulesMode: "",
     size: "med",
+    race: "",
+    raceRules: "",
     type: { value: "", subtype: "", swarm: "", custom: "" },
     alignment: "",
     important: false,
@@ -52,6 +66,7 @@ export function createEmptyNpc() {
     spellcastingAbility: "",
     spells: [],
     traits: [],
+    weapons: [],
     actions: [],
     bonusActions: [],
     reactions: [],
