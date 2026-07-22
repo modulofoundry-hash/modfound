@@ -7,8 +7,15 @@ const AuthContext = createContext(null);
 const isLocalhost = ["localhost", "127.0.0.1"].includes(window.location.hostname);
 
 export function AuthProvider({ children }) {
+  // Em localhost, NÃO marca autenticado direto aqui (síncrono) — isso fazia a
+  // tela seguinte tentar ler o Firestore ANTES do signInAnonymously() (que é
+  // assíncrono) terminar de verdade, e numa sessão nova (sem nada salvo no
+  // navegador ainda) isso sempre perdia a corrida: o pedido saía sem login
+  // nenhum e o Firestore recusava com "permission-denied", mesmo com a regra
+  // certa (`auth != null`) publicada. Corrigido: em localhost, `isAuthenticated`
+  // só vira true quando `onAuthStateChanged` confirmar um usuário de verdade.
   const [isAuthenticated, setIsAuthenticated] = useState(
-    () => isLocalhost || sessionStorage.getItem(STORAGE_KEY) === "1",
+    () => !isLocalhost && sessionStorage.getItem(STORAGE_KEY) === "1",
   );
 
   // Em localhost (dev) pula a tela de senha — só entra anônimo direto no Firebase.
@@ -18,7 +25,11 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     return onAuthStateChanged(auth, (user) => {
-      if (!user && !isLocalhost && sessionStorage.getItem(STORAGE_KEY) === "1") {
+      if (isLocalhost) {
+        setIsAuthenticated(!!user);
+        return;
+      }
+      if (!user && sessionStorage.getItem(STORAGE_KEY) === "1") {
         sessionStorage.removeItem(STORAGE_KEY);
         setIsAuthenticated(false);
       }

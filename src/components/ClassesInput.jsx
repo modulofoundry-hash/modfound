@@ -1,5 +1,5 @@
-import { useState } from "react";
 import { SourceItemPicker } from "./SourceItemPicker";
+import { ClassGridPicker } from "./ClassGridPicker";
 import { EquipmentSlots } from "./EquipmentSlots";
 import { ChoicePicker } from "./ChoicePicker";
 import { SpellChoicePicker } from "./SpellChoicePicker";
@@ -25,26 +25,39 @@ export function ClassesInput({
   onApplyEquipment,
   onApplySkills,
   onApplySpells,
-  onMatchChange,
+  // `matches` ({index: {classData, subclassData}}) e `onMatchesChange` agora
+  // são CONTROLADOS pelo componente pai (antes era `useState` local aqui) —
+  // achado real revisando o projeto: o wizard troca a etapa Classe por outro
+  // componente (Atributos/Melhorias) e volta depois, e como o React
+  // desmonta/remonta esse componente nessa troca, o `useState` local
+  // resetava pra `{}` silenciosamente, perdendo o item exato clicado de
+  // TODA classe já escolhida. Na próxima remoção/escolha, `notify()` mandava
+  // esse `{}` corrompido pro pai, apagando o `classMatches` inteiro — quebrava
+  // tanto a Melhoria de Atributo quanto a lista "Concedido pela Classe" da
+  // etapa Perícias, silenciosamente. Guardar no pai (que nunca desmonta
+  // durante a navegação entre etapas) resolve na raiz.
+  matches,
+  onMatchesChange,
+  // Opcional (só o wizard usa) — avisa o índice removido ANTES de `onChange`,
+  // pra quem guarda escolha por `classIndex` (Melhoria de Atributo) conseguir
+  // reindexar/reverter na mesma hora, em vez de ficar com a escolha antiga
+  // presa num índice que agora aponta pra outra classe (ver
+  // CharacterCreationWizard.jsx handleRemoveClass).
+  onRemoveClass,
+  // "search" (padrão, formulário antigo) ou "grid" (wizard de criação) — só
+  // troca a FORMA de escolher classe/subclasse, o resto do comportamento
+  // (PV, equipamento, perícia, magia de subclasse) é o mesmo dos dois jeitos.
+  // No modo "grid", a subclasse só aparece disponível se o nível já
+  // alcançou `subclassLevel` da classe (pedido explícito do wizard).
+  variant = "search",
 }) {
-  // Rastreia o item exato clicado (não só o nome) — importante quando duas
-  // entradas têm o mesmo nome (ex: "Fighter" oficial e "Fighter [custom]"),
-  // senão a busca por nome pode pegar a errada pro card de descrição.
-  const [matches, setMatches] = useState({});
-
   function updateRow(index, patch) {
     onChange(classes.map((row, i) => (i === index ? { ...row, ...patch } : row)));
   }
 
-  function notify(next) {
-    onMatchChange?.(Object.values(next));
-  }
-
   function pickClass(index, text, item) {
     updateRow(index, { name: text, subclass: "" });
-    const next = { ...matches, [index]: { classData: item, subclassData: null } };
-    setMatches(next);
-    notify(next);
+    onMatchesChange({ ...matches, [index]: { classData: item, subclassData: null } });
   }
 
   function pickSubclass(index, text, item) {
@@ -53,9 +66,7 @@ export function ClassesInput({
     // módulo precisa saber qual das duas com o mesmo nome foi escolhida de
     // verdade na hora de buscar o Item.
     updateRow(index, { subclass: text, subclassRules: item?.rules ?? "" });
-    const next = { ...matches, [index]: { ...matches[index], subclassData: item } };
-    setMatches(next);
-    notify(next);
+    onMatchesChange({ ...matches, [index]: { ...matches[index], subclassData: item } });
   }
 
   function addRow() {
@@ -78,6 +89,7 @@ export function ClassesInput({
   }
 
   function removeRow(index) {
+    onRemoveClass?.(index);
     onChange(classes.filter((_, i) => i !== index));
     // `matches` é indexado por posição da linha, igual `classes` — só apagar a
     // chave do índice removido deixa as linhas de baixo "furadas" (linha que
@@ -90,8 +102,7 @@ export function ClassesInput({
       if (i < index) next[i] = value;
       else if (i > index) next[i - 1] = value;
     }
-    setMatches(next);
-    notify(next);
+    onMatchesChange(next);
   }
 
   return (
@@ -115,21 +126,48 @@ export function ClassesInput({
             <div className="list-editor-row">
               <label className="list-editor-field">
                 Classe
-                <SourceItemPicker
-                  items={classesData}
-                  value={row.name}
-                  onChange={(text, item) => pickClass(index, text, item)}
-                  placeholder="Ex: Bárbaro"
-                />
+                {variant === "grid" ? (
+                  <ClassGridPicker
+                    items={classesData}
+                    value={row.name}
+                    onPick={(item) => pickClass(index, item.name, item)}
+                    renderMeta={(item) => `Dado de vida: ${item.hitDie}`}
+                  />
+                ) : (
+                  <SourceItemPicker
+                    items={classesData}
+                    value={row.name}
+                    onChange={(text, item) => pickClass(index, text, item)}
+                    placeholder="Ex: Bárbaro"
+                  />
+                )}
               </label>
               <label className="list-editor-field">
                 Subclasse
-                <SourceItemPicker
-                  items={subclassOptions}
-                  value={row.subclass}
-                  onChange={(text, item) => pickSubclass(index, text, item)}
-                  placeholder={matched ? "Buscar subclasse..." : "Escolha a classe primeiro"}
-                />
+                {variant === "grid" ? (
+                  !matched ? (
+                    <p className="field-hint">Escolha a classe primeiro.</p>
+                  ) : (row.level ?? 1) < (matched.subclassLevel ?? 1) ? (
+                    <p className="field-hint">
+                      Subclasse disponível a partir do nível {matched.subclassLevel} de {matched.name}.
+                    </p>
+                  ) : (
+                    <ClassGridPicker
+                      items={subclassOptions}
+                      value={row.subclass}
+                      selectedRules={row.subclassRules}
+                      onPick={(item) => pickSubclass(index, item.name, item)}
+                      emptyMessage="Nenhuma subclasse encontrada pra essa classe."
+                    />
+                  )
+                ) : (
+                  <SourceItemPicker
+                    items={subclassOptions}
+                    value={row.subclass}
+                    onChange={(text, item) => pickSubclass(index, text, item)}
+                    placeholder={matched ? "Buscar subclasse..." : "Escolha a classe primeiro"}
+                  />
+                )}
               </label>
               <label className="list-editor-field">
                 Nível
@@ -169,7 +207,14 @@ export function ClassesInput({
                     ))}
                   </div>
                 )}
-                {matched.skillChoice && (
+                {/* Perícias de escolha e Equipamento concedidos pela classe NÃO
+                    aparecem aqui no wizard (variant="grid") de propósito — pedido
+                    do usuário: só na etapa dedicada de Perícias, discriminando de
+                    onde vêm e quantas dá pra escolher (ver StepPericias.jsx,
+                    GrantSummary lendo classMatches). Formulário antigo
+                    (variant="search", sem essa etapa separada) continua mostrando
+                    aqui mesmo. */}
+                {variant === "search" && matched.skillChoice && (
                   <ChoicePicker
                     title="Perícias"
                     count={matched.skillChoice.count}
@@ -177,7 +222,7 @@ export function ClassesInput({
                     onAdd={onApplySkills}
                   />
                 )}
-                <EquipmentSlots slots={matched.equipmentSlots} onAdd={onApplyEquipment} />
+                {variant === "search" && <EquipmentSlots slots={matched.equipmentSlots} onAdd={onApplyEquipment} />}
                 {onApplySpells &&
                   subclassSpellChoices.map((choice, i) => (
                     <SpellChoicePicker

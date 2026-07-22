@@ -92,16 +92,18 @@ export function SpellBrowser({ spells, rulesMode, onAdd }) {
                   Nome{sortArrow("name")}
                 </button>
               </th>
-              <th>
+              <th className="spell-browser-col-level">
                 <button type="button" onClick={() => toggleSort("level")}>
                   Nível{sortArrow("level")}
                 </button>
               </th>
-              <th>Tempo</th>
-              <th>Escola</th>
-              <th>C.</th>
-              <th>Alcance</th>
-              <th>Edição</th>
+              <th className="spell-browser-col-time">Tempo</th>
+              <th className="spell-browser-col-school">Escola</th>
+              <th className="spell-browser-col-conc" title="Concentração">
+                C.
+              </th>
+              <th className="spell-browser-col-range">Alcance</th>
+              <th className="spell-browser-col-edition">Edição</th>
             </tr>
           </thead>
           <tbody>
@@ -112,12 +114,14 @@ export function SpellBrowser({ spells, rulesMode, onAdd }) {
                     {spell.name}
                   </button>
                 </td>
-                <td>{LEVEL_LABEL(spell.level)}</td>
-                <td>{spell.time}</td>
-                <td>{spell.school}</td>
-                <td>{spell.concentration ? "x" : ""}</td>
-                <td>{spell.range}</td>
-                <td>{spell.rules}</td>
+                <td className="spell-browser-col-level">{LEVEL_LABEL(spell.level)}</td>
+                <td className="spell-browser-col-time">{spell.time}</td>
+                <td className="spell-browser-col-school">{spell.school}</td>
+                <td className="spell-browser-col-conc">{spell.concentration ? "●" : ""}</td>
+                <td className="spell-browser-col-range">{spell.range}</td>
+                <td className="spell-browser-col-edition">
+                  <span className={`rules-tag rules-tag-${spell.rules}`}>{spell.rules}</span>
+                </td>
               </tr>
             ))}
           </tbody>

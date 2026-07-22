@@ -7,8 +7,10 @@ import {
   updateCharacter,
 } from "../data/characters";
 import { CharacterForm } from "../components/CharacterForm";
+import { CharacterCreationWizard } from "../components/CharacterCreationWizard";
 import { SheetCardGrid } from "../components/SheetCardGrid";
 import { SheetCard } from "../components/SheetCard";
+import { CharacterView } from "./CharacterView";
 
 function totalLevel(classes) {
   return (classes ?? []).reduce((sum, c) => sum + (Number(c.level) || 0), 0);
@@ -25,6 +27,7 @@ export function Characters() {
   const [characters, setCharacters] = useState([]);
   const [error, setError] = useState(null);
   const [editing, setEditing] = useState(null);
+  const [viewing, setViewing] = useState(null);
 
   useEffect(() => {
     setError(null);
@@ -56,16 +59,34 @@ export function Characters() {
     }
   }
 
+  if (editing === "new") {
+    return (
+      <div>
+        <h2>Novo personagem</h2>
+        <CharacterCreationWizard onSubmit={handleSubmit} onCancel={() => setEditing(null)} />
+      </div>
+    );
+  }
+
   if (editing) {
     return (
       <div>
-        <h2>{editing === "new" ? "Novo personagem" : `Editar ${editing.name}`}</h2>
-        <CharacterForm
-          initialValue={editing === "new" ? undefined : editing}
-          onSubmit={handleSubmit}
-          onCancel={() => setEditing(null)}
-        />
+        <h2>{`Editar ${editing.name}`}</h2>
+        <CharacterForm initialValue={editing} onSubmit={handleSubmit} onCancel={() => setEditing(null)} />
       </div>
+    );
+  }
+
+  if (viewing) {
+    return (
+      <CharacterView
+        character={viewing}
+        onEdit={() => {
+          setEditing(viewing);
+          setViewing(null);
+        }}
+        onBack={() => setViewing(null)}
+      />
     );
   }
 
@@ -81,7 +102,7 @@ export function Characters() {
       <SheetCardGrid
         items={characters}
         renderCard={(character) => (
-          <SheetCard key={character.id} item={character} onEdit={setEditing} onDelete={handleDelete}>
+          <SheetCard key={character.id} item={character} onEdit={setViewing} onDelete={handleDelete}>
             <span className="sheet-card-level">Nível {totalLevel(character.classes)}</span>
             <span className="sheet-card-classes">{classSummary(character.classes)}</span>
             <span className="sheet-card-background">{character.background || "—"}</span>

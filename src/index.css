@@ -1028,21 +1028,60 @@ input {
   gap: 6px;
 }
 
-.choice-picker-options {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 4px 12px;
+.choice-picker-search {
+  padding: 6px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+}
+
+/* Lista rolável com busca — mesmo padrão visual do navegador de Magias
+   (`.spell-browser-table-wrap`), a pedido do usuário: idioma (e qualquer
+   outra escolha grande, tipo perícia "qualquer uma") vira uma LISTA de
+   verdade em vez de checkboxes soltos espalhados pela página. */
+.choice-picker-list {
+  display: flex;
+  flex-direction: column;
+  max-height: 220px;
+  overflow-y: auto;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
 }
 
 .choice-picker-option {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
+  font-size: 13px;
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.choice-picker-option:last-child {
+  border-bottom: none;
+}
+
+.choice-picker-option:hover {
+  background: var(--bg);
+}
+
+.choice-picker-empty {
+  margin: 0;
+  padding: 10px;
+  color: var(--text-muted);
+  font-style: italic;
   font-size: 13px;
 }
 
 .choice-picker button {
   align-self: flex-start;
+}
+
+.choice-picker-custom-input {
+  max-width: 240px;
 }
 
 .scene-preview {
@@ -1113,6 +1152,7 @@ input {
   padding: 16px;
   max-height: 90vh;
   overflow-y: auto;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
 }
 
 .modal-panel-wide {
@@ -1124,13 +1164,18 @@ input {
   min-height: 360px;
   resize: both;
   overflow: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .modal-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-bottom: 12px;
   margin-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
 }
 
 .modal-header h3 {
@@ -1140,7 +1185,8 @@ input {
 .spell-browser {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
+  flex: 1;
   height: 100%;
   min-height: 0;
 }
@@ -1149,11 +1195,31 @@ input {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  padding: 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.spell-browser-filters input,
+.spell-browser-filters select {
+  padding: 6px 8px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
 }
 
 .spell-browser-filters input {
-  flex: 1;
+  flex: 2;
   min-width: 160px;
+}
+
+.spell-browser-filters select {
+  flex: 1;
+  min-width: 130px;
 }
 
 .spell-browser-table-wrap {
@@ -1176,6 +1242,7 @@ input {
   background: var(--surface);
   text-align: left;
   border-bottom: 1px solid var(--border);
+  white-space: nowrap;
 }
 
 .spell-browser-table th button {
@@ -1187,6 +1254,11 @@ input {
   color: var(--text);
   font-weight: 600;
   cursor: pointer;
+  border-radius: 4px;
+}
+
+.spell-browser-table th button:hover {
+  background: var(--border);
 }
 
 .spell-browser-table td {
@@ -1195,8 +1267,45 @@ input {
   white-space: nowrap;
 }
 
-.spell-browser-table tbody tr:hover {
+.spell-browser-table tbody tr:nth-child(even) {
   background: var(--surface);
+}
+
+.spell-browser-table tbody tr:hover {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+.spell-browser-table tbody tr:hover .spell-browser-pick,
+.spell-browser-table tbody tr:hover .spell-browser-col-time,
+.spell-browser-table tbody tr:hover .spell-browser-col-school,
+.spell-browser-table tbody tr:hover .spell-browser-col-range {
+  color: var(--bg);
+}
+
+/* Colunas curtas/numéricas centralizadas -- só "Nome" (variável) fica à
+   esquerda; o resto lê melhor centralizado do que grudado na borda. */
+.spell-browser-col-level,
+.spell-browser-col-conc,
+.spell-browser-col-edition {
+  text-align: center;
+  width: 1%;
+}
+
+.spell-browser-col-time,
+.spell-browser-col-school,
+.spell-browser-col-range {
+  width: 1%;
+}
+
+.spell-browser-col-conc {
+  color: var(--accent);
+  font-size: 16px;
+  line-height: 1;
+}
+
+.spell-browser-col-edition .rules-tag {
+  margin-left: 0;
 }
 
 .spell-browser-pick {
@@ -1217,4 +1326,1235 @@ input {
   margin: 0;
   color: var(--text-muted);
   font-size: 13px;
+}
+
+/* Wizard de criação de personagem */
+.wizard {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.wizard-summary {
+  flex: 0 0 240px;
+  position: sticky;
+  top: 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px;
+}
+
+.wizard-summary h3 {
+  margin: 0 0 10px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.wizard-summary-list {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.wizard-summary-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.wizard-summary-row dt {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.wizard-summary-row dd {
+  margin: 0;
+  font-size: 13px;
+  word-break: break-word;
+}
+
+.wizard-summary-row-empty dd {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.wizard-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.wizard-progress {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  list-style: none;
+  margin: 0 0 16px;
+  padding: 0;
+}
+
+.wizard-progress li button {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.wizard-progress-current button {
+  border-color: var(--accent);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.wizard-progress-done button {
+  color: var(--text);
+}
+
+.wizard-blurb {
+  color: var(--text-muted);
+  margin: 0 0 16px;
+}
+
+.wizard-step-body {
+  min-height: 240px;
+}
+
+.wizard-placeholder {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.wizard-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.wizard-nav-right {
+  display: flex;
+  gap: 8px;
+}
+
+.wizard-skip {
+  background: none;
+  border: 1px dashed var(--border);
+  color: var(--text-muted);
+}
+
+.wizard-nivel-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 160px;
+  font-weight: 600;
+}
+
+.wizard-nivel-field input {
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 16px;
+}
+
+/* Tabela de Raça/Antecedente do wizard — mesmo padrão do navegador de magias */
+.origin-table-browser {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.origin-table-search {
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.origin-table-wrap {
+  max-height: 360px;
+  overflow: auto;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+.origin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.origin-table th {
+  position: sticky;
+  top: 0;
+  background: var(--surface);
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+.origin-table th button {
+  width: 100%;
+  text-align: left;
+  padding: 8px;
+  border: none;
+  background: none;
+  color: var(--text);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.origin-table td {
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.origin-table tbody tr:hover {
+  background: var(--surface);
+}
+
+.origin-table-row-selected {
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
+}
+
+.origin-table-pick {
+  border: none;
+  background: none;
+  color: var(--accent);
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+  font: inherit;
+  font-weight: 600;
+}
+
+.origin-table-pick:hover {
+  text-decoration: underline;
+}
+
+.origin-table-count {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+/* Grid de classe/subclasse do wizard */
+.class-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 10px;
+  margin: 6px 0 14px;
+}
+
+.class-grid-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+  text-align: left;
+}
+
+.class-grid-card:hover {
+  border-color: var(--accent);
+}
+
+.class-grid-card-selected {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
+}
+
+.class-grid-name {
+  font-weight: 600;
+}
+
+.class-grid-meta {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* Etapa de Atributos */
+.ability-method-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.ability-method-option {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 2px 4px 2px 4px;
+}
+
+.ability-method-option button {
+  border: none;
+  background: none;
+  color: var(--text);
+  padding: 6px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.ability-method-option-selected {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
+}
+
+.ability-method-option-selected button {
+  color: var(--accent);
+}
+
+.info-tooltip-wrap {
+  position: relative;
+  display: inline-flex;
+}
+
+.info-tooltip-btn {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 12px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-tooltip-box {
+  position: absolute;
+  z-index: 5;
+  top: 26px;
+  left: 0;
+  width: 260px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px;
+  font-size: 13px;
+  font-weight: normal;
+  color: var(--text);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.ability-pool-values {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  min-height: 52px;
+  margin-bottom: 16px;
+  padding: 10px;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+}
+
+.ability-pool-chip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  color: var(--text);
+  font-weight: 700;
+  font-size: 16px;
+  cursor: grab;
+}
+
+.ability-pool-chip:active {
+  cursor: grabbing;
+}
+
+.ability-pool-empty {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 13px;
+  align-self: center;
+}
+
+.ability-drop-zone {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-height: 76px;
+  padding: 10px;
+  border: 2px dashed var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.ability-drop-zone-filled {
+  border-style: solid;
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+}
+
+.ability-drop-zone-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+.ability-drop-zone-value {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.wizard-step-melhorias {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* StepIdentidade.jsx e SensesInput.jsx renderizavam <label>Texto<input/></label>
+   soltos, sem NENHUMA regra própria (nem herdada — `.wizard-step-body` só
+   define min-height) — o navegador cai no comportamento padrão de `label`
+   (inline), empurrando rótulo e campo colados na mesma linha, um atrás do
+   outro, até a borda da tela. Todo outro campo do wizard usa componente
+   próprio com CSS dedicado (grid de atributos, cards de Melhoria etc.); só
+   esses dois ficaram pra trás. Vira um grid responsivo (campos curtos lado a
+   lado, textarea ocupando a linha inteira via `:has()`) no mesmo padrão
+   visual (`display:flex;flex-direction:column`) já usado em `.sheet-form
+   label` do formulário antigo.
+   `.senses-input` é reaproveitado também dentro do formulário antigo
+   (`.sheet-form`) — o grid entra de graça lá também (antes era 1 campo por
+   linha, agora fica mais compacto nos dois lugares, sem regressão). */
+.wizard-step-identidade {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px 16px;
+  align-items: start;
+}
+
+.wizard-step-identidade h3 {
+  grid-column: 1 / -1;
+  margin: 8px 0 -4px;
+  font-size: 15px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 6px;
+}
+
+.wizard-step-identidade label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.wizard-step-identidade label:has(textarea) {
+  grid-column: 1 / -1;
+}
+
+.wizard-step-identidade input,
+.wizard-step-identidade select,
+.wizard-step-identidade textarea {
+  font: inherit;
+  font-weight: 400;
+  color: var(--text);
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+}
+
+.wizard-step-identidade textarea {
+  min-height: 70px;
+  resize: vertical;
+}
+
+.senses-input {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px 16px;
+  margin-top: 12px;
+}
+
+.senses-input .field-hint {
+  grid-column: 1 / -1;
+}
+
+.senses-input label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Reserva SEMPRE a altura de 2 linhas pro texto do rótulo, quebrando ou não
+   — achado real (print do usuário): "Sentido especial (texto livre)" é mais
+   comprido que os vizinhos da mesma linha do grid, quebra pra 2 linhas, e
+   como cada célula do grid cresce pro tamanho do próprio conteúdo, só o
+   campo dela descia mais que os outros da linha (rótulo curto = 1 linha =
+   campo mais alto na célula). Com altura mínima igual pra todo rótulo
+   (quebrando ou não), o campo abaixo sempre começa na mesma altura em
+   qualquer combinação de rótulo curto/comprido na mesma linha. */
+.wizard-field-label {
+  display: block;
+  min-height: 2.6em;
+  line-height: 1.3em;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.senses-input input {
+  font: inherit;
+  font-weight: 400;
+  color: var(--text);
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+}
+
+.melhoria-slot {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  background: var(--surface);
+}
+
+.melhoria-slot-title {
+  margin: 0 0 10px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-muted);
+}
+
+.melhoria-feat-picker {
+  margin-top: 10px;
+}
+
+.pericias-grant-summary {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-bottom: 10px;
+  background: var(--surface);
+}
+
+.pericias-grant-summary h4 {
+  margin: 0 0 6px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-muted);
+}
+
+.pericias-grant-summary p {
+  margin: 4px 0;
+}
+
+.ability-drop-zone-clear {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: none;
+  background: var(--border);
+  color: var(--text);
+  font-size: 11px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ability-point-buy-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ability-point-buy-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ability-point-buy-controls span {
+  font-size: 18px;
+  font-weight: 700;
+  min-width: 24px;
+  text-align: center;
+}
+
+.ability-point-buy-controls button {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.ability-point-buy-controls button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.field-hint {
+  color: var(--text-muted);
+  font-size: 13px;
+  margin: 0 0 8px;
+}
+
+.field-hint-warn {
+  color: var(--error);
+  font-weight: 600;
+}
+
+.dice-slots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.dice-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.dice-slot-die {
+  font-size: 28px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: 8px;
+  width: 56px;
+  height: 56px;
+  cursor: pointer;
+}
+
+.dice-slot-die:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.dice-slot-box {
+  width: 56px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 18px;
+  font-weight: 700;
+  background: var(--bg);
+}
+
+.dice-slot-box-rolling {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.currency-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.currency-grid input {
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.wizard-confirmacao-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+  margin: 0;
+}
+
+.wizard-confirmacao-row {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  background: var(--surface);
+}
+
+.wizard-confirmacao-row dt {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.wizard-confirmacao-row dd {
+  margin: 0;
+  font-weight: 600;
+}
+
+/* Ficha estilo Foundry — tema fixo (sempre escuro/dourado, independente do
+   modo claro/escuro do resto do site), pra manter a identidade visual
+   reconhecível como "a mesma ficha do Foundry" nos dois modos. */
+.foundry-sheet {
+  background: linear-gradient(160deg, #3a1010 0%, #1a0808 70%);
+  border: 1px solid #5c2a2a;
+  border-radius: 10px;
+  color: #ece2d0;
+  font-family: Georgia, "Times New Roman", serif;
+  overflow: hidden;
+}
+
+.foundry-sheet-header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 18px 20px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.25), transparent);
+  border-bottom: 1px solid #5c2a2a;
+  flex-wrap: wrap;
+}
+
+.foundry-sheet-portrait {
+  width: 84px;
+  height: 84px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 3px solid #c9a24b;
+  overflow: hidden;
+  background: #1a0808;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 2px #1a0808, 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.foundry-sheet-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.foundry-sheet-portrait-empty {
+  font-size: 32px;
+  color: #7a5a3a;
+}
+
+.foundry-sheet-heading {
+  flex: 1;
+  min-width: 180px;
+}
+
+.foundry-sheet-heading h2 {
+  margin: 0 0 4px;
+  color: #f0d9a8;
+  font-size: 26px;
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+.foundry-sheet-subtitle {
+  margin: 0;
+  color: #cbb896;
+  font-size: 14px;
+}
+
+.foundry-sheet-heading-tags {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.foundry-sheet-alignment {
+  color: #a4906c;
+  font-size: 12px;
+  font-style: italic;
+}
+
+.foundry-sheet-badges {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.foundry-sheet-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  border: 2px solid #c9a24b;
+  background: radial-gradient(circle at 35% 30%, #4a1818, #250c0c);
+  padding: 0 4px;
+}
+
+.foundry-sheet-badge-muted {
+  border-color: #6b5a3a;
+  opacity: 0.75;
+}
+
+.foundry-sheet-badge-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: #f0d9a8;
+  line-height: 1.1;
+}
+
+.foundry-sheet-badge-label {
+  font-size: 7.5px;
+  line-height: 1.15;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: #cbb896;
+}
+
+.foundry-sheet-abilities {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 16px 20px;
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid #5c2a2a;
+}
+
+.foundry-ability-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  min-width: 68px;
+  padding: 8px 10px;
+  border: 1px solid #c9a24b;
+  border-radius: 8px;
+  background: linear-gradient(160deg, #4a1818, #2a0d0d);
+}
+
+.foundry-ability-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #cbb896;
+}
+
+.foundry-ability-score {
+  font-size: 20px;
+  font-weight: 700;
+  color: #f0d9a8;
+}
+
+.foundry-ability-mod {
+  font-size: 12px;
+  color: #a4906c;
+}
+
+/* Navegação por abas (Detalhes/Inventário/Talentos/Magias/Biografia) —
+   mesmo agrupamento de informação da ficha real do Foundry (nav.tabs do
+   ActorSheet), só com rótulo de texto em vez de ícone (mais legível fora do
+   Foundry, sem depender de fonte de ícone nenhuma). */
+.foundry-sheet-tabs {
+  display: flex;
+  gap: 4px;
+  padding: 0 20px;
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid #5c2a2a;
+  overflow-x: auto;
+}
+
+.foundry-sheet-tabs button {
+  appearance: none;
+  border: none;
+  background: none;
+  color: #cbb896;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 10px 14px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+}
+
+.foundry-sheet-tabs button:hover {
+  color: #f0d9a8;
+}
+
+.foundry-sheet-tabs button.active {
+  color: #f0d9a8;
+  border-bottom-color: #c9a24b;
+}
+
+.foundry-sheet-body {
+  padding: 18px 20px;
+  background: #efe9dd;
+  color: #2a2018;
+}
+
+.foundry-sheet-empty {
+  color: #8a7d63;
+  font-style: italic;
+  margin: 0;
+}
+
+.foundry-box {
+  background: #fbf8f1;
+  border: 1px solid #d8cba8;
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+}
+
+.foundry-box h4 {
+  margin: 0 0 8px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #7a2020;
+  border-bottom: 1px solid #d8cba8;
+  padding-bottom: 4px;
+}
+
+.foundry-box-header-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  border-bottom: 1px solid #d8cba8;
+  margin-bottom: 8px;
+  padding-bottom: 4px;
+}
+
+.foundry-box-header-row h4 {
+  margin: 0;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.foundry-box-header-row span {
+  font-size: 10px;
+  text-transform: uppercase;
+  color: #8a7d63;
+}
+
+/* Aba Detalhes — 3 colunas (Perícias/Ferramentas | Resistência/Armadura/
+   Arma/Sentidos/Idiomas | cards de Raça/Antecedente/Classe), mesmo
+   agrupamento visual da ficha real. */
+.foundry-details-tab {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 14px;
+  align-items: start;
+}
+
+.foundry-skill-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+}
+
+.foundry-skill-list li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 0;
+}
+
+.foundry-skill-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 1.5px solid #7a2020;
+  flex-shrink: 0;
+}
+
+.foundry-skill-list li.is-proficient .foundry-skill-dot,
+.foundry-save-row.is-proficient .foundry-skill-dot {
+  background: #7a2020;
+}
+
+.foundry-skill-list li.is-expertise .foundry-skill-dot {
+  background: #c9a24b;
+  border-color: #c9a24b;
+}
+
+.foundry-skill-ability {
+  width: 26px;
+  flex-shrink: 0;
+  font-size: 10px;
+  color: #8a7d63;
+}
+
+.foundry-skill-label {
+  flex: 1;
+}
+
+.foundry-skill-mod {
+  width: 30px;
+  text-align: right;
+  font-weight: 600;
+}
+
+.foundry-skill-passive {
+  width: 24px;
+  text-align: right;
+  color: #8a7d63;
+  font-size: 12px;
+}
+
+.foundry-saves-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4px 14px;
+}
+
+.foundry-save-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+}
+
+.foundry-save-row .foundry-skill-ability {
+  width: auto;
+  flex: 1;
+  color: #2a2018;
+  font-weight: 600;
+}
+
+.foundry-tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.foundry-tag {
+  display: inline-block;
+  background: #efe0bf;
+  border: 1px solid #c9a24b;
+  border-radius: 4px;
+  padding: 3px 8px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #7a2020;
+}
+
+.foundry-tag-gold {
+  background: linear-gradient(160deg, #f0d9a8, #c9a24b);
+  border-color: #7a2020;
+  color: #3a1010;
+  font-weight: 700;
+}
+
+.foundry-details-traits {
+  gap: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.foundry-trait-card {
+  background: #2a1414;
+  border: 1px solid #5c2a2a;
+  border-radius: 8px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  color: #ece2d0;
+}
+
+.foundry-trait-card strong {
+  color: #f0d9a8;
+  font-size: 14px;
+}
+
+.foundry-trait-card span {
+  font-size: 11px;
+  color: #cbb896;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* Aba Inventário */
+.foundry-currency-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.foundry-currency-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #fbf8f1;
+  border: 1px solid #d8cba8;
+  border-radius: 6px;
+  padding: 6px 10px;
+}
+
+.foundry-currency-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: #7a2020;
+}
+
+.foundry-currency-value {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.foundry-item-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+}
+
+.foundry-item-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+  border-bottom: 1px solid #ecdfc0;
+}
+
+.foundry-item-list li:last-child {
+  border-bottom: none;
+}
+
+.foundry-item-name {
+  flex: 1;
+}
+
+.foundry-item-qty {
+  color: #8a7d63;
+  font-size: 12px;
+}
+
+.foundry-spell-list li {
+  flex-wrap: wrap;
+}
+
+.foundry-spell-meta {
+  font-size: 11px;
+  color: #8a7d63;
+  text-transform: uppercase;
+}
+
+/* Aba Talentos */
+.foundry-feature-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.foundry-feature-list li {
+  padding: 6px 0;
+  border-bottom: 1px solid #ecdfc0;
+}
+
+.foundry-feature-list li:last-child {
+  border-bottom: none;
+}
+
+.foundry-feature-list p {
+  margin: 2px 0 0;
+  font-size: 12px;
+  color: #6b5f4a;
+}
+
+/* Aba Biografia */
+.foundry-bio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 10px 18px;
+  margin-bottom: 18px;
+}
+
+.foundry-bio-grid label {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #7a2020;
+  font-weight: 600;
+}
+
+.foundry-bio-grid span {
+  font-size: 14px;
+  text-transform: none;
+  font-weight: 400;
+  color: #2a2018;
+  border-bottom: 1px solid #d8cba8;
+  padding-bottom: 3px;
+}
+
+.foundry-bio-cols {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.foundry-bio-cols section h4,
+.foundry-bio-full h4 {
+  margin: 0 0 4px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #7a2020;
+  border-bottom: 1px solid #d8cba8;
+  padding-bottom: 4px;
+}
+
+.foundry-bio-cols section p,
+.foundry-bio-full p {
+  margin: 0;
+  font-size: 14px;
+  white-space: pre-wrap;
 }

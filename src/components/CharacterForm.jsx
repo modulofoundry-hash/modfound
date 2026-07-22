@@ -1,7 +1,9 @@
-import { useEffect, useState } from "react";
-import { ALIGNMENTS, createEmptyCharacter, SKILLS } from "../schema/character";
+import { useEffect, useMemo, useState } from "react";
+import { ALIGNMENTS, createEmptyCharacter } from "../schema/character";
+import { useCharacterAppliers } from "../hooks/useCharacterAppliers";
 import { AbilitiesInput } from "./AbilitiesInput";
 import { SkillsInput } from "./SkillsInput";
+import { SensesInput } from "./SensesInput";
 import { ListEditor } from "./ListEditor";
 import { TagListInput } from "./TagListInput";
 import { OriginPicker } from "./OriginPicker";
@@ -66,16 +68,26 @@ export function CharacterForm({ initialValue, onSubmit, onCancel }) {
   // só CLASSE é filtrada de verdade pelo modo do personagem. Customizado
   // (`Enviar Itens`) não tem `rules` marcado, então nunca é excluído pelo
   // filtro — sempre aparece nos dois modos.
-  const allRaces = [...racesData, ...customRaces];
-  const allBackgrounds = [...backgroundsData, ...customBackgrounds];
+  // Memoizado (não recriado a cada render) — o OriginPicker re-deriva o match
+  // da Raça/Antecedente sempre que `items` muda de referência (ver
+  // OriginPicker.jsx), então uma array nova a cada tecla digitada em QUALQUER
+  // campo do formulário disparava esse efeito à toa.
+  const allRaces = useMemo(() => [...racesData, ...customRaces], [customRaces]);
+  const allBackgrounds = useMemo(() => [...backgroundsData, ...customBackgrounds], [customBackgrounds]);
   // Personagem já existente de antes dessa feature não tem `rulesMode`
   // (`undefined`, não "") — filtrar por igualdade estrita contra isso batia
   // com NENHUMA classe (`"2014" === undefined` é sempre falso), esvaziando o
   // seletor de quem já tinha ficha pronta. Sem `rulesMode` escolhido, mostra
   // tudo sem filtrar (mesmo degrau permissivo que o módulo já usa pra Item
   // sem `rules` marcado) — só filtra de verdade depois que o modo é setado.
+  // customClasses também entra no filtro — entrada customizada SEM `rules`
+  // marcado (sobra de teste antigo duplicando classe oficial) não pode
+  // aparecer nas duas edições ao mesmo tempo.
   const allClasses = character.rulesMode
-    ? [...classesData.filter((c) => c.rules === character.rulesMode), ...customClasses]
+    ? [
+        ...classesData.filter((c) => c.rules === character.rulesMode),
+        ...customClasses.filter((c) => c.rules === character.rulesMode),
+      ]
     : [...classesData, ...customClasses];
   const allFeats = featsData;
 
@@ -84,7 +96,14 @@ export function CharacterForm({ initialValue, onSubmit, onCancel }) {
   // nome (ex: "Human" oficial e "Human [custom]").
   const [raceMatch, setRaceMatchState] = useState(null);
   const [backgroundMatch, setBackgroundMatchState] = useState(null);
-  const [classMatches, setClassMatches] = useState([]);
+  // Guardado aqui (fora do ClassesInput) pelo mesmo motivo do wizard — ver
+  // CharacterCreationWizard.jsx: `useState` local no `ClassesInput` se perdia
+  // sozinho e corrompia esse rastreamento. Nesta tela (sem navegação por
+  // etapas) o componente nunca desmontava de verdade, então o bug não
+  // aparecia aqui — mas control ficar no mesmo padrão evita reintroduzir o
+  // problema se esta tela ganhar abas/etapas no futuro.
+  const [classesMatches, setClassesMatches] = useState({});
+  const classMatches = Object.values(classesMatches);
 
   // Grava também a edição do item clicado (`raceRules`/`backgroundRules`) —
   // sem isso o módulo não sabe qual "Human"/"Life Domain" etc. (mesmo nome,
@@ -121,66 +140,17 @@ export function CharacterForm({ initialValue, onSubmit, onCancel }) {
     setCharacter((prev) => ({ ...prev, [group]: { ...prev[group], [key]: value } }));
   }
 
-  function applySkills(skillLabels) {
-    const ids = skillLabels.map((label) => SKILLS.find((s) => s.label === label)?.id).filter(Boolean);
-    setCharacter((prev) => ({
-      ...prev,
-      skillProficiencies: Array.from(new Set([...prev.skillProficiencies, ...ids])),
-    }));
-    setFeedback(`${skillLabels.join(", ")} adicionado(s) em Perícias`);
-  }
-
-  function applyTools(toolLabels) {
-    setCharacter((prev) => ({
-      ...prev,
-      toolProficiencies: Array.from(new Set([...prev.toolProficiencies, ...toolLabels])),
-    }));
-    setFeedback(`${toolLabels.join(", ")} adicionado(s) em Proficiências em Ferramentas`);
-  }
-
-  // O banco guarda idiomas de raça/antecedente como texto solto (ex: "comum,
-  // anão"), não lista — sem separar por vírgula aqui, o idioma inteiro virava
-  // UMA entrada só em vez de duas, e chegava assim no Actor sincronizado
-  // (achado testando com um personagem real, ver shared/schema/README.md).
-  function applyLanguages(text) {
-    const parts = text.split(",").map((part) => part.trim()).filter(Boolean);
-    setCharacter((prev) => ({ ...prev, languages: [...prev.languages, ...parts] }));
-    setFeedback(`${parts.join(", ")} adicionado(s) em Idiomas`);
-  }
-
-  function applySize(size) {
-    set("size", size);
-  }
-
-  function applySpellChoices(names) {
-    setCharacter((prev) => {
-      const existing = new Set(prev.spells.map((s) => s.name));
-      const additions = names.filter((name) => !existing.has(name)).map((name) => ({ name, prepared: false }));
-      return { ...prev, spells: [...prev.spells, ...additions] };
-    });
-    setFeedback(`${names.join(", ")} adicionado(s) em Magias`);
-  }
-
-  function applyEquipmentGrants(grants) {
-    setCharacter((prev) => ({ ...prev, equipment: [...prev.equipment, ...grants] }));
-    const labels = grants.map((item) => (item.quantity > 1 ? `${item.quantity}x ${item.name}` : item.name));
-    setFeedback(`${labels.join(", ")} adicionado(s) em Equipamento`);
-  }
-
-  // Soma o bônus escolhido em cima do que já estiver digitado em Atributos —
-  // não existe "atributo base" guardado separado, o campo já é sempre o
-  // valor final (mesmo padrão de toda sugestão de OriginPicker: aplica uma
-  // vez, o jogador ainda pode ajustar o número à mão depois).
-  function applyAbilityBonus(picks) {
-    setCharacter((prev) => ({
-      ...prev,
-      abilities: Object.fromEntries(
-        Object.entries(prev.abilities).map(([key, value]) => [key, value + (picks[key] ?? 0)]),
-      ),
-    }));
-    const labels = Object.entries(picks).map(([key, amount]) => `+${amount} ${key.toUpperCase()}`);
-    setFeedback(`${labels.join(", ")} aplicado em Atributos`);
-  }
+  const {
+    applySkills,
+    applyTools,
+    applyLanguages,
+    applyLanguageChoices,
+    applySize,
+    applySenses,
+    applySpellChoices,
+    applyEquipmentGrants,
+    applyAbilityBonus,
+  } = useCharacterAppliers(setCharacter, setFeedback);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -224,16 +194,22 @@ export function CharacterForm({ initialValue, onSubmit, onCancel }) {
           label="Raça"
           items={allRaces}
           value={character.race}
+          rules={character.raceRules}
           onChange={(text) => set("race", text)}
           placeholder="Digite pra buscar (ex: Elfo)"
           onApplySkills={applySkills}
           onApplyTools={applyTools}
           onApplyLanguages={applyLanguages}
+          onApplyLanguageChoices={applyLanguageChoices}
           onApplyEquipment={applyEquipmentGrants}
           onApplySize={applySize}
+          onApplySenses={applySenses}
           onApplySpells={applySpellChoices}
           sizeValue={character.size}
           onMatch={setRaceMatch}
+          skillProficiencies={character.skillProficiencies}
+          toolProficiencies={character.toolProficiencies}
+          languages={character.languages}
         />
         {character.rulesMode === "2014" && raceMatch?.abilityBonus && (
           <AbilityBonusPicker label="Bônus de atributo (Raça)" abilityBonus={raceMatch.abilityBonus} onApply={applyAbilityBonus} />
@@ -243,14 +219,19 @@ export function CharacterForm({ initialValue, onSubmit, onCancel }) {
           label="Antecedente"
           items={allBackgrounds}
           value={character.background}
+          rules={character.backgroundRules}
           onChange={(text) => set("background", text)}
           placeholder="Digite pra buscar (ex: Acólito)"
           onApplySkills={applySkills}
           onApplyTools={applyTools}
           onApplyLanguages={applyLanguages}
+          onApplyLanguageChoices={applyLanguageChoices}
           onApplyEquipment={applyEquipmentGrants}
           onApplySpells={applySpellChoices}
           onMatch={setBackgroundMatch}
+          skillProficiencies={character.skillProficiencies}
+          toolProficiencies={character.toolProficiencies}
+          languages={character.languages}
         />
         {character.rulesMode === "2024" && backgroundMatch?.abilityBonus && (
           <AbilityBonusPicker
@@ -291,7 +272,8 @@ export function CharacterForm({ initialValue, onSubmit, onCancel }) {
           onApplyEquipment={applyEquipmentGrants}
           onApplySkills={applySkills}
           onApplySpells={applySpellChoices}
-          onMatchChange={setClassMatches}
+          matches={classesMatches}
+          onMatchesChange={setClassesMatches}
         />
       </fieldset>
 
@@ -334,59 +316,7 @@ export function CharacterForm({ initialValue, onSubmit, onCancel }) {
 
       <fieldset>
         <legend>Sentidos</legend>
-        <p className="field-hint">
-          O Foundry não deriva isso da Raça sozinho (nem Visão no Escuro tem automação
-          no compêndio oficial) — preencha manualmente o que a Raça/Feat conceder.
-        </p>
-        <label>
-          Visão no Escuro
-          <input
-            type="number"
-            value={character.senses.darkvision}
-            onChange={(e) => setNested("senses", "darkvision", Number(e.target.value))}
-          />
-        </label>
-        <label>
-          Visão Cega
-          <input
-            type="number"
-            value={character.senses.blindsight}
-            onChange={(e) => setNested("senses", "blindsight", Number(e.target.value))}
-          />
-        </label>
-        <label>
-          Percepção por Tremor
-          <input
-            type="number"
-            value={character.senses.tremorsense}
-            onChange={(e) => setNested("senses", "tremorsense", Number(e.target.value))}
-          />
-        </label>
-        <label>
-          Visão Verdadeira
-          <input
-            type="number"
-            value={character.senses.truesight}
-            onChange={(e) => setNested("senses", "truesight", Number(e.target.value))}
-          />
-        </label>
-        <label>
-          Unidade
-          <input
-            type="text"
-            placeholder="ft"
-            value={character.senses.units}
-            onChange={(e) => setNested("senses", "units", e.target.value)}
-          />
-        </label>
-        <label>
-          Sentido especial (texto livre)
-          <input
-            type="text"
-            value={character.senses.special}
-            onChange={(e) => setNested("senses", "special", e.target.value)}
-          />
-        </label>
+        <SensesInput senses={character.senses} onChange={(senses) => set("senses", senses)} />
       </fieldset>
 
       <fieldset>

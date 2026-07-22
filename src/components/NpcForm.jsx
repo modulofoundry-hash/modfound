@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { ABILITIES, ABILITY_LABELS, SKILLS } from "../schema/character";
 import { CREATURE_TYPES, createEmptyNpc, SIZE_LETTER_TO_KEY, SIZES } from "../schema/npc";
 import { AbilitiesInput } from "./AbilitiesInput";
@@ -8,6 +8,7 @@ import { ListEditor } from "./ListEditor";
 import { TagListInput } from "./TagListInput";
 import { OriginPicker } from "./OriginPicker";
 import { RulesModeToggle } from "./RulesModeToggle";
+import { deriveDarkvisionFeet } from "../schema/character";
 import racesData from "../data/content/races.json";
 import { useCustomRaces } from "../data/customContent";
 
@@ -45,7 +46,9 @@ export function NpcForm({ initialValue, onSubmit, onCancel }) {
   // quebrar a tela ao abrir pra editar uma ficha antiga.
   const [npc, setNpc] = useState(() => ({ ...createEmptyNpc(), ...initialValue }));
   const customRaces = useCustomRaces();
-  const allRaces = [...racesData, ...customRaces];
+  // Memoizado — ver mesmo comentário em CharacterForm.jsx (o OriginPicker
+  // re-deriva o match sempre que a array `items` muda de referência).
+  const allRaces = useMemo(() => [...racesData, ...customRaces], [customRaces]);
 
   function set(key, value) {
     setNpc((prev) => ({ ...prev, [key]: value }));
@@ -73,13 +76,21 @@ export function NpcForm({ initialValue, onSubmit, onCancel }) {
   // separado por vírgula ("comum, anão"), precisa virar entradas separadas.
   function applyLanguages(text) {
     const parts = text.split(",").map((part) => part.trim()).filter(Boolean);
-    setNpc((prev) => ({ ...prev, languages: [...prev.languages, ...parts] }));
+    setNpc((prev) => ({ ...prev, languages: Array.from(new Set([...prev.languages, ...parts])) }));
+  }
+
+  function applyLanguageChoices(labels) {
+    setNpc((prev) => ({ ...prev, languages: Array.from(new Set([...prev.languages, ...labels])) }));
   }
 
   function applySize(letter) {
     // letter vem crua do banco (T/S/M/L/H/G) — o <select> de Tamanho usa
     // chave de Foundry (tiny/sm/med/...), precisa traduzir (ver SIZE_LETTER_TO_KEY).
     set("size", SIZE_LETTER_TO_KEY[letter] ?? "");
+  }
+
+  function applySenses(patch) {
+    setNpc((prev) => ({ ...prev, senses: { ...prev.senses, ...patch } }));
   }
 
   function applySpellChoices(names) {
@@ -124,14 +135,19 @@ export function NpcForm({ initialValue, onSubmit, onCancel }) {
           label="Raça/Espécie"
           items={allRaces}
           value={npc.race}
+          rules={npc.raceRules}
           onChange={(text) => set("race", text)}
           placeholder="Digite pra buscar (ex: Elfo) — deixe em branco se não se aplica"
           onApplySkills={applySkills}
           onApplyLanguages={applyLanguages}
+          onApplyLanguageChoices={applyLanguageChoices}
           onApplyTools={() => {}}
           onApplyEquipment={() => {}}
           onApplySize={applySize}
+          onApplySenses={applySenses}
           onApplySpells={applySpellChoices}
+          skillProficiencies={npc.skillProficiencies}
+          languages={npc.languages}
           // SizeChoice compara contra a LETRA crua (T/S/M/...), não a chave de
           // Foundry que npc.size guarda (ver applySize/SIZE_LETTER_TO_KEY) —
           // sem essa tradução reversa, o botão da opção atual nunca aparecia

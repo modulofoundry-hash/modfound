@@ -39,6 +39,20 @@ export const RULES_MODES = [
   { id: "2024", label: "2024 (Player's Handbook revisado)" },
 ];
 
+// Idiomas de verdade do sistema dnd5e instalado no Foundry — extraído direto
+// de `DND5E.languages` (systems/dnd5e/dnd5e.mjs) + `lang/en.json`, não
+// inventado de cabeça. Mantido em inglês (mesmo padrão de nomes próprios já
+// usado em raça/feat/magia no banco — só categoria mecânica genérica, tipo
+// perícia, é traduzida). Lista achatada: os 10 "standard" + todos os
+// "exotic" (incluindo Druidic/Thieves' Cant, a pedido do usuário — mesmo
+// sendo idioma normalmente concedido por feature de classe própria, não custa
+// deixar disponível aqui também) + os 4 dialetos de Primordial (Foundry
+// modela cada um como idioma selecionável à parte, além do "Primordial" genérico).
+export const LANGUAGES = [
+  "Common", "Draconic", "Dwarvish", "Elvish", "Giant", "Gnomish", "Goblin", "Halfling", "Orc", "Common Sign Language",
+  "Aarakocra", "Abyssal", "Celestial", "Deep Speech", "Druidic", "Gith", "Gnoll", "Infernal", "Primordial", "Aquan", "Auran", "Ignan", "Terran", "Sylvan", "Thieves' Cant", "Undercommon",
+];
+
 export const SIZE_LABELS = {
   T: "Minúsculo",
   S: "Pequeno",
@@ -59,6 +73,18 @@ export const ALIGNMENTS = [
   "Neutro e Mau",
   "Caótico e Mau",
 ];
+
+// Visão no Escuro não vem como campo estruturado no banco (só existe como
+// TRAÇO em texto: "Darkvision"/"Superior Darkvision", descrição tipo "...
+// within 60 feet of you..." ou "...range of 60 feet.") — extrai o número da
+// descrição em vez de exigir que o jogador digite de cabeça o que a Raça já
+// concede. Só Visão no Escuro por enquanto: nenhuma raça do banco atual
+// concede Cegueira/Tremorsentido/Visão Verdadeira (ver [[project_out_of_service]]).
+export function deriveDarkvisionFeet(traits) {
+  const trait = (traits ?? []).find((t) => /darkvision/i.test(t.name ?? ""));
+  const match = trait?.description?.match(/(\d+)\s*(?:pés|feet|ft)/i);
+  return match ? Number(match[1]) : 0;
+}
 
 export function createEmptyCharacter() {
   return {
@@ -97,6 +123,11 @@ export function createEmptyCharacter() {
     currency: { pp: 0, gp: 0, ep: 0, sp: 0, cp: 0 },
     equipment: [],
     feats: [],
+    // Escolha de cada slot de Melhoria de Atributo (ASI) por classe+nível —
+    // `assignments` mapeia chip da melhoria ("a"/"b") pro atributo de destino
+    // (arrastado na etapa Melhorias); `feat` é o nome do talento escolhido
+    // quando `choice === "feat"`. Ver StepMelhorias.jsx.
+    abilityImprovements: [],
     spells: [],
     inspiration: false,
     personality: { trait: "", ideal: "", bond: "", flaw: "" },
