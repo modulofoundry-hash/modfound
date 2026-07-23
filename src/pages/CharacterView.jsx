@@ -3,7 +3,7 @@ import { FoundrySheetView } from "../components/FoundrySheetView";
 // Tela de "ver personagem" — aparece ao clicar no card na lista, antes de
 // entrar no modo de edição. Mesmo visual estilo Foundry da Confirmação do
 // wizard (FoundrySheetView), reaproveitado sem duplicar.
-export function CharacterView({ character, onEdit, onBack }) {
+export function CharacterView({ character, onEdit, onLevelUp, onBack }) {
   return (
     <div>
       <div className="sheet-list-header">
@@ -12,6 +12,9 @@ export function CharacterView({ character, onEdit, onBack }) {
         </button>
         <button type="button" onClick={onEdit}>
           Editar
+        </button>
+        <button type="button" onClick={onLevelUp}>
+          Subir de Nível
         </button>
       </div>
       <FoundrySheetView character={character} />

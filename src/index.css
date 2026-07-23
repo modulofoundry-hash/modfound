@@ -333,6 +333,11 @@ input {
   color: var(--text-muted);
 }
 
+.sheet-card-tag-original {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
 .sheet-card-delete {
   position: absolute;
   top: 6px;
@@ -344,6 +349,21 @@ input {
   border: 1px solid var(--border);
   background: var(--bg);
   color: var(--text);
+  cursor: pointer;
+}
+
+.sheet-card-levelup {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: 24px;
+  height: 24px;
+  line-height: 1;
+  border-radius: 50%;
+  border: 1px solid var(--accent);
+  background: var(--bg);
+  color: var(--accent);
+  font-weight: 700;
   cursor: pointer;
 }
 
@@ -453,7 +473,12 @@ input {
   flex-wrap: wrap;
 }
 
-.size-choice-selected {
+/* `.origin-suggestions button` (mais abaixo neste arquivo) tem especificidade
+   maior (classe+elemento) do que `.size-choice-selected` sozinho (só classe) e
+   sempre vencia, deixando os dois botões de Tamanho com a mesma aparência
+   mesmo depois de escolher um — parecia que o clique não fazia nada. Precisa
+   do seletor mais específico abaixo pra realmente vencer. */
+.size-choice-options button.size-choice-selected {
   background: var(--accent);
   color: #fff;
   border-color: var(--accent);
@@ -1283,6 +1308,19 @@ input {
   color: var(--bg);
 }
 
+.spell-browser-row-disabled {
+  opacity: 0.45;
+}
+
+.spell-browser-row-disabled:hover {
+  background: none;
+}
+
+.spell-browser-pick:disabled {
+  cursor: not-allowed;
+  text-decoration: line-through;
+}
+
 /* Colunas curtas/numéricas centralizadas -- só "Nome" (variável) fica à
    esquerda; o resto lê melhor centralizado do que grudado na borda. */
 .spell-browser-col-level,
@@ -1415,6 +1453,18 @@ input {
 
 .wizard-progress-done button {
   color: var(--text);
+}
+
+/* Modo edição: o menu de abas fica fixo no topo ao rolar a etapa (a etapa
+   pode ser longa, ex: Perícias) — sem isso, voltar pra outra aba obrigava
+   rolar até o topo primeiro. */
+.wizard-progress-tabs {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--bg);
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
 }
 
 .wizard-blurb {
@@ -2557,4 +2607,47 @@ input {
   margin: 0;
   font-size: 14px;
   white-space: pre-wrap;
+}
+
+/* Wizard de Level-Up — tabela "Selecionar Níveis" (Checkbox/Nível/Features),
+   mesmo espírito visual do diálogo nativo "Select Class Levels" do dnd5e no
+   Foundry (print de referência do usuário). */
+.levelup-class-table {
+  margin-bottom: 20px;
+}
+
+.levelup-class-table h4 {
+  margin: 0 0 8px;
+}
+
+.levelup-levels-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.levelup-levels-table th {
+  text-align: left;
+  padding: 4px 8px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-muted);
+}
+
+.levelup-levels-table td {
+  padding: 4px 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.levelup-row-attained {
+  opacity: 0.5;
+}
+
+.levelup-hp-block,
+.levelup-subclass-block {
+  margin-bottom: 16px;
+}
+
+.levelup-hp-block h4,
+.levelup-subclass-block h4 {
+  margin: 0 0 8px;
 }

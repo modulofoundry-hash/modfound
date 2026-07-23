@@ -43,7 +43,12 @@
               },
               {
                 "type": "fixed",
-                "name": "Pouch (contém 15 po)",
+                "name": "Pouch",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "15 po",
                 "quantity": 1
               }
             ]
@@ -263,7 +268,12 @@
               },
               {
                 "type": "fixed",
-                "name": "Pouch (contém 15 po)",
+                "name": "Pouch",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "15 po",
                 "quantity": 1
               }
             ]
@@ -422,7 +432,12 @@
               },
               {
                 "type": "fixed",
-                "name": "Pouch (contém 15 po)",
+                "name": "Pouch",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "15 po",
                 "quantity": 1
               }
             ]
@@ -551,7 +566,12 @@
               },
               {
                 "type": "fixed",
-                "name": "Pouch (contém 15 po)",
+                "name": "Pouch",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "15 po",
                 "quantity": 1
               }
             ]
@@ -770,7 +790,12 @@
               },
               {
                 "type": "fixed",
-                "name": "Pouch (contém 10 po)",
+                "name": "Pouch",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "10 po",
                 "quantity": 1
               }
             ]
@@ -1004,7 +1029,12 @@
               },
               {
                 "type": "fixed",
-                "name": "Pouch (contém 15 po)",
+                "name": "Pouch",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "15 po",
                 "quantity": 1
               }
             ]
@@ -1395,7 +1425,12 @@
               },
               {
                 "type": "fixed",
-                "name": "Pouch (contém 10 po)",
+                "name": "Pouch",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "10 po",
                 "quantity": 1
               }
             ]
@@ -1456,7 +1491,12 @@
               },
               {
                 "type": "fixed",
-                "name": "Pouch (contém 10 po)",
+                "name": "Pouch",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "10 po",
                 "quantity": 1
               }
             ]
@@ -1591,7 +1631,12 @@
               },
               {
                 "type": "fixed",
-                "name": "Pouch (contém 10 po)",
+                "name": "Pouch",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "10 po",
                 "quantity": 1
               }
             ]
@@ -1793,7 +1838,12 @@
               },
               {
                 "type": "fixed",
-                "name": "Pouch (contém 10 po)",
+                "name": "Pouch",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "10 po",
                 "quantity": 1
               }
             ]
@@ -1970,7 +2020,12 @@
               },
               {
                 "type": "fixed",
-                "name": "Pouch (contém 10 po)",
+                "name": "Pouch",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "10 po",
                 "quantity": 1
               }
             ]

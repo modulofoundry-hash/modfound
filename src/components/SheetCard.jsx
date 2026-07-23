@@ -7,7 +7,7 @@ import { pickClassPlaceholderImage } from "../data/classImagePlaceholders.js";
 // classe do personagem (sorteado 1x por acesso à página, ver
 // classImagePlaceholders.js) -- se esse também não existir/carregar, ou o
 // item não tiver classe (NPC), cai no ícone genérico.
-export function SheetCard({ item, onEdit, onDelete, children }) {
+export function SheetCard({ item, onEdit, onDelete, onLevelUp, children }) {
   const realImage = item.imageUrl || item.tokenImageUrl;
   const placeholderImage = useMemo(() => pickClassPlaceholderImage(item.classes), [item.id]);
   const candidates = [realImage, placeholderImage].filter(Boolean);
@@ -29,6 +29,22 @@ export function SheetCard({ item, onEdit, onDelete, children }) {
           {children}
         </div>
       </button>
+      {/* Só Characters.jsx passa `onLevelUp` -- Npcs.jsx reaproveita este
+          mesmo card sem essa ação, então ela só aparece quando faz sentido. */}
+      {onLevelUp && (
+        <button
+          type="button"
+          className="sheet-card-levelup"
+          aria-label="Subir de Nível"
+          title="Subir de Nível"
+          onClick={(event) => {
+            event.stopPropagation();
+            onLevelUp(item);
+          }}
+        >
+          ⬆
+        </button>
+      )}
       <button
         type="button"
         className="sheet-card-delete"

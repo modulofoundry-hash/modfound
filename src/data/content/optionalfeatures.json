@@ -1,0 +1,3335 @@
+[
+  {
+    "name": "Agonizing Blast",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "spell": [
+            "eldritch blast#c"
+          ]
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>When you cast eldritch blast, add your Charisma modifier to the damage it deals on a hit.</p>"
+  },
+  {
+    "name": "Agonizing Blast",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "spell": [
+            {
+              "choose": "level=0|class=Warlock",
+              "entry": "a Warlock Cantrip That Deals Damage",
+              "entrySummary": "Warlock Cantrip That Deals Damage"
+            }
+          ],
+          "level": {
+            "level": 2,
+            "class": {
+              "name": "Warlock",
+              "source": "XPHB",
+              "visibleStats": true
+            }
+          }
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>Choose one of your known Warlock cantrips that deals damage. You can add your Charisma modifier to that spell's damage rolls.</p><p>Repeatable: You can gain this invocation more than once. Each time you do so, choose a different eligible cantrip.</p>"
+  },
+  {
+    "name": "Ambush",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "maneuver",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "description": "<p>When you make a Dexterity (Stealth) check or an Initiative roll, you can expend one Superiority Die and add the die to the roll, unless you have the Incapacitated condition.</p>"
+  },
+  {
+    "name": "Ambush",
+    "source": "TCE",
+    "rules": "2014",
+    "category": "maneuver",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "description": "<p>When you make a Dexterity (Stealth) check or an initiative roll, you can expend one superiority die and add the die to the roll, provided you aren't incapacitated.</p>"
+  },
+  {
+    "name": "Arcane Propulsion Armor",
+    "source": "TCE",
+    "rules": "2014",
+    "category": "artificerInfusion",
+    "classes": [
+      "Artificer"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 14,
+            "class": {
+              "name": "Artificer",
+              "source": "TCE"
+            }
+          },
+          "item": [
+            "A suit of armor (requires attunement)"
+          ]
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>The wearer of this armor gains these benefits:</p><ul><li>The wearer's walking speed increases by 5 feet.</li><li>The armor includes gauntlets, each of which is a magic melee weapon that can be wielded only when the hand is holding nothing. The wearer is proficient with the gauntlets, and each one deals 1d8 force damage on a hit and has the thrown property, with a normal range of 20 feet and a long range of 60 feet. When thrown, the gauntlet detaches and flies at the attack's target, then immediately returns to the wearer and reattaches.</li><li>The armor can't be removed against the wearer's will.</li><li>If the wearer is missing any limbs, the armor replaces those limbs—hands, arms, feet, legs, or similar appendages. The replacements function identically to the body parts they replace.</li></ul>"
+  },
+  {
+    "name": "Archery",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "fightingStyle",
+    "classes": [
+      "Fighter",
+      "Ranger"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>You gain a +2 bonus to attack rolls you make with ranged weapons.</p>"
+  },
+  {
+    "name": "Armor of Magical Strength",
+    "source": "TCE",
+    "rules": "2014",
+    "category": "artificerInfusion",
+    "classes": [
+      "Artificer"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "item": [
+            "A suit of armor (requires attunement)"
+          ]
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>This armor has 6 charges. The wearer can expend the armor's charges in the following ways:</p><ul><li>When the wearer makes a Strength check or a Strength saving throw, it can expend 1 charge to add a bonus to the roll equal to its Intelligence modifier.</li><li>If the creature would be knocked prone, it can use its reaction to expend 1 charge to avoid being knocked prone.</li></ul><p>The armor regains 1d6 expended charges daily at dawn.</p>"
+  },
+  {
+    "name": "Armor of Shadows",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>You can cast mage armor on yourself at will, without expending a spell slot or material components.</p>"
+  },
+  {
+    "name": "Armor of Shadows",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>You can cast Mage Armor on yourself without expending a spell slot.</p>"
+  },
+  {
+    "name": "Ascendant Step",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 9,
+            "class": {
+              "name": "Warlock"
+            }
+          }
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>You can cast levitate on yourself at will, without expending a spell slot or material components.</p>"
+  },
+  {
+    "name": "Ascendant Step",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 5,
+            "class": {
+              "name": "Warlock",
+              "source": "XPHB",
+              "visibleStats": true
+            }
+          }
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>You can cast Levitate on yourself without expending a spell slot.</p>"
+  },
+  {
+    "name": "Bait and Switch",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "maneuver",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "description": "<p>When you're within 5 feet of a creature on your turn, you can expend one Superiority Die and switch places with that creature, provided you spend at least 5 feet of movement and the creature is willing and doesn't have the Incapacitated condition. This movement doesn't provoke Opportunity Attack.</p><p>Roll the Superiority Die. Until the start of your next turn, you or the other creature (your choice) gains a bonus to AC equal to the number rolled.</p>"
+  },
+  {
+    "name": "Bait and Switch",
+    "source": "TCE",
+    "rules": "2014",
+    "category": "maneuver",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "description": "<p>When you're within 5 feet of a creature on your turn, you can expend one superiority die and switch places with that creature, provided you spend at least 5 feet of movement and the creature is willing and isn't incapacitated. This movement doesn't provoke opportunity attacks.</p><p>Roll the superiority die. Until the start of your next turn, you or the other creature (your choice) gains a bonus to AC equal to the number rolled.</p>"
+  },
+  {
+    "name": "Beast Speech",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>You can cast speak with animals at will, without expending a spell slot.</p>"
+  },
+  {
+    "name": "Beguiling Influence",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>You gain proficiency in the Deception and Persuasion skills.</p>"
+  },
+  {
+    "name": "Bewitching Whispers",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 7,
+            "class": {
+              "name": "Warlock"
+            }
+          }
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>You can cast compulsion once using a warlock spell slot. You can't do so again until you finish a long rest.</p>"
+  },
+  {
+    "name": "Blessed Warrior",
+    "source": "TCE",
+    "rules": "2014",
+    "category": "fightingStyle",
+    "classes": [
+      "Paladin"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>You learn two cantrips of your choice from the cleric spell list. They count as paladin spells for you, and Charisma is your spellcasting ability for them. Whenever you gain a level in this class, you can replace one of these cantrips with another cantrip from the cleric spell list.</p>"
+  },
+  {
+    "name": "Blind Fighting",
+    "source": "TCE",
+    "rules": "2014",
+    "category": "fightingStyle",
+    "classes": [
+      "Fighter",
+      "Paladin",
+      "Ranger"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>You have blindsight with a range of 10 feet. Within that range, you can effectively see anything that isn't behind total cover, even if you're blinded or in darkness. Moreover, you can see an invisible creature within that range, unless the creature successfully hides from you.</p>"
+  },
+  {
+    "name": "Bond of the Talisman",
+    "source": "TCE",
+    "rules": "2014",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 12,
+            "class": {
+              "name": "Warlock"
+            }
+          },
+          "pact": "Talisman"
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>While someone else is wearing your talisman, you can use your action to teleport to the unoccupied space closest to them, provided the two of you are on the same plane of existence. The wearer of your talisman can do the same thing, using their action to teleport to you. The teleportation can be used a number of times equal to your proficiency bonus, and all expended uses are restored when you finish a long rest.</p>"
+  },
+  {
+    "name": "Book of Ancient Secrets",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "pact": "Tome"
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>You can now inscribe magical rituals in your Book of Shadows. Choose two 1st-level spells that have the ritual tag from any class's spell list. The spells needn't be from the same spell list. The spells appear in the book and don't count against the number of spells you know. With your Book of Shadows in hand, you can cast the chosen spells as rituals. You can't cast the spells except as rituals, unless you've learned them by some other means. You can also cast a warlock spell you know as a ritual if it has the ritual tag.</p><p>On your adventures, you can add other ritual spells to your Book of Shadows. When you find such a spell, you can add it to the book if the spell's level is equal to or less than half your warlock level (rounded up) and if you can spare the time to transcribe the spell. For each level of the spell, the transcription process takes 2 hours and costs 50 gp for the rare inks needed to inscribe it.</p>"
+  },
+  {
+    "name": "Boots of the Winding Path",
+    "source": "TCE",
+    "rules": "2014",
+    "category": "artificerInfusion",
+    "classes": [
+      "Artificer"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 6,
+            "class": {
+              "name": "Artificer",
+              "source": "TCE"
+            }
+          },
+          "item": [
+            "A pair of boots (requires attunement)"
+          ]
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>While wearing these boots, a creature can teleport up to 15 feet as a bonus action to an unoccupied space the creature can see. The creature must have occupied that space at some point during the current turn.</p>"
+  },
+  {
+    "name": "Brace",
+    "source": "TCE",
+    "rules": "2014",
+    "category": "maneuver",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "description": "<p>When a creature you can see moves into the reach you have with the melee weapon you're wielding, you can use your reaction to expend one superiority die and make one attack against the creature, using that weapon. If the attack hits, add the superiority die to the weapon's damage roll.</p>"
+  },
+  {
+    "name": "Breath of Winter",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "elementalDiscipline",
+    "classes": [
+      "Monk"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 17,
+            "class": {
+              "name": "Monk"
+            },
+            "subclass": {
+              "name": "Four Elements"
+            }
+          }
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>You can spend 6 ki points to cast cone of cold.</p>"
+  },
+  {
+    "name": "Careful Spell",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "metamagic",
+    "classes": [
+      "Sorcerer"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Sorcery Point"
+    },
+    "description": "<p>When you cast a spell that forces other creatures to make a saving throw, you can protect some of those creatures from the spell's full force. To do so, you spend 1 sorcery point and choose a number of those creatures up to your Charisma modifier (minimum of one creature). A chosen creature automatically succeeds on its saving throw against the spell.</p>"
+  },
+  {
+    "name": "Careful Spell",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "metamagic",
+    "classes": [
+      "Sorcerer"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Sorcery Point"
+    },
+    "description": "<p>When you cast a spell that forces other creatures to make a saving throw, you can protect some of those creatures from the spell's full force. To do so, spend 1 Sorcery Point and choose a number of those creatures up to your Charisma modifier (minimum of one creature). A chosen creature automatically succeeds on its saving throw against the spell, and it takes no damage if it would normally take half damage on a successful save.</p>"
+  },
+  {
+    "name": "Chains of Carceri",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "pact": "Chain",
+          "level": {
+            "level": 15,
+            "class": {
+              "name": "Warlock"
+            }
+          }
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>You can cast hold monster at will—targeting a celestial, fiend, or elemental—without expending a spell slot or material components. You must finish a long rest before you can use this invocation on the same creature again.</p>"
+  },
+  {
+    "name": "Clench of the North Wind",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "elementalDiscipline",
+    "classes": [
+      "Monk"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 6,
+            "class": {
+              "name": "Monk"
+            },
+            "subclass": {
+              "name": "Four Elements"
+            }
+          }
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>You can spend 3 ki points to cast hold person.</p>"
+  },
+  {
+    "name": "Cloud Rune",
+    "source": "TCE",
+    "rules": "2014",
+    "category": "rune",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>This rune emulates the deceptive magic used by some cloud giants. While wearing or carrying an object inscribed with this rune, you have advantage on Dexterity (Sleight of Hand) checks and Charisma (Deception) checks.</p><p>In addition, when you or a creature you can see within 30 feet of you is hit by an attack roll, you can use your reaction to invoke the rune and choose a different creature within 30 feet of you, other than the attacker. The chosen creature becomes the target of the attack, using the same roll. This magic can transfer the attack's effects regardless of the attack's range. Once you invoke this rune, you can't do so again until you finish a short or long rest.</p>"
+  },
+  {
+    "name": "Commander's Strike",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "maneuver",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "description": "<p>When you take the Attack action on your turn, you can forgo one of your attacks and use a bonus action to direct one of your companions to strike. When you do so, choose a friendly creature who can see or hear you and expend one superiority die. That creature can immediately use its reaction to make one weapon attack, adding the superiority die to the attack's damage roll.</p>"
+  },
+  {
+    "name": "Commander's Strike",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "maneuver",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "description": "<p>When you take the Attack action on your turn, you can replace one of your attacks to direct one of your companions to strike. When you do so, choose a willing creature who can see or hear you and expend one Superiority Die. That creature can immediately use its Reaction to make one attack with a weapon or an Unarmed Strike, adding the Superiority Die to the attack's damage roll on a hit.</p>"
+  },
+  {
+    "name": "Commanding Presence",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "maneuver",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "description": "<p>When you make a Charisma (Intimidation, Performance, or Persuasion) check, you can expend one Superiority Die and add that die to the roll.</p>"
+  },
+  {
+    "name": "Commanding Presence",
+    "source": "TCE",
+    "rules": "2014",
+    "category": "maneuver",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "description": "<p>When you make a Charisma (Intimidation), a Charisma (Performance), or a Charisma (Persuasion) check, you can expend one superiority die and add the superiority die to the ability check.</p>"
+  },
+  {
+    "name": "Defense",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "fightingStyle",
+    "classes": [
+      "Fighter",
+      "Paladin",
+      "Ranger"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>While you are wearing armor, you gain a +1 bonus to AC.</p>"
+  },
+  {
+    "name": "Devil's Sight",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>You can see normally in darkness, both magical and nonmagical, to a distance of 120 feet.</p>"
+  },
+  {
+    "name": "Devil's Sight",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 2,
+            "class": {
+              "name": "Warlock",
+              "source": "XPHB",
+              "visibleStats": true
+            }
+          }
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>You can see normally in Dim Light and Darkness—both magical and nonmagical—within 120 feet of yourself.</p>"
+  },
+  {
+    "name": "Devouring Blade",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 12,
+            "class": {
+              "name": "Warlock",
+              "source": "XPHB",
+              "visibleStats": true
+            }
+          },
+          "optionalfeature": [
+            "thirsting blade|xphb"
+          ]
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>The Extra Attack of your Thirsting Blade invocation confers two extra attacks rather than one.</p>"
+  },
+  {
+    "name": "Disarming Attack",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "maneuver",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "description": "<p>When you hit a creature with a weapon attack, you can expend one superiority die to attempt to disarm the target, forcing it to drop one item of your choice that it's holding. You add the superiority die to the attack's damage roll, and the target must make a Strength saving throw. On a failed save, it drops the object you choose. The object lands at its feet.</p>"
+  },
+  {
+    "name": "Disarming Attack",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "maneuver",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "description": "<p>When you hit a creature with an attack roll, you can expend one Superiority Die to attempt to disarm the target. Add the Superiority Die roll to the attack's damage roll. The target must succeed on a Strength saving throw or drop one object of your choice that it's holding, with the object landing in its space.</p>"
+  },
+  {
+    "name": "Distant Spell",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "metamagic",
+    "classes": [
+      "Sorcerer"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Sorcery Point"
+    },
+    "description": "<p>When you cast a spell that has a range of 5 feet or greater, you can spend 1 sorcery point to double the range of the spell.</p><p>When you cast a spell that has a range of touch, you can spend 1 sorcery point to make the range of the spell 30 feet.</p>"
+  },
+  {
+    "name": "Distant Spell",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "metamagic",
+    "classes": [
+      "Sorcerer"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Sorcery Point"
+    },
+    "description": "<p>When you cast a spell that has a range of at least 5 feet, you can spend 1 Sorcery Point to double the spell's range. Or when you cast a spell that has a range of Touch, you can spend 1 Sorcery Point to make the spell's range 30 feet.</p>"
+  },
+  {
+    "name": "Distracting Strike",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "maneuver",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "description": "<p>When you hit a creature with a weapon attack, you can expend one superiority die to distract the creature, giving your allies an opening. You add the superiority die to the attack's damage roll. The next attack roll against the target by an attacker other than you has advantage if the attack is made before the start of your next turn.</p>"
+  },
+  {
+    "name": "Distracting Strike",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "maneuver",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "description": "<p>When you hit a creature with an attack roll, you can expend one Superiority Die to distract the target. Add the Superiority Die roll to the attack's damage roll. The next attack roll against the target by an attacker other than you has Advantage if the attack is made before the start of your next turn.</p>"
+  },
+  {
+    "name": "Dreadful Word",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 7,
+            "class": {
+              "name": "Warlock"
+            }
+          }
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>You can cast confusion once using a warlock spell slot. You can't do so again until you finish a long rest.</p>"
+  },
+  {
+    "name": "Druidic Warrior",
+    "source": "TCE",
+    "rules": "2014",
+    "category": "fightingStyle",
+    "classes": [
+      "Ranger"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>You learn two cantrips of your choice from the druid spell list. They count as ranger spells for you, and Wisdom is your spellcasting ability for them. Whenever you gain a level in this class, you can replace one of these cantrips with another cantrip from the druid spell list.</p>"
+  },
+  {
+    "name": "Dueling",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "fightingStyle",
+    "classes": [
+      "Fighter",
+      "Bard",
+      "Paladin",
+      "Ranger"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>When you are wielding a melee weapon in one hand and no other weapons, you gain a +2 bonus to damage rolls with that weapon.</p>"
+  },
+  {
+    "name": "Eldritch Mind",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>You have Advantage on Constitution saving throws that you make to maintain Concentration.</p>"
+  },
+  {
+    "name": "Eldritch Mind",
+    "source": "TCE",
+    "rules": "2014",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>You have advantage on Constitution saving throws that you make to maintain your concentration on a spell.</p>"
+  },
+  {
+    "name": "Eldritch Sight",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>You can cast detect magic at will, without expending a spell slot.</p>"
+  },
+  {
+    "name": "Eldritch Smite",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 5,
+            "class": {
+              "name": "Warlock",
+              "source": "XPHB",
+              "visibleStats": true
+            }
+          },
+          "optionalfeature": [
+            "pact of the blade|xphb"
+          ]
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>Once per turn when you hit a creature with your pact weapon, you can expend a Pact Magic spell slot to deal an extra 1d8 Force damage to the target, plus another 1d8 per level of the spell slot, and you can give the target the Prone condition if it is Huge or smaller.</p>"
+  },
+  {
+    "name": "Eldritch Spear",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "spell": [
+            "eldritch blast#c"
+          ]
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>When you cast eldritch blast, its range is 300 feet.</p>"
+  },
+  {
+    "name": "Eldritch Spear",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "spell": [
+            {
+              "choose": "level=0|class=Warlock",
+              "entry": "a Warlock Cantrip That Deals Damage",
+              "entrySummary": "Warlock Cantrip That Deals Damage"
+            }
+          ],
+          "level": {
+            "level": 2,
+            "class": {
+              "name": "Warlock",
+              "source": "XPHB",
+              "visibleStats": true
+            }
+          }
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>Choose one of your known Warlock cantrips that deals damage and has a range of 10+ feet. When you cast that spell, its range increases by a number of feet equal to 30 times your Warlock level.</p><p>Repeatable: You can gain this invocation more than once. Each time you do so, choose a different eligible cantrip.</p>"
+  },
+  {
+    "name": "Elemental Attunement",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "elementalDiscipline",
+    "classes": [
+      "Monk"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>You can use your action to briefly control elemental forces within 30 feet of you, causing one of the following effects of your choice:</p><ul><li>Create a harmless, instantaneous sensory effect related to air, earth, fire, or water, such as a shower of sparks, a puff of wind, a spray of light mist, or a gentle rumbling of stone.</li><li>Instantaneously light or snuff out a candle, a torch, or a small campfire.</li><li>Chill or warm up to 1 pound of nonliving material for up to 1 hour.</li><li>Cause earth, fire, water, or mist that can fit within a 1-foot cube to shape itself into a crude form you designate for 1 minute.</li></ul>"
+  },
+  {
+    "name": "Empowered Spell",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "metamagic",
+    "classes": [
+      "Sorcerer"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Sorcery Point"
+    },
+    "description": "<p>When you roll damage for a spell, you can spend 1 sorcery point to reroll a number of the damage dice up to your Charisma modifier (minimum of one). You must use the new rolls.</p><p>You can use Empowered Spell even if you have already used a different Metamagic option during the casting of the spell.</p>"
+  },
+  {
+    "name": "Empowered Spell",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "metamagic",
+    "classes": [
+      "Sorcerer"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Sorcery Point"
+    },
+    "description": "<p>When you roll damage for a spell, you can spend 1 Sorcery Point to reroll a number of the damage dice up to your Charisma modifier (minimum of one), and you must use the new rolls.</p><p>You can use Empowered Spell even if you've already used a different Metamagic option during the casting of the spell.</p>"
+  },
+  {
+    "name": "Enhanced Arcane Focus",
+    "source": "TCE",
+    "rules": "2014",
+    "category": "artificerInfusion",
+    "classes": [
+      "Artificer"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "item": [
+            "A rod, staff, or wand (requires attunement)"
+          ]
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>While holding this item, a creature gains a +1 bonus to spell attack rolls. In addition, the creature ignores half cover when making a spell attack.</p><p>The bonus increases to +2 when you reach 10th level in this class.</p>"
+  },
+  {
+    "name": "Enhanced Defense",
+    "source": "TCE",
+    "rules": "2014",
+    "category": "artificerInfusion",
+    "classes": [
+      "Artificer"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "item": [
+            "A suit of armor or a shield"
+          ]
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>A creature gains a +1 bonus to Armor Class while wearing (armor) or wielding (shield) the infused item.</p><p>The bonus increases to +2 when you reach 10th level in this class.</p>"
+  },
+  {
+    "name": "Enhanced Weapon",
+    "source": "TCE",
+    "rules": "2014",
+    "category": "artificerInfusion",
+    "classes": [
+      "Artificer"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "item": [
+            "A simple or martial weapon"
+          ]
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>This magic weapon grants a +1 bonus to attack and damage rolls made with it.</p><p>The bonus increases to +2 when you reach 10th level in this class.</p>"
+  },
+  {
+    "name": "Eternal Mountain Defense",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "elementalDiscipline",
+    "classes": [
+      "Monk"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 17,
+            "class": {
+              "name": "Monk"
+            },
+            "subclass": {
+              "name": "Four Elements"
+            }
+          }
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>You can spend 5 ki points to cast stoneskin, targeting yourself.</p>"
+  },
+  {
+    "name": "Evasive Footwork",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "maneuver",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "description": "<p>When you move, you can expend one superiority die, rolling the die and adding the number rolled to your AC until you stop moving.</p>"
+  },
+  {
+    "name": "Evasive Footwork",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "maneuver",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "description": "<p>As a Bonus Action, you can expend one Superiority Die and take the Disengage action. You also roll the die and add the number rolled to your AC until the start of your next turn.</p>"
+  },
+  {
+    "name": "Extended Spell",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "metamagic",
+    "classes": [
+      "Sorcerer"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Sorcery Point"
+    },
+    "description": "<p>When you cast a spell that has a duration of 1 minute or longer, you can spend 1 sorcery point to double its duration, to a maximum duration of 24 hours.</p>"
+  },
+  {
+    "name": "Extended Spell",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "metamagic",
+    "classes": [
+      "Sorcerer"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Sorcery Point"
+    },
+    "description": "<p>When you cast a spell that has a duration of 1 minute or longer, you can spend 1 Sorcery Point to double its duration to a maximum duration of 24 hours.</p><p>If the affected spell requires Concentration, you have Advantage on any saving throw you make to maintain that Concentration.</p>"
+  },
+  {
+    "name": "Eyes of the Rune Keeper",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>You can read all writing.</p>"
+  },
+  {
+    "name": "Fangs of the Fire Snake",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "elementalDiscipline",
+    "classes": [
+      "Monk"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>When you use the Attack action on your turn, you can spend 1 ki point to cause tendrils of flame to stretch out from your fists and feet. Your reach with your unarmed strikes increases by 10 feet for that action, as well as the rest of the turn. A hit with such an attack deals fire damage instead of bludgeoning damage, and if you spend 1 ki point when the attack hits, it also deals an extra 1d10 fire damage.</p>"
+  },
+  {
+    "name": "Far Scribe",
+    "source": "TCE",
+    "rules": "2014",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 5,
+            "class": {
+              "name": "Warlock"
+            }
+          },
+          "pact": "Tome"
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>A new page appears in your Book of Shadows. With your permission, a creature can use its action to write its name on that page, which can contain a number of names equal to your proficiency bonus.</p><p>You can cast the sending spell, targeting a creature whose name is on the page, without using a spell slot and without using material components. To do so, you must write the message on the page. The target hears the message in their mind, and if the target replies, their message appears on the page, rather than in your mind. The writing disappears after 1 minute.</p><p>As an action, you can magically erase a name on the page by touching it.</p>"
+  },
+  {
+    "name": "Feinting Attack",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "maneuver",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "description": "<p>You can expend one superiority die and use a bonus action on your turn to feint, choosing one creature within 5 feet of you as your target. You have advantage on your next attack roll against that creature this turn. If that attack hits, add the superiority die to the attack's damage roll.</p>"
+  },
+  {
+    "name": "Feinting Attack",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "maneuver",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "description": "<p>As a Bonus Action, you can expend one Superiority Die to feint, choosing one creature within 5 feet of yourself as your target. You have Advantage on your next attack roll against that target this turn. If that attack hits, add the Superiority Die to the attack's damage roll.</p>"
+  },
+  {
+    "name": "Fiendish Vigor",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>You can cast false life on yourself at will as a 1st-level spell, without expending a spell slot or material components.</p>"
+  },
+  {
+    "name": "Fiendish Vigor",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 2,
+            "class": {
+              "name": "Warlock",
+              "source": "XPHB",
+              "visibleStats": true
+            }
+          }
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>You can cast False Life on yourself without expending a spell slot. When you cast the spell with this feature, you don't roll the die for the Temporary Hit Points; you automatically get the highest number on the die.</p>"
+  },
+  {
+    "name": "Fire Rune",
+    "source": "TCE",
+    "rules": "2014",
+    "category": "rune",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>This rune's magic channels the masterful craftsmanship of great smiths. While wearing or carrying an object inscribed with this rune, your proficiency bonus is doubled for any ability check you make that uses your proficiency with a tool.</p><p>In addition, when you hit a creature with an attack using a weapon, you can invoke the rune to summon fiery shackles: the target takes an extra 2d6 fire damage, and it must succeed on a Strength saving throw or be restrained for 1 minute. While restrained by the shackles, the target takes 2d6 fire damage at the start of each of its turns. The target can repeat the saving throw at the end of each of its turns, banishing the shackles on a success. Once you invoke this rune, you can't do so again until you finish a short or long rest.</p>"
+  },
+  {
+    "name": "Fist of Four Thunders",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "elementalDiscipline",
+    "classes": [
+      "Monk"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>You can spend 2 ki points to cast thunderwave.</p>"
+  },
+  {
+    "name": "Flames of the Phoenix",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "elementalDiscipline",
+    "classes": [
+      "Monk"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 11,
+            "class": {
+              "name": "Monk"
+            },
+            "subclass": {
+              "name": "Four Elements"
+            }
+          }
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>You can spend 4 ki points to cast fireball.</p>"
+  },
+  {
+    "name": "Frost Rune",
+    "source": "TCE",
+    "rules": "2014",
+    "category": "rune",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>This rune's magic evokes the might of those who survive in the wintry wilderness, such as frost giants. While wearing or carrying an object inscribed with this rune, you have advantage on Wisdom (Animal Handling) checks and Charisma (Intimidation) checks.</p><p>In addition, you can invoke the rune as a bonus action to increase your sturdiness. For 10 minutes, you gain a +2 bonus to all ability checks and saving throws that use Strength or Constitution. Once you invoke this rune, you can't do so again until you finish a short or long rest.</p>"
+  },
+  {
+    "name": "Gaze of Two Minds",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>You can use your action to touch a willing humanoid and perceive through its senses until the end of your next turn. As long as the creature is on the same plane of existence as you, you can use your action on subsequent turns to maintain this connection, extending the duration until the end of your next turn. While perceiving through the other creature's senses, you benefit from any special senses possessed by that creature, and you are blinded and deafened to your own surroundings.</p>"
+  },
+  {
+    "name": "Gaze of Two Minds",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 5,
+            "class": {
+              "name": "Warlock",
+              "source": "XPHB",
+              "visibleStats": true
+            }
+          }
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>You can use a Bonus Action to touch a willing creature and perceive through its senses until the end of your next turn. As long as the creature is on the same plane of existence as you, you can take a Bonus Action on subsequent turns to maintain this connection, extending the duration until the end of your next turn. The connection ends if you don't maintain it in this way.</p><p>While perceiving through the other creature's senses, you benefit from any special senses possessed by that creature, and you can cast spells as if you were in your space or the other creature's space if the two of you are within 60 feet of each other.</p>"
+  },
+  {
+    "name": "Gift of the Depths",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 5,
+            "class": {
+              "name": "Warlock",
+              "source": "XPHB",
+              "visibleStats": true
+            }
+          }
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>You can breathe underwater, and you gain a Swim Speed equal to your Speed.</p><p>You can also cast Water Breathing once without expending a spell slot. You regain the ability to cast it in this way again when you finish a Long Rest.</p>"
+  },
+  {
+    "name": "Gift of the Protectors",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 9,
+            "class": {
+              "name": "Warlock",
+              "source": "XPHB",
+              "visibleStats": true
+            }
+          },
+          "optionalfeature": [
+            "pact of the tome|xphb"
+          ]
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>A new page appears in your Book of Shadows when you conjure it. With your permission, a creature can take an action to write its name on that page, which can contain a number of names equal to your Charisma modifier (minimum of one name).</p><p>When any creature whose name is on the page is reduced to 0 Hit Points but not killed outright, the creature magically drops to 1 Hit Point instead. Once this magic is triggered, no creature can benefit from it until you finish a Long Rest.</p><p>As a Magic action, you can erase a name on the page by touching it.</p>"
+  },
+  {
+    "name": "Gift of the Protectors",
+    "source": "TCE",
+    "rules": "2014",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 9,
+            "class": {
+              "name": "Warlock"
+            }
+          },
+          "pact": "Tome"
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>A new page appears in your Book of Shadows. With your permission, a creature can use its action to write its name on that page, which can contain a number of names equal to your proficiency bonus.</p><p>When any creature whose name is on the page is reduced to 0 hit points but not killed outright, the creature magically drops to 1 hit point instead. Once this magic is triggered, no creature can benefit from it until you finish a long rest.</p><p>As an action, you can magically erase a name on the page by touching it.</p>"
+  },
+  {
+    "name": "Goading Attack",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "maneuver",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "description": "<p>When you hit a creature with a weapon attack, you can expend one superiority die to attempt to goad the target into attacking you. You add the superiority die to the attack's damage roll, and the target must make a Wisdom saving throw. On a failed save, the target has disadvantage on all attack rolls against targets other than you until the end of your next turn.</p>"
+  },
+  {
+    "name": "Goading Attack",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "maneuver",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "description": "<p>When you hit a creature with an attack roll, you can expend one Superiority Die to attempt to goad the target into attacking you. Add the Superiority Die to the attack's damage roll. The target must succeed on a Wisdom saving throw or have Disadvantage on attack rolls against targets other than you until the end of your next turn.</p>"
+  },
+  {
+    "name": "Gong of the Summit",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "elementalDiscipline",
+    "classes": [
+      "Monk"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 6,
+            "class": {
+              "name": "Monk"
+            },
+            "subclass": {
+              "name": "Four Elements"
+            }
+          }
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>You can spend 3 ki points to cast shatter.</p>"
+  },
+  {
+    "name": "Grappling Strike",
+    "source": "TCE",
+    "rules": "2014",
+    "category": "maneuver",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "description": "<p>Immediately after you hit a creature with a melee attack on your turn, you can expend one superiority die and then try to grapple the target as a bonus action (see the Player's Handbook for rules on grappling). Add the superiority die to your Strength (Athletics) check.</p>"
+  },
+  {
+    "name": "Great Weapon Fighting",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "fightingStyle",
+    "classes": [
+      "Fighter",
+      "Paladin"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>When you roll a 1 or 2 on a damage die for an attack you make with a melee weapon that you are wielding with two hands, you can reroll the die and must use the new roll, even if the new roll is a 1 or a 2. The weapon must have the two-handed or versatile property for you to gain this benefit.</p>"
+  },
+  {
+    "name": "Heightened Spell",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "metamagic",
+    "classes": [
+      "Sorcerer"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Sorcery Point"
+    },
+    "description": "<p>When you cast a spell that forces a creature to make a saving throw to resist its effects, you can spend 3 sorcery points to give one target of the spell disadvantage on its first saving throw made against the spell.</p>"
+  },
+  {
+    "name": "Heightened Spell",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "metamagic",
+    "classes": [
+      "Sorcerer"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Sorcery Point"
+    },
+    "description": "<p>When you cast a spell that forces a creature to make a saving throw, you can spend 2 Sorcery Points to give one target of the spell Disadvantage on saves against the spell.</p>"
+  },
+  {
+    "name": "Helm of Awareness",
+    "source": "TCE",
+    "rules": "2014",
+    "category": "artificerInfusion",
+    "classes": [
+      "Artificer"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 10,
+            "class": {
+              "name": "Artificer",
+              "source": "TCE"
+            }
+          },
+          "item": [
+            "A helmet (requires attunement)"
+          ]
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>While wearing this helmet, a creature has advantage on initiative rolls. In addition, the wearer can't be surprised, provided it isn't incapacitated.</p>"
+  },
+  {
+    "name": "Hill Rune",
+    "source": "TCE",
+    "rules": "2014",
+    "category": "rune",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 7,
+            "class": {
+              "name": "Fighter"
+            },
+            "subclass": {
+              "name": "Rune Knight",
+              "source": "TCE"
+            }
+          }
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>This rune's magic bestows a resilience reminiscent of a hill giant. While wearing or carrying an object that bears this rune, you have advantage on saving throws against being poisoned, and you have resistance against poison damage.</p><p>In addition, you can invoke the rune as a bonus action, gaining resistance to bludgeoning, piercing, and slashing damage for 1 minute. Once you invoke this rune, you can't do so again until you finish a short or long rest.</p>"
+  },
+  {
+    "name": "Homunculus Servant",
+    "source": "TCE",
+    "rules": "2014",
+    "category": "artificerInfusion",
+    "classes": [
+      "Artificer"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "item": [
+            "A gem or crystal worth at least 100 gp"
+          ]
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>You learn intricate methods for magically creating a special homunculus that serves you. The item you infuse serves as the creature's heart, around which the creature's body instantly forms.</p><p>You determine the homunculus's appearance. Some artificers prefer mechanical-looking birds, whereas some like winged vials or miniature, animate cauldrons.</p><p>The homunculus is friendly to you and your companions, and it obeys your commands. See this creature's game statistics in the Homunculus Servant stat block, which uses your proficiency bonus (PB) in several places.</p><p>In combat, the homunculus shares your initiative count, but it takes its turn immediately after yours. It can move and use its reaction on its own, but the only action it takes on its turn is the Dodge action, unless you take a bonus action on your turn to command it to take another action. That action can be one in its stat block or some other action. If you are incapacitated, the homunculus can take any action of its choice, not just Dodge.</p><p>The homunculus regains 2d6 hit points if the mending spell is cast on it. If you or the homunculus dies, it vanishes, leaving its heart in its space.</p>"
+  },
+  {
+    "name": "Interception",
+    "source": "TCE",
+    "rules": "2014",
+    "category": "fightingStyle",
+    "classes": [
+      "Fighter",
+      "Paladin"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>When a creature you can see hits a target, other than you, within 5 feet of you with an attack, you can use your reaction to reduce the damage the target takes by 1d10 + your proficiency bonus (to a minimum of 0 damage). You must be wielding a shield or a simple or martial weapon to use this reaction.</p>"
+  },
+  {
+    "name": "Investment of the Chain Master",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 5,
+            "class": {
+              "name": "Warlock",
+              "source": "XPHB",
+              "visibleStats": true
+            }
+          },
+          "optionalfeature": [
+            "pact of the chain|xphb"
+          ]
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>When you cast Find Familiar, you infuse the summoned familiar with a measure of your eldritch power, granting the creature the following benefits.</p><p>Aerial or Aquatic: The familiar gains either a Fly Speed or a Swim Speed (your choice) of 40 feet.</p><p>Quick Attack: As a Bonus Action, you can command the familiar to take the Attack action.</p><p>Necrotic or Radiant Damage: Whenever the familiar deals Bludgeoning, Piercing, or Slashing damage, you can make it deal Necrotic or Radiant damage instead.</p><p>Your Save DC: If the familiar forces a creature to make a saving throw, it uses your spell save DC.</p><p>Resistance: When the familiar takes damage, you can take a Reaction to grant it Resistance against that damage.</p>"
+  },
+  {
+    "name": "Investment of the Chain Master",
+    "source": "TCE",
+    "rules": "2014",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "pact": "Chain"
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>When you cast find familiar, you infuse the summoned familiar with a measure of your eldritch power, granting the creature the following benefits:</p><ul><li>The familiar gains either a flying speed or a swimming speed (your choice) of 40 feet.</li><li>As a bonus action, you can command the familiar to take the Attack action.</li><li>The familiar's weapon attacks are considered magical for the purpose of overcoming immunity and resistance to nonmagical attacks.</li><li>If the familiar forces a creature to make a saving throw, it uses your spell save DC.</li><li>When the familiar takes damage, you can use your reaction to grant it resistance against that damage.</li></ul>"
+  },
+  {
+    "name": "Lessons of the First Ones",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 2,
+            "class": {
+              "name": "Warlock",
+              "source": "XPHB",
+              "visibleStats": true
+            }
+          }
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>You have received knowledge from an elder entity of the multiverse, allowing you to gain one Origin feat of your choice.</p><p>Repeatable: You can gain this invocation more than once. Each time you do so, choose a different Origin feat.</p>"
+  },
+  {
+    "name": "Lifedrinker",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 12,
+            "class": {
+              "name": "Warlock"
+            }
+          },
+          "pact": "Blade"
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>When you hit a creature with your pact weapon, the creature takes extra necrotic damage equal to your Charisma modifier (minimum of 1).</p>"
+  },
+  {
+    "name": "Lifedrinker",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 9,
+            "class": {
+              "name": "Warlock",
+              "source": "XPHB",
+              "visibleStats": true
+            }
+          },
+          "optionalfeature": [
+            "pact of the blade|xphb"
+          ]
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>Once per turn when you hit a creature with your pact weapon, you can deal an extra 1d6 Necrotic, Psychic, or Radiant damage (your choice) to the creature, and you can expend one of your Hit Point Dice to roll it and regain a number of Hit Points equal to the roll plus your Constitution modifier (minimum of 1 Hit Point).</p>"
+  },
+  {
+    "name": "Lunging Attack",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "maneuver",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "description": "<p>When you make a melee weapon attack on your turn, you can expend one superiority die to increase your reach for that attack by 5 feet. If you hit, you add the superiority die to the attack's damage roll.</p>"
+  },
+  {
+    "name": "Lunging Attack",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "maneuver",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "description": "<p>As a Bonus Action, you can expend one Superiority Die and take the Dash action. If you move at least 5 feet in a straight line immediately before hitting with a melee attack as part of the Attack action on this turn, you can add the Superiority Die to the attack's damage roll.</p>"
+  },
+  {
+    "name": "Maneuvering Attack",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "maneuver",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "description": "<p>When you hit a creature with a weapon attack, you can expend one superiority die to maneuver one of your comrades into a more advantageous position. You add the superiority die to the attack's damage roll, and you choose a friendly creature who can see or hear you. That creature can use its reaction to move up to half its speed without provoking opportunity attacks from the target of your attack.</p>"
+  },
+  {
+    "name": "Maneuvering Attack",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "maneuver",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "description": "<p>When you hit a creature with an attack roll, you can expend one Superiority Die to maneuver one of your comrades into another position. Add the Superiority Die roll to the attack's damage roll, and choose a willing creature who can see or hear you. That creature can use its Reaction to move up to half its Speed without provoking an Opportunity Attack from the target of your attack.</p>"
+  },
+  {
+    "name": "Mask of Many Faces",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>You can cast disguise self at will, without expending a spell slot.</p>"
+  },
+  {
+    "name": "Mask of Many Faces",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 2,
+            "class": {
+              "name": "Warlock",
+              "source": "XPHB",
+              "visibleStats": true
+            }
+          }
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>You can cast Disguise Self without expending a spell slot.</p>"
+  },
+  {
+    "name": "Master of Myriad Forms",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 15,
+            "class": {
+              "name": "Warlock"
+            }
+          }
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>You can cast alter self at will, without expending a spell slot.</p>"
+  },
+  {
+    "name": "Master of Myriad Forms",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 5,
+            "class": {
+              "name": "Warlock",
+              "source": "XPHB",
+              "visibleStats": true
+            }
+          }
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>You can cast Alter Self without expending a spell slot.</p>"
+  },
+  {
+    "name": "Menacing Attack",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "maneuver",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "description": "<p>When you hit a creature with a weapon attack, you can expend one superiority die to attempt to frighten the target. You add the superiority die to the attack's damage roll, and the target must make a Wisdom saving throw. On a failed save, it is frightened of you until the end of your next turn.</p>"
+  },
+  {
+    "name": "Menacing Attack",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "maneuver",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "description": "<p>When you hit a creature with an attack roll, you can expend one Superiority Die to attempt to frighten the target. Add the Superiority Die to the attack's damage roll. The target must succeed on a Wisdom saving throw or have the Frightened condition until the end of your next turn.</p>"
+  },
+  {
+    "name": "Mind Sharpener",
+    "source": "TCE",
+    "rules": "2014",
+    "category": "artificerInfusion",
+    "classes": [
+      "Artificer"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "item": [
+            "A suit of armor or robes"
+          ]
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>The infused item can send a jolt to the wearer to refocus their mind. The item has 4 charges. When the wearer fails a Constitution saving throw to maintain concentration on a spell, the wearer can use its reaction to expend 1 of the item's charges to succeed instead. The item regains 1d4 expended charges daily at dawn.</p>"
+  },
+  {
+    "name": "Minions of Chaos",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 9,
+            "class": {
+              "name": "Warlock"
+            }
+          }
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>You can cast conjure elemental once using a warlock spell slot. You can't do so again until you finish a long rest.</p>"
+  },
+  {
+    "name": "Mire the Mind",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 5,
+            "class": {
+              "name": "Warlock"
+            }
+          }
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>You can cast slow once using a warlock spell slot. You can't do so again until you finish a long rest.</p>"
+  },
+  {
+    "name": "Mist Stance",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "elementalDiscipline",
+    "classes": [
+      "Monk"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 11,
+            "class": {
+              "name": "Monk"
+            },
+            "subclass": {
+              "name": "Four Elements"
+            }
+          }
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>You can spend 4 ki points to cast gaseous form, targeting yourself.</p>"
+  },
+  {
+    "name": "Misty Visions",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>You can cast silent image at will, without expending a spell slot or material components.</p>"
+  },
+  {
+    "name": "Misty Visions",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 2,
+            "class": {
+              "name": "Warlock",
+              "source": "XPHB",
+              "visibleStats": true
+            }
+          }
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>You can cast Silent Image without expending a spell slot.</p>"
+  },
+  {
+    "name": "One with Shadows",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 5,
+            "class": {
+              "name": "Warlock"
+            }
+          }
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>When you are in an area of dim light or darkness, you can use your action to become invisible until you move or take an action or a reaction.</p>"
+  },
+  {
+    "name": "One with Shadows",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 5,
+            "class": {
+              "name": "Warlock",
+              "source": "XPHB",
+              "visibleStats": true
+            }
+          }
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>While you're in an area of Dim Light or Darkness, you can cast Invisibility on yourself without expending a spell slot.</p>"
+  },
+  {
+    "name": "Otherworldly Leap",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 9,
+            "class": {
+              "name": "Warlock"
+            }
+          }
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>You can cast jump on yourself at will, without expending a spell slot or material components.</p>"
+  },
+  {
+    "name": "Otherworldly Leap",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 2,
+            "class": {
+              "name": "Warlock",
+              "source": "XPHB",
+              "visibleStats": true
+            }
+          }
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>You can cast Jump on yourself without expending a spell slot.</p>"
+  },
+  {
+    "name": "Pact of the Blade",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "pactBoon",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>You can use your action to create a pact weapon in your empty hand. You can choose the form that this melee weapon takes each time you create it (see chapter 5 for weapon options). You are proficient with it while you wield it. This weapon counts as magical for the purpose of overcoming resistance and immunity to nonmagical attacks and damage.</p><p>Your pact weapon disappears if it is more than 5 feet away from you for 1 minute or more. It also disappears if you use this feature again, if you dismiss the weapon (no action required), or if you die.</p><p>You can transform one magic weapon into your pact weapon by performing a special ritual while you hold the weapon. You perform the ritual over the course of 1 hour, which can be done during a short rest. You can then dismiss the weapon, shunting it into an extradimensional space, and it appears whenever you create your pact weapon thereafter. You can't affect an artifact or a sentient weapon in this way. The weapon ceases being your pact weapon if you die, if you perform the 1-hour ritual on a different weapon, or if you use a 1-hour ritual to break your bond to it. The weapon appears at your feet if it is in the extradimensional space when the bond breaks.</p>"
+  },
+  {
+    "name": "Pact of the Blade",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>As a Bonus Action, you can conjure a pact weapon in your hand—a Simple or Martial Melee weapon of your choice with which you bond—or create a bond with a magic weapon you touch; you can't bond with a magic weapon if someone else is attuned to it or another Warlock is bonded with it. Until the bond ends, you have proficiency with the weapon, and you can use it as a Spellcasting Focus.</p><p>Whenever you attack with the bonded weapon, you can use your Charisma modifier for the attack and damage rolls instead of using Strength or Dexterity; and you can cause the weapon to deal Necrotic, Psychic, or Radiant damage or its normal damage type.</p><p>Your bond with the weapon ends if you use this feature's Bonus Action again, if the weapon is more than 5 feet away from you for 1 minute or more, or if you die. A conjured weapon disappears when the bond ends.</p>"
+  },
+  {
+    "name": "Pact of the Chain",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "pactBoon",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>You learn the find familiar spell and can cast it as a ritual. The spell doesn't count against your number of spells known.</p><p>When you cast the spell, you can choose one of the normal forms for your familiar or one of the following special forms: imp, pseudodragon, quasit, or sprite.</p><p>Additionally, when you take the Attack action, you can forgo one of your own attacks to allow your familiar to use its reaction to make one attack of its own.</p>"
+  },
+  {
+    "name": "Pact of the Chain",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>You learn the Find Familiar spell and can cast it as a Magic action without expending a spell slot.</p><p>When you cast the spell, you choose one of the normal forms for your familiar or one of the following special forms: Imp, Pseudodragon, Quasit, Skeleton, Slaad Tadpole, Sphinx of Wonder, Sprite, or Venomous Snake (see appendix B for the familiar's stat block).</p><p>Additionally, when you take the Attack action, you can forgo one of your own attacks to allow your familiar to make one attack of its own with its Reaction.</p>"
+  },
+  {
+    "name": "Pact of the Talisman",
+    "source": "TCE",
+    "rules": "2014",
+    "category": "pactBoon",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>Your patron gives you an amulet, a talisman that can aid the wearer when the need is great. When the wearer fails an ability check, they can add a d4 to the roll, potentially turning the roll into a success. This benefit can be used a number of times equal to your proficiency bonus, and all expended uses are restored when you finish a long rest.</p><p>If you lose the talisman, you can perform a 1-hour ceremony to receive a replacement from your patron. This ceremony can be performed during a short or long rest, and it destroys the previous amulet. The talisman turns to ash when you die.</p>"
+  },
+  {
+    "name": "Pact of the Tome",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "pactBoon",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>Your patron gives you a grimoire called a Book of Shadows. When you gain this feature, choose three cantrips from any class's spell list. The cantrips do not need to be from the same spell list. While the book is on your person, you can cast those cantrips at will. They don't count against your number of cantrips known. Any cantrip you cast with this feature is considered a warlock cantrip for you. If you lose your Book of Shadows, you can perform a 1-hour ceremony to receive a replacement from your patron. This ceremony can be performed during a short or long rest, and it destroys the previous book. The book turns to ash when you die.</p>"
+  },
+  {
+    "name": "Pact of the Tome",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>Stitching together strands of shadow, you conjure forth a book in your hand at the end of a Short or Long Rest. This Book of Shadows (you determine its appearance) contains eldritch magic that only you can access, granting you the benefits below. The book disappears if you conjure another book with this feature or if you die.</p><p>Cantrips and Rituals: When the book appears, choose three cantrips, and choose two level 1 spells that have the Ritual tag. The spells can be from any class's spell list, and they must be spells you don't already have prepared. While the book is on your person, you have the chosen spells prepared, and they function as Warlock spells for you.</p><p>Spellcasting Focus: You can use the book as a Spellcasting Focus.</p>"
+  },
+  {
+    "name": "Parry",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "maneuver",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "description": "<p>When another creature damages you with a melee attack, you can use your reaction and expend one superiority die to reduce the damage by the number you roll on your superiority die + your Dexterity modifier.</p>"
+  },
+  {
+    "name": "Parry",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "maneuver",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "description": "<p>When another creature damages you with a melee attack roll, you can take a Reaction and expend one Superiority Die to reduce the damage by the number you roll on your Superiority Die plus your Strength or Dexterity modifier (your choice).</p>"
+  },
+  {
+    "name": "Precision Attack",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "maneuver",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "description": "<p>When you make a weapon attack roll against a creature, you can expend one superiority die to add it to the roll. You can use this maneuver before or after making the attack roll, but before any effects of the attack are applied.</p>"
+  },
+  {
+    "name": "Precision Attack",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "maneuver",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "description": "<p>When you miss with an attack roll, you can expend one Superiority Die, roll that die, and add it to the attack roll, potentially causing the attack to hit.</p>"
+  },
+  {
+    "name": "Protection",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "fightingStyle",
+    "classes": [
+      "Fighter",
+      "Paladin"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>When a creature you can see attacks a target other than you that is within 5 feet of you, you can use your reaction to impose disadvantage on the attack roll. You must be wielding a shield.</p>"
+  },
+  {
+    "name": "Protection of the Talisman",
+    "source": "TCE",
+    "rules": "2014",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 7,
+            "class": {
+              "name": "Warlock"
+            }
+          },
+          "pact": "Talisman"
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>When the wearer of your talisman fails a saving throw, they can add a d4 to the roll, potentially turning the save into a success. This benefit can be used a number of times equal to your proficiency bonus, and all expended uses are restored when you finish a long rest.</p>"
+  },
+  {
+    "name": "Pushing Attack",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "maneuver",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "description": "<p>When you hit a creature with a weapon attack, you can expend one superiority die to attempt to drive the target back. You add the superiority die to the attack's damage roll, and if the target is Large or smaller, it must make a Strength saving throw. On a failed save, you push the target up to 15 feet away from you.</p>"
+  },
+  {
+    "name": "Pushing Attack",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "maneuver",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "description": "<p>When you hit a creature with an attack roll using a weapon or an Unarmed Strike, you can expend one Superiority Die to attempt to drive the target back. Add the Superiority Die to the attack's damage roll. If the target is Large or smaller, it must succeed on a Strength saving throw or be pushed up to 15 feet directly away from you.</p>"
+  },
+  {
+    "name": "Quick Toss",
+    "source": "TCE",
+    "rules": "2014",
+    "category": "maneuver",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "description": "<p>As a bonus action, you can expend one superiority die and make a ranged attack with a weapon that has the thrown property. You can draw the weapon as part of making this attack. If you hit, add the superiority die to the weapon's damage roll.</p>"
+  },
+  {
+    "name": "Quickened Spell",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "metamagic",
+    "classes": [
+      "Sorcerer"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Sorcery Point"
+    },
+    "description": "<p>When you cast a spell that has a casting time of 1 action, you can spend 2 sorcery points to change the casting time to 1 bonus action for this casting.</p>"
+  },
+  {
+    "name": "Quickened Spell",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "metamagic",
+    "classes": [
+      "Sorcerer"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Sorcery Point"
+    },
+    "description": "<p>When you cast a spell that has a casting time of an action, you can spend 2 Sorcery Points to change the casting time to a Bonus Action for this casting. You can't modify a spell in this way if you've already cast a level 1+ spell on the current turn, nor can you cast a level 1+ spell on this turn after modifying a spell in this way.</p>"
+  },
+  {
+    "name": "Radiant Weapon",
+    "source": "TCE",
+    "rules": "2014",
+    "category": "artificerInfusion",
+    "classes": [
+      "Artificer"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 6,
+            "class": {
+              "name": "Artificer",
+              "source": "TCE"
+            }
+          },
+          "item": [
+            "A simple or martial weapon (requires attunement)"
+          ]
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>This magic weapon grants a +1 bonus to attack and damage rolls made with it. While holding it, the wielder can take a bonus action to cause it to shed bright light in a 30-foot radius and dim light for an additional 30 feet. The wielder can extinguish the light as a bonus action.</p><p>The weapon has 4 charges. As a reaction immediately after being hit by an attack, the wielder can expend 1 charge and cause the attacker to be blinded until the end of the attacker's next turn, unless the attacker succeeds on a Constitution saving throw against your spell save DC. The weapon regains 1d4 expended charges daily at dawn.</p>"
+  },
+  {
+    "name": "Rally",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "maneuver",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "description": "<p>On your turn, you can use a bonus action and expend one superiority die to bolster the resolve of one of your companions. When you do so, choose a friendly creature who can see or hear you. That creature gains temporary hit points equal to the superiority die roll + your Charisma modifier.</p>"
+  },
+  {
+    "name": "Rally",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "maneuver",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "description": "<p>As a Bonus Action, you can expend one Superiority Die to bolster the resolve of a companion. Choose an ally of yours within 30 feet of yourself who can see or hear you. That creature gains Temporary Hit Points equal to the Superiority Die roll plus half your Fighter level (round down).</p>"
+  },
+  {
+    "name": "Rebuke of the Talisman",
+    "source": "TCE",
+    "rules": "2014",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "pact": "Talisman"
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>When the wearer of your talisman is hit by an attacker you can see within 30 feet of you, you can use your reaction to deal psychic damage to the attacker equal to your proficiency bonus and push it up to 10 feet away from the talisman's wearer.</p>"
+  },
+  {
+    "name": "Repeating Shot",
+    "source": "TCE",
+    "rules": "2014",
+    "category": "artificerInfusion",
+    "classes": [
+      "Artificer"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "item": [
+            "A simple or martial weapon with the ammunition property (requires attunement)"
+          ]
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>This magic weapon grants a +1 bonus to attack and damage rolls made with it when it's used to make a ranged attack, and it ignores the loading property if it has it.</p><p>If the weapon lacks ammunition, it produces its own, automatically creating one piece of magic ammunition when the wielder makes a ranged attack with it. The ammunition created by the weapon vanishes the instant after it hits or misses a target.</p>"
+  },
+  {
+    "name": "Repelling Blast",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "spell": [
+            "eldritch blast#c"
+          ]
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>When you hit a creature with eldritch blast, you can push the creature up to 10 feet away from you in a straight line.</p>"
+  },
+  {
+    "name": "Repelling Blast",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "spell": [
+            {
+              "choose": "level=0|class=Warlock|spell attack=m;r;o",
+              "entry": "a Warlock Cantrip That Deals Damage via an Attack Roll",
+              "entrySummary": "Warlock Cantrip That Deals Damage via an Attack Roll"
+            }
+          ],
+          "level": {
+            "level": 2,
+            "class": {
+              "name": "Warlock",
+              "source": "XPHB",
+              "visibleStats": true
+            }
+          }
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>Choose one of your known Warlock cantrips that requires an attack roll. When you hit a Large or smaller creature with that cantrip, you can push the creature up to 10 feet straight away from you.</p><p>Repeatable: You can gain this invocation more than once. Each time you do so, choose a different eligible cantrip.</p>"
+  },
+  {
+    "name": "Replicate Magic Item",
+    "source": "TCE",
+    "rules": "2014",
+    "category": "artificerInfusion",
+    "classes": [
+      "Artificer"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>Using this infusion, you replicate a particular magic item. You can learn this infusion multiple times; each time you do so, choose a magic item that you can make with it, picking from the Replicable Items tables below. A table's title tells you the level you must be in the class to choose an item from the table. Alternatively, you can choose the magic item from among the common magic items in the game, not including potions or scrolls.</p><p>In the tables, an item's entry tells you whether the item requires attunement. See the item's description in the Dungeon Master's Guide for more information about it, including the type of object required for its making.</p><p><strong>Replicable Items (2nd-Level Artificer)</strong></p><table><thead><tr><th>Magic Item</th><th>Attunement</th></tr></thead><tbody><tr><td>Alchemy jug</td><td>No</td></tr><tr><td>Bag of holding</td><td>No</td></tr><tr><td>Cap of water breathing</td><td>No</td></tr><tr><td>Goggles of night</td><td>No</td></tr><tr><td>Rope of climbing</td><td>No</td></tr><tr><td>Sending stones</td><td>No</td></tr><tr><td>Wand of magic detection</td><td>No</td></tr><tr><td>Wand of secrets</td><td>No</td></tr></tbody></table><p><strong>Replicable Items (6th-Level Artificer)</strong></p><table><thead><tr><th>Magic Item</th><th>Attunement</th></tr></thead><tbody><tr><td>Boots of elvenkind</td><td>No</td></tr><tr><td>Cloak of elvenkind</td><td>Yes</td></tr><tr><td>Cloak of the manta ray</td><td>No</td></tr><tr><td>Eyes of charming</td><td>Yes</td></tr><tr><td>Gloves of thievery</td><td>No</td></tr><tr><td>Lantern of revealing</td><td>No</td></tr><tr><td>Pipes of haunting</td><td>No</td></tr><tr><td>Ring of water walking</td><td>No</td></tr></tbody></table><p><strong>Replicable Items (10th-Level Artificer)</strong></p><table><thead><tr><th>Magic Item</th><th>Attunement</th></tr></thead><tbody><tr><td>Boots of striding and springing</td><td>Yes</td></tr><tr><td>Boots of the Winterlands</td><td>Yes</td></tr><tr><td>Bracers of archery</td><td>Yes</td></tr><tr><td>Brooch of shielding</td><td>Yes</td></tr><tr><td>Cloak of protection</td><td>Yes</td></tr><tr><td>Eyes of the eagle</td><td>Yes</td></tr><tr><td>Gauntlets of ogre power</td><td>Yes</td></tr><tr><td>Gloves of missile snaring</td><td>Yes</td></tr><tr><td>Gloves of swimming and climbing</td><td>Yes</td></tr><tr><td>Hat of disguise</td><td>Yes</td></tr><tr><td>Headband of intellect</td><td>Yes</td></tr><tr><td>Helm of telepathy</td><td>Yes</td></tr><tr><td>Medallion of thoughts</td><td>Yes</td></tr><tr><td>Necklace of adaptation</td><td>Yes</td></tr><tr><td>Periapt of wound closure</td><td>Yes</td></tr><tr><td>Pipes of the sewers</td><td>Yes</td></tr><tr><td>Quiver of Ehlonna</td><td>No</td></tr><tr><td>Ring of jumping</td><td>Yes</td></tr><tr><td>Ring of mind shielding</td><td>Yes</td></tr><tr><td>Slippers of spider climbing</td><td>Yes</td></tr><tr><td>Ventilating lungs (detailed in chapter 5)</td><td>Yes</td></tr><tr><td>Winged boots</td><td>Yes</td></tr></tbody></table><p><strong>Replicable Items (14th-Level Artificer)</strong></p><table><thead><tr><th>Magic Item</th><th>Attunement</th></tr></thead><tbody><tr><td>Amulet of health</td><td>Yes</td></tr><tr><td>Arcane propulsion arm (detailed in chapter 5)</td><td>Yes</td></tr><tr><td>Belt of hill giant strength</td><td>Yes</td></tr><tr><td>Boots of levitation</td><td>Yes</td></tr><tr><td>Boots of speed</td><td>Yes</td></tr><tr><td>Bracers of defense</td><td>Yes</td></tr><tr><td>Cloak of the bat</td><td>Yes</td></tr><tr><td>Dimensional shackles</td><td>No</td></tr><tr><td>Gem of seeing</td><td>Yes</td></tr><tr><td>Horn of blasting</td><td>No</td></tr><tr><td>Ring of free action</td><td>Yes</td></tr><tr><td>Ring of protection</td><td>Yes</td></tr><tr><td>Ring of the ram</td><td>Yes</td></tr></tbody></table>"
+  },
+  {
+    "name": "Repulsion Shield",
+    "source": "TCE",
+    "rules": "2014",
+    "category": "artificerInfusion",
+    "classes": [
+      "Artificer"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 6,
+            "class": {
+              "name": "Artificer",
+              "source": "TCE"
+            }
+          },
+          "item": [
+            "A shield (requires attunement)"
+          ]
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>A creature gains a +1 bonus to Armor Class while wielding this shield.</p><p>The shield has 4 charges. While holding it, the wielder can use a reaction immediately after being hit by a melee attack to expend 1 of the shield's charges and push the attacker up to 15 feet away. The shield regains 1d4 expended charges daily at dawn.</p>"
+  },
+  {
+    "name": "Resistant Armor",
+    "source": "TCE",
+    "rules": "2014",
+    "category": "artificerInfusion",
+    "classes": [
+      "Artificer"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 6,
+            "class": {
+              "name": "Artificer",
+              "source": "TCE"
+            }
+          },
+          "item": [
+            "A suit of armor (requires attunement)"
+          ]
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>While wearing this armor, a creature has resistance to one of the following damage types, which you choose when you infuse the item: acid, cold, fire, force, lightning, necrotic, poison, psychic, radiant, or thunder.</p>"
+  },
+  {
+    "name": "Returning Weapon",
+    "source": "TCE",
+    "rules": "2014",
+    "category": "artificerInfusion",
+    "classes": [
+      "Artificer"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "item": [
+            "A simple or martial weapon with the thrown property"
+          ]
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>This magic weapon grants a +1 bonus to attack and damage rolls made with it, and it returns to the wielder's hand immediately after it is used to make a ranged attack.</p>"
+  },
+  {
+    "name": "Ride the Wind",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "elementalDiscipline",
+    "classes": [
+      "Monk"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 11,
+            "class": {
+              "name": "Monk"
+            },
+            "subclass": {
+              "name": "Four Elements"
+            }
+          }
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>You can spend 4 ki points to cast fly, targeting yourself.</p>"
+  },
+  {
+    "name": "Riposte",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "maneuver",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "description": "<p>When a creature misses you with a melee attack, you can use your reaction and expend one superiority die to make a melee weapon attack against the creature. If you hit, you add the superiority die to the attack's damage roll.</p>"
+  },
+  {
+    "name": "Riposte",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "maneuver",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "description": "<p>When a creature misses you with a melee attack roll, you can take a Reaction and expend one Superiority Die to make a melee attack roll with a weapon or an Unarmed Strike against the creature. If you hit, add the Superiority Die to the attack's damage.</p>"
+  },
+  {
+    "name": "River of Hungry Flame",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "elementalDiscipline",
+    "classes": [
+      "Monk"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 17,
+            "class": {
+              "name": "Monk"
+            },
+            "subclass": {
+              "name": "Four Elements"
+            }
+          }
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>You can spend 5 ki points to cast wall of fire.</p>"
+  },
+  {
+    "name": "Rush of the Gale Spirits",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "elementalDiscipline",
+    "classes": [
+      "Monk"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>You can spend 2 ki points to cast gust of wind.</p>"
+  },
+  {
+    "name": "Sculptor of Flesh",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 7,
+            "class": {
+              "name": "Warlock"
+            }
+          }
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>You can cast polymorph once using a warlock spell slot. You can't do so again until you finish a long rest.</p>"
+  },
+  {
+    "name": "Seeking Spell",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "metamagic",
+    "classes": [
+      "Sorcerer"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Sorcery Point"
+    },
+    "description": "<p>If you make an attack roll for a spell and miss, you can spend 1 Sorcery Point to reroll the d20, and you must use the new roll.</p><p>You can use Seeking Spell even if you've already used a different Metamagic option during the casting of the spell.</p>"
+  },
+  {
+    "name": "Seeking Spell",
+    "source": "TCE",
+    "rules": "2014",
+    "category": "metamagic",
+    "classes": [
+      "Sorcerer"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Sorcery Point"
+    },
+    "description": "<p>If you make an attack roll for a spell and miss, you can spend 2 sorcery points to reroll the d20, and you must use the new roll.</p><p>You can use Seeking Spell even if you have already used a different Metamagic option during the casting of the spell.</p>"
+  },
+  {
+    "name": "Shape the Flowing River",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "elementalDiscipline",
+    "classes": [
+      "Monk"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>As an action, you can spend 1 ki point to choose an area of ice or water no larger than 30 feet on a side within 120 feet of you. You can change water to ice within the area and vice versa, and you can reshape ice in the area in any manner you choose. You can raise or lower the ice's elevation, create or fill in a trench, erect or flatten a wall, or form a pillar. The extent of any such changes can't exceed half the area's largest dimension. For example, if you affect a 30-foot square, you can create a pillar up to 15 feet high. raise or lower the square's elevation by up to 15 feet, dig a trench up to 15 feet deep, and so on. You can't shape the ice to trap or injure a creature in the area.</p>"
+  },
+  {
+    "name": "Sign of Ill Omen",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 5,
+            "class": {
+              "name": "Warlock"
+            }
+          }
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>You can cast bestow curse once using a warlock spell slot. You can't do so again until you finish a long rest.</p>"
+  },
+  {
+    "name": "Spell-Refueling Ring",
+    "source": "TCE",
+    "rules": "2014",
+    "category": "artificerInfusion",
+    "classes": [
+      "Artificer"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 6,
+            "class": {
+              "name": "Artificer",
+              "source": "TCE"
+            }
+          },
+          "item": [
+            "A ring (requires attunement)"
+          ]
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>While wearing this ring, the creature can recover one expended spell slot as an action. The recovered slot can be of 3rd level or lower. Once used, the ring can't be used again until the next dawn.</p>"
+  },
+  {
+    "name": "Stone Rune",
+    "source": "TCE",
+    "rules": "2014",
+    "category": "rune",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>This rune's magic channels the judiciousness associated with stone giants. While wearing or carrying an object inscribed with this rune, you have advantage on Wisdom (Insight) checks, and you have darkvision out to a range of 120 feet.</p><p>In addition, when a creature you can see ends its turn within 30 feet of you, you can use your reaction to invoke the rune and force the creature to make a Wisdom saving throw. Unless the save succeeds, the creature is charmed by you for 1 minute. While charmed in this way, the creature has a speed of 0 and is incapacitated, descending into a dreamy stupor. The creature repeats the saving throw at the end of each of its turns, ending the effect on a success. Once you invoke this rune, you can't do so again until you finish a short or long rest.</p>"
+  },
+  {
+    "name": "Storm Rune",
+    "source": "TCE",
+    "rules": "2014",
+    "category": "rune",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 7,
+            "class": {
+              "name": "Fighter"
+            },
+            "subclass": {
+              "name": "Rune Knight",
+              "source": "TCE"
+            }
+          }
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>Using this rune, you can glimpse the future like a storm giant seer. While wearing or carrying an object inscribed with this rune, you have advantage on Intelligence (Arcana) checks, and you can't be surprised as long as you aren't incapacitated.</p><p>In addition, you can invoke the rune as a bonus action to enter a prophetic state for 1 minute or until you're incapacitated. Until the state ends, when you or another creature you can see within 60 feet of you makes an attack roll, a saving throw, or an ability check, you can use your reaction to cause the roll to have advantage or disadvantage. Once you invoke this rune, you can't do so again until you finish a short or long rest.</p>"
+  },
+  {
+    "name": "Subtle Spell",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "metamagic",
+    "classes": [
+      "Sorcerer"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Sorcery Point"
+    },
+    "description": "<p>When you cast a spell, you can spend 1 sorcery point to cast it without any somatic or verbal components.</p>"
+  },
+  {
+    "name": "Subtle Spell",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "metamagic",
+    "classes": [
+      "Sorcerer"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Sorcery Point"
+    },
+    "description": "<p>When you cast a spell, you can spend 1 Sorcery Point to cast it without any Verbal, Somatic, or Material components, except Material components that are consumed by the spell or that have a cost specified in the spell.</p>"
+  },
+  {
+    "name": "Superior Technique",
+    "source": "TCE",
+    "rules": "2014",
+    "category": "fightingStyle",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>You learn one maneuver of your choice from among those available to the Battle Master archetype. If a maneuver you use requires your target to make a saving throw to resist the maneuver's effects, the saving throw DC equals 8 + your proficiency bonus + your Strength or Dexterity modifier (your choice).</p><p>You gain one superiority die, which is a d6 (this die is added to any superiority dice you have from another source). This die is used to fuel your maneuvers. A superiority die is expended when you use it. You regain your expended superiority dice when you finish a short or long rest.</p>"
+  },
+  {
+    "name": "Sweeping Attack",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "maneuver",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "description": "<p>When you hit a creature with a melee weapon attack, you can expend one superiority die to attempt to damage another creature with the same attack. Choose another creature within 5 feet of the original target and within your reach. If the original attack roll would hit the second creature, it takes damage equal to the number you roll on your superiority die. The damage is of the same type dealt by the original attack.</p>"
+  },
+  {
+    "name": "Sweeping Attack",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "maneuver",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "description": "<p>When you hit a creature with a melee attack roll using a weapon or an Unarmed Strike, you can expend one Superiority Die to attempt to damage another creature. Choose another creature within 5 feet of the original target and within your reach. If the original attack roll would hit the second creature, it takes damage equal to the number you roll on your Superiority Die. The damage is of the same type dealt by the original attack.</p>"
+  },
+  {
+    "name": "Sweeping Cinder Strike",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "elementalDiscipline",
+    "classes": [
+      "Monk"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>You can spend 2 ki points to cast burning hands.</p>"
+  },
+  {
+    "name": "Tactical Assessment",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "maneuver",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "description": "<p>When you make an Intelligence (History or Investigation) check or a Wisdom (Insight) check, you can expend one Superiority Die and add that die to the ability check.</p>"
+  },
+  {
+    "name": "Tactical Assessment",
+    "source": "TCE",
+    "rules": "2014",
+    "category": "maneuver",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "description": "<p>When you make an Intelligence (Investigation), an Intelligence (History), or a Wisdom (Insight) check, you can expend one superiority die and add the superiority die to the ability check.</p>"
+  },
+  {
+    "name": "Thief of Five Fates",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>You can cast bane once using a warlock spell slot. You can't do so again until you finish a long rest.</p>"
+  },
+  {
+    "name": "Thirsting Blade",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "pact": "Blade",
+          "level": {
+            "level": 5,
+            "class": {
+              "name": "Warlock"
+            }
+          }
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>You can attack with your pact weapon twice, instead of once, whenever you take the Attack action on your turn.</p>"
+  },
+  {
+    "name": "Thirsting Blade",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 5,
+            "class": {
+              "name": "Warlock",
+              "source": "XPHB",
+              "visibleStats": true
+            }
+          },
+          "optionalfeature": [
+            "pact of the blade|xphb"
+          ]
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>You gain the Extra Attack feature for your pact weapon only. With that feature, you can attack twice with the weapon instead of once when you take the Attack action on your turn.</p>"
+  },
+  {
+    "name": "Thrown Weapon Fighting",
+    "source": "TCE",
+    "rules": "2014",
+    "category": "fightingStyle",
+    "classes": [
+      "Fighter",
+      "Ranger"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>You can draw a weapon that has the thrown property as part of the attack you make with the weapon.</p><p>In addition, when you hit with a ranged attack using a thrown weapon, you gain a +2 bonus to the damage roll.</p>"
+  },
+  {
+    "name": "Transmuted Spell",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "metamagic",
+    "classes": [
+      "Sorcerer"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Sorcery Point"
+    },
+    "description": "<p>When you cast a spell that deals a type of damage from the following list, you can spend 1 Sorcery Point to change that damage type to one of the other listed types: Acid, Cold, Fire, Lightning, Poison, Thunder.</p>"
+  },
+  {
+    "name": "Transmuted Spell",
+    "source": "TCE",
+    "rules": "2014",
+    "category": "metamagic",
+    "classes": [
+      "Sorcerer"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Sorcery Point"
+    },
+    "description": "<p>When you cast a spell that deals a type of damage from the following list, you can spend 1 sorcery point to change that damage type to one of the other listed types: acid, cold, fire, lightning, poison, thunder.</p>"
+  },
+  {
+    "name": "Trip Attack",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "maneuver",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "description": "<p>When you hit a creature with a weapon attack, you can expend one superiority die to attempt to knock the target down. You add the superiority die to the attack's damage roll, and if the target is Large or smaller, it must make a Strength saving throw. On a failed save, you knock the target prone.</p>"
+  },
+  {
+    "name": "Trip Attack",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "maneuver",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "description": "<p>When you hit a creature with an attack roll using a weapon or an Unarmed Strike, you can expend one Superiority Die and add the die to the attack's damage roll. If the target is Large or smaller, it must succeed on a Strength saving throw or have the Prone condition.</p>"
+  },
+  {
+    "name": "Twinned Spell",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "metamagic",
+    "classes": [
+      "Sorcerer"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Sorcery Point"
+    },
+    "description": "<p>When you cast a spell that targets only one creature and doesn't have a range of self, you can spend a number of sorcery points equal to the spell's level to target a second creature in range with the same spell (1 sorcery point if the spell is a cantrip).</p><p>To be eligible, a spell must be incapable of targeting more than one creature at the spell's current level. For example, magic missile and scorching ray aren't eligible, but ray of frost and chromatic orb are.</p>"
+  },
+  {
+    "name": "Twinned Spell",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "metamagic",
+    "classes": [
+      "Sorcerer"
+    ],
+    "prerequisites": null,
+    "consumes": {
+      "name": "Sorcery Point"
+    },
+    "description": "<p>When you cast a spell, such as Charm Person, that can be cast with a higher-level spell slot to target an additional creature, you can spend 1 Sorcery Point to increase the spell's effective level by 1.</p>"
+  },
+  {
+    "name": "Two-Weapon Fighting",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "fightingStyle",
+    "classes": [
+      "Fighter",
+      "Bard",
+      "Ranger"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>When you engage in two-weapon fighting, you can add your ability modifier to the damage of the second attack.</p>"
+  },
+  {
+    "name": "Unarmed Fighting",
+    "source": "TCE",
+    "rules": "2014",
+    "category": "fightingStyle",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>Your unarmed strikes can deal bludgeoning damage equal to 1d6 + your Strength modifier on a hit. If you aren't wielding any weapons or a shield when you make the attack roll, the d6 becomes a d8.</p><p>At the start of each of your turns, you can deal 1d4 bludgeoning damage to one creature grappled by you.</p>"
+  },
+  {
+    "name": "Unbroken Air",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "elementalDiscipline",
+    "classes": [
+      "Monk"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>You can create a blast of compressed air that strikes like a mighty fist. As an action, you can spend 2 ki points and choose a creature within 30 feet of you. That creature must make a Strength saving throw. On a failed save, the creature takes 3d10 bludgeoning damage, plus an extra 1d10 bludgeoning damage for each additional ki point you spend, and you can push the creature up to 20 feet away from you and knock it prone. On a successful save, the creature takes half as much damage, and you don't push it or knock it prone.</p>"
+  },
+  {
+    "name": "Undying Servitude",
+    "source": "TCE",
+    "rules": "2014",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 5,
+            "class": {
+              "name": "Warlock"
+            }
+          }
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>You can cast animate dead without using a spell slot. Once you do so, you can't cast it in this way again until you finish a long rest.</p>"
+  },
+  {
+    "name": "Visions of Distant Realms",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 15,
+            "class": {
+              "name": "Warlock"
+            }
+          }
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>You can cast arcane eye at will, without expending a spell slot.</p>"
+  },
+  {
+    "name": "Visions of Distant Realms",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 9,
+            "class": {
+              "name": "Warlock",
+              "source": "XPHB",
+              "visibleStats": true
+            }
+          }
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>You can cast Arcane Eye without expending a spell slot.</p>"
+  },
+  {
+    "name": "Voice of the Chain Master",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "pact": "Chain"
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>You can communicate telepathically with your familiar and perceive through your familiar's senses as long as you are on the same plane of existence. Additionally, while perceiving through your familiar's senses, you can also speak through your familiar in your own voice, even if your familiar is normally incapable of speech.</p>"
+  },
+  {
+    "name": "Water Whip",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "elementalDiscipline",
+    "classes": [
+      "Monk"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>You can spend 2 ki points as an action to create a whip of water that shoves and pulls a creature to unbalance it. A creature that you can see that is within 30 feet of you must make a Dexterity saving throw. On a failed save, the creature takes 3d10 bludgeoning damage, plus an extra 1d10 bludgeoning damage for each additional ki point you spend, and you can either knock it prone or pull it up to 25 feet closer to you. On a successful save, the creature takes half as much damage, and you don't pull it or knock it prone.</p>"
+  },
+  {
+    "name": "Wave of Rolling Earth",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "elementalDiscipline",
+    "classes": [
+      "Monk"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 17,
+            "class": {
+              "name": "Monk"
+            },
+            "subclass": {
+              "name": "Four Elements"
+            }
+          }
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>You can spend 6 ki points to cast wall of stone.</p>"
+  },
+  {
+    "name": "Whispers of the Grave",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 9,
+            "class": {
+              "name": "Warlock"
+            }
+          }
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>You can cast speak with dead at will, without expending a spell slot.</p>"
+  },
+  {
+    "name": "Whispers of the Grave",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 7,
+            "class": {
+              "name": "Warlock",
+              "source": "XPHB",
+              "visibleStats": true
+            }
+          }
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>You can cast Speak with Dead without expending a spell slot.</p>"
+  },
+  {
+    "name": "Witch Sight",
+    "source": "PHB",
+    "rules": "2014",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 15,
+            "class": {
+              "name": "Warlock"
+            }
+          }
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>You can see the true form of any shapechanger or creature concealed by illusion or transmutation magic while the creature is within 30 feet of you and within line of sight.</p>"
+  },
+  {
+    "name": "Witch Sight",
+    "source": "XPHB",
+    "rules": "2024",
+    "category": "eldritchInvocation",
+    "classes": [
+      "Warlock"
+    ],
+    "prerequisites": {
+      "raw": [
+        {
+          "level": {
+            "level": 15,
+            "class": {
+              "name": "Warlock",
+              "source": "XPHB",
+              "visibleStats": true
+            }
+          }
+        }
+      ]
+    },
+    "consumes": null,
+    "description": "<p>You have Truesight with a range of 30 feet.</p>"
+  }
+]

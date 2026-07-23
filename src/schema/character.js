@@ -108,7 +108,13 @@ export function createEmptyCharacter() {
     // continua igual), "avg" = média escolhida conscientemente, "pending" =
     // jogador pediu rolagem mas o Foundry ainda não rolou, número = já
     // resolvido (rolado de verdade no Foundry, ou lido de volta de lá).
-    classes: [{ name: "", subclass: "", subclassRules: "", level: 1, hpRolls: [] }],
+    // `rules` (edição REAL dessa classe) só é preenchido pelo módulo no
+    // "Enviar pro site" (ver reverseCharacter.js) -- o wizard de criação nunca
+    // escreve isso, já que ali toda classe nova é sempre da mesma edição do
+    // personagem (`rulesMode`). Existe só pra multiclasse editada direto no
+    // Foundry com classes de edição diferente não perder a edição da classe
+    // que não é a original no round-trip.
+    classes: [{ name: "", rules: "", subclass: "", subclassRules: "", level: 1, hpRolls: [] }],
     abilities: { str: 10, dex: 10, con: 10, int: 10, wis: 10, cha: 10 },
     skillProficiencies: [],
     skillExpertise: [],
@@ -128,7 +134,21 @@ export function createEmptyCharacter() {
     // (arrastado na etapa Melhorias); `feat` é o nome do talento escolhido
     // quando `choice === "feat"`. Ver StepMelhorias.jsx.
     abilityImprovements: [],
+    // Escolhas de "pool que cresce por nível" da classe/subclasse (Fighting
+    // Style, Metamagic, Eldritch Invocations, Maneuvers, Infusões) — lista
+    // achatada, sem classIndex/nível (mesmo formato de `feats`, que também não
+    // guarda de onde veio): quantos slots estão abertos é recalculado a partir
+    // de `classesData`/`subclassesData` (campo `optionalFeatureChoices`) + nível
+    // atual da classe, não precisa persistir isso. Ver StepEscolhasDeClasse.jsx.
+    classChoices: [],
     spells: [],
+    // Marca um card como snapshot congelado de ANTES de um Level-Up (ver
+    // LevelUpWizard.jsx) — continua um card normal (editável, sincronizável
+    // com o Foundry), só ganha uma tag visual "Original" na lista. `derivedFrom`
+    // é só rastreio (id do personagem que nasceu desta subida), sem uso
+    // funcional ainda.
+    isOriginal: false,
+    derivedFrom: null,
     inspiration: false,
     personality: { trait: "", ideal: "", bond: "", flaw: "" },
     appearance: { gender: "", age: "", height: "", weight: "", eyes: "", hair: "", skin: "", faith: "", description: "" },

@@ -242,7 +242,7 @@
     "source": "BookOfEbonTides",
     "rules": "2014",
     "size": "M",
-    "speed": null,
+    "speed": 30,
     "skills": [],
     "skillChoice": null,
     "tools": [],
@@ -829,6 +829,55 @@
       {
         "name": "Dwarven Armor Training",
         "description": "<p>You have proficiency with light and medium armor.</p>"
+      }
+    ],
+    "spellChoices": []
+  },
+  {
+    "name": "Eladrin",
+    "source": "MPMM",
+    "rules": "2014",
+    "size": [
+      "M"
+    ],
+    "speed": 30,
+    "skills": [
+      "Percepção"
+    ],
+    "skillChoice": null,
+    "tools": [],
+    "toolChoice": null,
+    "languages": "",
+    "languageChoice": null,
+    "abilityBonus": null,
+    "resistances": [],
+    "resistanceChoice": null,
+    "originFeat": null,
+    "description": "<p>Choose your eladrin's season: autumn, winter, spring, or summer. When finishing a long rest, you can change your season. See the \"Info\" tab for more information.</p><p>Eladrin are elves of the Feywild, a realm of perilous beauty and boundless magic. Using that magic, eladrin can step from one place to another in the blink of an eye, and each eladrin resonates with emotions captured in the Feywild in the form of seasons—affinities that affect the eladrin's mood and appearance. An eladrin's season can change, though some remain in one season forever. Choose your season or roll on the Eladrin Seasons table. Your Trance trait lets you change your season.</p><p>Like other elves, eladrin can live to be over 750 years old.</p>",
+    "traits": [
+      {
+        "name": "Creature Type",
+        "description": "<p>You are a Humanoid. You are also considered an elf for any prerequisite or effect that requires you to be an elf.</p>"
+      },
+      {
+        "name": "Darkvision",
+        "description": "<p>You can see in dim light within 60 feet of you as if it were bright light and in darkness as if it were dim light. You discern colors in that darkness only as shades of gray.</p>"
+      },
+      {
+        "name": "Fey Ancestry",
+        "description": "<p>You have advantage on saving throws you make to avoid or end the charmed condition on yourself.</p>"
+      },
+      {
+        "name": "Fey Step",
+        "description": "<p>As a bonus action, you can magically teleport up to 30 feet to an unoccupied space you can see. You can use this trait a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.</p><p>When you reach 3rd level, your Fey Step gain an additional effect based on your season; if the effect requires a saving throw, the DC equals 8 + your proficiency bonus + your Intelligence, Wisdom, or Charisma modifier (choose when you select this race):</p><ul><li><strong>Autumn:</strong> Immediately after you use your Fey Step, up to two creatures of your choice that you can see within 10 feet of you must succeed on a Wisdom saving throw or be charmed by you for 1 minute, or until you or your companions deal any damage to the creatures.</li><li><strong>Winter:</strong> When you use your Fey Step, one creature of your choice that you can see within 5 feet of you before you teleport must succeed on a Wisdom saving throw or be frightened of you until the end of your next turn.</li><li><strong>Spring:</strong> When you use your Fey Step, you can touch one willing creature within 5 feet of you. That creature then teleports instead of you, appearing in an unoccupied space of your choice that you can see within 30 feet of you.</li><li><strong>Summer:</strong> Immediately after you use your Fey Step, each creature of your choice that you can see within 5 feet of you takes fire damage equal to your proficiency bonus.</li></ul>"
+      },
+      {
+        "name": "Keen Senses",
+        "description": "<p>You have proficiency in the Perception skill.</p>"
+      },
+      {
+        "name": "Trance",
+        "description": "<p>You don't need to sleep, and magic can't put you to sleep. You can finish a long rest in 4 hours if you spend those hours in a trancelike meditation, during which you retain consciousness.</p><p>Whenever you finish this trance, you can change your season, and you can gain two proficiencies that you don't have, each one with a weapon or a tool of your choice selected from the Player's Handbook. You mystically acquire these proficiencies by drawing them from shared elven memory, and you retain them until you finish your next long rest.</p>"
       }
     ],
     "spellChoices": []
@@ -2079,6 +2128,52 @@
     "spellChoices": []
   },
   {
+    "name": "Harengon",
+    "source": "WBtW",
+    "rules": "2014",
+    "size": [
+      "S",
+      "M"
+    ],
+    "speed": 30,
+    "skills": [
+      "Percepção"
+    ],
+    "skillChoice": null,
+    "tools": [],
+    "toolChoice": null,
+    "languages": "",
+    "languageChoice": null,
+    "abilityBonus": null,
+    "resistances": [],
+    "resistanceChoice": null,
+    "originFeat": null,
+    "description": "<p>Harengons originated in the Feywild, where they spoke Sylvan and embodied the spirit of freedom and travel. In time, these rabbitfolk hopped into other worlds, bringing the fey realm's exuberance with them and learning new languages as they went.</p><p>Harengons are bipedal, with the characteristic long feet of the rabbits they resemble and fur in a variety of colors. They share the keen senses and powerful legs of leporine creatures and are full of energy, like a wound-up spring. Harengons are blessed with a little fey luck, and they often find themselves a few fortunate feet away from dangers during adventures.</p>",
+    "traits": [
+      {
+        "name": "Size",
+        "description": "<p>You are Medium or Small. You choose the size when you select this race.</p>"
+      },
+      {
+        "name": "Hare-Trigger",
+        "description": "<p>You can add your proficiency bonus to your initiative rolls.</p>"
+      },
+      {
+        "name": "Leporine Senses",
+        "description": "<p>You have proficiency in the Perception skill.</p>"
+      },
+      {
+        "name": "Lucky Footwork",
+        "description": "<p>When you fail a Dexterity saving throw, you can use your reaction to roll a d4 and add it to the save, potentially turning the failure into a success. You can't use this reaction if you're prone or your speed is 0.</p>"
+      },
+      {
+        "name": "Rabbit Hop",
+        "description": "<p>As a bonus action, you can jump a number of feet equal to five times your proficiency bonus, without provoking opportunity attacks. You can use this trait only if your speed is greater than 0. You can use it a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.</p>"
+      }
+    ],
+    "spellChoices": []
+  },
+  {
     "name": "Human",
     "source": "PHB",
     "rules": "2014",
@@ -2770,7 +2865,7 @@
     "source": "BookOfEbonTides",
     "rules": "2014",
     "size": "M",
-    "speed": null,
+    "speed": 30,
     "skills": [],
     "skillChoice": null,
     "tools": [],
@@ -2996,6 +3091,57 @@
       {
         "name": "Language",
         "description": "You can speak, read, and write Goblin and Umbral."
+      }
+    ],
+    "spellChoices": []
+  },
+  {
+    "name": "Tabaxi",
+    "source": "MPMM",
+    "rules": "2014",
+    "size": [
+      "S",
+      "M"
+    ],
+    "speed": 30,
+    "skills": [
+      "Percepção",
+      "Furtividade"
+    ],
+    "skillChoice": null,
+    "tools": [],
+    "toolChoice": null,
+    "languages": "",
+    "languageChoice": null,
+    "abilityBonus": null,
+    "resistances": [],
+    "resistanceChoice": null,
+    "originFeat": null,
+    "description": "<p>Created by the Cat Lord—a divine being of the Upper Planes—to blend the qualities of humanoids and cats, tabaxi are a varied people in both attitude and appearance. In some lands, tabaxi live like the cats they resemble, naturally curious and at home in playful environments. In other places, tabaxi live as other folk do, not exhibiting the feline behavior the Cat Lord intended.</p><p>Tabaxi's appearance is as varied as their attitudes. Some tabaxi have features or patterning in their fur like tigers, jaguars, or other big cats, while others have appearances more like a house cat. Still others have unique patterns or might style their fur to their preferences—or might even be hairless!</p>",
+    "traits": [
+      {
+        "name": "Size",
+        "description": "<p>You are Medium or Small. You choose the size when you select this race.</p>"
+      },
+      {
+        "name": "Speed",
+        "description": "<p>Your walking speed is 30 feet, and you have a climbing speed equal to your walking speed.</p>"
+      },
+      {
+        "name": "Cat's Claws",
+        "description": "<p>You can use your claws to make unarmed strikes. When you hit with them, the strike deals 1d6 + your Strength modifier slashing damage, instead of the bludgeoning damage normal for an unarmed strike.</p>"
+      },
+      {
+        "name": "Cat's Talent",
+        "description": "<p>You have proficiency in the Perception and Stealth skills.</p>"
+      },
+      {
+        "name": "Darkvision",
+        "description": "<p>You can see in dim light within 60 feet of you as if it were bright light and in darkness as if it were dim light. You discern colors in that darkness only as shades of gray.</p>"
+      },
+      {
+        "name": "Feline Agility",
+        "description": "<p>Your reflexes and agility allow you to move with a burst of speed. When you move on your turn in combat, you can double your speed until the end of the turn. Once you use this trait, you can't use it again until you move 0 feet on one of your turns.</p>"
       }
     ],
     "spellChoices": []

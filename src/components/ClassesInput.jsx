@@ -1,5 +1,6 @@
 import { SourceItemPicker } from "./SourceItemPicker";
 import { ClassGridPicker } from "./ClassGridPicker";
+import { SubclassPicker } from "./SubclassPicker";
 import { EquipmentSlots } from "./EquipmentSlots";
 import { ChoicePicker } from "./ChoicePicker";
 import { SpellChoicePicker } from "./SpellChoicePicker";
@@ -145,21 +146,14 @@ export function ClassesInput({
               <label className="list-editor-field">
                 Subclasse
                 {variant === "grid" ? (
-                  !matched ? (
-                    <p className="field-hint">Escolha a classe primeiro.</p>
-                  ) : (row.level ?? 1) < (matched.subclassLevel ?? 1) ? (
-                    <p className="field-hint">
-                      Subclasse disponível a partir do nível {matched.subclassLevel} de {matched.name}.
-                    </p>
-                  ) : (
-                    <ClassGridPicker
-                      items={subclassOptions}
-                      value={row.subclass}
-                      selectedRules={row.subclassRules}
-                      onPick={(item) => pickSubclass(index, item.name, item)}
-                      emptyMessage="Nenhuma subclasse encontrada pra essa classe."
-                    />
-                  )
+                  <SubclassPicker
+                    classData={matched}
+                    subclassesData={subclassesData}
+                    level={row.level}
+                    value={row.subclass}
+                    selectedRules={row.subclassRules}
+                    onPick={(item) => pickSubclass(index, item.name, item)}
+                  />
                 ) : (
                   <SourceItemPicker
                     items={subclassOptions}

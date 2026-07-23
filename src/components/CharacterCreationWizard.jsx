@@ -5,19 +5,22 @@ import { StepRaca } from "./wizard/StepRaca";
 import { StepAntecedente } from "./wizard/StepAntecedente";
 import { ClassesInput } from "./ClassesInput";
 import { StepAtributos } from "./wizard/StepAtributos";
-import { StepMelhorias, CHIP_DEFS } from "./wizard/StepMelhorias";
+import { StepMelhorias } from "./wizard/StepMelhorias";
+import { StepEscolhasDeClasse } from "./wizard/StepEscolhasDeClasse";
+import { StepMagias } from "./wizard/StepMagias";
 import { StepPericias } from "./wizard/StepPericias";
 import { StepIdiomas } from "./wizard/StepIdiomas";
 import { StepEquipamento } from "./wizard/StepEquipamento";
 import { StepIdentidade } from "./wizard/StepIdentidade";
 import { FoundrySheetView } from "./FoundrySheetView";
 import { FeatsInput } from "./FeatsInput";
-import { ListEditor } from "./ListEditor";
-import { SpellBrowser } from "./SpellBrowser";
 import featsData from "../data/content/feats.json";
-import spellsData from "../data/content/spells.json";
+import optionalFeaturesData from "../data/content/optionalfeatures.json";
 import { useCharacterAppliers } from "../hooks/useCharacterAppliers";
+import { useAbilityImprovements } from "../hooks/useAbilityImprovements";
+import { useClassChoices } from "../hooks/useClassChoices";
 import { useCustomBackgrounds, useCustomClasses, useCustomRaces } from "../data/customContent";
+import { resolveClassMatches } from "../schema/resolveClassMatches";
 import racesData from "../data/content/races.json";
 import backgroundsData from "../data/content/backgrounds.json";
 import classesData from "../data/content/classes.json";
@@ -29,6 +32,17 @@ function sizeToLetters(size) {
   if (Array.isArray(size)) return size.filter(Boolean);
   if (typeof size === "string") return size.split("/").filter(Boolean);
   return [];
+}
+
+// Mesma ideia de resolveClassMatches (schema/resolveClassMatches.js), mas pra
+// Raça/Antecedente: dado o nome + edição já gravados no personagem, acha o
+// item correspondente no banco -- usado só no modo de EDIÇÃO, pra popular
+// `raceMatch`/`backgroundMatch` no primeiro render (sem isso, etapas
+// condicionais como "Feats", que dependem de `raceMatch?.originFeat`, ficam
+// escondidas até o usuário reabrir a etapa Raça/Antecedente à toa).
+function resolveSimpleMatch(items, name, rules) {
+  if (!name) return null;
+  return items.find((i) => i.name === name && rules && i.rules === rules) ?? items.find((i) => i.name === name) ?? null;
 }
 
 // Quantos talentos o personagem já tem no total, de QUALQUER fonte — raça de
@@ -70,12 +84,50 @@ function openFeatChoiceSlots(character, raceMatch, backgroundMatch) {
 // classe, não nível total do personagem — multiclasse soma slots
 // independentes). `classMatches[i].classData.asiLevels` vem do
 // generate-site-content.mjs (extraído da feature "Ability Score Improvement").
-function abilityImprovementSlots(character, classMatches) {
+export function abilityImprovementSlots(character, classMatches) {
   const slots = [];
   character.classes.forEach((row, classIndex) => {
     const asiLevels = classMatches[classIndex]?.classData?.asiLevels ?? [];
     for (const level of asiLevels) {
       if (level <= (row.level ?? 1)) slots.push({ classIndex, level, className: row.name });
+    }
+  });
+  return slots;
+}
+
+// Quantas escolhas de cada categoria (Fighting Style/Metamagic/Invocations/
+// Maneuvers/Infusions) a classe (+ subclasse, se der alguma também — ex:
+// Battle Master "Maneuvers", Champion "Additional Fighting Style") já libera
+// no nível atual. `optionalFeatureChoices[].progression` é CUMULATIVO
+// (`{"3":2,"10":3,"17":4}` = "no nível 10 você TEM 3", não "+3") — por isso
+// pega só o maior nível já alcançado, não soma todos os degraus. Duas fontes
+// da MESMA categoria (classe + subclasse) somam entre si (Fighter base + Champion
+// são pools independentes que se somam num total maior).
+function categoryCountsForClass(classData, subclassData, level) {
+  const pools = [...(classData?.optionalFeatureChoices ?? []), ...(subclassData?.optionalFeatureChoices ?? [])];
+  const counts = new Map();
+  for (const pool of pools) {
+    const reached = Object.keys(pool.progression ?? {})
+      .map(Number)
+      .filter((lvl) => lvl <= level);
+    if (!reached.length) continue;
+    const count = pool.progression[Math.max(...reached)];
+    if (!count) continue;
+    const prev = counts.get(pool.category) ?? { count: 0, source: pool.source ?? "optionalFeature" };
+    prev.count += count;
+    counts.set(pool.category, prev);
+  }
+  return counts;
+}
+
+// Um "slot" aqui é um CARD inteiro (classe+categoria), não uma escolha
+// individual -- cada card carrega `count` picks (ver StepEscolhasDeClasse).
+export function classChoiceSlots(character, classMatches) {
+  const slots = [];
+  character.classes.forEach((row, classIndex) => {
+    const counts = categoryCountsForClass(classMatches[classIndex]?.classData, classMatches[classIndex]?.subclassData, row.level ?? 1);
+    for (const [category, info] of counts) {
+      slots.push({ classIndex, className: row.name, category, count: info.count, source: info.source });
     }
   });
   return slots;
@@ -135,6 +187,15 @@ const STEP_DEFS = [
       "Em certos níveis, cada classe libera a escolha entre aumentar atributos (+2 em um, ou +1 em dois) ou pegar um talento. " +
       "Arraste o bônus pro atributo de destino, ou escolha um talento numa lista.",
     conditional: ({ character, classMatches }) => abilityImprovementSlots(character, classMatches).length > 0,
+  },
+  {
+    key: "escolhas",
+    label: "Escolhas",
+    title: "Escolhas de Classe",
+    blurb:
+      "Algumas classes concedem um pool de opções que cresce com o nível — Estilo de Luta, Metamagia, Invocações Místicas, " +
+      "Manobras (Battle Master) ou Infusões (Artífice). Escolha aqui cada uma; conforme o personagem sobe de nível, novos slots aparecem.",
+    conditional: ({ character, classMatches }) => classChoiceSlots(character, classMatches).length > 0,
   },
   {
     key: "pericias",
@@ -243,6 +304,7 @@ function summaryRows(character, targetLevel) {
     ["Idiomas", character.languages?.length ? character.languages.join(", ") : null],
     ["Equipamento", character.equipment?.length ? `${character.equipment.length} item(ns)` : null],
     ["Feats", character.feats?.length ? character.feats.join(", ") : null],
+    ["Escolhas de Classe", character.classChoices?.length ? character.classChoices.map((c) => c.name).join(", ") : null],
     ["Magias", character.spells?.length ? `${character.spells.length} magia(s)` : null],
     ["Nome", character.name || null],
     ["Alinhamento", character.alignment || null],
@@ -276,22 +338,16 @@ function StepConfirmacao({ character, targetLevel }) {
   return <FoundrySheetView character={character} />;
 }
 
+// `initialValue` só chega preenchido no modo de EDIÇÃO (editar um personagem
+// já existente) — criação de personagem novo nunca passa essa prop. Nesse
+// modo o wizard vira um menu de abas de livre navegação (sem Voltar/Pular/
+// Próximo sequencial, ver render mais abaixo) e precisa ter `raceMatch`/
+// `backgroundMatch`/`classesMatches` resolvidos já no PRIMEIRO render — do
+// contrário etapas condicionais (Feats, Melhorias, Escolhas, Magias) ficam
+// escondidas até o usuário visitar Raça/Antecedente/Classe à toa, mesmo já
+// tendo dado tudo que precisavam pra aparecer.
 export function CharacterCreationWizard({ initialValue, onSubmit, onCancel }) {
-  const [character, setCharacter] = useState(() => initialValue ?? createEmptyCharacter());
-  const [targetLevel, setTargetLevel] = useState(1);
-  const [raceMatch, setRaceMatch] = useState(null);
-  const [backgroundMatch, setBackgroundMatch] = useState(null);
-  // Guardado aqui (no wizard, que nunca desmonta durante a navegação entre
-  // etapas) em vez de dentro do `ClassesInput` — achado revisando o projeto:
-  // `useState` local no `ClassesInput` resetava sozinho toda vez que o
-  // wizard saía da etapa Classe e voltava (React desmonta o componente ao
-  // trocar de etapa), corrompendo silenciosamente `classMatches` na próxima
-  // escolha/remoção. `classMatches` (array) é só a forma derivada que o
-  // resto do wizard já espera (StepPericias, abilityImprovementSlots).
-  const [classesMatches, setClassesMatches] = useState({});
-  const classMatches = Object.values(classesMatches);
-  const [stepKey, setStepKey] = useState(STEP_DEFS[0].key);
-  const [spellBrowserOpen, setSpellBrowserOpen] = useState(false);
+  const editMode = Boolean(initialValue);
 
   const customRaces = useCustomRaces();
   const customBackgrounds = useCustomBackgrounds();
@@ -300,6 +356,39 @@ export function CharacterCreationWizard({ initialValue, onSubmit, onCancel }) {
   // filtrada de verdade pelo modo, mesma regra de CharacterForm.jsx.
   const allRaces = [...racesData, ...customRaces];
   const allBackgrounds = [...backgroundsData, ...customBackgrounds];
+
+  // Mescla com os padrões em vez de usar `initialValue` cru — uma ficha salva
+  // ANTES de um campo novo existir no schema (ex: `senses`, `isOriginal`) não
+  // tem essa chave no Firestore, e acessar `character.senses.algo` direto
+  // quebra a tela inteira ao abrir pra editar (mesma proteção que
+  // CharacterForm.jsx já usava).
+  const [character, setCharacter] = useState(() => ({ ...createEmptyCharacter(), ...initialValue }));
+  const [targetLevel, setTargetLevel] = useState(() => initialValue?.classes?.[0]?.level ?? 1);
+  const [raceMatch, setRaceMatch] = useState(() =>
+    initialValue ? resolveSimpleMatch(allRaces, initialValue.race, initialValue.raceRules) : null,
+  );
+  const [backgroundMatch, setBackgroundMatch] = useState(() =>
+    initialValue ? resolveSimpleMatch(allBackgrounds, initialValue.background, initialValue.backgroundRules) : null,
+  );
+  // Guardado aqui (no wizard, que nunca desmonta durante a navegação entre
+  // etapas) em vez de dentro do `ClassesInput` — achado revisando o projeto:
+  // `useState` local no `ClassesInput` resetava sozinho toda vez que o
+  // wizard saía da etapa Classe e voltava (React desmonta o componente ao
+  // trocar de etapa), corrompendo silenciosamente `classMatches` na próxima
+  // escolha/remoção. `classMatches` (array) é só a forma derivada que o
+  // resto do wizard já espera (StepPericias, abilityImprovementSlots).
+  const [classesMatches, setClassesMatches] = useState(() => (initialValue ? resolveClassMatches(initialValue.classes) : {}));
+  const classMatches = Object.values(classesMatches);
+  const [stepKey, setStepKey] = useState(STEP_DEFS[0].key);
+  // Achado ao vivo (sync real quebrando): o wizard deixava "Concluir" sem
+  // nome nenhum -- Firestore aceita `name: ""` de boa, mas `Actor.create` do
+  // Foundry rejeita (falha silenciosa, vira "1 falhou" sem detalhe nenhum pro
+  // usuário do lado de lá). Só mostra o aviso DEPOIS de uma tentativa real de
+  // concluir sem nome (não aparece logo de cara, incomodaria à toa em toda
+  // etapa final) -- some sozinho assim que o campo Nome deixa de ficar vazio.
+  const [nameRequiredError, setNameRequiredError] = useState(false);
+  const [spellBrowserOpen, setSpellBrowserOpen] = useState(false);
+
   // Classe é a única coisa filtrada de verdade por edição — inclui
   // customClasses também no filtro (achado real: entradas customizadas SEM
   // `rules` marcado apareciam nas duas edições ao mesmo tempo, mesmo sendo
@@ -312,6 +401,9 @@ export function CharacterCreationWizard({ initialValue, onSubmit, onCancel }) {
     : [...classesData, ...customClasses];
 
   const appliers = useCharacterAppliers(setCharacter);
+  const { findImprovement, revertImprovement, setImprovementChoice, moveImprovementChip, unassignImprovementChip, pickImprovementFeat } =
+    useAbilityImprovements(character, setCharacter, appliers.applyAbilityBonus);
+  const { setClassChoice, clearClassChoice } = useClassChoices(setCharacter);
 
   function pickRace(item) {
     set("race", item.name);
@@ -320,12 +412,23 @@ export function CharacterCreationWizard({ initialValue, onSubmit, onCancel }) {
     const options = sizeToLetters(item?.size);
     appliers.applySize(options.length === 1 ? options[0] : "");
     appliers.applySenses({ darkvision: deriveDarkvisionFeet(item?.traits) });
+    // Idioma FIXO da raça (ex: "comum, anão") entra sozinho, mesmo espírito de
+    // applySize/applySenses logo acima -- não é uma escolha do jogador, é
+    // concessão garantida, então não faz sentido depender de um clique em
+    // "Adicionar" que o jogador pode esquecer (pedido do usuário: idioma
+    // concedido por Raça/Antecedente tem que entrar sozinho). Escolha LIVRE de
+    // idioma (`languageChoice`) continua manual, via ChoicePicker em
+    // StepIdiomas -- essa sim precisa de decisão do jogador.
+    if (item?.languages) appliers.applyLanguages(item.languages);
   }
 
   function pickBackground(item) {
     set("background", item.name);
     setBackgroundMatch(item);
     set("backgroundRules", item?.rules ?? "");
+    // Mesmo automatismo de pickRace acima -- idioma fixo do antecedente entra
+    // sozinho, sem depender do clique em "Adicionar".
+    if (item?.languages) appliers.applyLanguages(item.languages);
     // Talento de Origem (só existe em antecedente 2024) entra sozinho na
     // lista de feats — troca de antecedente no meio do caminho remove o
     // talento do antecedente ANTERIOR antes de adicionar o novo, pra não
@@ -339,89 +442,6 @@ export function CharacterCreationWizard({ initialValue, onSubmit, onCancel }) {
     });
   }
 
-  function findImprovement(classIndex, level) {
-    return character.abilityImprovements.find((i) => i.classIndex === classIndex && i.level === level);
-  }
-
-  // Desfaz o efeito já aplicado de um slot (bônus de atributo somado ou
-  // talento adicionado) — chamado sempre ANTES de trocar a escolha daquele
-  // slot, mesmo padrão já usado pro talento de origem do Antecedente (troca
-  // sempre reverte o efeito anterior primeiro, pra não deixar sobra).
-  function revertImprovement(improvement) {
-    if (!improvement) return;
-    if (improvement.feat) {
-      setCharacter((prev) => ({ ...prev, feats: prev.feats.filter((f) => f !== improvement.feat) }));
-    }
-    const chips = CHIP_DEFS[improvement.choice] ?? [];
-    const negated = {};
-    for (const chip of chips) {
-      const abilityKey = improvement.assignments?.[chip.id];
-      if (abilityKey) negated[abilityKey] = (negated[abilityKey] ?? 0) - chip.amount;
-    }
-    if (Object.keys(negated).length) appliers.applyAbilityBonus(negated);
-  }
-
-  function replaceImprovement(classIndex, level, patch) {
-    setCharacter((prev) => ({
-      ...prev,
-      abilityImprovements: [
-        ...prev.abilityImprovements.filter((i) => !(i.classIndex === classIndex && i.level === level)),
-        { classIndex, level, choice: null, assignments: {}, feat: null, featRules: null, ...patch },
-      ],
-    }));
-  }
-
-  function setImprovementChoice(classIndex, level, choice) {
-    revertImprovement(findImprovement(classIndex, level));
-    replaceImprovement(classIndex, level, { choice });
-  }
-
-  // Arrasta um chip de bônus (+2 ou +1) pra um atributo — troca de destino
-  // reverte o chip da posição antiga antes de aplicar na nova (mesmo chip não
-  // pode valer em dois atributos ao mesmo tempo).
-  function moveImprovementChip(classIndex, level, chipId, chipAmount, abilityKey) {
-    const improvement = findImprovement(classIndex, level) ?? { classIndex, level, choice: null, assignments: {}, feat: null };
-    const oldAbilityKey = improvement.assignments[chipId];
-    if (oldAbilityKey === abilityKey) return;
-    // As duas metades do "+1 em dois atributos" não podem cair no mesmo atributo.
-    if (Object.entries(improvement.assignments).some(([id, key]) => id !== chipId && key === abilityKey)) return;
-    if ((character.abilities[abilityKey] ?? 10) + chipAmount > 20) return;
-    const patch = { [abilityKey]: chipAmount };
-    if (oldAbilityKey) patch[oldAbilityKey] = (patch[oldAbilityKey] ?? 0) - chipAmount;
-    appliers.applyAbilityBonus(patch);
-    replaceImprovement(classIndex, level, {
-      choice: improvement.choice,
-      feat: improvement.feat,
-      assignments: { ...improvement.assignments, [chipId]: abilityKey },
-    });
-  }
-
-  function unassignImprovementChip(classIndex, level, chipId, chipAmount) {
-    const improvement = findImprovement(classIndex, level);
-    const abilityKey = improvement?.assignments?.[chipId];
-    if (!abilityKey) return;
-    appliers.applyAbilityBonus({ [abilityKey]: -chipAmount });
-    const assignments = { ...improvement.assignments };
-    delete assignments[chipId];
-    replaceImprovement(classIndex, level, { choice: improvement.choice, feat: improvement.feat, assignments });
-  }
-
-  function pickImprovementFeat(classIndex, level, item) {
-    const improvement = findImprovement(classIndex, level) ?? { classIndex, level, choice: "feat", assignments: {}, feat: null };
-    if (improvement.feat === item.name) return;
-    setCharacter((prev) => {
-      let feats = prev.feats;
-      if (improvement.feat) feats = feats.filter((f) => f !== improvement.feat);
-      if (!feats.includes(item.name)) feats = [...feats, item.name];
-      return { ...prev, feats };
-    });
-    replaceImprovement(classIndex, level, {
-      choice: "feat",
-      assignments: improvement.assignments,
-      feat: item.name,
-      featRules: item.rules ?? "",
-    });
-  }
 
   // Slot de Melhoria de Atributo é identificado por `classIndex` (posição no
   // array `character.classes`, não um id estável — nenhuma lista deste
@@ -437,11 +457,63 @@ export function CharacterCreationWizard({ initialValue, onSubmit, onCancel }) {
   function handleRemoveClass(removedIndex) {
     const toRevert = character.abilityImprovements.filter((i) => i.classIndex === removedIndex);
     for (const improvement of toRevert) revertImprovement(improvement);
+
+    // Mesma ideia de `revertImprovement`, mas pra Escolhas de Classe: a classe
+    // removida pode ter sido a única fonte de alguma categoria (ex: remover o
+    // Warlock deixaria Invocações escolhidas "penduradas" sem slot nenhum que
+    // as justifique) -- corta o excesso do FIM da lista daquela categoria pro
+    // tanto que a classe removida contribuía (`classChoices` não guarda
+    // classIndex, então não dá pra saber COM CERTEZA qual escolha era "dela";
+    // cortar do fim é uma aproximação razoável, mesmo espírito do resto do
+    // wizard que já assume ordem estável dos cards).
+    const removedCounts = categoryCountsForClass(
+      classMatches[removedIndex]?.classData,
+      classMatches[removedIndex]?.subclassData,
+      character.classes[removedIndex]?.level ?? 1,
+    );
+
+    setCharacter((prev) => {
+      let classChoices = prev.classChoices;
+      for (const [category, info] of removedCounts) {
+        const kept = classChoices.filter((c) => c.category !== category);
+        const forCategory = classChoices.filter((c) => c.category === category);
+        classChoices = [...kept, ...forCategory.slice(0, Math.max(0, forCategory.length - info.count))];
+      }
+      return {
+        ...prev,
+        classChoices,
+        abilityImprovements: prev.abilityImprovements
+          .filter((i) => i.classIndex !== removedIndex)
+          .map((i) => (i.classIndex > removedIndex ? { ...i, classIndex: i.classIndex - 1 } : i)),
+      };
+    });
+  }
+
+  // Trocar Regras (2014<->2024) DEPOIS de já ter escolhido classe rebindava
+  // silenciosamente pro item de MESMO NOME na edição nova (achado na revisão
+  // completa do projeto): `allClasses` filtra por `character.rulesMode`, mas
+  // `character.classes[].name` não era limpo -- o próximo render simplesmente
+  // re-resolvia "Fighter" pro Fighter da OUTRA edição, sem avisar, deixando
+  // `abilityImprovements`/`classChoices` já preenchidos descrevendo slots que
+  // podem nem existir mais na edição nova. Em vez de deixar isso acontecer
+  // invisível, zera a escolha de classe (e tudo que dependia dela) sempre que
+  // a edição muda com alguma classe já escolhida -- mesmo espírito de
+  // "reverte o efeito antes de trocar" já usado no resto do wizard (ver
+  // revertImprovement/handleRemoveClass).
+  function handleRulesModeChange(value) {
+    if (value === character.rulesMode) return;
+    if (!character.classes.some((c) => c.name)) {
+      set("rulesMode", value);
+      return;
+    }
+    for (const improvement of character.abilityImprovements) revertImprovement(improvement);
+    setClassesMatches({});
     setCharacter((prev) => ({
       ...prev,
-      abilityImprovements: prev.abilityImprovements
-        .filter((i) => i.classIndex !== removedIndex)
-        .map((i) => (i.classIndex > removedIndex ? { ...i, classIndex: i.classIndex - 1 } : i)),
+      rulesMode: value,
+      classes: [{ name: "", rules: "", subclass: "", subclassRules: "", level: prev.classes[0]?.level ?? 1, hpRolls: [] }],
+      abilityImprovements: [],
+      classChoices: [],
     }));
   }
 
@@ -503,9 +575,20 @@ export function CharacterCreationWizard({ initialValue, onSubmit, onCancel }) {
     goTo(stepIndex - 1);
   }
 
+  // Compartilhado entre "Concluir" (última etapa, modo criação) e "Salvar"
+  // (sempre visível, modo edição) — mesma validação nos dois casos.
+  function trySubmit() {
+    if (!character.name?.trim()) {
+      setNameRequiredError(true);
+      goTo(visibleSteps.findIndex((s) => s.key === "identidade"));
+      return;
+    }
+    onSubmit(character);
+  }
+
   function goNext() {
     if (isLast) {
-      onSubmit(character);
+      trySubmit();
       return;
     }
     goTo(stepIndex + 1);
@@ -514,7 +597,7 @@ export function CharacterCreationWizard({ initialValue, onSubmit, onCancel }) {
   function renderStepBody() {
     switch (step.key) {
       case "regras":
-        return <StepRegras rulesMode={character.rulesMode} onChange={(value) => set("rulesMode", value)} />;
+        return <StepRegras rulesMode={character.rulesMode} onChange={handleRulesModeChange} />;
       case "nivel":
         return <StepNivel targetLevel={targetLevel} onChange={updateTargetLevel} />;
       case "raca":
@@ -575,6 +658,18 @@ export function CharacterCreationWizard({ initialValue, onSubmit, onCancel }) {
             onPickFeat={pickImprovementFeat}
           />
         );
+      case "escolhas":
+        return (
+          <StepEscolhasDeClasse
+            slots={classChoiceSlots(character, classMatches)}
+            classChoices={character.classChoices}
+            rulesMode={character.rulesMode}
+            optionalFeaturesData={optionalFeaturesData}
+            featsData={featsData}
+            onPick={setClassChoice}
+            onClear={clearClassChoice}
+          />
+        );
       case "pericias":
         return (
           <StepPericias
@@ -624,42 +719,14 @@ export function CharacterCreationWizard({ initialValue, onSubmit, onCancel }) {
         );
       case "magias":
         return (
-          <div className="wizard-step-magias">
-            <ListEditor
-              items={character.spells}
-              onChange={(items) => set("spells", items)}
-              addLabel="Adicionar magia"
-              fields={[
-                { key: "name", label: "Magia" },
-                { key: "prepared", label: "Preparada", type: "checkbox", default: false },
-              ]}
-            />
-            <button type="button" onClick={() => setSpellBrowserOpen(true)}>
-              Buscar magia
-            </button>
-            {spellBrowserOpen && (
-              <div
-                className="modal-backdrop"
-                onMouseDown={(event) => {
-                  if (event.target === event.currentTarget) setSpellBrowserOpen(false);
-                }}
-              >
-                <div className="modal-panel modal-panel-wide" onMouseDown={(event) => event.stopPropagation()}>
-                  <div className="modal-header">
-                    <h3>Magias</h3>
-                    <button type="button" onClick={() => setSpellBrowserOpen(false)}>
-                      Fechar
-                    </button>
-                  </div>
-                  <SpellBrowser
-                    spells={spellsData}
-                    rulesMode={character.rulesMode}
-                    onAdd={(name) => appliers.applySpellChoices([name])}
-                  />
-                </div>
-              </div>
-            )}
-          </div>
+          <StepMagias
+            character={character}
+            classMatches={classMatches}
+            spells={character.spells}
+            onChangeSpells={(spells) => set("spells", spells)}
+            browserOpen={spellBrowserOpen}
+            onToggleBrowser={setSpellBrowserOpen}
+          />
         );
       case "identidade":
         return <StepIdentidade character={character} set={set} setNested={setNested} />;
@@ -675,14 +742,19 @@ export function CharacterCreationWizard({ initialValue, onSubmit, onCancel }) {
     <div className="wizard">
       <WizardSummary character={character} targetLevel={targetLevel} />
       <div className="wizard-main">
-        <ol className="wizard-progress">
+        {/* Modo edição: menu de abas de livre navegação, sem noção de "já
+            passou por aqui" (não existe uma ordem obrigatória a seguir) --
+            só a etapa atual se destaca. Modo criação mantém o rastro
+            visual de progresso (feito/atual/futuro), pedido original do
+            wizard de criação. */}
+        <ol className={`wizard-progress${editMode ? " wizard-progress-tabs" : ""}`}>
           {visibleSteps.map((s, index) => (
             <li
               key={s.key}
               className={
                 index === stepIndex
                   ? "wizard-progress-current"
-                  : index < stepIndex
+                  : !editMode && index < stepIndex
                     ? "wizard-progress-done"
                     : ""
               }
@@ -696,6 +768,9 @@ export function CharacterCreationWizard({ initialValue, onSubmit, onCancel }) {
 
         <h2>{step.title}</h2>
         <p className="wizard-blurb">{step.blurb}</p>
+        {step.key === "identidade" && nameRequiredError && !character.name?.trim() && (
+          <p className="error">Dê um nome ao personagem antes de concluir — sem nome, a ficha não sincroniza com o Foundry.</p>
+        )}
 
         <div className="wizard-step-body">{renderStepBody()}</div>
 
@@ -703,19 +778,30 @@ export function CharacterCreationWizard({ initialValue, onSubmit, onCancel }) {
           <button type="button" onClick={onCancel}>
             Cancelar
           </button>
-          <div className="wizard-nav-right">
-            <button type="button" onClick={goBack} disabled={isFirst}>
-              Voltar
-            </button>
-            {!isLast && (
-              <button type="button" className="wizard-skip" onClick={goNext}>
-                Pular
+          {editMode ? (
+            // Edição não tem "última etapa" que conclui -- o menu acima já
+            // deixa toda etapa acessível a qualquer momento, então "Salvar"
+            // fica sempre disponível, não só depois de percorrer tudo.
+            <div className="wizard-nav-right">
+              <button type="button" onClick={trySubmit}>
+                Salvar
               </button>
-            )}
-            <button type="button" onClick={goNext}>
-              {isLast ? "Concluir" : "Próximo"}
-            </button>
-          </div>
+            </div>
+          ) : (
+            <div className="wizard-nav-right">
+              <button type="button" onClick={goBack} disabled={isFirst}>
+                Voltar
+              </button>
+              {!isLast && (
+                <button type="button" className="wizard-skip" onClick={goNext}>
+                  Pular
+                </button>
+              )}
+              <button type="button" onClick={goNext}>
+                {isLast ? "Concluir" : "Próximo"}
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>

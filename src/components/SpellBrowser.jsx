@@ -11,7 +11,11 @@ function compareByColumn(a, b, column) {
   return a.name.localeCompare(b.name);
 }
 
-export function SpellBrowser({ spells, rulesMode, onAdd }) {
+// `canAdd` (opcional) — quando devolve `false` pra uma magia, o botão dela
+// fica desabilitado em vez de escondido (ex: truque conhecido/magia conhecida
+// já bateu o teto do nível atual, ver spellProgression.js). Sem essa prop
+// (uso antigo), toda magia continua sempre clicável.
+export function SpellBrowser({ spells, rulesMode, onAdd, canAdd }) {
   const [search, setSearch] = useState("");
   const [classFilter, setClassFilter] = useState("");
   const [levelFilter, setLevelFilter] = useState("");
@@ -107,10 +111,18 @@ export function SpellBrowser({ spells, rulesMode, onAdd }) {
             </tr>
           </thead>
           <tbody>
-            {sorted.map((spell) => (
-              <tr key={spell.name}>
+            {sorted.map((spell) => {
+              const disabled = canAdd ? !canAdd(spell) : false;
+              return (
+              <tr key={spell.name} className={disabled ? "spell-browser-row-disabled" : undefined}>
                 <td>
-                  <button type="button" className="spell-browser-pick" onClick={() => onAdd(spell.name)}>
+                  <button
+                    type="button"
+                    className="spell-browser-pick"
+                    disabled={disabled}
+                    title={disabled ? "Limite de magias conhecidas/truques deste nível já atingido" : undefined}
+                    onClick={() => onAdd(spell.name)}
+                  >
                     {spell.name}
                   </button>
                 </td>
@@ -123,7 +135,8 @@ export function SpellBrowser({ spells, rulesMode, onAdd }) {
                   <span className={`rules-tag rules-tag-${spell.rules}`}>{spell.rules}</span>
                 </td>
               </tr>
-            ))}
+              );
+            })}
           </tbody>
         </table>
       </div>
