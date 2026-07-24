@@ -51,7 +51,9 @@ export function SheetCard({ item, onEdit, onDelete, onLevelUp, children }) {
         aria-label="Excluir"
         onClick={(event) => {
           event.stopPropagation();
-          onDelete(item.id);
+          if (window.confirm(`Excluir "${item.name || "(sem nome)"}"? Essa ação não pode ser desfeita.`)) {
+            onDelete(item.id);
+          }
         }}
       >
         ×

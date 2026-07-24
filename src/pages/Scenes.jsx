@@ -53,7 +53,10 @@ export function Scenes() {
     }
   }
 
-  async function handleDeleteFolder(folderId) {
+  async function handleDeleteFolder(folderId, folderName) {
+    if (!window.confirm(`Excluir a pasta "${folderName}" e todas as cenas dentro dela? Essa ação não pode ser desfeita.`)) {
+      return;
+    }
     try {
       await deleteSceneFolder(profileId, folderId);
     } catch (err) {
@@ -101,7 +104,7 @@ export function Scenes() {
               <span className="folder-name">{folder.name}</span>
               <span className="folder-count">{folderCounts[folder.id] ?? "…"} cena(s)</span>
             </button>
-            <button type="button" onClick={() => handleDeleteFolder(folder.id)}>
+            <button type="button" onClick={() => handleDeleteFolder(folder.id, folder.name)}>
               Excluir
             </button>
           </div>
@@ -136,7 +139,10 @@ function SceneFolderView({ profileId, folder, onBack }) {
     }
   }
 
-  async function handleDelete(id) {
+  async function handleDelete(id, name) {
+    if (!window.confirm(`Excluir a cena "${name || "(sem nome)"}"? Essa ação não pode ser desfeita.`)) {
+      return;
+    }
     try {
       await deleteScene(profileId, folder.id, id);
     } catch (err) {
@@ -179,7 +185,7 @@ function SceneFolderView({ profileId, folder, onBack }) {
               <button type="button" onClick={() => setEditing(scene)}>
                 Editar
               </button>
-              <button type="button" onClick={() => handleDelete(scene.id)}>
+              <button type="button" onClick={() => handleDelete(scene.id, scene.name)}>
                 Excluir
               </button>
             </div>
