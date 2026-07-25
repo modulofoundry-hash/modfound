@@ -32,6 +32,8 @@ export function StepEquipamento({ currency, onChangeCurrency, equipment, onChang
         fields={[
           { key: "name", label: "Item" },
           { key: "quantity", label: "Qtd", type: "number", default: 1 },
+          { key: "equipped", label: "Equipado", type: "checkbox", default: false },
+          { key: "attuned", label: "Sintonizado", type: "checkbox", default: false },
         ]}
       />
     </div>

@@ -1,5 +1,60 @@
 [
   {
+    "name": "Aarakocra",
+    "source": "MPMM",
+    "rules": "2014",
+    "size": [
+      "M"
+    ],
+    "speed": 30,
+    "skills": [],
+    "skillChoice": null,
+    "tools": [],
+    "toolChoice": null,
+    "languages": "",
+    "languageChoice": null,
+    "abilityBonus": null,
+    "resistances": [],
+    "resistanceChoice": null,
+    "originFeat": null,
+    "description": "<p>A winged people who originated on the Elemental Plane of Air, aarakocra soar through the sky wherever they wander. The first aarakocra served the Wind Dukes of Aaqa—mighty beings of air—and were imbued with a measure of their masters' power over winds. Their descendants still command echoes of that power.</p><p>From below, aarakocra look like large birds and thus are sometimes called birdfolk. Only when they roost on a branch or walk across the ground is their Humanoid nature clear. Standing upright, aarakocra are typically about 5 feet tall, and they have long, narrow legs that taper to sharp talons. Feathers cover their bodies—usually red, orange, yellow, brown, or gray. Their heads are also avian, often resembling those of parrots or eagles.</p>",
+    "traits": [
+      {
+        "name": "Flight",
+        "description": "<p>Because of your wings, you have a flying speed equal to your walking speed. You can't use this flying speed if you're wearing medium or heavy armor.</p>"
+      },
+      {
+        "name": "Talons",
+        "description": "<p>You have talons that you can use to make unarmed strikes. When you hit with them, the strike deals 1d6 + your Strength modifier slashing damage, instead of the bludgeoning damage normal for an unarmed strike.</p>"
+      },
+      {
+        "name": "Wind Caller",
+        "description": "<p>Starting at 3rd level, you can cast the gust of wind spell with this trait, without requiring a material component. Once you cast the spell with this trait, you can't do so again until you finish a long rest. You can also cast the spell using any spell slots you have of 2nd level or higher.</p><p>Intelligence, Wisdom, or Charisma is your spellcasting ability for when you cast gust of wind with this trait (choose when you select this race).</p>"
+      }
+    ],
+    "spellChoices": [],
+    "spellGrants": [
+      {
+        "innate": {
+          "3": {
+            "daily": {
+              "1": [
+                "gust of wind"
+              ]
+            }
+          }
+        },
+        "ability": {
+          "choose": [
+            "int",
+            "wis",
+            "cha"
+          ]
+        }
+      }
+    ]
+  },
+  {
     "name": "Aasimar",
     "source": "XPHB",
     "rules": "2024",
@@ -48,7 +103,84 @@
         "description": "<p>When you reach character level 3, you can transform as a Bonus Action using one of the options below (choose the option each time you transform). The transformation lasts for 1 minute or until you end it (no action required). Once you transform, you can't do so again until you finish a Long Rest.</p><p>Once on each of your turns before the transformation ends, you can deal extra damage to one target when you deal damage to it with an attack or a spell. The extra damage equals your Proficiency Bonus, and the extra damage's type is either Necrotic for Necrotic Shroud or Radiant for Heavenly Wings and Inner Radiance.</p><p>Here are the transformation options:</p><ul><li>Heavenly Wings: Two spectral wings sprout from your back temporarily. Until the transformation ends, you have a Fly Speed equal to your Speed.</li><li>Inner Radiance: Searing light temporarily radiates from your eyes and mouth. For the duration, you shed Bright Light in a 10-foot radius and Dim Light for an additional 10 feet, and at the end of each of your turns, each creature within 10 feet of you takes Radiant damage equal to your Proficiency Bonus.</li><li>Necrotic Shroud: Your eyes briefly become pools of darkness, and flightless wings sprout from your back temporarily. Creatures other than your allies within 10 feet of you must succeed on a Charisma saving throw (8 plus your Charisma modifier and Proficiency Bonus) or have the Frightened condition until the end of your next turn.</li></ul>"
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": [
+      {
+        "known": {
+          "1": [
+            "light"
+          ]
+        },
+        "ability": "cha"
+      }
+    ]
+  },
+  {
+    "name": "Aasimar",
+    "source": "MPMM",
+    "rules": "2014",
+    "size": [
+      "S",
+      "M"
+    ],
+    "speed": 30,
+    "skills": [],
+    "skillChoice": null,
+    "tools": [],
+    "toolChoice": null,
+    "languages": "",
+    "languageChoice": null,
+    "abilityBonus": null,
+    "resistances": [
+      "necrotic",
+      "radiant"
+    ],
+    "resistanceChoice": null,
+    "originFeat": null,
+    "description": "<p>Whether descended from a celestial being or infused with heavenly power, aasimar are mortals who carry a spark of the Upper Planes within their souls. They can fan that spark to bring light, ease wounds, and unleash the fury of the heavens.</p><p>Aasimar can arise among any population of mortals. They resemble their parents, but they live for up to 160 years and often have features that hint at their celestial heritage. These often begin subtle and become more obvious when the aasimar gains the ability to reveal their full celestial nature. The Aasimar Celestial Features table has examples you can choose or use as inspiration to create your own.</p>",
+    "traits": [
+      {
+        "name": "Size",
+        "description": "<p>You are Medium or Small. You choose the size when you select this race.</p>"
+      },
+      {
+        "name": "Celestial Resistance",
+        "description": "<p>You have resistance to necrotic damage and radiant damage.</p>"
+      },
+      {
+        "name": "Darkvision",
+        "description": "<p>You can see in dim light within 60 feet of you as if it were bright light and in darkness as if it were dim light. You discern colors in that darkness only as shades of gray.</p>"
+      },
+      {
+        "name": "Healing Hands",
+        "description": "<p>As an action, you can touch a creature and roll a number of d4s equal to your proficiency bonus. The creature regains a number of hit points equal to the total rolled. Once you use this trait, you can't use it again until you finish a long rest.</p>"
+      },
+      {
+        "name": "Light Bearer",
+        "description": "<p>You know the light cantrip. Charisma is your spellcasting ability for it.</p>"
+      },
+      {
+        "name": "Celestial Revelation",
+        "description": "<p>When you reach 3rd level, choose one of the revelation options below. Thereafter, you can use a bonus action to unleash the celestial energy within yourself, gaining the benefits of that revelation. Your transformation lasts for 1 minute or until you end it as a bonus action. Once you transform using your revelation below, you can't use it again until you finish a long rest.</p><ul><li><strong>Necrotic Shroud:</strong> Your eyes briefly become pools of darkness, and ghostly, flightless wings sprout from your back temporarily. Creatures other than your allies within 10 feet of you that can see you must succeed on a Charisma saving throw (CD 8 + your proficiency bonus + your Charisma modifier) or become frightened of you until the end of your next turn. Until the transformation ends, once on each of your turns, you can deal extra necrotic damage to one target when you deal damage to it with an attack or a spell. The extra damage equals your proficiency bonus.</li><li><strong>Radiant Consumption:</strong> Searing light temporarily radiates from your eyes and mouth. For the duration, you shed bright light in a 10-foot radius and dim light for an additional 10 feet, and at the end of each of your turns, each creature within 10 feet of you takes radiant damage equal to your proficiency bonus. Until the transformation ends, once on each of your turns, you can deal extra radiant damage to one target when you deal damage to it with an attack or a spell. The extra damage equals your proficiency bonus.</li><li><strong>Radiant Soul:</strong> Two luminous, spectral wings sprout from your back temporarily. Until the transformation ends, you have a flying speed equal to your walking speed, and once on each of your turns, you can deal extra radiant damage to one target when you deal damage to it with an attack or a spell. The extra damage equals your proficiency bonus.</li></ul>"
+      }
+    ],
+    "spellChoices": [],
+    "spellGrants": [
+      {
+        "ability": {
+          "choose": [
+            "int",
+            "wis",
+            "cha"
+          ]
+        },
+        "known": {
+          "1": [
+            "light#c"
+          ]
+        }
+      }
+    ]
   },
   {
     "name": "Bearfolk",
@@ -106,7 +238,8 @@
         "description": "You can speak, read, and write either Common (if you hail from the mortal lands) or Umbral (if native to the Shadow Realm)."
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": null
   },
   {
     "name": "Bearfolk (Shadowborn)",
@@ -173,7 +306,164 @@
         "description": "You can see in Vision and Light within 60 feet as though it were Vision and Light and in darkness as if it were Vision and Light. You can't discern color in darkness, only shades of gray."
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": null
+  },
+  {
+    "name": "Bugbear",
+    "source": "MPMM",
+    "rules": "2014",
+    "size": [
+      "M"
+    ],
+    "speed": 30,
+    "skills": [
+      "Furtividade"
+    ],
+    "skillChoice": null,
+    "tools": [],
+    "toolChoice": null,
+    "languages": "",
+    "languageChoice": null,
+    "abilityBonus": null,
+    "resistances": [],
+    "resistanceChoice": null,
+    "originFeat": null,
+    "description": "<p>Neither bugs nor bears, bugbears are the hulking cousins of goblins and hobgoblins. With roots in the Feywild, early bugbears resided in hidden places, in hard-to-reach and shadowed spaces. Long ago and from out of the corner of your eye, they came to the Material Plane, urged to spread throughout the multiverse by the conquering god Maglubiyet. Centuries later, they still bear a fey gift for lurking just out of sight, and many of them have sneaked away from that god's influence.</p><p>They are long of limb and covered in coarse hair, with wedge-shaped ears and pointed teeth. Despite their formidable build, bugbears are quiet skulkers, thanks to a fey magic that allows them to hide in spaces seemingly too small for them.</p>",
+    "traits": [
+      {
+        "name": "Creature Type",
+        "description": "<p>You are a Humanoid. You are also considered a goblinoid for any prerequisite or effect that requires you to be a goblinoid.</p>"
+      },
+      {
+        "name": "Darkvision",
+        "description": "<p>You can see in dim light within 60 feet of you as if it were bright light and in darkness as if it were dim light. You discern colors in that darkness only as shades of gray.</p>"
+      },
+      {
+        "name": "Fey Ancestry",
+        "description": "<p>You have advantage on saving throws you make to avoid or end the charmed condition on yourself.</p>"
+      },
+      {
+        "name": "Long-Limbed",
+        "description": "<p>When you make a melee attack on your turn, your reach for it is 5 feet greater than normal.</p>"
+      },
+      {
+        "name": "Powerful Build",
+        "description": "<p>You count as one size larger when determining your carrying capacity and the weight you can push, drag, or lift.</p>"
+      },
+      {
+        "name": "Sneaky",
+        "description": "<p>You are proficient in the Stealth skill. In addition, without squeezing, you can move through and stop in a space large enough for a Small creature.</p>"
+      },
+      {
+        "name": "Surprise Attack",
+        "description": "<p>If you hit a creature with an attack roll, the creature takes an extra 2d6 damage if it hasn't taken a turn yet in the current combat.</p>"
+      }
+    ],
+    "spellChoices": [],
+    "spellGrants": null
+  },
+  {
+    "name": "Centaur",
+    "source": "MPMM",
+    "rules": "2014",
+    "size": [
+      "M"
+    ],
+    "speed": 40,
+    "skills": [],
+    "skillChoice": {
+      "count": 1,
+      "from": [
+        "Adestrar Animais",
+        "Medicina",
+        "Natureza",
+        "Sobrevivência"
+      ]
+    },
+    "tools": [],
+    "toolChoice": null,
+    "languages": "",
+    "languageChoice": null,
+    "abilityBonus": null,
+    "resistances": [],
+    "resistanceChoice": null,
+    "originFeat": null,
+    "description": "<p>Centaurs gallop throughout the multiverse and trace their origins to many different realms. The centaurs presented here hail from the Feywild and mystically resonate with the natural world. From the waist up, they resemble elves, displaying all the elf varieties of skin tone. From the waist down, they have the bodies of horses.</p>",
+    "traits": [
+      {
+        "name": "Creature Type",
+        "description": "<p>You are a Fey.</p>"
+      },
+      {
+        "name": "Charge",
+        "description": "<p>If you move at least 30 feet straight toward a target and then hit it with a melee weapon attack on the same turn, you can immediately follow that attack with a bonus action, making one attack against the target with your hooves.</p>"
+      },
+      {
+        "name": "Equine Build",
+        "description": "<p>You count as one size larger when determining your carrying capacity and the weight you can push or drag.</p><p>In addition, any climb that requires hands and feet is especially difficult for you because of your equine legs. When you make such a climb, each foot of movement costs you 4 extra feet instead of the normal 1 extra foot.</p>"
+      },
+      {
+        "name": "Hooves",
+        "description": "<p>You have hooves that you can use to make unarmed strikes. When you hit with them, the strike deals 1d6 + your Strength modifier bludgeoning damage, instead of the bludgeoning damage normal for an unarmed strike.</p>"
+      },
+      {
+        "name": "Natural Affinity",
+        "description": "<p>Your fey connection to nature gives you an intuitive connection to the natural world and the animals within it. You therefore have proficiency in one of the following skills of your choice: Animal Handling, Medicine, Nature, or Survival.</p>"
+      }
+    ],
+    "spellChoices": [],
+    "spellGrants": null
+  },
+  {
+    "name": "Changeling",
+    "source": "MPMM",
+    "rules": "2014",
+    "size": [
+      "S",
+      "M"
+    ],
+    "speed": 30,
+    "skills": [],
+    "skillChoice": {
+      "count": 2,
+      "from": [
+        "Enganação",
+        "Intuição",
+        "Intimidação",
+        "Atuação",
+        "Persuasão"
+      ]
+    },
+    "tools": [],
+    "toolChoice": null,
+    "languages": "",
+    "languageChoice": null,
+    "abilityBonus": null,
+    "resistances": [],
+    "resistanceChoice": null,
+    "originFeat": null,
+    "description": "<p>With ever-changing appearances, changelings reside in many societies undetected. Each changeling can supernaturally adopt any face they like. For some changelings, a new face is only a disguise. For other changelings, a new face may reveal an aspect of their soul.</p><p>The first changelings in the multiverse appeared in the Feywild, and the wondrous, mutable essence of that plane lingers in changelings today—even in those changelings who have never set foot in the fey realm. Each changeling decides how to use their shape-shifting ability, channeling either the peril or the joy of the Feywild. Sometimes they adopt new forms for the sake of mischief or malice, and other times they don a new identity to right wrongs or delight the downtrodden.</p><p>In their true form, changelings appear faded, their features almost devoid of detail. It is rare to see a changeling in that form, for a typical changeling changes their shape the way others might change clothes. A casual shape—one created on the spur of the moment, with no depth or history—is called a mask. A mask can be used to express a mood or to serve a specific purpose and then might never be used again. However, many changelings develop identities that have more depth, crafting whole personas complete with histories and beliefs. A changeling adventurer might have personas for many situations, including negotiation, investigation, and combat.</p><p>Personas can be shared by multiple changelings; a community might be home to three healer changelings, with whoever is on duty adopting the persona of Andrea, the gentle physician. Personas can even be passed down through a family, allowing a younger changeling to take advantage of contacts established by the persona's previous users.</p>",
+    "traits": [
+      {
+        "name": "Creature Type",
+        "description": "<p>You are a Fey.</p>"
+      },
+      {
+        "name": "Size",
+        "description": "<p>You are Medium or Small. You choose the size when you select this race.</p>"
+      },
+      {
+        "name": "Changeling Instincts",
+        "description": "<p>Thanks to your connection to the fey realm, you gain proficiency with two of the following skills of your choice: Deception, Insight, Intimidation, Performance, or Persuasion.</p>"
+      },
+      {
+        "name": "Shapechanger",
+        "description": "<p>As an action, you change your appearance and your voice. You determine the specifics of the changes, including your coloration, hair length, and sex. You can also adjust your height between Medium and Small. You can make yourself appear as a member of another race, though none of your game statistics change. You can't duplicate the appearance of an individual you've never seen, and you must adopt a form that has the same basic arrangement of limbs that you have. Your clothing and equipment aren't changed by this trait.</p><p>You stay in the new form until you use an action to revert to your true form or until you die.</p>"
+      }
+    ],
+    "spellChoices": [],
+    "spellGrants": null
   },
   {
     "name": "Custom Lineage",
@@ -235,7 +525,8 @@
         "description": "<p>You can speak, read, and write Common and one other language that you and your DM agree is appropriate for your character.</p>"
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": null
   },
   {
     "name": "Darakhul",
@@ -299,7 +590,8 @@
         "description": "You don't need to breathe, and you don't sleep the way most creatures do. Instead, you enter a dormant state that resembles death, remaining semiconscious, for 6 hours a day. While dormant, you have disadvantage on Wisdom (Perception) checks. After resting in this way, you gain the same benefit that a human does from 8 hours of sleep."
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": null
   },
   {
     "name": "Darakhul (Bearfolk Heritage)",
@@ -378,7 +670,8 @@
         "description": "You can speak, read, and write Common (if you hail from mortal lands) or Umbral (if native to the Shadow Realm)."
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": null
   },
   {
     "name": "Darakhul (Shadow Goblin Heritage)",
@@ -451,7 +744,78 @@
         "description": "You can speak, read, and write Goblin."
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": null
+  },
+  {
+    "name": "Deep Gnome",
+    "source": "MPMM",
+    "rules": "2014",
+    "size": [
+      "S"
+    ],
+    "speed": 30,
+    "skills": [],
+    "skillChoice": null,
+    "tools": [],
+    "toolChoice": null,
+    "languages": "",
+    "languageChoice": null,
+    "abilityBonus": null,
+    "resistances": [],
+    "resistanceChoice": null,
+    "originFeat": null,
+    "description": "<p>Deep gnomes, or svirfneblin, are natives of the Underdark and are suffused with that subterranean realm's magic. They can supernaturally camouflage themselves, and their svirfneblin magic renders them difficult to locate. These abilities have enabled them to survive for generations among the perils of the Underdark.</p><p>Like other gnomes, deep gnomes can live for centuries, up to 500 years.</p>",
+    "traits": [
+      {
+        "name": "Creature Type",
+        "description": "<p>You are a Humanoid. You are also considered a gnome for any prerequisite or effect that requires you to be a gnome.</p>"
+      },
+      {
+        "name": "Darkvision",
+        "description": "<p>You can see in dim light within 120 feet of you as if it were bright light and in darkness as if it were dim light. You discern colors in that darkness only as shades of gray.</p>"
+      },
+      {
+        "name": "Gift of the Svirfneblin",
+        "description": "<p>Starting at 3rd level, you can cast the disguise self spell with this trait. Starting at 5th level, you can also cast the nondetection spell with it, without requiring a material component. Once you cast either of these spells with this trait, you can't cast that spell with it again until you finish a long rest. You can also cast these using spell slots you have of the appropriate level.</p><p>Intelligence, Wisdom, or Charisma is your spellcasting ability for these spells when you cast them with this trait (choose when you select this race).</p>"
+      },
+      {
+        "name": "Gnomish Magic Resistance",
+        "description": "<p>You have advantage on Intelligence, Wisdom, and Charisma saving throws against spells.</p>"
+      },
+      {
+        "name": "Svirfneblin Camouflage",
+        "description": "<p>When you make a Dexterity (Stealth) check, you can make the check with advantage. You can use this trait a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.</p>"
+      }
+    ],
+    "spellChoices": [],
+    "spellGrants": [
+      {
+        "innate": {
+          "3": {
+            "daily": {
+              "1": [
+                "disguise self"
+              ]
+            }
+          },
+          "5": {
+            "daily": {
+              "1": [
+                "nondetection"
+              ]
+            }
+          }
+        },
+        "ability": {
+          "choose": [
+            "int",
+            "wis",
+            "cha"
+          ]
+        }
+      }
+    ]
   },
   {
     "name": "Dragonborn",
@@ -510,7 +874,8 @@
         "description": "<p>You can speak, read, and write Common and Draconic. Draconic is thought to be one of the oldest languages and is often used in the study of magic. The language sounds harsh to most other creatures and includes numerous hard consonants and sibilants.</p>"
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": null
   },
   {
     "name": "Dragonborn",
@@ -566,7 +931,80 @@
         "description": "<p>When you reach character level 5, you can channel draconic magic to give yourself temporary flight. As a Bonus Action, you sprout spectral wings on your back that last for 10 minutes or until you retract the wings (no action required) or have the Incapacitated condition. During that time, you have a Fly Speed equal to your Speed. Your wings appear to be made of the same energy as your Breath Weapon. Once you use this trait, you can't use it again until you finish a Long Rest.</p>"
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": null
+  },
+  {
+    "name": "Duergar",
+    "source": "MPMM",
+    "rules": "2014",
+    "size": [
+      "M"
+    ],
+    "speed": 30,
+    "skills": [],
+    "skillChoice": null,
+    "tools": [],
+    "toolChoice": null,
+    "languages": "",
+    "languageChoice": null,
+    "abilityBonus": null,
+    "resistances": [
+      "poison"
+    ],
+    "resistanceChoice": null,
+    "originFeat": null,
+    "description": "<p>Duergar are dwarves whose ancestors were transformed by centuries living in the deepest places of the Underdark. That chthonic realm is saturated with strange magical energy, and over generations, early duergar absorbed traces of it. They were further altered when mind flayers and other Aberrations invaded and performed horrific experiments on them. Fueled by Underdark magic, those experiments left early duergar with psionic powers, which have been passed down to their descendants. In time, they liberated themselves from their aberrant tyrants and forged a new life for themselves in the Underdark and beyond.</p><p>Like other dwarves, duergar typically have a life span of 350 years.</p>",
+    "traits": [
+      {
+        "name": "Creature Type",
+        "description": "<p>You are a Humanoid. You are also considered a dwarf for any prerequisite or effect that requires you to be a dwarf.</p>"
+      },
+      {
+        "name": "Darkvision",
+        "description": "<p>You can see in dim light within 120 feet of you as if it were bright light and in darkness as if it were dim light. You discern colors in that darkness only as shades of gray.</p>"
+      },
+      {
+        "name": "Duergar Magic",
+        "description": "<p>Starting at 3rd level, you can cast the enlarge/reduce spell on yourself with this trait, without requiring a material component. Starting at 5th level, you can also cast the invisibility spell on yourself with this trait, without requiring a material component. Once you cast either of these spells with this trait, you can't cast that spell with it again until you finish a long rest. You can also cast these spells using spell slots you have of the appropriate level.</p><p>Intelligence, Wisdom, or Charisma is your spellcasting ability for these spells when you cast them with this trait (choose when you select this race).</p>"
+      },
+      {
+        "name": "Dwarven Resilience",
+        "description": "<p>You have advantage on saving throws you make to avoid or end the poisoned condition on yourself. You also have resistance to poison damage.</p>"
+      },
+      {
+        "name": "Psionic Fortitude",
+        "description": "<p>You have advantage on saving throws you make to avoid or end the charmed or stunned condition on yourself.</p>"
+      }
+    ],
+    "spellChoices": [],
+    "spellGrants": [
+      {
+        "innate": {
+          "3": {
+            "daily": {
+              "1": [
+                "enlarge/reduce"
+              ]
+            }
+          },
+          "5": {
+            "daily": {
+              "1": [
+                "invisibility"
+              ]
+            }
+          }
+        },
+        "ability": {
+          "choose": [
+            "int",
+            "wis",
+            "cha"
+          ]
+        }
+      }
+    ]
   },
   {
     "name": "Dwarf",
@@ -636,7 +1074,8 @@
         "description": "<p>You can speak, read, and write Common and Dwarvish. Dwarvish is full of hard consonants and guttural sounds, and those characteristics spill over into whatever other language a dwarf might speak.</p>"
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": null
   },
   {
     "name": "Dwarf",
@@ -681,7 +1120,8 @@
         "description": "<p>As a Bonus Action, you gain Tremorsense with a range of 60 feet for 10 minutes. You must be on a stone surface or touching a stone surface to use this Tremorsense. The stone can be natural or worked.</p><p>You can use this Bonus Action a number of times equal to your Proficiency Bonus, and you regain all expended uses when you finish a Long Rest.</p>"
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": null
   },
   {
     "name": "Dwarf (Hill)",
@@ -756,7 +1196,8 @@
         "description": "<p>Your hit point maximum increases by 1, and it increases by 1 every time you gain a level.</p>"
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": null
   },
   {
     "name": "Dwarf (Mountain)",
@@ -831,7 +1272,8 @@
         "description": "<p>You have proficiency with light and medium armor.</p>"
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": null
   },
   {
     "name": "Eladrin",
@@ -880,7 +1322,8 @@
         "description": "<p>You don't need to sleep, and magic can't put you to sleep. You can finish a long rest in 4 hours if you spend those hours in a trancelike meditation, during which you retain consciousness.</p><p>Whenever you finish this trance, you can change your season, and you can gain two proficiencies that you don't have, each one with a weapon or a tool of your choice selected from the Player's Handbook. You mystically acquire these proficiencies by drawing them from shared elven memory, and you retain them until you finish your next long rest.</p>"
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": null
   },
   {
     "name": "Elf",
@@ -935,7 +1378,8 @@
         "description": "<p>You can speak, read, and write Common and Elvish. Elvish is fluid, with subtle intonations and intricate grammar. Elven literature is rich and varied, and their songs and poems are famous among other races. Many bards learn their language so they can add Elvish ballads to their repertoires.</p>"
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": null
   },
   {
     "name": "Elf",
@@ -982,7 +1426,8 @@
         "description": "<p>You don't need to sleep, and magic can't put you to sleep. You can finish a Long Rest in 4 hours if you spend those hours in a trancelike meditation, during which you retain consciousness.</p>"
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": []
   },
   {
     "name": "Elf (Drow)",
@@ -1050,7 +1495,33 @@
         "description": "<p>You have proficiency with rapier, shortsword, and hand crossbow.</p>"
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": [
+      {
+        "innate": {
+          "3": {
+            "daily": {
+              "1": [
+                "faerie fire"
+              ]
+            }
+          },
+          "5": {
+            "daily": {
+              "1": [
+                "darkness"
+              ]
+            }
+          }
+        },
+        "ability": "cha",
+        "known": {
+          "1": [
+            "dancing lights#c"
+          ]
+        }
+      }
+    ]
   },
   {
     "name": "Elf (Drow)",
@@ -1097,7 +1568,31 @@
         "description": "<p>You don't need to sleep, and magic can't put you to sleep. You can finish a Long Rest in 4 hours if you spend those hours in a trancelike meditation, during which you retain consciousness.</p>"
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": [
+      {
+        "ability": {
+          "choose": [
+            "int",
+            "wis",
+            "cha"
+          ]
+        },
+        "known": {
+          "1": [
+            "dancing lights"
+          ]
+        },
+        "prepared": {
+          "3": [
+            "faerie fire"
+          ],
+          "5": [
+            "darkness"
+          ]
+        }
+      }
+    ]
   },
   {
     "name": "Elf (High)",
@@ -1188,6 +1683,20 @@
           "True Strike"
         ]
       }
+    ],
+    "spellGrants": [
+      {
+        "ability": "int",
+        "known": {
+          "1": {
+            "_": [
+              {
+                "choose": "level=0|class=Wizard"
+              }
+            ]
+          }
+        }
+      }
     ]
   },
   {
@@ -1235,7 +1744,31 @@
         "description": "<p>You don't need to sleep, and magic can't put you to sleep. You can finish a Long Rest in 4 hours if you spend those hours in a trancelike meditation, during which you retain consciousness.</p>"
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": [
+      {
+        "ability": {
+          "choose": [
+            "int",
+            "wis",
+            "cha"
+          ]
+        },
+        "known": {
+          "1": [
+            "prestidigitation"
+          ]
+        },
+        "prepared": {
+          "3": [
+            "detect magic"
+          ],
+          "5": [
+            "misty step"
+          ]
+        }
+      }
+    ]
   },
   {
     "name": "Elf (Wood)",
@@ -1303,7 +1836,8 @@
         "description": "<p>You can attempt to hide even when you are only lightly obscured by foliage, heavy rain, falling snow, mist, and other natural phenomena.</p>"
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": null
   },
   {
     "name": "Elf (Wood)",
@@ -1350,7 +1884,31 @@
         "description": "<p>You don't need to sleep, and magic can't put you to sleep. You can finish a Long Rest in 4 hours if you spend those hours in a trancelike meditation, during which you retain consciousness.</p>"
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": [
+      {
+        "ability": {
+          "choose": [
+            "int",
+            "wis",
+            "cha"
+          ]
+        },
+        "known": {
+          "1": [
+            "druidcraft"
+          ]
+        },
+        "prepared": {
+          "3": [
+            "longstrider"
+          ],
+          "5": [
+            "pass without trace"
+          ]
+        }
+      }
+    ]
   },
   {
     "name": "Erina",
@@ -1421,7 +1979,8 @@
         "description": "You can speak Erina and either Common or Sylvan."
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": null
   },
   {
     "name": "Erina (Spiritfarer)",
@@ -1429,9 +1988,7 @@
     "rules": "2014",
     "size": "S",
     "speed": 25,
-    "skills": [
-      "Percepção"
-    ],
+    "skills": [],
     "skillChoice": null,
     "tools": [],
     "toolChoice": null,
@@ -1496,7 +2053,666 @@
         "description": "You have an innate knack for speaking to the spirit world. You know the message cantrip. When you reach 3rd level, you can cast the charm person spell with this trait (targeting only undead creatures), and starting at 5th level, you can cast the enthrall spell with it. Once you cast a non‑cantrip spell with this trait, you can't do so again until you finish a long rest. Wisdom is your spellcasting ability for these spells."
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": [
+      {
+        "innate": {
+          "5": {
+            "daily": {
+              "1": [
+                "enthrall"
+              ]
+            }
+          }
+        },
+        "known": {
+          "1": [
+            "message"
+          ],
+          "3": [
+            "charm person"
+          ]
+        },
+        "ability": "wis"
+      }
+    ]
+  },
+  {
+    "name": "Fairy",
+    "source": "MPMM",
+    "rules": "2014",
+    "size": [
+      "S"
+    ],
+    "speed": 30,
+    "skills": [],
+    "skillChoice": null,
+    "tools": [],
+    "toolChoice": null,
+    "languages": "",
+    "languageChoice": null,
+    "abilityBonus": null,
+    "resistances": [],
+    "resistanceChoice": null,
+    "originFeat": null,
+    "description": "<p>The Feywild is home to many fantastic peoples, including fairies. Fairies are a wee folk, but not nearly as much so as their pixie and sprite friends. The first fairies spoke Elvish, Goblin, or Sylvan, and encounters with human visitors prompted many of them to learn Common as well.</p><p>Infused with the magic of the Feywild, most fairies look like Small elves with insectile wings, but each fairy has a special physical characteristic that sets the fairy apart. For your fairy, roll on the Fey Characteristics table or choose an option from it. You're also free to come up with your own characteristic if none of the suggestions below fit your character.</p>",
+    "traits": [
+      {
+        "name": "Creature Type",
+        "description": "<p>You are a Fey.</p>"
+      },
+      {
+        "name": "Fairy Magic",
+        "description": "<p>You know the druidcraft cantrip. Starting at 3rd level, you can cast the faerie fire spell with this trait. Starting at 5th level, you can also cast the enlarge/reduce spell with this trait. Once you cast faerie fire or enlarge/reduce with this trait, you can't cast that spell with it again until you finish a long rest. You can also cast either of those spells using any spell slots you have of the appropriate level.</p><p>Intelligence, Wisdom, or Charisma is your spellcasting ability for these spells when you cast them with this trait (choose when you select this race).</p>"
+      },
+      {
+        "name": "Flight",
+        "description": "<p>Because of your wings, you have a flying speed equal to your walking speed. You can't use this flying speed if you're wearing medium or heavy armor.</p>"
+      }
+    ],
+    "spellChoices": [],
+    "spellGrants": [
+      {
+        "innate": {
+          "3": {
+            "daily": {
+              "1": [
+                "faerie fire"
+              ]
+            }
+          },
+          "5": {
+            "daily": {
+              "1": [
+                "enlarge/reduce"
+              ]
+            }
+          }
+        },
+        "ability": {
+          "choose": [
+            "int",
+            "wis",
+            "cha"
+          ]
+        },
+        "known": {
+          "1": [
+            "druidcraft#c"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "name": "Fairy (WBtW)",
+    "source": "WBtW",
+    "rules": "2014",
+    "size": [
+      "S"
+    ],
+    "speed": 30,
+    "skills": [],
+    "skillChoice": null,
+    "tools": [],
+    "toolChoice": null,
+    "languages": "",
+    "languageChoice": null,
+    "abilityBonus": null,
+    "resistances": [],
+    "resistanceChoice": null,
+    "originFeat": null,
+    "description": "<p>The Feywild is home to many fantastic peoples, including fairies. Fairies are a wee folk, but not nearly as much so as their pixie and sprite friends. The first fairies spoke Elvish, Goblin, or Sylvan, and encounters with human visitors prompted many of them to learn Common as well.</p><p>Infused with the magic of the Feywild, most fairies look like Small elves with insectile wings, but each fairy has a special physical characteristic that sets the fairy apart. For your fairy, roll on the Fey Characteristics table or choose an option from it. You're also free to come up with your own characteristic if none of the suggestions below fit your character.</p>",
+    "traits": [
+      {
+        "name": "Creature Type",
+        "description": "<p>You are a Fey.</p>"
+      },
+      {
+        "name": "Fairy Magic",
+        "description": "<p>You know the druidcraft cantrip. Starting at 3rd level, you can cast the faerie fire spell with this trait. Starting at 5th level, you can also cast the enlarge/reduce spell with this trait. Once you cast faerie fire or enlarge/reduce with this trait, you can't cast that spell with it again until you finish a long rest. You can also cast either of those spells using any spell slots you have of the appropriate level.</p><p>Intelligence, Wisdom, or Charisma is your spellcasting ability for these spells when you cast them with this trait (choose when you select this race).</p>"
+      },
+      {
+        "name": "Flight",
+        "description": "<p>Because of your wings, you have a flying speed equal to your walking speed. You can't use this flying speed if you're wearing medium or heavy armor.</p>"
+      }
+    ],
+    "spellChoices": [],
+    "spellGrants": [
+      {
+        "ability": {
+          "choose": [
+            "int",
+            "wis",
+            "cha"
+          ]
+        },
+        "known": {
+          "1": [
+            "druidcraft#c"
+          ]
+        },
+        "innate": {
+          "3": {
+            "daily": {
+              "1": [
+                "faerie fire"
+              ]
+            }
+          },
+          "5": {
+            "daily": {
+              "1": [
+                "enlarge/reduce"
+              ]
+            }
+          }
+        }
+      }
+    ]
+  },
+  {
+    "name": "Firbolg",
+    "source": "MPMM",
+    "rules": "2014",
+    "size": [
+      "M"
+    ],
+    "speed": 30,
+    "skills": [],
+    "skillChoice": null,
+    "tools": [],
+    "toolChoice": null,
+    "languages": "",
+    "languageChoice": null,
+    "abilityBonus": null,
+    "resistances": [],
+    "resistanceChoice": null,
+    "originFeat": null,
+    "description": "<p>Distant cousins of giants, the first firbolgs wandered the primeval forests of the multiverse, and the magic of those forests entwined itself with the firbolgs' souls. Centuries later, that magic still thrums inside a firbolg, even one who has never lived under the boughs of a great forest.</p><p>A firbolg's magic is an obscuring sort, which allowed their ancestors to pass through a forest without disturbing it. So deep is the connection between a firbolg and the wild places of the world that they can communicate with flora and fauna.</p><p>Firbolgs can live up to 500 years.</p>",
+    "traits": [
+      {
+        "name": "Firbolg Magic",
+        "description": "<p>You can cast detect magic and disguise self spells with this trait. When you use this version of disguise self, you can seem up to 3 feet shorter or taller. Once you cast either of these spells with this trait, you can't cast that spell with it again until you finish a long rest. You can also cast these spells using any spell slots you have.</p><p>Intelligence, Wisdom, or Charisma is your spellcasting ability for these spells when you cast them with this trait (choose when you select this race).</p>"
+      },
+      {
+        "name": "Hidden Step",
+        "description": "<p>As a bonus action, you can magically turn invisible until the start of your next turn or until you attack, make a damage roll, or force someone to make a saving throw. You can use this trait a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.</p>"
+      },
+      {
+        "name": "Powerful Build",
+        "description": "<p>You count as one size larger when determining your carrying capacity and the weight you can push, drag, or lift.</p>"
+      },
+      {
+        "name": "Speech of Beast and Leaf",
+        "description": "<p>You have the ability to communicate in a limited manner with Beasts, Plants, and vegetation. They can understand the meaning of your words, though you have no special ability to understand them in return. You have advantage on all Charisma checks you make to influence them.</p>"
+      }
+    ],
+    "spellChoices": [],
+    "spellGrants": [
+      {
+        "ability": {
+          "choose": [
+            "int",
+            "wis",
+            "cha"
+          ]
+        },
+        "innate": {
+          "1": {
+            "daily": {
+              "1": [
+                "detect magic",
+                "disguise self"
+              ]
+            }
+          }
+        }
+      }
+    ]
+  },
+  {
+    "name": "Genasi (Air)",
+    "source": "MPMM",
+    "rules": "2014",
+    "size": [
+      "S",
+      "M"
+    ],
+    "speed": 35,
+    "skills": [],
+    "skillChoice": null,
+    "tools": [],
+    "toolChoice": null,
+    "languages": "",
+    "languageChoice": null,
+    "abilityBonus": null,
+    "resistances": [
+      "lightning"
+    ],
+    "resistanceChoice": null,
+    "originFeat": null,
+    "description": "",
+    "traits": [
+      {
+        "name": "Size",
+        "description": "<p>You are Medium or Small. You choose the size when you select this race.</p>"
+      },
+      {
+        "name": "Darkvision",
+        "description": "<p>You can see in dim light within 60 feet of you as if it were bright light and in darkness as if it were dim light. You discern colors in that darkness only as shades of gray.</p>"
+      },
+      {
+        "name": "Unending Breath",
+        "description": "<p>You can hold your breath indefinitely while you're not incapacitated.</p>"
+      },
+      {
+        "name": "Lightning Resistance",
+        "description": "<p>You have resistance to lightning damage.</p>"
+      },
+      {
+        "name": "Mingle with the Wind",
+        "description": "<p>You know the shocking grasp cantrip. Starting at 3rd level, you can cast the feather fall spell with this trait, without requiring a material component. Starting 5th level, you can also cast the levitate spell with this trait, without requiring a material component. Once you cast feather fall or levitate with this trait, you can't cast that spell with it again until you finish a long rest. You can also cast either of those spells using any spell slots you have of the appropriate level.</p><p>Intelligence, Wisdom, or Charisma is your spellcasting ability for these spells when you cast them with this trait (choose when you select this race).</p>"
+      }
+    ],
+    "spellChoices": [],
+    "spellGrants": [
+      {
+        "innate": {
+          "3": {
+            "daily": {
+              "1": [
+                "feather fall"
+              ]
+            }
+          },
+          "5": {
+            "daily": {
+              "1": [
+                "levitate"
+              ]
+            }
+          }
+        },
+        "ability": {
+          "choose": [
+            "int",
+            "wis",
+            "cha"
+          ]
+        },
+        "known": {
+          "1": [
+            "shocking grasp#c"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "name": "Genasi (Earth)",
+    "source": "MPMM",
+    "rules": "2014",
+    "size": [
+      "S",
+      "M"
+    ],
+    "speed": 30,
+    "skills": [],
+    "skillChoice": null,
+    "tools": [],
+    "toolChoice": null,
+    "languages": "",
+    "languageChoice": null,
+    "abilityBonus": null,
+    "resistances": [],
+    "resistanceChoice": null,
+    "originFeat": null,
+    "description": "",
+    "traits": [
+      {
+        "name": "Size",
+        "description": "<p>You are Medium or Small. You choose the size when you select this race.</p>"
+      },
+      {
+        "name": "Darkvision",
+        "description": "<p>You can see in dim light within 60 feet of you as if it were bright light and in darkness as if it were dim light. You discern colors in that darkness only as shades of gray.</p>"
+      },
+      {
+        "name": "Earth Walk",
+        "description": "<p>You can move across difficult terrain without expending extra movement if you are using your walking speed on the ground or a floor.</p>"
+      },
+      {
+        "name": "Merge with Stone",
+        "description": "<p>You know the blade ward cantrip. You can cast it as normal, and you can also cast it as a bonus action a number of times equal to your proficiency bonus, regaining all expended uses when you finish a long rest.</p><p>Starting at 5th level, you can cast the pass without trace spell with this trait, without requiring a material component. Once you cast that spell with this trait, you can't do so again until you finish a long rest. You can also cast it using any spell slots you have of 2nd level or higher.</p><p>Intelligence, Wisdom, or Charisma is your spellcasting ability for these spells when you cast them with this trait (choose when you select this race).</p>"
+      }
+    ],
+    "spellChoices": [],
+    "spellGrants": [
+      {
+        "innate": {
+          "5": {
+            "daily": {
+              "1": [
+                "pass without trace"
+              ]
+            }
+          }
+        },
+        "ability": {
+          "choose": [
+            "int",
+            "wis",
+            "cha"
+          ]
+        },
+        "known": {
+          "1": [
+            "blade ward#c"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "name": "Genasi (Fire)",
+    "source": "MPMM",
+    "rules": "2014",
+    "size": [
+      "S",
+      "M"
+    ],
+    "speed": 30,
+    "skills": [],
+    "skillChoice": null,
+    "tools": [],
+    "toolChoice": null,
+    "languages": "",
+    "languageChoice": null,
+    "abilityBonus": null,
+    "resistances": [
+      "fire"
+    ],
+    "resistanceChoice": null,
+    "originFeat": null,
+    "description": "",
+    "traits": [
+      {
+        "name": "Size",
+        "description": "<p>You are Medium or Small. You choose the size when you select this race.</p>"
+      },
+      {
+        "name": "Darkvision",
+        "description": "<p>You can see in dim light within 60 feet of you as if it were bright light and in darkness as if it were dim light. You discern colors in that darkness only as shades of gray.</p>"
+      },
+      {
+        "name": "Fire Resistance",
+        "description": "<p>You have resistance to fire damage.</p>"
+      },
+      {
+        "name": "Reach to the Blaze",
+        "description": "<p>You know the produce flame cantrip. Starting at 3rd level, you can cast the burning hands spell with this trait. Starting at 5th level, you can also cast the flame blade spell with this trait, without a material component. Once you cast burning hands or flame blade with this trait, you can't cast that spell with it again until you finish a long rest. You can also cast either of those spells using any spell slots you have of the appropriate level.</p><p>Intelligence, Wisdom, or Charisma is your spellcasting ability for these spells when you cast them with this trait (choose when you select this race).</p>"
+      }
+    ],
+    "spellChoices": [],
+    "spellGrants": [
+      {
+        "innate": {
+          "3": {
+            "daily": {
+              "1": [
+                "burning hands"
+              ]
+            }
+          },
+          "5": {
+            "daily": {
+              "1": [
+                "flame blade"
+              ]
+            }
+          }
+        },
+        "ability": {
+          "choose": [
+            "int",
+            "wis",
+            "cha"
+          ]
+        },
+        "known": {
+          "1": [
+            "produce flame#c"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "name": "Genasi (Water)",
+    "source": "MPMM",
+    "rules": "2014",
+    "size": [
+      "S",
+      "M"
+    ],
+    "speed": 30,
+    "skills": [],
+    "skillChoice": null,
+    "tools": [],
+    "toolChoice": null,
+    "languages": "",
+    "languageChoice": null,
+    "abilityBonus": null,
+    "resistances": [
+      "acid"
+    ],
+    "resistanceChoice": null,
+    "originFeat": null,
+    "description": "",
+    "traits": [
+      {
+        "name": "Size",
+        "description": "<p>You are Medium or Small. You choose the size when you select this race.</p>"
+      },
+      {
+        "name": "Darkvision",
+        "description": "<p>You can see in dim light within 60 feet of you as if it were bright light and in darkness as if it were dim light. You discern colors in that darkness only as shades of gray.</p>"
+      },
+      {
+        "name": "Speed",
+        "description": "<p>Your walking speed is 30 feet, and you have a swimming speed equal to your walking speed.</p>"
+      },
+      {
+        "name": "Acid Resistance",
+        "description": "<p>You have resistance to acid damage.</p>"
+      },
+      {
+        "name": "Amphibious",
+        "description": "<p>You breathe air and water.</p>"
+      },
+      {
+        "name": "Call to the Wave",
+        "description": "<p>You know the acid splash cantrip. Starting at 3rd level, you can cast the create or destroy water spell with this trait. Starting at 5th level, you can also cast the water walk spell with this trait, without requiring a material component. Once you cast create or destroy water or water walk with this trait, you can't cast that spell with it again until you finish a long rest. You can also cast either of those spells using any spell slots you have of the appropriate level.</p><p>Intelligence, Wisdom, or Charisma is your spellcasting ability for these spells when you cast them with this trait (choose when you select this race).</p>"
+      }
+    ],
+    "spellChoices": [],
+    "spellGrants": [
+      {
+        "innate": {
+          "3": {
+            "daily": {
+              "1": [
+                "create or destroy water"
+              ]
+            }
+          },
+          "5": {
+            "daily": {
+              "1": [
+                "water walk"
+              ]
+            }
+          }
+        },
+        "ability": {
+          "choose": [
+            "int",
+            "wis",
+            "cha"
+          ]
+        },
+        "known": {
+          "1": [
+            "acid splash#c"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "name": "Githyanki",
+    "source": "MPMM",
+    "rules": "2014",
+    "size": [
+      "M"
+    ],
+    "speed": 30,
+    "skills": [],
+    "skillChoice": {
+      "count": 1,
+      "from": "qualquer perícia"
+    },
+    "tools": [],
+    "toolChoice": {
+      "count": 1,
+      "from": "qualquer ferramenta"
+    },
+    "languages": "",
+    "languageChoice": null,
+    "abilityBonus": null,
+    "resistances": [
+      "psychic"
+    ],
+    "resistanceChoice": null,
+    "originFeat": null,
+    "description": "<p>Once members of a people who escaped servitude to mind flayers, githyanki split from their cousins, githzerai, and fled to the Astral Plane. In that timeless, silvery realm, githyanki honed their psionic powers and built a great city called Tu'narath. They have since spread throughout the multiverse, starting in outposts outside the Astral Plane, called creches, where time passes and their children can reach adulthood.</p><p>A lanky people with skin tones of yellows, greens, and browns, githyanki complement their physical prowess with psionic might, instilled in them by mind flayers and cultivated over eons in the Astral Plane. Now all githyanki can use their psychic bond with that plane to access splinters of knowledge left behind by beings who travel, live, and die among the silver astral clouds.</p><p>Githyanki who reside in the Astral Plane can live indefinitely.</p>",
+    "traits": [
+      {
+        "name": "Astral Knowledge",
+        "description": "<p>You can mystically access a reservoir of experiences of entities connected to the Astral Plane. Whenever you finish a long rest, you gain proficiency in one skill of your choice and with one weapon or tool of your choice, selected from the Player's Handbook, as you momentarily project your consciousness into the Astral Plane. These proficiencies last until the end of your next long rest.</p>"
+      },
+      {
+        "name": "Githyanki Psionics",
+        "description": "<p>You know the mage hand cantrip, and the hand is invisible when you cast the cantrip with this trait.</p><p>Starting at 3rd level, you can cast the jump spell with this trait. Starting at 5th level, you can also cast misty step with it. Once you cast jump or misty step with this trait, you can't cast that spell with it again until you finish a long rest. You can also cast either of those spells using any spell slots you have of the appropriate level.</p><p>Intelligence, Wisdom, or Charisma is your spellcasting ability for these spells when you cast them with this trait (choose when you select this race). None of these spells require spell components when you cast them with this trait.</p>"
+      },
+      {
+        "name": "Psychic Resilience",
+        "description": "<p>You have resistance to psychic damage.</p>"
+      }
+    ],
+    "spellChoices": [],
+    "spellGrants": [
+      {
+        "innate": {
+          "3": {
+            "daily": {
+              "1": [
+                "jump"
+              ]
+            }
+          },
+          "5": {
+            "daily": {
+              "1": [
+                "misty step"
+              ]
+            }
+          }
+        },
+        "ability": {
+          "choose": [
+            "int",
+            "wis",
+            "cha"
+          ]
+        },
+        "known": {
+          "1": [
+            "mage hand#c"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "name": "Githzerai",
+    "source": "MPMM",
+    "rules": "2014",
+    "size": [
+      "M"
+    ],
+    "speed": 30,
+    "skills": [],
+    "skillChoice": null,
+    "tools": [],
+    "toolChoice": null,
+    "languages": "",
+    "languageChoice": null,
+    "abilityBonus": null,
+    "resistances": [
+      "psychic"
+    ],
+    "resistanceChoice": null,
+    "originFeat": null,
+    "description": "<p>Githzerai migrated to the Everchanging Chaos of Limbo after the ancient schism that split their ancestors from their cousins, githyanki. Limbo is a roiling maelstrom of matter and energy, collapsing and reforming without purpose or direction, until a creature exerts deliberate will to stabilize it. Through their potent psionic power, githzerai carved a home for themselves amid the chaos. As the ages passed, githzerai explorers ranged out to other planes and worlds of the multiverse.</p><p>Githzerai are generally slender, with speckled skin in shades of yellow, green, or brown. Eons of cultivating their mental powers within the endless chaos of Limbo have imbued githzerai with the ability to shape psionic energy to protect themselves and probe minds.</p>",
+    "traits": [
+      {
+        "name": "Githzerai Psionics",
+        "description": "<p>You know the mage hand cantrip, and the hand is invisible when you cast the cantrip with this trait.</p><p>Starting at 3rd level, you can cast the shield spell with this trait. Starting at 5th level, you can also cast the detect thoughts spell with it. Once you cast shield or detect thoughts spell with this trait, you can't cast that spell with it again until you finish a long rest. You can also cast either of those spells using any spell slots you have of the appropriate level.</p><p>Intelligence, Wisdom, or Charisma is your spellcasting ability for these spells when you cast them with this trait (choose when you select this race). None of these spells require spell components when you cast them with this trait.</p>"
+      },
+      {
+        "name": "Mental Discipline",
+        "description": "<p>Your innate psychic defenses grant you advantage on saving throws you make to avoid or end the charmed and frightened conditions on yourself.</p>"
+      },
+      {
+        "name": "Psychic Resilience",
+        "description": "<p>You have resistance to psychic damage.</p>"
+      }
+    ],
+    "spellChoices": [],
+    "spellGrants": [
+      {
+        "innate": {
+          "3": {
+            "daily": {
+              "1": [
+                "shield"
+              ]
+            }
+          },
+          "5": {
+            "daily": {
+              "1": [
+                "detect thoughts"
+              ]
+            }
+          }
+        },
+        "ability": {
+          "choose": [
+            "int",
+            "wis",
+            "cha"
+          ]
+        },
+        "known": {
+          "1": [
+            "mage hand#c"
+          ]
+        }
+      }
+    ]
   },
   {
     "name": "Gnome",
@@ -1541,7 +2757,8 @@
         "description": "<p>You can speak, read, and write Common and Gnomish. The Gnomish language, which uses the Dwarvish script, is renowned for its technical treatises and its catalogs of knowledge about the natural world.</p>"
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": null
   },
   {
     "name": "Gnome",
@@ -1580,7 +2797,8 @@
         "description": "<p>You are part of a lineage that grants you supernatural abilities. Choose one of the following options; whichever one you choose, Intelligence, Wisdom, or Charisma is your spellcasting ability for the spells you cast with this trait (choose the ability when you select the lineage):</p><ul><li>Forest Gnome: You know the Minor Illusion cantrip. You also always have the Speak with Animals spell prepared. You can cast it without a spell slot a number of times equal to your Proficiency Bonus, and you regain all expended uses when you finish a Long Rest. You can also use any spell slots you have to cast the spell.</li><li>Rock Gnome: You know the Mending and Prestidigitation cantrips. In addition, you can spend 10 minutes casting Prestidigitation to create a Tiny clockwork device (AC 5, 1 HP), such as a toy, fire starter, or music box. When you create the device, you determine its function by choosing one effect from Prestidigitation; the device produces that effect whenever you or another creature takes a Bonus Action to activate it with a touch. If the chosen effect has options within it, you choose one of those options for the device when you create it. For example, if you choose the spell's ignite-extinguish effect, you determine whether the device ignites or extinguishes fire; the device doesn't do both. You can have three such devices in existence at a time, and each falls apart 8 hours after its creation or when you dismantle it with a touch as a Utilize action.</li></ul>"
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": []
   },
   {
     "name": "Gnome (Forest)",
@@ -1634,7 +2852,17 @@
         "description": "<p>Through sounds and gestures, you can communicate simple ideas with Small or smaller beasts. Forest gnomes love animals and often keep squirrels, badgers, rabbits, moles, woodpeckers, and other creatures as beloved pets.</p>"
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": [
+      {
+        "ability": "int",
+        "known": {
+          "1": [
+            "minor illusion#c"
+          ]
+        }
+      }
+    ]
   },
   {
     "name": "Gnome (Forest)",
@@ -1673,7 +2901,28 @@
         "description": "<p>You are part of a lineage that grants you supernatural abilities. Choose one of the following options; whichever one you choose, Intelligence, Wisdom, or Charisma is your spellcasting ability for the spells you cast with this trait (choose the ability when you select the lineage):</p><ul><li>Forest Gnome: You know the Minor Illusion cantrip. You also always have the Speak with Animals spell prepared. You can cast it without a spell slot a number of times equal to your Proficiency Bonus, and you regain all expended uses when you finish a Long Rest. You can also use any spell slots you have to cast the spell.</li><li>Rock Gnome: You know the Mending and Prestidigitation cantrips. In addition, you can spend 10 minutes casting Prestidigitation to create a Tiny clockwork device (AC 5, 1 HP), such as a toy, fire starter, or music box. When you create the device, you determine its function by choosing one effect from Prestidigitation; the device produces that effect whenever you or another creature takes a Bonus Action to activate it with a touch. If the chosen effect has options within it, you choose one of those options for the device when you create it. For example, if you choose the spell's ignite-extinguish effect, you determine whether the device ignites or extinguishes fire; the device doesn't do both. You can have three such devices in existence at a time, and each falls apart 8 hours after its creation or when you dismantle it with a touch as a Utilize action.</li></ul>"
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": [
+      {
+        "ability": {
+          "choose": [
+            "int",
+            "wis",
+            "cha"
+          ]
+        },
+        "known": {
+          "1": [
+            "minor illusion"
+          ]
+        },
+        "prepared": {
+          "1": [
+            "speak with animals"
+          ]
+        }
+      }
+    ]
   },
   {
     "name": "Gnome (Rock)",
@@ -1727,7 +2976,8 @@
         "description": "<p>You have proficiency with artisan's tools (tinker's tools). Using those tools, you can spend 1 hour and 10 gp worth of materials to construct a Tiny clockwork device (AC 5, 1 hp). The device ceases to function after 24 hours (unless you spend 1 hour repairing it to keep the device functioning), or when you use your action to dismantle it; at that time, you can reclaim the materials used to create it. You can have up to three such devices active at a time.</p><p>When you create a device, choose one of the following options:</p><p>Clockwork Toy: This toy is a clockwork animal, monster, or person, such as a frog, mouse, bird, dragon, or soldier. When placed on the ground, the toy moves 5 feet across the ground on each of your turns in a random direction. It makes noises as appropriate to the creature it represents.</p><p>Fire Starter: The device produces a miniature flame, which you can use to light a candle, torch, or campfire. Using the device requires your action.</p><p>Music Box: When opened, this music box plays a single song at a moderate volume. The box stops playing when it reaches the song's end or when it is closed.</p>"
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": null
   },
   {
     "name": "Gnome (Rock)",
@@ -1766,7 +3016,69 @@
         "description": "<p>You are part of a lineage that grants you supernatural abilities. Choose one of the following options; whichever one you choose, Intelligence, Wisdom, or Charisma is your spellcasting ability for the spells you cast with this trait (choose the ability when you select the lineage):</p><ul><li>Forest Gnome: You know the Minor Illusion cantrip. You also always have the Speak with Animals spell prepared. You can cast it without a spell slot a number of times equal to your Proficiency Bonus, and you regain all expended uses when you finish a Long Rest. You can also use any spell slots you have to cast the spell.</li><li>Rock Gnome: You know the Mending and Prestidigitation cantrips. In addition, you can spend 10 minutes casting Prestidigitation to create a Tiny clockwork device (AC 5, 1 HP), such as a toy, fire starter, or music box. When you create the device, you determine its function by choosing one effect from Prestidigitation; the device produces that effect whenever you or another creature takes a Bonus Action to activate it with a touch. If the chosen effect has options within it, you choose one of those options for the device when you create it. For example, if you choose the spell's ignite-extinguish effect, you determine whether the device ignites or extinguishes fire; the device doesn't do both. You can have three such devices in existence at a time, and each falls apart 8 hours after its creation or when you dismantle it with a touch as a Utilize action.</li></ul>"
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": [
+      {
+        "ability": {
+          "choose": [
+            "int",
+            "wis",
+            "cha"
+          ]
+        },
+        "known": {
+          "1": [
+            "mending",
+            "prestidigitation"
+          ]
+        },
+        "prepared": {}
+      }
+    ]
+  },
+  {
+    "name": "Goblin",
+    "source": "MPMM",
+    "rules": "2014",
+    "size": [
+      "S"
+    ],
+    "speed": 30,
+    "skills": [],
+    "skillChoice": null,
+    "tools": [],
+    "toolChoice": null,
+    "languages": "",
+    "languageChoice": null,
+    "abilityBonus": null,
+    "resistances": [],
+    "resistanceChoice": null,
+    "originFeat": null,
+    "description": "<p>A subterranean folk, goblins can be found in every corner of the multiverse, often beside their bugbear and hobgoblin kin. Long before the god Maglubiyet conquered them, early goblins served in the court of the Queen of Air and Darkness, one of the Feywild's archfey. Goblins thrived in her dangerous domain thanks to a special boon from her—a supernatural knack for finding the weak spots in foes larger than themselves and for getting out of trouble. Goblins brought this fey boon with them to worlds across the Material Plane, even if they don't remember the fey realm they inhabited before Maglubiyet's rise. Now many goblins pursue their own destinies, escaping the plots of both archfey and gods.</p>",
+    "traits": [
+      {
+        "name": "Creature Type",
+        "description": "<p>You are a Humanoid. You are also considered a goblinoid for any prerequisite or effect that requires you to be a goblinoid.</p>"
+      },
+      {
+        "name": "Darkvision",
+        "description": "<p>You can see in dim light within 60 feet of you as if it were bright light and in darkness as if it were in dim light. You discern colors in that darkness only as shades of gray.</p>"
+      },
+      {
+        "name": "Fey Ancestry",
+        "description": "<p>You have advantage on saving throws you make to avoid or end the charmed condition on yourself.</p>"
+      },
+      {
+        "name": "Fury of the Small",
+        "description": "<p>When you damage a creature with an attack or a spell and the creature's size is larger than yours, you can cause the attack or spell to deal extra damage to the creature. The extra damage equals your proficiency bonus.</p><p>You can use this trait a number of times equal to your proficiency bonus, regaining all expended uses when you finish a long rest, and you can use it no more than once per turn.</p>"
+      },
+      {
+        "name": "Nimble Escape",
+        "description": "<p>You can take the Disengage or Hide action as a bonus action on each of your turns.</p>"
+      }
+    ],
+    "spellChoices": [],
+    "spellGrants": null
   },
   {
     "name": "Goliath",
@@ -1805,7 +3117,48 @@
         "description": "<p>You have Advantage on any ability check you make to end the Grappled condition. You also count as one size larger when determining your carrying capacity.</p>"
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": null
+  },
+  {
+    "name": "Goliath",
+    "source": "MPMM",
+    "rules": "2014",
+    "size": [
+      "M"
+    ],
+    "speed": 30,
+    "skills": [
+      "Atletismo"
+    ],
+    "skillChoice": null,
+    "tools": [],
+    "toolChoice": null,
+    "languages": "",
+    "languageChoice": null,
+    "abilityBonus": null,
+    "resistances": [
+      "cold"
+    ],
+    "resistanceChoice": null,
+    "originFeat": null,
+    "description": "<p>The first goliaths lived on the highest mountain peaks—far above the tree line, where the air is thin and frigid winds howl. Distantly related to giants and infused with the supernatural essence of their ancestors' mountainous home, goliaths stand between 7 and 8 feet tall and have a wide array of skin tones resembling different types of stone.</p>",
+    "traits": [
+      {
+        "name": "Little Giant",
+        "description": "<p>You have proficiency in the Athletics skill, and you count as one size larger when determining your carrying weight and the weight you can push, drag, or lift.</p>"
+      },
+      {
+        "name": "Mountain Born",
+        "description": "<p>You have resistance to cold damage. You also naturally acclimate to high altitudes, even if you've never been to one. This includes elevations above 20,000 feet.</p>"
+      },
+      {
+        "name": "Stone's Endurance",
+        "description": "<p>You can supernaturally draw on unyielding stone to shrug off harm. When you take damage, you can use your reaction to roll a d12. Add your Constitution modifier to the number rolled and reduce the damage by that total.</p><p>You can use this trait a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.</p>"
+      }
+    ],
+    "spellChoices": [],
+    "spellGrants": null
   },
   {
     "name": "Half-Elf",
@@ -1867,7 +3220,8 @@
         "description": "<p>You can speak, read, and write Common, Elvish, and one extra language of your choice.</p>"
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": null
   },
   {
     "name": "Half-Orc",
@@ -1923,7 +3277,8 @@
         "description": "<p>You can speak, read, and write Common and Orc. Orc is a harsh, grating language with hard consonants. It has no script of its own but is written in the Dwarvish script.</p>"
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": null
   },
   {
     "name": "Halfling",
@@ -1972,7 +3327,8 @@
         "description": "<p>You can speak, read, and write Common and Halfling. The Halfling language isn't secret, but halflings are loath to share it with others. They write very little, so they don't have a rich body of literature. Their oral tradition, however, is very strong. Almost all halflings speak Common to converse with the people in whose lands they dwell or through which they are traveling.</p>"
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": null
   },
   {
     "name": "Halfling",
@@ -2015,7 +3371,8 @@
         "description": "<p>You can take the Hide action even when you are obscured only by a creature that is at least one size larger than you.</p>"
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": null
   },
   {
     "name": "Halfling (Lightfoot)",
@@ -2069,7 +3426,8 @@
         "description": "<p>You can attempt to hide even when you are obscured only by a creature that is at least one size larger than you.</p>"
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": null
   },
   {
     "name": "Halfling (Stout)",
@@ -2125,7 +3483,8 @@
         "description": "<p>You have advantage on saving throws against poison, and you have resistance against poison damage.</p>"
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": null
   },
   {
     "name": "Harengon",
@@ -2171,7 +3530,99 @@
         "description": "<p>As a bonus action, you can jump a number of feet equal to five times your proficiency bonus, without provoking opportunity attacks. You can use this trait only if your speed is greater than 0. You can use it a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.</p>"
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": null
+  },
+  {
+    "name": "Harengon (MPMM)",
+    "source": "MPMM",
+    "rules": "2014",
+    "size": [
+      "S",
+      "M"
+    ],
+    "speed": 30,
+    "skills": [
+      "Percepção"
+    ],
+    "skillChoice": null,
+    "tools": [],
+    "toolChoice": null,
+    "languages": "",
+    "languageChoice": null,
+    "abilityBonus": null,
+    "resistances": [],
+    "resistanceChoice": null,
+    "originFeat": null,
+    "description": "<p>Harengons originated in the Feywild, where they spoke Sylvan and embodied the spirit of freedom and travel. In time, these rabbitfolk hopped into other worlds, bringing the fey realm's exuberance with them and learning new languages as they went.</p><p>Harengons are bipedal, with the characteristic long feet of the rabbits they resemble and fur in a variety of colors. They share the keen senses and powerful legs of leporine creatures and are full of energy, like a wound-up spring. Harengons are blessed with a little fey luck, and they often find themselves a few fortunate feet away from dangers during adventures.</p>",
+    "traits": [
+      {
+        "name": "Size",
+        "description": "<p>You are Medium or Small. You choose the size when you select this race.</p>"
+      },
+      {
+        "name": "Hare-Trigger",
+        "description": "<p>You can add your proficiency bonus to your initiative rolls.</p>"
+      },
+      {
+        "name": "Leporine Senses",
+        "description": "<p>You have proficiency in the Perception skill.</p>"
+      },
+      {
+        "name": "Lucky Footwork",
+        "description": "<p>When you fail a Dexterity saving throw, you can use your reaction to roll a d4 and add it to the save, potentially turning the failure into a success. You can't use this reaction if you're prone or your speed is 0.</p>"
+      },
+      {
+        "name": "Rabbit Hop",
+        "description": "<p>As a bonus action, you can jump a number of feet equal to five times your proficiency bonus, without provoking opportunity attacks. You can use this trait only if your speed is greater than 0. You can use it a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.</p>"
+      }
+    ],
+    "spellChoices": [],
+    "spellGrants": null
+  },
+  {
+    "name": "Hobgoblin",
+    "source": "MPMM",
+    "rules": "2014",
+    "size": [
+      "M"
+    ],
+    "speed": 30,
+    "skills": [],
+    "skillChoice": null,
+    "tools": [],
+    "toolChoice": null,
+    "languages": "",
+    "languageChoice": null,
+    "abilityBonus": null,
+    "resistances": [],
+    "resistanceChoice": null,
+    "originFeat": null,
+    "description": "<p>Hobgoblins trace their origins to the ancient courts of the Feywild, where they first appeared with their goblin and bugbear kin. Many of them were driven from the Feywild by the conquering god Maglubiyet, who marshaled them as soldiers, but the fey realm left its mark; wherever they are in the multiverse, they continue to channel an aspect of the Feywild's rule of reciprocity, which creates a mystical bond between the giver and the receiver of a gift.</p><p>On some worlds, such bonds lead hobgoblins to form communities with deep ties to one another. In Eberron and the Forgotten Realms, vast hobgoblin legions have emerged, with ranks of devoted soldiers famed for their unity.</p><p>Hobgoblins are generally taller than their goblin cousins but not quite as big as bugbears. They have curved, pointed ears and noses that turn bright red or blue during displays of emotion.</p>",
+    "traits": [
+      {
+        "name": "Creature Type",
+        "description": "<p>You are a Humanoid. You are also considered a goblinoid for any prerequisite or effect that requires you to be a goblinoid.</p>"
+      },
+      {
+        "name": "Darkvision",
+        "description": "<p>You can see in dim light within 60 feet of you as if it were bright light and in darkness as if it were dim light. You discern colors in that darkness only as shades of gray.</p>"
+      },
+      {
+        "name": "Fey Ancestry",
+        "description": "<p>You have advantage on saving throws you make to avoid or end the charmed condition on yourself.</p>"
+      },
+      {
+        "name": "Fey Gift",
+        "description": "<p>You can use this trait to take the Help action as a bonus action, and you can do so a number of times equal to your proficiency bonus. You regain all expended uses when you finish a long rest.</p><p>Starting at 3rd level, choose one of the options below each time you take the Help action with this trait:</p><ul><li><strong>Hospitality:</strong> You and the creature you help each gain a number of temporary hit points equal to 1d6 plus your proficiency bonus.</li><li><strong>Passage:</strong> You and the creature you help each increase your walking speeds by 10 feet until the start of your next turn.</li><li><strong>Spite:</strong> Until the start of your next turn, the first time the creature you help hits a target with an attack roll, that target has disadvantage on the next attack roll it makes within the next minute.</li></ul>"
+      },
+      {
+        "name": "Fortune from the Many",
+        "description": "<p>If you miss with an attack roll or fail an ability check or a saving throw, you can draw on your bonds of reciprocity to gain a bonus to the roll equal to the number of allies you can see within 30 feet of you (maximum bonus of +3). You can use this trait a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.</p>"
+      }
+    ],
+    "spellChoices": [],
+    "spellGrants": null
   },
   {
     "name": "Human",
@@ -2215,7 +3666,8 @@
         "description": "<p>You can speak, read, and write Common and one extra language of your choice. Humans typically learn the languages of other peoples they deal with, including obscure dialects. They are fond of sprinkling their speech with words borrowed from other tongues: Orc curses, Elvish musical expressions, Dwarvish military phrases, and so on.</p>"
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": null
   },
   {
     "name": "Human",
@@ -2255,7 +3707,8 @@
         "description": "<p>You gain an Origin feat of your choice.</p>"
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": null
   },
   {
     "name": "Human (Variant)",
@@ -2317,7 +3770,213 @@
         "description": "<p>You gain one feat of your choice.</p>"
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": null
+  },
+  {
+    "name": "Kenku",
+    "source": "MPMM",
+    "rules": "2014",
+    "size": [
+      "S",
+      "M"
+    ],
+    "speed": 30,
+    "skills": [],
+    "skillChoice": {
+      "count": 2,
+      "from": "qualquer perícia"
+    },
+    "tools": [],
+    "toolChoice": null,
+    "languages": "",
+    "languageChoice": null,
+    "abilityBonus": null,
+    "resistances": [],
+    "resistanceChoice": null,
+    "originFeat": null,
+    "description": "<p>Feathered folk who resemble ravens, kenku are blessed with keen observation and supernaturally accurate memories. None of them can remember the origin of the first kenku, however, and they often joke that there are as many kenku origin stories as there are kenku. Some of them paint their genesis as a curse, being a flightless bird people doomed to mimic other people's creations. Other kenku recite cryptic but beautiful poems about their advent being a blessed event in which they were sent into the multiverse to observe and catalog its many wonders.</p><p>Whatever their true origin, kenku are most often found in the Shadowfell and the Material Plane, and they tend to have the coloration typical of ravens.</p>",
+    "traits": [
+      {
+        "name": "Size",
+        "description": "<p>Your size is Medium or Small. You choose the size when you select this race.</p>"
+      },
+      {
+        "name": "Expert Duplication",
+        "description": "<p>When you copy writing or craftwork produced by yourself or someone else, you have advantage on any ability checks you make to produce an exact duplicate.</p>"
+      },
+      {
+        "name": "Kenku Recall",
+        "description": "<p>Thanks to your supernaturally good memory, you have proficiency in two skills of your choice.</p><p>Moreover, when you make an ability check using any skill in which you have proficiency, you can give yourself advantage on the check before rolling the d20. You can give yourself advantage in this way a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.</p>"
+      },
+      {
+        "name": "Mimicry",
+        "description": "<p>You can accurately mimic sounds you have heard, including voices. A creature that hears the sounds you make can tell they are imitations only with a successful Wisdom (Insight) check against a DC of 8 + your proficiency bonus + your Charisma modifier.</p>"
+      }
+    ],
+    "spellChoices": [],
+    "spellGrants": null
+  },
+  {
+    "name": "Kobold",
+    "source": "MPMM",
+    "rules": "2014",
+    "size": [
+      "S"
+    ],
+    "speed": 30,
+    "skills": [],
+    "skillChoice": {
+      "count": 1,
+      "from": [
+        "Arcanismo",
+        "Investigação",
+        "Medicina",
+        "Prestidigitação",
+        "Sobrevivência"
+      ]
+    },
+    "tools": [],
+    "toolChoice": null,
+    "languages": "",
+    "languageChoice": null,
+    "abilityBonus": null,
+    "resistances": [],
+    "resistanceChoice": null,
+    "originFeat": null,
+    "description": "<p>Some of the smallest draconic creatures in the multiverse, kobolds display their draconic ancestry in the glint of their scales and in their roars. Legends tell of the first kobolds emerging from the Underdark near the lairs of the earliest dragons. In some lands, kobolds serve chromatic or metallic dragons—even worshiping them as divine beings. In other places, kobolds know too well how dangerous those dragons can be and help others defend against draconic destruction.</p><p>Whatever their relationship to dragons, kobold scales tend to be rust colored, although the occasional kobold sports a scale color more akin to that of a chromatic or a metallic dragon. A kobold's cry can express a range of emotion: anger, resolve, elation, fear, and more. Regardless of the emotion expressed, their cry resonates with draconic power.</p>",
+    "traits": [
+      {
+        "name": "Darkvision",
+        "description": "<p>You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were in dim light. You discern colors in that darkness only as shades of gray.</p>"
+      },
+      {
+        "name": "Draconic Cry",
+        "description": "<p>As a bonus action, you let out a cry at your enemies within 10 feet of you. Until the start of your next turn, you and your allies have advantage on attack rolls against any of those enemies who could hear you. You can use this trait a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.</p>"
+      },
+      {
+        "name": "Kobold Legacy",
+        "description": "<p>Kobold's connections to dragons can manifest in unpredictable ways in an individual kobold. Choose one of the following legacy options for your kobold.</p><ul><li><strong>Craftiness:</strong> You have proficiency in one of the following skills of your choice: Arcana, Investigation, Medicine, Sleight of Hand, or Survival.</li><li><strong>Defiance:</strong> You have advantage on saving throws to avoid or end the frightened condition on yourself.</li><li><strong>Draconic Sorcery:</strong> You know one cantrip of your choice from the sorcerer spell list. Intelligence, Wisdom, or Charisma is your spellcasting ability for that cantrip (choose when you select this race).</li></ul>"
+      }
+    ],
+    "spellChoices": [],
+    "spellGrants": [
+      {
+        "ability": {
+          "choose": [
+            "int",
+            "wis",
+            "cha"
+          ]
+        },
+        "known": {
+          "_": [
+            {
+              "choose": "level=0|class=Sorcerer",
+              "count": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "name": "Lizardfolk",
+    "source": "MPMM",
+    "rules": "2014",
+    "size": [
+      "M"
+    ],
+    "speed": 30,
+    "skills": [],
+    "skillChoice": {
+      "count": 2,
+      "from": [
+        "Adestrar Animais",
+        "Medicina",
+        "Natureza",
+        "Percepção",
+        "Furtividade",
+        "Sobrevivência"
+      ]
+    },
+    "tools": [],
+    "toolChoice": null,
+    "languages": "",
+    "languageChoice": null,
+    "abilityBonus": null,
+    "resistances": [],
+    "resistanceChoice": null,
+    "originFeat": null,
+    "description": "<p>The saurian lizardfolk are thought by some sages to be distant cousins of dragonborn and kobolds. Despite their resemblance to those other scaled folk, however, lizardfolk are their own people and have lived on the worlds of the Material Plane since the worlds' creation. Gifted by the gods with remarkable physical defenses and a mystical connection to the natural world, lizardfolk can survive with just their wits in situations that would be deadly for other folk. Because of that fact, many lizardfolk myths state that their people were placed by the gods in the Material Plane to guard its natural wonders.</p><p>Lizardfolk have colorful scales and exhibit a wide array of scale patterns. Their individual facial features are as varied as those of lizards.</p>",
+    "traits": [
+      {
+        "name": "Speed",
+        "description": "<p>Your walking speed is 30 feet, and you have a swimming speed equal to your walking speed.</p>"
+      },
+      {
+        "name": "Bite",
+        "description": "<p>You have a fanged maw that you can use to make unarmed strikes. When you hit with it, the strike deals 1d6 + your Strength modifier slashing damage, instead of the bludgeoning damage normal for an unarmed strike.</p>"
+      },
+      {
+        "name": "Hold Breath",
+        "description": "<p>You can hold your breath for up to 15 minutes at a time.</p>"
+      },
+      {
+        "name": "Hungry Jaws",
+        "description": "<p>You can throw yourself into a feeding frenzy. As a bonus action, you can make a special attack with your Bite. If the attack hits, it deals its normal damage, and you gain temporary hit points equal to your proficiency bonus. You can use this trait a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.</p>"
+      },
+      {
+        "name": "Natural Armor",
+        "description": "<p>You have tough, scaly skin. When you aren't wearing armor, your base AC is 13 + Dexterity modifier. You can use your natural armor to determine your AC if the armor you wear would leave you with a lower AC. A shield's benefits apply as normal while you use your natural armor.</p>"
+      },
+      {
+        "name": "Nature's Intuition",
+        "description": "<p>Thanks to your mystical connection to nature, you gain proficiency with two of the following skills of your choice: Animal Handling, Medicine, Nature, Perception, Stealth, or Survival.</p>"
+      }
+    ],
+    "spellChoices": [],
+    "spellGrants": null
+  },
+  {
+    "name": "Minotaur",
+    "source": "MPMM",
+    "rules": "2014",
+    "size": [
+      "M"
+    ],
+    "speed": 30,
+    "skills": [],
+    "skillChoice": null,
+    "tools": [],
+    "toolChoice": null,
+    "languages": "",
+    "languageChoice": null,
+    "abilityBonus": null,
+    "resistances": [],
+    "resistanceChoice": null,
+    "originFeat": null,
+    "description": "<p>Minotaurs are barrel-chested humanoids with heads resembling those of bulls. Blessed with a supernaturally strong sense of direction, minotaurs make great navigators. Some sages believe minotaurs were first created by the Lady of Pain to patrol the magical mazes that she uses to trap her foes.</p><p>Minotaur horns range in size from about 1 foot long to easily three times that length. Minotaurs often carve their horns to sharpen their edges, etch symbols of power into them, or sheathe them in bronze to prevent them from shattering during battle.</p><p>Thick hair extends down minotaurs' necks and powerful backs, and some have long patches of hair on their chins and cheeks. Their legs end in heavy, cloven hooves, and they have long, tufted tails.</p>",
+    "traits": [
+      {
+        "name": "Horns",
+        "description": "<p>You have horns that you can use to make unarmed strikes. When you hit with them, the strike deals 1d6 + your Strength modifier piercing damage, instead of the bludgeoning damage normal for an unarmed strike.</p>"
+      },
+      {
+        "name": "Goring Rush",
+        "description": "<p>Immediately after you take the Dash action on your turn and move at least 20 feet, you can make one melee attack with your Horns as a bonus action.</p>"
+      },
+      {
+        "name": "Hammering Horns",
+        "description": "<p>Immediately after you hit a creature with a melee attack as part of the Attack action on your turn, you can use a bonus action to attempt to push that target with your horns. The target must be within 5 feet of you and no more than one size larger than you. Unless it succeeds on a Strength saving throw against a DC equal to 8 + your proficiency bonus + your Strength modifier, you can push it up to 10 feet away from you.</p>"
+      },
+      {
+        "name": "Labyrinthine Recall",
+        "description": "<p>You always know which direction is north, and you have advantage on any Wisdom (Survival) check you make to navigate or track.</p>"
+      }
+    ],
+    "spellChoices": [],
+    "spellGrants": null
   },
   {
     "name": "Orc",
@@ -2356,7 +4015,48 @@
         "description": "<p>When you are reduced to 0 Hit Points but not killed outright, you can drop to 1 Hit Point instead. Once you use this trait, you can't do so again until you finish a Long Rest.</p>"
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": null
+  },
+  {
+    "name": "Orc",
+    "source": "MPMM",
+    "rules": "2014",
+    "size": [
+      "M"
+    ],
+    "speed": 30,
+    "skills": [],
+    "skillChoice": null,
+    "tools": [],
+    "toolChoice": null,
+    "languages": "",
+    "languageChoice": null,
+    "abilityBonus": null,
+    "resistances": [],
+    "resistanceChoice": null,
+    "originFeat": null,
+    "description": "<p>Orcs trace their creation to the one-eyed god Gruumsh, an unstoppable warrior and powerful leader. The divine qualities of Gruumsh resonate within orcs, granting them a reflection of his toughness and tenacity that can't be matched, and the god equipped his children to be able to live above or below ground.</p><p>On some worlds, such as Eberron, orcs were among the first defenders of the natural order from the encroachments of Fiends and other extraplanar threats. Gruumsh's blessings have made orcs tireless guardians and mighty allies wherever they are found, even when they turn their devotion to other gods.</p>",
+    "traits": [
+      {
+        "name": "Adrenaline Rush",
+        "description": "<p>You can take the Dash action as a bonus action. You can use this trait a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.</p><p>Whenever you use this trait, you gain a number of temporary hit points equal to your proficiency bonus.</p>"
+      },
+      {
+        "name": "Darkvision",
+        "description": "<p>You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You discern colors in that darkness only as shades of gray.</p>"
+      },
+      {
+        "name": "Powerful Build",
+        "description": "<p>You count as one size larger when determining your carrying capacity and the weight you can push, drag, or lift.</p>"
+      },
+      {
+        "name": "Relentless Endurance",
+        "description": "<p>When you are reduced to 0 hit points but not killed outright, you can drop to 1 hit point instead. Once you use this trait, you can't do so again until you finish a long rest.</p>"
+      }
+    ],
+    "spellChoices": [],
+    "spellGrants": null
   },
   {
     "name": "Quickstep",
@@ -2419,7 +4119,8 @@
         "description": "You can speak, read, and write Elvish and Umbral."
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": null
   },
   {
     "name": "Ratatosk",
@@ -2479,7 +4180,8 @@
         "description": "You can understand, read, and write Celestial and Common, but you speak via Telepathy."
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": null
   },
   {
     "name": "Ratatosk (Ekorre)",
@@ -2555,7 +4257,27 @@
         "description": "You can wield weapons with the light or finesse properties normally. You have disadvantage on attack rolls with other weapons, unable to use them effectively due to your Tiny size, and they are treated as two-handed weapons. You can't use heavy weapons at all. A weapon specifically designed for ratatosks (or for other Tiny creatures at the GM's discretion) are treated normally."
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": [
+      {
+        "innate": {
+          "5": {
+            "daily": {
+              "1": [
+                "mirror image"
+              ]
+            }
+          }
+        },
+        "known": {
+          "3": [
+            "message#c",
+            "vicious mockery#c"
+          ]
+        },
+        "ability": "cha"
+      }
+    ]
   },
   {
     "name": "Ratatosk (Tradvakt)",
@@ -2620,7 +4342,8 @@
         "description": "Your constant chittering distracts your opponents. As a bonus action, a non-ratatosk creature within 30 feet that can hear you must succeed on a Charisma saving throw or have disadvantage on its attack rolls until the start of your next turn. The DC of the save equals 8 + your proficiency bonus + your Constitution bonus. Once you use this trait, you can't use it again until you finish a short or long rest."
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": null
   },
   {
     "name": "Ravenfolk",
@@ -2675,7 +4398,8 @@
         "description": "You can speak, read, and write Huginn's Speech and Northern Tongue."
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": null
   },
   {
     "name": "Ravenfolk (Sublime)",
@@ -2731,7 +4455,8 @@
         "description": "You can speak, read, and write Common, Ravenfolk, and Umbral."
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": null
   },
   {
     "name": "Satarre",
@@ -2791,7 +4516,8 @@
         "description": "You can speak, read, and write Common and one of the following: Abyssal, Infernal, or Void Speech. Void Speech is a language of dark gods and ancient blasphemies, and the mere sound of its sibilant tones makes many other creatures quite uncomfortable."
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": null
   },
   {
     "name": "Satarre (Unbound)",
@@ -2858,7 +4584,171 @@
         "description": "You can speak, read, and write Umbral and either Abyssal, Infernal, or Void Speech."
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": null
+  },
+  {
+    "name": "Satyr",
+    "source": "MPMM",
+    "rules": "2014",
+    "size": [
+      "M"
+    ],
+    "speed": 35,
+    "skills": [
+      "Atuação",
+      "Persuasão"
+    ],
+    "skillChoice": null,
+    "tools": [],
+    "toolChoice": null,
+    "languages": "",
+    "languageChoice": null,
+    "abilityBonus": null,
+    "resistances": [],
+    "resistanceChoice": null,
+    "originFeat": null,
+    "description": "<p>Originating in the Feywild—a realm of pure emotion-satyrs thrive on the energy of merriment. They resemble elves but have goatlike legs, cloven hooves, and ram or goat horns. The magic of the fey realm has given them an innate ability to perform, to delight, and to resist magical intrusion. While they're usually found in the Feywild, satyrs do wander to other planes of existence, most often to the Material Plane. There they seek to bring a bit of their home plane's splendor to other worlds.</p>",
+    "traits": [
+      {
+        "name": "Creature Type",
+        "description": "<p>You are a Fey.</p>"
+      },
+      {
+        "name": "Ram",
+        "description": "<p>You can use your head and horns to make unarmed strikes. When you hit with them, the strike deals 1d6 + your Strength modifier bludgeoning damage, instead of the bludgeoning damage normal for an unarmed strike.</p>"
+      },
+      {
+        "name": "Magic Resistance",
+        "description": "<p>You have advantage on saving throws against spells.</p>"
+      },
+      {
+        "name": "Mirthful Leaps",
+        "description": "<p>Whenever you make a long jump or a high jump, you can roll a d8 and add the number rolled to the number of feet you cover, even when making a standing jump. This extra distance costs movement as usual.</p>"
+      },
+      {
+        "name": "Reveler",
+        "description": "<p>As an embodiment of revelry, you have proficiency in the Performance and Persuasion skills, and you have proficiency with one musical instrument of your choice.</p>"
+      }
+    ],
+    "spellChoices": [],
+    "spellGrants": null
+  },
+  {
+    "name": "Sea Elf",
+    "source": "MPMM",
+    "rules": "2014",
+    "size": [
+      "M"
+    ],
+    "speed": 30,
+    "skills": [
+      "Percepção"
+    ],
+    "skillChoice": null,
+    "tools": [],
+    "toolChoice": null,
+    "languages": "",
+    "languageChoice": null,
+    "abilityBonus": null,
+    "resistances": [
+      "cold"
+    ],
+    "resistanceChoice": null,
+    "originFeat": null,
+    "description": "",
+    "traits": [
+      {
+        "name": "Creature Type",
+        "description": "<p>You are a Humanoid. You are also considered an elf for any prerequisite or effect that requires you to be an elf.</p>"
+      },
+      {
+        "name": "Speed",
+        "description": "<p>Your walking speed is 30 feet, and you have a swimming speed equal to your walking speed.</p>"
+      },
+      {
+        "name": "Child of the Sea",
+        "description": "<p>You can breathe air and water, and you have resistance to cold damage.</p>"
+      },
+      {
+        "name": "Darkvision",
+        "description": "<p>You can see in dim light within 60 feet of you as if it were bright light and in darkness as if it were dim light. You discern colors in that darkness only as shades of gray.</p>"
+      },
+      {
+        "name": "Fey Ancestry",
+        "description": "<p>You have advantage on saving throws you make to avoid or end the charmed condition on yourself.</p>"
+      },
+      {
+        "name": "Friend of the Sea",
+        "description": "<p>Aquatic animals have an extraordinary affinity with your people. You can communicate simple ideas to any Beast that has a swimming speed. It can understand your words, though you have no special ability to understand it in return.</p>"
+      },
+      {
+        "name": "Keen Senses",
+        "description": "<p>You have proficiency in the Perception skill.</p>"
+      },
+      {
+        "name": "Trance",
+        "description": "<p>You don't need to sleep, and magic can't put you to sleep. You can finish a long rest in 4 hours if you spend those hours in a trancelike meditation, during which you retain consciousness.</p><p>Whenever you finish this trance, you can gain two proficiencies that you don't have, each one with a weapon or a tool of your choice selected from the Player's Handbook. You mystically acquire these proficiencies by drawing them from shared elven memory, and you retain them until you finish your next long rest.</p>"
+      }
+    ],
+    "spellChoices": [],
+    "spellGrants": null
+  },
+  {
+    "name": "Shadar-Kai",
+    "source": "MPMM",
+    "rules": "2014",
+    "size": [
+      "M"
+    ],
+    "speed": 30,
+    "skills": [
+      "Percepção"
+    ],
+    "skillChoice": null,
+    "tools": [],
+    "toolChoice": null,
+    "languages": "",
+    "languageChoice": null,
+    "abilityBonus": null,
+    "resistances": [
+      "necrotic"
+    ],
+    "resistanceChoice": null,
+    "originFeat": null,
+    "description": "",
+    "traits": [
+      {
+        "name": "Creature Type",
+        "description": "<p>You are a Humanoid. You are also considered an elf for any prerequisite or effect that requires you to be an elf.</p>"
+      },
+      {
+        "name": "Blessing of the Raven Queen",
+        "description": "<p>As a bonus action, you can magically teleport up to 30 feet to an unoccupied space you can see. You can use this trait a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.</p><p>Starting at 3rd level, you also gain resistance to all damage when you teleport using this trait. The resistance lasts until the start of your next turn. During that time, you appear ghostly and translucent.</p>"
+      },
+      {
+        "name": "Darkvision",
+        "description": "<p>You can see in dim light within 60 feet of you as if it were bright light and in darkness as if it were dim light. You discern colors in that darkness only as shades of gray.</p>"
+      },
+      {
+        "name": "Fey Ancestry",
+        "description": "<p>You have advantage on saving throws you make to avoid or end the charmed condition on yourself.</p>"
+      },
+      {
+        "name": "Keen Senses",
+        "description": "<p>You have proficiency in the Perception skill.</p>"
+      },
+      {
+        "name": "Necrotic Resistance",
+        "description": "<p>You have resistance to necrotic damage.</p>"
+      },
+      {
+        "name": "Trance",
+        "description": "<p>You don't need to sleep, and magic can't put you to sleep. You can finish a long rest in 4 hours if you spend those hours in a trancelike meditation, during which you retain consciousness.</p><p>Whenever you finish this trance, you can gain two proficiencies that you don't have, each one with a weapon or a tool of your choice selected from the Player's Handbook. You mystically acquire these proficiencies by drawing them from shared elven memory, and you retain them until you finish your next long rest.</p>"
+      }
+    ],
+    "spellChoices": [],
+    "spellGrants": null
   },
   {
     "name": "Shade",
@@ -2939,7 +4829,8 @@
         "description": "As living echoes of who they once were, shades maintain some of the traits they bore in life. Choose another race as your Living Origin. This is the race you were in life. Your size and speed are those of your Living Origin, and you know one language spoken by your Living Origin."
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": null
   },
   {
     "name": "Shade (Stygian)",
@@ -3022,7 +4913,8 @@
         "description": "Stygian shades are born with almost no memory of their former lives but have an innate desire to remember who they are. When you create your stygian shade, decide which one of these questions you know the answer to. The rest are questions you seek to answer:\n\n- What is your name?\n- Where are you from?\n- Who were the people you loved most?\n- How did you die?\n- What unfinished business has caused you to rise as a shade?"
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": null
   },
   {
     "name": "Shadow Goblin",
@@ -3093,7 +4985,52 @@
         "description": "You can speak, read, and write Goblin and Umbral."
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": null
+  },
+  {
+    "name": "Shifter",
+    "source": "MPMM",
+    "rules": "2014",
+    "size": [
+      "M"
+    ],
+    "speed": 30,
+    "skills": [],
+    "skillChoice": {
+      "count": 1,
+      "from": [
+        "Acrobacia",
+        "Atletismo",
+        "Intimidação",
+        "Sobrevivência"
+      ]
+    },
+    "tools": [],
+    "toolChoice": null,
+    "languages": "",
+    "languageChoice": null,
+    "abilityBonus": null,
+    "resistances": [],
+    "resistanceChoice": null,
+    "originFeat": null,
+    "description": "<p>Shifters are sometimes called weretouched, as they are descendants of people who contracted full or partial lycanthropy. Humanoids with a bestial aspect, shifters can't fully change shape, but they can temporarily enhance their animalistic features by entering a state they call shifting.</p><p>Shifters are similar to humans in height and build but are typically more lithe and flexible. Their facial features have a bestial cast, often with large eyes and pointed ears; most shifters also have prominent canine teeth. They grow fur-like hair on nearly every part of their bodies. While a shifter's appearance might remind an onlooker of an animal, they remain clearly identifiable as shifters even when at their most feral.</p><p>Most shifters resemble a particular kind of lycanthrope. You can choose the kind of lycanthrope in your past, or you can determine it randomly by rolling on the Lycanthrope Ancestor table. The table also provides a suggestion for the Shifting option you might have as a result of your ancestry.</p>",
+    "traits": [
+      {
+        "name": "Bestial Instincts",
+        "description": "<p>Channeling the beast within, you have proficiency in one of the following skills of your choice: Acrobatics, Athletics, Intimidation, or Survival.</p>"
+      },
+      {
+        "name": "Darkvision",
+        "description": "<p>You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were in dim light. You discern colors in that darkness only as shades of gray.</p>"
+      },
+      {
+        "name": "Shifting",
+        "description": "<p>As a bonus action, you can assume a more bestial appearance. This transformation lasts for 1 minute, until you die, or until you revert to your normal appearance as a bonus action. When you shift, you gain temporary hit points equal to 2 × your proficiency bonus. You can shift a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.</p><p>Whenever you shift, you gain an additional benefit based on one of the following options (choose when you select this race):</p><ul><li><strong>Beasthide:</strong> You gain 1d6 additional temporary hit points. While shifted, you have a +1 bonus to your Armor Class.</li><li><strong>Longtooth:</strong> When you shift and as a bonus action on your other turns while shifted, you can use your elongated fangs to make an unarmed strike. If you hit with your fangs, you can deal piercing damage equal to 1d6 + your Strength modifier, instead of the bludgeoning damage normal for an unarmed strike.</li><li><strong>Swiftstride:</strong> While shifted, your walking speed increases by 10 feet. Additionally, you can move up to 10 feet as a reaction when a creature ends its turn within 5 feet of you. This reactive movement doesn't provoke opportunity attacks.</li><li><strong>Wildhunt:</strong> While shifted, you have advantage on Wisdom checks, and no creature within 30 feet of you can make an attack roll with advantage against you unless you're incapacitated.</li></ul>"
+      }
+    ],
+    "spellChoices": [],
+    "spellGrants": null
   },
   {
     "name": "Tabaxi",
@@ -3144,7 +5081,8 @@
         "description": "<p>Your reflexes and agility allow you to move with a burst of speed. When you move on your turn in combat, you can double your speed until the end of the turn. Once you use this trait, you can't use it again until you move 0 feet on one of your turns.</p>"
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": null
   },
   {
     "name": "Tiefling",
@@ -3196,7 +5134,8 @@
         "description": "<p>You can speak, read, and write Common and Infernal.</p>"
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": null
   },
   {
     "name": "Tiefling",
@@ -3243,7 +5182,18 @@
         "description": "<p>You know the Thaumaturgy cantrip. When you cast it with this trait, the spell uses the same spellcasting ability you use for your Fiendish Legacy Trait.</p>"
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": [
+      {
+        "known": {
+          "1": [
+            "thaumaturgy"
+          ]
+        },
+        "ability": null,
+        "note": "Otherworldly Presence: habilidade de conjuração é a MESMA escolhida em Fiendish Legacy (o texto diz isso explicitamente) — não é fixa, depende da escolha feita em lineageChoice.ability."
+      }
+    ]
   },
   {
     "name": "Tiefling (Abyssal)",
@@ -3290,7 +5240,31 @@
         "description": "<p>You know the Thaumaturgy cantrip. When you cast it with this trait, the spell uses the same spellcasting ability you use for your Fiendish Legacy Trait.</p>"
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": [
+      {
+        "ability": {
+          "choose": [
+            "int",
+            "wis",
+            "cha"
+          ]
+        },
+        "known": {
+          "1": [
+            "poison spray"
+          ]
+        },
+        "prepared": {
+          "3": [
+            "ray of sickness"
+          ],
+          "5": [
+            "hold person"
+          ]
+        }
+      }
+    ]
   },
   {
     "name": "Tiefling (Chthonic)",
@@ -3337,7 +5311,31 @@
         "description": "<p>You know the Thaumaturgy cantrip. When you cast it with this trait, the spell uses the same spellcasting ability you use for your Fiendish Legacy Trait.</p>"
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": [
+      {
+        "ability": {
+          "choose": [
+            "int",
+            "wis",
+            "cha"
+          ]
+        },
+        "known": {
+          "1": [
+            "chill touch"
+          ]
+        },
+        "prepared": {
+          "3": [
+            "false life"
+          ],
+          "5": [
+            "ray of enfeeblement"
+          ]
+        }
+      }
+    ]
   },
   {
     "name": "Tiefling (Infernal)",
@@ -3384,7 +5382,173 @@
         "description": "<p>You know the Thaumaturgy cantrip. When you cast it with this trait, the spell uses the same spellcasting ability you use for your Fiendish Legacy Trait.</p>"
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": [
+      {
+        "ability": {
+          "choose": [
+            "int",
+            "wis",
+            "cha"
+          ]
+        },
+        "known": {
+          "1": [
+            "fire bolt"
+          ]
+        },
+        "prepared": {
+          "3": [
+            "hellish rebuke"
+          ],
+          "5": [
+            "darkness"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "name": "Tortle",
+    "source": "MPMM",
+    "rules": "2014",
+    "size": [
+      "S",
+      "M"
+    ],
+    "speed": 30,
+    "skills": [],
+    "skillChoice": {
+      "count": 1,
+      "from": [
+        "Adestrar Animais",
+        "Medicina",
+        "Natureza",
+        "Percepção",
+        "Furtividade",
+        "Sobrevivência"
+      ]
+    },
+    "tools": [],
+    "toolChoice": null,
+    "languages": "",
+    "languageChoice": null,
+    "abilityBonus": null,
+    "resistances": [],
+    "resistanceChoice": null,
+    "originFeat": null,
+    "description": "<p>Tortles have a saying: \"We wear our homes on our backs.\" These turtle folk live on many worlds, most often journeying up and down coasts, along waterways, and across the sea. Tortles don't have a unified story of how they were created, but they all have a sense of being mystically connected to the natural world. Carrying their shelter on their backs gives tortles a special feeling of security wherever they go, for even if they visit a far, unknown country, they have a place to lay their heads.</p><p>Tortles exhibit the same range of coloration and patterns found among turtles, and many tortles enjoy adorning their shells in distinctive ways.</p>",
+    "traits": [
+      {
+        "name": "Size",
+        "description": "<p>You are Medium or Small. You choose the size when you select this race.</p>"
+      },
+      {
+        "name": "Claws",
+        "description": "<p>You have claws that you can use to make unarmed strikes. When you hit with them, the strike deals 1d6 + your Strength modifier slashing damage, instead of the bludgeoning damage normal for an unarmed strike.</p>"
+      },
+      {
+        "name": "Hold Breath",
+        "description": "<p>You can hold your breath for up to 1 hour.</p>"
+      },
+      {
+        "name": "Natural Armor",
+        "description": "<p>Your shell provides you a base AC of 17 (your Dexterity modifier doesn't affect this number). You can't wear light, medium, or heavy armor, but if you are using a shield, you can apply the shield's bonus as normal.</p>"
+      },
+      {
+        "name": "Nature's Intuition",
+        "description": "<p>Thanks to your mystical connection to nature, you gain proficiency with one of the following skills of your choice: Animal Handling, Medicine, Nature, Perception, Stealth, or Survival.</p>"
+      },
+      {
+        "name": "Shell Defense",
+        "description": "<p>You can withdraw into your shell as an action. Until you emerge, you gain a +4 bonus to your AC, and you have advantage on Strength and Constitution saving throws. While in your shell, you are prone, your speed is 0 and can't increase, you have disadvantage on Dexterity saving throws, you can't take reactions, and the only action you can take is a bonus action to emerge from your shell.</p>"
+      }
+    ],
+    "spellChoices": [],
+    "spellGrants": null
+  },
+  {
+    "name": "Triton",
+    "source": "MPMM",
+    "rules": "2014",
+    "size": [
+      "M"
+    ],
+    "speed": 30,
+    "skills": [],
+    "skillChoice": null,
+    "tools": [],
+    "toolChoice": null,
+    "languages": "",
+    "languageChoice": null,
+    "abilityBonus": null,
+    "resistances": [
+      "cold"
+    ],
+    "resistanceChoice": null,
+    "originFeat": null,
+    "description": "<p>Originally from the Elemental Plane of Water, many tritons entered the Material Plane centuries ago in response to the growing threat of evil elementals. Those tritons spread across the worlds' oceans, protecting the surface from terrors in the deep. Over time, triton have extended their stewardship over the sea floor to the ocean's surface.</p><p>Tritons have webbed hands and feet, small fins on their calves, and coloration that favors blues and greens.</p>",
+    "traits": [
+      {
+        "name": "Speed",
+        "description": "<p>Your walking speed is 30 feet, and you have a swimming speed equal to your walking speed.</p>"
+      },
+      {
+        "name": "Amphibious",
+        "description": "<p>You can breathe air and water.</p>"
+      },
+      {
+        "name": "Control Air and Water",
+        "description": "<p>You can cast fog cloud with this trait. Starting at 3rd level, you can cast the gust of wind spell with this trait. Starting at 5th level, you can also cast the water walk spell with it. Once you cast any of these spells with this trait, you can't cast that spell with it again until you finish a long rest. You can also cast these spells using any spell slots you have of the appropriate level.</p><p>Intelligence, Wisdom, or Charisma is your spellcasting ability for these spells when you cast them with this trait (choose when you select this race).</p>"
+      },
+      {
+        "name": "Darkvision",
+        "description": "<p>You can see in dim light within 60 feet of you as if it were bright light and in darkness as if it were dim light. You discern colors in that darkness only as shades of gray.</p>"
+      },
+      {
+        "name": "Emissary of the Sea",
+        "description": "<p>You can communicate simple ideas to any Beast, Elemental, or Monstrosity that has a swimming speed. It can understand your words, though you have no special ability to understand it in return.</p>"
+      },
+      {
+        "name": "Guardian of the Depths",
+        "description": "<p>Adapted to the frigid ocean depths, you have resistance to cold damage.</p>"
+      }
+    ],
+    "spellChoices": [],
+    "spellGrants": [
+      {
+        "innate": {
+          "1": {
+            "daily": {
+              "1": [
+                "fog cloud"
+              ]
+            }
+          },
+          "3": {
+            "daily": {
+              "1": [
+                "gust of wind"
+              ]
+            }
+          },
+          "5": {
+            "daily": {
+              "1": [
+                "water walk"
+              ]
+            }
+          }
+        },
+        "ability": {
+          "choose": [
+            "int",
+            "wis",
+            "cha"
+          ]
+        }
+      }
+    ]
   },
   {
     "name": "Umbral Human",
@@ -3447,7 +5611,8 @@
         "description": "You can speak, read, and write Common and Umbral."
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": null
   },
   {
     "name": "Umbral Human (Changeling)",
@@ -3527,7 +5692,16 @@
         "description": "You can use an action to cast the disguise self spell at will."
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": [
+      {
+        "innate": {
+          "1": [
+            "disguise self"
+          ]
+        }
+      }
+    ]
   },
   {
     "name": "Umbral Human (Gifted)",
@@ -3602,6 +5776,81 @@
         "description": "You struck a bargain with a shadow fey to receive a gift, but it came at a terrible price. Choose one of the options below to determine the benefit and penalty you possess (or discuss other options with your GM):\n\n- Increase one of your ability scores by 6 (up to 20). Reduce two different ability scores by 2.\n- You no longer need to eat or breathe to survive and require only 4 hours for a long rest. Gain one level of exhaustion. This level of exhaustion cannot be removed by any means magical or non-magical.\n- Cut your current base movement speed in half. Gain a fly, swim, or climb speed equal to your newly halved base movement speed.\n- You become proficient in one skill of your choice and always roll ability checks made with that skill at advantage. Choose a second skill, and always roll ability checks made with that skill at disadvantage.\n- Each day at dawn, you gain temporary hit points equal to your Constitution score. You are no longer able to spend hit dice to heal during short rests."
       }
     ],
-    "spellChoices": []
+    "spellChoices": [],
+    "spellGrants": null
+  },
+  {
+    "name": "Yuan-Ti",
+    "source": "MPMM",
+    "rules": "2014",
+    "size": [
+      "S",
+      "M"
+    ],
+    "speed": 30,
+    "skills": [],
+    "skillChoice": null,
+    "tools": [],
+    "toolChoice": null,
+    "languages": "",
+    "languageChoice": null,
+    "abilityBonus": null,
+    "resistances": [
+      "poison"
+    ],
+    "resistanceChoice": null,
+    "originFeat": null,
+    "description": "<p>Yuan-ti were originally humans who transformed themselves into serpent folk through ancient rituals. Most yuan-ti were corrupted into monsters by those rites, but some yuan-ti instead became a new people who mix characteristics of humans and snakes.</p><p>Blessed with resistance to magical and poisonous effects by the rituals that created them, each of these yuan-ti manifests their serpentine heritage in a variety of ways: a forked tongue, snake eyes, a snakelike nose, or some other ophidian characteristic. However a yuan-ti looks, they have the power to pursue great good or evil in the multiverse.</p>",
+    "traits": [
+      {
+        "name": "Size",
+        "description": "<p>You are Medium or Small. You choose the size when you select this race.</p>"
+      },
+      {
+        "name": "Darkvision",
+        "description": "<p>You can see in dim light within 60 feet of you as if it were bright light and in darkness as if it were dim light. You discern colors in that darkness only as shades of gray.</p>"
+      },
+      {
+        "name": "Magic Resistance",
+        "description": "<p>You have advantage on saving throws against spells.</p>"
+      },
+      {
+        "name": "Poison Resilience",
+        "description": "<p>You have advantage on saving throws you make to avoid or end the poisoned condition on yourself. You also have resistance to poison damage.</p>"
+      },
+      {
+        "name": "Serpentine Spellcasting",
+        "description": "<p>You know the poison spray cantrip. You can cast animal friendship an unlimited number of times with this trait, but you can target only snakes with it. Starting at 3rd level, you can also cast suggestion with this trait. Once you cast it, you can't do so again until you finish a long rest. You can also cast it using any spell slots you have of 2nd level or higher.</p><p>Intelligence, Wisdom, or Charisma is your spellcasting ability for these spells when you cast them with this trait (choose when you select this race).</p>"
+      }
+    ],
+    "spellChoices": [],
+    "spellGrants": [
+      {
+        "innate": {
+          "1": [
+            "animal friendship"
+          ],
+          "3": {
+            "daily": {
+              "1": [
+                "suggestion"
+              ]
+            }
+          }
+        },
+        "ability": {
+          "choose": [
+            "int",
+            "wis",
+            "cha"
+          ]
+        },
+        "known": {
+          "1": [
+            "poison spray#c"
+          ]
+        }
+      }
+    ]
   }
 ]

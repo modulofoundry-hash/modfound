@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { ABILITIES, ABILITY_LABELS, SKILLS } from "../schema/character";
 import { CREATURE_TYPES, createEmptyNpc, SIZE_LETTER_TO_KEY, SIZES } from "../schema/npc";
 import { AbilitiesInput } from "./AbilitiesInput";
@@ -10,7 +10,6 @@ import { OriginPicker } from "./OriginPicker";
 import { RulesModeToggle } from "./RulesModeToggle";
 import { deriveDarkvisionFeet } from "../schema/character";
 import racesData from "../data/content/races.json";
-import { useCustomRaces } from "../data/customContent";
 
 const ACTION_FIELDS = [
   { key: "name", label: "Nome" },
@@ -45,10 +44,7 @@ export function NpcForm({ initialValue, onSubmit, onCancel }) {
   // existir no schema não tem essa chave — mescla com os padrões pra não
   // quebrar a tela ao abrir pra editar uma ficha antiga.
   const [npc, setNpc] = useState(() => ({ ...createEmptyNpc(), ...initialValue }));
-  const customRaces = useCustomRaces();
-  // Memoizado — ver mesmo comentário em CharacterForm.jsx (o OriginPicker
-  // re-deriva o match sempre que a array `items` muda de referência).
-  const allRaces = useMemo(() => [...racesData, ...customRaces], [customRaces]);
+  const allRaces = racesData;
 
   function set(key, value) {
     setNpc((prev) => ({ ...prev, [key]: value }));

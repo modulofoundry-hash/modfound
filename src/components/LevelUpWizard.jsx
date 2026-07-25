@@ -9,14 +9,15 @@ import { HpRollPicker } from "./HpRollPicker";
 import { FoundrySheetView } from "./FoundrySheetView";
 import { abilityImprovementSlots, classChoiceSlots } from "./CharacterCreationWizard";
 import { resolveClassMatches } from "../schema/resolveClassMatches";
+import { computeGrantedSpells } from "../schema/grantedSpells";
 import { useCharacterAppliers } from "../hooks/useCharacterAppliers";
 import { useAbilityImprovements } from "../hooks/useAbilityImprovements";
 import { useClassChoices } from "../hooks/useClassChoices";
-import { useCustomClasses } from "../data/customContent";
 import featsData from "../data/content/feats.json";
 import optionalFeaturesData from "../data/content/optionalfeatures.json";
 import classesData from "../data/content/classes.json";
 import subclassesData from "../data/content/subclasses.json";
+import racesData from "../data/content/races.json";
 
 // Níveis de PV ainda pendentes de escolha (média/rolagem) nesta subida —
 // classe ORIGINAL (index 0, já tinha nível ≥1 antes) só precisa escolher a
@@ -86,7 +87,12 @@ const STEP_DEFS = [
     label: "Magias",
     title: "Magias",
     blurb: "Truques/magias conhecidas ou espaço de preparo novos com o nível.",
-    conditional: ({ classMatches }) => Object.values(classMatches).some((m) => m?.classData?.spellcasting),
+    // Mesmo motivo do CharacterCreationWizard: sem isso, uma raça com magia
+    // concedida (ex: Erina Spiritfarer) nunca mostrava o aviso de "Concedidas
+    // automaticamente" num personagem sem nenhuma classe conjuradora.
+    conditional: ({ character, classMatches, raceMatch }) =>
+      Object.values(classMatches).some((m) => m?.classData?.spellcasting) ||
+      computeGrantedSpells({ character, raceMatch, classMatches, featsData, optionalFeaturesData }).length > 0,
   },
   {
     key: "confirmacao",
@@ -105,10 +111,9 @@ export function LevelUpWizard({ initialCharacter, onSubmit, onCancel }) {
   const [stepKey, setStepKey] = useState(STEP_DEFS[0].key);
   const [spellBrowserOpen, setSpellBrowserOpen] = useState(false);
 
-  const customClasses = useCustomClasses();
   const allClassesForAdd = character.rulesMode
-    ? [...classesData.filter((c) => c.rules === character.rulesMode), ...customClasses.filter((c) => c.rules === character.rulesMode)]
-    : [...classesData, ...customClasses];
+    ? classesData.filter((c) => c.rules === character.rulesMode)
+    : classesData;
   const usedNames = new Set(character.classes.map((c) => c.name).filter(Boolean));
   const addableClasses = allClassesForAdd.filter((c) => !usedNames.has(c.name));
 
@@ -154,6 +159,13 @@ export function LevelUpWizard({ initialCharacter, onSubmit, onCancel }) {
   }
 
   const classMatches = classesMatches;
+  // Level-up nunca troca raça (só a etapa de Criação tem picker de Raça) --
+  // resolvido aqui só pro aviso de "Magias Concedidas" (StepMagias) e pra
+  // ficha final (FoundrySheetView) saberem o que a raça já concede.
+  const raceMatch =
+    racesData.find((r) => r.name === character.race && r.rules === character.raceRules) ??
+    racesData.find((r) => r.name === character.race) ??
+    null;
 
   const pendingHp = [];
   character.classes.forEach((row, index) => {
@@ -215,6 +227,8 @@ export function LevelUpWizard({ initialCharacter, onSubmit, onCancel }) {
   });
 
   const conditionalCtx = {
+    character,
+    raceMatch,
     pendingHp,
     hasNewImprovementSlots,
     hasNewChoiceSlots,
@@ -355,6 +369,7 @@ export function LevelUpWizard({ initialCharacter, onSubmit, onCancel }) {
         return (
           <StepMagias
             character={character}
+            raceMatch={raceMatch}
             classMatches={classMatches}
             spells={character.spells}
             onChangeSpells={(spells) => setCharacter((prev) => ({ ...prev, spells }))}

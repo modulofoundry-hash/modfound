@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { ABILITIES, ABILITY_LABELS, SKILLS } from "../schema/character";
+import { resolveClassMatches } from "../schema/resolveClassMatches";
+import { computeGrantedSpells } from "../schema/grantedSpells";
 import racesData from "../data/content/races.json";
 import classesData from "../data/content/classes.json";
 import featsData from "../data/content/feats.json";
+import optionalFeaturesData from "../data/content/optionalfeatures.json";
 import spellsData from "../data/content/spells.json";
 
 function abilityMod(score) {
@@ -215,10 +218,9 @@ function DetailsTab({ character, originalClassMatch, totalLevel }) {
       </div>
 
       <div className="foundry-details-col foundry-details-traits">
-        {/* Compara pelo NOME digitado (não pelo match no banco oficial) —
-            raça/antecedente customizado (Firestore customRaces/
-            customBackgrounds) não existe em races.json/backgrounds.json,
-            mas ainda é uma escolha de verdade do jogador e merece card. */}
+        {/* Mostra o nome salvo direto (não depende de achar o match no banco
+            oficial) — raça/antecedente é sempre uma escolha de verdade do
+            jogador e merece card, mesmo se o nome não bater com nada. */}
         {character.race && (
           <div className="foundry-trait-card">
             <strong>{character.race}</strong>
@@ -325,7 +327,7 @@ function FeatsTab({ character, raceMatch }) {
   );
 }
 
-function SpellsTab({ character }) {
+function SpellsTab({ character, raceMatch, classMatches }) {
   const entries = (character.spells ?? []).map((s) => ({
     ...s,
     match: findSpellMatch(s.name, character.rulesMode),
@@ -338,7 +340,11 @@ function SpellsTab({ character }) {
   }
   const levels = [...byLevel.keys()].sort((a, b) => a - b);
 
-  if (!entries.length) {
+  // Concedidas por Raça/Feat/Subclasse/Escolha de Classe -- só exibição, ver
+  // schema/grantedSpells.js pro porquê de nunca entrar em `character.spells`.
+  const granted = computeGrantedSpells({ character, raceMatch, classMatches, featsData, optionalFeaturesData });
+
+  if (!entries.length && !granted.length) {
     return (
       <div className="foundry-spells-tab">
         <EmptyRow />
@@ -348,6 +354,28 @@ function SpellsTab({ character }) {
 
   return (
     <div className="foundry-spells-tab">
+      {granted.length > 0 && (
+        <div className="foundry-box">
+          <div className="foundry-box-header-row">
+            <h4>Concedidas automaticamente</h4>
+          </div>
+          <ul className="foundry-item-list foundry-spell-list">
+            {granted.map((entry, index) => (
+              <li key={index}>
+                <span className="foundry-skill-dot" aria-hidden="true" />
+                <span className="foundry-item-name">{entry.name}</span>
+                <span className="foundry-spell-meta">
+                  {entry.source}
+                  {!entry.unlocked && ` · a partir do nível ${entry.level}`}
+                </span>
+              </li>
+            ))}
+          </ul>
+          <p className="field-hint">
+            O Foundry adiciona essas magias sozinho ao sincronizar (não precisa buscar/adicionar aqui).
+          </p>
+        </div>
+      )}
       {levels.map((level) => (
         <div className="foundry-box" key={level}>
           <div className="foundry-box-header-row">
@@ -471,6 +499,7 @@ export function FoundrySheetView({ character }) {
   const prof = proficiencyBonus(totalLevel);
 
   const raceMatch = findRaceMatch(character);
+  const classMatches = Object.values(resolveClassMatches(character.classes));
   // Só a classe INICIAL (primeira da lista) concede proficiência de teste de
   // resistência/armadura/arma em multiclasse — mesma convenção de PV máximo
   // já usada no resto do projeto (ver item 15 da memória do projeto).
@@ -564,7 +593,7 @@ export function FoundrySheetView({ character }) {
         )}
         {tab === "inventory" && <InventoryTab character={character} />}
         {tab === "feats" && <FeatsTab character={character} raceMatch={raceMatch} />}
-        {tab === "spells" && <SpellsTab character={character} />}
+        {tab === "spells" && <SpellsTab character={character} raceMatch={raceMatch} classMatches={classMatches} />}
         {tab === "biography" && <BiographyTab character={character} />}
       </div>
     </div>

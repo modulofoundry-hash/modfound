@@ -19,8 +19,8 @@ import optionalFeaturesData from "../data/content/optionalfeatures.json";
 import { useCharacterAppliers } from "../hooks/useCharacterAppliers";
 import { useAbilityImprovements } from "../hooks/useAbilityImprovements";
 import { useClassChoices } from "../hooks/useClassChoices";
-import { useCustomBackgrounds, useCustomClasses, useCustomRaces } from "../data/customContent";
 import { resolveClassMatches } from "../schema/resolveClassMatches";
+import { computeGrantedSpells } from "../schema/grantedSpells";
 import racesData from "../data/content/races.json";
 import backgroundsData from "../data/content/backgrounds.json";
 import classesData from "../data/content/classes.json";
@@ -233,8 +233,13 @@ const STEP_DEFS = [
     label: "Magias",
     title: "Magias",
     blurb: "Magias que o personagem conhece ou tem preparadas.",
-    conditional: ({ classMatches }) =>
-      classMatches.some((match) => match?.classData?.spellcasting && match.classData.spellcasting.progression !== "none"),
+    // Aparece se tiver classe conjuradora OU se Raça/Feat/Subclasse/Escolha de
+    // Classe já concede alguma magia sozinha (ex: Erina Spiritfarer) -- sem
+    // isso o personagem nunca via o aviso de "Concedidas automaticamente"
+    // quando não tinha nenhuma classe conjuradora escolhida.
+    conditional: ({ character, classMatches, raceMatch }) =>
+      classMatches.some((match) => match?.classData?.spellcasting && match.classData.spellcasting.progression !== "none") ||
+      computeGrantedSpells({ character, raceMatch, classMatches, featsData, optionalFeaturesData }).length > 0,
   },
   {
     key: "identidade",
@@ -349,13 +354,10 @@ function StepConfirmacao({ character, targetLevel }) {
 export function CharacterCreationWizard({ initialValue, onSubmit, onCancel }) {
   const editMode = Boolean(initialValue);
 
-  const customRaces = useCustomRaces();
-  const customBackgrounds = useCustomBackgrounds();
-  const customClasses = useCustomClasses();
   // Raça/Antecedente mostram as duas edições juntas (com tag) — só Classe é
-  // filtrada de verdade pelo modo, mesma regra de CharacterForm.jsx.
-  const allRaces = [...racesData, ...customRaces];
-  const allBackgrounds = [...backgroundsData, ...customBackgrounds];
+  // filtrada de verdade pelo modo.
+  const allRaces = racesData;
+  const allBackgrounds = backgroundsData;
 
   // Mescla com os padrões em vez de usar `initialValue` cru — uma ficha salva
   // ANTES de um campo novo existir no schema (ex: `senses`, `isOriginal`) não
@@ -389,16 +391,10 @@ export function CharacterCreationWizard({ initialValue, onSubmit, onCancel }) {
   const [nameRequiredError, setNameRequiredError] = useState(false);
   const [spellBrowserOpen, setSpellBrowserOpen] = useState(false);
 
-  // Classe é a única coisa filtrada de verdade por edição — inclui
-  // customClasses também no filtro (achado real: entradas customizadas SEM
-  // `rules` marcado apareciam nas duas edições ao mesmo tempo, mesmo sendo
-  // sobra de teste duplicando classe oficial — ver memória do projeto).
+  // Classe é a única coisa filtrada de verdade por edição.
   const allClasses = character.rulesMode
-    ? [
-        ...classesData.filter((c) => c.rules === character.rulesMode),
-        ...customClasses.filter((c) => c.rules === character.rulesMode),
-      ]
-    : [...classesData, ...customClasses];
+    ? classesData.filter((c) => c.rules === character.rulesMode)
+    : classesData;
 
   const appliers = useCharacterAppliers(setCharacter);
   const { findImprovement, revertImprovement, setImprovementChoice, moveImprovementChip, unassignImprovementChip, pickImprovementFeat } =
@@ -721,6 +717,7 @@ export function CharacterCreationWizard({ initialValue, onSubmit, onCancel }) {
         return (
           <StepMagias
             character={character}
+            raceMatch={raceMatch}
             classMatches={classMatches}
             spells={character.spells}
             onChangeSpells={(spells) => set("spells", spells)}

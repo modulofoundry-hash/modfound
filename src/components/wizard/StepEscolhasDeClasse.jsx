@@ -9,6 +9,7 @@ const CATEGORY_LABELS = {
   eldritchInvocation: "Invocação Mística",
   maneuver: "Manobra (Battle Master)",
   artificerInfusion: "Infusão de Artífice",
+  arcaneShot: "Disparo Arcano (Arcane Archer)",
 };
 
 const COLUMNS = [
