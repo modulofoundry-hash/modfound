@@ -74,6 +74,22 @@ export function ClassesInput({
     onChange([...classes, { name: "", subclass: "", level: 1, hpRolls: [] }]);
   }
 
+  // Diminuir o nível abaixo de `subclassLevel` precisa limpar a subclasse já
+  // escolhida -- bug real achado na revisão: `updateRow` só trocava `level`,
+  // `SubclassPicker` reage escondendo a grade ("disponível a partir do nível
+  // N"), mas o NOME da subclasse ficava gravado no personagem mesmo assim
+  // (visível na Confirmação/ficha final), sem mais fazer sentido pro nível
+  // atual.
+  function setLevel(index, level, matched) {
+    const patch = { level };
+    if (matched?.subclassLevel && level < matched.subclassLevel && classes[index]?.subclass) {
+      patch.subclass = "";
+      patch.subclassRules = "";
+      onMatchesChange({ ...matches, [index]: { ...matches[index], subclassData: null } });
+    }
+    updateRow(index, patch);
+  }
+
   // Preencher só o índice do nível escolhido (`arr[level-1] = mode`) deixa
   // buracos (undefined) nas posições anteriores nunca tocadas — Firestore
   // recusa gravar documento com `undefined` em qualquer campo, e como isso
@@ -170,7 +186,7 @@ export function ClassesInput({
                   min="1"
                   max="20"
                   value={row.level}
-                  onChange={(event) => updateRow(index, { level: Number(event.target.value) })}
+                  onChange={(event) => setLevel(index, Number(event.target.value), matched)}
                 />
               </label>
               <button type="button" className="list-editor-remove" onClick={() => removeRow(index)}>
@@ -220,7 +236,12 @@ export function ClassesInput({
                 {onApplySpells &&
                   subclassSpellChoices.map((choice, i) => (
                     <SpellChoicePicker
-                      key={i}
+                      // `key` ligada ao NOME da subclasse (não só o índice `i`)
+                      // -- bug real achado na revisão: trocar de subclasse sem
+                      // clicar "Adicionar" mantinha o picker da subclasse
+                      // ANTERIOR vivo (mesmo índice `i`), deixando uma magia
+                      // que não pertence à pool nova pronta pra ser adicionada.
+                      key={`${row.subclass}-${i}`}
                       title={`Magia (${row.subclass})`}
                       count={choice.count}
                       pool={choice.pool}

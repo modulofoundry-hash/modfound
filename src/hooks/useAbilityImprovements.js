@@ -71,6 +71,24 @@ export function useAbilityImprovements(character, setCharacter, applyAbilityBonu
     replaceImprovement(classIndex, level, { choice: improvement.choice, feat: improvement.feat, assignments });
   }
 
+  // Reverte e REMOVE todo slot da classe `classIndex` acima de `maxLevel` --
+  // usado quando o nível de uma classe DIMINUI (level-up desmarcado, ou
+  // campo de nível editado pra baixo no formulário de edição). Sem isso, o
+  // bônus de atributo (ou talento) de um slot que deixou de existir continua
+  // aplicado pra sempre em `character.abilities`/`character.feats`, mesmo
+  // com o card correspondente já tendo sumido da etapa Melhorias (achado na
+  // revisão: `abilityImprovementSlots` esconde o card só por comparar contra
+  // o nível atual, nunca desfaz o que já tinha sido aplicado).
+  function pruneImprovementsAbove(classIndex, maxLevel) {
+    const stale = character.abilityImprovements.filter((i) => i.classIndex === classIndex && i.level > maxLevel);
+    if (!stale.length) return;
+    for (const improvement of stale) revertImprovement(improvement);
+    setCharacter((prev) => ({
+      ...prev,
+      abilityImprovements: prev.abilityImprovements.filter((i) => !(i.classIndex === classIndex && i.level > maxLevel)),
+    }));
+  }
+
   function pickImprovementFeat(classIndex, level, item) {
     const improvement = findImprovement(classIndex, level) ?? { classIndex, level, choice: "feat", assignments: {}, feat: null };
     if (improvement.feat === item.name) return;
@@ -91,6 +109,7 @@ export function useAbilityImprovements(character, setCharacter, applyAbilityBonu
   return {
     findImprovement,
     revertImprovement,
+    pruneImprovementsAbove,
     setImprovementChoice,
     moveImprovementChip,
     unassignImprovementChip,

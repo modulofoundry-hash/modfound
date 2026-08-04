@@ -65,12 +65,13 @@ function ClassLevelTable({ row, index, classData, subclassData, originalLevel, m
 // personagem, nunca só da linha em questão.
 export function StepSelecionarNiveis({ classes, originalLevels, classMatches, addableClasses, onSetLevel, onAddClass }) {
   const [addOpen, setAddOpen] = useState(false);
-  const totalLevel = classes.reduce((sum, row) => sum + (row.level ?? 0), 0);
+  const totalLevel = classes.filter((row) => row.name).reduce((sum, row) => sum + (row.level ?? 0), 0);
 
   return (
     <div className="wizard-step-selecionar-niveis">
       <p className={`field-hint${totalLevel >= 20 ? " field-hint-warn" : ""}`}>Nível total do personagem: {totalLevel}/20</p>
       {classes.map((row, index) => {
+        if (!row.name) return null;
         const rowLevel = row.level ?? 0;
         const maxAllowed = Math.min(20, 20 - (totalLevel - rowLevel));
         return (

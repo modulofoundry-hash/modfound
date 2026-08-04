@@ -101,8 +101,16 @@ export function createEmptyCharacter() {
     // foi escolhida de verdade na hora de buscar o Item.
     raceRules: "",
     size: "",
+    // Bônus de atributo aplicado pela Raça (2014) — `{atributo: quantidade}`
+    // ou `null` se ainda não aplicado. Guardado (em vez de só somar direto em
+    // `abilities` e esquecer) pra dar pra REVERTER ao trocar de raça ou
+    // reaplicar sem dobrar (ver applyAbilityBonusFor/revertAbilityBonusFor em
+    // useCharacterAppliers.js).
+    raceAbilityBonusPicks: null,
     background: "",
     backgroundRules: "",
+    // Mesma ideia de raceAbilityBonusPicks, mas pro Antecedente (2024).
+    backgroundAbilityBonusPicks: null,
     // `hpRolls[i]` = escolha de PV do nível i+1 dessa entrada de classe:
     // ausente = média (padrão, retrocompatível — ficha antiga sem esse campo
     // continua igual), "avg" = média escolhida conscientemente, "pending" =
@@ -141,6 +149,24 @@ export function createEmptyCharacter() {
     // de `classesData`/`subclassesData` (campo `optionalFeatureChoices`) + nível
     // atual da classe, não precisa persistir isso. Ver StepEscolhasDeClasse.jsx.
     classChoices: [],
+    // Weapon Mastery (2024, XPHB) — quais armas o personagem tem mastery ativa,
+    // achatada por slot (1 entrada por card do wizard, mesmo padrão de
+    // `classChoices`): `source` é o identifier da classe ou "feat", `weapons` é
+    // array de chaves de arma do Foundry (ex: "longsword"). Slots disponíveis
+    // recalculados a partir de `classesData`/`weaponMasteryChoice` do talento +
+    // nível atual, não precisa persistir isso. Ver StepMaestriaDeArma.jsx.
+    weaponMasteryChoices: [],
+    // Mesmo padrão de weaponMasteryChoices acima, mas pra proficiência ABERTA
+    // (Weapon Master 2014, Hobgoblin) -- `sourceKey` "race" ou "feat:<nome>". Ver
+    // StepProficienciaDeArma.jsx / utils/weaponProficiency.js.
+    weaponProficiencies: [],
+    // Animal Enhancement (Simic Hybrid, GGR) — 2 escolhas fixas por PERSONAGEM
+    // (não por classe): 1 no nível 1 (pool de 3), 1 no nível 5 (pool de 5, excluindo
+    // a do nível 1 de verdade — mecanismo dedicado, não `classChoices`, porque o
+    // genérico não sabe excluir entre categorias). `{slotKey, name}` (`slotKey`
+    // "level1"/"level5"/"reversed", mesmo padrão de `weaponMasteryChoices`). Ver
+    // StepAnimalEnhancement.jsx / utils/animalEnhancement.js.
+    animalEnhancementChoices: [],
     spells: [],
     // Marca um card como snapshot congelado de ANTES de um Level-Up (ver
     // LevelUpWizard.jsx) — continua um card normal (editável, sincronizável

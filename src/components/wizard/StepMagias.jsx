@@ -2,6 +2,7 @@ import { ListEditor } from "../ListEditor";
 import { SpellBrowser } from "../SpellBrowser";
 import { spellProgressionForCharacter, isCantripName } from "../../schema/spellProgression";
 import { computeGrantedSpells } from "../../schema/grantedSpells";
+import { computeExpandedSpellPool } from "../../schema/expandedSpellPool";
 import spellsData from "../../data/content/spells.json";
 import featsData from "../../data/content/feats.json";
 import optionalFeaturesData from "../../data/content/optionalfeatures.json";
@@ -22,6 +23,25 @@ export function StepMagias({ character, raceMatch, classMatches, spells, onChang
   // aqui, nem entra na lista `spells` acima: o Foundry concede essas magias
   // sozinho pela própria raça/subclasse/feat/escolha ao sincronizar.
   const granted = computeGrantedSpells({ character, raceMatch, classMatches, featsData, optionalFeaturesData });
+
+  // Magias que uma classe/subclasse EXPANDE pra fora da lista normal (Warlock Patron,
+  // Divine Soul, Eldritch Knight/Arcane Trickster, Bardo "Magical Secrets" 2024 -- ver
+  // schema/expandedSpellPool.js, Lote 8). Diferente de `granted` acima: aqui a magia NÃO
+  // é concedida sozinha, só passa a poder ser ESCOLHIDA (mesmo mecanismo de sempre,
+  // `handleAdd`/`character.spells`) -- por isso alimenta o `SpellBrowser` também, não só
+  // o aviso em texto.
+  const expandedPool = computeExpandedSpellPool({ character, classMatches, spellsData });
+  const bonusEligibility = new Map();
+  for (const entry of expandedPool) {
+    if (!entry.unlocked) continue;
+    if (!bonusEligibility.has(entry.className)) bonusEligibility.set(entry.className, new Set());
+    bonusEligibility.get(entry.className).add(entry.name);
+  }
+  const expandedBySource = new Map();
+  for (const entry of expandedPool) {
+    if (!expandedBySource.has(entry.source)) expandedBySource.set(entry.source, []);
+    expandedBySource.get(entry.source).push(entry);
+  }
 
   // Só bloqueia quando a mudança AUMENTA o total de preparadas acima do teto
   // (marcar mais uma) -- remover magia ou desmarcar preparada nunca é
@@ -49,6 +69,21 @@ export function StepMagias({ character, raceMatch, classMatches, spells, onChang
             .join("; ")}
         </p>
       )}
+      {[...expandedBySource.entries()].map(([source, entries]) => {
+        // Listas nomeadas (Warlock Patron etc.) têm poucas entradas -- mostra tudo. Listas
+        // por FILTRO (Eldritch Knight/Arcane Trickster/Bardo "Magical Secrets") podem
+        // passar de 100 magias -- cortar em 12 e apontar pro buscador em vez de virar uma
+        // parede de texto ilegível.
+        const shown = entries.slice(0, 12);
+        const rest = entries.length - shown.length;
+        return (
+          <p className="field-hint" key={source}>
+            {source} expande sua lista de magias com:{" "}
+            {shown.map((e) => `${e.name}${e.unlocked ? "" : ` (nível ${e.level})`}`).join("; ")}
+            {rest > 0 && ` — e mais ${rest}, veja em "Buscar magia" filtrando por classe`}
+          </p>
+        );
+      })}
       <p className="field-hint">
         Truques: {cantripCount}/{spellCaps.cantripsKnown}
         {spellCaps.spellsKnown !== null && ` · Magias conhecidas: ${knownCount}/${spellCaps.spellsKnown}`}
@@ -89,6 +124,7 @@ export function StepMagias({ character, raceMatch, classMatches, spells, onChang
                   ? cantripCount < spellCaps.cantripsKnown
                   : spellCaps.spellsKnown === null || knownCount < spellCaps.spellsKnown
               }
+              bonusEligibility={bonusEligibility}
             />
           </div>
         </div>

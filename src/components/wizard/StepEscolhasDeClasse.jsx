@@ -8,8 +8,11 @@ const CATEGORY_LABELS = {
   metamagic: "Metamagia",
   eldritchInvocation: "Invocação Mística",
   maneuver: "Manobra (Battle Master)",
+  elementalDiscipline: "Disciplina Elemental (Way of the Four Elements)",
   artificerInfusion: "Infusão de Artífice",
   arcaneShot: "Disparo Arcano (Arcane Archer)",
+  runeMagic: "Runa",
+  houseTools: "Ferramentas de Casa (House Agent)",
 };
 
 const COLUMNS = [

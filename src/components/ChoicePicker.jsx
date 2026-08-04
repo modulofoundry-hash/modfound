@@ -112,7 +112,7 @@ export function ChoicePicker({ title, count, from, onAdd, allowCustom }) {
       )}
       <button
         type="button"
-        disabled={selected.length === 0 && !(customEnabled && customText.trim())}
+        disabled={usedSlots !== count || (customEnabled && !customText.trim())}
         onClick={handleAdd}
       >
         Adicionar

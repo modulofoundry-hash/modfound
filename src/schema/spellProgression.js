@@ -72,3 +72,16 @@ export function spellProgressionForCharacter(character, classMatches) {
 export function isCantripName(name, spellsData) {
   return spellsData.some((s) => s.name === name && s.level === 0);
 }
+
+// Se o personagem JÁ tem algum truque/magia conhecida/espaço de preparo no
+// nível atual — diferente de só checar se alguma classe tem o campo
+// `spellcasting` (que existe pra Patrulheiro/Paladino/Artificiante mesmo
+// ANTES do nível em que eles começam a conjurar de verdade, já que o campo
+// descreve a progressão inteira da classe, não o nível atual). Usado pra
+// decidir se a etapa "Magias" deve aparecer -- sem isso, um Patrulheiro/
+// Paladino nível 1 mostrava a etapa vazia (Truques 0/0, Preparadas 0/0),
+// sem nada pra fazer nela (achado na revisão completa do projeto).
+export function hasActiveSpellcasting(character, classMatches) {
+  const caps = spellProgressionForCharacter(character, classMatches);
+  return caps.cantripsKnown > 0 || (caps.spellsKnown ?? 0) > 0 || (caps.maxPrepared ?? 0) > 0;
+}

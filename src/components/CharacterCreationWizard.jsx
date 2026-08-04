@@ -7,6 +7,9 @@ import { ClassesInput } from "./ClassesInput";
 import { StepAtributos } from "./wizard/StepAtributos";
 import { StepMelhorias } from "./wizard/StepMelhorias";
 import { StepEscolhasDeClasse } from "./wizard/StepEscolhasDeClasse";
+import { StepMaestriaDeArma } from "./wizard/StepMaestriaDeArma";
+import { StepProficienciaDeArma } from "./wizard/StepProficienciaDeArma";
+import { StepAnimalEnhancement } from "./wizard/StepAnimalEnhancement";
 import { StepMagias } from "./wizard/StepMagias";
 import { StepPericias } from "./wizard/StepPericias";
 import { StepIdiomas } from "./wizard/StepIdiomas";
@@ -19,8 +22,15 @@ import optionalFeaturesData from "../data/content/optionalfeatures.json";
 import { useCharacterAppliers } from "../hooks/useCharacterAppliers";
 import { useAbilityImprovements } from "../hooks/useAbilityImprovements";
 import { useClassChoices } from "../hooks/useClassChoices";
+import { useWeaponMasteryChoices } from "../hooks/useWeaponMasteryChoices";
+import { weaponMasterySlots, resolveFixedWeaponProficiency } from "../utils/weaponMastery";
+import { useWeaponProficiencyChoices } from "../hooks/useWeaponProficiencyChoices";
+import { weaponProficiencySlots } from "../utils/weaponProficiency";
+import { useAnimalEnhancementChoices } from "../hooks/useAnimalEnhancementChoices";
+import { animalEnhancementSlots, reversedAnimalEnhancementChoices } from "../utils/animalEnhancement";
 import { resolveClassMatches } from "../schema/resolveClassMatches";
 import { computeGrantedSpells } from "../schema/grantedSpells";
+import { hasActiveSpellcasting } from "../schema/spellProgression";
 import racesData from "../data/content/races.json";
 import backgroundsData from "../data/content/backgrounds.json";
 import classesData from "../data/content/classes.json";
@@ -120,9 +130,47 @@ function categoryCountsForClass(classData, subclassData, level) {
   return counts;
 }
 
+// Mesmo mecanismo de `categoryCountsForClass`, mas pra TALENTO/ANTECEDENTE
+// (Rune Shaper BGG / House Agent ERLW) -- os dois têm pool que cresce/existe
+// sem depender de nível de CLASSE nenhum (talento: metade do bônus de
+// proficiência, só muda de valor 2 vezes no jogo; antecedente: escolha única
+// desde o nível 1, nunca escala) -- por isso os dois usam nível TOTAL do
+// personagem em vez do nível de uma linha de classe específica. `sourceName`
+// vem de `character.feats` (array) OU `character.background` (nome único).
+function categoryCountsForFeats(character, featsData, backgroundsData) {
+  const level = (character.classes ?? []).filter((c) => c.name).reduce((sum, c) => sum + (Number(c.level) || 0), 0);
+  const counts = new Map();
+  // `rules: character.backgroundRules` -- sem isso, um nome de antecedente que
+  // existe nas DUAS edições com dado DIFERENTE (achado real: "House Agent" é
+  // ERLW 2014 -- escolhe 1 casa dragonmarked, ganha o par -- E TAMBÉM EFA 2024
+  // -- mecânica totalmente diferente, "escolha 1 ferramenta de artesão"
+  // qualquer) resolve pro primeiro que `.find()` achar, edição errada incluída.
+  const sources = [
+    ...(character.feats ?? []).map((name) => featsData.find((f) => f.name === name)),
+    backgroundsData.find((b) => b.name === character.background && b.rules === character.backgroundRules),
+  ].filter(Boolean);
+  for (const source of sources) {
+    for (const pool of source.optionalFeatureChoices ?? []) {
+      const reached = Object.keys(pool.progression ?? {})
+        .map(Number)
+        .filter((lvl) => lvl <= level);
+      if (!reached.length) continue;
+      const count = pool.progression[Math.max(...reached)];
+      if (!count) continue;
+      const prev = counts.get(pool.category) ?? { count: 0, source: pool.source ?? "optionalFeature", sourceName: source.name };
+      prev.count += count;
+      counts.set(pool.category, prev);
+    }
+  }
+  return counts;
+}
+
 // Um "slot" aqui é um CARD inteiro (classe+categoria), não uma escolha
 // individual -- cada card carrega `count` picks (ver StepEscolhasDeClasse).
-export function classChoiceSlots(character, classMatches) {
+// `featsData`/`backgroundsData` são opcionais (chamadas antigas continuam
+// funcionando sem talento/antecedente nenhum com pool de escolha) -- hoje
+// Rune Shaper (talento) e House Agent (antecedente) usam isso.
+export function classChoiceSlots(character, classMatches, featsData = [], backgroundsData = []) {
   const slots = [];
   character.classes.forEach((row, classIndex) => {
     const counts = categoryCountsForClass(classMatches[classIndex]?.classData, classMatches[classIndex]?.subclassData, row.level ?? 1);
@@ -130,6 +178,10 @@ export function classChoiceSlots(character, classMatches) {
       slots.push({ classIndex, className: row.name, category, count: info.count, source: info.source });
     }
   });
+  const featCounts = categoryCountsForFeats(character, featsData, backgroundsData);
+  for (const [category, info] of featCounts) {
+    slots.push({ classIndex: "feat", className: info.sourceName, category, count: info.count, source: info.source });
+  }
   return slots;
 }
 
@@ -195,7 +247,34 @@ const STEP_DEFS = [
     blurb:
       "Algumas classes concedem um pool de opções que cresce com o nível — Estilo de Luta, Metamagia, Invocações Místicas, " +
       "Manobras (Battle Master) ou Infusões (Artífice). Escolha aqui cada uma; conforme o personagem sobe de nível, novos slots aparecem.",
-    conditional: ({ character, classMatches }) => classChoiceSlots(character, classMatches).length > 0,
+    conditional: ({ character, classMatches }) => classChoiceSlots(character, classMatches, featsData, backgroundsData).length > 0,
+  },
+  {
+    key: "proficiencia",
+    label: "Proficiência",
+    title: "Proficiência com Arma",
+    blurb:
+      "Weapon Master (PHB 2014) e Hobgoblin (VGM) concedem proficiência com um número de armas simples/marciais À ESCOLHA — " +
+      "diferente de Weapon Mastery (2024, etapa seguinte), aqui é a proficiência em si, não uma propriedade extra numa arma já proficiente.",
+    conditional: ({ character }) => weaponProficiencySlots(character, racesData, featsData).length > 0,
+  },
+  {
+    key: "maestria",
+    label: "Maestria",
+    title: "Weapon Mastery (2024)",
+    blurb:
+      "Fighter, Barbarian, Paladin, Ranger e Rogue (2024) concedem acesso à propriedade de maestria de N armas entre as que o " +
+      "personagem já é proficiente — o talento Weapon Master soma mais 1. Escolha aqui quais armas.",
+    conditional: ({ character, classMatches }) => weaponMasterySlots(character, classMatches, featsData).length > 0,
+  },
+  {
+    key: "animalEnhancement",
+    label: "Animal Enhancement",
+    title: "Animal Enhancement (Simic Hybrid)",
+    blurb:
+      "Simic Hybrid (GGR) escolhe 1 traço animal no nível 1 e outro no nível 5 — a opção do nível 1 sai do pool do nível 5, " +
+      "não dá pra repetir a mesma escolha duas vezes.",
+    conditional: ({ character }) => animalEnhancementSlots(character).length > 0 || reversedAnimalEnhancementChoices(character).length > 0,
   },
   {
     key: "pericias",
@@ -238,7 +317,7 @@ const STEP_DEFS = [
     // isso o personagem nunca via o aviso de "Concedidas automaticamente"
     // quando não tinha nenhuma classe conjuradora escolhida.
     conditional: ({ character, classMatches, raceMatch }) =>
-      classMatches.some((match) => match?.classData?.spellcasting && match.classData.spellcasting.progression !== "none") ||
+      hasActiveSpellcasting(character, classMatches) ||
       computeGrantedSpells({ character, raceMatch, classMatches, featsData, optionalFeaturesData }).length > 0,
   },
   {
@@ -397,11 +476,34 @@ export function CharacterCreationWizard({ initialValue, onSubmit, onCancel }) {
     : classesData;
 
   const appliers = useCharacterAppliers(setCharacter);
-  const { findImprovement, revertImprovement, setImprovementChoice, moveImprovementChip, unassignImprovementChip, pickImprovementFeat } =
-    useAbilityImprovements(character, setCharacter, appliers.applyAbilityBonus);
+  const {
+    findImprovement,
+    revertImprovement,
+    pruneImprovementsAbove,
+    setImprovementChoice,
+    moveImprovementChip,
+    unassignImprovementChip,
+    pickImprovementFeat,
+  } = useAbilityImprovements(character, setCharacter, appliers.applyAbilityBonus);
   const { setClassChoice, clearClassChoice } = useClassChoices(setCharacter);
+  const { setWeaponMasteryChoice, clearWeaponMasteryChoice } = useWeaponMasteryChoices(setCharacter);
+  const { setWeaponProficiencyChoice, clearWeaponProficiencyChoice } = useWeaponProficiencyChoices(setCharacter);
+  const { setAnimalEnhancementChoice, clearAnimalEnhancementChoice } = useAnimalEnhancementChoices(setCharacter);
 
   function pickRace(item) {
+    // Reverte o bônus de atributo da raça ANTERIOR antes de trocar -- sem
+    // isso, o bônus de uma raça que o jogador já não tem mais ficava pra
+    // sempre em `character.abilities` (ver revertAbilityBonusFor).
+    appliers.revertAbilityBonusFor("race");
+    // Idioma FIXO da raça ANTERIOR também não deve sobreviver a uma troca --
+    // mesmo problema que pickBackground já resolve pro talento de origem
+    // (abaixo), nunca replicado aqui pra idioma de raça. Bug real achado na
+    // revisão: trocar de Dwarf pra Elf deixava "Dwarvish" pra sempre em
+    // `character.languages`, mesmo o personagem não sendo mais Anão.
+    if (raceMatch?.languages) {
+      const oldLanguages = raceMatch.languages.split(",").map((part) => part.trim()).filter(Boolean);
+      setCharacter((prev) => ({ ...prev, languages: prev.languages.filter((lang) => !oldLanguages.includes(lang)) }));
+    }
     set("race", item.name);
     setRaceMatch(item);
     set("raceRules", item?.rules ?? "");
@@ -419,6 +521,9 @@ export function CharacterCreationWizard({ initialValue, onSubmit, onCancel }) {
   }
 
   function pickBackground(item) {
+    // Mesmo motivo de pickRace acima -- reverte o bônus de atributo do
+    // antecedente ANTERIOR antes de trocar.
+    appliers.revertAbilityBonusFor("background");
     set("background", item.name);
     setBackgroundMatch(item);
     set("backgroundRules", item?.rules ?? "");
@@ -481,6 +586,20 @@ export function CharacterCreationWizard({ initialValue, onSubmit, onCancel }) {
         abilityImprovements: prev.abilityImprovements
           .filter((i) => i.classIndex !== removedIndex)
           .map((i) => (i.classIndex > removedIndex ? { ...i, classIndex: i.classIndex - 1 } : i)),
+        // Mesma reindexação de abilityImprovements acima, mas pra Weapon
+        // Mastery (`sourceKey: "class:<index>"`, ver utils/weaponMastery.js) --
+        // bug real achado na revisão: sem isso, remover uma classe deixava a
+        // escolha de maestria de outra classe (deslocada pro índice da
+        // removida) invisível, enquanto a escolha da classe REMOVIDA
+        // reaparecia "fantasma" grudada no novo índice.
+        weaponMasteryChoices: (prev.weaponMasteryChoices ?? [])
+          .filter((c) => c.sourceKey !== `class:${removedIndex}`)
+          .map((c) => {
+            const match = /^class:(\d+)$/.exec(c.sourceKey);
+            if (!match) return c;
+            const i = Number(match[1]);
+            return i > removedIndex ? { ...c, sourceKey: `class:${i - 1}` } : c;
+          }),
       };
     });
   }
@@ -510,6 +629,11 @@ export function CharacterCreationWizard({ initialValue, onSubmit, onCancel }) {
       classes: [{ name: "", rules: "", subclass: "", subclassRules: "", level: prev.classes[0]?.level ?? 1, hpRolls: [] }],
       abilityImprovements: [],
       classChoices: [],
+      // Toda classe foi zerada acima -- qualquer escolha de Weapon Mastery
+      // ligada a `class:<index>` (ver handleRemoveClass) fica órfã do mesmo
+      // jeito que abilityImprovements/classChoices ficavam antes da correção
+      // -- só "feat"/"reversed" (não dependem de classe) sobrevivem.
+      weaponMasteryChoices: (prev.weaponMasteryChoices ?? []).filter((c) => !c.sourceKey.startsWith("class:")),
     }));
   }
 
@@ -549,6 +673,21 @@ export function CharacterCreationWizard({ initialValue, onSubmit, onCancel }) {
 
   function setNested(group, key, value) {
     setCharacter((prev) => ({ ...prev, [group]: { ...prev[group], [key]: value } }));
+  }
+
+  // Nível de uma classe DIMINUINDO (campo numérico da etapa Classe, editado
+  // pra baixo) precisa desfazer qualquer Melhoria de Atributo/Talento que só
+  // existia por causa do nível que deixou de existir -- mesmo problema (e
+  // mesma correção, pruneImprovementsAbove) do LevelUpWizard: sem isso o
+  // bônus de atributo ficava aplicado pra sempre em `character.abilities`
+  // mesmo com o card já tendo sumido da etapa Melhorias (achado na revisão).
+  function handleClassesChange(items) {
+    items.forEach((row, index) => {
+      const prevLevel = character.classes[index]?.level ?? 0;
+      const nextLevel = row.level ?? 0;
+      if (nextLevel < prevLevel) pruneImprovementsAbove(index, nextLevel);
+    });
+    set("classes", items);
   }
 
   // O nível-alvo escolhido na etapa 2 vira o nível da classe inicial (primeira
@@ -630,7 +769,7 @@ export function CharacterCreationWizard({ initialValue, onSubmit, onCancel }) {
             classes={character.classes}
             classesData={allClasses}
             subclassesData={subclassesData}
-            onChange={(items) => set("classes", items)}
+            onChange={handleClassesChange}
             onApplyEquipment={appliers.applyEquipmentGrants}
             onApplySkills={appliers.applySkills}
             onApplySpells={appliers.applySpellChoices}
@@ -657,13 +796,43 @@ export function CharacterCreationWizard({ initialValue, onSubmit, onCancel }) {
       case "escolhas":
         return (
           <StepEscolhasDeClasse
-            slots={classChoiceSlots(character, classMatches)}
+            slots={classChoiceSlots(character, classMatches, featsData, backgroundsData)}
             classChoices={character.classChoices}
             rulesMode={character.rulesMode}
             optionalFeaturesData={optionalFeaturesData}
             featsData={featsData}
             onPick={setClassChoice}
             onClear={clearClassChoice}
+          />
+        );
+      case "proficiencia":
+        return (
+          <StepProficienciaDeArma
+            slots={weaponProficiencySlots(character, racesData, featsData)}
+            weaponProficiencies={character.weaponProficiencies ?? []}
+            onPick={setWeaponProficiencyChoice}
+            onClear={clearWeaponProficiencyChoice}
+          />
+        );
+      case "maestria":
+        return (
+          <StepMaestriaDeArma
+            slots={weaponMasterySlots(character, classMatches, featsData)}
+            weaponMasteryChoices={character.weaponMasteryChoices ?? []}
+            proficientKeys={resolveFixedWeaponProficiency(character, classMatches, racesData)}
+            onPick={setWeaponMasteryChoice}
+            onClear={clearWeaponMasteryChoice}
+          />
+        );
+      case "animalEnhancement":
+        return (
+          <StepAnimalEnhancement
+            slots={animalEnhancementSlots(character)}
+            animalEnhancementChoices={character.animalEnhancementChoices ?? []}
+            reversedChoices={reversedAnimalEnhancementChoices(character)}
+            optionalFeaturesData={optionalFeaturesData}
+            onPick={setAnimalEnhancementChoice}
+            onClear={clearAnimalEnhancementChoice}
           />
         );
       case "pericias":

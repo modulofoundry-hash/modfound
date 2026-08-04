@@ -491,7 +491,7 @@ function BiographyTab({ character }) {
 export function FoundrySheetView({ character }) {
   const [tab, setTab] = useState("details");
 
-  const totalLevel = (character.classes ?? []).reduce((sum, c) => sum + (Number(c.level) || 0), 0);
+  const totalLevel = (character.classes ?? []).filter((c) => c.name).reduce((sum, c) => sum + (Number(c.level) || 0), 0);
   const classSummary = (character.classes ?? [])
     .filter((c) => c.name)
     .map((c) => `${c.name}${c.subclass ? ` (${c.subclass})` : ""} ${c.level}`)

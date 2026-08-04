@@ -1,14 +1,27 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { useProfiles } from "../hooks/useProfiles";
 import { createDocument } from "../data/firestoreCollection";
 import { GUEST_PROFILE_ID } from "../constants/profiles";
+import { useAuth } from "../auth/AuthContext";
 
 export function ProfileSelect() {
-  const profiles = useProfiles().filter((profile) => profile.id !== GUEST_PROFILE_ID);
+  // Todos os hooks primeiro, SEMPRE na mesma ordem (regra do React) -- o
+  // guard condicional (abaixo) só decide o que RENDERIZAR, nunca pula hook.
+  const { authKind } = useAuth();
+  const { profiles: allProfiles } = useProfiles();
+  const profiles = allProfiles.filter((profile) => profile.id !== GUEST_PROFILE_ID);
   const [creating, setCreating] = useState(false);
   const [name, setName] = useState("");
   const [error, setError] = useState("");
+
+  // Segunda camada de proteção (a primeira é o redirect no login, Login.jsx)
+  // -- sem isso, o visitante digitando "/perfis" na barra de endereço (ou
+  // clicando "Trocar perfil") via a grade com os 6 perfis fixos do site,
+  // mesmo não conseguindo abrir nenhum de verdade (a Regra do Firestore já
+  // bloqueia a leitura). `authKind === null` (ainda carregando) deixa passar
+  // de propósito -- ver comentário em AuthContext.jsx.
+  if (authKind === "guest") return <Navigate to="/perfis/visitante" replace />;
 
   async function handleCreate(event) {
     event.preventDefault();

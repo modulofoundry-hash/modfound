@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { pickClassPlaceholderImage } from "../data/classImagePlaceholders.js";
 
 // Retrato é sempre preferencial ao token pro card (mais reconhecível em
@@ -12,6 +12,13 @@ export function SheetCard({ item, onEdit, onDelete, onLevelUp, children }) {
   const placeholderImage = useMemo(() => pickClassPlaceholderImage(item.classes), [item.id]);
   const candidates = [realImage, placeholderImage].filter(Boolean);
   const [failedCount, setFailedCount] = useState(0);
+  // Zera a contagem de falha quando a URL de verdade muda -- bug real achado
+  // na revisão: sem isso, uma imagem que já tinha falhado uma vez (caiu pro
+  // placeholder) ficava PRESA no placeholder pra sempre, mesmo depois do
+  // jogador corrigir a URL quebrada e salvar de novo -- `failedCount` nunca
+  // resetava, `image = candidates[failedCount]` continuava pulando direto
+  // pro placeholder mesmo com a imagem nova (funcional) na posição 0.
+  useEffect(() => setFailedCount(0), [realImage]);
   const image = candidates[failedCount];
 
   return (

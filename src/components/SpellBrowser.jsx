@@ -15,7 +15,12 @@ function compareByColumn(a, b, column) {
 // fica desabilitado em vez de escondido (ex: truque conhecido/magia conhecida
 // já bateu o teto do nível atual, ver spellProgression.js). Sem essa prop
 // (uso antigo), toda magia continua sempre clicável.
-export function SpellBrowser({ spells, rulesMode, onAdd, canAdd }) {
+// `bonusEligibility` (opcional) — `Map<className, Set<spellName>>` vinda de
+// `computeExpandedSpellPool` (schema/expandedSpellPool.js, Lote 8): magias que uma
+// subclasse/classe do personagem EXPANDE pra fora da lista normal (ex: Warlock com
+// Archfey vê Faerie Fire mesmo não sendo originalmente magia de Warlock). Sem essa
+// prop, o filtro de classe continua igual a antes (só `s.classes` original).
+export function SpellBrowser({ spells, rulesMode, onAdd, canAdd, bonusEligibility }) {
   const [search, setSearch] = useState("");
   const [classFilter, setClassFilter] = useState("");
   const [levelFilter, setLevelFilter] = useState("");
@@ -36,12 +41,12 @@ export function SpellBrowser({ spells, rulesMode, onAdd, canAdd }) {
     const needle = search.trim().toLowerCase();
     return editionSpells.filter((s) => {
       if (needle && !s.name.toLowerCase().includes(needle)) return false;
-      if (classFilter && !s.classes.includes(classFilter)) return false;
+      if (classFilter && !s.classes.includes(classFilter) && !bonusEligibility?.get(classFilter)?.has(s.name)) return false;
       if (levelFilter !== "" && s.level !== Number(levelFilter)) return false;
       if (schoolFilter && s.school !== schoolFilter) return false;
       return true;
     });
-  }, [editionSpells, search, classFilter, levelFilter, schoolFilter]);
+  }, [editionSpells, search, classFilter, levelFilter, schoolFilter, bonusEligibility]);
 
   const sorted = useMemo(() => {
     const copy = [...filtered].sort((a, b) => compareByColumn(a, b, sort.column));

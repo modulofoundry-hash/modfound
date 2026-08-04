@@ -52,6 +52,7 @@ export function Npcs() {
     return (
       <div>
         <h2>{editing === "new" ? "Novo NPC" : `Editar ${editing.name}`}</h2>
+        {error && <p className="error">Erro ao salvar: {error}</p>}
         <NpcForm
           initialValue={editing === "new" ? undefined : editing}
           onSubmit={handleSubmit}

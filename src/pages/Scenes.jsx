@@ -154,6 +154,7 @@ function SceneFolderView({ profileId, folder, onBack }) {
     return (
       <div>
         <h2>{editing === "new" ? "Nova cena" : `Editar ${editing.name}`}</h2>
+        {error && <p className="error">Erro ao salvar: {error}</p>}
         <SceneForm
           initialValue={editing === "new" ? undefined : editing}
           onSubmit={handleSubmit}

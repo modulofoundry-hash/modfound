@@ -23,8 +23,17 @@ export function Login() {
         setError("Senha incorreta.");
         return;
       }
-      const fallback = kind === "guest" ? "/perfis/visitante" : "/perfis";
-      const redirectTo = location.state?.from?.pathname ?? fallback;
+      // Visitante SEMPRE vai pro próprio perfil, mesmo que `location.state.from`
+      // aponte pra outro lugar -- achado ao vivo (ago/2026): visitar a raiz do
+      // site sem estar logado já bate em "/perfis" (rota coringa, App.jsx) antes
+      // do redirect pro login, então `location.state.from.pathname` quase
+      // sempre é "/perfis" de qualquer jeito -- sem essa checagem específica,
+      // o visitante caía na grade com os 6 perfis fixos, não no próprio.
+      if (kind === "guest") {
+        navigate("/perfis/visitante", { replace: true });
+        return;
+      }
+      const redirectTo = location.state?.from?.pathname ?? "/perfis";
       navigate(redirectTo, { replace: true });
     } catch {
       setError("Não foi possível conectar ao banco. Verifique a configuração do Firebase.");

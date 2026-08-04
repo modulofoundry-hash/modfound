@@ -13,7 +13,7 @@ import { SheetCard } from "../components/SheetCard";
 import { CharacterView } from "./CharacterView";
 
 function totalLevel(classes) {
-  return (classes ?? []).reduce((sum, c) => sum + (Number(c.level) || 0), 0);
+  return (classes ?? []).filter((c) => c.name).reduce((sum, c) => sum + (Number(c.level) || 0), 0);
 }
 
 function classSummary(classes) {
@@ -68,8 +68,16 @@ export function Characters() {
   async function handleLevelUpSubmit(updatedData) {
     const { id, ...payload } = updatedData;
     try {
-      await updateCharacter(profileId, levelingUp.id, { isOriginal: true });
+      // Cria a ficha NOVA primeiro, só marca a antiga como `isOriginal`
+      // depois que ela existe de verdade -- ordem invertida (era: marcar
+      // antiga -> criar nova). Se `createCharacter` falhar, a ficha antiga
+      // fica intocada em vez de virar um "Original" órfão sem sucessora
+      // (achado na revisão: com a ordem antiga, uma falha de rede/permissão
+      // bem no meio deixava a ficha original marcada pra sempre, sem nenhuma
+      // ficha "viva" pra substituí-la, e sem aviso visível — ver fix do erro
+      // não aparecer nesta tela, logo acima).
       await createCharacter(profileId, { ...payload, isOriginal: false, derivedFrom: levelingUp.id });
+      await updateCharacter(profileId, levelingUp.id, { isOriginal: true });
       setLevelingUp(null);
     } catch (err) {
       setError(err.message);
@@ -80,6 +88,7 @@ export function Characters() {
     return (
       <div>
         <h2>Novo personagem</h2>
+        {error && <p className="error">Erro ao salvar: {error}</p>}
         <CharacterCreationWizard onSubmit={handleSubmit} onCancel={() => setEditing(null)} />
       </div>
     );
@@ -89,6 +98,7 @@ export function Characters() {
     return (
       <div>
         <h2>{`Editar ${editing.name}`}</h2>
+        {error && <p className="error">Erro ao salvar: {error}</p>}
         <CharacterCreationWizard initialValue={editing} onSubmit={handleSubmit} onCancel={() => setEditing(null)} />
       </div>
     );
@@ -98,6 +108,7 @@ export function Characters() {
     return (
       <div>
         <h2>{`Subir de nível — ${levelingUp.name}`}</h2>
+        {error && <p className="error">Erro ao subir de nível: {error}</p>}
         <LevelUpWizard initialCharacter={levelingUp} onSubmit={handleLevelUpSubmit} onCancel={() => setLevelingUp(null)} />
       </div>
     );

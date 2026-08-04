@@ -64,7 +64,7 @@ function grantsFromRaw(raw) {
 }
 
 export function totalCharacterLevel(classes) {
-  return (classes ?? []).reduce((sum, c) => sum + (Number(c.level) || 0), 0);
+  return (classes ?? []).filter((c) => c.name).reduce((sum, c) => sum + (Number(c.level) || 0), 0);
 }
 
 // [{name, level, source, unlocked}] -- `level` é o nível em que a magia é

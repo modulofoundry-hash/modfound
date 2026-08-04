@@ -1,6 +1,9 @@
+import { useMemo, useState } from "react";
 import { OriginTableBrowser } from "../OriginTableBrowser";
+import { OriginBookFilter, filterOriginItems, initialOriginFilter } from "../OriginBookFilter";
 import { OriginSuggestions } from "../OriginSuggestions";
 import { AbilityBonusPicker } from "../AbilityBonusPicker";
+import { DescriptionPanel } from "../DescriptionPanel";
 
 const COLUMNS = [
   { key: "name", label: "Nome" },
@@ -20,16 +23,29 @@ const COLUMNS = [
 ];
 
 export function StepAntecedente({ items, value, selectedRules, rulesMode, matched, onPick, appliers }) {
+  const [bookFilter, setBookFilter] = useState(() => initialOriginFilter(items));
+  const filteredItems = useMemo(() => filterOriginItems(items, bookFilter), [items, bookFilter]);
+
   return (
     <div className="wizard-step-antecedente">
-      <OriginTableBrowser
+      <OriginBookFilter
         items={items}
+        editions={bookFilter.editions}
+        activeSources={bookFilter.activeSources}
+        onChangeEditions={(editions) => setBookFilter((prev) => ({ ...prev, editions }))}
+        onChangeSources={(activeSources) => setBookFilter((prev) => ({ ...prev, activeSources }))}
+      />
+      <OriginTableBrowser
+        items={filteredItems}
         columns={COLUMNS}
         value={value}
         selectedRules={selectedRules}
         onPick={onPick}
         searchPlaceholder="Buscar antecedente..."
       />
+      {/* Feature do antecedente 2014 (nome + texto pronto do livro, ex: Acolyte
+          "Shelter of the Faithful") — antecedente 2024 não tem (ver DescriptionPanel.jsx). */}
+      <DescriptionPanel cards={[{ title: "Antecedente", item: matched }]} />
       {/* Perícias/Ferramentas/Idiomas/Equipamento concedidos pelo antecedente
           NÃO aparecem aqui de propósito — mesma razão de StepRaca.jsx. */}
       <OriginSuggestions
@@ -41,9 +57,10 @@ export function StepAntecedente({ items, value, selectedRules, rulesMode, matche
       />
       {rulesMode === "2024" && matched?.abilityBonus && (
         <AbilityBonusPicker
+          key={matched.name}
           label="Bônus de atributo (Antecedente)"
           abilityBonus={matched.abilityBonus}
-          onApply={appliers.applyAbilityBonus}
+          onApply={(picks) => appliers.applyAbilityBonusFor("background", picks)}
         />
       )}
     </div>

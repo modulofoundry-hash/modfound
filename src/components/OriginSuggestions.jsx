@@ -96,7 +96,13 @@ export function OriginSuggestions({
         </p>
       )}
       {showSkillsAndTools && matched.skillChoice && (
-        <ChoicePicker title="Perícias" count={matched.skillChoice.count} from={matched.skillChoice.from} onAdd={onApplySkills} />
+        // `key={matched.name}` -- sem isso, trocar de raça/antecedente antes
+        // de clicar "Adicionar" deixava a seleção da fonte ANTERIOR presa no
+        // estado interno do ChoicePicker (nunca reseta sozinho quando `from`
+        // muda) e ainda consumia um slot da fonte NOVA se completada depois
+        // (bug real achado na revisão). Força remontar (estado limpo) toda
+        // vez que a fonte muda.
+        <ChoicePicker key={matched.name} title="Perícias" count={matched.skillChoice.count} from={matched.skillChoice.from} onAdd={onApplySkills} />
       )}
       {showSkillsAndTools && matched.tools?.length > 0 && (
         <p>
@@ -107,7 +113,7 @@ export function OriginSuggestions({
         </p>
       )}
       {showSkillsAndTools && matched.toolChoice && (
-        <ChoicePicker title="Ferramentas" count={matched.toolChoice.count} from={matched.toolChoice.from} onAdd={onApplyTools} />
+        <ChoicePicker key={matched.name} title="Ferramentas" count={matched.toolChoice.count} from={matched.toolChoice.from} onAdd={onApplyTools} />
       )}
       {showLanguages && matched.languages && (
         <p>
@@ -118,7 +124,7 @@ export function OriginSuggestions({
         </p>
       )}
       {showLanguages && matched.languageChoice && (
-        <ChoicePicker title="Idiomas" count={matched.languageChoice.count} from={LANGUAGES} onAdd={onApplyLanguageChoices} allowCustom />
+        <ChoicePicker key={matched.name} title="Idiomas" count={matched.languageChoice.count} from={LANGUAGES} onAdd={onApplyLanguageChoices} allowCustom />
       )}
       {showEquipment && matched.equipmentSlots?.length > 0 && (
         <div>
@@ -128,7 +134,7 @@ export function OriginSuggestions({
       )}
       {onApplySpells &&
         matched.spellChoices?.map((choice, index) => (
-          <SpellChoicePicker key={index} title="Magia" count={choice.count} pool={choice.pool} onAdd={onApplySpells} />
+          <SpellChoicePicker key={`${matched.name}-${index}`} title="Magia" count={choice.count} pool={choice.pool} onAdd={onApplySpells} />
         ))}
     </div>
   );

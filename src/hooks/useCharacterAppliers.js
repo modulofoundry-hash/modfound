@@ -63,8 +63,25 @@ export function useCharacterAppliers(setCharacter, setFeedback) {
     setFeedback?.(`${names.join(", ")} adicionado(s) em Magias`);
   }
 
+  // "N po" (peças de ouro) é a única denominação de moeda que aparece como
+  // grant FIXO no banco (ex: Sage "10 po") — mesmo padrão que
+  // resolveEquipmentSlots.js (módulo) já trata como `currency`, não como Item.
+  // Sem esse desvio aqui, a moeda virava um item de "Equipamento" literal
+  // chamado "10 po" (achado testando round-trip: no Foundry isso sincronizava
+  // como um Item de loot vazio chamado "10 po" em vez do personagem realmente
+  // ganhar os 10 po de ouro).
+  const MONEY_RE = /^(\d+)\s*po$/i;
+
   function applyEquipmentGrants(grants) {
-    setCharacter((prev) => ({ ...prev, equipment: [...prev.equipment, ...grants] }));
+    const moneyGrants = grants.filter((item) => MONEY_RE.test(item.name?.trim() ?? ""));
+    const itemGrants = grants.filter((item) => !MONEY_RE.test(item.name?.trim() ?? ""));
+    const goldAdded = moneyGrants.reduce((sum, item) => sum + Number(MONEY_RE.exec(item.name.trim())[1]), 0);
+
+    setCharacter((prev) => ({
+      ...prev,
+      equipment: [...prev.equipment, ...itemGrants],
+      currency: { ...prev.currency, gp: (prev.currency?.gp ?? 0) + goldAdded },
+    }));
     const labels = grants.map((item) => (item.quantity > 1 ? `${item.quantity}x ${item.name}` : item.name));
     setFeedback?.(`${labels.join(", ")} adicionado(s) em Equipamento`);
   }
@@ -82,6 +99,48 @@ export function useCharacterAppliers(setCharacter, setFeedback) {
     setFeedback?.(`${labels.join(", ")} aplicado em Atributos`);
   }
 
+  // Versão do bônus de atributo LIGADA a uma fonte (Raça ou Antecedente,
+  // `sourceKey` "race"/"background") -- diferente de `applyAbilityBonus`
+  // (usada pela Melhoria de Atributo de classe, que já rastreia sua própria
+  // escolha em `character.abilityImprovements`), o picker de Raça/Antecedente
+  // não tinha NENHUM jeito de saber o que já tinha aplicado. Bug real achado
+  // na revisão: clicar "Aplicar" duas vezes dobrava o bônus, e trocar de
+  // raça/antecedente no meio do caminho (a busca permite isso livremente)
+  // deixava o bônus da escolha ANTERIOR pra sempre nos Atributos, mesmo sem a
+  // raça/antecedente mais valer. Reverte o que já estava gravado em
+  // `character[sourceKey + "AbilityBonusPicks"]` antes de aplicar o novo --
+  // reaplicar o MESMO bônus (clique duplo) vira um no-op líquido, e trocar de
+  // fonte reverte a escolha antiga automaticamente.
+  function applyAbilityBonusFor(sourceKey, picks) {
+    const fieldKey = `${sourceKey}AbilityBonusPicks`;
+    setCharacter((prev) => {
+      const abilities = { ...prev.abilities };
+      const previous = prev[fieldKey];
+      if (previous) {
+        for (const [key, amount] of Object.entries(previous)) abilities[key] = (abilities[key] ?? 10) - amount;
+      }
+      for (const [key, amount] of Object.entries(picks)) abilities[key] = (abilities[key] ?? 10) + amount;
+      return { ...prev, abilities, [fieldKey]: picks };
+    });
+    const labels = Object.entries(picks).map(([key, amount]) => `+${amount} ${key.toUpperCase()}`);
+    setFeedback?.(`${labels.join(", ")} aplicado em Atributos`);
+  }
+
+  // Reverte (sem aplicar nada novo) o bônus gravado em
+  // `character[sourceKey + "AbilityBonusPicks"]`, se houver -- chamado ao
+  // trocar de Raça/Antecedente (ver pickRace/pickBackground) pra não deixar a
+  // escolha anterior grudada.
+  function revertAbilityBonusFor(sourceKey) {
+    const fieldKey = `${sourceKey}AbilityBonusPicks`;
+    setCharacter((prev) => {
+      const previous = prev[fieldKey];
+      if (!previous) return prev;
+      const abilities = { ...prev.abilities };
+      for (const [key, amount] of Object.entries(previous)) abilities[key] = (abilities[key] ?? 10) - amount;
+      return { ...prev, abilities, [fieldKey]: null };
+    });
+  }
+
   return {
     applySkills,
     applyTools,
@@ -92,5 +151,7 @@ export function useCharacterAppliers(setCharacter, setFeedback) {
     applySpellChoices,
     applyEquipmentGrants,
     applyAbilityBonus,
+    applyAbilityBonusFor,
+    revertAbilityBonusFor,
   };
 }

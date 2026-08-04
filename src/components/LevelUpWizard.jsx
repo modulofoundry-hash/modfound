@@ -3,21 +3,32 @@ import { StepSelecionarNiveis } from "./wizard/StepSelecionarNiveis";
 import { StepPericias } from "./wizard/StepPericias";
 import { StepMelhorias } from "./wizard/StepMelhorias";
 import { StepEscolhasDeClasse } from "./wizard/StepEscolhasDeClasse";
+import { StepMaestriaDeArma } from "./wizard/StepMaestriaDeArma";
+import { StepProficienciaDeArma } from "./wizard/StepProficienciaDeArma";
+import { StepAnimalEnhancement } from "./wizard/StepAnimalEnhancement";
 import { StepMagias } from "./wizard/StepMagias";
 import { SubclassPicker } from "./SubclassPicker";
 import { HpRollPicker } from "./HpRollPicker";
 import { FoundrySheetView } from "./FoundrySheetView";
 import { abilityImprovementSlots, classChoiceSlots } from "./CharacterCreationWizard";
+import { weaponMasterySlots, resolveFixedWeaponProficiency } from "../utils/weaponMastery";
+import { weaponProficiencySlots } from "../utils/weaponProficiency";
+import { animalEnhancementSlots, reversedAnimalEnhancementChoices } from "../utils/animalEnhancement";
 import { resolveClassMatches } from "../schema/resolveClassMatches";
 import { computeGrantedSpells } from "../schema/grantedSpells";
+import { hasActiveSpellcasting } from "../schema/spellProgression";
 import { useCharacterAppliers } from "../hooks/useCharacterAppliers";
 import { useAbilityImprovements } from "../hooks/useAbilityImprovements";
 import { useClassChoices } from "../hooks/useClassChoices";
+import { useWeaponMasteryChoices } from "../hooks/useWeaponMasteryChoices";
+import { useWeaponProficiencyChoices } from "../hooks/useWeaponProficiencyChoices";
+import { useAnimalEnhancementChoices } from "../hooks/useAnimalEnhancementChoices";
 import featsData from "../data/content/feats.json";
 import optionalFeaturesData from "../data/content/optionalfeatures.json";
 import classesData from "../data/content/classes.json";
 import subclassesData from "../data/content/subclasses.json";
 import racesData from "../data/content/races.json";
+import backgroundsData from "../data/content/backgrounds.json";
 
 // Níveis de PV ainda pendentes de escolha (média/rolagem) nesta subida —
 // classe ORIGINAL (index 0, já tinha nível ≥1 antes) só precisa escolher a
@@ -76,6 +87,27 @@ const STEP_DEFS = [
     conditional: ({ hasNewChoiceSlots }) => hasNewChoiceSlots,
   },
   {
+    key: "proficiencia",
+    label: "Proficiência",
+    title: "Proficiência com Arma",
+    blurb: "Um talento novo (Weapon Master, PHB 2014) liberou proficiência com arma à escolha.",
+    conditional: ({ hasNewWeaponProficiencySlots }) => hasNewWeaponProficiencySlots,
+  },
+  {
+    key: "maestria",
+    label: "Maestria",
+    title: "Weapon Mastery (2024)",
+    blurb: "Os níveis novos liberaram mais armas com propriedade de maestria ativa (Fighter/Barbarian) ou o talento Weapon Master.",
+    conditional: ({ hasNewWeaponMasterySlots }) => hasNewWeaponMasterySlots,
+  },
+  {
+    key: "animalEnhancement",
+    label: "Animal Enhancement",
+    title: "Animal Enhancement (Simic Hybrid)",
+    blurb: "O nível 5 liberou a segunda escolha de Animal Enhancement (Simic Hybrid, GGR).",
+    conditional: ({ hasNewAnimalEnhancementSlots }) => hasNewAnimalEnhancementSlots,
+  },
+  {
     key: "subclasse",
     label: "Subclasse",
     title: "Subclasse",
@@ -91,7 +123,7 @@ const STEP_DEFS = [
     // concedida (ex: Erina Spiritfarer) nunca mostrava o aviso de "Concedidas
     // automaticamente" num personagem sem nenhuma classe conjuradora.
     conditional: ({ character, classMatches, raceMatch }) =>
-      Object.values(classMatches).some((m) => m?.classData?.spellcasting) ||
+      hasActiveSpellcasting(character, classMatches) ||
       computeGrantedSpells({ character, raceMatch, classMatches, featsData, optionalFeaturesData }).length > 0,
   },
   {
@@ -118,17 +150,27 @@ export function LevelUpWizard({ initialCharacter, onSubmit, onCancel }) {
   const addableClasses = allClassesForAdd.filter((c) => !usedNames.has(c.name));
 
   const appliers = useCharacterAppliers(setCharacter);
-  const { setImprovementChoice, moveImprovementChip, unassignImprovementChip, pickImprovementFeat } = useAbilityImprovements(
+  const { setImprovementChoice, moveImprovementChip, unassignImprovementChip, pickImprovementFeat, pruneImprovementsAbove } = useAbilityImprovements(
     character,
     setCharacter,
     appliers.applyAbilityBonus,
   );
   const { setClassChoice, clearClassChoice } = useClassChoices(setCharacter);
+  const { setWeaponMasteryChoice, clearWeaponMasteryChoice } = useWeaponMasteryChoices(setCharacter);
+  const { setWeaponProficiencyChoice, clearWeaponProficiencyChoice } = useWeaponProficiencyChoices(setCharacter);
+  const { setAnimalEnhancementChoice, clearAnimalEnhancementChoice } = useAnimalEnhancementChoices(setCharacter);
 
   function setLevel(index, level) {
+    const clamped = Math.max(0, level);
+    // Desmarcar um nível já preenchido (ASI/talento escolhido na etapa
+    // Melhorias) precisa desfazer o que já foi aplicado -- senão o bônus de
+    // atributo (ou o talento) fica pra sempre em `character.abilities`/
+    // `character.feats`, mesmo o card correspondente já tendo sumido da
+    // lista de etapas (ver pruneImprovementsAbove em useAbilityImprovements.js).
+    pruneImprovementsAbove(index, clamped);
     setCharacter((prev) => ({
       ...prev,
-      classes: prev.classes.map((row, i) => (i === index ? { ...row, level: Math.max(0, level) } : row)),
+      classes: prev.classes.map((row, i) => (i === index ? { ...row, level: clamped } : row)),
     }));
   }
 
@@ -186,9 +228,20 @@ export function LevelUpWizard({ initialCharacter, onSubmit, onCancel }) {
   const improvementSlots = abilityImprovementSlots(character, classMatches);
   const hasNewImprovementSlots = improvementSlots.length > abilityImprovementSlots(beforeCharacter, classMatches).length;
 
-  const choiceSlots = classChoiceSlots(character, classMatches);
+  const choiceSlots = classChoiceSlots(character, classMatches, featsData, backgroundsData);
   const totalChoiceCount = (slots) => slots.reduce((sum, s) => sum + s.count, 0);
-  const hasNewChoiceSlots = totalChoiceCount(choiceSlots) > totalChoiceCount(classChoiceSlots(beforeCharacter, classMatches));
+  const hasNewChoiceSlots = totalChoiceCount(choiceSlots) > totalChoiceCount(classChoiceSlots(beforeCharacter, classMatches, featsData, backgroundsData));
+
+  const weaponMasterySlotsNow = weaponMasterySlots(character, classMatches, featsData);
+  const hasNewWeaponMasterySlots =
+    totalChoiceCount(weaponMasterySlotsNow) > totalChoiceCount(weaponMasterySlots(beforeCharacter, classMatches, featsData));
+
+  const weaponProficiencySlotsNow = weaponProficiencySlots(character, racesData, featsData);
+  const hasNewWeaponProficiencySlots =
+    totalChoiceCount(weaponProficiencySlotsNow) > totalChoiceCount(weaponProficiencySlots(beforeCharacter, racesData, featsData));
+
+  const animalEnhancementSlotsNow = animalEnhancementSlots(character);
+  const hasNewAnimalEnhancementSlots = animalEnhancementSlotsNow.length > animalEnhancementSlots(beforeCharacter).length;
 
   // Mesma ideia -- baseado só em `row.level` (nunca muda ao ESCOLHER a
   // subclasse), não em `!row.subclass` (que sumiria a aba assim que a
@@ -232,6 +285,9 @@ export function LevelUpWizard({ initialCharacter, onSubmit, onCancel }) {
     pendingHp,
     hasNewImprovementSlots,
     hasNewChoiceSlots,
+    hasNewWeaponMasterySlots,
+    hasNewWeaponProficiencySlots,
+    hasNewAnimalEnhancementSlots,
     pendingSubclassRows: eligibleSubclassRows,
     classMatches,
     hasNewClassGrants,
@@ -262,8 +318,35 @@ export function LevelUpWizard({ initialCharacter, onSubmit, onCancel }) {
     if (isLast) {
       // Classe adicionada nesta sessão mas nunca marcada (ficou em nível 0)
       // não faz sentido entrar na ficha final -- descarta antes de submeter.
+      // Descartar desloca o índice de qualquer classe que vinha DEPOIS dela
+      // -- sem reindexar `abilityImprovements`/`weaponMasteryChoices` (que
+      // guardam a escolha por `classIndex`/`sourceKey:"class:<index>"`) junto,
+      // a escolha de uma classe multiclasse que sobreviveu ficava presa num
+      // índice que passa a apontar pra OUTRA classe (bug real achado na
+      // revisão: mesmo problema que handleRemoveClass do wizard de Criação já
+      // resolve, nunca replicado aqui pro descarte no submit).
+      const indexMap = new Map();
+      let nextIndex = 0;
+      character.classes.forEach((row, i) => {
+        if ((row.level ?? 0) > 0) {
+          indexMap.set(i, nextIndex);
+          nextIndex++;
+        }
+      });
       const classes = character.classes.filter((row) => (row.level ?? 0) > 0);
-      onSubmit({ ...character, classes });
+      const abilityImprovements = character.abilityImprovements
+        .filter((improvement) => indexMap.has(improvement.classIndex))
+        .map((improvement) => ({ ...improvement, classIndex: indexMap.get(improvement.classIndex) }));
+      const weaponMasteryChoices = (character.weaponMasteryChoices ?? [])
+        .map((choice) => {
+          const match = /^class:(\d+)$/.exec(choice.sourceKey);
+          if (!match) return choice;
+          const oldIndex = Number(match[1]);
+          if (!indexMap.has(oldIndex)) return null;
+          return { ...choice, sourceKey: `class:${indexMap.get(oldIndex)}` };
+        })
+        .filter(Boolean);
+      onSubmit({ ...character, classes, abilityImprovements, weaponMasteryChoices });
       return;
     }
     goTo(stepIndex + 1);
@@ -345,6 +428,36 @@ export function LevelUpWizard({ initialCharacter, onSubmit, onCancel }) {
             featsData={featsData}
             onPick={setClassChoice}
             onClear={clearClassChoice}
+          />
+        );
+      case "proficiencia":
+        return (
+          <StepProficienciaDeArma
+            slots={weaponProficiencySlotsNow}
+            weaponProficiencies={character.weaponProficiencies ?? []}
+            onPick={setWeaponProficiencyChoice}
+            onClear={clearWeaponProficiencyChoice}
+          />
+        );
+      case "maestria":
+        return (
+          <StepMaestriaDeArma
+            slots={weaponMasterySlotsNow}
+            weaponMasteryChoices={character.weaponMasteryChoices ?? []}
+            proficientKeys={resolveFixedWeaponProficiency(character, classMatches, racesData)}
+            onPick={setWeaponMasteryChoice}
+            onClear={clearWeaponMasteryChoice}
+          />
+        );
+      case "animalEnhancement":
+        return (
+          <StepAnimalEnhancement
+            slots={animalEnhancementSlotsNow}
+            animalEnhancementChoices={character.animalEnhancementChoices ?? []}
+            reversedChoices={reversedAnimalEnhancementChoices(character)}
+            optionalFeaturesData={optionalFeaturesData}
+            onPick={setAnimalEnhancementChoice}
+            onClear={clearAnimalEnhancementChoice}
           />
         );
       case "subclasse":

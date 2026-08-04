@@ -1,7 +1,22 @@
 [
   {
+    "name": "Acid Spit (GGR)",
+    "source": "GGR",
+    "sourceBook": "Guildmasters' Guide to Ravnica",
+    "tier": "official",
+    "rules": "2014",
+    "category": null,
+    "classes": [],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p><em>Opção de Animal Enhancement do Simic Hybrid (nível 5+).</em></p><p>As an action, you can spray acid from glands in your mouth, targeting one creature or object you can see within 30 feet of you. The target takes 2d10 acid damage unless it succeeds on a Dexterity saving throw against a DC equal to 8 + your Constitution modifier + your proficiency bonus. This damage increases by 1d10 when you reach 11th level (3d10) and 17th level (4d10). You can use this trait a number of times equal to your Constitution modifier (minimum of once), and you regain all expended uses of it when you finish a long rest.</p>",
+    "spellGrants": null
+  },
+  {
     "name": "Agonizing Blast",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -23,6 +38,8 @@
   {
     "name": "Agonizing Blast",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "eldritchInvocation",
     "classes": [
@@ -56,6 +73,8 @@
   {
     "name": "Ambush",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "maneuver",
     "classes": [
@@ -71,6 +90,8 @@
   {
     "name": "Ambush",
     "source": "TCE",
+    "sourceBook": "Tasha's Cauldron of Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "maneuver",
     "classes": [
@@ -86,6 +107,8 @@
   {
     "name": "Arcane Propulsion Armor",
     "source": "TCE",
+    "sourceBook": "Tasha's Cauldron of Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "artificerInfusion",
     "classes": [
@@ -114,6 +137,8 @@
   {
     "name": "Archery",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "fightingStyle",
     "classes": [
@@ -128,6 +153,8 @@
   {
     "name": "Armor of Magical Strength",
     "source": "TCE",
+    "sourceBook": "Tasha's Cauldron of Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "artificerInfusion",
     "classes": [
@@ -149,6 +176,8 @@
   {
     "name": "Armor of Shadows",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -157,11 +186,21 @@
     "prerequisites": null,
     "consumes": null,
     "description": "<p>You can cast mage armor on yourself at will, without expending a spell slot or material components.</p>",
-    "spellGrants": null
+    "spellGrants": [
+      {
+        "innate": {
+          "_": [
+            "mage armor"
+          ]
+        }
+      }
+    ]
   },
   {
     "name": "Armor of Shadows",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "eldritchInvocation",
     "classes": [
@@ -170,11 +209,21 @@
     "prerequisites": null,
     "consumes": null,
     "description": "<p>You can cast Mage Armor on yourself without expending a spell slot.</p>",
-    "spellGrants": null
+    "spellGrants": [
+      {
+        "innate": {
+          "_": [
+            "mage armor|xphb"
+          ]
+        }
+      }
+    ]
   },
   {
     "name": "Ascendant Step",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -194,11 +243,21 @@
     },
     "consumes": null,
     "description": "<p>You can cast levitate on yourself at will, without expending a spell slot or material components.</p>",
-    "spellGrants": null
+    "spellGrants": [
+      {
+        "innate": {
+          "_": [
+            "levitate"
+          ]
+        }
+      }
+    ]
   },
   {
     "name": "Ascendant Step",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "eldritchInvocation",
     "classes": [
@@ -220,11 +279,21 @@
     },
     "consumes": null,
     "description": "<p>You can cast Levitate on yourself without expending a spell slot.</p>",
-    "spellGrants": null
+    "spellGrants": [
+      {
+        "innate": {
+          "_": [
+            "levitate|xphb"
+          ]
+        }
+      }
+    ]
   },
   {
     "name": "Aspect of the Moon",
     "source": "XGE",
+    "sourceBook": "Xanathar's Guide to Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -244,6 +313,8 @@
   {
     "name": "Bait and Switch",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "maneuver",
     "classes": [
@@ -259,6 +330,8 @@
   {
     "name": "Bait and Switch",
     "source": "TCE",
+    "sourceBook": "Tasha's Cauldron of Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "maneuver",
     "classes": [
@@ -274,6 +347,8 @@
   {
     "name": "Banishing Arrow",
     "source": "XGE",
+    "sourceBook": "Xanathar's Guide to Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "arcaneShot",
     "classes": [
@@ -289,6 +364,8 @@
   {
     "name": "Beast Speech",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -297,11 +374,21 @@
     "prerequisites": null,
     "consumes": null,
     "description": "<p>You can cast speak with animals at will, without expending a spell slot.</p>",
-    "spellGrants": null
+    "spellGrants": [
+      {
+        "innate": {
+          "_": [
+            "speak with animals"
+          ]
+        }
+      }
+    ]
   },
   {
     "name": "Beguiling Arrow",
     "source": "XGE",
+    "sourceBook": "Xanathar's Guide to Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "arcaneShot",
     "classes": [
@@ -317,6 +404,8 @@
   {
     "name": "Beguiling Influence",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -330,6 +419,8 @@
   {
     "name": "Bewitching Whispers",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -349,11 +440,25 @@
     },
     "consumes": null,
     "description": "<p>You can cast compulsion once using a warlock spell slot. You can't do so again until you finish a long rest.</p>",
-    "spellGrants": null
+    "spellGrants": [
+      {
+        "innate": {
+          "_": {
+            "daily": {
+              "1e": [
+                "compulsion"
+              ]
+            }
+          }
+        }
+      }
+    ]
   },
   {
     "name": "Blessed Warrior",
     "source": "TCE",
+    "sourceBook": "Tasha's Cauldron of Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "fightingStyle",
     "classes": [
@@ -362,11 +467,25 @@
     "prerequisites": null,
     "consumes": null,
     "description": "<p>You learn two cantrips of your choice from the cleric spell list. They count as paladin spells for you, and Charisma is your spellcasting ability for them. Whenever you gain a level in this class, you can replace one of these cantrips with another cantrip from the cleric spell list.</p>",
-    "spellGrants": null
+    "spellGrants": [
+      {
+        "ability": "cha",
+        "known": {
+          "_": [
+            {
+              "choose": "level=0|class=cleric",
+              "count": 2
+            }
+          ]
+        }
+      }
+    ]
   },
   {
     "name": "Blind Fighting",
     "source": "TCE",
+    "sourceBook": "Tasha's Cauldron of Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "fightingStyle",
     "classes": [
@@ -382,6 +501,8 @@
   {
     "name": "Bond of the Talisman",
     "source": "TCE",
+    "sourceBook": "Tasha's Cauldron of Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -407,6 +528,8 @@
   {
     "name": "Book of Ancient Secrets",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -421,11 +544,27 @@
     },
     "consumes": null,
     "description": "<p>You can now inscribe magical rituals in your Book of Shadows. Choose two 1st-level spells that have the ritual tag from any class's spell list. The spells needn't be from the same spell list. The spells appear in the book and don't count against the number of spells you know. With your Book of Shadows in hand, you can cast the chosen spells as rituals. You can't cast the spells except as rituals, unless you've learned them by some other means. You can also cast a warlock spell you know as a ritual if it has the ritual tag.</p><p>On your adventures, you can add other ritual spells to your Book of Shadows. When you find such a spell, you can add it to the book if the spell's level is equal to or less than half your warlock level (rounded up) and if you can spare the time to transcribe the spell. For each level of the spell, the transcription process takes 2 hours and costs 50 gp for the rare inks needed to inscribe it.</p>",
-    "spellGrants": null
+    "spellGrants": [
+      {
+        "ability": "cha",
+        "innate": {
+          "_": {
+            "ritual": [
+              {
+                "choose": "Components & Miscellaneous=ritual|level=1",
+                "count": 2
+              }
+            ]
+          }
+        }
+      }
+    ]
   },
   {
     "name": "Boots of the Winding Path",
     "source": "TCE",
+    "sourceBook": "Tasha's Cauldron of Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "artificerInfusion",
     "classes": [
@@ -454,6 +593,8 @@
   {
     "name": "Brace",
     "source": "TCE",
+    "sourceBook": "Tasha's Cauldron of Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "maneuver",
     "classes": [
@@ -469,6 +610,8 @@
   {
     "name": "Breath of Winter",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "elementalDiscipline",
     "classes": [
@@ -491,11 +634,27 @@
     },
     "consumes": null,
     "description": "<p>You can spend 6 ki points to cast cone of cold.</p>",
-    "spellGrants": null
+    "spellGrants": [
+      {
+        "innate": {
+          "_": {
+            "resource": {
+              "6": [
+                "cone of cold"
+              ]
+            }
+          }
+        },
+        "resourceName": "Ki",
+        "ability": "wis"
+      }
+    ]
   },
   {
     "name": "Bursting Arrow",
     "source": "XGE",
+    "sourceBook": "Xanathar's Guide to Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "arcaneShot",
     "classes": [
@@ -509,8 +668,23 @@
     "spellGrants": null
   },
   {
+    "name": "Carapace (GGR)",
+    "source": "GGR",
+    "sourceBook": "Guildmasters' Guide to Ravnica",
+    "tier": "official",
+    "rules": "2014",
+    "category": null,
+    "classes": [],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p><em>Opção de Animal Enhancement do Simic Hybrid (nível 5+).</em></p><p>Your skin in places is covered by a thick shell. You gain a +1 bonus to AC when you're not wearing heavy armor.</p>",
+    "spellGrants": null
+  },
+  {
     "name": "Careful Spell",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "metamagic",
     "classes": [
@@ -526,6 +700,8 @@
   {
     "name": "Careful Spell",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "metamagic",
     "classes": [
@@ -541,6 +717,8 @@
   {
     "name": "Chains of Carceri",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -561,11 +739,25 @@
     },
     "consumes": null,
     "description": "<p>You can cast hold monster at will—targeting a celestial, fiend, or elemental—without expending a spell slot or material components. You must finish a long rest before you can use this invocation on the same creature again.</p>",
-    "spellGrants": null
+    "spellGrants": [
+      {
+        "innate": {
+          "_": {
+            "daily": {
+              "1e": [
+                "hold monster"
+              ]
+            }
+          }
+        }
+      }
+    ]
   },
   {
     "name": "Clench of the North Wind",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "elementalDiscipline",
     "classes": [
@@ -588,11 +780,27 @@
     },
     "consumes": null,
     "description": "<p>You can spend 3 ki points to cast hold person.</p>",
-    "spellGrants": null
+    "spellGrants": [
+      {
+        "innate": {
+          "_": {
+            "resource": {
+              "3": [
+                "hold person"
+              ]
+            }
+          }
+        },
+        "resourceName": "Ki",
+        "ability": "wis"
+      }
+    ]
   },
   {
     "name": "Cloak of Flies",
     "source": "XGE",
+    "sourceBook": "Xanathar's Guide to Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -617,6 +825,8 @@
   {
     "name": "Cloud Rune",
     "source": "TCE",
+    "sourceBook": "Tasha's Cauldron of Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "rune",
     "classes": [
@@ -628,8 +838,42 @@
     "spellGrants": null
   },
   {
+    "name": "Cloud Rune (BGG)",
+    "source": "BGG",
+    "sourceBook": "Bigby Presents: Glory of the Giants",
+    "tier": "official",
+    "rules": "2014",
+    "category": "runeMagic",
+    "classes": [],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>Uma das 13 runas da tabela \"Rune Spells\" do talento Rune Shaper. Enquanto conhecida, concede a magia Fog Cloud (1º nível) como magia inata, conjurável 1x por descanso longo, sem gastar espaço de magia. Simplificação assumida (ver Rune Shaper): o texto original também permite conjurar Fog Cloud usando espaço de magia normal enquanto carrega o objeto em que a runa foi inscrita -- isso não está modelado (schema só suporta magia inata OU com gasto de espaço, não os dois ao mesmo tempo para a mesma magia).</p>",
+    "spellGrants": [
+      {
+        "ability": {
+          "choose": [
+            "int",
+            "wis",
+            "cha"
+          ]
+        },
+        "innate": {
+          "_": {
+            "daily": {
+              "1": [
+                "fog cloud"
+              ]
+            }
+          }
+        }
+      }
+    ]
+  },
+  {
     "name": "Commander's Strike",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "maneuver",
     "classes": [
@@ -645,6 +889,8 @@
   {
     "name": "Commander's Strike",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "maneuver",
     "classes": [
@@ -660,6 +906,8 @@
   {
     "name": "Commanding Presence",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "maneuver",
     "classes": [
@@ -675,6 +923,8 @@
   {
     "name": "Commanding Presence",
     "source": "TCE",
+    "sourceBook": "Tasha's Cauldron of Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "maneuver",
     "classes": [
@@ -688,8 +938,42 @@
     "spellGrants": null
   },
   {
+    "name": "Death Rune (BGG)",
+    "source": "BGG",
+    "sourceBook": "Bigby Presents: Glory of the Giants",
+    "tier": "official",
+    "rules": "2014",
+    "category": "runeMagic",
+    "classes": [],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>Uma das 13 runas da tabela \"Rune Spells\" do talento Rune Shaper. Enquanto conhecida, concede a magia Inflict Wounds (1º nível) como magia inata, conjurável 1x por descanso longo, sem gastar espaço de magia. Simplificação assumida (ver Rune Shaper): o texto original também permite conjurar Inflict Wounds usando espaço de magia normal enquanto carrega o objeto em que a runa foi inscrita -- isso não está modelado (schema só suporta magia inata OU com gasto de espaço, não os dois ao mesmo tempo para a mesma magia).</p>",
+    "spellGrants": [
+      {
+        "ability": {
+          "choose": [
+            "int",
+            "wis",
+            "cha"
+          ]
+        },
+        "innate": {
+          "_": {
+            "daily": {
+              "1": [
+                "inflict wounds"
+              ]
+            }
+          }
+        }
+      }
+    ]
+  },
+  {
     "name": "Defense",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "fightingStyle",
     "classes": [
@@ -705,6 +989,8 @@
   {
     "name": "Devil's Sight",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -718,6 +1004,8 @@
   {
     "name": "Devil's Sight",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "eldritchInvocation",
     "classes": [
@@ -744,6 +1032,8 @@
   {
     "name": "Devouring Blade",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "eldritchInvocation",
     "classes": [
@@ -773,6 +1063,8 @@
   {
     "name": "Disarming Attack",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "maneuver",
     "classes": [
@@ -788,6 +1080,8 @@
   {
     "name": "Disarming Attack",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "maneuver",
     "classes": [
@@ -803,6 +1097,8 @@
   {
     "name": "Distant Spell",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "metamagic",
     "classes": [
@@ -818,6 +1114,8 @@
   {
     "name": "Distant Spell",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "metamagic",
     "classes": [
@@ -833,6 +1131,8 @@
   {
     "name": "Distracting Strike",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "maneuver",
     "classes": [
@@ -848,6 +1148,8 @@
   {
     "name": "Distracting Strike",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "maneuver",
     "classes": [
@@ -861,8 +1163,42 @@
     "spellGrants": null
   },
   {
+    "name": "Dragon Rune (BGG)",
+    "source": "BGG",
+    "sourceBook": "Bigby Presents: Glory of the Giants",
+    "tier": "official",
+    "rules": "2014",
+    "category": "runeMagic",
+    "classes": [],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>Uma das 13 runas da tabela \"Rune Spells\" do talento Rune Shaper. Enquanto conhecida, concede a magia Chromatic Orb (1º nível) como magia inata, conjurável 1x por descanso longo, sem gastar espaço de magia. Simplificação assumida (ver Rune Shaper): o texto original também permite conjurar Chromatic Orb usando espaço de magia normal enquanto carrega o objeto em que a runa foi inscrita -- isso não está modelado (schema só suporta magia inata OU com gasto de espaço, não os dois ao mesmo tempo para a mesma magia).</p>",
+    "spellGrants": [
+      {
+        "ability": {
+          "choose": [
+            "int",
+            "wis",
+            "cha"
+          ]
+        },
+        "innate": {
+          "_": {
+            "daily": {
+              "1": [
+                "chromatic orb"
+              ]
+            }
+          }
+        }
+      }
+    ]
+  },
+  {
     "name": "Dreadful Word",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -882,11 +1218,25 @@
     },
     "consumes": null,
     "description": "<p>You can cast confusion once using a warlock spell slot. You can't do so again until you finish a long rest.</p>",
-    "spellGrants": null
+    "spellGrants": [
+      {
+        "innate": {
+          "_": {
+            "daily": {
+              "1e": [
+                "confusion"
+              ]
+            }
+          }
+        }
+      }
+    ]
   },
   {
     "name": "Druidic Warrior",
     "source": "TCE",
+    "sourceBook": "Tasha's Cauldron of Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "fightingStyle",
     "classes": [
@@ -895,11 +1245,25 @@
     "prerequisites": null,
     "consumes": null,
     "description": "<p>You learn two cantrips of your choice from the druid spell list. They count as ranger spells for you, and Wisdom is your spellcasting ability for them. Whenever you gain a level in this class, you can replace one of these cantrips with another cantrip from the druid spell list.</p>",
-    "spellGrants": null
+    "spellGrants": [
+      {
+        "ability": "wis",
+        "known": {
+          "_": [
+            {
+              "choose": "level=0|class=druid",
+              "count": 2
+            }
+          ]
+        }
+      }
+    ]
   },
   {
     "name": "Dueling",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "fightingStyle",
     "classes": [
@@ -916,6 +1280,8 @@
   {
     "name": "Eldritch Mind",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "eldritchInvocation",
     "classes": [
@@ -929,6 +1295,8 @@
   {
     "name": "Eldritch Mind",
     "source": "TCE",
+    "sourceBook": "Tasha's Cauldron of Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -942,6 +1310,8 @@
   {
     "name": "Eldritch Sight",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -950,11 +1320,21 @@
     "prerequisites": null,
     "consumes": null,
     "description": "<p>You can cast detect magic at will, without expending a spell slot.</p>",
-    "spellGrants": null
+    "spellGrants": [
+      {
+        "innate": {
+          "_": [
+            "detect magic"
+          ]
+        }
+      }
+    ]
   },
   {
     "name": "Eldritch Smite",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "eldritchInvocation",
     "classes": [
@@ -984,6 +1364,8 @@
   {
     "name": "Eldritch Smite",
     "source": "XGE",
+    "sourceBook": "Xanathar's Guide to Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -1009,6 +1391,8 @@
   {
     "name": "Eldritch Spear",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -1030,6 +1414,8 @@
   {
     "name": "Eldritch Spear",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "eldritchInvocation",
     "classes": [
@@ -1063,6 +1449,8 @@
   {
     "name": "Elemental Attunement",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "elementalDiscipline",
     "classes": [
@@ -1076,6 +1464,8 @@
   {
     "name": "Empowered Spell",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "metamagic",
     "classes": [
@@ -1091,6 +1481,8 @@
   {
     "name": "Empowered Spell",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "metamagic",
     "classes": [
@@ -1104,8 +1496,42 @@
     "spellGrants": null
   },
   {
+    "name": "Enemy Rune (BGG)",
+    "source": "BGG",
+    "sourceBook": "Bigby Presents: Glory of the Giants",
+    "tier": "official",
+    "rules": "2014",
+    "category": "runeMagic",
+    "classes": [],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>Uma das 13 runas da tabela \"Rune Spells\" do talento Rune Shaper. Enquanto conhecida, concede a magia Disguise Self (1º nível) como magia inata, conjurável 1x por descanso longo, sem gastar espaço de magia. Simplificação assumida (ver Rune Shaper): o texto original também permite conjurar Disguise Self usando espaço de magia normal enquanto carrega o objeto em que a runa foi inscrita -- isso não está modelado (schema só suporta magia inata OU com gasto de espaço, não os dois ao mesmo tempo para a mesma magia).</p>",
+    "spellGrants": [
+      {
+        "ability": {
+          "choose": [
+            "int",
+            "wis",
+            "cha"
+          ]
+        },
+        "innate": {
+          "_": {
+            "daily": {
+              "1": [
+                "disguise self"
+              ]
+            }
+          }
+        }
+      }
+    ]
+  },
+  {
     "name": "Enfeebling Arrow",
     "source": "XGE",
+    "sourceBook": "Xanathar's Guide to Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "arcaneShot",
     "classes": [
@@ -1121,6 +1547,8 @@
   {
     "name": "Enhanced Arcane Focus",
     "source": "TCE",
+    "sourceBook": "Tasha's Cauldron of Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "artificerInfusion",
     "classes": [
@@ -1142,6 +1570,8 @@
   {
     "name": "Enhanced Defense",
     "source": "TCE",
+    "sourceBook": "Tasha's Cauldron of Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "artificerInfusion",
     "classes": [
@@ -1163,6 +1593,8 @@
   {
     "name": "Enhanced Weapon",
     "source": "TCE",
+    "sourceBook": "Tasha's Cauldron of Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "artificerInfusion",
     "classes": [
@@ -1184,6 +1616,8 @@
   {
     "name": "Eternal Mountain Defense",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "elementalDiscipline",
     "classes": [
@@ -1206,11 +1640,27 @@
     },
     "consumes": null,
     "description": "<p>You can spend 5 ki points to cast stoneskin, targeting yourself.</p>",
-    "spellGrants": null
+    "spellGrants": [
+      {
+        "innate": {
+          "_": {
+            "resource": {
+              "5": [
+                "stoneskin"
+              ]
+            }
+          }
+        },
+        "resourceName": "Ki",
+        "ability": "wis"
+      }
+    ]
   },
   {
     "name": "Evasive Footwork",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "maneuver",
     "classes": [
@@ -1226,6 +1676,8 @@
   {
     "name": "Evasive Footwork",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "maneuver",
     "classes": [
@@ -1241,6 +1693,8 @@
   {
     "name": "Extended Spell",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "metamagic",
     "classes": [
@@ -1256,6 +1710,8 @@
   {
     "name": "Extended Spell",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "metamagic",
     "classes": [
@@ -1271,6 +1727,8 @@
   {
     "name": "Eyes of the Rune Keeper",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -1284,6 +1742,8 @@
   {
     "name": "Fangs of the Fire Snake",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "elementalDiscipline",
     "classes": [
@@ -1297,6 +1757,8 @@
   {
     "name": "Far Scribe",
     "source": "TCE",
+    "sourceBook": "Tasha's Cauldron of Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -1317,11 +1779,21 @@
     },
     "consumes": null,
     "description": "<p>A new page appears in your Book of Shadows. With your permission, a creature can use its action to write its name on that page, which can contain a number of names equal to your proficiency bonus.</p><p>You can cast the sending spell, targeting a creature whose name is on the page, without using a spell slot and without using material components. To do so, you must write the message on the page. The target hears the message in their mind, and if the target replies, their message appears on the page, rather than in your mind. The writing disappears after 1 minute.</p><p>As an action, you can magically erase a name on the page by touching it.</p>",
-    "spellGrants": null
+    "spellGrants": [
+      {
+        "innate": {
+          "_": [
+            "sending"
+          ]
+        }
+      }
+    ]
   },
   {
     "name": "Feinting Attack",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "maneuver",
     "classes": [
@@ -1337,6 +1809,8 @@
   {
     "name": "Feinting Attack",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "maneuver",
     "classes": [
@@ -1352,6 +1826,8 @@
   {
     "name": "Fiendish Vigor",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -1360,11 +1836,21 @@
     "prerequisites": null,
     "consumes": null,
     "description": "<p>You can cast false life on yourself at will as a 1st-level spell, without expending a spell slot or material components.</p>",
-    "spellGrants": null
+    "spellGrants": [
+      {
+        "innate": {
+          "_": [
+            "false life"
+          ]
+        }
+      }
+    ]
   },
   {
     "name": "Fiendish Vigor",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "eldritchInvocation",
     "classes": [
@@ -1386,11 +1872,21 @@
     },
     "consumes": null,
     "description": "<p>You can cast False Life on yourself without expending a spell slot. When you cast the spell with this feature, you don't roll the die for the Temporary Hit Points; you automatically get the highest number on the die.</p>",
-    "spellGrants": null
+    "spellGrants": [
+      {
+        "innate": {
+          "_": [
+            "false life|xphb"
+          ]
+        }
+      }
+    ]
   },
   {
     "name": "Fire Rune",
     "source": "TCE",
+    "sourceBook": "Tasha's Cauldron of Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "rune",
     "classes": [
@@ -1402,8 +1898,42 @@
     "spellGrants": null
   },
   {
+    "name": "Fire Rune (BGG)",
+    "source": "BGG",
+    "sourceBook": "Bigby Presents: Glory of the Giants",
+    "tier": "official",
+    "rules": "2014",
+    "category": "runeMagic",
+    "classes": [],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>Uma das 13 runas da tabela \"Rune Spells\" do talento Rune Shaper. Enquanto conhecida, concede a magia Burning Hands (1º nível) como magia inata, conjurável 1x por descanso longo, sem gastar espaço de magia. Simplificação assumida (ver Rune Shaper): o texto original também permite conjurar Burning Hands usando espaço de magia normal enquanto carrega o objeto em que a runa foi inscrita -- isso não está modelado (schema só suporta magia inata OU com gasto de espaço, não os dois ao mesmo tempo para a mesma magia).</p>",
+    "spellGrants": [
+      {
+        "ability": {
+          "choose": [
+            "int",
+            "wis",
+            "cha"
+          ]
+        },
+        "innate": {
+          "_": {
+            "daily": {
+              "1": [
+                "burning hands"
+              ]
+            }
+          }
+        }
+      }
+    ]
+  },
+  {
     "name": "Fist of Four Thunders",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "elementalDiscipline",
     "classes": [
@@ -1412,11 +1942,27 @@
     "prerequisites": null,
     "consumes": null,
     "description": "<p>You can spend 2 ki points to cast thunderwave.</p>",
-    "spellGrants": null
+    "spellGrants": [
+      {
+        "innate": {
+          "_": {
+            "resource": {
+              "2": [
+                "thunderwave"
+              ]
+            }
+          }
+        },
+        "resourceName": "Ki",
+        "ability": "wis"
+      }
+    ]
   },
   {
     "name": "Flames of the Phoenix",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "elementalDiscipline",
     "classes": [
@@ -1439,11 +1985,59 @@
     },
     "consumes": null,
     "description": "<p>You can spend 4 ki points to cast fireball.</p>",
-    "spellGrants": null
+    "spellGrants": [
+      {
+        "innate": {
+          "_": {
+            "resource": {
+              "4": [
+                "fireball"
+              ]
+            }
+          }
+        },
+        "resourceName": "Ki",
+        "ability": "wis"
+      }
+    ]
+  },
+  {
+    "name": "Friend Rune (BGG)",
+    "source": "BGG",
+    "sourceBook": "Bigby Presents: Glory of the Giants",
+    "tier": "official",
+    "rules": "2014",
+    "category": "runeMagic",
+    "classes": [],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>Uma das 13 runas da tabela \"Rune Spells\" do talento Rune Shaper. Enquanto conhecida, concede a magia Speak with Animals (1º nível) como magia inata, conjurável 1x por descanso longo, sem gastar espaço de magia. Simplificação assumida (ver Rune Shaper): o texto original também permite conjurar Speak with Animals usando espaço de magia normal enquanto carrega o objeto em que a runa foi inscrita -- isso não está modelado (schema só suporta magia inata OU com gasto de espaço, não os dois ao mesmo tempo para a mesma magia).</p>",
+    "spellGrants": [
+      {
+        "ability": {
+          "choose": [
+            "int",
+            "wis",
+            "cha"
+          ]
+        },
+        "innate": {
+          "_": {
+            "daily": {
+              "1": [
+                "speak with animals"
+              ]
+            }
+          }
+        }
+      }
+    ]
   },
   {
     "name": "Frost Rune",
     "source": "TCE",
+    "sourceBook": "Tasha's Cauldron of Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "rune",
     "classes": [
@@ -1455,8 +2049,42 @@
     "spellGrants": null
   },
   {
+    "name": "Frost Rune (BGG)",
+    "source": "BGG",
+    "sourceBook": "Bigby Presents: Glory of the Giants",
+    "tier": "official",
+    "rules": "2014",
+    "category": "runeMagic",
+    "classes": [],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>Uma das 13 runas da tabela \"Rune Spells\" do talento Rune Shaper. Enquanto conhecida, concede a magia Armor of Agathys (1º nível) como magia inata, conjurável 1x por descanso longo, sem gastar espaço de magia. Simplificação assumida (ver Rune Shaper): o texto original também permite conjurar Armor of Agathys usando espaço de magia normal enquanto carrega o objeto em que a runa foi inscrita -- isso não está modelado (schema só suporta magia inata OU com gasto de espaço, não os dois ao mesmo tempo para a mesma magia).</p>",
+    "spellGrants": [
+      {
+        "ability": {
+          "choose": [
+            "int",
+            "wis",
+            "cha"
+          ]
+        },
+        "innate": {
+          "_": {
+            "daily": {
+              "1": [
+                "armor of agathys"
+              ]
+            }
+          }
+        }
+      }
+    ]
+  },
+  {
     "name": "Gaze of Two Minds",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -1470,6 +2098,8 @@
   {
     "name": "Gaze of Two Minds",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "eldritchInvocation",
     "classes": [
@@ -1496,6 +2126,8 @@
   {
     "name": "Ghostly Gaze",
     "source": "XGE",
+    "sourceBook": "Xanathar's Guide to Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -1520,6 +2152,8 @@
   {
     "name": "Gift of the Depths",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "eldritchInvocation",
     "classes": [
@@ -1541,11 +2175,25 @@
     },
     "consumes": null,
     "description": "<p>You can breathe underwater, and you gain a Swim Speed equal to your Speed.</p><p>You can also cast Water Breathing once without expending a spell slot. You regain the ability to cast it in this way again when you finish a Long Rest.</p>",
-    "spellGrants": null
+    "spellGrants": [
+      {
+        "innate": {
+          "_": {
+            "daily": {
+              "1e": [
+                "water breathing|xphb"
+              ]
+            }
+          }
+        }
+      }
+    ]
   },
   {
     "name": "Gift of the Depths",
     "source": "XGE",
+    "sourceBook": "Xanathar's Guide to Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -1582,6 +2230,8 @@
   {
     "name": "Gift of the Ever-Living Ones",
     "source": "XGE",
+    "sourceBook": "Xanathar's Guide to Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -1601,6 +2251,8 @@
   {
     "name": "Gift of the Protectors",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "eldritchInvocation",
     "classes": [
@@ -1630,6 +2282,8 @@
   {
     "name": "Gift of the Protectors",
     "source": "TCE",
+    "sourceBook": "Tasha's Cauldron of Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -1655,6 +2309,8 @@
   {
     "name": "Goading Attack",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "maneuver",
     "classes": [
@@ -1670,6 +2326,8 @@
   {
     "name": "Goading Attack",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "maneuver",
     "classes": [
@@ -1685,6 +2343,8 @@
   {
     "name": "Gong of the Summit",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "elementalDiscipline",
     "classes": [
@@ -1707,11 +2367,40 @@
     },
     "consumes": null,
     "description": "<p>You can spend 3 ki points to cast shatter.</p>",
+    "spellGrants": [
+      {
+        "innate": {
+          "_": {
+            "resource": {
+              "3": [
+                "shatter"
+              ]
+            }
+          }
+        },
+        "resourceName": "Ki",
+        "ability": "wis"
+      }
+    ]
+  },
+  {
+    "name": "Grappling Appendage (GGR)",
+    "source": "GGR",
+    "sourceBook": "Guildmasters' Guide to Ravnica",
+    "tier": "official",
+    "rules": "2014",
+    "category": null,
+    "classes": [],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p><em>Opção de Animal Enhancement do Simic Hybrid (nível 5+).</em></p><p>You have two special appendages growing alongside your arms. Choose whether they're both claws or tentacles. As an action, you can use one of them to try to grapple a creature. Each one is also a natural weapon, which you can use to make an unarmed strike. If you hit with it, the target takes bludgeoning damage equal to 1d6 + your Strength modifier, instead of the bludgeoning damage normal for an unarmed strike. Immediately after hitting, you can try to grapple the target as a bonus action. These appendages can't precisely manipulate anything and can't wield weapons, magic items, or other specialized equipment.</p><p><em>O golpe (1d6+Força, contundente) é automatizado como uma Activity de ataque; a escolha cosmética garra/tentáculo e o agarrão como ação bônus após acertar ficam sem automação.</em></p>",
     "spellGrants": null
   },
   {
     "name": "Grappling Strike",
     "source": "TCE",
+    "sourceBook": "Tasha's Cauldron of Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "maneuver",
     "classes": [
@@ -1727,6 +2416,8 @@
   {
     "name": "Grasp of Hadar",
     "source": "XGE",
+    "sourceBook": "Xanathar's Guide to Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -1748,6 +2439,8 @@
   {
     "name": "Grasping Arrow",
     "source": "XGE",
+    "sourceBook": "Xanathar's Guide to Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "arcaneShot",
     "classes": [
@@ -1763,6 +2456,8 @@
   {
     "name": "Great Weapon Fighting",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "fightingStyle",
     "classes": [
@@ -1777,6 +2472,8 @@
   {
     "name": "Heightened Spell",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "metamagic",
     "classes": [
@@ -1792,6 +2489,8 @@
   {
     "name": "Heightened Spell",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "metamagic",
     "classes": [
@@ -1807,6 +2506,8 @@
   {
     "name": "Helm of Awareness",
     "source": "TCE",
+    "sourceBook": "Tasha's Cauldron of Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "artificerInfusion",
     "classes": [
@@ -1835,6 +2536,8 @@
   {
     "name": "Hill Rune",
     "source": "TCE",
+    "sourceBook": "Tasha's Cauldron of Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "rune",
     "classes": [
@@ -1861,8 +2564,42 @@
     "spellGrants": null
   },
   {
+    "name": "Hill Rune (BGG)",
+    "source": "BGG",
+    "sourceBook": "Bigby Presents: Glory of the Giants",
+    "tier": "official",
+    "rules": "2014",
+    "category": "runeMagic",
+    "classes": [],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>Uma das 13 runas da tabela \"Rune Spells\" do talento Rune Shaper. Enquanto conhecida, concede a magia Goodberry (1º nível) como magia inata, conjurável 1x por descanso longo, sem gastar espaço de magia. Simplificação assumida (ver Rune Shaper): o texto original também permite conjurar Goodberry usando espaço de magia normal enquanto carrega o objeto em que a runa foi inscrita -- isso não está modelado (schema só suporta magia inata OU com gasto de espaço, não os dois ao mesmo tempo para a mesma magia).</p>",
+    "spellGrants": [
+      {
+        "ability": {
+          "choose": [
+            "int",
+            "wis",
+            "cha"
+          ]
+        },
+        "innate": {
+          "_": {
+            "daily": {
+              "1": [
+                "goodberry"
+              ]
+            }
+          }
+        }
+      }
+    ]
+  },
+  {
     "name": "Homunculus Servant",
     "source": "TCE",
+    "sourceBook": "Tasha's Cauldron of Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "artificerInfusion",
     "classes": [
@@ -1884,6 +2621,8 @@
   {
     "name": "Improved Pact Weapon",
     "source": "XGE",
+    "sourceBook": "Xanathar's Guide to Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -1903,6 +2642,8 @@
   {
     "name": "Interception",
     "source": "TCE",
+    "sourceBook": "Tasha's Cauldron of Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "fightingStyle",
     "classes": [
@@ -1917,6 +2658,8 @@
   {
     "name": "Investment of the Chain Master",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "eldritchInvocation",
     "classes": [
@@ -1946,6 +2689,8 @@
   {
     "name": "Investment of the Chain Master",
     "source": "TCE",
+    "sourceBook": "Tasha's Cauldron of Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -1963,8 +2708,74 @@
     "spellGrants": null
   },
   {
+    "name": "Journey Rune (BGG)",
+    "source": "BGG",
+    "sourceBook": "Bigby Presents: Glory of the Giants",
+    "tier": "official",
+    "rules": "2014",
+    "category": "runeMagic",
+    "classes": [],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>Uma das 13 runas da tabela \"Rune Spells\" do talento Rune Shaper. Enquanto conhecida, concede a magia Longstrider (1º nível) como magia inata, conjurável 1x por descanso longo, sem gastar espaço de magia. Simplificação assumida (ver Rune Shaper): o texto original também permite conjurar Longstrider usando espaço de magia normal enquanto carrega o objeto em que a runa foi inscrita -- isso não está modelado (schema só suporta magia inata OU com gasto de espaço, não os dois ao mesmo tempo para a mesma magia).</p>",
+    "spellGrants": [
+      {
+        "ability": {
+          "choose": [
+            "int",
+            "wis",
+            "cha"
+          ]
+        },
+        "innate": {
+          "_": {
+            "daily": {
+              "1": [
+                "longstrider"
+              ]
+            }
+          }
+        }
+      }
+    ]
+  },
+  {
+    "name": "King Rune (BGG)",
+    "source": "BGG",
+    "sourceBook": "Bigby Presents: Glory of the Giants",
+    "tier": "official",
+    "rules": "2014",
+    "category": "runeMagic",
+    "classes": [],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>Uma das 13 runas da tabela \"Rune Spells\" do talento Rune Shaper. Enquanto conhecida, concede a magia Command (1º nível) como magia inata, conjurável 1x por descanso longo, sem gastar espaço de magia. Simplificação assumida (ver Rune Shaper): o texto original também permite conjurar Command usando espaço de magia normal enquanto carrega o objeto em que a runa foi inscrita -- isso não está modelado (schema só suporta magia inata OU com gasto de espaço, não os dois ao mesmo tempo para a mesma magia).</p>",
+    "spellGrants": [
+      {
+        "ability": {
+          "choose": [
+            "int",
+            "wis",
+            "cha"
+          ]
+        },
+        "innate": {
+          "_": {
+            "daily": {
+              "1": [
+                "command"
+              ]
+            }
+          }
+        }
+      }
+    ]
+  },
+  {
     "name": "Lance of Lethargy",
     "source": "XGE",
+    "sourceBook": "Xanathar's Guide to Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -1986,6 +2797,8 @@
   {
     "name": "Lessons of the First Ones",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "eldritchInvocation",
     "classes": [
@@ -2012,6 +2825,8 @@
   {
     "name": "Lifedrinker",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -2037,6 +2852,8 @@
   {
     "name": "Lifedrinker",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "eldritchInvocation",
     "classes": [
@@ -2066,6 +2883,8 @@
   {
     "name": "Lunging Attack",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "maneuver",
     "classes": [
@@ -2081,6 +2900,8 @@
   {
     "name": "Lunging Attack",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "maneuver",
     "classes": [
@@ -2096,6 +2917,8 @@
   {
     "name": "Maddening Hex",
     "source": "XGE",
+    "sourceBook": "Xanathar's Guide to Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -2123,6 +2946,8 @@
   {
     "name": "Maneuvering Attack",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "maneuver",
     "classes": [
@@ -2138,6 +2963,8 @@
   {
     "name": "Maneuvering Attack",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "maneuver",
     "classes": [
@@ -2151,8 +2978,23 @@
     "spellGrants": null
   },
   {
+    "name": "Manta Glide (GGR)",
+    "source": "GGR",
+    "sourceBook": "Guildmasters' Guide to Ravnica",
+    "tier": "official",
+    "rules": "2014",
+    "category": null,
+    "classes": [],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p><em>Opção de Animal Enhancement do Simic Hybrid.</em></p><p>You have ray-like fins that you can use as wings to slow your fall or allow you to glide. When you fall and aren't incapacitated, you can subtract up to 100 feet from the fall when calculating falling damage, and you can move up to 2 feet horizontally for every 1 foot you descend.</p>",
+    "spellGrants": null
+  },
+  {
     "name": "Mask of Many Faces",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -2161,11 +3003,21 @@
     "prerequisites": null,
     "consumes": null,
     "description": "<p>You can cast disguise self at will, without expending a spell slot.</p>",
-    "spellGrants": null
+    "spellGrants": [
+      {
+        "innate": {
+          "_": [
+            "disguise self"
+          ]
+        }
+      }
+    ]
   },
   {
     "name": "Mask of Many Faces",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "eldritchInvocation",
     "classes": [
@@ -2187,11 +3039,21 @@
     },
     "consumes": null,
     "description": "<p>You can cast Disguise Self without expending a spell slot.</p>",
-    "spellGrants": null
+    "spellGrants": [
+      {
+        "innate": {
+          "_": [
+            "disguise self|xphb"
+          ]
+        }
+      }
+    ]
   },
   {
     "name": "Master of Myriad Forms",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -2211,11 +3073,21 @@
     },
     "consumes": null,
     "description": "<p>You can cast alter self at will, without expending a spell slot.</p>",
-    "spellGrants": null
+    "spellGrants": [
+      {
+        "innate": {
+          "_": [
+            "alter self"
+          ]
+        }
+      }
+    ]
   },
   {
     "name": "Master of Myriad Forms",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "eldritchInvocation",
     "classes": [
@@ -2237,11 +3109,21 @@
     },
     "consumes": null,
     "description": "<p>You can cast Alter Self without expending a spell slot.</p>",
-    "spellGrants": null
+    "spellGrants": [
+      {
+        "innate": {
+          "_": [
+            "alter self|xphb"
+          ]
+        }
+      }
+    ]
   },
   {
     "name": "Menacing Attack",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "maneuver",
     "classes": [
@@ -2257,6 +3139,8 @@
   {
     "name": "Menacing Attack",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "maneuver",
     "classes": [
@@ -2272,6 +3156,8 @@
   {
     "name": "Mind Sharpener",
     "source": "TCE",
+    "sourceBook": "Tasha's Cauldron of Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "artificerInfusion",
     "classes": [
@@ -2293,6 +3179,8 @@
   {
     "name": "Minions of Chaos",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -2312,11 +3200,25 @@
     },
     "consumes": null,
     "description": "<p>You can cast conjure elemental once using a warlock spell slot. You can't do so again until you finish a long rest.</p>",
-    "spellGrants": null
+    "spellGrants": [
+      {
+        "innate": {
+          "_": {
+            "daily": {
+              "1e": [
+                "conjure elemental"
+              ]
+            }
+          }
+        }
+      }
+    ]
   },
   {
     "name": "Mire the Mind",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -2336,11 +3238,25 @@
     },
     "consumes": null,
     "description": "<p>You can cast slow once using a warlock spell slot. You can't do so again until you finish a long rest.</p>",
-    "spellGrants": null
+    "spellGrants": [
+      {
+        "innate": {
+          "_": {
+            "daily": {
+              "1e": [
+                "slow"
+              ]
+            }
+          }
+        }
+      }
+    ]
   },
   {
     "name": "Mist Stance",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "elementalDiscipline",
     "classes": [
@@ -2363,11 +3279,27 @@
     },
     "consumes": null,
     "description": "<p>You can spend 4 ki points to cast gaseous form, targeting yourself.</p>",
-    "spellGrants": null
+    "spellGrants": [
+      {
+        "innate": {
+          "_": {
+            "resource": {
+              "4": [
+                "gaseous form"
+              ]
+            }
+          }
+        },
+        "resourceName": "Ki",
+        "ability": "wis"
+      }
+    ]
   },
   {
     "name": "Misty Visions",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -2376,11 +3308,21 @@
     "prerequisites": null,
     "consumes": null,
     "description": "<p>You can cast silent image at will, without expending a spell slot or material components.</p>",
-    "spellGrants": null
+    "spellGrants": [
+      {
+        "innate": {
+          "_": [
+            "silent image"
+          ]
+        }
+      }
+    ]
   },
   {
     "name": "Misty Visions",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "eldritchInvocation",
     "classes": [
@@ -2402,11 +3344,66 @@
     },
     "consumes": null,
     "description": "<p>You can cast Silent Image without expending a spell slot.</p>",
+    "spellGrants": [
+      {
+        "innate": {
+          "_": [
+            "silent image|xphb"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "name": "Mountain Rune (BGG)",
+    "source": "BGG",
+    "sourceBook": "Bigby Presents: Glory of the Giants",
+    "tier": "official",
+    "rules": "2014",
+    "category": "runeMagic",
+    "classes": [],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>Uma das 13 runas da tabela \"Rune Spells\" do talento Rune Shaper. Enquanto conhecida, concede a magia Entangle (1º nível) como magia inata, conjurável 1x por descanso longo, sem gastar espaço de magia. Simplificação assumida (ver Rune Shaper): o texto original também permite conjurar Entangle usando espaço de magia normal enquanto carrega o objeto em que a runa foi inscrita -- isso não está modelado (schema só suporta magia inata OU com gasto de espaço, não os dois ao mesmo tempo para a mesma magia).</p>",
+    "spellGrants": [
+      {
+        "ability": {
+          "choose": [
+            "int",
+            "wis",
+            "cha"
+          ]
+        },
+        "innate": {
+          "_": {
+            "daily": {
+              "1": [
+                "entangle"
+              ]
+            }
+          }
+        }
+      }
+    ]
+  },
+  {
+    "name": "Nimble Climber (GGR)",
+    "source": "GGR",
+    "sourceBook": "Guildmasters' Guide to Ravnica",
+    "tier": "official",
+    "rules": "2014",
+    "category": null,
+    "classes": [],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p><em>Opção de Animal Enhancement do Simic Hybrid.</em></p><p>You have a climbing speed equal to your walking speed.</p>",
     "spellGrants": null
   },
   {
     "name": "One with Shadows",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -2431,6 +3428,8 @@
   {
     "name": "One with Shadows",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "eldritchInvocation",
     "classes": [
@@ -2452,11 +3451,21 @@
     },
     "consumes": null,
     "description": "<p>While you're in an area of Dim Light or Darkness, you can cast Invisibility on yourself without expending a spell slot.</p>",
-    "spellGrants": null
+    "spellGrants": [
+      {
+        "innate": {
+          "_": [
+            "invisibility|xphb"
+          ]
+        }
+      }
+    ]
   },
   {
     "name": "Otherworldly Leap",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -2476,11 +3485,21 @@
     },
     "consumes": null,
     "description": "<p>You can cast jump on yourself at will, without expending a spell slot or material components.</p>",
-    "spellGrants": null
+    "spellGrants": [
+      {
+        "innate": {
+          "_": [
+            "jump"
+          ]
+        }
+      }
+    ]
   },
   {
     "name": "Otherworldly Leap",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "eldritchInvocation",
     "classes": [
@@ -2502,11 +3521,21 @@
     },
     "consumes": null,
     "description": "<p>You can cast Jump on yourself without expending a spell slot.</p>",
-    "spellGrants": null
+    "spellGrants": [
+      {
+        "innate": {
+          "_": [
+            "jump|xphb"
+          ]
+        }
+      }
+    ]
   },
   {
     "name": "Pact of the Blade",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "pactBoon",
     "classes": [
@@ -2520,6 +3549,8 @@
   {
     "name": "Pact of the Blade",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "eldritchInvocation",
     "classes": [
@@ -2533,6 +3564,8 @@
   {
     "name": "Pact of the Chain",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "pactBoon",
     "classes": [
@@ -2541,11 +3574,24 @@
     "prerequisites": null,
     "consumes": null,
     "description": "<p>You learn the find familiar spell and can cast it as a ritual. The spell doesn't count against your number of spells known.</p><p>When you cast the spell, you can choose one of the normal forms for your familiar or one of the following special forms: imp, pseudodragon, quasit, or sprite.</p><p>Additionally, when you take the Attack action, you can forgo one of your own attacks to allow your familiar to use its reaction to make one attack of its own.</p>",
-    "spellGrants": null
+    "spellGrants": [
+      {
+        "ability": "cha",
+        "innate": {
+          "_": {
+            "ritual": [
+              "find familiar"
+            ]
+          }
+        }
+      }
+    ]
   },
   {
     "name": "Pact of the Chain",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "eldritchInvocation",
     "classes": [
@@ -2554,11 +3600,24 @@
     "prerequisites": null,
     "consumes": null,
     "description": "<p>You learn the Find Familiar spell and can cast it as a Magic action without expending a spell slot.</p><p>When you cast the spell, you choose one of the normal forms for your familiar or one of the following special forms: Imp, Pseudodragon, Quasit, Skeleton, Slaad Tadpole, Sphinx of Wonder, Sprite, or Venomous Snake (see appendix B for the familiar's stat block).</p><p>Additionally, when you take the Attack action, you can forgo one of your own attacks to allow your familiar to make one attack of its own with its Reaction.</p>",
-    "spellGrants": null
+    "spellGrants": [
+      {
+        "ability": "cha",
+        "innate": {
+          "_": {
+            "ritual": [
+              "find familiar|xphb"
+            ]
+          }
+        }
+      }
+    ]
   },
   {
     "name": "Pact of the Talisman",
     "source": "TCE",
+    "sourceBook": "Tasha's Cauldron of Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "pactBoon",
     "classes": [
@@ -2572,6 +3631,8 @@
   {
     "name": "Pact of the Tome",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "pactBoon",
     "classes": [
@@ -2580,11 +3641,25 @@
     "prerequisites": null,
     "consumes": null,
     "description": "<p>Your patron gives you a grimoire called a Book of Shadows. When you gain this feature, choose three cantrips from any class's spell list. The cantrips do not need to be from the same spell list. While the book is on your person, you can cast those cantrips at will. They don't count against your number of cantrips known. Any cantrip you cast with this feature is considered a warlock cantrip for you. If you lose your Book of Shadows, you can perform a 1-hour ceremony to receive a replacement from your patron. This ceremony can be performed during a short or long rest, and it destroys the previous book. The book turns to ash when you die.</p>",
-    "spellGrants": null
+    "spellGrants": [
+      {
+        "ability": "cha",
+        "known": {
+          "_": [
+            {
+              "choose": "level=0",
+              "count": 3
+            }
+          ]
+        }
+      }
+    ]
   },
   {
     "name": "Pact of the Tome",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "eldritchInvocation",
     "classes": [
@@ -2593,11 +3668,33 @@
     "prerequisites": null,
     "consumes": null,
     "description": "<p>Stitching together strands of shadow, you conjure forth a book in your hand at the end of a Short or Long Rest. This Book of Shadows (you determine its appearance) contains eldritch magic that only you can access, granting you the benefits below. The book disappears if you conjure another book with this feature or if you die.</p><p>Cantrips and Rituals: When the book appears, choose three cantrips, and choose two level 1 spells that have the Ritual tag. The spells can be from any class's spell list, and they must be spells you don't already have prepared. While the book is on your person, you have the chosen spells prepared, and they function as Warlock spells for you.</p><p>Spellcasting Focus: You can use the book as a Spellcasting Focus.</p>",
-    "spellGrants": null
+    "spellGrants": [
+      {
+        "ability": "cha",
+        "known": {
+          "_": [
+            {
+              "choose": "level=0",
+              "count": 3
+            }
+          ]
+        },
+        "prepared": {
+          "_": [
+            {
+              "choose": "level=1|components & miscellaneous=ritual",
+              "count": 2
+            }
+          ]
+        }
+      }
+    ]
   },
   {
     "name": "Parry",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "maneuver",
     "classes": [
@@ -2613,6 +3710,8 @@
   {
     "name": "Parry",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "maneuver",
     "classes": [
@@ -2628,6 +3727,8 @@
   {
     "name": "Piercing Arrow",
     "source": "XGE",
+    "sourceBook": "Xanathar's Guide to Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "arcaneShot",
     "classes": [
@@ -2643,6 +3744,8 @@
   {
     "name": "Precision Attack",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "maneuver",
     "classes": [
@@ -2658,6 +3761,8 @@
   {
     "name": "Precision Attack",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "maneuver",
     "classes": [
@@ -2673,6 +3778,8 @@
   {
     "name": "Protection",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "fightingStyle",
     "classes": [
@@ -2687,6 +3794,8 @@
   {
     "name": "Protection of the Talisman",
     "source": "TCE",
+    "sourceBook": "Tasha's Cauldron of Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -2712,6 +3821,8 @@
   {
     "name": "Pushing Attack",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "maneuver",
     "classes": [
@@ -2727,6 +3838,8 @@
   {
     "name": "Pushing Attack",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "maneuver",
     "classes": [
@@ -2742,6 +3855,8 @@
   {
     "name": "Quick Toss",
     "source": "TCE",
+    "sourceBook": "Tasha's Cauldron of Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "maneuver",
     "classes": [
@@ -2757,6 +3872,8 @@
   {
     "name": "Quickened Spell",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "metamagic",
     "classes": [
@@ -2772,6 +3889,8 @@
   {
     "name": "Quickened Spell",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "metamagic",
     "classes": [
@@ -2787,6 +3906,8 @@
   {
     "name": "Radiant Weapon",
     "source": "TCE",
+    "sourceBook": "Tasha's Cauldron of Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "artificerInfusion",
     "classes": [
@@ -2815,6 +3936,8 @@
   {
     "name": "Rally",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "maneuver",
     "classes": [
@@ -2830,6 +3953,8 @@
   {
     "name": "Rally",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "maneuver",
     "classes": [
@@ -2845,6 +3970,8 @@
   {
     "name": "Rebuke of the Talisman",
     "source": "TCE",
+    "sourceBook": "Tasha's Cauldron of Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -2864,6 +3991,8 @@
   {
     "name": "Relentless Hex",
     "source": "XGE",
+    "sourceBook": "Xanathar's Guide to Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -2891,6 +4020,8 @@
   {
     "name": "Repeating Shot",
     "source": "TCE",
+    "sourceBook": "Tasha's Cauldron of Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "artificerInfusion",
     "classes": [
@@ -2912,6 +4043,8 @@
   {
     "name": "Repelling Blast",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -2933,6 +4066,8 @@
   {
     "name": "Repelling Blast",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "eldritchInvocation",
     "classes": [
@@ -2966,6 +4101,8 @@
   {
     "name": "Replicate Magic Item",
     "source": "TCE",
+    "sourceBook": "Tasha's Cauldron of Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "artificerInfusion",
     "classes": [
@@ -2979,6 +4116,8 @@
   {
     "name": "Repulsion Shield",
     "source": "TCE",
+    "sourceBook": "Tasha's Cauldron of Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "artificerInfusion",
     "classes": [
@@ -3007,6 +4146,8 @@
   {
     "name": "Resistant Armor",
     "source": "TCE",
+    "sourceBook": "Tasha's Cauldron of Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "artificerInfusion",
     "classes": [
@@ -3035,6 +4176,8 @@
   {
     "name": "Returning Weapon",
     "source": "TCE",
+    "sourceBook": "Tasha's Cauldron of Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "artificerInfusion",
     "classes": [
@@ -3056,6 +4199,8 @@
   {
     "name": "Ride the Wind",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "elementalDiscipline",
     "classes": [
@@ -3078,11 +4223,27 @@
     },
     "consumes": null,
     "description": "<p>You can spend 4 ki points to cast fly, targeting yourself.</p>",
-    "spellGrants": null
+    "spellGrants": [
+      {
+        "innate": {
+          "_": {
+            "resource": {
+              "4": [
+                "fly"
+              ]
+            }
+          }
+        },
+        "resourceName": "Ki",
+        "ability": "wis"
+      }
+    ]
   },
   {
     "name": "Riposte",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "maneuver",
     "classes": [
@@ -3098,6 +4259,8 @@
   {
     "name": "Riposte",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "maneuver",
     "classes": [
@@ -3113,6 +4276,8 @@
   {
     "name": "River of Hungry Flame",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "elementalDiscipline",
     "classes": [
@@ -3135,11 +4300,27 @@
     },
     "consumes": null,
     "description": "<p>You can spend 5 ki points to cast wall of fire.</p>",
-    "spellGrants": null
+    "spellGrants": [
+      {
+        "innate": {
+          "_": {
+            "resource": {
+              "5": [
+                "wall of fire"
+              ]
+            }
+          }
+        },
+        "resourceName": "Ki",
+        "ability": "wis"
+      }
+    ]
   },
   {
     "name": "Rush of the Gale Spirits",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "elementalDiscipline",
     "classes": [
@@ -3148,11 +4329,27 @@
     "prerequisites": null,
     "consumes": null,
     "description": "<p>You can spend 2 ki points to cast gust of wind.</p>",
-    "spellGrants": null
+    "spellGrants": [
+      {
+        "innate": {
+          "_": {
+            "resource": {
+              "2": [
+                "gust of wind"
+              ]
+            }
+          }
+        },
+        "resourceName": "Ki",
+        "ability": "wis"
+      }
+    ]
   },
   {
     "name": "Sculptor of Flesh",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -3172,11 +4369,25 @@
     },
     "consumes": null,
     "description": "<p>You can cast polymorph once using a warlock spell slot. You can't do so again until you finish a long rest.</p>",
-    "spellGrants": null
+    "spellGrants": [
+      {
+        "innate": {
+          "_": {
+            "daily": {
+              "1e": [
+                "polymorph"
+              ]
+            }
+          }
+        }
+      }
+    ]
   },
   {
     "name": "Seeking Arrow",
     "source": "XGE",
+    "sourceBook": "Xanathar's Guide to Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "arcaneShot",
     "classes": [
@@ -3192,6 +4403,8 @@
   {
     "name": "Seeking Spell",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "metamagic",
     "classes": [
@@ -3207,6 +4420,8 @@
   {
     "name": "Seeking Spell",
     "source": "TCE",
+    "sourceBook": "Tasha's Cauldron of Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "metamagic",
     "classes": [
@@ -3222,6 +4437,8 @@
   {
     "name": "Shadow Arrow",
     "source": "XGE",
+    "sourceBook": "Xanathar's Guide to Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "arcaneShot",
     "classes": [
@@ -3237,6 +4454,8 @@
   {
     "name": "Shape the Flowing River",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "elementalDiscipline",
     "classes": [
@@ -3250,6 +4469,8 @@
   {
     "name": "Shroud of Shadow",
     "source": "XGE",
+    "sourceBook": "Xanathar's Guide to Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -3282,6 +4503,8 @@
   {
     "name": "Sign of Ill Omen",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -3301,11 +4524,25 @@
     },
     "consumes": null,
     "description": "<p>You can cast bestow curse once using a warlock spell slot. You can't do so again until you finish a long rest.</p>",
-    "spellGrants": null
+    "spellGrants": [
+      {
+        "innate": {
+          "_": {
+            "daily": {
+              "1e": [
+                "bestow curse"
+              ]
+            }
+          }
+        }
+      }
+    ]
   },
   {
     "name": "Spell-Refueling Ring",
     "source": "TCE",
+    "sourceBook": "Tasha's Cauldron of Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "artificerInfusion",
     "classes": [
@@ -3334,6 +4571,8 @@
   {
     "name": "Stone Rune",
     "source": "TCE",
+    "sourceBook": "Tasha's Cauldron of Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "rune",
     "classes": [
@@ -3345,8 +4584,42 @@
     "spellGrants": null
   },
   {
+    "name": "Stone Rune (BGG)",
+    "source": "BGG",
+    "sourceBook": "Bigby Presents: Glory of the Giants",
+    "tier": "official",
+    "rules": "2014",
+    "category": "runeMagic",
+    "classes": [],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>Uma das 13 runas da tabela \"Rune Spells\" do talento Rune Shaper. Enquanto conhecida, concede a magia Sanctuary (1º nível) como magia inata, conjurável 1x por descanso longo, sem gastar espaço de magia. Simplificação assumida (ver Rune Shaper): o texto original também permite conjurar Sanctuary usando espaço de magia normal enquanto carrega o objeto em que a runa foi inscrita -- isso não está modelado (schema só suporta magia inata OU com gasto de espaço, não os dois ao mesmo tempo para a mesma magia).</p>",
+    "spellGrants": [
+      {
+        "ability": {
+          "choose": [
+            "int",
+            "wis",
+            "cha"
+          ]
+        },
+        "innate": {
+          "_": {
+            "daily": {
+              "1": [
+                "sanctuary"
+              ]
+            }
+          }
+        }
+      }
+    ]
+  },
+  {
     "name": "Storm Rune",
     "source": "TCE",
+    "sourceBook": "Tasha's Cauldron of Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "rune",
     "classes": [
@@ -3373,8 +4646,42 @@
     "spellGrants": null
   },
   {
+    "name": "Storm Rune (BGG)",
+    "source": "BGG",
+    "sourceBook": "Bigby Presents: Glory of the Giants",
+    "tier": "official",
+    "rules": "2014",
+    "category": "runeMagic",
+    "classes": [],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>Uma das 13 runas da tabela \"Rune Spells\" do talento Rune Shaper. Enquanto conhecida, concede a magia Thunderwave (1º nível) como magia inata, conjurável 1x por descanso longo, sem gastar espaço de magia. Simplificação assumida (ver Rune Shaper): o texto original também permite conjurar Thunderwave usando espaço de magia normal enquanto carrega o objeto em que a runa foi inscrita -- isso não está modelado (schema só suporta magia inata OU com gasto de espaço, não os dois ao mesmo tempo para a mesma magia).</p>",
+    "spellGrants": [
+      {
+        "ability": {
+          "choose": [
+            "int",
+            "wis",
+            "cha"
+          ]
+        },
+        "innate": {
+          "_": {
+            "daily": {
+              "1": [
+                "thunderwave"
+              ]
+            }
+          }
+        }
+      }
+    ]
+  },
+  {
     "name": "Subtle Spell",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "metamagic",
     "classes": [
@@ -3390,6 +4697,8 @@
   {
     "name": "Subtle Spell",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "metamagic",
     "classes": [
@@ -3405,6 +4714,8 @@
   {
     "name": "Superior Technique",
     "source": "TCE",
+    "sourceBook": "Tasha's Cauldron of Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "fightingStyle",
     "classes": [
@@ -3418,6 +4729,8 @@
   {
     "name": "Sweeping Attack",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "maneuver",
     "classes": [
@@ -3433,6 +4746,8 @@
   {
     "name": "Sweeping Attack",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "maneuver",
     "classes": [
@@ -3448,6 +4763,8 @@
   {
     "name": "Sweeping Cinder Strike",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "elementalDiscipline",
     "classes": [
@@ -3456,11 +4773,27 @@
     "prerequisites": null,
     "consumes": null,
     "description": "<p>You can spend 2 ki points to cast burning hands.</p>",
-    "spellGrants": null
+    "spellGrants": [
+      {
+        "innate": {
+          "_": {
+            "resource": {
+              "2": [
+                "burning hands"
+              ]
+            }
+          }
+        },
+        "resourceName": "Ki",
+        "ability": "wis"
+      }
+    ]
   },
   {
     "name": "Tactical Assessment",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "maneuver",
     "classes": [
@@ -3476,6 +4809,8 @@
   {
     "name": "Tactical Assessment",
     "source": "TCE",
+    "sourceBook": "Tasha's Cauldron of Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "maneuver",
     "classes": [
@@ -3491,6 +4826,8 @@
   {
     "name": "Thief of Five Fates",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -3499,11 +4836,25 @@
     "prerequisites": null,
     "consumes": null,
     "description": "<p>You can cast bane once using a warlock spell slot. You can't do so again until you finish a long rest.</p>",
-    "spellGrants": null
+    "spellGrants": [
+      {
+        "innate": {
+          "_": {
+            "daily": {
+              "1e": [
+                "bane"
+              ]
+            }
+          }
+        }
+      }
+    ]
   },
   {
     "name": "Thirsting Blade",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -3529,6 +4880,8 @@
   {
     "name": "Thirsting Blade",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "eldritchInvocation",
     "classes": [
@@ -3558,6 +4911,8 @@
   {
     "name": "Thrown Weapon Fighting",
     "source": "TCE",
+    "sourceBook": "Tasha's Cauldron of Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "fightingStyle",
     "classes": [
@@ -3572,6 +4927,8 @@
   {
     "name": "Tomb of Levistus",
     "source": "XGE",
+    "sourceBook": "Xanathar's Guide to Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -3596,6 +4953,8 @@
   {
     "name": "Transmuted Spell",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "metamagic",
     "classes": [
@@ -3611,6 +4970,8 @@
   {
     "name": "Transmuted Spell",
     "source": "TCE",
+    "sourceBook": "Tasha's Cauldron of Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "metamagic",
     "classes": [
@@ -3626,6 +4987,8 @@
   {
     "name": "Trickster's Escape",
     "source": "XGE",
+    "sourceBook": "Xanathar's Guide to Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -3662,6 +5025,8 @@
   {
     "name": "Trip Attack",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "maneuver",
     "classes": [
@@ -3677,6 +5042,8 @@
   {
     "name": "Trip Attack",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "maneuver",
     "classes": [
@@ -3692,6 +5059,8 @@
   {
     "name": "Twinned Spell",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "metamagic",
     "classes": [
@@ -3707,6 +5076,8 @@
   {
     "name": "Twinned Spell",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "metamagic",
     "classes": [
@@ -3722,6 +5093,8 @@
   {
     "name": "Two-Weapon Fighting",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "fightingStyle",
     "classes": [
@@ -3737,6 +5110,8 @@
   {
     "name": "Unarmed Fighting",
     "source": "TCE",
+    "sourceBook": "Tasha's Cauldron of Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "fightingStyle",
     "classes": [
@@ -3750,6 +5125,8 @@
   {
     "name": "Unbroken Air",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "elementalDiscipline",
     "classes": [
@@ -3761,8 +5138,23 @@
     "spellGrants": null
   },
   {
+    "name": "Underwater Adaptation (GGR)",
+    "source": "GGR",
+    "sourceBook": "Guildmasters' Guide to Ravnica",
+    "tier": "official",
+    "rules": "2014",
+    "category": null,
+    "classes": [],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p><em>Opção de Animal Enhancement do Simic Hybrid.</em></p><p>You can breathe air and water, and you have a swimming speed equal to your walking speed.</p>",
+    "spellGrants": null
+  },
+  {
     "name": "Undying Servitude",
     "source": "TCE",
+    "sourceBook": "Tasha's Cauldron of Everything",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -3782,11 +5174,25 @@
     },
     "consumes": null,
     "description": "<p>You can cast animate dead without using a spell slot. Once you do so, you can't cast it in this way again until you finish a long rest.</p>",
-    "spellGrants": null
+    "spellGrants": [
+      {
+        "innate": {
+          "_": {
+            "daily": {
+              "1e": [
+                "animate dead"
+              ]
+            }
+          }
+        }
+      }
+    ]
   },
   {
     "name": "Visions of Distant Realms",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -3806,11 +5212,21 @@
     },
     "consumes": null,
     "description": "<p>You can cast arcane eye at will, without expending a spell slot.</p>",
-    "spellGrants": null
+    "spellGrants": [
+      {
+        "innate": {
+          "_": [
+            "arcane eye"
+          ]
+        }
+      }
+    ]
   },
   {
     "name": "Visions of Distant Realms",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "eldritchInvocation",
     "classes": [
@@ -3832,11 +5248,21 @@
     },
     "consumes": null,
     "description": "<p>You can cast Arcane Eye without expending a spell slot.</p>",
-    "spellGrants": null
+    "spellGrants": [
+      {
+        "innate": {
+          "_": [
+            "arcane eye|xphb"
+          ]
+        }
+      }
+    ]
   },
   {
     "name": "Voice of the Chain Master",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -3856,6 +5282,8 @@
   {
     "name": "Water Whip",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "elementalDiscipline",
     "classes": [
@@ -3869,6 +5297,8 @@
   {
     "name": "Wave of Rolling Earth",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "elementalDiscipline",
     "classes": [
@@ -3891,11 +5321,27 @@
     },
     "consumes": null,
     "description": "<p>You can spend 6 ki points to cast wall of stone.</p>",
-    "spellGrants": null
+    "spellGrants": [
+      {
+        "innate": {
+          "_": {
+            "resource": {
+              "6": [
+                "wall of stone"
+              ]
+            }
+          }
+        },
+        "resourceName": "Ki",
+        "ability": "wis"
+      }
+    ]
   },
   {
     "name": "Whispers of the Grave",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -3915,11 +5361,21 @@
     },
     "consumes": null,
     "description": "<p>You can cast speak with dead at will, without expending a spell slot.</p>",
-    "spellGrants": null
+    "spellGrants": [
+      {
+        "innate": {
+          "_": [
+            "speak with dead"
+          ]
+        }
+      }
+    ]
   },
   {
     "name": "Whispers of the Grave",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "eldritchInvocation",
     "classes": [
@@ -3941,11 +5397,21 @@
     },
     "consumes": null,
     "description": "<p>You can cast Speak with Dead without expending a spell slot.</p>",
-    "spellGrants": null
+    "spellGrants": [
+      {
+        "innate": {
+          "_": [
+            "speak with dead|xphb"
+          ]
+        }
+      }
+    ]
   },
   {
     "name": "Witch Sight",
     "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
     "rules": "2014",
     "category": "eldritchInvocation",
     "classes": [
@@ -3970,6 +5436,8 @@
   {
     "name": "Witch Sight",
     "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
     "rules": "2024",
     "category": "eldritchInvocation",
     "classes": [

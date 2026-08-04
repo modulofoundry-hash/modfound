@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { SourceItemPicker } from "./SourceItemPicker";
 import { OriginSuggestions } from "./OriginSuggestions";
+import { DescriptionPanel } from "./DescriptionPanel";
 import { deriveDarkvisionFeet } from "../schema/character";
 
 // matched.size vem como string tipo "M" ou "S/M" (raça 2014, "/"-separada) OU
@@ -91,6 +92,8 @@ export function OriginPicker({
         )}
         <SourceItemPicker items={items} value={value} onChange={handlePick} placeholder={placeholder} />
       </label>
+
+      <DescriptionPanel cards={[{ title: label, item: matched }]} />
 
       <OriginSuggestions
         matched={matched}
