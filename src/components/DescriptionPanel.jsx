@@ -10,17 +10,19 @@ import { useState } from "react";
 // já mostrado à parte em OriginSuggestions) — card só de descrição, sem seção
 // "O que concede".
 export function DescriptionPanel({ cards }) {
-  // Colapsado por `title` (não por nome do item) -- assim, se o jogador já
-  // colapsou o card de "Raça" e troca de raça em seguida, o card continua
-  // colapsado em vez de reabrir sozinho a cada escolha nova.
-  const [collapsed, setCollapsed] = useState(() => new Set());
+  // Rastreia quem foi EXPANDIDO (não quem foi colapsado) -- assim, por
+  // default (Set vazio), todo card nasce colapsado. E como a chave é o
+  // `title` (não o nome do item), se o jogador já expandiu o card de "Raça"
+  // e troca de raça em seguida, o card continua expandido em vez de fechar
+  // sozinho a cada escolha nova.
+  const [expanded, setExpanded] = useState(() => new Set());
 
   function traitsOf(item) {
     return item?.traits ?? (item?.feature ? [item.feature] : []);
   }
 
   function toggle(title) {
-    setCollapsed((prev) => {
+    setExpanded((prev) => {
       const next = new Set(prev);
       if (next.has(title)) next.delete(title);
       else next.add(title);
@@ -34,7 +36,7 @@ export function DescriptionPanel({ cards }) {
   return (
     <div className="description-panel">
       {withContent.map((card) => {
-        const isCollapsed = collapsed.has(card.title);
+        const isCollapsed = !expanded.has(card.title);
         return (
           <div key={`${card.title}-${card.item.name}`} className="description-card">
             <button

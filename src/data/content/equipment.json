@@ -1,0 +1,2244 @@
+[
+  {
+    "name": "Battleaxe",
+    "rules": "2014",
+    "foundryType": "weapon",
+    "weaponType": "martialM",
+    "baseItem": "battleaxe",
+    "damage": {
+      "number": 1,
+      "denomination": 8,
+      "type": "slashing"
+    },
+    "versatileDamage": {
+      "number": 1,
+      "denomination": 10
+    },
+    "properties": [
+      "ver"
+    ],
+    "weight": 4,
+    "priceGp": 10,
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)"
+  },
+  {
+    "name": "Blowgun",
+    "rules": "2014",
+    "foundryType": "weapon",
+    "weaponType": "martialR",
+    "baseItem": "blowgun",
+    "damage": {
+      "number": null,
+      "denomination": 0,
+      "bonus": "1",
+      "type": "piercing"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "amm",
+      "lod"
+    ],
+    "weight": 1,
+    "priceGp": 10,
+    "range": {
+      "normal": 25,
+      "long": 100
+    },
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)"
+  },
+  {
+    "name": "Breastplate",
+    "rules": "2014",
+    "foundryType": "equipment",
+    "armorType": "medium",
+    "ac": 14,
+    "dexCap": 2,
+    "strength": null,
+    "stealthDisadvantage": false,
+    "baseItem": "breastplate",
+    "weight": 20,
+    "priceGp": 400,
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)"
+  },
+  {
+    "name": "Chain Mail",
+    "rules": "2014",
+    "foundryType": "equipment",
+    "armorType": "heavy",
+    "ac": 16,
+    "dexCap": 0,
+    "strength": 13,
+    "stealthDisadvantage": true,
+    "baseItem": "chainmail",
+    "weight": 55,
+    "priceGp": 75,
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)"
+  },
+  {
+    "name": "Chain Shirt",
+    "rules": "2014",
+    "foundryType": "equipment",
+    "armorType": "medium",
+    "ac": 13,
+    "dexCap": 2,
+    "strength": null,
+    "stealthDisadvantage": false,
+    "baseItem": "chainshirt",
+    "weight": 20,
+    "priceGp": 50,
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)"
+  },
+  {
+    "name": "Club",
+    "rules": "2014",
+    "foundryType": "weapon",
+    "weaponType": "simpleM",
+    "baseItem": "club",
+    "damage": {
+      "number": 1,
+      "denomination": 4,
+      "type": "bludgeoning"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "lgt"
+    ],
+    "weight": 2,
+    "priceGp": 0.1,
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)"
+  },
+  {
+    "name": "Dagger",
+    "rules": "2014",
+    "foundryType": "weapon",
+    "weaponType": "simpleM",
+    "baseItem": "dagger",
+    "damage": {
+      "number": 1,
+      "denomination": 4,
+      "type": "piercing"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "fin",
+      "lgt",
+      "thr"
+    ],
+    "weight": 1,
+    "priceGp": 2,
+    "range": {
+      "normal": 20,
+      "long": 60
+    },
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)"
+  },
+  {
+    "name": "Dart",
+    "rules": "2014",
+    "foundryType": "weapon",
+    "weaponType": "simpleR",
+    "baseItem": "dart",
+    "damage": {
+      "number": 1,
+      "denomination": 4,
+      "type": "piercing"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "fin",
+      "thr"
+    ],
+    "weight": 0.25,
+    "priceGp": 0.05,
+    "range": {
+      "normal": 20,
+      "long": 60
+    },
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)"
+  },
+  {
+    "name": "Flail",
+    "rules": "2014",
+    "foundryType": "weapon",
+    "weaponType": "martialM",
+    "baseItem": "flail",
+    "damage": {
+      "number": 1,
+      "denomination": 8,
+      "type": "bludgeoning"
+    },
+    "versatileDamage": null,
+    "properties": [],
+    "weight": 2,
+    "priceGp": 10,
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)"
+  },
+  {
+    "name": "Glaive",
+    "rules": "2014",
+    "foundryType": "weapon",
+    "weaponType": "martialM",
+    "baseItem": "glaive",
+    "damage": {
+      "number": 1,
+      "denomination": 10,
+      "type": "slashing"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "hvy",
+      "rch",
+      "two"
+    ],
+    "weight": 6,
+    "priceGp": 20,
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)"
+  },
+  {
+    "name": "Greataxe",
+    "rules": "2014",
+    "foundryType": "weapon",
+    "weaponType": "martialM",
+    "baseItem": "greataxe",
+    "damage": {
+      "number": 1,
+      "denomination": 12,
+      "type": "slashing"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "hvy",
+      "two"
+    ],
+    "weight": 7,
+    "priceGp": 30,
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)"
+  },
+  {
+    "name": "Greatclub",
+    "rules": "2014",
+    "foundryType": "weapon",
+    "weaponType": "simpleM",
+    "baseItem": "greatclub",
+    "damage": {
+      "number": 1,
+      "denomination": 8,
+      "type": "bludgeoning"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "two"
+    ],
+    "weight": 10,
+    "priceGp": 0.2,
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)"
+  },
+  {
+    "name": "Greatsword",
+    "rules": "2014",
+    "foundryType": "weapon",
+    "weaponType": "martialM",
+    "baseItem": "greatsword",
+    "damage": {
+      "number": 2,
+      "denomination": 6,
+      "type": "slashing"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "hvy",
+      "two"
+    ],
+    "weight": 6,
+    "priceGp": 50,
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)"
+  },
+  {
+    "name": "Halberd",
+    "rules": "2014",
+    "foundryType": "weapon",
+    "weaponType": "martialM",
+    "baseItem": "halberd",
+    "damage": {
+      "number": 1,
+      "denomination": 10,
+      "type": "slashing"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "hvy",
+      "rch",
+      "two"
+    ],
+    "weight": 6,
+    "priceGp": 20,
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)"
+  },
+  {
+    "name": "Half Plate Armor",
+    "rules": "2014",
+    "foundryType": "equipment",
+    "armorType": "medium",
+    "ac": 15,
+    "dexCap": 2,
+    "strength": null,
+    "stealthDisadvantage": true,
+    "baseItem": null,
+    "weight": 40,
+    "priceGp": 750,
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)"
+  },
+  {
+    "name": "Hand Crossbow",
+    "rules": "2014",
+    "foundryType": "weapon",
+    "weaponType": "martialR",
+    "baseItem": "handcrossbow",
+    "damage": {
+      "number": 1,
+      "denomination": 6,
+      "type": "piercing"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "amm",
+      "lgt",
+      "lod"
+    ],
+    "weight": 3,
+    "priceGp": 75,
+    "range": {
+      "normal": 30,
+      "long": 120
+    },
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)"
+  },
+  {
+    "name": "Handaxe",
+    "rules": "2014",
+    "foundryType": "weapon",
+    "weaponType": "simpleM",
+    "baseItem": "handaxe",
+    "damage": {
+      "number": 1,
+      "denomination": 6,
+      "type": "slashing"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "lgt",
+      "thr"
+    ],
+    "weight": 2,
+    "priceGp": 5,
+    "range": {
+      "normal": 20,
+      "long": 60
+    },
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)"
+  },
+  {
+    "name": "Heavy Crossbow",
+    "rules": "2014",
+    "foundryType": "weapon",
+    "weaponType": "martialR",
+    "baseItem": "heavycrossbow",
+    "damage": {
+      "number": 1,
+      "denomination": 10,
+      "type": "piercing"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "amm",
+      "hvy",
+      "lod",
+      "two"
+    ],
+    "weight": 18,
+    "priceGp": 50,
+    "range": {
+      "normal": 100,
+      "long": 400
+    },
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)"
+  },
+  {
+    "name": "Hide Armor",
+    "rules": "2014",
+    "foundryType": "equipment",
+    "armorType": "medium",
+    "ac": 12,
+    "dexCap": 2,
+    "strength": null,
+    "stealthDisadvantage": false,
+    "baseItem": null,
+    "weight": 12,
+    "priceGp": 10,
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)"
+  },
+  {
+    "name": "Javelin",
+    "rules": "2014",
+    "foundryType": "weapon",
+    "weaponType": "simpleM",
+    "baseItem": "javelin",
+    "damage": {
+      "number": 1,
+      "denomination": 6,
+      "type": "piercing"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "thr"
+    ],
+    "weight": 2,
+    "priceGp": 0.5,
+    "range": {
+      "normal": 30,
+      "long": 120
+    },
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)"
+  },
+  {
+    "name": "Lance",
+    "rules": "2014",
+    "foundryType": "weapon",
+    "weaponType": "martialM",
+    "baseItem": "lance",
+    "damage": {
+      "number": 1,
+      "denomination": 12,
+      "type": "piercing"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "rch",
+      "spc"
+    ],
+    "weight": 6,
+    "priceGp": 10,
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)"
+  },
+  {
+    "name": "Leather Armor",
+    "rules": "2014",
+    "foundryType": "equipment",
+    "armorType": "light",
+    "ac": 11,
+    "dexCap": null,
+    "strength": null,
+    "stealthDisadvantage": false,
+    "baseItem": null,
+    "weight": 10,
+    "priceGp": 10,
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)"
+  },
+  {
+    "name": "Light Crossbow",
+    "rules": "2014",
+    "foundryType": "weapon",
+    "weaponType": "simpleR",
+    "baseItem": "lightcrossbow",
+    "damage": {
+      "number": 1,
+      "denomination": 8,
+      "type": "piercing"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "amm",
+      "lod",
+      "two"
+    ],
+    "weight": 5,
+    "priceGp": 25,
+    "range": {
+      "normal": 80,
+      "long": 320
+    },
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)"
+  },
+  {
+    "name": "Light Hammer",
+    "rules": "2014",
+    "foundryType": "weapon",
+    "weaponType": "simpleM",
+    "baseItem": "lighthammer",
+    "damage": {
+      "number": 1,
+      "denomination": 4,
+      "type": "bludgeoning"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "lgt",
+      "thr"
+    ],
+    "weight": 2,
+    "priceGp": 2,
+    "range": {
+      "normal": 20,
+      "long": 60
+    },
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)"
+  },
+  {
+    "name": "Longbow",
+    "rules": "2014",
+    "foundryType": "weapon",
+    "weaponType": "martialR",
+    "baseItem": "longbow",
+    "damage": {
+      "number": 1,
+      "denomination": 8,
+      "type": "piercing"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "amm",
+      "hvy",
+      "two"
+    ],
+    "weight": 2,
+    "priceGp": 50,
+    "range": {
+      "normal": 150,
+      "long": 600
+    },
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)"
+  },
+  {
+    "name": "Longsword",
+    "rules": "2014",
+    "foundryType": "weapon",
+    "weaponType": "martialM",
+    "baseItem": "longsword",
+    "damage": {
+      "number": 1,
+      "denomination": 8,
+      "type": "slashing"
+    },
+    "versatileDamage": {
+      "number": 1,
+      "denomination": 10
+    },
+    "properties": [
+      "ver"
+    ],
+    "weight": 3,
+    "priceGp": 15,
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)"
+  },
+  {
+    "name": "Mace",
+    "rules": "2014",
+    "foundryType": "weapon",
+    "weaponType": "simpleM",
+    "baseItem": "mace",
+    "damage": {
+      "number": 1,
+      "denomination": 6,
+      "type": "bludgeoning"
+    },
+    "versatileDamage": null,
+    "properties": [],
+    "weight": 4,
+    "priceGp": 5,
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)"
+  },
+  {
+    "name": "Maul",
+    "rules": "2014",
+    "foundryType": "weapon",
+    "weaponType": "martialM",
+    "baseItem": "maul",
+    "damage": {
+      "number": 2,
+      "denomination": 6,
+      "type": "bludgeoning"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "hvy",
+      "two"
+    ],
+    "weight": 10,
+    "priceGp": 10,
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)"
+  },
+  {
+    "name": "Morningstar",
+    "rules": "2014",
+    "foundryType": "weapon",
+    "weaponType": "martialM",
+    "baseItem": "morningstar",
+    "damage": {
+      "number": 1,
+      "denomination": 8,
+      "type": "piercing"
+    },
+    "versatileDamage": null,
+    "properties": [],
+    "weight": 4,
+    "priceGp": 15,
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)"
+  },
+  {
+    "name": "Net",
+    "rules": "2014",
+    "foundryType": "weapon",
+    "weaponType": "martialR",
+    "baseItem": null,
+    "damage": null,
+    "versatileDamage": null,
+    "properties": [
+      "spc",
+      "thr"
+    ],
+    "weight": 3,
+    "priceGp": 1,
+    "range": {
+      "normal": 5,
+      "long": 15
+    },
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)"
+  },
+  {
+    "name": "Padded Armor",
+    "rules": "2014",
+    "foundryType": "equipment",
+    "armorType": "light",
+    "ac": 11,
+    "dexCap": null,
+    "strength": null,
+    "stealthDisadvantage": true,
+    "baseItem": null,
+    "weight": 8,
+    "priceGp": 5,
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)"
+  },
+  {
+    "name": "Pike",
+    "rules": "2014",
+    "foundryType": "weapon",
+    "weaponType": "martialM",
+    "baseItem": "pike",
+    "damage": {
+      "number": 1,
+      "denomination": 10,
+      "type": "piercing"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "hvy",
+      "rch",
+      "two"
+    ],
+    "weight": 18,
+    "priceGp": 5,
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)"
+  },
+  {
+    "name": "Plate Armor",
+    "rules": "2014",
+    "foundryType": "equipment",
+    "armorType": "heavy",
+    "ac": 18,
+    "dexCap": 0,
+    "strength": 15,
+    "stealthDisadvantage": true,
+    "baseItem": null,
+    "weight": 65,
+    "priceGp": 1500,
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)"
+  },
+  {
+    "name": "Quarterstaff",
+    "rules": "2014",
+    "foundryType": "weapon",
+    "weaponType": "simpleM",
+    "baseItem": "quarterstaff",
+    "damage": {
+      "number": 1,
+      "denomination": 6,
+      "type": "bludgeoning"
+    },
+    "versatileDamage": {
+      "number": 1,
+      "denomination": 8
+    },
+    "properties": [
+      "ver"
+    ],
+    "weight": 4,
+    "priceGp": 0.2,
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)"
+  },
+  {
+    "name": "Rapier",
+    "rules": "2014",
+    "foundryType": "weapon",
+    "weaponType": "martialM",
+    "baseItem": "rapier",
+    "damage": {
+      "number": 1,
+      "denomination": 8,
+      "type": "piercing"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "fin"
+    ],
+    "weight": 2,
+    "priceGp": 25,
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)"
+  },
+  {
+    "name": "Ring Mail",
+    "rules": "2014",
+    "foundryType": "equipment",
+    "armorType": "heavy",
+    "ac": 14,
+    "dexCap": 0,
+    "strength": null,
+    "stealthDisadvantage": true,
+    "baseItem": "ringmail",
+    "weight": 40,
+    "priceGp": 30,
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)"
+  },
+  {
+    "name": "Scale Mail",
+    "rules": "2014",
+    "foundryType": "equipment",
+    "armorType": "medium",
+    "ac": 14,
+    "dexCap": 2,
+    "strength": null,
+    "stealthDisadvantage": true,
+    "baseItem": "scalemail",
+    "weight": 45,
+    "priceGp": 50,
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)"
+  },
+  {
+    "name": "Scimitar",
+    "rules": "2014",
+    "foundryType": "weapon",
+    "weaponType": "martialM",
+    "baseItem": "scimitar",
+    "damage": {
+      "number": 1,
+      "denomination": 6,
+      "type": "slashing"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "fin",
+      "lgt"
+    ],
+    "weight": 3,
+    "priceGp": 25,
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)"
+  },
+  {
+    "name": "Shield",
+    "rules": "2014",
+    "foundryType": "equipment",
+    "armorType": "shield",
+    "ac": 2,
+    "dexCap": null,
+    "strength": null,
+    "stealthDisadvantage": false,
+    "baseItem": "shield",
+    "weight": 6,
+    "priceGp": 10,
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)"
+  },
+  {
+    "name": "Shortbow",
+    "rules": "2014",
+    "foundryType": "weapon",
+    "weaponType": "simpleR",
+    "baseItem": "shortbow",
+    "damage": {
+      "number": 1,
+      "denomination": 6,
+      "type": "piercing"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "amm",
+      "two"
+    ],
+    "weight": 2,
+    "priceGp": 25,
+    "range": {
+      "normal": 80,
+      "long": 320
+    },
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)"
+  },
+  {
+    "name": "Shortsword",
+    "rules": "2014",
+    "foundryType": "weapon",
+    "weaponType": "martialM",
+    "baseItem": "shortsword",
+    "damage": {
+      "number": 1,
+      "denomination": 6,
+      "type": "piercing"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "fin",
+      "lgt"
+    ],
+    "weight": 2,
+    "priceGp": 10,
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)"
+  },
+  {
+    "name": "Sickle",
+    "rules": "2014",
+    "foundryType": "weapon",
+    "weaponType": "simpleM",
+    "baseItem": "sickle",
+    "damage": {
+      "number": 1,
+      "denomination": 4,
+      "type": "slashing"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "lgt"
+    ],
+    "weight": 2,
+    "priceGp": 1,
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)"
+  },
+  {
+    "name": "Sling",
+    "rules": "2014",
+    "foundryType": "weapon",
+    "weaponType": "simpleR",
+    "baseItem": "sling",
+    "damage": {
+      "number": 1,
+      "denomination": 4,
+      "type": "bludgeoning"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "amm"
+    ],
+    "weight": 0,
+    "priceGp": 0.1,
+    "range": {
+      "normal": 30,
+      "long": 120
+    },
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)"
+  },
+  {
+    "name": "Spear",
+    "rules": "2014",
+    "foundryType": "weapon",
+    "weaponType": "simpleM",
+    "baseItem": "spear",
+    "damage": {
+      "number": 1,
+      "denomination": 6,
+      "type": "piercing"
+    },
+    "versatileDamage": {
+      "number": 1,
+      "denomination": 8
+    },
+    "properties": [
+      "thr",
+      "ver"
+    ],
+    "weight": 3,
+    "priceGp": 1,
+    "range": {
+      "normal": 20,
+      "long": 60
+    },
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)"
+  },
+  {
+    "name": "Splint Armor",
+    "rules": "2014",
+    "foundryType": "equipment",
+    "armorType": "heavy",
+    "ac": 17,
+    "dexCap": 0,
+    "strength": 15,
+    "stealthDisadvantage": true,
+    "baseItem": null,
+    "weight": 60,
+    "priceGp": 200,
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)"
+  },
+  {
+    "name": "Studded Leather Armor",
+    "rules": "2014",
+    "foundryType": "equipment",
+    "armorType": "light",
+    "ac": 12,
+    "dexCap": null,
+    "strength": null,
+    "stealthDisadvantage": false,
+    "baseItem": null,
+    "weight": 13,
+    "priceGp": 45,
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)"
+  },
+  {
+    "name": "Trident",
+    "rules": "2014",
+    "foundryType": "weapon",
+    "weaponType": "martialM",
+    "baseItem": "trident",
+    "damage": {
+      "number": 1,
+      "denomination": 6,
+      "type": "piercing"
+    },
+    "versatileDamage": {
+      "number": 1,
+      "denomination": 8
+    },
+    "properties": [
+      "thr",
+      "ver"
+    ],
+    "weight": 4,
+    "priceGp": 5,
+    "range": {
+      "normal": 20,
+      "long": 60
+    },
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)"
+  },
+  {
+    "name": "War Pick",
+    "rules": "2014",
+    "foundryType": "weapon",
+    "weaponType": "martialM",
+    "baseItem": "warpick",
+    "damage": {
+      "number": 1,
+      "denomination": 8,
+      "type": "piercing"
+    },
+    "versatileDamage": null,
+    "properties": [],
+    "weight": 2,
+    "priceGp": 5,
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)"
+  },
+  {
+    "name": "Warhammer",
+    "rules": "2014",
+    "foundryType": "weapon",
+    "weaponType": "martialM",
+    "baseItem": "warhammer",
+    "damage": {
+      "number": 1,
+      "denomination": 8,
+      "type": "bludgeoning"
+    },
+    "versatileDamage": {
+      "number": 1,
+      "denomination": 10
+    },
+    "properties": [
+      "ver"
+    ],
+    "weight": 2,
+    "priceGp": 15,
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)"
+  },
+  {
+    "name": "Whip",
+    "rules": "2014",
+    "foundryType": "weapon",
+    "weaponType": "martialM",
+    "baseItem": "whip",
+    "damage": {
+      "number": 1,
+      "denomination": 4,
+      "type": "slashing"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "fin",
+      "rch"
+    ],
+    "weight": 3,
+    "priceGp": 2,
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)"
+  },
+  {
+    "name": "Battleaxe",
+    "rules": "2024",
+    "foundryType": "weapon",
+    "weaponType": "martialM",
+    "baseItem": "battleaxe",
+    "damage": {
+      "number": 1,
+      "denomination": 8,
+      "type": "slashing"
+    },
+    "versatileDamage": {
+      "number": 1,
+      "denomination": 10
+    },
+    "properties": [
+      "ver"
+    ],
+    "weight": 4,
+    "priceGp": 10,
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)"
+  },
+  {
+    "name": "Blowgun",
+    "rules": "2024",
+    "foundryType": "weapon",
+    "weaponType": "martialR",
+    "baseItem": "blowgun",
+    "damage": {
+      "number": null,
+      "denomination": 0,
+      "bonus": "1",
+      "type": "piercing"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "amm",
+      "lod"
+    ],
+    "weight": 1,
+    "priceGp": 10,
+    "range": {
+      "normal": 25,
+      "long": 100
+    },
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)"
+  },
+  {
+    "name": "Breastplate",
+    "rules": "2024",
+    "foundryType": "equipment",
+    "armorType": "medium",
+    "ac": 14,
+    "dexCap": 2,
+    "strength": null,
+    "stealthDisadvantage": false,
+    "baseItem": "breastplate",
+    "weight": 20,
+    "priceGp": 400,
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)"
+  },
+  {
+    "name": "Chain Mail",
+    "rules": "2024",
+    "foundryType": "equipment",
+    "armorType": "heavy",
+    "ac": 16,
+    "dexCap": 0,
+    "strength": 13,
+    "stealthDisadvantage": true,
+    "baseItem": "chainmail",
+    "weight": 55,
+    "priceGp": 75,
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)"
+  },
+  {
+    "name": "Chain Shirt",
+    "rules": "2024",
+    "foundryType": "equipment",
+    "armorType": "medium",
+    "ac": 13,
+    "dexCap": 2,
+    "strength": null,
+    "stealthDisadvantage": false,
+    "baseItem": "chainshirt",
+    "weight": 20,
+    "priceGp": 50,
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)"
+  },
+  {
+    "name": "Club",
+    "rules": "2024",
+    "foundryType": "weapon",
+    "weaponType": "simpleM",
+    "baseItem": "club",
+    "damage": {
+      "number": 1,
+      "denomination": 4,
+      "type": "bludgeoning"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "lgt"
+    ],
+    "weight": 2,
+    "priceGp": 0.1,
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)"
+  },
+  {
+    "name": "Dagger",
+    "rules": "2024",
+    "foundryType": "weapon",
+    "weaponType": "simpleM",
+    "baseItem": "dagger",
+    "damage": {
+      "number": 1,
+      "denomination": 4,
+      "type": "piercing"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "fin",
+      "lgt",
+      "thr"
+    ],
+    "weight": 1,
+    "priceGp": 2,
+    "range": {
+      "normal": 20,
+      "long": 60
+    },
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)"
+  },
+  {
+    "name": "Dart",
+    "rules": "2024",
+    "foundryType": "weapon",
+    "weaponType": "simpleR",
+    "baseItem": "dart",
+    "damage": {
+      "number": 1,
+      "denomination": 4,
+      "type": "piercing"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "fin",
+      "thr"
+    ],
+    "weight": 0.25,
+    "priceGp": 0.05,
+    "range": {
+      "normal": 20,
+      "long": 60
+    },
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)"
+  },
+  {
+    "name": "Flail",
+    "rules": "2024",
+    "foundryType": "weapon",
+    "weaponType": "martialM",
+    "baseItem": "flail",
+    "damage": {
+      "number": 1,
+      "denomination": 8,
+      "type": "bludgeoning"
+    },
+    "versatileDamage": null,
+    "properties": [],
+    "weight": 2,
+    "priceGp": 10,
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)"
+  },
+  {
+    "name": "Glaive",
+    "rules": "2024",
+    "foundryType": "weapon",
+    "weaponType": "martialM",
+    "baseItem": "glaive",
+    "damage": {
+      "number": 1,
+      "denomination": 10,
+      "type": "slashing"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "hvy",
+      "rch",
+      "two"
+    ],
+    "weight": 6,
+    "priceGp": 20,
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)"
+  },
+  {
+    "name": "Greataxe",
+    "rules": "2024",
+    "foundryType": "weapon",
+    "weaponType": "martialM",
+    "baseItem": "greataxe",
+    "damage": {
+      "number": 1,
+      "denomination": 12,
+      "type": "slashing"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "hvy",
+      "two"
+    ],
+    "weight": 7,
+    "priceGp": 30,
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)"
+  },
+  {
+    "name": "Greatclub",
+    "rules": "2024",
+    "foundryType": "weapon",
+    "weaponType": "simpleM",
+    "baseItem": "greatclub",
+    "damage": {
+      "number": 1,
+      "denomination": 8,
+      "type": "bludgeoning"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "two"
+    ],
+    "weight": 10,
+    "priceGp": 0.2,
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)"
+  },
+  {
+    "name": "Greatsword",
+    "rules": "2024",
+    "foundryType": "weapon",
+    "weaponType": "martialM",
+    "baseItem": "greatsword",
+    "damage": {
+      "number": 2,
+      "denomination": 6,
+      "type": "slashing"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "hvy",
+      "two"
+    ],
+    "weight": 6,
+    "priceGp": 50,
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)"
+  },
+  {
+    "name": "Halberd",
+    "rules": "2024",
+    "foundryType": "weapon",
+    "weaponType": "martialM",
+    "baseItem": "halberd",
+    "damage": {
+      "number": 1,
+      "denomination": 10,
+      "type": "slashing"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "hvy",
+      "rch",
+      "two"
+    ],
+    "weight": 6,
+    "priceGp": 20,
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)"
+  },
+  {
+    "name": "Half Plate Armor",
+    "rules": "2024",
+    "foundryType": "equipment",
+    "armorType": "medium",
+    "ac": 15,
+    "dexCap": 2,
+    "strength": null,
+    "stealthDisadvantage": true,
+    "baseItem": null,
+    "weight": 40,
+    "priceGp": 750,
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)"
+  },
+  {
+    "name": "Hand Crossbow",
+    "rules": "2024",
+    "foundryType": "weapon",
+    "weaponType": "martialR",
+    "baseItem": "handcrossbow",
+    "damage": {
+      "number": 1,
+      "denomination": 6,
+      "type": "piercing"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "amm",
+      "lgt",
+      "lod"
+    ],
+    "weight": 3,
+    "priceGp": 75,
+    "range": {
+      "normal": 30,
+      "long": 120
+    },
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)"
+  },
+  {
+    "name": "Handaxe",
+    "rules": "2024",
+    "foundryType": "weapon",
+    "weaponType": "simpleM",
+    "baseItem": "handaxe",
+    "damage": {
+      "number": 1,
+      "denomination": 6,
+      "type": "slashing"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "lgt",
+      "thr"
+    ],
+    "weight": 2,
+    "priceGp": 5,
+    "range": {
+      "normal": 20,
+      "long": 60
+    },
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)"
+  },
+  {
+    "name": "Heavy Crossbow",
+    "rules": "2024",
+    "foundryType": "weapon",
+    "weaponType": "martialR",
+    "baseItem": "heavycrossbow",
+    "damage": {
+      "number": 1,
+      "denomination": 10,
+      "type": "piercing"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "amm",
+      "hvy",
+      "lod",
+      "two"
+    ],
+    "weight": 18,
+    "priceGp": 50,
+    "range": {
+      "normal": 100,
+      "long": 400
+    },
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)"
+  },
+  {
+    "name": "Hide Armor",
+    "rules": "2024",
+    "foundryType": "equipment",
+    "armorType": "medium",
+    "ac": 12,
+    "dexCap": 2,
+    "strength": null,
+    "stealthDisadvantage": false,
+    "baseItem": null,
+    "weight": 12,
+    "priceGp": 10,
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)"
+  },
+  {
+    "name": "Javelin",
+    "rules": "2024",
+    "foundryType": "weapon",
+    "weaponType": "simpleM",
+    "baseItem": "javelin",
+    "damage": {
+      "number": 1,
+      "denomination": 6,
+      "type": "piercing"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "thr"
+    ],
+    "weight": 2,
+    "priceGp": 0.5,
+    "range": {
+      "normal": 30,
+      "long": 120
+    },
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)"
+  },
+  {
+    "name": "Lance",
+    "rules": "2024",
+    "foundryType": "weapon",
+    "weaponType": "martialM",
+    "baseItem": "lance",
+    "damage": {
+      "number": 1,
+      "denomination": 10,
+      "type": "piercing"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "hvy",
+      "rch",
+      "two"
+    ],
+    "weight": 6,
+    "priceGp": 10,
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)"
+  },
+  {
+    "name": "Leather Armor",
+    "rules": "2024",
+    "foundryType": "equipment",
+    "armorType": "light",
+    "ac": 11,
+    "dexCap": null,
+    "strength": null,
+    "stealthDisadvantage": false,
+    "baseItem": null,
+    "weight": 10,
+    "priceGp": 10,
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)"
+  },
+  {
+    "name": "Light Crossbow",
+    "rules": "2024",
+    "foundryType": "weapon",
+    "weaponType": "simpleR",
+    "baseItem": "lightcrossbow",
+    "damage": {
+      "number": 1,
+      "denomination": 8,
+      "type": "piercing"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "amm",
+      "lod",
+      "two"
+    ],
+    "weight": 5,
+    "priceGp": 25,
+    "range": {
+      "normal": 80,
+      "long": 320
+    },
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)"
+  },
+  {
+    "name": "Light Hammer",
+    "rules": "2024",
+    "foundryType": "weapon",
+    "weaponType": "simpleM",
+    "baseItem": "lighthammer",
+    "damage": {
+      "number": 1,
+      "denomination": 4,
+      "type": "bludgeoning"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "lgt",
+      "thr"
+    ],
+    "weight": 2,
+    "priceGp": 2,
+    "range": {
+      "normal": 20,
+      "long": 60
+    },
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)"
+  },
+  {
+    "name": "Longbow",
+    "rules": "2024",
+    "foundryType": "weapon",
+    "weaponType": "martialR",
+    "baseItem": "longbow",
+    "damage": {
+      "number": 1,
+      "denomination": 8,
+      "type": "piercing"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "amm",
+      "hvy",
+      "two"
+    ],
+    "weight": 2,
+    "priceGp": 50,
+    "range": {
+      "normal": 150,
+      "long": 600
+    },
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)"
+  },
+  {
+    "name": "Longsword",
+    "rules": "2024",
+    "foundryType": "weapon",
+    "weaponType": "martialM",
+    "baseItem": "longsword",
+    "damage": {
+      "number": 1,
+      "denomination": 8,
+      "type": "slashing"
+    },
+    "versatileDamage": {
+      "number": 1,
+      "denomination": 10
+    },
+    "properties": [
+      "ver"
+    ],
+    "weight": 3,
+    "priceGp": 15,
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)"
+  },
+  {
+    "name": "Mace",
+    "rules": "2024",
+    "foundryType": "weapon",
+    "weaponType": "simpleM",
+    "baseItem": "mace",
+    "damage": {
+      "number": 1,
+      "denomination": 6,
+      "type": "bludgeoning"
+    },
+    "versatileDamage": null,
+    "properties": [],
+    "weight": 4,
+    "priceGp": 5,
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)"
+  },
+  {
+    "name": "Maul",
+    "rules": "2024",
+    "foundryType": "weapon",
+    "weaponType": "martialM",
+    "baseItem": "maul",
+    "damage": {
+      "number": 2,
+      "denomination": 6,
+      "type": "bludgeoning"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "hvy",
+      "two"
+    ],
+    "weight": 10,
+    "priceGp": 10,
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)"
+  },
+  {
+    "name": "Morningstar",
+    "rules": "2024",
+    "foundryType": "weapon",
+    "weaponType": "martialM",
+    "baseItem": "morningstar",
+    "damage": {
+      "number": 1,
+      "denomination": 8,
+      "type": "piercing"
+    },
+    "versatileDamage": null,
+    "properties": [],
+    "weight": 4,
+    "priceGp": 15,
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)"
+  },
+  {
+    "name": "Musket",
+    "rules": "2024",
+    "foundryType": "weapon",
+    "weaponType": "martialR",
+    "baseItem": "musket",
+    "damage": {
+      "number": 1,
+      "denomination": 12,
+      "type": "piercing"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "amm",
+      "lod",
+      "two"
+    ],
+    "weight": 10,
+    "priceGp": 500,
+    "range": {
+      "normal": 40,
+      "long": 120
+    },
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)"
+  },
+  {
+    "name": "Padded Armor",
+    "rules": "2024",
+    "foundryType": "equipment",
+    "armorType": "light",
+    "ac": 11,
+    "dexCap": null,
+    "strength": null,
+    "stealthDisadvantage": true,
+    "baseItem": null,
+    "weight": 8,
+    "priceGp": 5,
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)"
+  },
+  {
+    "name": "Pike",
+    "rules": "2024",
+    "foundryType": "weapon",
+    "weaponType": "martialM",
+    "baseItem": "pike",
+    "damage": {
+      "number": 1,
+      "denomination": 10,
+      "type": "piercing"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "hvy",
+      "rch",
+      "two"
+    ],
+    "weight": 18,
+    "priceGp": 5,
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)"
+  },
+  {
+    "name": "Pistol",
+    "rules": "2024",
+    "foundryType": "weapon",
+    "weaponType": "martialR",
+    "baseItem": "pistol",
+    "damage": {
+      "number": 1,
+      "denomination": 10,
+      "type": "piercing"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "amm",
+      "lod"
+    ],
+    "weight": 3,
+    "priceGp": 250,
+    "range": {
+      "normal": 30,
+      "long": 90
+    },
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)"
+  },
+  {
+    "name": "Plate Armor",
+    "rules": "2024",
+    "foundryType": "equipment",
+    "armorType": "heavy",
+    "ac": 18,
+    "dexCap": 0,
+    "strength": 15,
+    "stealthDisadvantage": true,
+    "baseItem": null,
+    "weight": 65,
+    "priceGp": 1500,
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)"
+  },
+  {
+    "name": "Quarterstaff",
+    "rules": "2024",
+    "foundryType": "weapon",
+    "weaponType": "simpleM",
+    "baseItem": "quarterstaff",
+    "damage": {
+      "number": 1,
+      "denomination": 6,
+      "type": "bludgeoning"
+    },
+    "versatileDamage": {
+      "number": 1,
+      "denomination": 8
+    },
+    "properties": [
+      "ver"
+    ],
+    "weight": 4,
+    "priceGp": 0.2,
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)"
+  },
+  {
+    "name": "Rapier",
+    "rules": "2024",
+    "foundryType": "weapon",
+    "weaponType": "martialM",
+    "baseItem": "rapier",
+    "damage": {
+      "number": 1,
+      "denomination": 8,
+      "type": "piercing"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "fin"
+    ],
+    "weight": 2,
+    "priceGp": 25,
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)"
+  },
+  {
+    "name": "Ring Mail",
+    "rules": "2024",
+    "foundryType": "equipment",
+    "armorType": "heavy",
+    "ac": 14,
+    "dexCap": 0,
+    "strength": null,
+    "stealthDisadvantage": true,
+    "baseItem": "ringmail",
+    "weight": 40,
+    "priceGp": 30,
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)"
+  },
+  {
+    "name": "Scale Mail",
+    "rules": "2024",
+    "foundryType": "equipment",
+    "armorType": "medium",
+    "ac": 14,
+    "dexCap": 2,
+    "strength": null,
+    "stealthDisadvantage": true,
+    "baseItem": "scalemail",
+    "weight": 45,
+    "priceGp": 50,
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)"
+  },
+  {
+    "name": "Scimitar",
+    "rules": "2024",
+    "foundryType": "weapon",
+    "weaponType": "martialM",
+    "baseItem": "scimitar",
+    "damage": {
+      "number": 1,
+      "denomination": 6,
+      "type": "slashing"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "fin",
+      "lgt"
+    ],
+    "weight": 3,
+    "priceGp": 25,
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)"
+  },
+  {
+    "name": "Shield",
+    "rules": "2024",
+    "foundryType": "equipment",
+    "armorType": "shield",
+    "ac": 2,
+    "dexCap": null,
+    "strength": null,
+    "stealthDisadvantage": false,
+    "baseItem": "shield",
+    "weight": 6,
+    "priceGp": 10,
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)"
+  },
+  {
+    "name": "Shortbow",
+    "rules": "2024",
+    "foundryType": "weapon",
+    "weaponType": "simpleR",
+    "baseItem": "shortbow",
+    "damage": {
+      "number": 1,
+      "denomination": 6,
+      "type": "piercing"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "amm",
+      "two"
+    ],
+    "weight": 2,
+    "priceGp": 25,
+    "range": {
+      "normal": 80,
+      "long": 320
+    },
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)"
+  },
+  {
+    "name": "Shortsword",
+    "rules": "2024",
+    "foundryType": "weapon",
+    "weaponType": "martialM",
+    "baseItem": "shortsword",
+    "damage": {
+      "number": 1,
+      "denomination": 6,
+      "type": "piercing"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "fin",
+      "lgt"
+    ],
+    "weight": 2,
+    "priceGp": 10,
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)"
+  },
+  {
+    "name": "Sickle",
+    "rules": "2024",
+    "foundryType": "weapon",
+    "weaponType": "simpleM",
+    "baseItem": "sickle",
+    "damage": {
+      "number": 1,
+      "denomination": 4,
+      "type": "slashing"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "lgt"
+    ],
+    "weight": 2,
+    "priceGp": 1,
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)"
+  },
+  {
+    "name": "Sling",
+    "rules": "2024",
+    "foundryType": "weapon",
+    "weaponType": "simpleR",
+    "baseItem": "sling",
+    "damage": {
+      "number": 1,
+      "denomination": 4,
+      "type": "bludgeoning"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "amm"
+    ],
+    "weight": 0,
+    "priceGp": 0.1,
+    "range": {
+      "normal": 30,
+      "long": 120
+    },
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)"
+  },
+  {
+    "name": "Spear",
+    "rules": "2024",
+    "foundryType": "weapon",
+    "weaponType": "simpleM",
+    "baseItem": "spear",
+    "damage": {
+      "number": 1,
+      "denomination": 6,
+      "type": "piercing"
+    },
+    "versatileDamage": {
+      "number": 1,
+      "denomination": 8
+    },
+    "properties": [
+      "thr",
+      "ver"
+    ],
+    "weight": 3,
+    "priceGp": 1,
+    "range": {
+      "normal": 20,
+      "long": 60
+    },
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)"
+  },
+  {
+    "name": "Splint Armor",
+    "rules": "2024",
+    "foundryType": "equipment",
+    "armorType": "heavy",
+    "ac": 17,
+    "dexCap": 0,
+    "strength": 15,
+    "stealthDisadvantage": true,
+    "baseItem": null,
+    "weight": 60,
+    "priceGp": 200,
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)"
+  },
+  {
+    "name": "Studded Leather Armor",
+    "rules": "2024",
+    "foundryType": "equipment",
+    "armorType": "light",
+    "ac": 12,
+    "dexCap": null,
+    "strength": null,
+    "stealthDisadvantage": false,
+    "baseItem": null,
+    "weight": 13,
+    "priceGp": 45,
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)"
+  },
+  {
+    "name": "Trident",
+    "rules": "2024",
+    "foundryType": "weapon",
+    "weaponType": "martialM",
+    "baseItem": "trident",
+    "damage": {
+      "number": 1,
+      "denomination": 8,
+      "type": "piercing"
+    },
+    "versatileDamage": {
+      "number": 1,
+      "denomination": 10
+    },
+    "properties": [
+      "thr",
+      "ver"
+    ],
+    "weight": 4,
+    "priceGp": 5,
+    "range": {
+      "normal": 20,
+      "long": 60
+    },
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)"
+  },
+  {
+    "name": "War Pick",
+    "rules": "2024",
+    "foundryType": "weapon",
+    "weaponType": "martialM",
+    "baseItem": "warpick",
+    "damage": {
+      "number": 1,
+      "denomination": 8,
+      "type": "piercing"
+    },
+    "versatileDamage": {
+      "number": 1,
+      "denomination": 10
+    },
+    "properties": [
+      "ver"
+    ],
+    "weight": 2,
+    "priceGp": 5,
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)"
+  },
+  {
+    "name": "Warhammer",
+    "rules": "2024",
+    "foundryType": "weapon",
+    "weaponType": "martialM",
+    "baseItem": "warhammer",
+    "damage": {
+      "number": 1,
+      "denomination": 8,
+      "type": "bludgeoning"
+    },
+    "versatileDamage": {
+      "number": 1,
+      "denomination": 10
+    },
+    "properties": [
+      "ver"
+    ],
+    "weight": 5,
+    "priceGp": 15,
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)"
+  },
+  {
+    "name": "Whip",
+    "rules": "2024",
+    "foundryType": "weapon",
+    "weaponType": "martialM",
+    "baseItem": "whip",
+    "damage": {
+      "number": 1,
+      "denomination": 4,
+      "type": "slashing"
+    },
+    "versatileDamage": null,
+    "properties": [
+      "fin",
+      "rch"
+    ],
+    "weight": 3,
+    "priceGp": 2,
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)"
+  },
+  {
+    "name": "Talismã do Pacto",
+    "source": "TCE",
+    "sourceBook": "Tasha's Cauldron of Everything",
+    "rules": "2014",
+    "foundryType": "magicItem",
+    "category": "wondrous",
+    "weight": 0,
+    "img": "modules/out-of-service/assets/icons/pactalisman.png",
+    "description": "Your patron gives you an amulet, a talisman that can aid the wearer when the need is great. When the wearer fails an ability check, they can add a d4 to the roll, potentially turning the roll into a success. This benefit can be used a number of times equal to your proficiency bonus, and all expended uses are restored when you finish a long rest.\n\nIf you lose the talisman, you can perform a 1-hour ceremony to receive a replacement from your patron. This ceremony can be performed during a short or long rest, and it destroys the previous amulet. The talisman turns to ash when you die.",
+    "descriptionHtml": "<p>Your patron gives you an amulet, a talisman that can aid the wearer when the need is great. When the wearer fails an ability check, they can add a d4 to the roll, potentially turning the roll into a success. This benefit can be used a number of times equal to your proficiency bonus, and all expended uses are restored when you finish a long rest.</p><p>If you lose the talisman, you can perform a 1-hour ceremony to receive a replacement from your patron. This ceremony can be performed during a short or long rest, and it destroys the previous amulet. The talisman turns to ash when you die.</p>",
+    "resource": {
+      "max": "@prof",
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ]
+    },
+    "mechanical": {
+      "activities": [
+        {
+          "name": "Rolagem do Talismã",
+          "type": "utility",
+          "activation": {
+            "type": ""
+          },
+          "consumption": {
+            "targets": [
+              {
+                "type": "itemUses",
+                "value": "1"
+              }
+            ]
+          },
+          "roll": {
+            "name": "Talisman Bonus",
+            "formula": "1d4"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "name": "Boots of the Winding Path",
+    "source": "EFA",
+    "sourceBook": "Eberron: Forge of the Artificer (2024)",
+    "rules": "2024",
+    "foundryType": "magicItem",
+    "category": "wondrous",
+    "rarity": "uncommon",
+    "requiresAttunement": true,
+    "weight": 0,
+    "description": "While wearing these boots, you can take a Bonus Action to teleport up to 15 feet to an unoccupied space you can see. You must have occupied that space at some point during the current turn.",
+    "descriptionHtml": "<p>While wearing these boots, you can take a Bonus Action to teleport up to 15 feet to an unoccupied space you can see. You must have occupied that space at some point during the current turn.</p>"
+  },
+  {
+    "name": "Helm of Awareness",
+    "source": "EFA",
+    "sourceBook": "Eberron: Forge of the Artificer (2024)",
+    "rules": "2024",
+    "foundryType": "magicItem",
+    "category": "wondrous",
+    "rarity": "uncommon",
+    "requiresAttunement": false,
+    "weight": 0,
+    "description": "While wearing this helmet, you have Advantage on Initiative rolls.",
+    "descriptionHtml": "<p>While wearing this helmet, you have Advantage on Initiative rolls.</p>"
+  },
+  {
+    "name": "Manifold Tool",
+    "source": "EFA",
+    "sourceBook": "Eberron: Forge of the Artificer (2024)",
+    "rules": "2024",
+    "foundryType": "magicItem",
+    "category": "wondrous",
+    "rarity": "common",
+    "requiresAttunement": true,
+    "weight": 0,
+    "description": "This tool takes the form of a wrench, a screwdriver, or another basic tool. As a Magic action, you can touch the item and transform it into a type of Artisan's Tools of your choice. Whatever form the tool takes, you have proficiency with it when you use it.",
+    "descriptionHtml": "<p>This tool takes the form of a wrench, a screwdriver, or another basic tool. As a Magic action, you can touch the item and transform it into a type of Artisan's Tools of your choice. Whatever form the tool takes, you have proficiency with it when you use it.</p>"
+  },
+  {
+    "name": "Mind Sharpener",
+    "source": "EFA",
+    "sourceBook": "Eberron: Forge of the Artificer (2024)",
+    "rules": "2024",
+    "foundryType": "magicItem",
+    "category": "wondrous",
+    "rarity": "uncommon",
+    "requiresAttunement": true,
+    "weight": 0,
+    "uses": {
+      "max": 4,
+      "period": "dawn",
+      "recoveryFormula": "1d4"
+    },
+    "description": "The item has 4 charges. When you fail a Constitution saving throw to maintain Concentration, you can take a Reaction and expend 1 of the item's charges to succeed instead. The item regains 1d4 expended charges daily at dawn.",
+    "descriptionHtml": "<p>The item has 4 charges. When you fail a Constitution saving throw to maintain Concentration, you can take a Reaction and expend 1 of the item's charges to succeed instead. The item regains 1d4 expended charges daily at dawn.</p>"
+  },
+  {
+    "name": "Repulsion Shield",
+    "source": "EFA",
+    "sourceBook": "Eberron: Forge of the Artificer (2024)",
+    "rules": "2024",
+    "foundryType": "magicItem",
+    "category": "shield",
+    "rarity": "uncommon",
+    "requiresAttunement": false,
+    "weight": 6,
+    "armorBonus": 1,
+    "uses": {
+      "max": 4,
+      "period": "dawn",
+      "recoveryFormula": "1d4"
+    },
+    "description": "You gain a +1 bonus to Armor Class while wielding this shield.\n\nThe shield has 4 charges. While holding it, when a Large or smaller creature within 5 feet of you hits you with a melee attack roll, you can take a Reaction to expend 1 of the shield's charges and push the attacker up to 15 feet straight away. The shield regains 1d4 expended charges daily at dawn.",
+    "descriptionHtml": "<p>You gain a +1 bonus to Armor Class while wielding this shield.</p><p>The shield has 4 charges. While holding it, when a Large or smaller creature within 5 feet of you hits you with a melee attack roll, you can take a Reaction to expend 1 of the shield's charges and push the attacker up to 15 feet straight away. The shield regains 1d4 expended charges daily at dawn.</p>"
+  },
+  {
+    "name": "Spell-Refueling Ring",
+    "source": "EFA",
+    "sourceBook": "Eberron: Forge of the Artificer (2024)",
+    "rules": "2024",
+    "foundryType": "magicItem",
+    "category": "ring",
+    "rarity": "uncommon",
+    "requiresAttunement": true,
+    "weight": 0,
+    "uses": {
+      "max": 1,
+      "period": "dawn",
+      "recoveryFormula": "1"
+    },
+    "description": "While wearing this ring, you can recover one expended spell slot as a Bonus Action. The recovered slot can be of level 3 or lower. Once used, the ring can't be used again until the next dawn.",
+    "descriptionHtml": "<p>While wearing this ring, you can recover one expended spell slot as a Bonus Action. The recovered slot can be of level 3 or lower. Once used, the ring can't be used again until the next dawn.</p>"
+  }
+]

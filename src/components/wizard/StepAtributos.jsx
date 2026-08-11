@@ -6,6 +6,41 @@ const STANDARD_ARRAY = [15, 14, 13, 12, 10, 8];
 const POINT_BUY_COST = { 8: 0, 9: 1, 10: 2, 11: 3, 12: 4, 13: 5, 14: 7, 15: 9 };
 const POINT_BUY_BUDGET = 27;
 
+// Bônus de atributo de Raça (2014) e Antecedente (2024) somados por atributo
+// -- na prática só um dos dois vem preenchido por vez (rulesMode decide qual),
+// mas somar os dois é inofensivo e evita ter que saber qual edição está ativa
+// aqui dentro.
+function bonusPicksTotal(...picksList) {
+  const total = {};
+  for (const picks of picksList) {
+    if (!picks) continue;
+    for (const [key, amount] of Object.entries(picks)) {
+      total[key] = (total[key] ?? 0) + amount;
+    }
+  }
+  return total;
+}
+
+// Mostra o que já foi escolhido nas etapas de Raça/Antecedente -- pedido do
+// usuário: sem isso, o bônus fica "invisível" dentro do número final do
+// atributo, sem indicar de onde veio nem quanto foi.
+function AbilityBonusSummary({ raceAbilityBonusPicks, backgroundAbilityBonusPicks }) {
+  const rows = [
+    ["Bônus de Raça", raceAbilityBonusPicks],
+    ["Bônus de Antecedente", backgroundAbilityBonusPicks],
+  ].filter(([, picks]) => picks && Object.keys(picks).length > 0);
+  if (!rows.length) return null;
+  return (
+    <div className="ability-bonus-summary">
+      {rows.map(([label, picks]) => (
+        <p key={label} className="field-hint">
+          {label}: {Object.entries(picks).map(([key, amount]) => `${ABILITY_LABELS[key]} +${amount}`).join(", ")}
+        </p>
+      ))}
+    </div>
+  );
+}
+
 const METHODS = [
   {
     key: "array",
@@ -142,16 +177,23 @@ function AssignPool({ pool, slotFor, onAssign, onUnassign }) {
   );
 }
 
-function PointBuyView({ abilities, onChange }) {
-  const totalUsed = ABILITIES.reduce((sum, key) => sum + (POINT_BUY_COST[abilities[key]] ?? 0), 0);
+// `bonusFor(key)` isola o bônus de Raça/Antecedente do valor exibido antes de
+// consultar POINT_BUY_COST -- a regra oficial é "compra por pontos vai de 8 a
+// 15 ANTES do bônus", então o custo/orçamento tem que ser calculado em cima
+// do valor BASE (sem bônus), não do valor final mostrado (achado corrigindo o
+// bug de bônus sumindo ao trocar de método -- sem isso, um atributo com +2
+// racial já entraria mostrando "2 pontos usados" sem o jogador ter gasto nada).
+function PointBuyView({ abilities, bonusFor, onChange }) {
+  const baseValue = (key) => abilities[key] - bonusFor(key);
+  const totalUsed = ABILITIES.reduce((sum, key) => sum + (POINT_BUY_COST[baseValue(key)] ?? 0), 0);
 
   function adjust(key, delta) {
-    const current = abilities[key];
+    const current = baseValue(key);
     const next = current + delta;
     if (next < 8 || next > 15) return;
     const cost = (POINT_BUY_COST[next] ?? 0) - (POINT_BUY_COST[current] ?? 0);
     if (totalUsed + cost > POINT_BUY_BUDGET) return;
-    onChange({ ...abilities, [key]: next });
+    onChange({ ...abilities, [key]: next + bonusFor(key) });
   }
 
   return (
@@ -164,14 +206,14 @@ function PointBuyView({ abilities, onChange }) {
           <div key={key} className="ability-field ability-point-buy-field">
             {ABILITY_LABELS[key]}
             <div className="ability-point-buy-controls">
-              <button type="button" onClick={() => adjust(key, -1)} disabled={abilities[key] <= 8}>
+              <button type="button" onClick={() => adjust(key, -1)} disabled={baseValue(key) <= 8}>
                 −
               </button>
               <span>{abilities[key]}</span>
               <button
                 type="button"
                 onClick={() => adjust(key, 1)}
-                disabled={abilities[key] >= 15 || totalUsed + ((POINT_BUY_COST[abilities[key] + 1] ?? 99) - (POINT_BUY_COST[abilities[key]] ?? 0)) > POINT_BUY_BUDGET}
+                disabled={baseValue(key) >= 15 || totalUsed + ((POINT_BUY_COST[baseValue(key) + 1] ?? 99) - (POINT_BUY_COST[baseValue(key)] ?? 0)) > POINT_BUY_BUDGET}
               >
                 +
               </button>
@@ -243,13 +285,21 @@ function RollView({ rolledValues, onRoll, pool, slotFor, onAssign, onUnassign })
   );
 }
 
-export function StepAtributos({ abilities, onChange }) {
+export function StepAtributos({ abilities, onChange, raceAbilityBonusPicks, backgroundAbilityBonusPicks }) {
   const [method, setMethod] = useState("manual");
   const [rolledValues, setRolledValues] = useState([null, null, null, null, null, null]);
   // Qual valor do conjunto (por id, não por número — a rolagem pode empatar
   // dois dados) está em cada atributo. Compartilhado entre Array e Rolagem,
   // já que as duas são "arraste o valor pro atributo".
   const [slotFor, setSlotFor] = useState({});
+
+  // Bônus já escolhido nas etapas de Raça (2014) / Antecedente (2024) --
+  // precisa ser reaplicado em cima de qualquer método aqui, senão trocar de
+  // método apaga o bônus (bug real: `selectMethod`/`computeAbilitiesFromSlots`
+  // sobrescreviam `abilities` inteiro com um valor base fixo, sem saber desse
+  // bônus já aplicado).
+  const bonus = bonusPicksTotal(raceAbilityBonusPicks, backgroundAbilityBonusPicks);
+  const bonusFor = (key) => bonus[key] ?? 0;
 
   const standardPool = STANDARD_ARRAY.map((v, i) => ({ id: `arr-${i}`, value: v }));
   const rollPool = rolledValues.map((v, i) => ({ id: `roll-${i}`, value: v })).filter((p) => p.value != null);
@@ -258,7 +308,7 @@ export function StepAtributos({ abilities, onChange }) {
     const next = { ...abilities };
     for (const key of ABILITIES) {
       const item = pool.find((p) => p.id === nextSlotFor[key]);
-      if (item) next[key] = item.value;
+      if (item) next[key] = item.value + bonusFor(key);
     }
     return next;
   }
@@ -282,27 +332,30 @@ export function StepAtributos({ abilities, onChange }) {
   }
 
   function unassignSlot(key) {
-    setSlotFor((prev) => {
-      const next = { ...prev };
-      delete next[key];
-      return next;
-    });
+    const next = { ...slotFor };
+    delete next[key];
+    setSlotFor(next);
+    // Volta esse atributo pro baseline (+ bônus) -- sem isso, o número ficava
+    // "preso" no último valor arrastado mesmo com o slot já mostrando vazio.
+    onChange({ ...abilities, [key]: 10 + bonusFor(key) });
   }
 
   // Troca de método reseta os atributos (e as posições arrastadas) pro ponto
   // de partida daquele método — sem isso, valor deixado por um método
   // anterior podia bater "por acaso" com um valor do novo conjunto e contar
-  // como já atribuído, confundindo o contador de progresso.
+  // como já atribuído, confundindo o contador de progresso. O bônus de
+  // Raça/Antecedente é somado de volta em cima do baseline -- essa soma é
+  // que faltava antes (bug real: trocar de método apagava o bônus).
   function selectMethod(key) {
     setMethod(key);
     setSlotFor({});
     if (key === "pointbuy") {
-      onChange(Object.fromEntries(ABILITIES.map((a) => [a, 8])));
+      onChange(Object.fromEntries(ABILITIES.map((a) => [a, 8 + bonusFor(a)])));
     } else if (key === "array") {
-      onChange(Object.fromEntries(ABILITIES.map((a) => [a, 10])));
+      onChange(Object.fromEntries(ABILITIES.map((a) => [a, 10 + bonusFor(a)])));
     } else if (key === "roll") {
       setRolledValues([null, null, null, null, null, null]);
-      onChange(Object.fromEntries(ABILITIES.map((a) => [a, 10])));
+      onChange(Object.fromEntries(ABILITIES.map((a) => [a, 10 + bonusFor(a)])));
     }
   }
 
@@ -312,6 +365,7 @@ export function StepAtributos({ abilities, onChange }) {
 
   return (
     <div className="wizard-step-atributos">
+      <AbilityBonusSummary raceAbilityBonusPicks={raceAbilityBonusPicks} backgroundAbilityBonusPicks={backgroundAbilityBonusPicks} />
       <MethodPicker method={method} onChange={selectMethod} />
       {method === "array" && (
         <AssignPool
@@ -321,7 +375,7 @@ export function StepAtributos({ abilities, onChange }) {
           onUnassign={unassignSlot}
         />
       )}
-      {method === "pointbuy" && <PointBuyView abilities={abilities} onChange={onChange} />}
+      {method === "pointbuy" && <PointBuyView abilities={abilities} bonusFor={bonusFor} onChange={onChange} />}
       {method === "roll" && (
         <RollView
           rolledValues={rolledValues}

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import {
   createCharacter,
@@ -29,6 +29,7 @@ export function Characters() {
   const [editing, setEditing] = useState(null);
   const [viewing, setViewing] = useState(null);
   const [levelingUp, setLevelingUp] = useState(null);
+  const importInputRef = useRef(null);
 
   useEffect(() => {
     setError(null);
@@ -47,6 +48,43 @@ export function Characters() {
         await updateCharacter(profileId, editing.id, payload);
       }
       setEditing(null);
+    } catch (err) {
+      setError(err.message);
+    }
+  }
+
+  // Contraparte do "Baixar JSON" da ficha (FoundrySheetView) — sempre cria um
+  // personagem NOVO, nunca sobrescreve um existente. `id`/`updatedAt` vêm do
+  // Firestore e não fazem sentido num documento novo; `isOriginal`/
+  // `derivedFrom` são de uma cadeia de level-up de outro documento, que não
+  // existe mais depois do import (evita ficar com uma referência morta).
+  async function handleImportJSON(event) {
+    const file = event.target.files?.[0];
+    event.target.value = "";
+    if (!file) return;
+    setError(null);
+    try {
+      const text = await file.text();
+      const parsed = JSON.parse(text);
+      if (!parsed || typeof parsed !== "object" || !parsed.name) {
+        throw new Error("O arquivo não parece ser uma ficha de personagem (falta o campo \"name\").");
+      }
+      const { id, updatedAt, isOriginal, derivedFrom, ...payload } = parsed;
+      await createCharacter(profileId, payload);
+    } catch (err) {
+      setError(err instanceof SyntaxError ? "JSON inválido — o arquivo não pôde ser lido." : err.message);
+    }
+  }
+
+  // Edição rápida in-loco na FoundrySheetView (toggle "Editar" da própria ficha,
+  // não o assistente completo) — mesmo `updateCharacter` que o assistente usa,
+  // só que sem passar pelas etapas guiadas. `viewing` é atualizado localmente
+  // também pra ficha continuar mostrando o valor novo sem esperar o próximo
+  // snapshot do Firestore.
+  async function handleQuickSave(id, patch) {
+    try {
+      await updateCharacter(profileId, id, patch);
+      setViewing((current) => (current && current.id === id ? { ...current, ...patch } : current));
     } catch (err) {
       setError(err.message);
     }
@@ -118,6 +156,7 @@ export function Characters() {
     return (
       <CharacterView
         character={viewing}
+        profileId={profileId}
         onEdit={() => {
           setEditing(viewing);
           setViewing(null);
@@ -127,6 +166,7 @@ export function Characters() {
           setViewing(null);
         }}
         onBack={() => setViewing(null)}
+        onSave={(patch) => handleQuickSave(viewing.id, patch)}
       />
     );
   }
@@ -138,6 +178,16 @@ export function Characters() {
         <button type="button" onClick={() => setEditing("new")}>
           Novo personagem
         </button>
+        <button type="button" onClick={() => importInputRef.current?.click()}>
+          ⬆ Importar JSON
+        </button>
+        <input
+          type="file"
+          accept="application/json,.json"
+          ref={importInputRef}
+          onChange={handleImportJSON}
+          style={{ display: "none" }}
+        />
       </div>
       {error && <p className="error">Erro ao carregar do banco: {error}</p>}
       <SheetCardGrid

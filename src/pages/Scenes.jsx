@@ -5,6 +5,7 @@ import {
   deleteSceneFolder,
   getSceneCount,
   subscribeToSceneFolders,
+  updateSceneFolder,
 } from "../data/sceneFolders";
 import { createScene, deleteScene, subscribeToScenes, updateScene } from "../data/scenes";
 import { SceneForm } from "../components/SceneForm";
@@ -28,13 +29,27 @@ export function Scenes() {
     return unsubscribe;
   }, [profileId]);
 
+  // A maioria das pastas já traz `sceneCount` pronto no próprio snapshot (ver
+  // createSceneFolder/adjustSceneCount em data/sceneFolders.js) -- não precisa de
+  // consulta nenhuma pra elas. Só pasta ANTIGA, criada antes dessa denormalização,
+  // ainda não tem o campo -- pra essas (só essas), uma consulta de contagem ao
+  // vivo, e o resultado é gravado de volta na pasta (self-cura: da próxima vez o
+  // snapshot já vem com `sceneCount` certo, sem precisar consultar de novo nunca
+  // mais). Antes, TODA pasta pagava uma consulta a cada mudança na listagem.
   useEffect(() => {
     let cancelled = false;
+    const missing = folders.filter((folder) => folder.sceneCount == null);
+    if (!missing.length) return undefined;
     Promise.all(
-      folders.map((folder) => getSceneCount(profileId, folder.id).then((count) => [folder.id, count])),
+      missing.map((folder) =>
+        getSceneCount(profileId, folder.id).then((count) => {
+          updateSceneFolder(profileId, folder.id, { sceneCount: count }).catch(() => {});
+          return [folder.id, count];
+        }),
+      ),
     )
       .then((entries) => {
-        if (!cancelled) setFolderCounts(Object.fromEntries(entries));
+        if (!cancelled) setFolderCounts((prev) => ({ ...prev, ...Object.fromEntries(entries) }));
       })
       .catch((err) => setError(err.message));
     return () => {
@@ -102,7 +117,7 @@ export function Scenes() {
           <div key={folder.id} className="folder-card">
             <button type="button" className="folder-card-open" onClick={() => setOpenFolder(folder)}>
               <span className="folder-name">{folder.name}</span>
-              <span className="folder-count">{folderCounts[folder.id] ?? "…"} cena(s)</span>
+              <span className="folder-count">{folder.sceneCount ?? folderCounts[folder.id] ?? "…"} cena(s)</span>
             </button>
             <button type="button" onClick={() => handleDeleteFolder(folder.id, folder.name)}>
               Excluir

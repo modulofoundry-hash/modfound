@@ -204,80 +204,139 @@ export function LevelUpWizard({ initialCharacter, onSubmit, onCancel }) {
   // Level-up nunca troca raça (só a etapa de Criação tem picker de Raça) --
   // resolvido aqui só pro aviso de "Magias Concedidas" (StepMagias) e pra
   // ficha final (FoundrySheetView) saberem o que a raça já concede.
-  const raceMatch =
-    racesData.find((r) => r.name === character.race && r.rules === character.raceRules) ??
-    racesData.find((r) => r.name === character.race) ??
-    null;
+  const raceMatch = useMemo(
+    () =>
+      racesData.find((r) => r.name === character.race && r.rules === character.raceRules) ??
+      racesData.find((r) => r.name === character.race) ??
+      null,
+    [character.race, character.raceRules],
+  );
 
-  const pendingHp = [];
-  character.classes.forEach((row, index) => {
-    const levels = pendingHpLevels(originalLevels[index] ?? 0, row.level ?? 0, index === 0);
-    for (const level of levels) pendingHp.push({ classIndex: index, level, className: row.name });
-  });
+  // Todo este bloco (que chama cada slot-finder DUAS vezes -- uma pra `character`,
+  // outra pra `beforeCharacter` -- só pra saber se algo ficou disponível DE NOVO
+  // nesta subida de nível) rodava sem memoização nenhuma, a cada render, mesmo
+  // digitando num campo sem nenhuma relação (ex: notas/aparência). Chaveado nos
+  // campos mecânicos específicos que cada slot-finder lê (mesmo levantamento feito
+  // pro `visibleSteps` de CharacterCreationWizard.jsx, S1 do plano de otimização) --
+  // `originalLevels` é `useState` fixado uma vez no mount, nunca muda de verdade,
+  // mas entra no array por completude.
+  const {
+    pendingHp,
+    improvementSlots,
+    hasNewImprovementSlots,
+    choiceSlots,
+    hasNewChoiceSlots,
+    weaponMasterySlotsNow,
+    hasNewWeaponMasterySlots,
+    weaponProficiencySlotsNow,
+    hasNewWeaponProficiencySlots,
+    animalEnhancementSlotsNow,
+    hasNewAnimalEnhancementSlots,
+    eligibleSubclassRows,
+    newClassGrantsMatches,
+    hasNewClassGrants,
+  } = useMemo(() => {
+    // A PRESENÇA de cada etapa (aba visível) precisa depender só do NÍVEL
+    // (antes vs depois), nunca de quanto já foi respondido -- checar "ainda
+    // falta escolher algo" fazia a aba sumir no exato instante que o jogador
+    // começava a preencher (ex: clicar "+2 num atributo" sem ainda arrastar o
+    // chip já contava como "resolvido", escondendo a aba Melhorias e jogando o
+    // wizard de volta pra etapa 1 no meio da escolha -- achado testando ao
+    // vivo). `beforeCharacter` congela os níveis originais (sem tocar
+    // `abilityImprovements`/`classChoices`) só pra essa comparação.
+    const beforeCharacter = { ...character, classes: character.classes.map((row, i) => ({ ...row, level: originalLevels[i] ?? 0 })) };
 
-  // A PRESENÇA de cada etapa (aba visível) precisa depender só do NÍVEL
-  // (antes vs depois), nunca de quanto já foi respondido -- checar "ainda
-  // falta escolher algo" fazia a aba sumir no exato instante que o jogador
-  // começava a preencher (ex: clicar "+2 num atributo" sem ainda arrastar o
-  // chip já contava como "resolvido", escondendo a aba Melhorias e jogando o
-  // wizard de volta pra etapa 1 no meio da escolha -- achado testando ao
-  // vivo). `beforeCharacter` congela os níveis originais (sem tocar
-  // `abilityImprovements`/`classChoices`) só pra essa comparação.
-  const beforeCharacter = { ...character, classes: character.classes.map((row, i) => ({ ...row, level: originalLevels[i] ?? 0 })) };
+    const improvementSlots = abilityImprovementSlots(character, classMatches);
+    const hasNewImprovementSlots = improvementSlots.length > abilityImprovementSlots(beforeCharacter, classMatches).length;
 
-  const improvementSlots = abilityImprovementSlots(character, classMatches);
-  const hasNewImprovementSlots = improvementSlots.length > abilityImprovementSlots(beforeCharacter, classMatches).length;
+    const choiceSlots = classChoiceSlots(character, classMatches, featsData, backgroundsData);
+    const totalChoiceCount = (slots) => slots.reduce((sum, s) => sum + s.count, 0);
+    const hasNewChoiceSlots = totalChoiceCount(choiceSlots) > totalChoiceCount(classChoiceSlots(beforeCharacter, classMatches, featsData, backgroundsData));
 
-  const choiceSlots = classChoiceSlots(character, classMatches, featsData, backgroundsData);
-  const totalChoiceCount = (slots) => slots.reduce((sum, s) => sum + s.count, 0);
-  const hasNewChoiceSlots = totalChoiceCount(choiceSlots) > totalChoiceCount(classChoiceSlots(beforeCharacter, classMatches, featsData, backgroundsData));
+    const weaponMasterySlotsNow = weaponMasterySlots(character, classMatches, featsData);
+    const hasNewWeaponMasterySlots =
+      totalChoiceCount(weaponMasterySlotsNow) > totalChoiceCount(weaponMasterySlots(beforeCharacter, classMatches, featsData));
 
-  const weaponMasterySlotsNow = weaponMasterySlots(character, classMatches, featsData);
-  const hasNewWeaponMasterySlots =
-    totalChoiceCount(weaponMasterySlotsNow) > totalChoiceCount(weaponMasterySlots(beforeCharacter, classMatches, featsData));
+    const weaponProficiencySlotsNow = weaponProficiencySlots(character, racesData, featsData);
+    const hasNewWeaponProficiencySlots =
+      totalChoiceCount(weaponProficiencySlotsNow) > totalChoiceCount(weaponProficiencySlots(beforeCharacter, racesData, featsData));
 
-  const weaponProficiencySlotsNow = weaponProficiencySlots(character, racesData, featsData);
-  const hasNewWeaponProficiencySlots =
-    totalChoiceCount(weaponProficiencySlotsNow) > totalChoiceCount(weaponProficiencySlots(beforeCharacter, racesData, featsData));
+    const animalEnhancementSlotsNow = animalEnhancementSlots(character);
+    const hasNewAnimalEnhancementSlots = animalEnhancementSlotsNow.length > animalEnhancementSlots(beforeCharacter).length;
 
-  const animalEnhancementSlotsNow = animalEnhancementSlots(character);
-  const hasNewAnimalEnhancementSlots = animalEnhancementSlotsNow.length > animalEnhancementSlots(beforeCharacter).length;
+    const pendingHp = [];
+    character.classes.forEach((row, index) => {
+      const levels = pendingHpLevels(originalLevels[index] ?? 0, row.level ?? 0, index === 0);
+      for (const level of levels) pendingHp.push({ classIndex: index, level, className: row.name });
+    });
 
-  // Mesma ideia -- baseado só em `row.level` (nunca muda ao ESCOLHER a
-  // subclasse), não em `!row.subclass` (que sumiria a aba assim que a
-  // primeira classe elegível fosse resolvida, mesmo com outra ainda
-  // pendente). O corpo da etapa mostra o picker pra toda classe elegível,
-  // já escolhida ou não -- mesmo padrão de "sempre mostra, se autocura" do
-  // resto do wizard (o picker já destaca a seleção atual sozinho).
-  const eligibleSubclassRows = character.classes
-    .map((row, index) => ({ row, index }))
-    .filter(({ row, index }) => (row.level ?? 0) >= (classMatches[index]?.classData?.subclassLevel ?? Infinity));
+    // Mesma ideia -- baseado só em `row.level` (nunca muda ao ESCOLHER a
+    // subclasse), não em `!row.subclass` (que sumiria a aba assim que a
+    // primeira classe elegível fosse resolvida, mesmo com outra ainda
+    // pendente). O corpo da etapa mostra o picker pra toda classe elegível,
+    // já escolhida ou não -- mesmo padrão de "sempre mostra, se autocura" do
+    // resto do wizard (o picker já destaca a seleção atual sozinho).
+    const eligibleSubclassRows = character.classes
+      .map((row, index) => ({ row, index }))
+      .filter(({ row, index }) => (row.level ?? 0) >= (classMatches[index]?.classData?.subclassLevel ?? Infinity));
 
-  // Índice >= originalLevels.length = classe que não existia antes desta
-  // sessão (entrou via "Adicionar classe"). Só ela pode ter concessão de
-  // perícia/ferramenta ainda em aberto -- uma classe que já existia teve
-  // isso resolvido na criação (ou num level-up anterior). EQUIPAMENTO fica
-  // de fora de propósito (`equipmentSlots` removido do classData copiado) --
-  // achado testando ao vivo: pelas regras de multiclasse, só a PRIMEIRA
-  // classe do personagem concede equipamento inicial; mostrar o picker de
-  // equipamento pra classe multiclassada deixava escolher uma 2ª arma/mochila
-  // que a regra não concede, e pior, duplicava item que o personagem já
-  // possuía (ex: já tinha "Shortbow" antes, ganhava outro "Shortbow" do
-  // equipmentSlots do Ladino) -- sem esse corte, `equipment` acumulava cópia
-  // sobre cópia a cada classe nova adicionada num level-up.
-  // `classMatches` aqui é OBJETO indexado por posição (não array, ver
-  // `const classMatches = classesMatches` acima) -- StepPericias espera
-  // array, por isso o `character.classes.map` (não `classMatches.map`).
-  const newClassGrantsMatches = character.classes.map((_, index) => {
-    if (index < originalLevels.length) return null;
-    const match = classMatches[index];
-    if (!match?.classData) return match;
-    return { ...match, classData: { ...match.classData, equipmentSlots: [] } };
-  });
-  const hasNewClassGrants = newClassGrantsMatches.some((match) => {
-    const cd = match?.classData;
-    return cd && (cd.skillChoice || cd.toolChoice || cd.skills?.length > 0 || cd.tools?.length > 0);
-  });
+    // Índice >= originalLevels.length = classe que não existia antes desta
+    // sessão (entrou via "Adicionar classe"). Só ela pode ter concessão de
+    // perícia/ferramenta ainda em aberto -- uma classe que já existia teve
+    // isso resolvido na criação (ou num level-up anterior). EQUIPAMENTO fica
+    // de fora de propósito (`equipmentSlots` removido do classData copiado) --
+    // achado testando ao vivo: pelas regras de multiclasse, só a PRIMEIRA
+    // classe do personagem concede equipamento inicial; mostrar o picker de
+    // equipamento pra classe multiclassada deixava escolher uma 2ª arma/mochila
+    // que a regra não concede, e pior, duplicava item que o personagem já
+    // possuía (ex: já tinha "Shortbow" antes, ganhava outro "Shortbow" do
+    // equipmentSlots do Ladino) -- sem esse corte, `equipment` acumulava cópia
+    // sobre cópia a cada classe nova adicionada num level-up.
+    // `classMatches` aqui é OBJETO indexado por posição (não array, ver
+    // `const classMatches = classesMatches` acima) -- StepPericias espera
+    // array, por isso o `character.classes.map` (não `classMatches.map`).
+    const newClassGrantsMatches = character.classes.map((_, index) => {
+      if (index < originalLevels.length) return null;
+      const match = classMatches[index];
+      if (!match?.classData) return match;
+      return { ...match, classData: { ...match.classData, equipmentSlots: [] } };
+    });
+    const hasNewClassGrants = newClassGrantsMatches.some((match) => {
+      const cd = match?.classData;
+      return cd && (cd.skillChoice || cd.toolChoice || cd.skills?.length > 0 || cd.tools?.length > 0);
+    });
+
+    return {
+      pendingHp,
+      improvementSlots,
+      hasNewImprovementSlots,
+      choiceSlots,
+      hasNewChoiceSlots,
+      weaponMasterySlotsNow,
+      hasNewWeaponMasterySlots,
+      weaponProficiencySlotsNow,
+      hasNewWeaponProficiencySlots,
+      animalEnhancementSlotsNow,
+      hasNewAnimalEnhancementSlots,
+      eligibleSubclassRows,
+      newClassGrantsMatches,
+      hasNewClassGrants,
+    };
+  }, [
+    character.classes,
+    character.abilityImprovements,
+    character.feats,
+    character.background,
+    character.backgroundRules,
+    character.classChoices,
+    character.weaponMasteryChoices,
+    character.weaponProficiencyChoices,
+    character.animalEnhancementChoices,
+    character.race,
+    character.raceRules,
+    classMatches,
+    originalLevels,
+  ]);
 
   const conditionalCtx = {
     character,
@@ -293,10 +352,29 @@ export function LevelUpWizard({ initialCharacter, onSubmit, onCancel }) {
     hasNewClassGrants,
   };
 
+  // Só a etapa "magias" lê `character`/`classMatches`/`raceMatch` direto (via
+  // hasActiveSpellcasting/computeGrantedSpells) -- as outras só leem os booleans/
+  // arrays já derivados acima (que por sua vez já são o resultado memoizado).
   const visibleSteps = useMemo(
     () => STEP_DEFS.filter((step) => !step.conditional || step.conditional(conditionalCtx)),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [character, classesMatches],
+    [
+      raceMatch,
+      classMatches,
+      pendingHp,
+      hasNewImprovementSlots,
+      hasNewChoiceSlots,
+      hasNewWeaponMasterySlots,
+      hasNewWeaponProficiencySlots,
+      hasNewAnimalEnhancementSlots,
+      eligibleSubclassRows,
+      hasNewClassGrants,
+      character.classes,
+      character.abilities,
+      character.feats,
+      character.classChoices,
+      character.rulesMode,
+    ],
   );
 
   const stepIndex = Math.max(

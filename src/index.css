@@ -2272,12 +2272,49 @@ input {
    modo claro/escuro do resto do site), pra manter a identidade visual
    reconhecível como "a mesma ficha do Foundry" nos dois modos. */
 .foundry-sheet {
-  background: linear-gradient(160deg, #3a1010 0%, #1a0808 70%);
-  border: 1px solid #5c2a2a;
+  background: var(--bg);
+  border: 1px solid var(--border);
   border-radius: 10px;
-  color: #ece2d0;
-  font-family: Georgia, "Times New Roman", serif;
+  color: var(--text);
   overflow: hidden;
+}
+
+.foundry-sheet-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.foundry-sheet-toolbar-export,
+.foundry-sheet-toolbar-edit {
+  display: flex;
+  gap: 8px;
+}
+
+.foundry-sheet-toolbar button {
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  border-radius: 6px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.foundry-sheet-toolbar button:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.foundry-sheet-toolbar button.foundry-sheet-save {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
+  font-weight: 600;
 }
 
 .foundry-sheet-header {
@@ -2285,8 +2322,8 @@ input {
   align-items: center;
   gap: 18px;
   padding: 18px 20px;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.25), transparent);
-  border-bottom: 1px solid #5c2a2a;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
   flex-wrap: wrap;
 }
 
@@ -2295,13 +2332,13 @@ input {
   height: 84px;
   flex-shrink: 0;
   border-radius: 50%;
-  border: 3px solid #c9a24b;
+  border: 3px solid var(--accent);
   overflow: hidden;
-  background: #1a0808;
+  background: var(--bg);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 0 2px #1a0808, 0 2px 8px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .foundry-sheet-portrait img {
@@ -2312,7 +2349,7 @@ input {
 
 .foundry-sheet-portrait-empty {
   font-size: 32px;
-  color: #7a5a3a;
+  color: var(--text-muted);
 }
 
 .foundry-sheet-heading {
@@ -2322,15 +2359,28 @@ input {
 
 .foundry-sheet-heading h2 {
   margin: 0 0 4px;
-  color: #f0d9a8;
+  color: var(--text);
   font-size: 26px;
-  letter-spacing: 0.02em;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  letter-spacing: 0.01em;
+}
+
+.foundry-sheet-name-input {
+  display: block;
+  width: 100%;
+  margin: 0 0 4px;
+  font: inherit;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 4px 8px;
 }
 
 .foundry-sheet-subtitle {
   margin: 0;
-  color: #cbb896;
+  color: var(--text-muted);
   font-size: 14px;
 }
 
@@ -2343,9 +2393,16 @@ input {
 }
 
 .foundry-sheet-alignment {
-  color: #a4906c;
+  color: var(--text-muted);
   font-size: 12px;
   font-style: italic;
+}
+
+.foundry-inspiration-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
 }
 
 .foundry-sheet-badges {
@@ -2355,6 +2412,7 @@ input {
 }
 
 .foundry-sheet-badge {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -2362,20 +2420,40 @@ input {
   width: 68px;
   height: 68px;
   border-radius: 50%;
-  border: 2px solid #c9a24b;
-  background: radial-gradient(circle at 35% 30%, #4a1818, #250c0c);
+  border: 2px solid var(--accent);
+  background: var(--surface);
   padding: 0 4px;
 }
 
+.foundry-sheet-badge-reset {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid var(--accent);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 11px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+}
+
 .foundry-sheet-badge-muted {
-  border-color: #6b5a3a;
+  border-color: var(--border);
   opacity: 0.75;
+}
+
+.foundry-sheet-badge-editable {
+  border-style: dashed;
 }
 
 .foundry-sheet-badge-value {
   font-size: 18px;
   font-weight: 700;
-  color: #f0d9a8;
+  color: var(--text);
   line-height: 1.1;
 }
 
@@ -2385,7 +2463,35 @@ input {
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 0.02em;
-  color: #cbb896;
+  color: var(--text-muted);
+}
+
+.foundry-sheet-badge-input {
+  width: 36px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+  background: none;
+  color: var(--text);
+}
+
+.foundry-sheet-hp-inputs {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.foundry-sheet-hp-inputs input {
+  width: 28px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  border: none;
+  background: none;
+  color: var(--text);
 }
 
 .foundry-sheet-abilities {
@@ -2394,8 +2500,8 @@ input {
   flex-wrap: wrap;
   justify-content: center;
   padding: 16px 20px;
-  background: rgba(0, 0, 0, 0.2);
-  border-bottom: 1px solid #5c2a2a;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
 }
 
 .foundry-ability-badge {
@@ -2405,30 +2511,30 @@ input {
   gap: 2px;
   min-width: 68px;
   padding: 8px 10px;
-  border: 1px solid #c9a24b;
+  border: 1px solid var(--border);
   border-radius: 8px;
-  background: linear-gradient(160deg, #4a1818, #2a0d0d);
+  background: var(--surface);
 }
 
 .foundry-ability-label {
   font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #cbb896;
+  color: var(--text-muted);
 }
 
 .foundry-ability-score {
   font-size: 20px;
   font-weight: 700;
-  color: #f0d9a8;
+  color: var(--text);
 }
 
 .foundry-ability-mod {
   font-size: 12px;
-  color: #a4906c;
+  color: var(--text-muted);
 }
 
-/* Navegação por abas (Detalhes/Inventário/Talentos/Magias/Biografia) —
+/* Navegação por abas (Detalhes/Inventário/Talentos/Magias/Efeitos/Biografia) —
    mesmo agrupamento de informação da ficha real do Foundry (nav.tabs do
    ActorSheet), só com rótulo de texto em vez de ícone (mais legível fora do
    Foundry, sem depender de fonte de ícone nenhuma). */
@@ -2436,8 +2542,8 @@ input {
   display: flex;
   gap: 4px;
   padding: 0 20px;
-  background: rgba(0, 0, 0, 0.2);
-  border-bottom: 1px solid #5c2a2a;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
   overflow-x: auto;
 }
 
@@ -2445,8 +2551,8 @@ input {
   appearance: none;
   border: none;
   background: none;
-  color: #cbb896;
-  font-family: Georgia, "Times New Roman", serif;
+  color: var(--text-muted);
+  font: inherit;
   font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 0.03em;
@@ -2457,29 +2563,89 @@ input {
 }
 
 .foundry-sheet-tabs button:hover {
-  color: #f0d9a8;
+  color: var(--text);
 }
 
 .foundry-sheet-tabs button.active {
-  color: #f0d9a8;
-  border-bottom-color: #c9a24b;
+  color: var(--accent);
+  border-bottom-color: var(--accent);
 }
 
 .foundry-sheet-body {
   padding: 18px 20px;
-  background: #efe9dd;
-  color: #2a2018;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Corpo alternativo, só existe pra impressão/"Baixar PDF" (botão do
+   toolbar chama window.print()) — a tela mostra uma aba por vez, mas o PDF
+   precisa de todas empilhadas numa página só. Escondido em tela normal. */
+.foundry-sheet-print-only {
+  display: none;
+}
+
+@media print {
+  /* Textura decorativa de fundo do site inteiro -- só desperdiça tinta em
+     qualquer impressão, não só da ficha. */
+  .site-background {
+    display: none !important;
+  }
+
+  .foundry-sheet-toolbar,
+  .foundry-sheet-tabs,
+  .foundry-sheet-body {
+    display: none !important;
+  }
+
+  /* .profile-header/.sheet-list-header são navegação genérica do site (usada
+     em várias páginas) — só escondemos quando a página impressa é a ficha,
+     pra não afetar impressão de outras telas (lista de NPCs, Cenas etc). */
+  body:has(.foundry-sheet) .profile-header,
+  body:has(.foundry-sheet) .sheet-list-header {
+    display: none !important;
+  }
+
+  .foundry-sheet-print-only {
+    display: block;
+  }
+
+  .foundry-sheet {
+    background: #fff;
+    color: #111;
+    border: none;
+  }
+
+  .foundry-print-section {
+    break-inside: avoid;
+    margin-bottom: 16px;
+  }
+
+  /* Uma aba por página -- só entre seções, sem folha em branco sobrando
+     depois da última (Biografia). */
+  .foundry-print-section:not(:last-child) {
+    break-after: page;
+    page-break-after: always;
+  }
+
+  .foundry-print-section h3 {
+    margin: 0 0 8px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #999;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    font-size: 14px;
+  }
 }
 
 .foundry-sheet-empty {
-  color: #8a7d63;
+  color: var(--text-muted);
   font-style: italic;
   margin: 0;
 }
 
 .foundry-box {
-  background: #fbf8f1;
-  border: 1px solid #d8cba8;
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 8px;
   padding: 12px 14px;
   margin-bottom: 14px;
@@ -2490,8 +2656,8 @@ input {
   font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  color: #7a2020;
-  border-bottom: 1px solid #d8cba8;
+  color: var(--accent);
+  border-bottom: 1px solid var(--border);
   padding-bottom: 4px;
 }
 
@@ -2499,7 +2665,7 @@ input {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  border-bottom: 1px solid #d8cba8;
+  border-bottom: 1px solid var(--border);
   margin-bottom: 8px;
   padding-bottom: 4px;
 }
@@ -2513,7 +2679,7 @@ input {
 .foundry-box-header-row span {
   font-size: 10px;
   text-transform: uppercase;
-  color: #8a7d63;
+  color: var(--text-muted);
 }
 
 /* Aba Detalhes — 3 colunas (Perícias/Ferramentas | Resistência/Armadura/
@@ -2544,25 +2710,38 @@ input {
   width: 9px;
   height: 9px;
   border-radius: 50%;
-  border: 1.5px solid #7a2020;
+  border: 1.5px solid var(--accent);
   flex-shrink: 0;
+}
+
+.foundry-skill-toggles {
+  display: inline-flex;
+  gap: 3px;
+  flex-shrink: 0;
+}
+
+.foundry-skill-toggles input {
+  width: 12px;
+  height: 12px;
+  margin: 0;
 }
 
 .foundry-skill-list li.is-proficient .foundry-skill-dot,
 .foundry-save-row.is-proficient .foundry-skill-dot {
-  background: #7a2020;
+  background: var(--accent);
 }
 
 .foundry-skill-list li.is-expertise .foundry-skill-dot {
-  background: #c9a24b;
-  border-color: #c9a24b;
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--surface), 0 0 0 3px var(--accent);
 }
 
 .foundry-skill-ability {
   width: 26px;
   flex-shrink: 0;
   font-size: 10px;
-  color: #8a7d63;
+  color: var(--text-muted);
 }
 
 .foundry-skill-label {
@@ -2578,7 +2757,7 @@ input {
 .foundry-skill-passive {
   width: 24px;
   text-align: right;
-  color: #8a7d63;
+  color: var(--text-muted);
   font-size: 12px;
 }
 
@@ -2598,7 +2777,7 @@ input {
 .foundry-save-row .foundry-skill-ability {
   width: auto;
   flex: 1;
-  color: #2a2018;
+  color: var(--text);
   font-weight: 600;
 }
 
@@ -2610,20 +2789,20 @@ input {
 
 .foundry-tag {
   display: inline-block;
-  background: #efe0bf;
-  border: 1px solid #c9a24b;
+  background: var(--bg);
+  border: 1px solid var(--border);
   border-radius: 4px;
   padding: 3px 8px;
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.03em;
-  color: #7a2020;
+  color: var(--text-muted);
 }
 
 .foundry-tag-gold {
-  background: linear-gradient(160deg, #f0d9a8, #c9a24b);
-  border-color: #7a2020;
-  color: #3a1010;
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
   font-weight: 700;
 }
 
@@ -2634,24 +2813,24 @@ input {
 }
 
 .foundry-trait-card {
-  background: #2a1414;
-  border: 1px solid #5c2a2a;
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 8px;
   padding: 10px 12px;
   display: flex;
   flex-direction: column;
   gap: 2px;
-  color: #ece2d0;
+  color: var(--text);
 }
 
 .foundry-trait-card strong {
-  color: #f0d9a8;
+  color: var(--text);
   font-size: 14px;
 }
 
 .foundry-trait-card span {
   font-size: 11px;
-  color: #cbb896;
+  color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.03em;
 }
@@ -2668,16 +2847,26 @@ input {
   display: flex;
   align-items: center;
   gap: 6px;
-  background: #fbf8f1;
-  border: 1px solid #d8cba8;
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 6px;
   padding: 6px 10px;
+}
+
+.foundry-currency-editable input {
+  width: 48px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 13px;
+  padding: 2px 4px;
 }
 
 .foundry-currency-label {
   font-size: 10px;
   font-weight: 700;
-  color: #7a2020;
+  color: var(--accent);
 }
 
 .foundry-currency-value {
@@ -2697,7 +2886,7 @@ input {
   align-items: center;
   gap: 8px;
   padding: 4px 0;
-  border-bottom: 1px solid #ecdfc0;
+  border-bottom: 1px solid var(--border);
 }
 
 .foundry-item-list li:last-child {
@@ -2709,8 +2898,18 @@ input {
 }
 
 .foundry-item-qty {
-  color: #8a7d63;
+  color: var(--text-muted);
   font-size: 12px;
+}
+
+.foundry-item-attack {
+  font-size: 12px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  cursor: pointer;
 }
 
 .foundry-spell-list li {
@@ -2719,7 +2918,7 @@ input {
 
 .foundry-spell-meta {
   font-size: 11px;
-  color: #8a7d63;
+  color: var(--text-muted);
   text-transform: uppercase;
 }
 
@@ -2732,7 +2931,7 @@ input {
 
 .foundry-feature-list li {
   padding: 6px 0;
-  border-bottom: 1px solid #ecdfc0;
+  border-bottom: 1px solid var(--border);
 }
 
 .foundry-feature-list li:last-child {
@@ -2742,7 +2941,32 @@ input {
 .foundry-feature-list p {
   margin: 2px 0 0;
   font-size: 12px;
-  color: #6b5f4a;
+  color: var(--text-muted);
+}
+
+/* Aba Efeitos — checklist manual de condições (não sincronizada do Foundry,
+   ver foundry_character_sheet_ui_architecture.md). */
+.foundry-conditions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 8px;
+}
+
+.foundry-condition-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.foundry-condition-pill.is-active {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--surface);
 }
 
 /* Aba Biografia */
@@ -2760,17 +2984,22 @@ input {
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.03em;
-  color: #7a2020;
+  color: var(--accent);
   font-weight: 600;
 }
 
-.foundry-bio-grid span {
+.foundry-bio-grid span,
+.foundry-bio-grid input,
+.foundry-bio-grid select {
   font-size: 14px;
   text-transform: none;
   font-weight: 400;
-  color: #2a2018;
-  border-bottom: 1px solid #d8cba8;
+  color: var(--text);
+  background: var(--bg);
+  border: none;
+  border-bottom: 1px solid var(--border);
   padding-bottom: 3px;
+  font-family: inherit;
 }
 
 .foundry-bio-cols {
@@ -2786,8 +3015,8 @@ input {
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  color: #7a2020;
-  border-bottom: 1px solid #d8cba8;
+  color: var(--accent);
+  border-bottom: 1px solid var(--border);
   padding-bottom: 4px;
 }
 
@@ -2796,6 +3025,24 @@ input {
   margin: 0;
   font-size: 14px;
   white-space: pre-wrap;
+}
+
+.foundry-bio-cols section textarea,
+.foundry-bio-full textarea {
+  width: 100%;
+  min-height: 60px;
+  font: inherit;
+  font-size: 14px;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 8px;
+  resize: vertical;
+}
+
+.foundry-bio-full textarea {
+  min-height: 120px;
 }
 
 /* Wizard de Level-Up — tabela "Selecionar Níveis" (Checkbox/Nível/Features),
@@ -2839,4 +3086,168 @@ input {
 .levelup-hp-block h4,
 .levelup-subclass-block h4 {
   margin: 0 0 8px;
+}
+
+.chat-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+  background: var(--surface);
+}
+
+.chat-panel-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.chat-panel-empty {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin: 0;
+}
+
+.chat-message {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 10px;
+  background: var(--bg);
+}
+
+.chat-message-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.chat-message-author {
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.chat-message-time {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.chat-message-text {
+  margin: 4px 0 0;
+}
+
+.chat-message-roll-body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.chat-message-roll-label {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.chat-message-roll-status {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.chat-message-roll.chat-message {
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
+}
+
+.chat-message-roll-total {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.chat-message-roll-formula {
+  font-weight: 400;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.chat-message-roll-tag {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--bg);
+}
+
+.chat-message-error .chat-message-roll-status {
+  color: var(--error);
+  font-style: normal;
+}
+
+.chat-shortcuts {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 10px;
+}
+
+.chat-shortcuts summary {
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.chat-shortcuts-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.chat-shortcuts-group-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.chat-shortcuts-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.chat-shortcuts-row button {
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.chat-command-error {
+  margin: 0;
+}
+
+.chat-input-row {
+  display: flex;
+  gap: 8px;
+}
+
+.chat-input-row input {
+  flex: 1;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+}
 }

@@ -459,7 +459,13 @@ export function CharacterCreationWizard({ initialValue, onSubmit, onCancel }) {
   // escolha/remoção. `classMatches` (array) é só a forma derivada que o
   // resto do wizard já espera (StepPericias, abilityImprovementSlots).
   const [classesMatches, setClassesMatches] = useState(() => (initialValue ? resolveClassMatches(initialValue.classes) : {}));
-  const classMatches = Object.values(classesMatches);
+  // `useMemo`, não recomputado cru a cada render: `Object.values` sempre devolve um
+  // array NOVO, então sem isso `classMatches` mudava de referência em todo render
+  // mesmo sem `classesMatches` ter mudado -- e como `classMatches` entra nas
+  // dependências do `useMemo` de `visibleSteps` (abaixo), isso by itself já
+  // invalidava aquele memo em toda tecla digitada, mesmo depois de restringir as
+  // outras dependências aos campos certos.
+  const classMatches = useMemo(() => Object.values(classesMatches), [classesMatches]);
   const [stepKey, setStepKey] = useState(STEP_DEFS[0].key);
   // Achado ao vivo (sync real quebrando): o wizard deixava "Concluir" sem
   // nome nenhum -- Firestore aceita `name: ""` de boa, mas `Actor.create` do
@@ -637,12 +643,39 @@ export function CharacterCreationWizard({ initialValue, onSubmit, onCancel }) {
     }));
   }
 
+  // Chaveado nos campos específicos que os `conditional` de STEP_DEFS realmente
+  // leem (classes/abilities/abilityImprovements/feats/background(Rules)/
+  // race(Rules)/weaponMasteryChoices/animalEnhancementChoices/classChoices/
+  // rulesMode -- rastreado direto em abilityImprovementSlots/classChoiceSlots/
+  // weaponProficiencySlots/weaponMasterySlots/animalEnhancementSlots/
+  // openFeatChoiceSlots/hasActiveSpellcasting/computeGrantedSpells), não em
+  // `character` inteiro. `set(key, value)` (abaixo) só faz um spread raso, então
+  // campos não tocados mantêm a MESMA referência entre renders -- sem isso, digitar
+  // em QUALQUER campo (nome, notas, aparência...) recalculava todas essas buscas em
+  // `featsData`/`backgroundsData`/`racesData` (centenas de KB) a cada tecla, mesmo
+  // sem nenhum desses 12 campos ter mudado.
   const visibleSteps = useMemo(
     () =>
       STEP_DEFS.filter(
         (step) => !step.conditional || step.conditional({ character, classMatches, raceMatch, backgroundMatch }),
       ),
-    [character, classMatches, raceMatch, backgroundMatch],
+    [
+      character.classes,
+      character.abilities,
+      character.abilityImprovements,
+      character.feats,
+      character.background,
+      character.backgroundRules,
+      character.race,
+      character.raceRules,
+      character.weaponMasteryChoices,
+      character.animalEnhancementChoices,
+      character.classChoices,
+      character.rulesMode,
+      classMatches,
+      raceMatch,
+      backgroundMatch,
+    ],
   );
 
   // Uma etapa condicional pode sumir enquanto é a etapa ATUAL (ex: preencher
@@ -779,7 +812,14 @@ export function CharacterCreationWizard({ initialValue, onSubmit, onCancel }) {
           />
         );
       case "atributos":
-        return <StepAtributos abilities={character.abilities} onChange={(abilities) => set("abilities", abilities)} />;
+        return (
+          <StepAtributos
+            abilities={character.abilities}
+            onChange={(abilities) => set("abilities", abilities)}
+            raceAbilityBonusPicks={character.raceAbilityBonusPicks}
+            backgroundAbilityBonusPicks={character.backgroundAbilityBonusPicks}
+          />
+        );
       case "melhorias":
         return (
           <StepMelhorias

@@ -53,6 +53,28 @@ export const LANGUAGES = [
   "Aarakocra", "Abyssal", "Celestial", "Deep Speech", "Druidic", "Gith", "Gnoll", "Infernal", "Primordial", "Aquan", "Auran", "Ignan", "Terran", "Sylvan", "Thieves' Cant", "Undercommon",
 ];
 
+// PV/CA/condições não vêm sincronizados do Foundry (reverseCharacter.js não manda
+// esses campos de volta pro site hoje) — por decisão do usuário, viram campos
+// MANUAIS aqui: o jogador preenche/marca à mão, sem refletir o estado real do
+// Foundry. Lista de condições é a mesma taxonomia de `CONFIG.DND5E.conditionTypes`
+// (ver foundry_character_sheet_ui_architecture.md), sem as pseudo-condições.
+export const CONDITIONS = [
+  { id: "blinded", label: "Cego" },
+  { id: "charmed", label: "Enfeitiçado" },
+  { id: "deafened", label: "Surdo" },
+  { id: "frightened", label: "Amedrontado" },
+  { id: "grappled", label: "Agarrado" },
+  { id: "incapacitated", label: "Incapacitado" },
+  { id: "invisible", label: "Invisível" },
+  { id: "paralyzed", label: "Paralisado" },
+  { id: "petrified", label: "Petrificado" },
+  { id: "poisoned", label: "Envenenado" },
+  { id: "prone", label: "Caído" },
+  { id: "restrained", label: "Impedido" },
+  { id: "stunned", label: "Atordoado" },
+  { id: "unconscious", label: "Inconsciente" },
+];
+
 export const SIZE_LABELS = {
   T: "Minúsculo",
   S: "Pequeno",
@@ -176,6 +198,16 @@ export function createEmptyCharacter() {
     isOriginal: false,
     derivedFrom: null,
     inspiration: false,
+    // PV continua manual (não sincronizado do Foundry) — ver comentário de CONDITIONS acima.
+    hp: { value: 0, max: 0, temp: 0 },
+    // CA: `ac` guarda o valor EFETIVO atual (calculado ou editado à mão), `acAuto`
+    // controla o modo. Quando `acAuto:true`, o valor é recalculado a cada mudança
+    // relevante (atributo/raça/classe/equipamento) via computeArmorClass(); editar o
+    // campo na ficha seta `acAuto:false` e "trava" no valor digitado até o jogador
+    // pedir explicitamente pra voltar ao automático.
+    ac: 10,
+    acAuto: true,
+    conditions: [],
     personality: { trait: "", ideal: "", bond: "", flaw: "" },
     appearance: { gender: "", age: "", height: "", weight: "", eyes: "", hair: "", skin: "", faith: "", description: "" },
     notes: "",
