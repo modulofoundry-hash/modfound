@@ -151,6 +151,23 @@
     "spellGrants": null
   },
   {
+    "name": "Archery",
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
+    "rules": "2024",
+    "category": "fightingStyle",
+    "classes": [
+      "Fighter",
+      "Paladin",
+      "Ranger"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>You gain a +2 bonus to attack rolls you make with Ranged weapons.</p>",
+    "spellGrants": null
+  },
+  {
     "name": "Armor of Magical Strength",
     "source": "TCE",
     "sourceBook": "Tasha's Cauldron of Everything",
@@ -362,6 +379,51 @@
     "spellGrants": null
   },
   {
+    "name": "Bear (Aspect of the Beast)",
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
+    "rules": "2014",
+    "category": "aspectOfTheBeast",
+    "classes": [
+      "Barbarian"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>You gain the might of a bear. Your carrying capacity (including maximum load and maximum lift) is doubled, and you have advantage on Strength checks made to push, pull, lift, or break objects.</p>",
+    "spellGrants": null
+  },
+  {
+    "name": "Bear (Totem Spirit)",
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
+    "rules": "2014",
+    "category": "totemSpirit",
+    "classes": [
+      "Barbarian"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>While raging, you have resistance to all damage except psychic damage. The spirit of the bear makes you tough enough to stand up to any punishment.</p>",
+    "spellGrants": null
+  },
+  {
+    "name": "Bear (Totemic Attunement)",
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
+    "rules": "2014",
+    "category": "totemicAttunement",
+    "classes": [
+      "Barbarian"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>While you're raging, any creature within 5 feet of you that's hostile to you has disadvantage on attack rolls against targets other than you or another character with this feature. An enemy is immune to this effect if it can't see or hear you or if it can't be frightened.</p>",
+    "spellGrants": null
+  },
+  {
     "name": "Beast Speech",
     "source": "PHB",
     "sourceBook": "Player's Handbook (2014)",
@@ -480,6 +542,23 @@
         }
       }
     ]
+  },
+  {
+    "name": "Blind Fighting",
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
+    "rules": "2024",
+    "category": "fightingStyle",
+    "classes": [
+      "Fighter",
+      "Paladin",
+      "Ranger"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>You have Blindsight with a range of 10 feet.</p>",
+    "spellGrants": null
   },
   {
     "name": "Blind Fighting",
@@ -838,6 +917,21 @@
     "spellGrants": null
   },
   {
+    "name": "Cloud Rune",
+    "source": "TCE",
+    "sourceBook": "Tashas Cauldron of Everything",
+    "tier": "official",
+    "rules": "2014",
+    "category": "runeKnightRune",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>This rune emulates the deceptive magic used by some cloud giants. While wearing or carrying an object inscribed with this rune, you have advantage on Dexterity (Sleight of Hand) checks and Charisma (Deception) checks.</p><p>In addition, when you or a creature you can see within 30 feet of you is hit by an attack roll, you can use your reaction to invoke the rune and choose a different creature within 30 feet of you, other than the attacker. The chosen creature becomes the target of the attack, using the same roll. This magic can transfer the attacks effects regardless of the attacks range. Once you invoke this rune, you cant do so again until you finish a short or long rest.</p>",
+    "spellGrants": null
+  },
+  {
     "name": "Cloud Rune (BGG)",
     "source": "BGG",
     "sourceBook": "Bigby Presents: Glory of the Giants",
@@ -868,6 +962,21 @@
         }
       }
     ]
+  },
+  {
+    "name": "Colossus Slayer",
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
+    "rules": "2014",
+    "category": "hunterPrey",
+    "classes": [
+      "Ranger"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>Your tenacity can wear down the most potent foes. When you hit a creature with a weapon attack, the creature takes an extra 1d8 damage if it's below its hit point maximum. You can deal this extra damage only once per turn.</p>",
+    "spellGrants": null
   },
   {
     "name": "Commander's Strike",
@@ -984,6 +1093,23 @@
     "prerequisites": null,
     "consumes": null,
     "description": "<p>While you are wearing armor, you gain a +1 bonus to AC.</p>",
+    "spellGrants": null
+  },
+  {
+    "name": "Defense",
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
+    "rules": "2024",
+    "category": "fightingStyle",
+    "classes": [
+      "Fighter",
+      "Paladin",
+      "Ranger"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>While you’re wearing Light, Medium, or Heavy armor, you gain a +1 bonus to Armor Class.</p>",
     "spellGrants": null
   },
   {
@@ -1233,6 +1359,21 @@
     ]
   },
   {
+    "name": "Dreadnaught",
+    "source": "EFA",
+    "sourceBook": "Eberron: Forge of the Artificer (2024)",
+    "tier": "official",
+    "rules": "2024",
+    "category": "armorModel",
+    "classes": [
+      "Artificer"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>You design your armor to become a towering juggernaut in battle. It has the following features:</p><p>- Force Demolisher: An arcane wrecking ball or sledgehammer projects from your armor. The demolisher counts as a Simple Melee weapon with the R property, and it deals 1d10 Force damage on a hit. If you hit a creature that is at least one size smaller than you with the demolisher, you can push the creature up to 10 feet straight away from yourself or pull the creature up to 10 feet toward yourself.<br>- Giant Stature: As a Bonus Action, you transform and enlarge your armor for 1 minute. For the duration, your reach increases by 5 feet, and if you are smaller than Large, you become Large, along with anything you are wearing. If there isn't enough room for you to increase your size, your size doesn't change. You can use this Bonus Action a number of times equal to your Intelligence modifier (minimum of once). You regain all expended uses when you finish a Long Rest.</p>",
+    "spellGrants": null
+  },
+  {
     "name": "Druidic Warrior",
     "source": "TCE",
     "sourceBook": "Tasha's Cauldron of Everything",
@@ -1275,6 +1416,68 @@
     "prerequisites": null,
     "consumes": null,
     "description": "<p>When you are wielding a melee weapon in one hand and no other weapons, you gain a +2 bonus to damage rolls with that weapon.</p>",
+    "spellGrants": null
+  },
+  {
+    "name": "Dueling",
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
+    "rules": "2024",
+    "category": "fightingStyle",
+    "classes": [
+      "Fighter",
+      "Paladin",
+      "Ranger"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>When you’re holding a Melee weapon in one hand and no other weapons, you gain a +2 bonus to damage rolls with that weapon.</p>",
+    "spellGrants": null
+  },
+  {
+    "name": "Eagle (Aspect of the Beast)",
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
+    "rules": "2014",
+    "category": "aspectOfTheBeast",
+    "classes": [
+      "Barbarian"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>You gain the eyesight of an eagle. You can see up to 1 mile away with no difficulty, able to discern even fine details as though looking at something no more than 100 feet away from you. Additionally, dim light doesn't impose disadvantage on your Wisdom (Perception) checks.</p>",
+    "spellGrants": null
+  },
+  {
+    "name": "Eagle (Totem Spirit)",
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
+    "rules": "2014",
+    "category": "totemSpirit",
+    "classes": [
+      "Barbarian"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>While you're raging and aren't wearing heavy armor, other creatures have disadvantage on opportunity attack rolls against you, and you can use the Dash action as a bonus action on your turn. The spirit of the eagle makes you into a predator who can weave through the fray with ease.</p>",
+    "spellGrants": null
+  },
+  {
+    "name": "Eagle (Totemic Attunement)",
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
+    "rules": "2014",
+    "category": "totemicAttunement",
+    "classes": [
+      "Barbarian"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>While raging, you have a flying speed equal to your current walking speed. This benefit works only in short bursts; you fall if you end your turn in the air and nothing else is holding you aloft.</p>",
     "spellGrants": null
   },
   {
@@ -1614,6 +1817,21 @@
     "spellGrants": null
   },
   {
+    "name": "Escape the Horde",
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
+    "rules": "2014",
+    "category": "hunterDefensiveTactics",
+    "classes": [
+      "Ranger"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>Opportunity attacks against you are made with disadvantage.</p>",
+    "spellGrants": null
+  },
+  {
     "name": "Eternal Mountain Defense",
     "source": "PHB",
     "sourceBook": "Player's Handbook (2014)",
@@ -1655,6 +1873,21 @@
         "ability": "wis"
       }
     ]
+  },
+  {
+    "name": "Evasion",
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
+    "rules": "2014",
+    "category": "hunterSuperiorDefense",
+    "classes": [
+      "Ranger"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>You can nimbly dodge out of the way of certain area effects, such as a red dragon's fiery breath or a lightning bolt spell. When you are subjected to an effect that allows you to make a Dexterity saving throw to take only half damage, you instead take no damage if you succeed on the saving throw, and only half damage if you fail.</p>",
+    "spellGrants": null
   },
   {
     "name": "Evasive Footwork",
@@ -1898,6 +2131,21 @@
     "spellGrants": null
   },
   {
+    "name": "Fire Rune",
+    "source": "TCE",
+    "sourceBook": "Tashas Cauldron of Everything",
+    "tier": "official",
+    "rules": "2014",
+    "category": "runeKnightRune",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>This runes magic channels the masterful craftsmanship of great smiths. While wearing or carrying an object inscribed with this rune, your proficiency bonus is doubled for any ability check you make that uses your proficiency with a tool.</p><p>In addition, when you hit a creature with an attack using a weapon, you can invoke the rune to summon fiery shackles: the target takes an extra 2d6 fire damage, and it must succeed on a Strength saving throw or be restrained for 1 minute. While restrained by the shackles, the target takes 2d6 fire damage at the start of each of its turns. The target can repeat the saving throw at the end of each of its turns, banishing the shackles on a success. Once you invoke this rune, you cant do so again until you finish a short or long rest.</p>",
+    "spellGrants": null
+  },
+  {
     "name": "Fire Rune (BGG)",
     "source": "BGG",
     "sourceBook": "Bigby Presents: Glory of the Giants",
@@ -2049,6 +2297,21 @@
     "spellGrants": null
   },
   {
+    "name": "Frost Rune",
+    "source": "TCE",
+    "sourceBook": "Tashas Cauldron of Everything",
+    "tier": "official",
+    "rules": "2014",
+    "category": "runeKnightRune",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>This runes magic evokes the might of those who survive in the wintry wilderness, such as frost giants. While wearing or carrying an object inscribed with this rune, you have advantage on Wisdom (Animal Handling) checks and Charisma (Intimidation) checks.</p><p>In addition, you can invoke the rune as a bonus action to increase your sturdiness. For 10 minutes, you gain a +2 bonus to all ability checks and saving throws that use Strength or Constitution. Once you invoke this rune, you cant do so again until you finish a short or long rest.</p>",
+    "spellGrants": null
+  },
+  {
     "name": "Frost Rune (BGG)",
     "source": "BGG",
     "sourceBook": "Bigby Presents: Glory of the Giants",
@@ -2147,6 +2410,21 @@
     },
     "consumes": null,
     "description": "<p>As an action, you gain the ability to see through solid objects to a range of 30 feet. Within that range, you have {@sense darkvision} if you don't already have it. This special sight lasts for 1 minute or until your {@status concentration} ends (as if you were {@status concentration||concentrating} on a spell). During that time, you perceive objects as ghostly, transparent images.</p><p>Once you use this invocation, you can't use it again until you finish a short or long rest.</p>",
+    "spellGrants": null
+  },
+  {
+    "name": "Giant Killer",
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
+    "rules": "2014",
+    "category": "hunterPrey",
+    "classes": [
+      "Ranger"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>When a Large or larger creature within 5 feet of you hits or misses you with an attack, you can use your reaction to attack that creature immediately after its attack, provided that you can see the creature.</p>",
     "spellGrants": null
   },
   {
@@ -2470,6 +2748,53 @@
     "spellGrants": null
   },
   {
+    "name": "Great Weapon Fighting",
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
+    "rules": "2024",
+    "category": "fightingStyle",
+    "classes": [
+      "Fighter",
+      "Paladin",
+      "Ranger"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>When you roll damage for an attack you make with a Melee weapon that you are holding with two hands, you can treat any 1 or 2 on a damage die as a 3. The weapon must have the Two-Handed or Versatile property to gain this benefit.</p>",
+    "spellGrants": null
+  },
+  {
+    "name": "Guardian",
+    "source": "TCE",
+    "sourceBook": "Tasha's Cauldron of Everything",
+    "tier": "official",
+    "rules": "2014",
+    "category": "armorModel",
+    "classes": [
+      "Artificer"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p><strong>Thunder Gauntlets</strong></p><p>Each of the armor's gauntlets counts as a simple melee weapon while you aren't holding anything in it, and it deals 1d8 thunder damage on a hit. A creature hit by the gauntlet has disadvantage on attack rolls against targets other than you until the start of your next turn, as the armor magically emits a distracting pulse when the creature attacks someone else.</p><p><strong>Defensive Field</strong></p><p>As a bonus action, you can gain temporary hit points equal to your level in this class, replacing any temporary hit points you already have. You lose these temporary hit points if you doff the armor. You can use this bonus action a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.</p><p><strong>Nível 15 (Perfected Armor)</strong></p><p>When a Huge or smaller creature you can see ends its turn within 30 feet of you, you can use your reaction to magically force it to make a Strength saving throw against your spell save DC. On a failed save, you pull the creature up to 25 feet directly to an unoccupied space. If you pull the target to a space within 5 feet of you, you can make a melee weapon attack against it as part of this reaction.</p><p>You can use this reaction a number of times equal to your proficiency bonus, and you regain all expended uses of it when you finish a long rest.</p>",
+    "spellGrants": null
+  },
+  {
+    "name": "Guardian",
+    "source": "EFA",
+    "sourceBook": "Eberron: Forge of the Artificer (2024)",
+    "tier": "official",
+    "rules": "2024",
+    "category": "armorModel",
+    "classes": [
+      "Artificer"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>You design your armor to be in the front line of conflict. It has the following features:</p><p>Thunder Pulse: You can discharge concussive blasts with strikes from your armor. The pulse counts as a Simple Melee weapon and deals 1d8 Thunder damage on a hit. A creature hit by the pulse has Disadvantage on attack rolls against targets other than you until the start of your next turn.</p><p>Defensive Field: While Bloodied, you can take a Bonus Action to gain Temporary Hit Points equal to your Artificer level. You lose these Temporary Hit Points if you doff the armor.</p>",
+    "spellGrants": null
+  },
+  {
     "name": "Heightened Spell",
     "source": "PHB",
     "sourceBook": "Player's Handbook (2014)",
@@ -2564,6 +2889,21 @@
     "spellGrants": null
   },
   {
+    "name": "Hill Rune",
+    "source": "TCE",
+    "sourceBook": "Tashas Cauldron of Everything",
+    "tier": "official",
+    "rules": "2014",
+    "category": "runeKnightRune",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>Requer nível 7 ou superior em Rune Knight (não reforçado pelo assistente). This runes magic bestows a resilience reminiscent of a hill giant. While wearing or carrying an object that bears this rune, you have advantage on saving throws against being poisoned, and you have resistance against poison damage.</p><p>In addition, you can invoke the rune as a bonus action, gaining resistance to bludgeoning, piercing, and slashing damage for 1 minute. Once you invoke this rune, you cant do so again until you finish a short or long rest.</p>",
+    "spellGrants": null
+  },
+  {
     "name": "Hill Rune (BGG)",
     "source": "BGG",
     "sourceBook": "Bigby Presents: Glory of the Giants",
@@ -2619,6 +2959,21 @@
     "spellGrants": null
   },
   {
+    "name": "Horde Breaker",
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
+    "rules": "2014",
+    "category": "hunterPrey",
+    "classes": [
+      "Ranger"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>Once on each of your turns when you make a weapon attack, you can make another attack with the same weapon against a different creature that is within 5 feet of the original target and within range of your weapon.</p>",
+    "spellGrants": null
+  },
+  {
     "name": "Improved Pact Weapon",
     "source": "XGE",
     "sourceBook": "Xanathar's Guide to Everything",
@@ -2637,6 +2992,53 @@
     },
     "consumes": null,
     "description": "<p>You can use any weapon you summon with your Pact of the Blade feature as a spellcasting focus for your warlock spells.</p><p>In addition, the weapon gains a +1 bonus to its attack and damage rolls, unless it is a magic weapon that already has a bonus to those rolls.</p><p>Finally, the weapon you conjure can be a {@item shortbow|phb}, {@item longbow|phb}, {@item light crossbow|phb}, or {@item heavy crossbow|phb}.</p>",
+    "spellGrants": null
+  },
+  {
+    "name": "Infiltrator",
+    "source": "TCE",
+    "sourceBook": "Tasha's Cauldron of Everything",
+    "tier": "official",
+    "rules": "2014",
+    "category": "armorModel",
+    "classes": [
+      "Artificer"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p><strong>Lightning Launcher</strong></p><p>A gemlike node appears on one of your armored fists or on the chest (your choice). It counts as a simple ranged weapon, with a normal range of 90 feet and a long range of 300 feet, and it deals 1d6 lightning damage on a hit. Once on each of your turns when you hit a creature with it, you can deal an extra 1d6 lightning damage to that target.</p><p><strong>Powered Steps</strong></p><p>Your walking speed increases by 5 feet.</p><p><strong>Dampening Field</strong></p><p>You have advantage on Dexterity (Stealth) checks. If the armor normally imposes disadvantage on such checks, the advantage and disadvantage cancel each other, as normal.</p><p><strong>Nível 15 (Perfected Armor)</strong></p><p>Any creature that takes lightning damage from your Lightning Launcher glimmers with magical light until the start of your next turn. The glimmering creature sheds dim light in a 5-foot radius, and it has disadvantage on attack rolls against you, as the light jolts it if it attacks you. In addition, the next attack roll against it has advantage, and if that attack hits, the target takes an extra 1d6 lightning damage.</p>",
+    "spellGrants": null
+  },
+  {
+    "name": "Infiltrator",
+    "source": "EFA",
+    "sourceBook": "Eberron: Forge of the Artificer (2024)",
+    "tier": "official",
+    "rules": "2024",
+    "category": "armorModel",
+    "classes": [
+      "Artificer"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>You customize your armor for subtler undertakings. It has the following features:</p><p>- Lightning Launcher: A gemlike node appears on your armor, from which you can shoot bolts of lightning. The launcher counts as a Simple Ranged weapon with a normal range of 90 feet and a long range of 300 feet, and it deals 1d6 Lightning damage on a hit. Once on each of your turns when you hit a creature with the launcher, you can deal an extra 1d6 Lightning damage to that target.<br>- Powered Steps: Your Speed increases by 5 feet.<br>- Dampening Field: You have Advantage on Dexterity (Stealth) checks. If the armor imposes Disadvantage on such checks, the Advantage and Disadvantage cancel each other, as normal.</p>",
+    "spellGrants": null
+  },
+  {
+    "name": "Interception",
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
+    "rules": "2024",
+    "category": "fightingStyle",
+    "classes": [
+      "Fighter",
+      "Paladin",
+      "Ranger"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>When a creature you can see hits another creature within 5 feet of you with an attack roll, you can take a Reaction to reduce the damage dealt to the target by 1d10 plus your Proficiency Bonus. You must be holding a Shield or a Simple or Martial weapon to use this Reaction.</p>",
     "spellGrants": null
   },
   {
@@ -3387,6 +3789,21 @@
     ]
   },
   {
+    "name": "Multiattack Defense",
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
+    "rules": "2014",
+    "category": "hunterDefensiveTactics",
+    "classes": [
+      "Ranger"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>When a creature hits you with an attack, you gain a +4 bonus to AC against all subsequent attacks made by that creature for the rest of the turn.</p>",
+    "spellGrants": null
+  },
+  {
     "name": "Nimble Climber (GGR)",
     "source": "GGR",
     "sourceBook": "Guildmasters' Guide to Ravnica",
@@ -3792,6 +4209,23 @@
     "spellGrants": null
   },
   {
+    "name": "Protection",
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
+    "rules": "2024",
+    "category": "fightingStyle",
+    "classes": [
+      "Fighter",
+      "Paladin",
+      "Ranger"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>When a creature you can see attacks a target other than you that is within 5 feet of you, you can take a Reaction to interpose your Shield if you’re holding one. You impose Disadvantage on the triggering attack roll and all other attack rolls against the target until the start of your next turn if you remain within 5 feet of the target.</p>",
+    "spellGrants": null
+  },
+  {
     "name": "Protection of the Talisman",
     "source": "TCE",
     "sourceBook": "Tasha's Cauldron of Everything",
@@ -3816,6 +4250,21 @@
     },
     "consumes": null,
     "description": "<p>When the wearer of your talisman fails a saving throw, they can add a d4 to the roll, potentially turning the save into a success. This benefit can be used a number of times equal to your proficiency bonus, and all expended uses are restored when you finish a long rest.</p>",
+    "spellGrants": null
+  },
+  {
+    "name": "Protector",
+    "source": "PHB",
+    "sourceBook": "Players Handbook (2024)",
+    "tier": "official",
+    "rules": "2024",
+    "category": "divineOrder",
+    "classes": [
+      "Cleric"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>Trained for battle, you gain proficiency with Martial weapons and training with Heavy armor.</p>",
     "spellGrants": null
   },
   {
@@ -4569,6 +5018,36 @@
     "spellGrants": null
   },
   {
+    "name": "Stand Against the Tide",
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
+    "rules": "2014",
+    "category": "hunterSuperiorDefense",
+    "classes": [
+      "Ranger"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>When a hostile creature misses you with a melee attack, you can use your reaction to force that creature to repeat the same attack against another creature (other than itself) of your choice.</p>",
+    "spellGrants": null
+  },
+  {
+    "name": "Steel Will",
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
+    "rules": "2014",
+    "category": "hunterDefensiveTactics",
+    "classes": [
+      "Ranger"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>You have advantage on saving throws against being frightened.</p>",
+    "spellGrants": null
+  },
+  {
     "name": "Stone Rune",
     "source": "TCE",
     "sourceBook": "Tasha's Cauldron of Everything",
@@ -4581,6 +5060,21 @@
     "prerequisites": null,
     "consumes": null,
     "description": "<p>This rune's magic channels the judiciousness associated with stone giants. While wearing or carrying an object inscribed with this rune, you have advantage on Wisdom (Insight) checks, and you have darkvision out to a range of 120 feet.</p><p>In addition, when a creature you can see ends its turn within 30 feet of you, you can use your reaction to invoke the rune and force the creature to make a Wisdom saving throw. Unless the save succeeds, the creature is charmed by you for 1 minute. While charmed in this way, the creature has a speed of 0 and is incapacitated, descending into a dreamy stupor. The creature repeats the saving throw at the end of each of its turns, ending the effect on a success. Once you invoke this rune, you can't do so again until you finish a short or long rest.</p>",
+    "spellGrants": null
+  },
+  {
+    "name": "Stone Rune",
+    "source": "TCE",
+    "sourceBook": "Tashas Cauldron of Everything",
+    "tier": "official",
+    "rules": "2014",
+    "category": "runeKnightRune",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>This runes magic channels the judiciousness associated with stone giants. While wearing or carrying an object inscribed with this rune, you have advantage on Wisdom (Insight) checks, and you have darkvision out to a range of 120 feet.</p><p>In addition, when a creature you can see ends its turn within 30 feet of you, you can use your reaction to invoke the rune and force the creature to make a Wisdom saving throw. Unless the save succeeds, the creature is charmed by you for 1 minute. While charmed in this way, the creature has a speed of 0 and is incapacitated, descending into a dreamy stupor. The creature repeats the saving throw at the end of each of its turns, ending the effect on a success. Once you invoke this rune, you cant do so again until you finish a short or long rest.</p>",
     "spellGrants": null
   },
   {
@@ -4643,6 +5137,21 @@
     },
     "consumes": null,
     "description": "<p>Using this rune, you can glimpse the future like a storm giant seer. While wearing or carrying an object inscribed with this rune, you have advantage on Intelligence (Arcana) checks, and you can't be surprised as long as you aren't incapacitated.</p><p>In addition, you can invoke the rune as a bonus action to enter a prophetic state for 1 minute or until you're incapacitated. Until the state ends, when you or another creature you can see within 60 feet of you makes an attack roll, a saving throw, or an ability check, you can use your reaction to cause the roll to have advantage or disadvantage. Once you invoke this rune, you can't do so again until you finish a short or long rest.</p>",
+    "spellGrants": null
+  },
+  {
+    "name": "Storm Rune",
+    "source": "TCE",
+    "sourceBook": "Tashas Cauldron of Everything",
+    "tier": "official",
+    "rules": "2014",
+    "category": "runeKnightRune",
+    "classes": [
+      "Fighter"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>Requer nível 7 ou superior em Rune Knight (não reforçado pelo assistente). Using this rune, you can glimpse the future like a storm giant seer. While wearing or carrying an object inscribed with this rune, you have advantage on Intelligence (Arcana) checks, and you cant be surprised as long as you arent incapacitated.</p><p>In addition, you can invoke the rune as a bonus action to enter a prophetic state for 1 minute or until youre incapacitated. Until the state ends, when you or another creature you can see within 60 feet of you makes an attack roll, a saving throw, or an ability check, you can use your reaction to cause the roll to have advantage or disadvantage. Once you invoke this rune, you cant do so again until you finish a short or long rest.</p>",
     "spellGrants": null
   },
   {
@@ -4824,6 +5333,32 @@
     "spellGrants": null
   },
   {
+    "name": "Thaumaturge",
+    "source": "PHB",
+    "sourceBook": "Players Handbook (2024)",
+    "tier": "official",
+    "rules": "2024",
+    "category": "divineOrder",
+    "classes": [
+      "Cleric"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>You know one extra cantrip from the Cleric spell list. In addition, your mystical connection to the divine gives you a bonus to your Intelligence (Arcana or Religion) checks. The bonus equals your Wisdom modifier (minimum of +1).</p>",
+    "spellGrants": [
+      {
+        "known": {
+          "_": [
+            {
+              "choose": "level=0|class=cleric",
+              "count": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
     "name": "Thief of Five Fates",
     "source": "PHB",
     "sourceBook": "Player's Handbook (2014)",
@@ -4906,6 +5441,23 @@
     },
     "consumes": null,
     "description": "<p>You gain the Extra Attack feature for your pact weapon only. With that feature, you can attack twice with the weapon instead of once when you take the Attack action on your turn.</p>",
+    "spellGrants": null
+  },
+  {
+    "name": "Thrown Weapon Fighting",
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
+    "rules": "2024",
+    "category": "fightingStyle",
+    "classes": [
+      "Fighter",
+      "Paladin",
+      "Ranger"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>When you hit with a ranged attack roll using a weapon that has the Thrown property, you gain a +2 bonus to the damage roll.</p>",
     "spellGrants": null
   },
   {
@@ -5108,6 +5660,40 @@
     "spellGrants": null
   },
   {
+    "name": "Two-Weapon Fighting",
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
+    "rules": "2024",
+    "category": "fightingStyle",
+    "classes": [
+      "Fighter",
+      "Paladin",
+      "Ranger"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>When you make an extra attack as a result of using a weapon that has the Light property, you can add your ability modifier to the damage of that attack if you aren’t already adding it to the damage.</p>",
+    "spellGrants": null
+  },
+  {
+    "name": "Unarmed Fighting",
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
+    "rules": "2024",
+    "category": "fightingStyle",
+    "classes": [
+      "Fighter",
+      "Paladin",
+      "Ranger"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>When you hit with your Unarmed Strike and deal damage, you can deal Bludgeoning damage equal to 1d6 plus your Strength modifier instead of the normal damage of an Unarmed Strike. If you aren’t holding any weapons or a Shield when you make the attack roll, the d6 becomes a d8.</p><p>At the start of each of your turns, you can deal 1d4 Bludgeoning damage to one creature Grappled by you.</p>",
+    "spellGrants": null
+  },
+  {
     "name": "Unarmed Fighting",
     "source": "TCE",
     "sourceBook": "Tasha's Cauldron of Everything",
@@ -5135,6 +5721,21 @@
     "prerequisites": null,
     "consumes": null,
     "description": "<p>You can create a blast of compressed air that strikes like a mighty fist. As an action, you can spend 2 ki points and choose a creature within 30 feet of you. That creature must make a Strength saving throw. On a failed save, the creature takes 3d10 bludgeoning damage, plus an extra 1d10 bludgeoning damage for each additional ki point you spend, and you can push the creature up to 20 feet away from you and knock it prone. On a successful save, the creature takes half as much damage, and you don't push it or knock it prone.</p>",
+    "spellGrants": null
+  },
+  {
+    "name": "Uncanny Dodge",
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
+    "rules": "2014",
+    "category": "hunterSuperiorDefense",
+    "classes": [
+      "Ranger"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>When an attacker that you can see hits you with an attack, you can use your reaction to halve the attack's damage against you.</p>",
     "spellGrants": null
   },
   {
@@ -5280,6 +5881,21 @@
     "spellGrants": null
   },
   {
+    "name": "Volley",
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
+    "rules": "2014",
+    "category": "hunterMultiattack",
+    "classes": [
+      "Ranger"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>You can use your action to make a ranged attack against any number of creatures within 10 feet of a point you can see within your weapon's range. You must have ammunition for each target, as normal, and you make a separate attack roll for each target.</p>",
+    "spellGrants": null
+  },
+  {
     "name": "Water Whip",
     "source": "PHB",
     "sourceBook": "Player's Handbook (2014)",
@@ -5336,6 +5952,21 @@
         "ability": "wis"
       }
     ]
+  },
+  {
+    "name": "Whirlwind Attack",
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
+    "rules": "2014",
+    "category": "hunterMultiattack",
+    "classes": [
+      "Ranger"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>You can use your action to make a melee attack against any number of creatures within 5 feet of you, with a separate attack roll for each target.</p>",
+    "spellGrants": null
   },
   {
     "name": "Whispers of the Grave",
@@ -5459,6 +6090,51 @@
     },
     "consumes": null,
     "description": "<p>You have Truesight with a range of 30 feet.</p>",
+    "spellGrants": null
+  },
+  {
+    "name": "Wolf (Aspect of the Beast)",
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
+    "rules": "2014",
+    "category": "aspectOfTheBeast",
+    "classes": [
+      "Barbarian"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>You gain the hunting sensibilities of a wolf. You can track other creatures while traveling at a fast pace, and you can move stealthily while traveling at a normal pace.</p>",
+    "spellGrants": null
+  },
+  {
+    "name": "Wolf (Totem Spirit)",
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
+    "rules": "2014",
+    "category": "totemSpirit",
+    "classes": [
+      "Barbarian"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>While you're raging, your friends have advantage on melee attack rolls against any creature within 5 feet of you that is hostile to you. The spirit of the wolf makes you a leader of hunters.</p>",
+    "spellGrants": null
+  },
+  {
+    "name": "Wolf (Totemic Attunement)",
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
+    "rules": "2014",
+    "category": "totemicAttunement",
+    "classes": [
+      "Barbarian"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>While you're raging, you can use a bonus action on your turn to knock a Large or smaller creature prone when you hit it with a melee weapon attack.</p>",
     "spellGrants": null
   }
 ]

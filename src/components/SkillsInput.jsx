@@ -1,6 +1,12 @@
 import { ABILITY_LABELS, SKILLS } from "../schema/character";
 
 export function SkillsInput({ proficiencies, expertise, onChange }) {
+  // Defesa contra personagem antigo/importado sem esses campos no schema
+  // (ver LevelUpWizard.jsx, que não mesclava com os padrões antes) --
+  // `.includes` num array undefined quebra a tela na hora de marcar Expertise.
+  proficiencies ??= [];
+  expertise ??= [];
+
   function toggleProficiency(id) {
     const has = proficiencies.includes(id);
     onChange({

@@ -1,7 +1,8 @@
 import { ListEditor } from "../ListEditor";
 import { SpellBrowser } from "../SpellBrowser";
+import { SpellChoicePicker } from "../SpellChoicePicker";
 import { spellProgressionForCharacter, isCantripName } from "../../schema/spellProgression";
-import { computeGrantedSpells } from "../../schema/grantedSpells";
+import { computeGrantedSpells, computeSubclassSpellChoices } from "../../schema/grantedSpells";
 import { computeExpandedSpellPool } from "../../schema/expandedSpellPool";
 import spellsData from "../../data/content/spells.json";
 import featsData from "../../data/content/feats.json";
@@ -31,6 +32,22 @@ export function StepMagias({ character, raceMatch, classMatches, spells, onChang
   // `handleAdd`/`character.spells`) -- por isso alimenta o `SpellBrowser` também, não só
   // o aviso em texto.
   const expandedPool = computeExpandedSpellPool({ character, classMatches, spellsData });
+
+  // Magia de escolha FIXA que a subclasse concede num nível específico (ex:
+  // Black Magic do Pugilist/Hand of Dread "2 truques + 1 magia de nível 1 à
+  // escolha", Additional Magical Secrets do Bardo/College of Lore) -- pool já
+  // vem pronto do banco (`subclassData.spellChoices`), só falta a UI de
+  // escolher dentro dele. Migrado de ClassesInput.jsx (existia só na etapa
+  // Classe da criação, nunca no Level-Up). Função compartilhada
+  // (`computeSubclassSpellChoices`) porque o `conditional` das etapas
+  // "Magias" dos dois wizards TAMBÉM precisa dela -- ver comentário lá.
+  const subclassSpellChoices = computeSubclassSpellChoices(character, classMatches);
+
+  function handleAddMany(names) {
+    const existing = new Set(spells.map((s) => s.name));
+    const additions = names.filter((name) => !existing.has(name)).map((name) => ({ name, prepared: false }));
+    if (additions.length) onChangeSpells([...spells, ...additions]);
+  }
   const bonusEligibility = new Map();
   for (const entry of expandedPool) {
     if (!entry.unlocked) continue;
@@ -84,6 +101,15 @@ export function StepMagias({ character, raceMatch, classMatches, spells, onChang
           </p>
         );
       })}
+      {subclassSpellChoices.map((choice) => (
+        <SpellChoicePicker
+          key={choice.key}
+          title={`Magia (${choice.source})`}
+          count={choice.count}
+          pool={choice.pool}
+          onAdd={handleAddMany}
+        />
+      ))}
       <p className="field-hint">
         Truques: {cantripCount}/{spellCaps.cantripsKnown}
         {spellCaps.spellsKnown !== null && ` · Magias conhecidas: ${knownCount}/${spellCaps.spellsKnown}`}

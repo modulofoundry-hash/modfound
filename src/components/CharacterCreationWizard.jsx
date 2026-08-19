@@ -29,7 +29,7 @@ import { weaponProficiencySlots } from "../utils/weaponProficiency";
 import { useAnimalEnhancementChoices } from "../hooks/useAnimalEnhancementChoices";
 import { animalEnhancementSlots, reversedAnimalEnhancementChoices } from "../utils/animalEnhancement";
 import { resolveClassMatches } from "../schema/resolveClassMatches";
-import { computeGrantedSpells } from "../schema/grantedSpells";
+import { computeGrantedSpells, computeSubclassSpellChoices } from "../schema/grantedSpells";
 import { hasActiveSpellcasting } from "../schema/spellProgression";
 import racesData from "../data/content/races.json";
 import backgroundsData from "../data/content/backgrounds.json";
@@ -94,11 +94,23 @@ function openFeatChoiceSlots(character, raceMatch, backgroundMatch) {
 // classe, não nível total do personagem — multiclasse soma slots
 // independentes). `classMatches[i].classData.asiLevels` vem do
 // generate-site-content.mjs (extraído da feature "Ability Score Improvement").
+//
+// Epic Boon (2024, nível 19 na maioria das classes) usa o MESMO slot —
+// achado real testando o level-up da Pugilist: o texto da feature é "gain an
+// Epic Boon feat OR ANOTHER FEAT of your choice for which you qualify", ou
+// seja, é um slot de ASI/Talento igual aos outros (o picker de talento já
+// não filtra por pré-requisito nenhum, então Epic Boons já aparecem na busca
+// sem precisar de UI própria) — só faltava o NÍVEL entrar na lista de slots.
+// Nunca hardcoded como "nível 19": lido da própria feature "Epic Boon" de
+// cada classe (algumas fontes de terceiros podem usar outro nível).
 export function abilityImprovementSlots(character, classMatches) {
   const slots = [];
   character.classes.forEach((row, classIndex) => {
-    const asiLevels = classMatches[classIndex]?.classData?.asiLevels ?? [];
-    for (const level of asiLevels) {
+    const classData = classMatches[classIndex]?.classData;
+    const asiLevels = classData?.asiLevels ?? [];
+    const epicBoonLevel = classData?.features?.find((f) => f.name === "Epic Boon")?.level;
+    const levels = epicBoonLevel && !asiLevels.includes(epicBoonLevel) ? [...asiLevels, epicBoonLevel] : asiLevels;
+    for (const level of levels) {
       if (level <= (row.level ?? 1)) slots.push({ classIndex, level, className: row.name });
     }
   });
@@ -315,10 +327,13 @@ const STEP_DEFS = [
     // Aparece se tiver classe conjuradora OU se Raça/Feat/Subclasse/Escolha de
     // Classe já concede alguma magia sozinha (ex: Erina Spiritfarer) -- sem
     // isso o personagem nunca via o aviso de "Concedidas automaticamente"
-    // quando não tinha nenhuma classe conjuradora escolhida.
+    // quando não tinha nenhuma classe conjuradora escolhida. Terceira condição
+    // (`computeSubclassSpellChoices`) cobre escolha FIXA de magia de subclasse
+    // sem `spellcasting` real (ex: Black Magic do Pugilist/Hand of Dread).
     conditional: ({ character, classMatches, raceMatch }) =>
       hasActiveSpellcasting(character, classMatches) ||
-      computeGrantedSpells({ character, raceMatch, classMatches, featsData, optionalFeaturesData }).length > 0,
+      computeGrantedSpells({ character, raceMatch, classMatches, featsData, optionalFeaturesData }).length > 0 ||
+      computeSubclassSpellChoices(character, classMatches).length > 0,
   },
   {
     key: "identidade",
@@ -805,7 +820,6 @@ export function CharacterCreationWizard({ initialValue, onSubmit, onCancel }) {
             onChange={handleClassesChange}
             onApplyEquipment={appliers.applyEquipmentGrants}
             onApplySkills={appliers.applySkills}
-            onApplySpells={appliers.applySpellChoices}
             matches={classesMatches}
             onMatchesChange={setClassesMatches}
             onRemoveClass={handleRemoveClass}

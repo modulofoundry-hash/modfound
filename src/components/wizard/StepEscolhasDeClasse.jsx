@@ -10,9 +10,19 @@ const CATEGORY_LABELS = {
   maneuver: "Manobra (Battle Master)",
   elementalDiscipline: "Disciplina Elemental (Way of the Four Elements)",
   artificerInfusion: "Infusão de Artífice",
+  armorModel: "Modelo de Armadura (Armorer)",
   arcaneShot: "Disparo Arcano (Arcane Archer)",
   runeMagic: "Runa",
   houseTools: "Ferramentas de Casa (House Agent)",
+  totemSpirit: "Totem Spirit (Path of the Totem Warrior)",
+  aspectOfTheBeast: "Aspect of the Beast (Path of the Totem Warrior)",
+  totemicAttunement: "Totemic Attunement (Path of the Totem Warrior)",
+  runeKnightRune: "Runa (Rune Knight)",
+  hunterPrey: "Hunter's Prey (Hunter)",
+  hunterDefensiveTactics: "Defensive Tactics (Hunter)",
+  hunterMultiattack: "Multiattack (Hunter)",
+  hunterSuperiorDefense: "Superior Hunter's Defense (Hunter)",
+  divineOrder: "Ordem Divina (Divine Order)",
 };
 
 const COLUMNS = [
@@ -37,6 +47,14 @@ function ChoiceSlotCard({ slot, pool, chosenNames, onPick, onClear }) {
       <div className="melhoria-feat-picker">
         {Array.from({ length: slot.count }, (_, i) => {
           const chosen = chosenNames[i];
+          // Exclui da lista os nomes já escolhidos nas OUTRAS posições do
+          // mesmo card -- sem isso, nada impedia escolher a MESMA opção
+          // várias vezes num slot com count>1 (achado ao vivo: Rune Knight
+          // deixava repetir "Cloud Rune" nas 5 posições). Regra real de
+          // quase todo mecanismo desse tipo (Fighting Style, Metamagia,
+          // Manobra, Infusão, Runa) já proíbe repetir a mesma escolha.
+          const otherChosen = new Set(chosenNames.filter((_, idx) => idx !== i));
+          const availablePool = pool.filter((item) => !otherChosen.has(item.name));
           return (
             <div key={i} className="class-choice-pick">
               {chosen && (
@@ -49,7 +67,7 @@ function ChoiceSlotCard({ slot, pool, chosenNames, onPick, onClear }) {
               )}
               {!chosen && (
                 <OriginTableBrowser
-                  items={pool}
+                  items={availablePool}
                   columns={COLUMNS}
                   value={chosen ?? null}
                   onPick={(item) => onPick(slot.category, i, item)}

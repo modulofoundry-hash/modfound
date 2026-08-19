@@ -72,10 +72,17 @@ export function StepPericias({
   raceMatch,
   backgroundMatch,
   classMatches,
+  expertiseGrants,
   appliers,
 }) {
   return (
     <div className="wizard-step-pericias">
+      {expertiseGrants?.length > 0 && (
+        <p className="pericias-expertise-note">
+          Expertise concedida por: {expertiseGrants.map((g) => `${g.className} (nível ${g.level})`).join(", ")} — marque
+          abaixo em quais perícias já proficientes.
+        </p>
+      )}
       <GrantSummary
         title="Concedido pela Raça"
         matched={raceMatch}

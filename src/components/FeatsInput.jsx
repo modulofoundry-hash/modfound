@@ -54,15 +54,17 @@ export function FeatsInput({ items, feats, onChange, onApplySpells, maxFeats, se
                 </button>
               </div>
               {onApplySpells &&
-                found?.spellChoices?.map((choice, i) => (
-                  <SpellChoicePicker
-                    key={i}
-                    title={`Magia (${name})`}
-                    count={choice.count}
-                    pool={choice.pool}
-                    onAdd={onApplySpells}
-                  />
-                ))}
+                found?.spellChoices
+                  ?.filter((choice) => choice.pool.length > 0)
+                  .map((choice, i) => (
+                    <SpellChoicePicker
+                      key={i}
+                      title={`Magia (${name})`}
+                      count={choice.count}
+                      pool={choice.pool}
+                      onAdd={onApplySpells}
+                    />
+                  ))}
             </li>
           );
         })}

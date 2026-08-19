@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { createEmptyCharacter } from "../schema/character";
 import { StepSelecionarNiveis } from "./wizard/StepSelecionarNiveis";
 import { StepPericias } from "./wizard/StepPericias";
 import { StepMelhorias } from "./wizard/StepMelhorias";
@@ -15,7 +16,7 @@ import { weaponMasterySlots, resolveFixedWeaponProficiency } from "../utils/weap
 import { weaponProficiencySlots } from "../utils/weaponProficiency";
 import { animalEnhancementSlots, reversedAnimalEnhancementChoices } from "../utils/animalEnhancement";
 import { resolveClassMatches } from "../schema/resolveClassMatches";
-import { computeGrantedSpells } from "../schema/grantedSpells";
+import { computeGrantedSpells, computeSubclassSpellChoices } from "../schema/grantedSpells";
 import { hasActiveSpellcasting } from "../schema/spellProgression";
 import { useCharacterAppliers } from "../hooks/useCharacterAppliers";
 import { useAbilityImprovements } from "../hooks/useAbilityImprovements";
@@ -43,6 +44,22 @@ function pendingHpLevels(originalLevel, newLevel, isOriginalClass) {
   return levels;
 }
 
+// Mesmo mecanismo de `abilityImprovementSlots` (CharacterCreationWizard.jsx),
+// só que pra Expertise -- níveis vêm de `classData.expertiseLevels` (gerado a
+// partir da feature "Expertise" de cada classe, `generate-site-content.mjs`,
+// não hardcoded por nome de classe: Bardo/Ladino têm 2 cada, mas o Patrulheiro
+// 2024 também ganha no nível 9, achado só por ser orientado a dado).
+function expertiseSlots(character, classMatches) {
+  const slots = [];
+  character.classes.forEach((row, classIndex) => {
+    const levels = classMatches[classIndex]?.classData?.expertiseLevels ?? [];
+    for (const level of levels) {
+      if (level <= (row.level ?? 1)) slots.push({ classIndex, level, className: row.name });
+    }
+  });
+  return slots;
+}
+
 const STEP_DEFS = [
   {
     key: "niveis",
@@ -57,13 +74,18 @@ const STEP_DEFS = [
     label: "Perícias",
     title: "Perícias e Ferramentas",
     blurb:
-      "A classe nova que você acabou de multiclassar concede proficiência em perícias e/ou ferramentas — escolha aqui. " +
-      "Equipamento inicial NÃO entra: pelas regras de multiclasse, só a primeira classe do personagem concede equipamento de início.",
-    // Só aparece pra classe ADICIONADA nesta sessão (índice >= originalLevels.length)
+      "Se você multiclassou pra uma classe nova, ela concede proficiência em perícias e/ou ferramentas — escolha aqui " +
+      "(equipamento inicial NÃO entra: só a primeira classe do personagem concede equipamento de início). " +
+      "Se uma classe que você já tinha chegou num nível que concede Expertise, marque aqui também — dobra o bônus de " +
+      "proficiência numa perícia em que o personagem já é proficiente.",
+    // Aparece OU pra classe ADICIONADA nesta sessão (índice >= originalLevels.length)
     // -- classe que já existia antes já teve essa escolha resolvida na criação/level-up
     // anterior; reabrir aqui de novo deixaria escolher em dobro (skillProficiencies é
-    // lista achatada, sem rastreio de origem).
-    conditional: ({ hasNewClassGrants }) => hasNewClassGrants,
+    // lista achatada, sem rastreio de origem) -- OU quando alguma classe (nova ou já
+    // existente) cruzou um nível novo de Expertise nesta sessão (achado real: a etapa
+    // nunca aparecia pra Bardo/Ladino/Patrulheiro subindo dentro da MESMA classe,
+    // só multiclasse -- Expertise por nível normal nunca tinha jeito de ser marcada).
+    conditional: ({ hasNewClassGrants, hasNewExpertiseSlots }) => hasNewClassGrants || hasNewExpertiseSlots,
   },
   {
     key: "pv",
@@ -121,10 +143,15 @@ const STEP_DEFS = [
     blurb: "Truques/magias conhecidas ou espaço de preparo novos com o nível.",
     // Mesmo motivo do CharacterCreationWizard: sem isso, uma raça com magia
     // concedida (ex: Erina Spiritfarer) nunca mostrava o aviso de "Concedidas
-    // automaticamente" num personagem sem nenhuma classe conjuradora.
+    // automaticamente" num personagem sem nenhuma classe conjuradora. Terceira
+    // condição (`computeSubclassSpellChoices`) é a mesma correção que também
+    // faltava pra escolha de magia FIXA de subclasse (ex: Black Magic do
+    // Pugilist/Hand of Dread) -- sem `spellcasting` real nem grant nomeável,
+    // as duas primeiras condições nunca bastavam pra essa etapa aparecer.
     conditional: ({ character, classMatches, raceMatch }) =>
       hasActiveSpellcasting(character, classMatches) ||
-      computeGrantedSpells({ character, raceMatch, classMatches, featsData, optionalFeaturesData }).length > 0,
+      computeGrantedSpells({ character, raceMatch, classMatches, featsData, optionalFeaturesData }).length > 0 ||
+      computeSubclassSpellChoices(character, classMatches).length > 0,
   },
   {
     key: "confirmacao",
@@ -137,7 +164,15 @@ const STEP_DEFS = [
 ];
 
 export function LevelUpWizard({ initialCharacter, onSubmit, onCancel }) {
-  const [character, setCharacter] = useState(() => JSON.parse(JSON.stringify(initialCharacter)));
+  // Mescla com os padrões (mesmo padrão de CharacterCreationWizard.jsx) --
+  // personagem mais antigo que um campo novo do schema (ex: skillExpertise)
+  // chega sem essa chave, e `.includes` num array undefined quebra a tela na
+  // hora de marcar Expertise (achado real, ver SkillsInput.jsx). Continua
+  // clonando fundo (JSON round-trip) depois de mesclar -- o wizard nunca deve
+  // mutar `initialCharacter` por referência.
+  const [character, setCharacter] = useState(() =>
+    JSON.parse(JSON.stringify({ ...createEmptyCharacter(), ...initialCharacter })),
+  );
   const [originalLevels] = useState(() => (initialCharacter.classes ?? []).map((c) => c.level ?? 1));
   const [classesMatches, setClassesMatches] = useState(() => resolveClassMatches(initialCharacter.classes));
   const [stepKey, setStepKey] = useState(STEP_DEFS[0].key);
@@ -224,6 +259,8 @@ export function LevelUpWizard({ initialCharacter, onSubmit, onCancel }) {
     pendingHp,
     improvementSlots,
     hasNewImprovementSlots,
+    expertiseSlotsNow,
+    hasNewExpertiseSlots,
     choiceSlots,
     hasNewChoiceSlots,
     weaponMasterySlotsNow,
@@ -248,6 +285,9 @@ export function LevelUpWizard({ initialCharacter, onSubmit, onCancel }) {
 
     const improvementSlots = abilityImprovementSlots(character, classMatches);
     const hasNewImprovementSlots = improvementSlots.length > abilityImprovementSlots(beforeCharacter, classMatches).length;
+
+    const expertiseSlotsNow = expertiseSlots(character, classMatches);
+    const hasNewExpertiseSlots = expertiseSlotsNow.length > expertiseSlots(beforeCharacter, classMatches).length;
 
     const choiceSlots = classChoiceSlots(character, classMatches, featsData, backgroundsData);
     const totalChoiceCount = (slots) => slots.reduce((sum, s) => sum + s.count, 0);
@@ -310,6 +350,8 @@ export function LevelUpWizard({ initialCharacter, onSubmit, onCancel }) {
       pendingHp,
       improvementSlots,
       hasNewImprovementSlots,
+      expertiseSlotsNow,
+      hasNewExpertiseSlots,
       choiceSlots,
       hasNewChoiceSlots,
       weaponMasterySlotsNow,
@@ -343,6 +385,7 @@ export function LevelUpWizard({ initialCharacter, onSubmit, onCancel }) {
     raceMatch,
     pendingHp,
     hasNewImprovementSlots,
+    hasNewExpertiseSlots,
     hasNewChoiceSlots,
     hasNewWeaponMasterySlots,
     hasNewWeaponProficiencySlots,
@@ -363,6 +406,7 @@ export function LevelUpWizard({ initialCharacter, onSubmit, onCancel }) {
       classMatches,
       pendingHp,
       hasNewImprovementSlots,
+      hasNewExpertiseSlots,
       hasNewChoiceSlots,
       hasNewWeaponMasterySlots,
       hasNewWeaponProficiencySlots,
@@ -456,6 +500,7 @@ export function LevelUpWizard({ initialCharacter, onSubmit, onCancel }) {
             raceMatch={null}
             backgroundMatch={null}
             classMatches={newClassGrantsMatches}
+            expertiseGrants={expertiseSlotsNow}
             appliers={appliers}
           />
         );

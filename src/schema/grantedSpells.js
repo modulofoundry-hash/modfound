@@ -67,6 +67,28 @@ export function totalCharacterLevel(classes) {
   return (classes ?? []).filter((c) => c.name).reduce((sum, c) => sum + (Number(c.level) || 0), 0);
 }
 
+// Magia de escolha FIXA que a subclasse concede num nível específico (pool já
+// pronto do banco, `subclassData.spellChoices` — ex: Black Magic do Pugilist/
+// Hand of Dread, Additional Magical Secrets do Bardo/College of Lore). Função
+// própria (não dentro de StepMagias.jsx) porque também precisa alimentar o
+// `conditional` das etapas "Magias" dos dois wizards — sem isso, uma subclasse
+// que só concede magia por ESCOLHA (sem `spellcasting` de verdade, sem grant
+// nomeável em `computeGrantedSpells`) nunca fazia a etapa aparecer, então a
+// escolha nunca era oferecida mesmo já estando implementada dentro do passo
+// (bug real achado testando o level-up da Hand of Dread: a subclasse ficava
+// selecionada mas a etapa "Magias" simplesmente não surgia).
+export function computeSubclassSpellChoices(character, classMatches) {
+  const results = [];
+  Object.entries(classMatches ?? {}).forEach(([index, match]) => {
+    const classLevel = character.classes?.[index]?.level ?? 0;
+    for (const choice of match?.subclassData?.spellChoices ?? []) {
+      if (classLevel < choice.level) continue;
+      results.push({ ...choice, source: match.subclassData.name, key: `${match.subclassData.name}-${choice.level}-${choice.pool.length}` });
+    }
+  });
+  return results;
+}
+
 // [{name, level, source, unlocked}] -- `level` é o nível em que a magia é
 // liberada (0 = desde o início); `unlocked` já compara com o nível certo pra
 // cada fonte (personagem inteiro pra Raça/Feat, só a classe DONA da

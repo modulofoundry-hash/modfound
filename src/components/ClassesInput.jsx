@@ -3,7 +3,6 @@ import { ClassGridPicker } from "./ClassGridPicker";
 import { SubclassPicker } from "./SubclassPicker";
 import { EquipmentSlots } from "./EquipmentSlots";
 import { ChoicePicker } from "./ChoicePicker";
-import { SpellChoicePicker } from "./SpellChoicePicker";
 import { HpRollPicker } from "./HpRollPicker";
 
 // A primeira entrada da lista é considerada a classe INICIAL (convenção —
@@ -25,7 +24,6 @@ export function ClassesInput({
   onChange,
   onApplyEquipment,
   onApplySkills,
-  onApplySpells,
   // `matches` ({index: {classData, subclassData}}) e `onMatchesChange` agora
   // são CONTROLADOS pelo componente pai (antes era `useState` local aqui) —
   // achado real revisando o projeto: o wizard troca a etapa Classe por outro
@@ -47,7 +45,8 @@ export function ClassesInput({
   onRemoveClass,
   // "search" (padrão, formulário antigo) ou "grid" (wizard de criação) — só
   // troca a FORMA de escolher classe/subclasse, o resto do comportamento
-  // (PV, equipamento, perícia, magia de subclasse) é o mesmo dos dois jeitos.
+  // (PV, equipamento, perícia) é o mesmo dos dois jeitos. Magia de subclasse
+  // concedida por escolha fica na etapa Magias (StepMagias.jsx), não aqui.
   // No modo "grid", a subclasse só aparece disponível se o nível já
   // alcançou `subclassLevel` da classe (pedido explícito do wizard).
   variant = "search",
@@ -130,11 +129,6 @@ export function ClassesInput({
         // ligadas pelo nome da classe (não pela edição dela), cada uma com
         // sua própria tag (ver SourceItemPicker).
         const subclassOptions = matched ? subclassesData.filter((s) => s.parentClass === matched.name) : [];
-        const matchedSubclass = matches[index]?.subclassData ?? subclassOptions.find((s) => s.name === row.subclass);
-        // `level` de spellChoices de subclasse é nível de CLASSE — só mostra a escolha
-        // depois que o personagem já tem nível suficiente pra ter desbloqueado a feature
-        // (ex: Additional Magical Secrets do Bardo só existe a partir do nível 6).
-        const subclassSpellChoices = (matchedSubclass?.spellChoices ?? []).filter((c) => (row.level ?? 1) >= c.level);
         const isOriginalClass = index === 0;
         const hpLevels = levelsNeedingHpChoice(row.level, isOriginalClass);
 
@@ -233,21 +227,6 @@ export function ClassesInput({
                   />
                 )}
                 {variant === "search" && <EquipmentSlots slots={matched.equipmentSlots} onAdd={onApplyEquipment} />}
-                {onApplySpells &&
-                  subclassSpellChoices.map((choice, i) => (
-                    <SpellChoicePicker
-                      // `key` ligada ao NOME da subclasse (não só o índice `i`)
-                      // -- bug real achado na revisão: trocar de subclasse sem
-                      // clicar "Adicionar" mantinha o picker da subclasse
-                      // ANTERIOR vivo (mesmo índice `i`), deixando uma magia
-                      // que não pertence à pool nova pronta pra ser adicionada.
-                      key={`${row.subclass}-${i}`}
-                      title={`Magia (${row.subclass})`}
-                      count={choice.count}
-                      pool={choice.pool}
-                      onAdd={onApplySpells}
-                    />
-                  ))}
               </div>
             )}
           </div>

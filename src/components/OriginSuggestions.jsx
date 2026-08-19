@@ -133,9 +133,11 @@ export function OriginSuggestions({
         </div>
       )}
       {onApplySpells &&
-        matched.spellChoices?.map((choice, index) => (
-          <SpellChoicePicker key={`${matched.name}-${index}`} title="Magia" count={choice.count} pool={choice.pool} onAdd={onApplySpells} />
-        ))}
+        matched.spellChoices
+          ?.filter((choice) => choice.pool.length > 0)
+          .map((choice, index) => (
+            <SpellChoicePicker key={`${matched.name}-${index}`} title="Magia" count={choice.count} pool={choice.pool} onAdd={onApplySpells} />
+          ))}
     </div>
   );
 }
