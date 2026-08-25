@@ -29,7 +29,7 @@ import { weaponProficiencySlots } from "../utils/weaponProficiency";
 import { useAnimalEnhancementChoices } from "../hooks/useAnimalEnhancementChoices";
 import { animalEnhancementSlots, reversedAnimalEnhancementChoices } from "../utils/animalEnhancement";
 import { resolveClassMatches } from "../schema/resolveClassMatches";
-import { computeGrantedSpells, computeSubclassSpellChoices } from "../schema/grantedSpells";
+import { computeGrantedSpells, computeSubclassSpellChoices, computeFeatSpellChoices } from "../schema/grantedSpells";
 import { hasActiveSpellcasting } from "../schema/spellProgression";
 import racesData from "../data/content/races.json";
 import backgroundsData from "../data/content/backgrounds.json";
@@ -87,6 +87,21 @@ function openFeatChoiceSlots(character, raceMatch, backgroundMatch) {
   ].filter(Boolean);
   const chosenByRace = Math.max(0, character.feats.length - resolvedElsewhere.length);
   return Math.max(0, raceSlots - chosenByRace);
+}
+
+// Além da busca (acima), a etapa Feats também precisa aparecer quando um
+// talento JÁ resolvido (ex: "Musician" vindo sozinho do originFeat de um
+// Antecedente 2024, sem passar pela busca nenhuma) concede uma escolha
+// própria de perícia/ferramenta -- achado ao vivo: Musician concede 3
+// instrumentos musicais à escolha, mas a etapa inteira ficava escondida
+// (só existia condição pra busca de talento LIVRE da raça), então esse
+// picker nunca aparecia pra ninguém, mesmo depois de FeatsInput.jsx passar
+// a saber renderizar `toolChoice`/`skillChoice` de talento.
+function featsNeedGrantReview(character, featsData) {
+  return character.feats.some((name) => {
+    const found = featsData.find((f) => f.name === name);
+    return !!(found?.skillChoice || found?.toolChoice);
+  });
 }
 
 // Todo slot de Melhoria de Atributo disponível pro personagem: um por
@@ -317,7 +332,8 @@ const STEP_DEFS = [
     blurb:
       "Só aparece quando a Raça concede uma escolha LIVRE de talento (ex: Human Variant). " +
       "Talento de origem do Antecedente e talento trocado por bônus de atributo na etapa Melhorias já vêm resolvidos sozinhos, sem precisar dessa busca.",
-    conditional: ({ character, raceMatch, backgroundMatch }) => openFeatChoiceSlots(character, raceMatch, backgroundMatch) > 0,
+    conditional: ({ character, raceMatch, backgroundMatch }) =>
+      openFeatChoiceSlots(character, raceMatch, backgroundMatch) > 0 || featsNeedGrantReview(character, featsData),
   },
   {
     key: "magias",
@@ -330,10 +346,14 @@ const STEP_DEFS = [
     // quando não tinha nenhuma classe conjuradora escolhida. Terceira condição
     // (`computeSubclassSpellChoices`) cobre escolha FIXA de magia de subclasse
     // sem `spellcasting` real (ex: Black Magic do Pugilist/Hand of Dread).
+    // Quarta condição (`computeFeatSpellChoices`) cobre talento com pool de
+    // escolha (Magic Initiate etc.) vindo de qualquer fonte fixa (Antecedente,
+    // Melhoria de Atributo) -- sem `spellcasting` real também.
     conditional: ({ character, classMatches, raceMatch }) =>
       hasActiveSpellcasting(character, classMatches) ||
       computeGrantedSpells({ character, raceMatch, classMatches, featsData, optionalFeaturesData }).length > 0 ||
-      computeSubclassSpellChoices(character, classMatches).length > 0,
+      computeSubclassSpellChoices(character, classMatches).length > 0 ||
+      computeFeatSpellChoices(character, featsData).length > 0,
   },
   {
     key: "identidade",
@@ -473,7 +493,9 @@ export function CharacterCreationWizard({ initialValue, onSubmit, onCancel }) {
   // trocar de etapa), corrompendo silenciosamente `classMatches` na próxima
   // escolha/remoção. `classMatches` (array) é só a forma derivada que o
   // resto do wizard já espera (StepPericias, abilityImprovementSlots).
-  const [classesMatches, setClassesMatches] = useState(() => (initialValue ? resolveClassMatches(initialValue.classes) : {}));
+  const [classesMatches, setClassesMatches] = useState(() =>
+    initialValue ? resolveClassMatches(initialValue.classes, initialValue.rulesMode) : {},
+  );
   // `useMemo`, não recomputado cru a cada render: `Object.values` sempre devolve um
   // array NOVO, então sem isso `classMatches` mudava de referência em todo render
   // mesmo sem `classesMatches` ter mudado -- e como `classMatches` entra nas
@@ -932,6 +954,10 @@ export function CharacterCreationWizard({ initialValue, onSubmit, onCancel }) {
             feats={character.feats}
             onChange={(feats) => set("feats", feats)}
             onApplySpells={appliers.applySpellChoices}
+            onApplySkills={appliers.applySkills}
+            onApplyTools={appliers.applyTools}
+            skillProficiencies={character.skillProficiencies}
+            toolProficiencies={character.toolProficiencies}
             maxFeats={totalFeatSlots(character, raceMatch, backgroundMatch)}
             searchSlots={openFeatChoiceSlots(character, raceMatch, backgroundMatch)}
           />

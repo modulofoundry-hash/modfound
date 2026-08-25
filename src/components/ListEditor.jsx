@@ -1,4 +1,4 @@
-export function ListEditor({ label, items, fields, onChange, addLabel = "Adicionar" }) {
+export function ListEditor({ label, items, fields, onChange, addLabel = "Adicionar", allowAdd = true }) {
   function updateItem(index, key, value) {
     onChange(items.map((item, i) => (i === index ? { ...item, [key]: value } : item)));
   }
@@ -55,9 +55,11 @@ export function ListEditor({ label, items, fields, onChange, addLabel = "Adicion
           </button>
         </div>
       ))}
-      <button type="button" onClick={addItem}>
-        {addLabel}
-      </button>
+      {allowAdd && (
+        <button type="button" onClick={addItem}>
+          {addLabel}
+        </button>
+      )}
     </div>
   );
 }

@@ -7,7 +7,7 @@ import subclassesData from "../data/content/subclasses.json";
 // dados resolvidos no primeiro render, sem esperar o usuário reabrir a etapa
 // de Classe (que normalmente é quem resolve isso via ClassesInput, ao ser
 // clicada).
-export function resolveClassMatches(classes) {
+export function resolveClassMatches(classes, rulesMode) {
   const matches = {};
   (classes ?? []).forEach((row, index) => {
     // Precisa gravar UMA entrada por índice, mesmo pra linha sem nome ainda
@@ -23,8 +23,14 @@ export function resolveClassMatches(classes) {
       matches[index] = { classData: null, subclassData: null };
       return;
     }
+    // `row.rules || rulesMode` -- mesmo fallback que o módulo já usa
+    // (buildCharacter.js, `entry.rules || character.rulesMode`) pra
+    // personagem salvo ANTES do fix em ClassesInput.jsx (pickClass não
+    // gravava `row.rules`), sem precisar migrar dado nenhum: cai no
+    // rulesMode do personagem em vez de só nome, evitando pegar a edição
+    // errada quando `row.rules` está vazio.
     const classData =
-      classesData.find((c) => c.name === row.name && row.rules && c.rules === row.rules) ??
+      classesData.find((c) => c.name === row.name && (row.rules || rulesMode) && c.rules === (row.rules || rulesMode)) ??
       classesData.find((c) => c.name === row.name);
     const subclassData = row.subclass
       ? (subclassesData.find(

@@ -4956,7 +4956,7 @@
     "tools": [],
     "toolChoice": {
       "count": 3,
-      "category": "anyMusicalInstrument",
+      "category": "instrumentMusical",
       "label": "qualquer instrumento musical"
     },
     "mixedProficiencyChoice": null,
@@ -5240,7 +5240,7 @@
       "vehicles (land)"
     ],
     "toolChoice": {
-      "category": "anyGamingSet",
+      "category": "setGaming",
       "count": 1
     },
     "mixedProficiencyChoice": null,
@@ -5421,7 +5421,7 @@
       "vehicles (land)"
     ],
     "toolChoice": {
-      "category": "anyGamingSet",
+      "category": "setGaming",
       "count": 1
     },
     "mixedProficiencyChoice": null,
@@ -5452,7 +5452,7 @@
       "disguise kit"
     ],
     "toolChoice": {
-      "category": "anyMusicalInstrument",
+      "category": "instrumentMusical",
       "count": 1
     },
     "mixedProficiencyChoice": null,
@@ -5512,7 +5512,7 @@
       "thieves' tools"
     ],
     "toolChoice": {
-      "category": "anyGamingSet",
+      "category": "setGaming",
       "count": 1
     },
     "mixedProficiencyChoice": null,
@@ -5543,7 +5543,7 @@
       "poisoner's kit"
     ],
     "toolChoice": {
-      "category": "anyMusicalInstrument",
+      "category": "instrumentMusical",
       "count": 1
     },
     "mixedProficiencyChoice": null,
@@ -8130,7 +8130,7 @@
     "tools": [],
     "toolChoice": {
       "count": 3,
-      "category": "anyMusicalInstrument",
+      "category": "instrumentMusical",
       "label": "qualquer instrumento musical"
     },
     "mixedProficiencyChoice": null,

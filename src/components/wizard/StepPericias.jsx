@@ -51,7 +51,13 @@ function GrantSummary({ title, matched, skillProficiencies, toolProficiencies, o
         </p>
       )}
       {matched.toolChoice && (
-        <ChoicePicker title="Ferramentas" count={matched.toolChoice.count} from={matched.toolChoice.from} onAdd={onApplyTools} />
+        <ChoicePicker
+          title="Ferramentas"
+          count={matched.toolChoice.count}
+          from={matched.toolChoice.from}
+          category={matched.toolChoice.category}
+          onAdd={onApplyTools}
+        />
       )}
       {hasEquipment && (
         <div className="pericias-grant-equipment">

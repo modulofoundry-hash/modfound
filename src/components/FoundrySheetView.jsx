@@ -799,7 +799,10 @@ export function FoundrySheetView({ character, onSave, profileId }) {
   // raça/classe/CA) reprocessava essas 4 buscas (cada uma varrendo o JSON de
   // conteúdo, centenas de KB) a cada tecla.
   const raceMatch = useMemo(() => findRaceMatch(view), [view.race, view.raceRules]);
-  const classMatches = useMemo(() => Object.values(resolveClassMatches(view.classes)), [view.classes]);
+  const classMatches = useMemo(
+    () => Object.values(resolveClassMatches(view.classes, view.rulesMode)),
+    [view.classes, view.rulesMode],
+  );
   // Só a classe INICIAL (primeira da lista) concede proficiência de teste de
   // resistência/armadura/arma em multiclasse — mesma convenção de PV máximo
   // já usada no resto do projeto (ver item 15 da memória do projeto).

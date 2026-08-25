@@ -1,16 +1,28 @@
 import { useState } from "react";
 import { SKILLS } from "../schema/character";
+import equipmentCategories from "../data/srd/equipmentCategories.json";
 
 // `from` normalmente é array de rótulo (perícia/ferramenta) — mas o banco também usa
 // o texto-sentinela "qualquer perícia"/"qualquer perícia à escolha" (ex: Bardo,
 // Humano Variante, Custom Lineage) pra dizer "todas as 18", mesmo padrão que o
 // módulo já trata em `resolveSkillPool()` (dnd5eCodes.js). Sem tratar isso aqui,
 // `from.map` quebrava a página INTEIRA assim que Bardo era escolhido como classe
-// (achado testando ao vivo). Ferramenta não tem esse sentinela na base hoje — string
-// não reconhecida vira lista vazia (não quebra, só não sugere nada) em vez de invenção.
-function resolveChoicePool(from) {
+// (achado testando ao vivo). `category` (string ou array de strings, ex:
+// "setGaming"/"toolArtisan") é o formato que ~20 antecedentes/talentos usam pra
+// ferramenta de categoria ("qualquer jogo de tabuleiro", "qualquer ferramenta de
+// artesão") — resolve pela mesma tabela que EquipmentSlots.jsx já usa pra grants
+// de equipamento por categoria, em vez de duplicar a lista item por item no banco.
+// Achado ao vivo (playtest): esses ~20 antecedentes tinham só `category`/`label`
+// sem `from` nenhum, e o picker mostrava "Nenhum resultado" pra sempre, mesmo com
+// a categoria certa gravada no banco -- o componente nunca soube ler esse campo.
+function resolveChoicePool(from, category) {
   if (Array.isArray(from)) return from;
   if (typeof from === "string" && from.toLowerCase().includes("qualquer")) return SKILLS.map((s) => s.label);
+  if (category) {
+    const categories = Array.isArray(category) ? category : [category];
+    const items = categories.flatMap((key) => equipmentCategories[key] ?? []);
+    if (items.length) return items;
+  }
   return [];
 }
 
@@ -20,12 +32,12 @@ function resolveChoicePool(from) {
 // opção "Customizado" que ocupa 1 dos N slots e abre um campo de texto —
 // a lista fixa (`from`) é o catálogo real do sistema, mas não cobre idioma
 // homebrew/de campanha que o Mestre tenha criado.
-export function ChoicePicker({ title, count, from, onAdd, allowCustom }) {
+export function ChoicePicker({ title, count, from, category, onAdd, allowCustom }) {
   const [selected, setSelected] = useState([]);
   const [customEnabled, setCustomEnabled] = useState(false);
   const [customText, setCustomText] = useState("");
   const [search, setSearch] = useState("");
-  const options = resolveChoicePool(from);
+  const options = resolveChoicePool(from, category);
   // Busca só aparece pra listas grandes (idiomas ~25, perícia "qualquer" 18)
   // — poucas opções (a maioria dos toolChoice) não precisa filtrar nada.
   const needle = search.trim().toLowerCase();

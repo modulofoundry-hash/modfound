@@ -20,20 +20,33 @@ function compareByColumn(a, b, column) {
 // subclasse/classe do personagem EXPANDE pra fora da lista normal (ex: Warlock com
 // Archfey vê Faerie Fire mesmo não sendo originalmente magia de Warlock). Sem essa
 // prop, o filtro de classe continua igual a antes (só `s.classes` original).
-export function SpellBrowser({ spells, rulesMode, onAdd, canAdd, bonusEligibility }) {
+// `allowedNames` (obrigatória) — `Set<spellName>` calculada em StepMagias.jsx (união
+// da lista normal de cada classe do personagem + tudo que `bonusEligibility` libera)
+// -- trava de vez quais magias aparecem, não é mais um filtro OPCIONAL (antes,
+// "Todas as classes" mostrava literalmente qualquer magia do jogo, sem checar se o
+// personagem podia pegar -- achado revisando o fluxo completo a pedido do usuário).
+export function SpellBrowser({ spells, rulesMode, onAdd, canAdd, bonusEligibility, allowedNames }) {
   const [search, setSearch] = useState("");
   const [classFilter, setClassFilter] = useState("");
   const [levelFilter, setLevelFilter] = useState("");
   const [schoolFilter, setSchoolFilter] = useState("");
   const [sort, setSort] = useState({ column: "name", dir: "asc" });
 
-  const editionSpells = useMemo(() => spells.filter((s) => s.rules === rulesMode), [spells, rulesMode]);
+  const editionSpells = useMemo(
+    () => spells.filter((s) => s.rules === rulesMode && allowedNames.has(s.name)),
+    [spells, rulesMode, allowedNames],
+  );
 
   const classOptions = useMemo(() => {
     const set = new Set();
     for (const s of editionSpells) for (const c of s.classes) set.add(c);
+    // `bonusEligibility` pode liberar uma magia pra uma classe cujo `s.classes`
+    // original não bate (ela só "expandiu" por causa da subclasse/patron) -- sem
+    // isso, a magia aparecia na lista mas sumia ao tentar filtrar pela classe que
+    // a liberou, porque essa classe nunca virava opção do dropdown.
+    for (const className of bonusEligibility?.keys() ?? []) set.add(className);
     return [...set].sort();
-  }, [editionSpells]);
+  }, [editionSpells, bonusEligibility]);
 
   const schoolOptions = useMemo(() => [...new Set(editionSpells.map((s) => s.school))].sort(), [editionSpells]);
 
@@ -68,7 +81,7 @@ export function SpellBrowser({ spells, rulesMode, onAdd, canAdd, bonusEligibilit
       <div className="spell-browser-filters">
         <input type="text" placeholder="Buscar magia..." value={search} onChange={(e) => setSearch(e.target.value)} />
         <select value={classFilter} onChange={(e) => setClassFilter(e.target.value)}>
-          <option value="">Todas as classes</option>
+          <option value="">Todas as minhas classes</option>
           {classOptions.map((c) => (
             <option key={c} value={c}>
               {c}

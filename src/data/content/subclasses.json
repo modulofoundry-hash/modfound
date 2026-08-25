@@ -12879,24 +12879,24 @@
     "spellChoices": [],
     "spellGrants": [
       {
-        "prepared": {
-          "1": [
+        "expanded": {
+          "s1": [
             "bane",
             "false life"
           ],
-          "3": [
+          "s2": [
             "blindness/deafness",
             "phantasmal force"
           ],
-          "5": [
+          "s3": [
             "phantom steed",
             "speak with dead"
           ],
-          "7": [
+          "s4": [
             "death ward",
             "greater invisibility"
           ],
-          "9": [
+          "s5": [
             "antilife shell",
             "cloudkill"
           ]

@@ -15,7 +15,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -76,7 +86,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [
       "necrotic",
       "radiant"
@@ -148,7 +168,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [
       "necrotic",
       "radiant"
@@ -595,7 +625,17 @@
     "toolChoice": null,
     "languages": "comum, élfico",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -681,7 +721,17 @@
     },
     "languages": "comum, gnômico",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [
       "poison"
     ],
@@ -964,7 +1014,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -1085,7 +1145,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -1216,7 +1286,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -1422,7 +1502,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -1549,7 +1639,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -1896,7 +1996,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -2035,7 +2145,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [
       "necrotic"
     ],
@@ -2093,7 +2213,17 @@
     "toolChoice": null,
     "languages": "comum",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -2294,7 +2424,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": {
       "count": 1,
@@ -2354,7 +2494,17 @@
     "toolChoice": null,
     "languages": "comum, dracônico",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": {
       "count": 1,
@@ -2462,7 +2612,17 @@
     "toolChoice": null,
     "languages": "comum, dracônico",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": {
       "count": 1,
@@ -2518,7 +2678,17 @@
     "toolChoice": null,
     "languages": "comum, dracônico",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": {
       "count": 1,
@@ -2627,7 +2797,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [
       "poison"
     ],
@@ -2888,7 +3068,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [
       "poison"
     ],
@@ -3116,7 +3306,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -3307,7 +3507,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -3470,7 +3680,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -3676,7 +3896,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -3771,7 +4001,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -4275,7 +4515,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -4445,7 +4695,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -4782,7 +5042,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -4854,7 +5124,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -4930,7 +5210,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -5002,7 +5292,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -5071,11 +5371,21 @@
     "tools": [],
     "toolChoice": {
       "count": 2,
-      "category": "anyArtisansTool"
+      "category": "toolArtisan"
     },
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -5259,7 +5569,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -5399,7 +5719,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [
       "fire"
     ],
@@ -5559,7 +5889,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [
       "lightning"
     ],
@@ -5642,7 +5982,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -5712,7 +6062,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [
       "fire"
     ],
@@ -5791,7 +6151,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [
       "acid"
     ],
@@ -5878,7 +6248,17 @@
     "toolChoice": null,
     "languages": "comum, gigante",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [
@@ -5975,7 +6355,17 @@
     },
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [
       "psychic"
     ],
@@ -6131,7 +6521,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [
       "psychic"
     ],
@@ -6408,7 +6808,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -6522,7 +6932,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -6653,7 +7073,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -6866,7 +7296,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -7093,7 +7533,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [
       "cold"
     ],
@@ -7136,7 +7586,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -7323,7 +7783,17 @@
     "toolChoice": null,
     "languages": "comum",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -7560,7 +8030,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -7823,7 +8303,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -7875,7 +8365,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -7925,7 +8425,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -7990,7 +8500,17 @@
     "toolChoice": null,
     "languages": "comum",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -8123,7 +8643,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -8285,7 +8815,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -8398,7 +8938,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [
       "psychic"
     ],
@@ -8524,7 +9074,17 @@
     "toolChoice": null,
     "languages": "comum",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -8573,7 +9133,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -8683,7 +9253,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -8736,7 +9316,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -8785,7 +9375,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -8847,7 +9447,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -9130,7 +9740,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -9340,7 +9960,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -9461,7 +10091,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -9676,7 +10316,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -9932,7 +10582,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -9977,7 +10637,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -10173,7 +10843,17 @@
     "toolChoice": null,
     "languages": "comum",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -10216,7 +10896,17 @@
     "toolChoice": null,
     "languages": "comum",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [
       "acid",
       "poison"
@@ -10649,7 +11339,7 @@
     "tools": [],
     "toolChoice": {
       "count": 1,
-      "category": "anyMusicalInstrument",
+      "category": "instrumentMusical",
       "label": "qualquer instrumento musical"
     },
     "languages": "comum",
@@ -10718,7 +11408,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": {
       "count": 1,
@@ -10778,7 +11478,17 @@
     "toolChoice": null,
     "languages": "comum",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [
       "poison"
     ],
@@ -10826,7 +11536,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [
       "cold"
     ],
@@ -11052,12 +11772,22 @@
     "tools": [],
     "toolChoice": {
       "count": 1,
-      "category": "anyMusicalInstrument",
+      "category": "instrumentMusical",
       "label": "qualquer instrumento musical"
     },
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -11106,7 +11836,7 @@
     "tools": [],
     "toolChoice": {
       "count": 1,
-      "category": "anyMusicalInstrument"
+      "category": "instrumentMusical"
     },
     "languages": "comum, silvestre",
     "languageChoice": null,
@@ -11182,7 +11912,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [
       "cold"
     ],
@@ -11328,7 +12068,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [
       "necrotic"
     ],
@@ -11721,7 +12471,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -11764,7 +12524,17 @@
     "toolChoice": null,
     "languages": "comum",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -11829,7 +12599,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -12222,7 +13002,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -12341,7 +13131,17 @@
     "toolChoice": null,
     "languages": "comum, thri-kreen",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -12461,7 +13261,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": {
       "count": 1,
@@ -12524,7 +13334,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [
       "poison"
     ],
@@ -12604,7 +13424,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [
       "necrotic"
     ],
@@ -12684,7 +13514,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [
       "fire"
     ],
@@ -12774,7 +13614,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
@@ -12897,7 +13747,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [
       "cold"
     ],
@@ -13553,7 +14413,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [
       "poison"
     ],
@@ -13693,7 +14563,17 @@
     "toolChoice": null,
     "languages": "",
     "languageChoice": null,
-    "abilityBonus": null,
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
     "resistances": [
       "poison"
     ],

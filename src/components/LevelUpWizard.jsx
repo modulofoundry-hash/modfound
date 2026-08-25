@@ -16,7 +16,7 @@ import { weaponMasterySlots, resolveFixedWeaponProficiency } from "../utils/weap
 import { weaponProficiencySlots } from "../utils/weaponProficiency";
 import { animalEnhancementSlots, reversedAnimalEnhancementChoices } from "../utils/animalEnhancement";
 import { resolveClassMatches } from "../schema/resolveClassMatches";
-import { computeGrantedSpells, computeSubclassSpellChoices } from "../schema/grantedSpells";
+import { computeGrantedSpells, computeSubclassSpellChoices, computeFeatSpellChoices } from "../schema/grantedSpells";
 import { hasActiveSpellcasting } from "../schema/spellProgression";
 import { useCharacterAppliers } from "../hooks/useCharacterAppliers";
 import { useAbilityImprovements } from "../hooks/useAbilityImprovements";
@@ -148,10 +148,14 @@ const STEP_DEFS = [
     // faltava pra escolha de magia FIXA de subclasse (ex: Black Magic do
     // Pugilist/Hand of Dread) -- sem `spellcasting` real nem grant nomeável,
     // as duas primeiras condições nunca bastavam pra essa etapa aparecer.
+    // Quarta condição (`computeFeatSpellChoices`) é a mesma correção pro caso
+    // de um talento com pool de escolha (Magic Initiate etc.) ser trocado por
+    // bônus de atributo NESTE level-up.
     conditional: ({ character, classMatches, raceMatch }) =>
       hasActiveSpellcasting(character, classMatches) ||
       computeGrantedSpells({ character, raceMatch, classMatches, featsData, optionalFeaturesData }).length > 0 ||
-      computeSubclassSpellChoices(character, classMatches).length > 0,
+      computeSubclassSpellChoices(character, classMatches).length > 0 ||
+      computeFeatSpellChoices(character, featsData).length > 0,
   },
   {
     key: "confirmacao",
@@ -174,7 +178,9 @@ export function LevelUpWizard({ initialCharacter, onSubmit, onCancel }) {
     JSON.parse(JSON.stringify({ ...createEmptyCharacter(), ...initialCharacter })),
   );
   const [originalLevels] = useState(() => (initialCharacter.classes ?? []).map((c) => c.level ?? 1));
-  const [classesMatches, setClassesMatches] = useState(() => resolveClassMatches(initialCharacter.classes));
+  const [classesMatches, setClassesMatches] = useState(() =>
+    resolveClassMatches(initialCharacter.classes, initialCharacter.rulesMode),
+  );
   const [stepKey, setStepKey] = useState(STEP_DEFS[0].key);
   const [spellBrowserOpen, setSpellBrowserOpen] = useState(false);
 

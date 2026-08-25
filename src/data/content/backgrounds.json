@@ -525,7 +525,7 @@
     "tools": [],
     "toolChoice": {
       "count": 1,
-      "category": "anyArtisansTool",
+      "category": "toolArtisan",
       "label": "qualquer ferramenta de artesão"
     },
     "languages": "",
@@ -1104,7 +1104,7 @@
     ],
     "toolChoice": {
       "count": 1,
-      "category": "anyGamingSet",
+      "category": "setGaming",
       "label": "qualquer jogo de tabuleiro/dados"
     },
     "languages": "",
@@ -1167,7 +1167,7 @@
     ],
     "toolChoice": {
       "count": 1,
-      "category": "anyMusicalInstrument",
+      "category": "instrumentMusical",
       "label": "qualquer instrumento musical"
     },
     "languages": "",
@@ -1235,7 +1235,7 @@
     ],
     "toolChoice": {
       "count": 1,
-      "category": "anyArtisansTool",
+      "category": "toolArtisan",
       "label": "qualquer ferramenta de artesão"
     },
     "languages": "",
@@ -1306,7 +1306,7 @@
     "tools": [],
     "toolChoice": {
       "count": 1,
-      "category": "anyArtisansTool",
+      "category": "toolArtisan",
       "label": "qualquer ferramenta de artesão"
     },
     "languages": "",
@@ -1440,7 +1440,7 @@
     "tools": [],
     "toolChoice": {
       "count": 1,
-      "category": "anyGamingSet",
+      "category": "setGaming",
       "label": "qualquer jogo de tabuleiro/dados"
     },
     "languages": "",
@@ -1503,7 +1503,7 @@
     "tools": [],
     "toolChoice": {
       "count": 1,
-      "category": "anyMusicalInstrument",
+      "category": "instrumentMusical",
       "label": "qualquer instrumento musical"
     },
     "languages": "",
@@ -1722,7 +1722,7 @@
     ],
     "toolChoice": {
       "count": 1,
-      "category": "anyGamingSet",
+      "category": "setGaming",
       "label": "qualquer jogo de tabuleiro/dados"
     },
     "languages": "",
@@ -1888,7 +1888,7 @@
     "tools": [],
     "toolChoice": {
       "count": 1,
-      "category": "anyGamingSet"
+      "category": "setGaming"
     },
     "languages": "",
     "languageChoice": {
@@ -1960,7 +1960,7 @@
     "tools": [],
     "toolChoice": {
       "count": 1,
-      "category": "anyGamingSet",
+      "category": "setGaming",
       "label": "qualquer jogo"
     },
     "languages": "",
@@ -2466,7 +2466,7 @@
     "tools": [],
     "toolChoice": {
       "count": 1,
-      "category": "anyArtisansTool",
+      "category": "toolArtisan",
       "label": "qualquer ferramenta de artesão"
     },
     "languages": "Anão",
@@ -2739,7 +2739,7 @@
     ],
     "toolChoice": {
       "count": 1,
-      "category": "anyGamingSet",
+      "category": "setGaming",
       "label": "qualquer jogo de tabuleiro/dados"
     },
     "languages": "",
@@ -3265,7 +3265,7 @@
     ],
     "toolChoice": {
       "count": 1,
-      "category": "anyMusicalInstrument",
+      "category": "instrumentMusical",
       "label": "qualquer instrumento musical"
     },
     "languages": "",
@@ -3331,7 +3331,7 @@
     "tools": [],
     "toolChoice": {
       "count": 1,
-      "category": "anyMusicalInstrument",
+      "category": "instrumentMusical",
       "label": "qualquer instrumento musical"
     },
     "languages": "",
@@ -3552,7 +3552,7 @@
     "tools": [],
     "toolChoice": {
       "count": 1,
-      "category": "anyArtisansTool"
+      "category": "toolArtisan"
     },
     "languages": "",
     "languageChoice": {
@@ -3615,8 +3615,8 @@
     "toolChoice": {
       "count": 1,
       "category": [
-        "anyMusicalInstrument",
-        "anyGamingSet"
+        "instrumentMusical",
+        "setGaming"
       ],
       "label": "qualquer instrumento musical ou qualquer jogo"
     },
@@ -3793,7 +3793,7 @@
     "tools": [],
     "toolChoice": {
       "count": 1,
-      "category": "anyMusicalInstrument",
+      "category": "instrumentMusical",
       "label": "qualquer instrumento musical"
     },
     "languages": "",
@@ -4035,7 +4035,7 @@
     ],
     "toolChoice": {
       "count": 1,
-      "category": "anyArtisansTool",
+      "category": "toolArtisan",
       "label": "qualquer ferramenta de artesão"
     },
     "languages": "",
@@ -4106,7 +4106,7 @@
     "tools": [],
     "toolChoice": {
       "count": 1,
-      "category": "anyGamingSet"
+      "category": "setGaming"
     },
     "languages": "",
     "languageChoice": {
@@ -4454,7 +4454,7 @@
     ],
     "toolChoice": {
       "count": 1,
-      "category": "anyMusicalInstrument",
+      "category": "instrumentMusical",
       "label": "qualquer instrumento musical"
     },
     "languages": "",
@@ -4606,7 +4606,7 @@
     "tools": [],
     "toolChoice": {
       "count": 1,
-      "category": "anyGamingSet",
+      "category": "setGaming",
       "label": "qualquer jogo de tabuleiro/dados"
     },
     "languages": "",
@@ -4799,7 +4799,7 @@
     "tools": [],
     "toolChoice": {
       "count": 1,
-      "category": "anyArtisansTool",
+      "category": "toolArtisan",
       "label": "qualquer ferramenta de artesão"
     },
     "languages": "",
@@ -4955,7 +4955,7 @@
     "tools": [],
     "toolChoice": {
       "count": 1,
-      "category": "anyGamingSet",
+      "category": "setGaming",
       "label": "qualquer jogo"
     },
     "languages": "",
@@ -5349,7 +5349,7 @@
     "tools": [],
     "toolChoice": {
       "count": 1,
-      "category": "anyArtisansTool",
+      "category": "toolArtisan",
       "label": "qualquer ferramenta de artesão"
     },
     "languages": "",
@@ -5485,7 +5485,7 @@
     "tools": [],
     "toolChoice": {
       "count": 1,
-      "category": "anyArtisansTool",
+      "category": "toolArtisan",
       "label": "qualquer ferramenta de artesão"
     },
     "languages": "",
@@ -5565,7 +5565,7 @@
     "tools": [],
     "toolChoice": {
       "count": 1,
-      "category": "anyGamingSet",
+      "category": "setGaming",
       "label": "qualquer jogo de tabuleiro/dados"
     },
     "languages": "",
@@ -6259,7 +6259,7 @@
     "tools": [],
     "toolChoice": {
       "count": 1,
-      "category": "anyGamingSet",
+      "category": "setGaming",
       "label": "qualquer jogo de tabuleiro/dados"
     },
     "languages": "",
@@ -6344,7 +6344,7 @@
     "tools": [],
     "toolChoice": {
       "count": 1,
-      "category": "anyMusicalInstrument",
+      "category": "instrumentMusical",
       "label": "qualquer instrumento musical"
     },
     "languages": "",
@@ -6602,8 +6602,8 @@
     "toolChoice": {
       "count": 1,
       "category": [
-        "anyMusicalInstrument",
-        "anyGamingSet"
+        "instrumentMusical",
+        "setGaming"
       ],
       "label": "qualquer instrumento musical ou qualquer jogo"
     },
@@ -6928,7 +6928,7 @@
     "tools": [],
     "toolChoice": {
       "count": 1,
-      "category": "anyArtisansTool"
+      "category": "toolArtisan"
     },
     "languages": "",
     "languageChoice": {
@@ -7180,8 +7180,8 @@
     "toolChoice": {
       "count": 1,
       "category": [
-        "anyMusicalInstrument",
-        "anyGamingSet"
+        "instrumentMusical",
+        "setGaming"
       ],
       "label": "qualquer instrumento musical ou qualquer jogo"
     },
@@ -7725,7 +7725,7 @@
     ],
     "toolChoice": {
       "count": 1,
-      "category": "anyGamingSet",
+      "category": "setGaming",
       "label": "qualquer jogo"
     },
     "languages": "",
@@ -7859,7 +7859,7 @@
     "tools": [],
     "toolChoice": {
       "count": 1,
-      "category": "anyArtisansTool",
+      "category": "toolArtisan",
       "label": "qualquer ferramenta de artesão"
     },
     "languages": "",
@@ -8357,7 +8357,7 @@
     "tools": [],
     "toolChoice": {
       "count": 1,
-      "category": "anyGamingSet",
+      "category": "setGaming",
       "label": "qualquer jogo de tabuleiro/dados"
     },
     "languages": "",
@@ -8420,7 +8420,7 @@
     "tools": [],
     "toolChoice": {
       "count": 1,
-      "category": "anyGamingSet",
+      "category": "setGaming",
       "label": "qualquer jogo de tabuleiro/dados"
     },
     "languages": "",
@@ -8564,7 +8564,7 @@
     "tools": [],
     "toolChoice": {
       "count": 1,
-      "category": "anyMusicalInstrument",
+      "category": "instrumentMusical",
       "label": "qualquer instrumento musical"
     },
     "languages": "",
@@ -8637,7 +8637,7 @@
     "tools": [],
     "toolChoice": {
       "count": 1,
-      "category": "anyArtisansTool"
+      "category": "toolArtisan"
     },
     "languages": "",
     "languageChoice": {
@@ -8758,8 +8758,8 @@
     "toolChoice": {
       "count": 1,
       "category": [
-        "anyArtisansTool",
-        "anyMusicalInstrument"
+        "toolArtisan",
+        "instrumentMusical"
       ]
     },
     "languages": "",
@@ -8900,7 +8900,7 @@
     "tools": [],
     "toolChoice": {
       "count": 1,
-      "category": "anyArtisansTool"
+      "category": "toolArtisan"
     },
     "languages": "",
     "languageChoice": {
@@ -8972,7 +8972,7 @@
     "tools": [],
     "toolChoice": {
       "count": 1,
-      "category": "anyMusicalInstrument"
+      "category": "instrumentMusical"
     },
     "languages": "",
     "languageChoice": {
@@ -9242,7 +9242,7 @@
     "tools": [],
     "toolChoice": {
       "count": 1,
-      "category": "anyGamingSet"
+      "category": "setGaming"
     },
     "languages": "",
     "languageChoice": {
@@ -9325,7 +9325,7 @@
     "tools": [],
     "toolChoice": {
       "count": 1,
-      "category": "anyArtisansTool"
+      "category": "toolArtisan"
     },
     "languages": "",
     "languageChoice": {
@@ -9387,7 +9387,7 @@
     "tools": [],
     "toolChoice": {
       "count": 1,
-      "category": "anyGamingSet"
+      "category": "setGaming"
     },
     "languages": "",
     "languageChoice": {
@@ -9470,7 +9470,7 @@
     "tools": [],
     "toolChoice": {
       "count": 1,
-      "category": "anyArtisansTool"
+      "category": "toolArtisan"
     },
     "languages": "gigante",
     "languageChoice": null,
@@ -9914,8 +9914,8 @@
     "toolChoice": {
       "count": 1,
       "category": [
-        "anyArtisansTool",
-        "anyMusicalInstrument"
+        "toolArtisan",
+        "instrumentMusical"
       ]
     },
     "languages": "",
@@ -10518,7 +10518,7 @@
     ],
     "toolChoice": {
       "count": 1,
-      "category": "anyGamingSet",
+      "category": "setGaming",
       "label": "qualquer jogo de tabuleiro/dados"
     },
     "languages": "",
@@ -10609,7 +10609,7 @@
     "tools": [],
     "toolChoice": {
       "count": 1,
-      "category": "anyGamingSet",
+      "category": "setGaming",
       "label": "qualquer jogo de tabuleiro/dados"
     },
     "languages": "",
@@ -10704,7 +10704,7 @@
     "tools": [],
     "toolChoice": {
       "count": 1,
-      "category": "anyGamingSet",
+      "category": "setGaming",
       "label": "qualquer conjunto de jogo"
     },
     "languages": "",
@@ -10784,7 +10784,7 @@
     "tools": [],
     "toolChoice": {
       "count": 1,
-      "category": "anyGamingSet",
+      "category": "setGaming",
       "label": "qualquer jogo"
     },
     "languages": "",
@@ -10910,8 +10910,8 @@
     "toolChoice": {
       "count": 2,
       "category": [
-        "anyGamingSet",
-        "anyMusicalInstrument"
+        "setGaming",
+        "instrumentMusical"
       ],
       "label": "qualquer jogo ou qualquer instrumento musical",
       "from": [
@@ -11037,8 +11037,8 @@
     "toolChoice": {
       "count": 1,
       "category": [
-        "anyMusicalInstrument",
-        "anyArtisansTool"
+        "instrumentMusical",
+        "toolArtisan"
       ],
       "label": "qualquer instrumento musical ou qualquer ferramenta de artesão"
     },
@@ -11454,8 +11454,8 @@
     "toolChoice": {
       "count": 1,
       "category": [
-        "anyGamingSet",
-        "anyMusicalInstrument"
+        "setGaming",
+        "instrumentMusical"
       ],
       "label": "qualquer jogo ou qualquer instrumento musical"
     },
@@ -11705,7 +11705,7 @@
       "from": [
         "disguise kit"
       ],
-      "category": "anyMusicalInstrument",
+      "category": "instrumentMusical",
       "label": "qualquer instrumento musical"
     },
     "languages": "",

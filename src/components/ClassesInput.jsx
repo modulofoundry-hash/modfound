@@ -56,7 +56,15 @@ export function ClassesInput({
   }
 
   function pickClass(index, text, item) {
-    updateRow(index, { name: text, subclass: "" });
+    // `rules` (edição da CLASSE) nunca era gravado aqui -- só `pickSubclass`
+    // gravava `subclassRules`. Inofensivo durante a CRIAÇÃO (o wizard guarda o
+    // item certo em `matches`, no estado do componente pai), mas ao reabrir o
+    // personagem pra EDITAR ou SUBIR DE NÍVEL, `resolveClassMatches` reconstrói
+    // `classData` do zero a partir de `row.rules` -- vazio, cai no fallback só
+    // por nome e pode pegar a edição ERRADA (2014 em vez de 2024), bagunçando
+    // teto de magia/Weapon Mastery/Escolhas de Classe na hora de editar. Achado
+    // ao vivo reabrindo a Elowen (Ranger) pra editar.
+    updateRow(index, { name: text, subclass: "", rules: item?.rules ?? "" });
     onMatchesChange({ ...matches, [index]: { classData: item, subclassData: null } });
   }
 

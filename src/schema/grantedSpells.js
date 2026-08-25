@@ -89,6 +89,32 @@ export function computeSubclassSpellChoices(character, classMatches) {
   return results;
 }
 
+// Mesma ideia de `computeSubclassSpellChoices`, mas pra TALENTO com pool de
+// escolha (`feat.spellChoices` — Magic Initiate "2 truques + 1 magia de nível
+// 1", Fey Touched, Ritual Caster, etc). Precisa existir fora de FeatsInput.jsx
+// porque esse componente só renderiza a escolha no MOMENTO em que o talento é
+// adicionado via busca livre (etapa "Feats", só existe pra talento de RAÇA
+// como Human Variant) -- um talento fixo vindo do Antecedente 2024
+// (`originFeat`) ou trocado por bônus de atributo na etapa Melhorias
+// (`pickImprovementFeat`) nunca passa por ali, então a escolha de magia nunca
+// tinha onde aparecer. Achado ao vivo no playtest: Magic Initiate concedido
+// pelo antecedente Guide ficava na lista de talentos sem os truques/magia que
+// deveria dar. Mesmo padrão de desambiguação por `rulesMode` que
+// `computeGrantedSpells` já usa pra `character.feats`.
+export function computeFeatSpellChoices(character, featsData) {
+  const results = [];
+  for (const featName of character.feats ?? []) {
+    const feat =
+      featsData.find((f) => f.name === featName && f.rules === character.rulesMode) ??
+      featsData.find((f) => f.name === featName);
+    if (!feat?.spellChoices?.length) continue;
+    feat.spellChoices.forEach((choice, index) => {
+      results.push({ ...choice, source: feat.name, key: `${feat.name}-${index}-${choice.pool.length}` });
+    });
+  }
+  return results;
+}
+
 // [{name, level, source, unlocked}] -- `level` é o nível em que a magia é
 // liberada (0 = desde o início); `unlocked` já compara com o nível certo pra
 // cada fonte (personagem inteiro pra Raça/Feat, só a classe DONA da

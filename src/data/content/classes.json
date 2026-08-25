@@ -22,6 +22,11 @@
       "Thieves' Tools",
       "Tinker's Tools"
     ],
+    "toolChoice": {
+      "count": 1,
+      "category": "toolArtisan",
+      "label": "qualquer ferramenta de artesão"
+    },
     "skillChoice": {
       "count": 2,
       "from": [
@@ -231,6 +236,11 @@
       "thieves' tools",
       "tinker's tools"
     ],
+    "toolChoice": {
+      "count": 1,
+      "category": "toolArtisan",
+      "label": "qualquer ferramenta de artesão"
+    },
     "skillChoice": {
       "count": 2,
       "from": [
@@ -495,6 +505,7 @@
       "martial"
     ],
     "tools": [],
+    "toolChoice": null,
     "skillChoice": {
       "count": 2,
       "from": [
@@ -733,6 +744,7 @@
       "martial"
     ],
     "tools": [],
+    "toolChoice": null,
     "skillChoice": {
       "count": 2,
       "from": [
@@ -962,9 +974,12 @@
       "rapier",
       "shortsword"
     ],
-    "tools": [
-      "three musical instrument of your choice"
-    ],
+    "tools": [],
+    "toolChoice": {
+      "count": 3,
+      "category": "instrumentMusical",
+      "label": "qualquer instrumento musical"
+    },
     "skillChoice": {
       "count": 3,
       "from": "qualquer perícia"
@@ -1272,9 +1287,12 @@
     "weapons": [
       "simple"
     ],
-    "tools": [
-      "Choose three Musical Instrument"
-    ],
+    "tools": [],
+    "toolChoice": {
+      "count": 3,
+      "category": "instrumentMusical",
+      "label": "qualquer instrumento musical"
+    },
     "skillChoice": {
       "count": 3,
       "from": "qualquer perícia"
@@ -1521,6 +1539,7 @@
       "simple"
     ],
     "tools": [],
+    "toolChoice": null,
     "skillChoice": {
       "count": 2,
       "from": [
@@ -1826,6 +1845,7 @@
       "simple"
     ],
     "tools": [],
+    "toolChoice": null,
     "skillChoice": {
       "count": 2,
       "from": [
@@ -2072,6 +2092,7 @@
     "tools": [
       "Herbalism kit"
     ],
+    "toolChoice": null,
     "skillChoice": {
       "count": 2,
       "from": [
@@ -2296,6 +2317,7 @@
     "tools": [
       "Herbalism Kit"
     ],
+    "toolChoice": null,
     "skillChoice": {
       "count": 2,
       "from": [
@@ -2549,6 +2571,7 @@
       "martial"
     ],
     "tools": [],
+    "toolChoice": null,
     "skillChoice": {
       "count": 2,
       "from": [
@@ -2844,6 +2867,7 @@
       "martial"
     ],
     "tools": [],
+    "toolChoice": null,
     "skillChoice": {
       "count": 2,
       "from": [
@@ -3142,9 +3166,15 @@
       "simple",
       "shortsword"
     ],
-    "tools": [
-      "any one type of artisan's tools or any one musical instrument of your choice"
-    ],
+    "tools": [],
+    "toolChoice": {
+      "count": 1,
+      "category": [
+        "toolArtisan",
+        "instrumentMusical"
+      ],
+      "label": "ferramenta de artesão ou instrumento musical à escolha"
+    },
     "skillChoice": {
       "count": 2,
       "from": [
@@ -3408,9 +3438,15 @@
       "simple",
       "Martial weapons that have the Light property"
     ],
-    "tools": [
-      "Choose one type of Artisan's Tools or Musical Instrument"
-    ],
+    "tools": [],
+    "toolChoice": {
+      "count": 1,
+      "category": [
+        "toolArtisan",
+        "instrumentMusical"
+      ],
+      "label": "ferramenta de artesão ou instrumento musical à escolha"
+    },
     "skillChoice": {
       "count": 2,
       "from": [
@@ -3679,6 +3715,7 @@
       "martial"
     ],
     "tools": [],
+    "toolChoice": null,
     "skillChoice": {
       "count": 2,
       "from": [
@@ -3953,6 +3990,7 @@
       "martial"
     ],
     "tools": [],
+    "toolChoice": null,
     "skillChoice": {
       "count": 2,
       "from": [
@@ -4209,6 +4247,10 @@
       "improvised"
     ],
     "tools": [],
+    "toolChoice": {
+      "count": 1,
+      "category": "setGaming"
+    },
     "skillChoice": {
       "count": 2,
       "from": [
@@ -4446,6 +4488,7 @@
       "martial"
     ],
     "tools": [],
+    "toolChoice": null,
     "skillChoice": {
       "count": 3,
       "from": [
@@ -4734,6 +4777,7 @@
       "martial"
     ],
     "tools": [],
+    "toolChoice": null,
     "skillChoice": {
       "count": 3,
       "from": [
@@ -5004,6 +5048,7 @@
     "tools": [
       "thieves' tools"
     ],
+    "toolChoice": null,
     "skillChoice": {
       "count": 4,
       "from": [
@@ -5291,6 +5336,7 @@
     "tools": [
       "Thieves' Tools"
     ],
+    "toolChoice": null,
     "skillChoice": {
       "count": 4,
       "from": [
@@ -5580,6 +5626,7 @@
       "light crossbow"
     ],
     "tools": [],
+    "toolChoice": null,
     "skillChoice": {
       "count": 2,
       "from": [
@@ -5842,6 +5889,7 @@
       "simple"
     ],
     "tools": [],
+    "toolChoice": null,
     "skillChoice": {
       "count": 2,
       "from": [
@@ -6068,6 +6116,7 @@
       "simple"
     ],
     "tools": [],
+    "toolChoice": null,
     "skillChoice": {
       "count": 2,
       "from": [
@@ -6213,6 +6262,12 @@
           "15": 7,
           "18": 8
         }
+      },
+      {
+        "category": "pactBoon",
+        "progression": {
+          "3": 1
+        }
       }
     ],
     "spellProgression": {
@@ -6347,6 +6402,7 @@
       "simple"
     ],
     "tools": [],
+    "toolChoice": null,
     "skillChoice": {
       "count": 2,
       "from": [
@@ -6588,6 +6644,7 @@
       "light crossbow"
     ],
     "tools": [],
+    "toolChoice": null,
     "skillChoice": {
       "count": 2,
       "from": [
@@ -6800,6 +6857,7 @@
       "simple"
     ],
     "tools": [],
+    "toolChoice": null,
     "skillChoice": {
       "count": 2,
       "from": [

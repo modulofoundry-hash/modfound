@@ -113,7 +113,14 @@ export function OriginSuggestions({
         </p>
       )}
       {showSkillsAndTools && matched.toolChoice && (
-        <ChoicePicker key={matched.name} title="Ferramentas" count={matched.toolChoice.count} from={matched.toolChoice.from} onAdd={onApplyTools} />
+        <ChoicePicker
+          key={matched.name}
+          title="Ferramentas"
+          count={matched.toolChoice.count}
+          from={matched.toolChoice.from}
+          category={matched.toolChoice.category}
+          onAdd={onApplyTools}
+        />
       )}
       {showLanguages && matched.languages && (
         <p>
