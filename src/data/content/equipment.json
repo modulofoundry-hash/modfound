@@ -2240,5 +2240,35 @@
     },
     "description": "While wearing this ring, you can recover one expended spell slot as a Bonus Action. The recovered slot can be of level 3 or lower. Once used, the ring can't be used again until the next dawn.",
     "descriptionHtml": "<p>While wearing this ring, you can recover one expended spell slot as a Bonus Action. The recovered slot can be of level 3 or lower. Once used, the ring can't be used again until the next dawn.</p>"
+  },
+  {
+    "name": "Powered Armor",
+    "rules": "2014",
+    "foundryType": "equipment",
+    "armorType": "heavy",
+    "ac": 18,
+    "dexCap": 0,
+    "strength": 15,
+    "stealthDisadvantage": true,
+    "baseItem": "poweredarmor",
+    "weight": 65,
+    "priceGp": 0,
+    "source": "QftIS",
+    "sourceBook": "A Quest from the Infinite Staircase"
+  },
+  {
+    "name": "Pride Silk Outfit",
+    "rules": "2014",
+    "foundryType": "equipment",
+    "armorType": "light",
+    "ac": 11,
+    "dexCap": null,
+    "strength": null,
+    "stealthDisadvantage": false,
+    "baseItem": "pridesilkoutfit",
+    "weight": 4,
+    "priceGp": 500,
+    "source": "EGW",
+    "sourceBook": "Explorer's Guide to Wildemount"
   }
 ]

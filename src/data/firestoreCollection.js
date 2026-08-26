@@ -28,8 +28,15 @@ export function createDocument(pathSegments, data) {
 }
 
 export function updateDocument(pathSegments, id, data) {
+  // Firestore rejeita updateDoc() com QUALQUER campo undefined (erro em
+  // runtime, não em build) -- acontece sempre que um caller manda um patch
+  // parcial contendo uma chave que o documento nunca teve (ex: ficha antiga
+  // sem campo "hp" editada pela FoundrySheetView sem tocar o HP). Omitir a
+  // chave tem o mesmo efeito de não mandar nada pra ela; pra apagar um campo
+  // de verdade um caller precisaria de deleteField(), que nenhum usa hoje.
+  const clean = Object.fromEntries(Object.entries(data).filter(([, v]) => v !== undefined));
   return updateDoc(doc(db, ...pathSegments, id), {
-    ...data,
+    ...clean,
     updatedAt: serverTimestamp(),
   });
 }
