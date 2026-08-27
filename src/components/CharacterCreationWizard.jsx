@@ -140,20 +140,31 @@ export function abilityImprovementSlots(character, classMatches) {
 // pega só o maior nível já alcançado, não soma todos os degraus. Duas fontes
 // da MESMA categoria (classe + subclasse) somam entre si (Fighter base + Champion
 // são pools independentes que se somam num total maior).
+// `rules` de cada pool vem de quem CONCEDEU ela (classe ou subclasse), nunca
+// do `rulesMode` do personagem -- bug real achado ao vivo: personagem 2024
+// com subclasse só-2014 (ex: College of Swords, XGE) zerava o pool de Estilo
+// de Luta inteiro (0 resultados), porque o filtro usava a edição do
+// PERSONAGEM em vez da edição de quem concede a escolha. Misturar edição
+// (personagem 2024 + subclasse 2014) é suportado de propósito neste projeto
+// (ver [[feature_rulesmode_2014_2024]]: "classe filtro duro, resto tag+livre"),
+// então precisa resolver por fonte, não por characterRules.
 function categoryCountsForClass(classData, subclassData, level) {
-  const pools = [...(classData?.optionalFeatureChoices ?? []), ...(subclassData?.optionalFeatureChoices ?? [])];
   const counts = new Map();
-  for (const pool of pools) {
-    const reached = Object.keys(pool.progression ?? {})
-      .map(Number)
-      .filter((lvl) => lvl <= level);
-    if (!reached.length) continue;
-    const count = pool.progression[Math.max(...reached)];
-    if (!count) continue;
-    const prev = counts.get(pool.category) ?? { count: 0, source: pool.source ?? "optionalFeature" };
-    prev.count += count;
-    counts.set(pool.category, prev);
+  function accumulate(source) {
+    for (const pool of source?.optionalFeatureChoices ?? []) {
+      const reached = Object.keys(pool.progression ?? {})
+        .map(Number)
+        .filter((lvl) => lvl <= level);
+      if (!reached.length) continue;
+      const count = pool.progression[Math.max(...reached)];
+      if (!count) continue;
+      const prev = counts.get(pool.category) ?? { count: 0, source: pool.source ?? "optionalFeature", rules: source.rules };
+      prev.count += count;
+      counts.set(pool.category, prev);
+    }
   }
+  accumulate(classData);
+  accumulate(subclassData);
   return counts;
 }
 
@@ -184,7 +195,7 @@ function categoryCountsForFeats(character, featsData, backgroundsData) {
       if (!reached.length) continue;
       const count = pool.progression[Math.max(...reached)];
       if (!count) continue;
-      const prev = counts.get(pool.category) ?? { count: 0, source: pool.source ?? "optionalFeature", sourceName: source.name };
+      const prev = counts.get(pool.category) ?? { count: 0, source: pool.source ?? "optionalFeature", sourceName: source.name, rules: source.rules };
       prev.count += count;
       counts.set(pool.category, prev);
     }
@@ -202,12 +213,12 @@ export function classChoiceSlots(character, classMatches, featsData = [], backgr
   character.classes.forEach((row, classIndex) => {
     const counts = categoryCountsForClass(classMatches[classIndex]?.classData, classMatches[classIndex]?.subclassData, row.level ?? 1);
     for (const [category, info] of counts) {
-      slots.push({ classIndex, className: row.name, category, count: info.count, source: info.source });
+      slots.push({ classIndex, className: row.name, category, count: info.count, source: info.source, rules: info.rules });
     }
   });
   const featCounts = categoryCountsForFeats(character, featsData, backgroundsData);
   for (const [category, info] of featCounts) {
-    slots.push({ classIndex: "feat", className: info.sourceName, category, count: info.count, source: info.source });
+    slots.push({ classIndex: "feat", className: info.sourceName, category, count: info.count, source: info.source, rules: info.rules });
   }
   return slots;
 }
@@ -874,7 +885,6 @@ export function CharacterCreationWizard({ initialValue, onSubmit, onCancel }) {
           <StepEscolhasDeClasse
             slots={classChoiceSlots(character, classMatches, featsData, backgroundsData)}
             classChoices={character.classChoices}
-            rulesMode={character.rulesMode}
             optionalFeaturesData={optionalFeaturesData}
             featsData={featsData}
             onPick={setClassChoice}

@@ -552,7 +552,6 @@ export function LevelUpWizard({ initialCharacter, onSubmit, onCancel }) {
           <StepEscolhasDeClasse
             slots={choiceSlots}
             classChoices={character.classChoices}
-            rulesMode={character.rulesMode}
             optionalFeaturesData={optionalFeaturesData}
             featsData={featsData}
             onPick={setClassChoice}
