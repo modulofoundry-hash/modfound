@@ -14,8 +14,15 @@ function isSimicHybrid(character) {
   return character.race === RACE_NAME;
 }
 
+// Sem filtrar por `c.name` (diferente de outros slot-finders do projeto) --
+// a etapa "Nível" do wizard (StepNivel) grava o nível-alvo em
+// `classes[0].level` ANTES do jogador chegar na etapa Classe (ela vem
+// depois, ver STEP_DEFS), então uma classe ainda sem nome escolhido não pode
+// zerar o nível pra essa contagem -- bug real achado ao vivo: personagem
+// nível 5 + Simic Hybrid sem Classe escolhida ainda fazia o slot do Nível 5
+// nunca aparecer, mesmo com "Nível: 5" já visível no resumo lateral.
 function totalCharacterLevel(character) {
-  return (character.classes ?? []).filter((c) => c.name).reduce((sum, c) => sum + (Number(c.level) || 0), 0);
+  return (character.classes ?? []).reduce((sum, c) => sum + (Number(c.level) || 0), 0);
 }
 
 // 1 slot no nível 1 sempre (pool fixo de 3); 1 slot no nível 5 só a partir do nível 5,
