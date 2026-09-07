@@ -4774,6 +4774,260 @@
     ]
   },
   {
+    "name": "Empunhai (Arma)",
+    "source": "HBFortaleza",
+    "sourceBook": "HB Fortaleza",
+    "tier": "homebrew",
+    "rules": "2014",
+    "size": "M",
+    "speed": 30,
+    "skills": [
+      "Intimidação"
+    ],
+    "skillChoice": null,
+    "tools": [],
+    "toolChoice": null,
+    "languages": "comum, abissal",
+    "languageChoice": null,
+    "abilityBonus": {
+      "choice": {
+        "count": 1,
+        "amount": 2,
+        "from": [
+          "str",
+          "dex"
+        ]
+      }
+    },
+    "resistances": [],
+    "resistanceChoice": null,
+    "weapons": [],
+    "armor": [],
+    "weaponChoice": null,
+    "originFeat": null,
+    "description": "Uma consciência que despertou dentro de um objeto de tonalidade azul fosca não natural — arma, armadura, foco arcano ou item — e passou a projetar um corpo humanoide instável, marcado por veios ou pele azul-profundo. Nasce sem passado, sem memória, buscando propósito e reconhecimento entre os povos que encontra.",
+    "traits": [
+      {
+        "name": "Objeto: Arma",
+        "description": "Sua verdadeira forma é uma arma — seja lâmina, arco, machado ou qualquer outro instrumento de combate. Escolha uma arma específica que represente sua identidade. Sempre que utilizá-la, você adiciona um bônus às jogadas de ataque e de dano, somando-se a qualquer outro modificador aplicável — esse bônus começa no 5° nível (+1), 10° nível (+2) e 15° nível (+3)."
+      },
+      {
+        "name": "Idade",
+        "description": "Um Empunhai pode persistir por séculos sem qualquer desgaste natural. A pergunta \"quanto tempo dura uma boa lâmina, armadura ou adorno?\" costuma ser a resposta mais honesta à sua expectativa de vida."
+      },
+      {
+        "name": "Tendência",
+        "description": "Tendem à neutralidade e à lealdade. Vivem buscando propósito e pertencimento; valorizam intensamente qualquer um que reconheça sua verdadeira forma e trate sua existência com respeito."
+      },
+      {
+        "name": "Tamanho",
+        "description": "Sempre de tamanho Médio. A projeção humanoide não expressa força ou carne — apenas intenção — e intenção raramente excede esse limite. Você é Humanoide."
+      },
+      {
+        "name": "Idiomas",
+        "description": "Você pode falar, ler e escrever Comum e Abissal. Ainda que não saibam por quê, os Empunhais compreendem o Abissal com naturalidade, como se lidassem com algo igualmente fora do ciclo normal de vida."
+      },
+      {
+        "name": "Feito pra isso",
+        "description": "Você recebe proficiência em testes de Carisma (Intimidação)."
+      },
+      {
+        "name": "Encontrando um propósito",
+        "description": "Conforme você recebe níveis, sua natureza de objeto se aprimora — uma vez por turno, quando você causa dano com um ataque com arma, você pode causar um efeito adicional como parte do mesmo ataque, escolhendo entre: Atacar e Defender (recebe 5 + metade do seu nível de vida temporária), Movimento Rápido (move metade do seu movimento sem causar ataques de oportunidade) ou Aptidão Perigosa (reduz o movimento do alvo pela metade até o final do próximo turno). Usos limitados (contador abaixo) — todos recuperados ao terminar um descanso longo."
+      }
+    ],
+    "spellChoices": [],
+    "spellGrants": null
+  },
+  {
+    "name": "Empunhai (Armadura)",
+    "source": "HBFortaleza",
+    "sourceBook": "HB Fortaleza",
+    "tier": "homebrew",
+    "rules": "2014",
+    "size": "M",
+    "speed": 30,
+    "skills": [
+      "Intuição"
+    ],
+    "skillChoice": null,
+    "tools": [],
+    "toolChoice": null,
+    "languages": "comum, abissal",
+    "languageChoice": null,
+    "abilityBonus": {
+      "fixed": {
+        "con": 2
+      }
+    },
+    "resistances": [],
+    "resistanceChoice": null,
+    "weapons": [],
+    "armor": [],
+    "weaponChoice": null,
+    "originFeat": null,
+    "description": "Uma consciência que despertou dentro de um objeto de tonalidade azul fosca não natural — arma, armadura, foco arcano ou item — e passou a projetar um corpo humanoide instável, marcado por veios ou pele azul-profundo. Nasce sem passado, sem memória, buscando propósito e reconhecimento entre os povos que encontra.",
+    "traits": [
+      {
+        "name": "Objeto: Armadura",
+        "description": "Sua verdadeira forma é uma armadura — leve, média ou pesada — ou um escudo. Escolha uma peça específica que represente sua identidade. Sempre que estiver usando esse equipamento, você adiciona um bônus à sua Classe de Armadura, somando-se a qualquer outro modificador aplicável — esse bônus começa no 5° nível (+1), 10° nível (+2) e 15° nível (+3)."
+      },
+      {
+        "name": "Idade",
+        "description": "Um Empunhai pode persistir por séculos sem qualquer desgaste natural. A pergunta \"quanto tempo dura uma boa lâmina, armadura ou adorno?\" costuma ser a resposta mais honesta à sua expectativa de vida."
+      },
+      {
+        "name": "Tendência",
+        "description": "Tendem à neutralidade e à lealdade. Vivem buscando propósito e pertencimento; valorizam intensamente qualquer um que reconheça sua verdadeira forma e trate sua existência com respeito."
+      },
+      {
+        "name": "Tamanho",
+        "description": "Sempre de tamanho Médio. A projeção humanoide não expressa força ou carne — apenas intenção — e intenção raramente excede esse limite. Você é Humanoide."
+      },
+      {
+        "name": "Idiomas",
+        "description": "Você pode falar, ler e escrever Comum e Abissal. Ainda que não saibam por quê, os Empunhais compreendem o Abissal com naturalidade, como se lidassem com algo igualmente fora do ciclo normal de vida."
+      },
+      {
+        "name": "Feito pra isso",
+        "description": "Você recebe proficiência em testes de Sabedoria (Intuição)."
+      },
+      {
+        "name": "Encontrando um propósito",
+        "description": "Conforme você ganha experiência, uma vez por turno, quando você recebe dano, você pode ativar um efeito adicional como reação, escolhendo entre: Defesa Absoluta (resistência a um tipo de dano elemental sofrido imediatamente e pelo próximo minuto, uma vez por descanso longo), Ferimentos Leves (reduz o dano recebido em 1d6 + metade do seu nível) ou Aptidão Protetora (a criatura que lhe causou dano sofre desvantagem em seus ataques até o final do próximo turno). Usos limitados (contador abaixo) — todos recuperados ao terminar um descanso longo."
+      }
+    ],
+    "spellChoices": [],
+    "spellGrants": null
+  },
+  {
+    "name": "Empunhai (Foco Arcano)",
+    "source": "HBFortaleza",
+    "sourceBook": "HB Fortaleza",
+    "tier": "homebrew",
+    "rules": "2014",
+    "size": "M",
+    "speed": 30,
+    "skills": [
+      "Arcanismo"
+    ],
+    "skillChoice": null,
+    "tools": [],
+    "toolChoice": null,
+    "languages": "comum, abissal",
+    "languageChoice": null,
+    "abilityBonus": {
+      "fixed": {
+        "int": 2
+      }
+    },
+    "resistances": [],
+    "resistanceChoice": null,
+    "weapons": [],
+    "armor": [],
+    "weaponChoice": null,
+    "originFeat": null,
+    "description": "Uma consciência que despertou dentro de um objeto de tonalidade azul fosca não natural — arma, armadura, foco arcano ou item — e passou a projetar um corpo humanoide instável, marcado por veios ou pele azul-profundo. Nasce sem passado, sem memória, buscando propósito e reconhecimento entre os povos que encontra.",
+    "traits": [
+      {
+        "name": "Objeto: Foco Arcano",
+        "description": "Sua verdadeira forma é um foco arcano — um adorno mágico. Escolha um foco que represente sua identidade. Sempre que estiver usando esse equipamento, você adiciona um bônus à Classe de Dificuldade dos seus feitiços, somando-se a qualquer outro modificador aplicável — esse bônus começa no 5° nível (+1), 10° nível (+2) e 15° nível (+3)."
+      },
+      {
+        "name": "Idade",
+        "description": "Um Empunhai pode persistir por séculos sem qualquer desgaste natural. A pergunta \"quanto tempo dura uma boa lâmina, armadura ou adorno?\" costuma ser a resposta mais honesta à sua expectativa de vida."
+      },
+      {
+        "name": "Tendência",
+        "description": "Tendem à neutralidade e à lealdade. Vivem buscando propósito e pertencimento; valorizam intensamente qualquer um que reconheça sua verdadeira forma e trate sua existência com respeito."
+      },
+      {
+        "name": "Tamanho",
+        "description": "Sempre de tamanho Médio. A projeção humanoide não expressa força ou carne — apenas intenção — e intenção raramente excede esse limite. Você é Humanoide."
+      },
+      {
+        "name": "Idiomas",
+        "description": "Você pode falar, ler e escrever Comum e Abissal. Ainda que não saibam por quê, os Empunhais compreendem o Abissal com naturalidade, como se lidassem com algo igualmente fora do ciclo normal de vida."
+      },
+      {
+        "name": "Feito pra isso",
+        "description": "Você recebe proficiência em testes de Inteligência (Arcanismo)."
+      },
+      {
+        "name": "Encontrando um propósito",
+        "description": "Conforme você ganha experiência, uma vez por turno, quando conjurar um feitiço, você pode ativar um efeito adicional, escolhendo entre: Magia Nata (o feitiço causa dano de Força em vez do tipo normal), Proteção Rápida (se direcionado a um aliado, você recebe +5 na sua CA até o final do próximo turno) ou Aptidão Mágica (se o feitiço exigir teste de resistência, você pode impor desvantagem ao alvo — uma vez por descanso longo). Usos limitados (contador abaixo) — todos recuperados ao terminar um descanso longo."
+      }
+    ],
+    "spellChoices": [],
+    "spellGrants": null
+  },
+  {
+    "name": "Empunhai (Item Mágico)",
+    "source": "HBFortaleza",
+    "sourceBook": "HB Fortaleza",
+    "tier": "homebrew",
+    "rules": "2014",
+    "size": "M",
+    "speed": 30,
+    "skills": [
+      "Persuasão"
+    ],
+    "skillChoice": null,
+    "tools": [],
+    "toolChoice": null,
+    "languages": "comum, abissal",
+    "languageChoice": null,
+    "abilityBonus": {
+      "choice": {
+        "count": 1,
+        "amount": 2,
+        "from": [
+          "cha",
+          "wis"
+        ]
+      }
+    },
+    "resistances": [],
+    "resistanceChoice": null,
+    "weapons": [],
+    "armor": [],
+    "weaponChoice": null,
+    "originFeat": null,
+    "description": "Uma consciência que despertou dentro de um objeto de tonalidade azul fosca não natural — arma, armadura, foco arcano ou item — e passou a projetar um corpo humanoide instável, marcado por veios ou pele azul-profundo. Nasce sem passado, sem memória, buscando propósito e reconhecimento entre os povos que encontra.",
+    "traits": [
+      {
+        "name": "Objeto: Item Mágico",
+        "description": "Sua verdadeira forma é um item ou acessório — um anel, pingente, livro ou qualquer objeto deixado para trás há muito tempo. Escolha um item que represente sua identidade. Sempre que estiver usando esse equipamento, você adiciona um bônus a qualquer teste de resistência que fizer, somando-se a outros modificadores aplicáveis — esse bônus começa no 5° nível (+1), 10° nível (+2) e 15° nível (+3). (Simplificação: RAW restringe esse bônus só a testes de resistência em que você NÃO é proficiente; automatizado aqui como bônus geral por não haver como checar proficiência individual em tempo de efeito.)"
+      },
+      {
+        "name": "Idade",
+        "description": "Um Empunhai pode persistir por séculos sem qualquer desgaste natural. A pergunta \"quanto tempo dura uma boa lâmina, armadura ou adorno?\" costuma ser a resposta mais honesta à sua expectativa de vida."
+      },
+      {
+        "name": "Tendência",
+        "description": "Tendem à neutralidade e à lealdade. Vivem buscando propósito e pertencimento; valorizam intensamente qualquer um que reconheça sua verdadeira forma e trate sua existência com respeito."
+      },
+      {
+        "name": "Tamanho",
+        "description": "Sempre de tamanho Médio. A projeção humanoide não expressa força ou carne — apenas intenção — e intenção raramente excede esse limite. Você é Humanoide."
+      },
+      {
+        "name": "Idiomas",
+        "description": "Você pode falar, ler e escrever Comum e Abissal. Ainda que não saibam por quê, os Empunhais compreendem o Abissal com naturalidade, como se lidassem com algo igualmente fora do ciclo normal de vida."
+      },
+      {
+        "name": "Feito pra isso",
+        "description": "Você recebe proficiência em testes de Carisma (Persuasão)."
+      },
+      {
+        "name": "Encontrando um propósito",
+        "description": "Conforme você ganha experiência, uma vez por turno, com uma ação bônus, você pode ativar um efeito, escolhendo entre: Alvo Claro (o próximo ataque contra a criatura escolhida é feito com +2 na rolagem de acerto até o final do próximo turno), Prevenção de Vontade (um aliado, podendo ser você, tem vantagem na próxima rolagem de iniciativa) ou Aptidão Efetiva (remove uma condição à sua escolha, exceto exaustão, de um aliado que possa ver). Usos limitados (contador abaixo) — todos recuperados ao terminar um descanso longo."
+      }
+    ],
+    "spellChoices": [],
+    "spellGrants": null
+  },
+  {
     "name": "Erina",
     "source": "BookOfEbonTides",
     "sourceBook": "Book of Ebon Tides",

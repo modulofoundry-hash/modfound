@@ -1,5 +1,36 @@
 [
   {
+    "name": "Abi-Dalzim's Horrid Wilting",
+    "level": 8,
+    "school": "Necromancy",
+    "time": "Action",
+    "range": "150 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Absorb Elements",
+    "level": 1,
+    "school": "Abjuration",
+    "time": "Reaction",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Ranger",
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
     "name": "Acid Splash",
     "level": 0,
     "school": "Conjuration",
@@ -30,6 +61,20 @@
     "rules": "2024"
   },
   {
+    "name": "Aganazzar's Scorcher",
+    "level": 2,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
     "name": "Aid",
     "level": 2,
     "school": "Abjuration",
@@ -64,6 +109,23 @@
       "Ranger"
     ],
     "rules": "2024"
+  },
+  {
+    "name": "Air Bubble",
+    "level": 2,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Ranger",
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
   },
   {
     "name": "Alarm",
@@ -121,6 +183,22 @@
     "classes": [
       "Artificer",
       "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Alustriel's Mooncloak",
+    "level": 5,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Druid",
+      "Ranger",
       "Wizard"
     ],
     "rules": "2024"
@@ -267,6 +345,22 @@
       "Artificer",
       "Bard",
       "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Antagonize",
+    "level": 3,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
       "Wizard"
     ],
     "rules": "2024"
@@ -509,6 +603,22 @@
     "rules": "2024"
   },
   {
+    "name": "Ashardalon's Stride",
+    "level": 3,
+    "school": "Transmutation",
+    "time": "Bonus Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Artificer",
+      "Ranger",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
     "name": "Astral Projection",
     "level": 9,
     "school": "Necromancy",
@@ -684,6 +794,22 @@
     "rules": "2024"
   },
   {
+    "name": "Backlash",
+    "level": 4,
+    "school": "Abjuration",
+    "time": "Reaction",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
     "name": "Bane",
     "level": 1,
     "school": "Enchantment",
@@ -826,6 +952,20 @@
       "Cleric"
     ],
     "rules": "2024"
+  },
+  {
+    "name": "Beast Bond",
+    "level": 1,
+    "school": "Divination",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Ranger"
+    ],
+    "rules": "2014"
   },
   {
     "name": "Beast Sense",
@@ -958,6 +1098,21 @@
     "rules": "2024"
   },
   {
+    "name": "Blade of Disaster",
+    "level": 9,
+    "school": "Conjuration",
+    "time": "Bonus Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
     "name": "Blade Ward",
     "level": 0,
     "school": "Abjuration",
@@ -1166,6 +1321,35 @@
       "Wizard"
     ],
     "rules": "2024"
+  },
+  {
+    "name": "Bones of the Earth",
+    "level": 6,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Druid"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Booming Blade",
+    "level": 0,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Artificer",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
   },
   {
     "name": "Borrowed Knowledge",
@@ -1225,6 +1409,21 @@
     "rules": "2024"
   },
   {
+    "name": "Cacophonic Shield",
+    "level": 3,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
     "name": "Call Lightning",
     "level": 3,
     "school": "Conjuration",
@@ -1279,6 +1478,65 @@
     "rules": "2024"
   },
   {
+    "name": "Catapult",
+    "level": 1,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Catnap",
+    "level": 3,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Cause Fear",
+    "level": 1,
+    "school": "Necromancy",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Ceremony",
+    "level": 1,
+    "school": "Abjuration",
+    "time": "1 hour",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Cleric",
+      "Paladin"
+    ],
+    "rules": "2014"
+  },
+  {
     "name": "Chain Lightning",
     "level": 6,
     "school": "Evocation",
@@ -1305,6 +1563,19 @@
       "Wizard"
     ],
     "rules": "2024"
+  },
+  {
+    "name": "Chaos Bolt",
+    "level": 1,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer"
+    ],
+    "rules": "2014"
   },
   {
     "name": "Charm Monster",
@@ -1933,6 +2204,19 @@
     "rules": "2024"
   },
   {
+    "name": "Conjure Constructs",
+    "level": 3,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
     "name": "Conjure Elemental",
     "level": 5,
     "school": "Conjuration",
@@ -2185,6 +2469,21 @@
     "rules": "2024"
   },
   {
+    "name": "Control Flames",
+    "level": 0,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
     "name": "Control Water",
     "level": 4,
     "school": "Transmutation",
@@ -2243,6 +2542,21 @@
       "Wizard"
     ],
     "rules": "2024"
+  },
+  {
+    "name": "Control Winds",
+    "level": 5,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "300 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
   },
   {
     "name": "Cordon of Arrows",
@@ -2301,6 +2615,23 @@
     "rules": "2024"
   },
   {
+    "name": "Create Bonfire",
+    "level": 0,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Sorcerer",
+      "Warlock",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
     "name": "Create Food and Water",
     "level": 3,
     "school": "Conjuration",
@@ -2331,6 +2662,19 @@
     "rules": "2024"
   },
   {
+    "name": "Create Homunculus",
+    "level": 6,
+    "school": "Transmutation",
+    "time": "1 hour",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
     "name": "Create or Destroy Water",
     "level": 1,
     "school": "Transmutation",
@@ -2357,6 +2701,20 @@
       "Druid"
     ],
     "rules": "2024"
+  },
+  {
+    "name": "Create Spelljamming Helm",
+    "level": 5,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
   },
   {
     "name": "Create Undead",
@@ -2449,6 +2807,21 @@
       "Wizard"
     ],
     "rules": "2024"
+  },
+  {
+    "name": "Crown of Stars",
+    "level": 7,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
   },
   {
     "name": "Crusader's Mantle",
@@ -2543,6 +2916,20 @@
       "Wizard"
     ],
     "rules": "2024"
+  },
+  {
+    "name": "Danse Macabre",
+    "level": 5,
+    "school": "Necromancy",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
   },
   {
     "name": "Dark Star",
@@ -2620,6 +3007,20 @@
     "rules": "2024"
   },
   {
+    "name": "Dawn",
+    "level": 5,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
     "name": "Daylight",
     "level": 3,
     "school": "Evocation",
@@ -2650,6 +3051,20 @@
       "Paladin",
       "Ranger",
       "Sorcerer"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Death Armor",
+    "level": 2,
+    "school": "Necromancy",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
     ],
     "rules": "2024"
   },
@@ -2735,6 +3150,20 @@
     "classes": [
       "Sorcerer",
       "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Deryan's Helpful Homunculi",
+    "level": 2,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Cleric",
       "Wizard"
     ],
     "rules": "2024"
@@ -2930,6 +3359,20 @@
     "rules": "2024"
   },
   {
+    "name": "Dirge",
+    "level": 6,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric"
+    ],
+    "rules": "2024"
+  },
+  {
     "name": "Disguise Self",
     "level": 1,
     "school": "Illusion",
@@ -3083,6 +3526,22 @@
       "Bard"
     ],
     "rules": "2024"
+  },
+  {
+    "name": "Distort Value",
+    "level": 1,
+    "school": "Illusion",
+    "time": "1 minute",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard",
+      "Warlock"
+    ],
+    "rules": "2014"
   },
   {
     "name": "Divination",
@@ -3272,6 +3731,36 @@
     "rules": "2024"
   },
   {
+    "name": "Doomtide",
+    "level": 4,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Warlock"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Draconic Transformation",
+    "level": 7,
+    "school": "Transmutation",
+    "time": "Bonus Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
     "name": "Dragon's Breath",
     "level": 2,
     "school": "Transmutation",
@@ -3343,6 +3832,35 @@
     "rules": "2024"
   },
   {
+    "name": "Dream of the Blue Veil",
+    "level": 7,
+    "school": "Conjuration",
+    "time": "10 minutes",
+    "range": "20 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Druid Grove",
+    "level": 6,
+    "school": "Abjuration",
+    "time": "10 minutes",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Druid"
+    ],
+    "rules": "2014"
+  },
+  {
     "name": "Druidcraft",
     "level": 0,
     "school": "Transmutation",
@@ -3367,6 +3885,53 @@
       "Druid"
     ],
     "rules": "2024"
+  },
+  {
+    "name": "Dust Devil",
+    "level": 2,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Earth Tremor",
+    "level": 1,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "10 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Earthbind",
+    "level": 2,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "300 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
   },
   {
     "name": "Earthquake",
@@ -3423,6 +3988,22 @@
       "Warlock"
     ],
     "rules": "2024"
+  },
+  {
+    "name": "Elemental Bane",
+    "level": 4,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "90 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Warlock",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
   },
   {
     "name": "Elemental Weapon",
@@ -3473,6 +4054,76 @@
     "rules": "2024"
   },
   {
+    "name": "Elminster's Effulgent Spheres",
+    "level": 6,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Elminster's Elusion",
+    "level": 2,
+    "school": "Abjuration",
+    "time": "Bonus Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Encode Thoughts",
+    "level": 0,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [],
+    "rules": "2014"
+  },
+  {
+    "name": "Enemies Abound",
+    "level": 3,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Enervation",
+    "level": 5,
+    "school": "Necromancy",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
     "name": "Enhance Ability",
     "level": 2,
     "school": "Transmutation",
@@ -3625,6 +4276,21 @@
       "Warlock"
     ],
     "rules": "2024"
+  },
+  {
+    "name": "Erupting Earth",
+    "level": 3,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
   },
   {
     "name": "Etherealness",
@@ -3837,6 +4503,36 @@
       "Wizard"
     ],
     "rules": "2024"
+  },
+  {
+    "name": "Far Step",
+    "level": 5,
+    "school": "Conjuration",
+    "time": "Bonus Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Fast Friends",
+    "level": 3,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Wizard"
+    ],
+    "rules": "2014"
   },
   {
     "name": "Fear",
@@ -3977,6 +4673,19 @@
     "rules": "2024"
   },
   {
+    "name": "Find Greater Steed",
+    "level": 4,
+    "school": "Conjuration",
+    "time": "10 minutes",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Paladin"
+    ],
+    "rules": "2014"
+  },
+  {
     "name": "Find Steed",
     "level": 2,
     "school": "Conjuration",
@@ -4209,6 +4918,37 @@
       "Wizard"
     ],
     "rules": "2024"
+  },
+  {
+    "name": "Fizban's Platinum Shield",
+    "level": 6,
+    "school": "Abjuration",
+    "time": "Bonus Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Flame Arrows",
+    "level": 3,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Ranger",
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
   },
   {
     "name": "Flame Blade",
@@ -4570,6 +5310,23 @@
     "rules": "2024"
   },
   {
+    "name": "Frostbite",
+    "level": 0,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Sorcerer",
+      "Warlock",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
     "name": "Gaseous Form",
     "level": 3,
     "school": "Transmutation",
@@ -4730,6 +5487,20 @@
     "concentration": false,
     "ritual": false,
     "classes": [],
+    "rules": "2014"
+  },
+  {
+    "name": "Gift of Gab",
+    "level": 2,
+    "school": "Enchantment",
+    "time": "Reaction",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Wizard"
+    ],
     "rules": "2014"
   },
   {
@@ -4995,6 +5766,22 @@
     "rules": "2024"
   },
   {
+    "name": "Green-Flame Blade",
+    "level": 0,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Artificer",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
     "name": "Guardian of Faith",
     "level": 4,
     "school": "Conjuration",
@@ -5019,6 +5806,20 @@
       "Cleric"
     ],
     "rules": "2024"
+  },
+  {
+    "name": "Guardian of Nature",
+    "level": 4,
+    "school": "Transmutation",
+    "time": "Bonus Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Ranger"
+    ],
+    "rules": "2014"
   },
   {
     "name": "Guards and Wards",
@@ -5105,6 +5906,21 @@
     "rules": "2024"
   },
   {
+    "name": "Gust",
+    "level": 0,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
     "name": "Gust of Wind",
     "level": 2,
     "school": "Evocation",
@@ -5303,6 +6119,20 @@
       "Druid"
     ],
     "rules": "2024"
+  },
+  {
+    "name": "Healing Spirit",
+    "level": 2,
+    "school": "Conjuration",
+    "time": "Bonus Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Ranger"
+    ],
+    "rules": "2014"
   },
   {
     "name": "Healing Word",
@@ -5565,6 +6395,47 @@
     "ritual": false,
     "classes": [
       "Cleric"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Holy Star of Mystra",
+    "level": 8,
+    "school": "Evocation",
+    "time": "Bonus Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Holy Weapon",
+    "level": 5,
+    "school": "Evocation",
+    "time": "Bonus Action",
+    "range": "Touch",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Paladin"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Homunculus Servant",
+    "level": 2,
+    "school": "Conjuration",
+    "time": "1 hour",
+    "range": "10 ft",
+    "concentration": false,
+    "ritual": true,
+    "classes": [
+      "Artificer"
     ],
     "rules": "2024"
   },
@@ -5728,6 +6599,19 @@
     "rules": "2024"
   },
   {
+    "name": "Illusory Dragon",
+    "level": 8,
+    "school": "Illusion",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
     "name": "Illusory Script",
     "level": 1,
     "school": "Illusion",
@@ -5756,6 +6640,20 @@
       "Wizard"
     ],
     "rules": "2024"
+  },
+  {
+    "name": "Immolation",
+    "level": 5,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "90 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
   },
   {
     "name": "Immovable Object",
@@ -5827,6 +6725,52 @@
     "rules": "2024"
   },
   {
+    "name": "Incite Greed",
+    "level": 3,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Sorcerer",
+      "Wizard",
+      "Warlock"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Infernal Calling",
+    "level": 5,
+    "school": "Conjuration",
+    "time": "1 minute",
+    "range": "90 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Infestation",
+    "level": 0,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
     "name": "Inflict Wounds",
     "level": 1,
     "school": "Necromancy",
@@ -5883,6 +6827,83 @@
     "rules": "2024"
   },
   {
+    "name": "Intellect Fortress",
+    "level": 3,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Investiture of Flame",
+    "level": 6,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Investiture of Ice",
+    "level": 6,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Investiture of Stone",
+    "level": 6,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Investiture of Wind",
+    "level": 6,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
     "name": "Invisibility",
     "level": 2,
     "school": "Illusion",
@@ -5915,6 +6936,19 @@
       "Wizard"
     ],
     "rules": "2024"
+  },
+  {
+    "name": "Invulnerability",
+    "level": 9,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2014"
   },
   {
     "name": "Jallarzi's Storm of Radiance",
@@ -5929,6 +6963,32 @@
       "Wizard"
     ],
     "rules": "2024"
+  },
+  {
+    "name": "Jim's Glowing Coin",
+    "level": 2,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Jim's Magic Missile",
+    "level": 1,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2014"
   },
   {
     "name": "Jump",
@@ -6011,6 +7071,21 @@
     "rules": "2024"
   },
   {
+    "name": "Laeral's Silver Lance",
+    "level": 3,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
     "name": "Legend Lore",
     "level": 5,
     "school": "Divination",
@@ -6163,6 +7238,20 @@
     "rules": "2024"
   },
   {
+    "name": "Life Transference",
+    "level": 3,
+    "school": "Necromancy",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
     "name": "Light",
     "level": 0,
     "school": "Evocation",
@@ -6249,6 +7338,22 @@
       "Wizard"
     ],
     "rules": "2024"
+  },
+  {
+    "name": "Lightning Lure",
+    "level": 0,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Artificer",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
   },
   {
     "name": "Locate Animals or Plants",
@@ -6385,6 +7490,33 @@
       "Wizard"
     ],
     "rules": "2024"
+  },
+  {
+    "name": "Maddening Darkness",
+    "level": 8,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "150 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Maelstrom",
+    "level": 5,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid"
+    ],
+    "rules": "2014"
   },
   {
     "name": "Mage Armor",
@@ -6563,6 +7695,21 @@
       "Wizard"
     ],
     "rules": "2024"
+  },
+  {
+    "name": "Magic Stone",
+    "level": 0,
+    "school": "Transmutation",
+    "time": "Bonus Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Warlock",
+      "Artificer"
+    ],
+    "rules": "2014"
   },
   {
     "name": "Magic Weapon",
@@ -6726,6 +7873,21 @@
     "rules": "2024"
   },
   {
+    "name": "Mass Polymorph",
+    "level": 9,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
     "name": "Mass Suggestion",
     "level": 6,
     "school": "Enchantment",
@@ -6756,6 +7918,20 @@
       "Wizard"
     ],
     "rules": "2024"
+  },
+  {
+    "name": "Maximilian's Earthen Grasp",
+    "level": 2,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
   },
   {
     "name": "Maze",
@@ -6838,6 +8014,20 @@
       "Wizard"
     ],
     "rules": "2024"
+  },
+  {
+    "name": "Melf's Minute Meteors",
+    "level": 3,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
   },
   {
     "name": "Mend Plants",
@@ -6887,6 +8077,21 @@
     "rules": "2024"
   },
   {
+    "name": "Mental Prison",
+    "level": 6,
+    "school": "Illusion",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
     "name": "Message",
     "level": 0,
     "school": "Transmutation",
@@ -6947,6 +8152,19 @@
       "Wizard"
     ],
     "rules": "2024"
+  },
+  {
+    "name": "Mighty Fortress",
+    "level": 8,
+    "school": "Conjuration",
+    "time": "1 minute",
+    "range": "1 mi",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2014"
   },
   {
     "name": "Mind Blank",
@@ -7189,6 +8407,21 @@
     "rules": "2024"
   },
   {
+    "name": "Mold Earth",
+    "level": 0,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
     "name": "Moonbeam",
     "level": 2,
     "school": "Evocation",
@@ -7327,6 +8560,20 @@
     "rules": "2024"
   },
   {
+    "name": "Motivational Speech",
+    "level": 3,
+    "school": "Enchantment",
+    "time": "1 minute",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric"
+    ],
+    "rules": "2014"
+  },
+  {
     "name": "Move Earth",
     "level": 6,
     "school": "Transmutation",
@@ -7355,6 +8602,35 @@
       "Wizard"
     ],
     "rules": "2024"
+  },
+  {
+    "name": "Nathair's Mischief",
+    "level": 2,
+    "school": "Illusion",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Negative Energy Flood",
+    "level": 5,
+    "school": "Necromancy",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
   },
   {
     "name": "Nondetection",
@@ -7899,6 +9175,21 @@
     "rules": "2024"
   },
   {
+    "name": "Power Word Pain",
+    "level": 7,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
     "name": "Power Word Stun",
     "level": 8,
     "school": "Enchantment",
@@ -7991,6 +9282,32 @@
       "Wizard"
     ],
     "rules": "2024"
+  },
+  {
+    "name": "Primal Savagery",
+    "level": 0,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Druid"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Primordial Ward",
+    "level": 6,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid"
+    ],
+    "rules": "2014"
   },
   {
     "name": "Prismatic Spray",
@@ -8237,6 +9554,22 @@
     "rules": "2024"
   },
   {
+    "name": "Psychic Scream",
+    "level": 9,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "90 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
     "name": "Pulse Wave",
     "level": 3,
     "school": "Evocation",
@@ -8278,6 +9611,22 @@
       "Paladin"
     ],
     "rules": "2024"
+  },
+  {
+    "name": "Pyrotechnics",
+    "level": 2,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
   },
   {
     "name": "Raise Dead",
@@ -8336,6 +9685,22 @@
       "Wizard"
     ],
     "rules": "2024"
+  },
+  {
+    "name": "Raulothim's Psychic Lance",
+    "level": 4,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
   },
   {
     "name": "Ravenous Void",
@@ -8656,6 +10021,20 @@
     "rules": "2024"
   },
   {
+    "name": "Rime's Binding Ice",
+    "level": 2,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
     "name": "Rope Trick",
     "level": 2,
     "school": "Transmutation",
@@ -8749,6 +10128,21 @@
     "rules": "2014"
   },
   {
+    "name": "Scatter",
+    "level": 6,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
     "name": "Scorching Ray",
     "level": 2,
     "school": "Evocation",
@@ -8953,6 +10347,49 @@
       "Wizard"
     ],
     "rules": "2024"
+  },
+  {
+    "name": "Shadow Blade",
+    "level": 2,
+    "school": "Illusion",
+    "time": "Bonus Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Shadow of Moil",
+    "level": 4,
+    "school": "Necromancy",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Warlock"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Shape Water",
+    "level": 0,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "30 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
   },
   {
     "name": "Shapechange",
@@ -9140,6 +10577,21 @@
     "rules": "2024"
   },
   {
+    "name": "Sickening Radiance",
+    "level": 4,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
     "name": "Silence",
     "level": 2,
     "school": "Illusion",
@@ -9215,6 +10667,20 @@
     "rules": "2014"
   },
   {
+    "name": "Simbul's Synostodweomer",
+    "level": 7,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
     "name": "Simulacrum",
     "level": 7,
     "school": "Illusion",
@@ -9239,6 +10705,38 @@
       "Wizard"
     ],
     "rules": "2024"
+  },
+  {
+    "name": "Skill Empowerment",
+    "level": 5,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "Touch",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Skywrite",
+    "level": 2,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "Special",
+    "concentration": true,
+    "ritual": true,
+    "classes": [
+      "Bard",
+      "Druid",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
   },
   {
     "name": "Sleep",
@@ -9331,6 +10829,51 @@
     "rules": "2024"
   },
   {
+    "name": "Snare",
+    "level": 1,
+    "school": "Abjuration",
+    "time": "1 minute",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Ranger",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Snilloc's Snowball Swarm",
+    "level": 2,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "90 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Songal's Elemental Suffusion",
+    "level": 5,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
     "name": "Sorcerous Burst",
     "level": 0,
     "school": "Evocation",
@@ -9342,6 +10885,20 @@
       "Sorcerer"
     ],
     "rules": "2024"
+  },
+  {
+    "name": "Soul Cage",
+    "level": 6,
+    "school": "Necromancy",
+    "time": "Reaction",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
   },
   {
     "name": "Spare the Dying",
@@ -9466,6 +11023,34 @@
     "rules": "2024"
   },
   {
+    "name": "Spellfire Flare",
+    "level": 1,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Spellfire Storm",
+    "level": 4,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
     "name": "Spider Climb",
     "level": 2,
     "school": "Transmutation",
@@ -9550,6 +11135,37 @@
       "Cleric"
     ],
     "rules": "2024"
+  },
+  {
+    "name": "Spirit of Death",
+    "level": 4,
+    "school": "Necromancy",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Spirit Shroud",
+    "level": 3,
+    "school": "Necromancy",
+    "time": "Bonus Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Cleric",
+      "Paladin",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
   },
   {
     "name": "Spiritual Weapon",
@@ -9574,6 +11190,22 @@
     "ritual": false,
     "classes": [
       "Cleric"
+    ],
+    "rules": "2024"
+  },
+  {
+    "name": "Spray of Cards",
+    "level": 2,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
     ],
     "rules": "2024"
   },
@@ -9754,6 +11386,20 @@
     "rules": "2024"
   },
   {
+    "name": "Storm Sphere",
+    "level": 4,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "150 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
     "name": "Suggestion",
     "level": 2,
     "school": "Enchantment",
@@ -9896,6 +11542,21 @@
       "Wizard"
     ],
     "rules": "2024"
+  },
+  {
+    "name": "Summon Draconic Spirit",
+    "level": 5,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
   },
   {
     "name": "Summon Dragon",
@@ -9999,6 +11660,34 @@
       "Wizard"
     ],
     "rules": "2024"
+  },
+  {
+    "name": "Summon Greater Demon",
+    "level": 4,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Summon Lesser Demons",
+    "level": 3,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
   },
   {
     "name": "Summon Shadowspawn",
@@ -10130,6 +11819,36 @@
     "rules": "2024"
   },
   {
+    "name": "Sword Burst",
+    "level": 0,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Artificer",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Syluné's Viper",
+    "level": 3,
+    "school": "Conjuration",
+    "time": "Bonus Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
     "name": "Symbol",
     "level": 7,
     "school": "Abjuration",
@@ -10192,6 +11911,19 @@
     "rules": "2024"
   },
   {
+    "name": "Tasha's Caustic Brew",
+    "level": 1,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Artificer"
+    ],
+    "rules": "2014"
+  },
+  {
     "name": "Tasha's Hideous Laughter",
     "level": 1,
     "school": "Enchantment",
@@ -10220,6 +11952,35 @@
       "Wizard"
     ],
     "rules": "2024"
+  },
+  {
+    "name": "Tasha's Mind Whip",
+    "level": 2,
+    "school": "Enchantment",
+    "time": "Action",
+    "range": "90 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Tasha's Otherworldly Guise",
+    "level": 6,
+    "school": "Transmutation",
+    "time": "Bonus Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
   },
   {
     "name": "Telekinesis",
@@ -10338,6 +12099,19 @@
     "rules": "2024"
   },
   {
+    "name": "Temple of the Gods",
+    "level": 7,
+    "school": "Conjuration",
+    "time": "1 hour",
+    "range": "120 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Cleric"
+    ],
+    "rules": "2014"
+  },
+  {
     "name": "Temporal Shunt",
     "level": 5,
     "school": "Transmutation",
@@ -10373,6 +12147,19 @@
       "Wizard"
     ],
     "rules": "2024"
+  },
+  {
+    "name": "Tenser's Transformation",
+    "level": 6,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2014"
   },
   {
     "name": "Tether Essence",
@@ -10438,6 +12225,21 @@
       "Druid"
     ],
     "rules": "2024"
+  },
+  {
+    "name": "Thunder Step",
+    "level": 3,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "90 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
   },
   {
     "name": "Thunderclap",
@@ -10516,6 +12318,21 @@
     "rules": "2024"
   },
   {
+    "name": "Tidal Wave",
+    "level": 3,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
     "name": "Time Ravage",
     "level": 9,
     "school": "Necromancy",
@@ -10553,6 +12370,20 @@
       "Wizard"
     ],
     "rules": "2024"
+  },
+  {
+    "name": "Tiny Servant",
+    "level": 3,
+    "school": "Transmutation",
+    "time": "1 minute",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
   },
   {
     "name": "Toll the Dead",
@@ -10602,6 +12433,21 @@
       "Wizard"
     ],
     "rules": "2024"
+  },
+  {
+    "name": "Transmute Rock",
+    "level": 5,
+    "school": "Transmutation",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Wizard",
+      "Artificer"
+    ],
+    "rules": "2014"
   },
   {
     "name": "Transport via Plants",
@@ -11007,6 +12853,34 @@
     "rules": "2024"
   },
   {
+    "name": "Wall of Light",
+    "level": 5,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
+    "name": "Wall of Sand",
+    "level": 3,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "90 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
     "name": "Wall of Stone",
     "level": 5,
     "school": "Evocation",
@@ -11076,6 +12950,22 @@
     "rules": "2014"
   },
   {
+    "name": "Wardaway",
+    "level": 1,
+    "school": "Abjuration",
+    "time": "Action",
+    "range": "60 ft",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Cleric",
+      "Paladin",
+      "Wizard"
+    ],
+    "rules": "2024"
+  },
+  {
     "name": "Warding Bond",
     "level": 2,
     "school": "Abjuration",
@@ -11102,6 +12992,22 @@
       "Paladin"
     ],
     "rules": "2024"
+  },
+  {
+    "name": "Warding Wind",
+    "level": 2,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Bard",
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
   },
   {
     "name": "Water Breathing",
@@ -11172,6 +13078,21 @@
     "rules": "2024"
   },
   {
+    "name": "Watery Sphere",
+    "level": 4,
+    "school": "Conjuration",
+    "time": "Action",
+    "range": "90 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
+  },
+  {
     "name": "Web",
     "level": 2,
     "school": "Conjuration",
@@ -11228,6 +13149,21 @@
       "Wizard"
     ],
     "rules": "2024"
+  },
+  {
+    "name": "Whirlwind",
+    "level": 7,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "300 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
+    "rules": "2014"
   },
   {
     "name": "Wind Walk",
@@ -11396,6 +13332,20 @@
     "rules": "2024"
   },
   {
+    "name": "Wrath of Nature",
+    "level": 5,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "120 ft",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Druid",
+      "Ranger"
+    ],
+    "rules": "2014"
+  },
+  {
     "name": "Wrathful Smite",
     "level": 1,
     "school": "Evocation",
@@ -11445,6 +13395,19 @@
       "Wizard"
     ],
     "rules": "2024"
+  },
+  {
+    "name": "Zephyr Strike",
+    "level": 1,
+    "school": "Transmutation",
+    "time": "Bonus Action",
+    "range": "Self",
+    "concentration": true,
+    "ritual": false,
+    "classes": [
+      "Ranger"
+    ],
+    "rules": "2014"
   },
   {
     "name": "Zone of Truth",

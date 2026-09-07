@@ -7,7 +7,55 @@ import { useMemo, useState } from "react";
 // dele. Sem isso, o jogador teria que adivinhar de cabeça qual magia bate no filtro — o que
 // motivou essa feature inteira (ver [[project_out_of_service]] item 4, gap achado testando
 // o fluxo completo site→Firestore→módulo→Actor).
-export function SpellChoicePicker({ title, count, pool, onAdd }) {
+//
+// DOIS MODOS (achado revisando a pedido do usuário: a etapa "Magias" usava esta busca
+// primitiva — só nome, sem nível/escola/tempo, sem ordenar — bem mais pobre que o buscador
+// completo já usado no botão "Buscar magia" principal):
+// - `onOpenBrowser` PRESENTE (StepMagias.jsx, escolha de subclasse/talento na etapa
+//   Magias): abre o MESMO modal `SpellBrowser` completo, restrito a `pool`, mantendo o
+//   `title` visível no cabeçalho do modal (qual feature está concedendo a escolha) — a
+//   contagem de já-escolhidas vem de `spells` (lista completa do personagem, filtrada por
+//   `bonus:true` + nome dentro de `pool`), não de estado local.
+// - `onOpenBrowser` AUSENTE (OriginSuggestions.jsx — Raça/Antecedente, FeatsInput.jsx —
+//   escolha de magia de um talento na etapa Feats): comportamento ORIGINAL preservado,
+//   busca-e-lista própria com acumulação local antes de aplicar em lote (`Adicionar`) —
+//   esses dois contextos não têm acesso a um modal compartilhado, mudar exigiria replicar
+//   a mesma arquitetura de "picker ativo" em mais 2 lugares, fora do pedido desta rodada.
+export function SpellChoicePicker({ pickerKey, title, count, pool, spells, onAdd, onOpenBrowser }) {
+  if (onOpenBrowser) {
+    const chosen = (spells ?? []).filter((s) => s.bonus && pool.includes(s.name));
+    const remaining = count - chosen.length;
+    return (
+      <div className="spell-choice-picker">
+        <p>
+          {title} (escolha {count} de {pool.length}): {chosen.length}/{count}
+        </p>
+        {chosen.length > 0 && (
+          <div className="spell-choice-picker-selected">
+            {chosen.map((s) => (
+              <span key={s.name} className="tag">
+                {s.name}
+              </span>
+            ))}
+          </div>
+        )}
+        <button
+          type="button"
+          disabled={remaining <= 0}
+          onClick={() => onOpenBrowser({ key: pickerKey, title, pool, count, onAdd })}
+        >
+          Buscar magia
+        </button>
+      </div>
+    );
+  }
+
+  return <SpellChoicePickerInline title={title} count={count} pool={pool} onAdd={onAdd} />;
+}
+
+// Implementação original (busca-e-lista simples com acumulação local) -- preservada tal e
+// qual pros 2 contextos que não abrem o modal compartilhado (ver comentário acima).
+function SpellChoicePickerInline({ title, count, pool, onAdd }) {
   const [query, setQuery] = useState("");
   const [selected, setSelected] = useState([]);
 

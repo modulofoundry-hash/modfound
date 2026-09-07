@@ -632,7 +632,9 @@
           "Resistance",
           "Sacred Flame",
           "Spare the Dying",
-          "Thaumaturgy"
+          "Thaumaturgy",
+          "Toll the Dead",
+          "Word of Radiance"
         ]
       }
     ],
@@ -3008,7 +3010,9 @@
           "Resistance",
           "Shillelagh",
           "Spare the Dying",
-          "Starry Wisp"
+          "Starry Wisp",
+          "Thorn Whip",
+          "Thunderclap"
         ]
       }
     ],
@@ -3759,21 +3763,25 @@
         "pool": [
           "Animal Friendship",
           "Bane",
+          "Beast Bond",
           "Bless",
           "Charm Person",
           "Command",
+          "Compelled Duel",
           "Comprehend Languages",
           "Detect Evil and Good",
           "Detect Magic",
           "Detect Poison and Disease",
           "Dissonant Whispers",
+          "Gift of Alacrity",
           "Heroism",
           "Hex",
-          "Hideous Laughter",
           "Hunter's Mark",
           "Identify",
+          "Silvery Barbs",
           "Sleep",
-          "Speak with Animals"
+          "Speak with Animals",
+          "Tasha's Hideous Laughter"
         ]
       }
     ],
@@ -6495,16 +6503,23 @@
         "count": 2,
         "pool": [
           "Acid Splash",
+          "Blade Ward",
+          "Booming Blade",
           "Chill Touch",
           "Dancing Lights",
           "Druidcraft",
           "Eldritch Blast",
+          "Elementalism",
           "Fire Bolt",
+          "Friends",
+          "Green-Flame Blade",
           "Guidance",
           "Light",
+          "Lightning Lure",
           "Mage Hand",
           "Mending",
           "Message",
+          "Mind Sliver",
           "Minor Illusion",
           "Poison Spray",
           "Prestidigitation",
@@ -6514,10 +6529,17 @@
           "Sacred Flame",
           "Shillelagh",
           "Shocking Grasp",
+          "Sorcerous Burst",
           "Spare the Dying",
+          "Starry Wisp",
+          "Sword Burst",
           "Thaumaturgy",
+          "Thorn Whip",
+          "Thunderclap",
+          "Toll the Dead",
           "True Strike",
-          "Vicious Mockery"
+          "Vicious Mockery",
+          "Word of Radiance"
         ]
       },
       {
@@ -6526,10 +6548,13 @@
         "pool": [
           "Alarm",
           "Animal Friendship",
+          "Armor of Agathys",
+          "Arms of Hadar",
           "Bane",
           "Bless",
           "Burning Hands",
           "Charm Person",
+          "Chromatic Orb",
           "Color Spray",
           "Command",
           "Comprehend Languages",
@@ -6539,13 +6564,14 @@
           "Detect Magic",
           "Detect Poison and Disease",
           "Disguise Self",
+          "Dissonant Whispers",
+          "Distort Value",
           "Entangle",
           "Expeditious Retreat",
           "Faerie Fire",
           "False Life",
           "Feather Fall",
           "Find Familiar",
-          "Floating Disk",
           "Fog Cloud",
           "Goodberry",
           "Grease",
@@ -6553,24 +6579,33 @@
           "Healing Word",
           "Hellish Rebuke",
           "Heroism",
-          "Hideous Laughter",
+          "Hex",
+          "Ice Knife",
           "Identify",
           "Illusory Script",
           "Inflict Wounds",
+          "Jim's Magic Missile",
           "Jump",
           "Longstrider",
           "Mage Armor",
           "Magic Missile",
           "Protection from Evil and Good",
           "Purify Food and Drink",
+          "Ray of Sickness",
           "Sanctuary",
           "Shield",
           "Shield of Faith",
           "Silent Image",
+          "Silvery Barbs",
           "Sleep",
           "Speak with Animals",
+          "Spellfire Flare",
+          "Tasha's Hideous Laughter",
+          "Tenser's Floating Disk",
           "Thunderwave",
-          "Unseen Servant"
+          "Unseen Servant",
+          "Wardaway",
+          "Witch Bolt"
         ]
       }
     ],
@@ -6744,16 +6779,22 @@
         "count": 2,
         "pool": [
           "Acid Splash",
+          "Blade Ward",
+          "Booming Blade",
           "Chill Touch",
           "Dancing Lights",
           "Druidcraft",
           "Elementalism",
           "Fire Bolt",
+          "Friends",
+          "Green-Flame Blade",
           "Guidance",
           "Light",
+          "Lightning Lure",
           "Mage Hand",
           "Mending",
           "Message",
+          "Mind Sliver",
           "Minor Illusion",
           "Poison Spray",
           "Prestidigitation",
@@ -6765,8 +6806,13 @@
           "Shocking Grasp",
           "Spare the Dying",
           "Starry Wisp",
+          "Sword Burst",
           "Thaumaturgy",
-          "True Strike"
+          "Thorn Whip",
+          "Thunderclap",
+          "Toll the Dead",
+          "True Strike",
+          "Word of Radiance"
         ]
       },
       {
@@ -6789,23 +6835,23 @@
           "Detect Magic",
           "Detect Poison and Disease",
           "Disguise Self",
+          "Distort Value",
           "Entangle",
           "Expeditious Retreat",
           "Faerie Fire",
           "False Life",
           "Feather Fall",
           "Find Familiar",
-          "Floating Disk",
           "Fog Cloud",
           "Goodberry",
           "Grease",
           "Guiding Bolt",
           "Healing Word",
-          "Hideous Laughter",
           "Ice Knife",
           "Identify",
           "Illusory Script",
           "Inflict Wounds",
+          "Jim's Magic Missile",
           "Jump",
           "Longstrider",
           "Mage Armor",
@@ -6817,10 +6863,16 @@
           "Shield",
           "Shield of Faith",
           "Silent Image",
+          "Silvery Barbs",
           "Sleep",
           "Speak with Animals",
+          "Spellfire Flare",
+          "Tasha's Hideous Laughter",
+          "Tenser's Floating Disk",
           "Thunderwave",
-          "Unseen Servant"
+          "Unseen Servant",
+          "Wardaway",
+          "Witch Bolt"
         ]
       }
     ],
@@ -9133,11 +9185,11 @@
           "Detect Magic",
           "Detect Poison and Disease",
           "Find Familiar",
-          "Floating Disk",
           "Identify",
           "Illusory Script",
           "Purify Food and Drink",
           "Speak with Animals",
+          "Tenser's Floating Disk",
           "Unseen Servant"
         ]
       }
@@ -9281,15 +9333,16 @@
         "count": 2,
         "pool": [
           "Alarm",
+          "Ceremony",
           "Comprehend Languages",
           "Detect Magic",
           "Detect Poison and Disease",
           "Find Familiar",
-          "Floating Disk",
           "Identify",
           "Illusory Script",
           "Purify Food and Drink",
           "Speak with Animals",
+          "Tenser's Floating Disk",
           "Unseen Servant"
         ]
       },
@@ -9298,15 +9351,16 @@
         "count": 1,
         "pool": [
           "Alarm",
+          "Ceremony",
           "Comprehend Languages",
           "Detect Magic",
           "Detect Poison and Disease",
           "Find Familiar",
-          "Floating Disk",
           "Identify",
           "Illusory Script",
           "Purify Food and Drink",
           "Speak with Animals",
+          "Tenser's Floating Disk",
           "Unseen Servant"
         ]
       },
@@ -9315,15 +9369,16 @@
         "count": 1,
         "pool": [
           "Alarm",
+          "Ceremony",
           "Comprehend Languages",
           "Detect Magic",
           "Detect Poison and Disease",
           "Find Familiar",
-          "Floating Disk",
           "Identify",
           "Illusory Script",
           "Purify Food and Drink",
           "Speak with Animals",
+          "Tenser's Floating Disk",
           "Unseen Servant"
         ]
       },
@@ -9332,15 +9387,16 @@
         "count": 1,
         "pool": [
           "Alarm",
+          "Ceremony",
           "Comprehend Languages",
           "Detect Magic",
           "Detect Poison and Disease",
           "Find Familiar",
-          "Floating Disk",
           "Identify",
           "Illusory Script",
           "Purify Food and Drink",
           "Speak with Animals",
+          "Tenser's Floating Disk",
           "Unseen Servant"
         ]
       },
@@ -9349,15 +9405,16 @@
         "count": 1,
         "pool": [
           "Alarm",
+          "Ceremony",
           "Comprehend Languages",
           "Detect Magic",
           "Detect Poison and Disease",
           "Find Familiar",
-          "Floating Disk",
           "Identify",
           "Illusory Script",
           "Purify Food and Drink",
           "Speak with Animals",
+          "Tenser's Floating Disk",
           "Unseen Servant"
         ]
       }
@@ -9816,8 +9873,10 @@
         "level": 0,
         "count": 1,
         "pool": [
+          "Cause Fear",
           "Color Spray",
           "Disguise Self",
+          "Distort Value",
           "False Life",
           "Illusory Script",
           "Inflict Wounds",
@@ -10430,7 +10489,10 @@
           "Produce Flame",
           "Ray of Frost",
           "Shillelagh",
-          "Shocking Grasp"
+          "Shocking Grasp",
+          "Sorcerous Burst",
+          "Starry Wisp",
+          "Thorn Whip"
         ]
       }
     ],

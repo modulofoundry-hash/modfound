@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { ListEditor } from "../ListEditor";
 import { SpellBrowser } from "../SpellBrowser";
 import { SpellChoicePicker } from "../SpellChoicePicker";
@@ -17,6 +18,11 @@ import optionalFeaturesData from "../../data/content/optionalfeatures.json";
 // criação (level-up não troca raça) -- opcional de propósito.
 export function StepMagias({ character, raceMatch, classMatches, spells, onChangeSpells, browserOpen, onToggleBrowser }) {
   const spellCaps = spellProgressionForCharacter(character, classMatches);
+  // Sessão do buscador COMPARTILHADO restrita a um pool específico (escolha de subclasse/
+  // talento, ver SpellChoicePicker.jsx) -- estado LOCAL desta etapa (não sobe pro wizard
+  // pai) porque é um detalhe de implementação só daqui; `browserOpen`/`onToggleBrowser`
+  // (prop do pai) continuam controlando só o modo "principal" (lista inteira da classe).
+  const [scopedPicker, setScopedPicker] = useState(null);
   // Só aviso informativo (ver schema/grantedSpells.js) -- não conta nada
   // aqui, nem entra na lista `spells` acima: o Foundry concede essas magias
   // sozinho pela própria raça/subclasse/feat/escolha ao sincronizar.
@@ -149,19 +155,25 @@ export function StepMagias({ character, raceMatch, classMatches, spells, onChang
       {subclassSpellChoices.map((choice) => (
         <SpellChoicePicker
           key={choice.key}
+          pickerKey={choice.key}
           title={`Magia (${choice.source})`}
           count={choice.count}
           pool={choice.pool}
+          spells={spells}
           onAdd={(names) => handleAddMany(names, true)}
+          onOpenBrowser={setScopedPicker}
         />
       ))}
       {featSpellChoices.map((choice) => (
         <SpellChoicePicker
           key={choice.key}
+          pickerKey={choice.key}
           title={`Magia (${choice.source})`}
           count={choice.count}
           pool={choice.pool}
+          spells={spells}
           onAdd={(names) => handleAddMany(names, true)}
+          onOpenBrowser={setScopedPicker}
         />
       ))}
       <p className="field-hint">
@@ -182,35 +194,58 @@ export function StepMagias({ character, raceMatch, classMatches, spells, onChang
       <button type="button" onClick={() => onToggleBrowser(true)}>
         Buscar magia
       </button>
-      {browserOpen && (
-        <div
-          className="modal-backdrop"
-          onMouseDown={(event) => {
-            if (event.target === event.currentTarget) onToggleBrowser(false);
-          }}
-        >
-          <div className="modal-panel modal-panel-wide" onMouseDown={(event) => event.stopPropagation()}>
-            <div className="modal-header">
-              <h3>Magias</h3>
-              <button type="button" onClick={() => onToggleBrowser(false)}>
-                Fechar
-              </button>
+      {(() => {
+        // Um ÚNICO modal, driblado por QUAL busca está ativa -- "principal" (lista
+        // inteira das classes, `browserOpen` controlado pelo wizard pai) ou "restrita"
+        // (`scopedPicker`, aberta por um card de escolha de subclasse/talento acima).
+        // Nunca os dois ao mesmo tempo (abrir um fecha o outro, ver os `onClick` dos
+        // botões "Buscar magia" -- o principal não mexe em `scopedPicker`, mas os cards
+        // de escolha só abrem quando `!browserOpen` de qualquer forma, já que o próprio
+        // card e o botão principal não competem na mesma tela).
+        if (!scopedPicker && !browserOpen) return null;
+        const scoped = scopedPicker;
+        const chosenForScoped = scoped ? spells.filter((s) => s.bonus && scoped.pool.includes(s.name)).length : 0;
+
+        function close() {
+          setScopedPicker(null);
+          onToggleBrowser(false);
+        }
+
+        return (
+          <div
+            className="modal-backdrop"
+            onMouseDown={(event) => {
+              if (event.target === event.currentTarget) close();
+            }}
+          >
+            <div className="modal-panel modal-panel-wide" onMouseDown={(event) => event.stopPropagation()}>
+              <div className="modal-header">
+                <h3>{scoped ? `Magias — ${scoped.title}` : "Magias"}</h3>
+                <button type="button" onClick={close}>
+                  Fechar
+                </button>
+              </div>
+              <SpellBrowser
+                spells={spellsData}
+                rulesMode={character.rulesMode}
+                onAdd={scoped ? (name) => scoped.onAdd([name]) : handleAdd}
+                canAdd={
+                  scoped
+                    ? () => chosenForScoped < scoped.count
+                    : (spell) =>
+                        spell.level > spellCaps.maxSpellLevel
+                          ? false
+                          : spell.level === 0
+                            ? cantripCount < spellCaps.cantripsKnown
+                            : spellCaps.spellsKnown === null || knownCount < spellCaps.spellsKnown
+                }
+                bonusEligibility={scoped ? undefined : bonusEligibility}
+                allowedNames={scoped ? new Set(scoped.pool) : allowedSpellNames}
+              />
             </div>
-            <SpellBrowser
-              spells={spellsData}
-              rulesMode={character.rulesMode}
-              onAdd={handleAdd}
-              canAdd={(spell) =>
-                spell.level === 0
-                  ? cantripCount < spellCaps.cantripsKnown
-                  : spellCaps.spellsKnown === null || knownCount < spellCaps.spellsKnown
-              }
-              bonusEligibility={bonusEligibility}
-              allowedNames={allowedSpellNames}
-            />
           </div>
-        </div>
-      )}
+        );
+      })()}
     </div>
   );
 }

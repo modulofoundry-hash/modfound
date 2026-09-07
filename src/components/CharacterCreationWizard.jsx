@@ -148,6 +148,40 @@ export function abilityImprovementSlots(character, classMatches) {
 // (personagem 2024 + subclasse 2014) é suportado de propósito neste projeto
 // (ver [[feature_rulesmode_2014_2024]]: "classe filtro duro, resto tag+livre"),
 // então precisa resolver por fonte, não por characterRules.
+// `itemChoiceGrants` é o mecanismo do Artificer 2024 (EFA) "Replicate Magic
+// Item"/"Plans Known" -- diferente de `optionalFeatureChoices`, não tem
+// `category` própria (só existe essa mecânica numa classe hoje) nem
+// `progression` cumulativo: é uma lista de tiers `{level, count, items}`, cada
+// um com um `count` de quantas escolhas NOVAS aquele degrau libera (não um
+// total acumulado -- ao contrário do `progression` acima) e uma lista de
+// nomes já cumulativa (o tier de nível 6 já inclui os itens do tier de nível
+// 2). Por isso: soma o `count` de todo tier alcançado, mas usa só o POOL do
+// tier de maior nível alcançado (ele já contém os nomes dos tiers menores).
+// Categoria sintética `${identifier}ItemChoice` -- não existe no JSON, mas
+// isola a mecânica por classe sem precisar inventar um nome fixo tipo
+// "artificerReplicateMagicItem" que quebraria se outra classe ganhasse a
+// mesma mecânica um dia.
+function accumulateItemChoices(counts, source, level) {
+  for (const tier of source?.itemChoiceGrants ?? []) {
+    if (tier.level > level) continue;
+    const category = `${source.identifier ?? source.name}ItemChoice`;
+    const prev = counts.get(category) ?? {
+      count: 0,
+      source: "itemChoice",
+      rules: source.rules,
+      pool: [],
+      label: "Plano de Item Mágico (Replicate Magic Item)",
+      _maxTierLevel: -1,
+    };
+    prev.count += tier.count ?? 0;
+    if (tier.level >= prev._maxTierLevel) {
+      prev._maxTierLevel = tier.level;
+      prev.pool = tier.items ?? [];
+    }
+    counts.set(category, prev);
+  }
+}
+
 function categoryCountsForClass(classData, subclassData, level) {
   const counts = new Map();
   function accumulate(source) {
@@ -162,6 +196,7 @@ function categoryCountsForClass(classData, subclassData, level) {
       prev.count += count;
       counts.set(pool.category, prev);
     }
+    accumulateItemChoices(counts, source, level);
   }
   accumulate(classData);
   accumulate(subclassData);
@@ -213,7 +248,7 @@ export function classChoiceSlots(character, classMatches, featsData = [], backgr
   character.classes.forEach((row, classIndex) => {
     const counts = categoryCountsForClass(classMatches[classIndex]?.classData, classMatches[classIndex]?.subclassData, row.level ?? 1);
     for (const [category, info] of counts) {
-      slots.push({ classIndex, className: row.name, category, count: info.count, source: info.source, rules: info.rules });
+      slots.push({ classIndex, className: row.name, category, count: info.count, source: info.source, rules: info.rules, pool: info.pool, label: info.label });
     }
   });
   const featCounts = categoryCountsForFeats(character, featsData, backgroundsData);
@@ -246,6 +281,12 @@ const STEP_DEFS = [
       "Isso decide se a etapa de Classe já libera a escolha de subclasse (algumas classes só escolhem subclasse a partir de um nível maior que 1).",
   },
   {
+    key: "atributos",
+    label: "Atributos",
+    title: "Atributos",
+    blurb: "Escolha como gerar os 6 atributos do personagem: Array Padrão, Compra por Pontos ou Rolagem — cada método tem um botão de informação explicando como funciona.",
+  },
+  {
     key: "raca",
     label: "Raça",
     title: "Raça / Espécie",
@@ -262,12 +303,6 @@ const STEP_DEFS = [
     label: "Classe",
     title: "Classe(s)",
     blurb: "Escolha a classe principal do personagem (e, se for multiclasse, as demais). A subclasse só aparece disponível se o nível já alcançou o mínimo dela.",
-  },
-  {
-    key: "atributos",
-    label: "Atributos",
-    title: "Atributos",
-    blurb: "Escolha como gerar os 6 atributos do personagem: Array Padrão, Compra por Pontos ou Rolagem — cada método tem um botão de informação explicando como funciona.",
   },
   {
     key: "melhorias",
@@ -586,14 +621,35 @@ export function CharacterCreationWizard({ initialValue, onSubmit, onCancel }) {
     if (item?.languages) appliers.applyLanguages(item.languages);
     // Talento de Origem (só existe em antecedente 2024) entra sozinho na
     // lista de feats — troca de antecedente no meio do caminho remove o
-    // talento do antecedente ANTERIOR antes de adicionar o novo, pra não
-    // deixar sobra de um antecedente que o jogador não escolheu mais.
+    // talento ATIVO do antecedente ANTERIOR (padrão OU já trocado via
+    // `pickOriginFeat` abaixo — por isso `prev.originFeatOverride` primeiro,
+    // não só `backgroundMatch?.originFeat`) antes de adicionar o novo padrão,
+    // e reseta a troca (novo antecedente = novo padrão, a troca anterior não
+    // faz mais sentido pra ele).
     setCharacter((prev) => {
-      const previousOriginFeat = backgroundMatch?.originFeat;
+      const previousOriginFeat = prev.originFeatOverride || backgroundMatch?.originFeat;
       let feats = prev.feats;
       if (previousOriginFeat) feats = feats.filter((f) => f !== previousOriginFeat);
       if (item.originFeat && !feats.includes(item.originFeat)) feats = [...feats, item.originFeat];
-      return { ...prev, feats };
+      return { ...prev, feats, originFeatOverride: null };
+    });
+  }
+
+  // Troca o Talento de Origem pra outro (regra "Customizing Your Origin", PHB
+  // 2024) -- chamado tanto pra trocar de verdade quanto pra "reverter ao
+  // padrão" (nesse caso o próprio chamador passa `backgroundMatch.originFeat`
+  // como `featName`). Remove a entrada ATIVA de `feats[]` (padrão ou já
+  // trocada antes) e põe a nova no lugar; `originFeatOverride` só fica
+  // preenchido quando o nome escolhido DIFERE do padrão do antecedente atual
+  // -- reverter pro padrão limpa o campo (mesmo estado de "nunca trocou").
+  function pickOriginFeat(featName) {
+    if (!featName) return;
+    setCharacter((prev) => {
+      const current = prev.originFeatOverride || backgroundMatch?.originFeat;
+      let feats = prev.feats;
+      if (current && current !== featName) feats = feats.filter((f) => f !== current);
+      if (!feats.includes(featName)) feats = [...feats, featName];
+      return { ...prev, feats, originFeatOverride: featName === backgroundMatch?.originFeat ? null : featName };
     });
   }
 
@@ -671,6 +727,12 @@ export function CharacterCreationWizard({ initialValue, onSubmit, onCancel }) {
   // revertImprovement/handleRemoveClass).
   function handleRulesModeChange(value) {
     if (value === character.rulesMode) return;
+    // Regra base do PHB 2024 (ver StepIdiomas.jsx): todo personagem 2024 já
+    // sabe Comum, garantido, sem depender de Raça/Antecedente (que no 2024
+    // não concedem idioma nenhum sozinhos) -- mesmo automatismo de idioma
+    // FIXO de Raça/Antecedente (pickRace/pickBackground acima), disparado
+    // aqui porque é neste ponto que a edição 2024 é escolhida de verdade.
+    if (value === "2024") appliers.applyLanguages("Common");
     if (!character.classes.some((c) => c.name)) {
       set("rulesMode", value);
       return;
@@ -841,6 +903,9 @@ export function CharacterCreationWizard({ initialValue, onSubmit, onCancel }) {
             matched={backgroundMatch}
             onPick={pickBackground}
             appliers={appliers}
+            featsData={featsData}
+            originFeatOverride={character.originFeatOverride}
+            onPickOriginFeat={pickOriginFeat}
           />
         );
       case "classes":
@@ -945,6 +1010,7 @@ export function CharacterCreationWizard({ initialValue, onSubmit, onCancel }) {
             onChange={(languages) => set("languages", languages)}
             raceMatch={raceMatch}
             backgroundMatch={backgroundMatch}
+            rulesMode={character.rulesMode}
             appliers={appliers}
           />
         );

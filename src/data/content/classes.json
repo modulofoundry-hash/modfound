@@ -105,6 +105,243 @@
     ],
     "expertiseLevels": [],
     "optionalFeatureChoices": [],
+    "itemChoiceGrants": [
+      {
+        "level": 2,
+        "count": 4,
+        "items": [
+          "Alchemy Jug",
+          "Bag of Holding",
+          "Goggles of Night",
+          "Manifold Tool",
+          "Rope of Climbing",
+          "Sending Stones",
+          "Wand of Magic Detection",
+          "Wand of Secrets",
+          "Cap of Water Breathing",
+          "Repeating Shot",
+          "Returning Weapon",
+          "+1 Shield",
+          "+1 Wand of the War Mage",
+          "+1 Weapon",
+          "+1 Wraps of Unarmed Power"
+        ]
+      },
+      {
+        "level": 6,
+        "count": 1,
+        "items": [
+          "Alchemy Jug",
+          "Bag of Holding",
+          "Goggles of Night",
+          "Manifold Tool",
+          "Rope of Climbing",
+          "Sending Stones",
+          "Wand of Magic Detection",
+          "Wand of Secrets",
+          "Cap of Water Breathing",
+          "Repeating Shot",
+          "Returning Weapon",
+          "+1 Shield",
+          "+1 Wand of the War Mage",
+          "+1 Weapon",
+          "+1 Wraps of Unarmed Power",
+          "Boots of Elvenkind",
+          "Boots of the Winding Path",
+          "Cloak of Elvenkind",
+          "Cloak of the Manta Ray",
+          "Eyes of Charming",
+          "Eyes of Minute Seeing",
+          "Gloves of Thievery",
+          "Helm of Awareness",
+          "Lantern of Revealing",
+          "Mind Sharpener",
+          "Necklace of Adaptation",
+          "Pipes of Haunting",
+          "Repulsion Shield",
+          "Ring of Swimming",
+          "Ring of Water Walking",
+          "Sentinel Shield",
+          "Spell-Refueling Ring",
+          "Wand of Magic Missiles",
+          "Wand of Web",
+          "Weapon of Warning",
+          "+1 Armor",
+          "Dazzling Weapon"
+        ]
+      },
+      {
+        "level": 10,
+        "count": 1,
+        "items": [
+          "Alchemy Jug",
+          "Bag of Holding",
+          "Goggles of Night",
+          "Manifold Tool",
+          "Rope of Climbing",
+          "Sending Stones",
+          "Wand of Magic Detection",
+          "Wand of Secrets",
+          "Cap of Water Breathing",
+          "Repeating Shot",
+          "Returning Weapon",
+          "+1 Shield",
+          "+1 Wand of the War Mage",
+          "+1 Weapon",
+          "+1 Wraps of Unarmed Power",
+          "Boots of Elvenkind",
+          "Boots of the Winding Path",
+          "Cloak of Elvenkind",
+          "Cloak of the Manta Ray",
+          "Eyes of Charming",
+          "Eyes of Minute Seeing",
+          "Gloves of Thievery",
+          "Helm of Awareness",
+          "Lantern of Revealing",
+          "Mind Sharpener",
+          "Necklace of Adaptation",
+          "Pipes of Haunting",
+          "Repulsion Shield",
+          "Ring of Swimming",
+          "Ring of Water Walking",
+          "Sentinel Shield",
+          "Spell-Refueling Ring",
+          "Wand of Magic Missiles",
+          "Wand of Web",
+          "Weapon of Warning",
+          "+1 Armor",
+          "Dazzling Weapon",
+          "Armor of Resistance",
+          "Dagger of Venom",
+          "Elven Chain",
+          "Ring of Feather Falling",
+          "Ring of Jumping",
+          "Ring of Mind Shielding",
+          "+2 Shield",
+          "+2 Wand of the War Mage",
+          "+2 Weapon",
+          "+2 Wraps of Unarmed Power"
+        ]
+      },
+      {
+        "level": 14,
+        "count": 1,
+        "items": [
+          "Alchemy Jug",
+          "Bag of Holding",
+          "Goggles of Night",
+          "Manifold Tool",
+          "Rope of Climbing",
+          "Sending Stones",
+          "Wand of Magic Detection",
+          "Wand of Secrets",
+          "Cap of Water Breathing",
+          "Repeating Shot",
+          "Returning Weapon",
+          "+1 Shield",
+          "+1 Wand of the War Mage",
+          "+1 Weapon",
+          "+1 Wraps of Unarmed Power",
+          "Boots of Elvenkind",
+          "Boots of the Winding Path",
+          "Cloak of Elvenkind",
+          "Cloak of the Manta Ray",
+          "Eyes of Charming",
+          "Eyes of Minute Seeing",
+          "Gloves of Thievery",
+          "Helm of Awareness",
+          "Lantern of Revealing",
+          "Mind Sharpener",
+          "Necklace of Adaptation",
+          "Pipes of Haunting",
+          "Repulsion Shield",
+          "Ring of Swimming",
+          "Ring of Water Walking",
+          "Sentinel Shield",
+          "Spell-Refueling Ring",
+          "Wand of Magic Missiles",
+          "Wand of Web",
+          "Weapon of Warning",
+          "+1 Armor",
+          "Dazzling Weapon",
+          "Armor of Resistance",
+          "Dagger of Venom",
+          "Elven Chain",
+          "Ring of Feather Falling",
+          "Ring of Jumping",
+          "Ring of Mind Shielding",
+          "+2 Shield",
+          "+2 Wand of the War Mage",
+          "+2 Weapon",
+          "+2 Wraps of Unarmed Power",
+          "+2 Armor",
+          "Arrow-Catching Shield",
+          "Flame Tongue",
+          "Ring of Free Action",
+          "Ring of Protection",
+          "Ring of the Ram"
+        ]
+      },
+      {
+        "level": 18,
+        "count": 1,
+        "items": [
+          "Alchemy Jug",
+          "Bag of Holding",
+          "Goggles of Night",
+          "Manifold Tool",
+          "Rope of Climbing",
+          "Sending Stones",
+          "Wand of Magic Detection",
+          "Wand of Secrets",
+          "Cap of Water Breathing",
+          "Repeating Shot",
+          "Returning Weapon",
+          "+1 Shield",
+          "+1 Wand of the War Mage",
+          "+1 Weapon",
+          "+1 Wraps of Unarmed Power",
+          "Boots of Elvenkind",
+          "Boots of the Winding Path",
+          "Cloak of Elvenkind",
+          "Cloak of the Manta Ray",
+          "Eyes of Charming",
+          "Eyes of Minute Seeing",
+          "Gloves of Thievery",
+          "Helm of Awareness",
+          "Lantern of Revealing",
+          "Mind Sharpener",
+          "Necklace of Adaptation",
+          "Pipes of Haunting",
+          "Repulsion Shield",
+          "Ring of Swimming",
+          "Ring of Water Walking",
+          "Sentinel Shield",
+          "Spell-Refueling Ring",
+          "Wand of Magic Missiles",
+          "Wand of Web",
+          "Weapon of Warning",
+          "+1 Armor",
+          "Dazzling Weapon",
+          "Armor of Resistance",
+          "Dagger of Venom",
+          "Elven Chain",
+          "Ring of Feather Falling",
+          "Ring of Jumping",
+          "Ring of Mind Shielding",
+          "+2 Shield",
+          "+2 Wand of the War Mage",
+          "+2 Weapon",
+          "+2 Wraps of Unarmed Power",
+          "+2 Armor",
+          "Arrow-Catching Shield",
+          "Flame Tongue",
+          "Ring of Free Action",
+          "Ring of Protection",
+          "Ring of the Ram"
+        ]
+      }
+    ],
     "spellProgression": {
       "cantripsKnown": {
         "1": 2,
@@ -361,6 +598,7 @@
         }
       }
     ],
+    "itemChoiceGrants": [],
     "spellProgression": {
       "cantripsKnown": {
         "1": 2,
@@ -601,6 +839,7 @@
     ],
     "expertiseLevels": [],
     "optionalFeatureChoices": [],
+    "itemChoiceGrants": [],
     "spellProgression": null,
     "features": [
       {
@@ -809,6 +1048,7 @@
     ],
     "expertiseLevels": [],
     "optionalFeatureChoices": [],
+    "itemChoiceGrants": [],
     "spellProgression": null,
     "features": [
       {
@@ -1109,6 +1349,7 @@
       10
     ],
     "optionalFeatureChoices": [],
+    "itemChoiceGrants": [],
     "spellProgression": {
       "cantripsKnown": {
         "1": 2,
@@ -1361,6 +1602,7 @@
       9
     ],
     "optionalFeatureChoices": [],
+    "itemChoiceGrants": [],
     "spellProgression": {
       "cantripsKnown": {
         "1": 2,
@@ -1702,6 +1944,7 @@
     ],
     "expertiseLevels": [],
     "optionalFeatureChoices": [],
+    "itemChoiceGrants": [],
     "spellProgression": {
       "cantripsKnown": {
         "1": 3,
@@ -1929,6 +2172,7 @@
         }
       }
     ],
+    "itemChoiceGrants": [],
     "spellProgression": {
       "cantripsKnown": {
         "1": 3,
@@ -2198,6 +2442,7 @@
     ],
     "expertiseLevels": [],
     "optionalFeatureChoices": [],
+    "itemChoiceGrants": [],
     "spellProgression": {
       "cantripsKnown": {
         "1": 2,
@@ -2402,6 +2647,7 @@
     ],
     "expertiseLevels": [],
     "optionalFeatureChoices": [],
+    "itemChoiceGrants": [],
     "spellProgression": {
       "cantripsKnown": {
         "1": 2,
@@ -2728,6 +2974,7 @@
         }
       }
     ],
+    "itemChoiceGrants": [],
     "spellProgression": null,
     "features": [
       {
@@ -3000,6 +3247,7 @@
         }
       }
     ],
+    "itemChoiceGrants": [],
     "spellProgression": null,
     "features": [
       {
@@ -3265,6 +3513,7 @@
     ],
     "expertiseLevels": [],
     "optionalFeatureChoices": [],
+    "itemChoiceGrants": [],
     "spellProgression": null,
     "features": [
       {
@@ -3516,6 +3765,7 @@
     ],
     "expertiseLevels": [],
     "optionalFeatureChoices": [],
+    "itemChoiceGrants": [],
     "spellProgression": null,
     "features": [
       {
@@ -3851,6 +4101,7 @@
         }
       }
     ],
+    "itemChoiceGrants": [],
     "spellProgression": {},
     "features": [
       {
@@ -4081,6 +4332,7 @@
         }
       }
     ],
+    "itemChoiceGrants": [],
     "spellProgression": {
       "maxPrepared": {
         "1": 2,
@@ -4320,6 +4572,7 @@
     ],
     "expertiseLevels": [],
     "optionalFeatureChoices": [],
+    "itemChoiceGrants": [],
     "spellProgression": null,
     "features": [
       {
@@ -4621,6 +4874,7 @@
         }
       }
     ],
+    "itemChoiceGrants": [],
     "spellProgression": {
       "spellsKnown": {
         "2": 2,
@@ -4882,6 +5136,7 @@
         }
       }
     ],
+    "itemChoiceGrants": [],
     "spellProgression": {
       "maxPrepared": {
         "1": 2,
@@ -5198,6 +5453,7 @@
       6
     ],
     "optionalFeatureChoices": [],
+    "itemChoiceGrants": [],
     "spellProgression": null,
     "features": [
       {
@@ -5434,6 +5690,7 @@
       6
     ],
     "optionalFeatureChoices": [],
+    "itemChoiceGrants": [],
     "spellProgression": null,
     "features": [
       {
@@ -5759,6 +6016,7 @@
         }
       }
     ],
+    "itemChoiceGrants": [],
     "spellProgression": {
       "cantripsKnown": {
         "1": 4,
@@ -5971,6 +6229,7 @@
         }
       }
     ],
+    "itemChoiceGrants": [],
     "spellProgression": {
       "cantripsKnown": {
         "1": 4,
@@ -6270,6 +6529,7 @@
         }
       }
     ],
+    "itemChoiceGrants": [],
     "spellProgression": {
       "cantripsKnown": {
         "1": 2,
@@ -6500,6 +6760,7 @@
         }
       }
     ],
+    "itemChoiceGrants": [],
     "spellProgression": {
       "cantripsKnown": {
         "1": 2,
@@ -6763,6 +7024,7 @@
     ],
     "expertiseLevels": [],
     "optionalFeatureChoices": [],
+    "itemChoiceGrants": [],
     "spellProgression": {
       "cantripsKnown": {
         "1": 3,
@@ -6936,6 +7198,7 @@
     ],
     "expertiseLevels": [],
     "optionalFeatureChoices": [],
+    "itemChoiceGrants": [],
     "spellProgression": {
       "cantripsKnown": {
         "1": 3,

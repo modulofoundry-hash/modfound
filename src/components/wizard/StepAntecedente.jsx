@@ -4,6 +4,7 @@ import { OriginBookFilter, filterOriginItems, initialOriginFilter } from "../Ori
 import { OriginSuggestions } from "../OriginSuggestions";
 import { AbilityBonusPicker } from "../AbilityBonusPicker";
 import { DescriptionPanel } from "../DescriptionPanel";
+import { SourceItemPicker } from "../SourceItemPicker";
 
 const COLUMNS = [
   { key: "name", label: "Nome" },
@@ -22,7 +23,68 @@ const COLUMNS = [
   { key: "rules", label: "Edição", render: (item) => item.rules || "—" },
 ];
 
-export function StepAntecedente({ items, value, selectedRules, rulesMode, matched, onPick, appliers }) {
+// Regra "Customizing Your Origin" (PHB 2024) -- o Talento de Origem concedido
+// pelo Antecedente não é travado: o jogador pode manter o padrão ou trocar
+// por QUALQUER outro talento de categoria Origem (`subtype === "origin"`, 23
+// no banco atual). `effective` já vem calculado pelo pai (override ou
+// padrão) -- este componente só cuida da UI de troca em si.
+function OriginFeatChoice({ background, effective, featsData, onPick }) {
+  const [swapping, setSwapping] = useState(false);
+  const [text, setText] = useState("");
+  const originFeats = useMemo(() => featsData.filter((f) => f.subtype === "origin"), [featsData]);
+  const isDefault = effective === background.originFeat;
+
+  function handlePick(nextText, item) {
+    setText(nextText);
+    if (!item) return;
+    onPick(item.name);
+    setText("");
+    setSwapping(false);
+  }
+
+  return (
+    <div className="origin-feat-choice">
+      <p>
+        Talento de Origem: <strong>{effective}</strong>
+        {!isDefault && (
+          <span className="field-hint"> (trocado — padrão do antecedente é "{background.originFeat}")</span>
+        )}
+      </p>
+      {!swapping ? (
+        <div className="origin-feat-choice-actions">
+          <button type="button" onClick={() => setSwapping(true)}>
+            Trocar talento de origem
+          </button>
+          {!isDefault && (
+            <button type="button" onClick={() => onPick(background.originFeat)}>
+              Reverter pro padrão
+            </button>
+          )}
+        </div>
+      ) : (
+        <div className="origin-feat-choice-actions">
+          <SourceItemPicker items={originFeats} value={text} onChange={handlePick} placeholder="Buscar talento de origem..." />
+          <button type="button" onClick={() => setSwapping(false)}>
+            Cancelar
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
+
+export function StepAntecedente({
+  items,
+  value,
+  selectedRules,
+  rulesMode,
+  matched,
+  onPick,
+  appliers,
+  featsData,
+  originFeatOverride,
+  onPickOriginFeat,
+}) {
   const [bookFilter, setBookFilter] = useState(() => initialOriginFilter(items));
   const filteredItems = useMemo(() => filterOriginItems(items, bookFilter), [items, bookFilter]);
 
@@ -61,6 +123,15 @@ export function StepAntecedente({ items, value, selectedRules, rulesMode, matche
           label="Bônus de atributo (Antecedente)"
           abilityBonus={matched.abilityBonus}
           onApply={(picks) => appliers.applyAbilityBonusFor("background", picks)}
+        />
+      )}
+      {rulesMode === "2024" && matched?.originFeat && (
+        <OriginFeatChoice
+          key={matched.name}
+          background={matched}
+          effective={originFeatOverride || matched.originFeat}
+          featsData={featsData}
+          onPick={onPickOriginFeat}
         />
       )}
     </div>

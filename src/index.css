@@ -1012,6 +1012,25 @@ input {
   justify-content: space-between;
 }
 
+.origin-feat-choice {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+
+.origin-feat-choice p {
+  margin: 0;
+}
+
+.origin-feat-choice-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .origin-picker {
   display: flex;
   flex-direction: column;

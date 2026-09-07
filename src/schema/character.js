@@ -133,6 +133,15 @@ export function createEmptyCharacter() {
     backgroundRules: "",
     // Mesma ideia de raceAbilityBonusPicks, mas pro Antecedente (2024).
     backgroundAbilityBonusPicks: null,
+    // Talento de Origem escolhido À MÃO em vez do padrão do Antecedente
+    // (regra "Customizing Your Origin", PHB 2024 — o jogador pode manter o
+    // talento padrão do antecedente OU trocar por qualquer outro talento de
+    // origem). `null` = usa o padrão (`backgroundMatch.originFeat`); string =
+    // nome do talento escolhido no lugar. O NOME ativo (padrão ou trocado)
+    // sempre está espelhado em `feats[]` também — este campo só existe pra
+    // StepAntecedente saber qual estado mostrar e pra `pickBackground`/
+    // `pickOriginFeat` saberem qual entrada de `feats[]` remover ao trocar.
+    originFeatOverride: null,
     // `hpRolls[i]` = escolha de PV do nível i+1 dessa entrada de classe:
     // ausente = média (padrão, retrocompatível — ficha antiga sem esse campo
     // continua igual), "avg" = média escolhida conscientemente, "pending" =

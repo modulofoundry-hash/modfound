@@ -17,7 +17,11 @@ const CATEGORY_LABELS = {
   totemSpirit: "Totem Spirit (Path of the Totem Warrior)",
   aspectOfTheBeast: "Aspect of the Beast (Path of the Totem Warrior)",
   totemicAttunement: "Totemic Attunement (Path of the Totem Warrior)",
-  runeKnightRune: "Runa (Rune Knight)",
+  // banco usa "rune" (bate com o subtype nativo do dnd5e, CONFIG.DND5E --
+  // achado ao vivo: "runeKnightRune" nunca existiu nem no banco nem no
+  // vocabulário do Foundry, deixava o pool de runas do Rune Knight sempre
+  // vazio no wizard).
+  rune: "Runa (Rune Knight)",
   hunterPrey: "Hunter's Prey (Hunter)",
   hunterDefensiveTactics: "Defensive Tactics (Hunter)",
   hunterMultiattack: "Multiattack (Hunter)",
@@ -42,7 +46,7 @@ function ChoiceSlotCard({ slot, pool, chosenNames, onPick, onClear }) {
   return (
     <div className="melhoria-slot">
       <h4 className="melhoria-slot-title">
-        {slot.className || "Classe"} — {CATEGORY_LABELS[slot.category] ?? slot.category}
+        {slot.className || "Classe"} — {slot.label ?? CATEGORY_LABELS[slot.category] ?? slot.category}
       </h4>
       <div className="melhoria-feat-picker">
         {Array.from({ length: slot.count }, (_, i) => {
@@ -71,7 +75,7 @@ function ChoiceSlotCard({ slot, pool, chosenNames, onPick, onClear }) {
                   columns={COLUMNS}
                   value={chosen ?? null}
                   onPick={(item) => onPick(slot.category, i, item)}
-                  searchPlaceholder={`Buscar ${(CATEGORY_LABELS[slot.category] ?? slot.category).toLowerCase()}...`}
+                  searchPlaceholder={`Buscar ${(slot.label ?? CATEGORY_LABELS[slot.category] ?? slot.category).toLowerCase()}...`}
                 />
               )}
             </div>
@@ -111,11 +115,13 @@ export function StepEscolhasDeClasse({ slots, classChoices, optionalFeaturesData
         const chosenNames = allChosenForCategory.slice(startIndex, startIndex + slot.count);
 
         const pool =
-          slot.source === "feat"
-            ? featsData.filter((f) => f.subtype === slot.category && f.rules === slot.rules)
-            : optionalFeaturesData.filter(
-                (f) => f.category === slot.category && f.rules === slot.rules && (!f.classes?.length || f.classes.includes(slot.className)),
-              );
+          slot.source === "itemChoice"
+            ? (slot.pool ?? []).map((name) => ({ name, rules: slot.rules }))
+            : slot.source === "feat"
+              ? featsData.filter((f) => f.subtype === slot.category && f.rules === slot.rules)
+              : optionalFeaturesData.filter(
+                  (f) => f.category === slot.category && f.rules === slot.rules && (!f.classes?.length || f.classes.includes(slot.className)),
+                );
 
         return (
           <ChoiceSlotCard

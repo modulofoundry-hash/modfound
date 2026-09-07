@@ -138,7 +138,7 @@ export function SpellBrowser({ spells, rulesMode, onAdd, canAdd, bonusEligibilit
                     type="button"
                     className="spell-browser-pick"
                     disabled={disabled}
-                    title={disabled ? "Limite de magias conhecidas/truques deste nível já atingido" : undefined}
+                    title={disabled ? "Limite atingido, ou nível de magia acima do que o personagem já pode conjurar" : undefined}
                     onClick={() => onAdd(spell.name)}
                   >
                     {spell.name}
