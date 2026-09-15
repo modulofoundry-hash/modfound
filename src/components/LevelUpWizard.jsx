@@ -554,6 +554,7 @@ export function LevelUpWizard({ initialCharacter, onSubmit, onCancel }) {
             classChoices={character.classChoices}
             optionalFeaturesData={optionalFeaturesData}
             featsData={featsData}
+            character={character}
             onPick={setClassChoice}
             onClear={clearClassChoice}
           />

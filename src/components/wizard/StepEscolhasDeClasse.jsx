@@ -1,4 +1,5 @@
 import { OriginTableBrowser } from "../OriginTableBrowser";
+import { isOptionalFeatureEligible } from "../../utils/optionalFeaturePrerequisites";
 
 // Rótulo de exibição por categoria (o `name`/mecânica em si continua em
 // inglês, igual todo o resto do banco — só o TÍTULO do card é traduzido,
@@ -100,7 +101,7 @@ function ChoiceSlotCard({ slot, pool, chosenNames, onPick, onClear }) {
 // Swords, XGE) zerava o pool inteiro de Estilo de Luta, porque misturar
 // edição (personagem 2024 + subclasse 2014) é suportado de propósito neste
 // projeto (ver [[feature_rulesmode_2014_2024]]).
-export function StepEscolhasDeClasse({ slots, classChoices, optionalFeaturesData, featsData, onPick, onClear }) {
+export function StepEscolhasDeClasse({ slots, classChoices, optionalFeaturesData, featsData, character, onPick, onClear }) {
   // offset de cada slot dentro da mesma categoria (soma dos `count` dos slots
   // anteriores da MESMA categoria, na ordem em que aparecem) -- é assim que
   // dois cards da mesma categoria (multiclasse com duas classes que dão
@@ -122,7 +123,11 @@ export function StepEscolhasDeClasse({ slots, classChoices, optionalFeaturesData
             : slot.source === "feat"
               ? featsData.filter((f) => f.subtype === slot.category && f.rules === slot.rules)
               : optionalFeaturesData.filter(
-                  (f) => f.category === slot.category && f.rules === slot.rules && (!f.classes?.length || f.classes.includes(slot.className)),
+                  (f) =>
+                    f.category === slot.category &&
+                    f.rules === slot.rules &&
+                    (!f.classes?.length || f.classes.includes(slot.className)) &&
+                    isOptionalFeatureEligible(f, character),
                 );
 
         return (

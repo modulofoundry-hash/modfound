@@ -108,7 +108,7 @@
               },
               {
                 "type": "fixed",
-                "name": "Sticks of incense",
+                "name": "Stick of Incense",
                 "quantity": 5
               },
               {
@@ -649,10 +649,7 @@
     "originFeat": "Magic Initiate",
     "originFeatChoice": null,
     "description": "<p>For longer than you can remember, you have traversed the Astral Sea. There, you experienced firsthand the wonders of the Silver Void: you stopped aging and no longer felt hunger or thirst. Driven by wanderlust, you drifted from one part of the Astral Sea to another, like a mote of dust on the wind. You have lost count of the decades that have passed since you arrived here.</p><p>In your travels, you have camped on the petrified hulks of dead gods and narrowly escaped the psychic winds that sweep across the Astral Sea while also avoiding prolonged contact with the plane's most dangerous denizens.</p>",
-    "feature": {
-      "name": "Divine Contact",
-      "description": "<p>You gain the Magic Initiate feat from the Player's Handbook and must choose cleric for the feat.</p><p>In the Astral Sea, you crossed paths with a wandering deity. The encounter was brief and nonviolent, yet it made a lasting impression on you. This deity saw fit to share one secret or obscure bit of cosmic lore with you. Work with your DM to determine the details of this knowledge and its impact on the campaign.</p><p>Roll on the Divine Contact table to determine which deity you encountered, or work with your DM to identify a more suitable choice.</p><p><strong>Divine Contact</strong></p><table><thead><tr><th>d10</th><th>Wandering Deity</th></tr></thead><tbody><tr><td>1</td><td>Corellon, god of art and magic (chaotic good)</td></tr><tr><td>2</td><td>Tymora, god of good fortune (chaotic good)</td></tr><tr><td>3</td><td>Fharlanghn, god of horizons and travel (neutral good)</td></tr><tr><td>4</td><td>Istus, god of fate and destiny (neutral)</td></tr><tr><td>5</td><td>Nuada, god of war and warriors (neutral)</td></tr><tr><td>6</td><td>Zivilyn, god of wisdom (neutral)</td></tr><tr><td>7</td><td>Arawn, god of life and death (neutral evil)</td></tr><tr><td>8</td><td>Hecate, god of magic and moons (chaotic evil)</td></tr><tr><td>9</td><td>Celestian, god of stars and wanderers (neutral)</td></tr><tr><td>10</td><td>Ptah, god of knowledge and secrets (lawful neutral)</td></tr></tbody></table>"
-    },
+    "feature": null,
     "optionalFeatureChoices": []
   },
   {
@@ -787,7 +784,7 @@
               },
               {
                 "type": "fixed",
-                "name": "Dark common clothes including a hood",
+                "name": "Common Clothes",
                 "quantity": 1
               },
               {
@@ -920,7 +917,7 @@
               },
               {
                 "type": "fixed",
-                "name": "Sticks of incense",
+                "name": "Stick of Incense",
                 "quantity": 5
               },
               {
@@ -1050,7 +1047,7 @@
             "grants": [
               {
                 "type": "fixed",
-                "name": "Set of weighted dice",
+                "name": "Dice Set",
                 "quantity": 1
               }
             ]
@@ -1060,7 +1057,7 @@
             "grants": [
               {
                 "type": "fixed",
-                "name": "Deck of marked cards",
+                "name": "Playing Card Set",
                 "quantity": 1
               }
             ]
@@ -1070,7 +1067,7 @@
             "grants": [
               {
                 "type": "fixed",
-                "name": "Signet ring of an imaginary duke",
+                "name": "Signet Ring",
                 "quantity": 1
               }
             ]
@@ -1123,7 +1120,7 @@
               },
               {
                 "type": "fixed",
-                "name": "Dark common clothes including a hood",
+                "name": "Common Clothes",
                 "quantity": 1
               },
               {
@@ -1388,12 +1385,12 @@
             "grants": [
               {
                 "type": "fixed",
-                "name": "Scroll case stuffed full of notes from your studies or prayers",
+                "name": "Scroll Case",
                 "quantity": 1
               },
               {
                 "type": "fixed",
-                "name": "Winter blanket",
+                "name": "Blanket",
                 "quantity": 1
               },
               {
@@ -1466,7 +1463,7 @@
               },
               {
                 "type": "fixed",
-                "name": "Scroll of pedigree",
+                "name": "Scroll",
                 "quantity": 1
               },
               {
@@ -1668,7 +1665,7 @@
               },
               {
                 "type": "fixed",
-                "name": "Silk Rope (50 Feet)",
+                "name": "Silk Rope (50 ft.)",
                 "quantity": 1
               },
               {
@@ -1771,7 +1768,7 @@
             "grants": [
               {
                 "type": "fixed",
-                "name": "Bone dice set",
+                "name": "Dice Set",
                 "quantity": 1
               }
             ]
@@ -1831,7 +1828,7 @@
               },
               {
                 "type": "fixed",
-                "name": "Map of the city you grew up in",
+                "name": "Map",
                 "quantity": 1
               },
               {
@@ -2169,7 +2166,7 @@
             "grants": [
               {
                 "type": "fixed",
-                "name": "Set of weighted dice",
+                "name": "Dice Set",
                 "quantity": 1
               }
             ]
@@ -2179,7 +2176,7 @@
             "grants": [
               {
                 "type": "fixed",
-                "name": "Deck of marked cards",
+                "name": "Playing Card Set",
                 "quantity": 1
               }
             ]
@@ -2189,7 +2186,7 @@
             "grants": [
               {
                 "type": "fixed",
-                "name": "Signet ring of an imaginary duke",
+                "name": "Signet Ring",
                 "quantity": 1
               }
             ]
@@ -2429,7 +2426,7 @@
               },
               {
                 "type": "fixed",
-                "name": "set of manacles",
+                "name": "Manacles",
                 "quantity": 1
               },
               {
@@ -2567,12 +2564,12 @@
               },
               {
                 "type": "fixed",
-                "name": "Folded Parchment",
+                "name": "Parchment",
                 "quantity": 1
               },
               {
                 "type": "fixed",
-                "name": "Small Penknife",
+                "name": "Small Knife",
                 "quantity": 1
               },
               {
@@ -2758,7 +2755,7 @@
               },
               {
                 "type": "fixed",
-                "name": "Dark common clothes including a hood",
+                "name": "Common Clothes",
                 "quantity": 1
               },
               {
@@ -3020,12 +3017,12 @@
               },
               {
                 "type": "fixed",
-                "name": "small knives",
+                "name": "Small Knife",
                 "quantity": 3
               },
               {
                 "type": "fixed",
-                "name": "dark-colored common clothes",
+                "name": "Common Clothes",
                 "quantity": 1
               },
               {
@@ -4366,10 +4363,7 @@
     "originFeat": "Strike Of The Giants",
     "originFeatChoice": null,
     "description": "<p>You were found and raised by giants, spending your childhood among titanic creatures who treated you as one of their own. Though you are unusually large for your kind, you're no larger than a giant child, so you might be very mindful of your size.</p>",
-    "feature": {
-      "name": "Strike of the Giants",
-      "description": "<p>You gain the Strike of the Giants feat.</p>"
-    },
+    "feature": null,
     "optionalFeatureChoices": []
   },
   {
@@ -5204,12 +5198,12 @@
             "grants": [
               {
                 "type": "fixed",
-                "name": "Scroll case stuffed full of notes from your studies or prayers",
+                "name": "Scroll Case",
                 "quantity": 1
               },
               {
                 "type": "fixed",
-                "name": "Winter blanket",
+                "name": "Blanket",
                 "quantity": 1
               },
               {
@@ -7054,10 +7048,7 @@
     "originFeat": "Squire Of Solamnia",
     "originFeatChoice": null,
     "description": "<p>You have trained to be a valorous warrior known as a Knight of Solamnia. Strict rules guide your every action, and you work to uphold them as you strive to defend the weak and oppose evil. Your honor is as important to you as your life.</p>",
-    "feature": {
-      "name": "Squire of Solamnia",
-      "description": "<p>You gain the Squire of Solamnia feat.</p><p>In addition, the Knights of Solamnia provide you free, modest lodging and food at any of their fortresses or encampments.</p>"
-    },
+    "feature": null,
     "optionalFeatureChoices": []
   },
   {
@@ -7387,10 +7378,7 @@
     "originFeat": "Strixhaven Initiate",
     "originFeatChoice": null,
     "description": "<p>Any class or subclass that deals with knowledge of the past can be a good fit in Lorehold. Bards thrive in Lorehold, and wizards are numerous among its students. Clerics are also quite common.</p>",
-    "feature": {
-      "name": "Lorehold Initiate",
-      "description": "<p>You gain the Strixhaven Initiate feat and must choose Lorehold within it.</p><p>In addition, if you have the Spellcasting or Pact Magic feature, the spells on the Lorehold Spells table are added to the spell list of your spellcasting class (all of them, if you're multiclass with more than one spell list): 1st — Comprehend Languages, Identify; 2nd — Borrowed Knowledge, Locate Object; 3rd — Speak with Dead, Spirit Guardians; 4th — Arcane Eye, Stone Shape; 5th — Flame Strike, Legend Lore.</p>"
-    },
+    "feature": null,
     "optionalFeatureChoices": []
   },
   {
@@ -7517,7 +7505,7 @@
               },
               {
                 "type": "fixed",
-                "name": "Sticks of incense",
+                "name": "Stick of Incense",
                 "quantity": 5
               },
               {
@@ -7638,10 +7626,7 @@
     "originFeat": "Initiate Of High Sorcery",
     "originFeatChoice": null,
     "description": "<p>Your talent for magic came to the attention of the Mages of High Sorcery, an organization of spellcasters that studies magic and prevents its misuse. You've trained among the Mages, but whether you'll face the dangerous test required to become a full member of the group remains to be determined. Your passion for studying magic has likely already predisposed you toward one of the organization's three orders: the benevolent Order of the White Robes, the balance-pursuing Order of the Red Robes, or the ruthless Order of the Black Robes.</p>",
-    "feature": {
-      "name": "Initiate of High Sorcery",
-      "description": "<p>You gain the Initiate of High Sorcery feat.</p><p>In addition, the Mages of High Sorcery provide you with free, modest lodging and food indefinitely at any occupied Tower of High Sorcery and for one night at the home of an organization member.</p>"
-    },
+    "feature": null,
     "optionalFeatureChoices": []
   },
   {
@@ -8217,7 +8202,7 @@
               },
               {
                 "type": "fixed",
-                "name": "Dark common clothes including a hood",
+                "name": "Common Clothes",
                 "quantity": 1
               },
               {
@@ -8383,7 +8368,7 @@
               },
               {
                 "type": "fixed",
-                "name": "Scroll of pedigree",
+                "name": "Scroll",
                 "quantity": 1
               },
               {
@@ -8807,10 +8792,7 @@
     "originFeat": "Strixhaven Initiate",
     "originFeatChoice": null,
     "description": "<p>Any class or subclass that wields elemental forces of cold, fire, lightning, and wind can be a good fit in Prismari. Druids and sorcerers are common in Prismari, and wizards who study Evocation or Transmutation are also well represented.</p>",
-    "feature": {
-      "name": "Prismari Initiate",
-      "description": "<p>You gain the Strixhaven Initiate feat and must choose Prismari within it.</p><p>In addition, if you have the Spellcasting or Pact Magic feature, the spells on the Prismari Spells table are added to the spell list of your spellcasting class (all of them, if you're multiclass with more than one spell list): 1st — Chromatic Orb, Thunderwave; 2nd — Flaming Sphere, Kinetic Jaunt; 3rd — Haste, Water Walk; 4th — Freedom of Movement, Wall of Fire; 5th — Cone of Cold, Conjure Elemental.</p>"
-    },
+    "feature": null,
     "optionalFeatureChoices": []
   },
   {
@@ -8952,10 +8934,7 @@
     "originFeat": "Strixhaven Initiate",
     "originFeatChoice": null,
     "description": "<p>Any spellcasting class or subclass can work well for a Quandrix character. Both the scholarly focus of wizards and the metamagic manipulations of sorcerers are welcome in Quandrix, and many druids explore the patterns of nature here as well.</p>",
-    "feature": {
-      "name": "Quandrix Initiate",
-      "description": "<p>You gain the Strixhaven Initiate feat and must choose Quandrix within it.</p><p>In addition, if you have the Spellcasting or Pact Magic feature, the spells on the Quandrix Spells table are added to the spell list of your spellcasting class (all of them, if you're multiclass with more than one spell list): 1st — Entangle, Guiding Bolt; 2nd — Enlarge/Reduce, Vortex Warp; 3rd — Aura of Vitality, Haste; 4th — Control Water, Freedom of Movement; 5th — Circle of Power, Passwall.</p>"
-    },
+    "feature": null,
     "optionalFeatureChoices": []
   },
   {
@@ -9002,7 +8981,7 @@
               },
               {
                 "type": "fixed",
-                "name": "hooded lantern made of wrought iron",
+                "name": "Hooded Lantern",
                 "quantity": 1
               },
               {
@@ -9190,7 +9169,7 @@
               },
               {
                 "type": "fixed",
-                "name": "Silk Rope (50 Feet)",
+                "name": "Silk Rope (50 ft.)",
                 "quantity": 1
               },
               {
@@ -9505,10 +9484,7 @@
     "originFeat": "Rune Shaper",
     "originFeatChoice": null,
     "description": "<p>Scholarly pursuits, ancient mysteries, or a fateful encounter might have inspired you to pursue the secrets of rune carving. Each rune carver has a unique style and preferred medium, from inscribing wax and clay to whittling wooden figurines or engraving glass beads.</p>",
-    "feature": {
-      "name": "Rune Shaper",
-      "description": "<p>You gain the Rune Shaper feat.</p>"
-    },
+    "feature": null,
     "optionalFeatureChoices": []
   },
   {
@@ -9700,7 +9676,7 @@
               },
               {
                 "type": "fixed",
-                "name": "Silk Rope (50 Feet)",
+                "name": "Silk Rope (50 ft.)",
                 "quantity": 1
               },
               {
@@ -10313,10 +10289,7 @@
     "originFeat": "Strixhaven Initiate",
     "originFeatChoice": null,
     "description": "<p>Many bards find a home in Silverquill, putting the power of their voices to use with Silverquill magic. Wizards (especially those who study Illusion and Enchantment) are common in Silverquill, as are warlocks.</p>",
-    "feature": {
-      "name": "Silverquill Initiate",
-      "description": "<p>You gain the Strixhaven Initiate feat and must choose Silverquill within it.</p><p>In addition, if you have the Spellcasting or Pact Magic feature, the spells on the Silverquill Spells table are added to the spell list of your spellcasting class (all of them, if you're multiclass with more than one spell list): 1st — Dissonant Whispers, Silvery Barbs; 2nd — Calm Emotions, Darkness; 3rd — Beacon of Hope, Daylight; 4th — Compulsion, Confusion; 5th — Dominate Person, Rary's Telepathic Bond.</p>"
-    },
+    "feature": null,
     "optionalFeatureChoices": []
   },
   {
@@ -10370,12 +10343,12 @@
               },
               {
                 "type": "fixed",
-                "name": "flask of oil (made from blubber)",
+                "name": "Oil Flask",
                 "quantity": 1
               },
               {
                 "type": "fixed",
-                "name": "vial of acid (derived from digestive juices)",
+                "name": "Acid (vial)",
                 "quantity": 1
               },
               {
@@ -10395,7 +10368,7 @@
               },
               {
                 "type": "fixed",
-                "name": "glass bottle of unidentified slime",
+                "name": "Glass Bottle",
                 "quantity": 1
               },
               {
@@ -10567,7 +10540,7 @@
             "grants": [
               {
                 "type": "fixed",
-                "name": "Bone dice set",
+                "name": "Dice Set",
                 "quantity": 1
               }
             ]
@@ -10979,7 +10952,7 @@
               },
               {
                 "type": "fixed",
-                "name": "Map of the city you grew up in",
+                "name": "Map",
                 "quantity": 1
               },
               {
@@ -11350,7 +11323,7 @@
               },
               {
                 "type": "fixed",
-                "name": "set of manacles",
+                "name": "Manacles",
                 "quantity": 1
               },
               {
@@ -11477,7 +11450,7 @@
               },
               {
                 "type": "fixed",
-                "name": "Scroll Of Pedigree",
+                "name": "Scroll",
                 "quantity": 1
               },
               {
@@ -11682,10 +11655,7 @@
     "originFeat": "Tough",
     "originFeatChoice": null,
     "description": "<p>You were raised in the void of Wildspace—home to asteroid miners, moon farmers, and other hardy folk. Perhaps you grew up in a far-flung settlement, or you spent your early years on the crew of a spelljamming ship, performing helpful chores such as swabbing the deck, loading and offloading cargo, and scraping barnacles off the hull.</p><p>Whatever your history, life in Wildspace has toughened you so well that you are as brave as a space hamster when it comes to facing the terrors and other challenges of the airless night.</p>",
-    "feature": {
-      "name": "Wildspace Adaptation",
-      "description": "<p>You gain the Tough feat from the Player's Handbook. In addition, you learned how to adapt to zero gravity. Being weightless doesn't give you disadvantage on any of your melee attack rolls (see \"Weightlessness\" in chapter 2).</p>"
-    },
+    "feature": null,
     "optionalFeatureChoices": []
   },
   {
@@ -11746,7 +11716,7 @@
             "grants": [
               {
                 "type": "fixed",
-                "name": "Deck of Cards",
+                "name": "Playing Card Set",
                 "quantity": 1
               },
               {
@@ -11854,10 +11824,7 @@
     "originFeat": "Strixhaven Initiate",
     "originFeatChoice": null,
     "description": "<p>Druids and warlocks make up most of Witherbloom's student body. A few wizards (mostly those who study Necromancy) and clerics also find their home in Witherbloom.</p>",
-    "feature": {
-      "name": "Witherbloom Initiate",
-      "description": "<p>You gain the Strixhaven Initiate feat and must choose Witherbloom within it.</p><p>In addition, if you have the Spellcasting or Pact Magic feature, the spells on the Witherbloom Spells table are added to the spell list of your spellcasting class (all of them, if you're multiclass with more than one spell list): 1st — Cure Wounds, Inflict Wounds; 2nd — Lesser Restoration, Wither and Bloom; 3rd — Revivify, Vampiric Touch; 4th — Blight, Death Ward; 5th — Antilife Shell, Greater Restoration.</p>"
-    },
+    "feature": null,
     "optionalFeatureChoices": []
   },
   {

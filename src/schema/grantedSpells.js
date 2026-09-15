@@ -115,6 +115,32 @@ export function computeFeatSpellChoices(character, featsData) {
   return results;
 }
 
+// Mesma ideia de `computeFeatSpellChoices`, mas pra Escolha de Classe (Fighting
+// Style/Metamagia/Invocação Mística/Manobra/Infusão -- `character.classChoices`).
+// Achado numa auditoria: `collectGrantedItemUuids` (module/scripts/actors/advancement.js)
+// só resolve advancement tipo ItemGrant, nunca ItemChoice -- "Book of Ancient
+// Secrets" (2014) e "Pact of the Tome" (2024) concedem uma ESCOLHA de magia
+// (2 rituais de nível 1, ou 3 truques + 2 rituais), e ficavam sem conceder
+// NADA, silenciosamente, porque nada no site nem no módulo resolvia esse
+// `spellGrants` em formato de escolha. Mesmo pool pré-calculado (`spellChoices`,
+// ver generate-site-content.mjs) e mesmo mecanismo de talento -- a escolha
+// entra em `character.spells` com `bonus:true` e sincroniza pro Foundry pelo
+// loop normal de `character.spells` (`buildCharacterEmbeddedItems`), sem
+// precisar resolver a advancement ItemChoice morta do Item em si.
+export function computeOptionalFeatureSpellChoices(character, optionalFeaturesData) {
+  const results = [];
+  for (const choice of character.classChoices ?? []) {
+    const opt =
+      optionalFeaturesData.find((f) => f.name === choice.name && f.rules === character.rulesMode) ??
+      optionalFeaturesData.find((f) => f.name === choice.name);
+    if (!opt?.spellChoices?.length) continue;
+    opt.spellChoices.forEach((entry, index) => {
+      results.push({ ...entry, source: opt.name, key: `${opt.name}-${index}-${entry.pool.length}` });
+    });
+  }
+  return results;
+}
+
 // [{name, level, source, unlocked}] -- `level` é o nível em que a magia é
 // liberada (0 = desde o início); `unlocked` já compara com o nível certo pra
 // cada fonte (personagem inteiro pra Raça/Feat, só a classe DONA da

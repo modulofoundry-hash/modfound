@@ -3,7 +3,7 @@ import { ListEditor } from "../ListEditor";
 import { SpellBrowser } from "../SpellBrowser";
 import { SpellChoicePicker } from "../SpellChoicePicker";
 import { spellProgressionForCharacter, isCantripName } from "../../schema/spellProgression";
-import { computeGrantedSpells, computeSubclassSpellChoices, computeFeatSpellChoices } from "../../schema/grantedSpells";
+import { computeGrantedSpells, computeSubclassSpellChoices, computeFeatSpellChoices, computeOptionalFeatureSpellChoices } from "../../schema/grantedSpells";
 import { computeExpandedSpellPool } from "../../schema/expandedSpellPool";
 import spellsData from "../../data/content/spells.json";
 import featsData from "../../data/content/feats.json";
@@ -51,6 +51,11 @@ export function StepMagias({ character, raceMatch, classMatches, spells, onChang
   // schema/grantedSpells.js (computeFeatSpellChoices) pro porquê disso não dar
   // pra resolver dentro de FeatsInput.jsx sozinho.
   const featSpellChoices = computeFeatSpellChoices(character, featsData);
+
+  // Mesma ideia acima, mas pra Escolha de Classe com pool próprio (Book of
+  // Ancient Secrets, Pact of the Tome) -- ver comentário em
+  // computeOptionalFeatureSpellChoices (schema/grantedSpells.js).
+  const classChoiceSpellChoices = computeOptionalFeatureSpellChoices(character, optionalFeaturesData);
 
   // Magia escolhida num pool de subclasse/talento (`SpellChoicePicker` acima)
   // é um bônus À PARTE do teto normal da classe -- Magic Initiate "você
@@ -165,6 +170,18 @@ export function StepMagias({ character, raceMatch, classMatches, spells, onChang
         />
       ))}
       {featSpellChoices.map((choice) => (
+        <SpellChoicePicker
+          key={choice.key}
+          pickerKey={choice.key}
+          title={`Magia (${choice.source})`}
+          count={choice.count}
+          pool={choice.pool}
+          spells={spells}
+          onAdd={(names) => handleAddMany(names, true)}
+          onOpenBrowser={setScopedPicker}
+        />
+      ))}
+      {classChoiceSpellChoices.map((choice) => (
         <SpellChoicePicker
           key={choice.key}
           pickerKey={choice.key}

@@ -8,13 +8,18 @@
     "size": [
       "M"
     ],
-    "speed": 30,
+    "speed": {
+      "walk": 30,
+      "fly": true
+    },
     "skills": [],
     "skillChoice": null,
     "tools": [],
     "toolChoice": null,
-    "languages": "",
-    "languageChoice": null,
+    "languages": "comum",
+    "languageChoice": {
+      "count": 1
+    },
     "abilityBonus": {
       "points": 3,
       "from": [
@@ -84,8 +89,10 @@
     "skillChoice": null,
     "tools": [],
     "toolChoice": null,
-    "languages": "",
-    "languageChoice": null,
+    "languages": "comum",
+    "languageChoice": {
+      "count": 1
+    },
     "abilityBonus": {
       "points": 3,
       "from": [
@@ -136,13 +143,7 @@
     "spellChoices": [],
     "spellGrants": [
       {
-        "ability": {
-          "choose": [
-            "int",
-            "wis",
-            "cha"
-          ]
-        },
+        "ability": "cha",
         "known": {
           "1": [
             "light#c"
@@ -876,7 +877,7 @@
     "skillChoice": null,
     "tools": [],
     "toolChoice": null,
-    "languages": "comum",
+    "languages": "",
     "languageChoice": {
       "count": 1
     },
@@ -940,7 +941,7 @@
     "skillChoice": null,
     "tools": [],
     "toolChoice": null,
-    "languages": "comum",
+    "languages": "",
     "languageChoice": {
       "count": 1
     },
@@ -1143,8 +1144,10 @@
     "skillChoice": null,
     "tools": [],
     "toolChoice": null,
-    "languages": "",
-    "languageChoice": null,
+    "languages": "comum",
+    "languageChoice": {
+      "count": 1
+    },
     "abilityBonus": {
       "points": 3,
       "from": [
@@ -1284,8 +1287,10 @@
     },
     "tools": [],
     "toolChoice": null,
-    "languages": "",
-    "languageChoice": null,
+    "languages": "comum",
+    "languageChoice": {
+      "count": 1
+    },
     "abilityBonus": {
       "points": 3,
       "from": [
@@ -1495,6 +1500,7 @@
         "Enganação",
         "Intuição",
         "Intimidação",
+        "Atuação",
         "Persuasão"
       ]
     },
@@ -1637,8 +1643,10 @@
     },
     "tools": [],
     "toolChoice": null,
-    "languages": "",
-    "languageChoice": null,
+    "languages": "comum",
+    "languageChoice": {
+      "count": 1
+    },
     "abilityBonus": {
       "points": 3,
       "from": [
@@ -1828,7 +1836,7 @@
     "skillChoice": null,
     "tools": [],
     "toolChoice": null,
-    "languages": "comum",
+    "languages": "",
     "languageChoice": {
       "count": 1
     },
@@ -1994,8 +2002,10 @@
     "skillChoice": null,
     "tools": [],
     "toolChoice": null,
-    "languages": "",
-    "languageChoice": null,
+    "languages": "comum",
+    "languageChoice": {
+      "count": 1
+    },
     "abilityBonus": {
       "points": 3,
       "from": [
@@ -2795,8 +2805,10 @@
     "skillChoice": null,
     "tools": [],
     "toolChoice": null,
-    "languages": "",
-    "languageChoice": null,
+    "languages": "comum",
+    "languageChoice": {
+      "count": 1
+    },
     "abilityBonus": {
       "points": 3,
       "from": [
@@ -2895,9 +2907,16 @@
         "str": 1
       }
     },
-    "resistances": [],
+    "resistances": [
+      "poison"
+    ],
     "resistanceChoice": null,
-    "weapons": [],
+    "weapons": [
+      "battleaxe",
+      "handaxe",
+      "light hammer",
+      "warhammer"
+    ],
     "armor": [],
     "weaponChoice": null,
     "originFeat": null,
@@ -3304,8 +3323,10 @@
     "skillChoice": null,
     "tools": [],
     "toolChoice": null,
-    "languages": "",
-    "languageChoice": null,
+    "languages": "comum",
+    "languageChoice": {
+      "count": 1
+    },
     "abilityBonus": {
       "points": 3,
       "from": [
@@ -5034,14 +5055,17 @@
     "tier": "partnered",
     "rules": "2014",
     "size": "S",
-    "speed": 25,
+    "speed": {
+      "walk": 25,
+      "burrow": 20
+    },
     "skills": [
       "Percepção"
     ],
     "skillChoice": null,
     "tools": [],
     "toolChoice": null,
-    "languages": "comum, silvestre",
+    "languages": "erina",
     "languageChoice": {
       "count": 1
     },
@@ -5111,7 +5135,10 @@
     "tier": "partnered",
     "rules": "2014",
     "size": "S",
-    "speed": 25,
+    "speed": {
+      "walk": 25,
+      "burrow": 20
+    },
     "skills": [],
     "skillChoice": null,
     "tools": [],
@@ -5457,13 +5484,18 @@
     "size": [
       "S"
     ],
-    "speed": 30,
+    "speed": {
+      "walk": 30,
+      "fly": true
+    },
     "skills": [],
     "skillChoice": null,
     "tools": [],
     "toolChoice": null,
-    "languages": "",
-    "languageChoice": null,
+    "languages": "comum",
+    "languageChoice": {
+      "count": 1
+    },
     "abilityBonus": {
       "points": 3,
       "from": [
@@ -5539,13 +5571,18 @@
     "size": [
       "S"
     ],
-    "speed": 30,
+    "speed": {
+      "walk": 30,
+      "fly": true
+    },
     "skills": [],
     "skillChoice": null,
     "tools": [],
     "toolChoice": null,
-    "languages": "",
-    "languageChoice": null,
+    "languages": "comum",
+    "languageChoice": {
+      "count": 1
+    },
     "abilityBonus": {
       "points": 3,
       "from": [
@@ -5821,8 +5858,10 @@
     "skillChoice": null,
     "tools": [],
     "toolChoice": null,
-    "languages": "",
-    "languageChoice": null,
+    "languages": "comum",
+    "languageChoice": {
+      "count": 1
+    },
     "abilityBonus": {
       "points": 3,
       "from": [
@@ -6141,8 +6180,10 @@
     "skillChoice": null,
     "tools": [],
     "toolChoice": null,
-    "languages": "",
-    "languageChoice": null,
+    "languages": "comum",
+    "languageChoice": {
+      "count": 1
+    },
     "abilityBonus": {
       "points": 3,
       "from": [
@@ -6234,8 +6275,10 @@
     "skillChoice": null,
     "tools": [],
     "toolChoice": null,
-    "languages": "",
-    "languageChoice": null,
+    "languages": "comum",
+    "languageChoice": {
+      "count": 1
+    },
     "abilityBonus": {
       "points": 3,
       "from": [
@@ -6314,8 +6357,10 @@
     "skillChoice": null,
     "tools": [],
     "toolChoice": null,
-    "languages": "",
-    "languageChoice": null,
+    "languages": "comum",
+    "languageChoice": {
+      "count": 1
+    },
     "abilityBonus": {
       "points": 3,
       "from": [
@@ -6398,13 +6443,18 @@
       "S",
       "M"
     ],
-    "speed": 30,
+    "speed": {
+      "walk": 30,
+      "swim": true
+    },
     "skills": [],
     "skillChoice": null,
     "tools": [],
     "toolChoice": null,
-    "languages": "",
-    "languageChoice": null,
+    "languages": "comum",
+    "languageChoice": {
+      "count": 1
+    },
     "abilityBonus": {
       "points": 3,
       "from": [
@@ -6607,8 +6657,10 @@
       "count": 1,
       "from": "qualquer ferramenta"
     },
-    "languages": "",
-    "languageChoice": null,
+    "languages": "comum",
+    "languageChoice": {
+      "count": 1
+    },
     "abilityBonus": {
       "points": 3,
       "from": [
@@ -6773,8 +6825,10 @@
     "skillChoice": null,
     "tools": [],
     "toolChoice": null,
-    "languages": "",
-    "languageChoice": null,
+    "languages": "comum",
+    "languageChoice": {
+      "count": 1
+    },
     "abilityBonus": {
       "points": 3,
       "from": [
@@ -7548,8 +7602,10 @@
     "skillChoice": null,
     "tools": [],
     "toolChoice": null,
-    "languages": "",
-    "languageChoice": null,
+    "languages": "comum",
+    "languageChoice": {
+      "count": 1
+    },
     "abilityBonus": {
       "points": 3,
       "from": [
@@ -7785,8 +7841,10 @@
     "skillChoice": null,
     "tools": [],
     "toolChoice": null,
-    "languages": "",
-    "languageChoice": null,
+    "languages": "comum",
+    "languageChoice": {
+      "count": 1
+    },
     "abilityBonus": {
       "points": 3,
       "from": [
@@ -8555,8 +8613,10 @@
     "skillChoice": null,
     "tools": [],
     "toolChoice": null,
-    "languages": "",
-    "languageChoice": null,
+    "languages": "comum",
+    "languageChoice": {
+      "count": 1
+    },
     "abilityBonus": {
       "points": 3,
       "from": [
@@ -8617,8 +8677,10 @@
     "skillChoice": null,
     "tools": [],
     "toolChoice": null,
-    "languages": "",
-    "languageChoice": null,
+    "languages": "comum",
+    "languageChoice": {
+      "count": 1
+    },
     "abilityBonus": {
       "points": 3,
       "from": [
@@ -8844,8 +8906,13 @@
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
-    "armor": [],
-    "weaponChoice": null,
+    "armor": [
+      "light"
+    ],
+    "weaponChoice": {
+      "fromFilter": "type=martial weapon|miscellaneous=mundane",
+      "count": 2
+    },
     "originFeat": null,
     "description": "",
     "traits": [
@@ -8895,8 +8962,10 @@
     "skillChoice": null,
     "tools": [],
     "toolChoice": null,
-    "languages": "",
-    "languageChoice": null,
+    "languages": "comum",
+    "languageChoice": {
+      "count": 1
+    },
     "abilityBonus": {
       "points": 3,
       "from": [
@@ -8963,7 +9032,9 @@
     "resistances": [],
     "resistanceChoice": null,
     "weapons": [],
-    "armor": [],
+    "armor": [
+      "light"
+    ],
     "weaponChoice": {
       "fromFilter": "type=martial weapon|miscellaneous=mundane",
       "count": 2
@@ -9385,8 +9456,10 @@
     },
     "tools": [],
     "toolChoice": null,
-    "languages": "",
-    "languageChoice": null,
+    "languages": "comum",
+    "languageChoice": {
+      "count": 1
+    },
     "abilityBonus": {
       "points": 3,
       "from": [
@@ -9552,7 +9625,22 @@
       }
     ],
     "spellChoices": [],
-    "spellGrants": null
+    "spellGrants": [
+      {
+        "ability": {
+          "choose": [
+            "int",
+            "wis",
+            "cha"
+          ]
+        },
+        "known": {
+          "1": [
+            "friends#c"
+          ]
+        }
+      }
+    ]
   },
   {
     "name": "Kithkin (Lorwyn)",
@@ -9687,20 +9775,13 @@
     ],
     "speed": 30,
     "skills": [],
-    "skillChoice": {
-      "count": 1,
-      "from": [
-        "Arcanismo",
-        "Investigação",
-        "Medicina",
-        "Prestidigitação",
-        "Sobrevivência"
-      ]
-    },
+    "skillChoice": null,
     "tools": [],
     "toolChoice": null,
-    "languages": "",
-    "languageChoice": null,
+    "languages": "comum",
+    "languageChoice": {
+      "count": 1
+    },
     "abilityBonus": {
       "points": 3,
       "from": [
@@ -9734,25 +9815,7 @@
       }
     ],
     "spellChoices": [],
-    "spellGrants": [
-      {
-        "ability": {
-          "choose": [
-            "int",
-            "wis",
-            "cha"
-          ]
-        },
-        "known": {
-          "_": [
-            {
-              "choose": "level=0|class=Sorcerer",
-              "count": 1
-            }
-          ]
-        }
-      }
-    ]
+    "spellGrants": null
   },
   {
     "name": "Kobold (VGM)",
@@ -9977,7 +10040,10 @@
     "size": [
       "M"
     ],
-    "speed": 30,
+    "speed": {
+      "walk": 30,
+      "swim": true
+    },
     "skills": [],
     "skillChoice": {
       "count": 2,
@@ -9992,8 +10058,10 @@
     },
     "tools": [],
     "toolChoice": null,
-    "languages": "",
-    "languageChoice": null,
+    "languages": "comum",
+    "languageChoice": {
+      "count": 1
+    },
     "abilityBonus": {
       "points": 3,
       "from": [
@@ -10568,8 +10636,10 @@
     "skillChoice": null,
     "tools": [],
     "toolChoice": null,
-    "languages": "",
-    "languageChoice": null,
+    "languages": "comum",
+    "languageChoice": {
+      "count": 1
+    },
     "abilityBonus": {
       "points": 3,
       "from": [
@@ -10834,8 +10904,10 @@
     "skillChoice": null,
     "tools": [],
     "toolChoice": null,
-    "languages": "",
-    "languageChoice": null,
+    "languages": "comum",
+    "languageChoice": {
+      "count": 1
+    },
     "abilityBonus": {
       "points": 3,
       "from": [
@@ -11284,15 +11356,16 @@
     "tier": "partnered",
     "rules": "2014",
     "size": "M",
-    "speed": 25,
+    "speed": {
+      "walk": 25,
+      "climb": 10
+    },
     "skills": [],
     "skillChoice": null,
     "tools": [],
     "toolChoice": null,
     "languages": "celestial, comum",
-    "languageChoice": {
-      "count": 1
-    },
+    "languageChoice": null,
     "abilityBonus": {
       "fixed": {
         "dex": 2,
@@ -11350,15 +11423,16 @@
     "tier": "partnered",
     "rules": "2014",
     "size": "T",
-    "speed": 25,
+    "speed": {
+      "walk": 25,
+      "climb": 10
+    },
     "skills": [],
     "skillChoice": null,
     "tools": [],
     "toolChoice": null,
-    "languages": "comum",
-    "languageChoice": {
-      "count": 1
-    },
+    "languages": "celestial, comum",
+    "languageChoice": null,
     "abilityBonus": {
       "fixed": {
         "dex": 2,
@@ -11451,15 +11525,16 @@
     "tier": "partnered",
     "rules": "2014",
     "size": "S",
-    "speed": 25,
+    "speed": {
+      "walk": 25,
+      "climb": 10
+    },
     "skills": [],
     "skillChoice": null,
     "tools": [],
     "toolChoice": null,
-    "languages": "comum",
-    "languageChoice": {
-      "count": 1
-    },
+    "languages": "celestial, comum",
+    "languageChoice": null,
     "abilityBonus": {
       "fixed": {
         "dex": 2,
@@ -11530,10 +11605,8 @@
     "skillChoice": null,
     "tools": [],
     "toolChoice": null,
-    "languages": "",
-    "languageChoice": {
-      "count": 1
-    },
+    "languages": "huginn's speech, northern tongue",
+    "languageChoice": null,
     "abilityBonus": {
       "fixed": {
         "dex": 2,
@@ -11596,10 +11669,8 @@
       "category": "instrumentMusical",
       "label": "qualquer instrumento musical"
     },
-    "languages": "comum",
-    "languageChoice": {
-      "count": 1
-    },
+    "languages": "comum, ravenfolk, umbral",
+    "languageChoice": null,
     "abilityBonus": {
       "fixed": {
         "dex": 2,
@@ -11949,7 +12020,7 @@
     "skillChoice": null,
     "tools": [],
     "toolChoice": null,
-    "languages": "abissal, infernal",
+    "languages": "umbral",
     "languageChoice": {
       "count": 1
     },
@@ -12029,8 +12100,10 @@
       "category": "instrumentMusical",
       "label": "qualquer instrumento musical"
     },
-    "languages": "",
-    "languageChoice": null,
+    "languages": "comum",
+    "languageChoice": {
+      "count": 1
+    },
     "abilityBonus": {
       "points": 3,
       "from": [
@@ -12157,15 +12230,20 @@
     "size": [
       "M"
     ],
-    "speed": 30,
+    "speed": {
+      "walk": 30,
+      "swim": true
+    },
     "skills": [
       "Percepção"
     ],
     "skillChoice": null,
     "tools": [],
     "toolChoice": null,
-    "languages": "",
-    "languageChoice": null,
+    "languages": "comum",
+    "languageChoice": {
+      "count": 1
+    },
     "abilityBonus": {
       "points": 3,
       "from": [
@@ -12253,7 +12331,8 @@
     "weapons": [
       "spear",
       "trident",
-      "light crossbow"
+      "light crossbow",
+      "net"
     ],
     "armor": [],
     "weaponChoice": null,
@@ -12320,8 +12399,10 @@
     "skillChoice": null,
     "tools": [],
     "toolChoice": null,
-    "languages": "",
-    "languageChoice": null,
+    "languages": "comum",
+    "languageChoice": {
+      "count": 1
+    },
     "abilityBonus": {
       "points": 3,
       "from": [
@@ -12546,9 +12627,9 @@
     "skillChoice": null,
     "tools": [],
     "toolChoice": null,
-    "languages": "",
+    "languages": "umbral",
     "languageChoice": {
-      "count": 2
+      "count": 1
     },
     "abilityBonus": {
       "points": 3,
@@ -12638,10 +12719,8 @@
     "skillChoice": null,
     "tools": [],
     "toolChoice": null,
-    "languages": "goblin",
-    "languageChoice": {
-      "count": 1
-    },
+    "languages": "goblin, umbral",
+    "languageChoice": null,
     "abilityBonus": {
       "fixed": {
         "dex": 2,
@@ -12851,8 +12930,10 @@
     },
     "tools": [],
     "toolChoice": null,
-    "languages": "",
-    "languageChoice": null,
+    "languages": "comum",
+    "languageChoice": {
+      "count": 1
+    },
     "abilityBonus": {
       "points": 3,
       "from": [
@@ -13246,7 +13327,10 @@
       "S",
       "M"
     ],
-    "speed": 30,
+    "speed": {
+      "walk": 30,
+      "climb": true
+    },
     "skills": [
       "Percepção",
       "Furtividade"
@@ -13254,8 +13338,10 @@
     "skillChoice": null,
     "tools": [],
     "toolChoice": null,
-    "languages": "",
-    "languageChoice": null,
+    "languages": "comum",
+    "languageChoice": {
+      "count": 1
+    },
     "abilityBonus": {
       "points": 3,
       "from": [
@@ -13891,8 +13977,10 @@
     },
     "tools": [],
     "toolChoice": null,
-    "languages": "",
-    "languageChoice": null,
+    "languages": "comum",
+    "languageChoice": {
+      "count": 1
+    },
     "abilityBonus": {
       "points": 3,
       "from": [
@@ -14019,13 +14107,18 @@
     "size": [
       "M"
     ],
-    "speed": 30,
+    "speed": {
+      "walk": 30,
+      "swim": true
+    },
     "skills": [],
     "skillChoice": null,
     "tools": [],
     "toolChoice": null,
-    "languages": "",
-    "languageChoice": null,
+    "languages": "comum",
+    "languageChoice": {
+      "count": 1
+    },
     "abilityBonus": {
       "points": 3,
       "from": [
@@ -14310,10 +14403,8 @@
     "skillChoice": null,
     "tools": [],
     "toolChoice": null,
-    "languages": "comum",
-    "languageChoice": {
-      "count": 1
-    },
+    "languages": "comum, umbral",
+    "languageChoice": null,
     "abilityBonus": {
       "points": 3,
       "pointsBreakdown": [
@@ -14385,10 +14476,8 @@
     },
     "tools": [],
     "toolChoice": null,
-    "languages": "comum",
-    "languageChoice": {
-      "count": 1
-    },
+    "languages": "comum, umbral",
+    "languageChoice": null,
     "abilityBonus": {
       "points": 3,
       "pointsBreakdown": [
@@ -14473,10 +14562,8 @@
     "skillChoice": null,
     "tools": [],
     "toolChoice": null,
-    "languages": "comum",
-    "languageChoice": {
-      "count": 1
-    },
+    "languages": "comum, umbral",
+    "languageChoice": null,
     "abilityBonus": {
       "points": 3,
       "pointsBreakdown": [
@@ -14689,7 +14776,10 @@
       "from": "qualquer perícia"
     },
     "tools": [],
-    "toolChoice": null,
+    "toolChoice": {
+      "count": 1,
+      "from": "qualquer ferramenta"
+    },
     "languages": "",
     "languageChoice": null,
     "abilityBonus": {
@@ -14840,8 +14930,10 @@
     "skillChoice": null,
     "tools": [],
     "toolChoice": null,
-    "languages": "",
-    "languageChoice": null,
+    "languages": "comum",
+    "languageChoice": {
+      "count": 1
+    },
     "abilityBonus": {
       "points": 3,
       "from": [

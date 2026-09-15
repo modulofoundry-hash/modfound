@@ -968,6 +968,7 @@ export function CharacterCreationWizard({ initialValue, onSubmit, onCancel }) {
             classChoices={character.classChoices}
             optionalFeaturesData={optionalFeaturesData}
             featsData={featsData}
+            character={character}
             onPick={setClassChoice}
             onClear={clearClassChoice}
           />
