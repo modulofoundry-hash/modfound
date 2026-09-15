@@ -119,7 +119,15 @@ export function StepAntecedente({
       />
       {rulesMode === "2024" && matched?.abilityBonus && (
         <AbilityBonusPicker
-          key={matched.name}
+          // Chave própria (não só `matched.name`) -- essa string colidia com a
+          // de `OriginFeatChoice` logo abaixo (as duas usavam `key={matched.name}`),
+          // e o React trata isso como key duplicada entre irmãos: ao trocar de
+          // antecedente, em vez de desmontar/remontar os dois de forma limpa,
+          // ele "duplicava" o filho (aviso real do React no console: "Encountered
+          // two children with the same key... may cause children to be
+          // duplicated") -- exatamente o sintoma reportado (escolhas antigas
+          // acumulando na tela em vez de sumir).
+          key={`ability-${matched.name}`}
           label="Bônus de atributo (Antecedente)"
           abilityBonus={matched.abilityBonus}
           onApply={(picks) => appliers.applyAbilityBonusFor("background", picks)}
@@ -127,7 +135,7 @@ export function StepAntecedente({
       )}
       {rulesMode === "2024" && matched?.originFeat && (
         <OriginFeatChoice
-          key={matched.name}
+          key={`originFeat-${matched.name}`}
           background={matched}
           effective={originFeatOverride || matched.originFeat}
           featsData={featsData}

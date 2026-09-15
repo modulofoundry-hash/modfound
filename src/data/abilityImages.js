@@ -5,7 +5,7 @@ export const ABILITY_IMAGES = {
   dex: "/ability-images/dex.png",
   // "con.png" (sem underscore) é nome de dispositivo reservado do Windows --
   // trava git/GitHub Desktop na leitura mesmo com extensão (CreateFileW sem
-  // prefixo \\?\ falha).
+  // prefixo \\?\ falha). Ver reference_windows_reserved_device_name_git.md.
   con: "/ability-images/con_.png",
   int: "/ability-images/int.png",
   wis: "/ability-images/wis.png",
