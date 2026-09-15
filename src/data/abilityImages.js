@@ -3,7 +3,10 @@
 export const ABILITY_IMAGES = {
   str: "/ability-images/str.png",
   dex: "/ability-images/dex.png",
-  con: "/ability-images/con.png",
+  // "con.png" (sem underscore) é nome de dispositivo reservado do Windows --
+  // trava git/GitHub Desktop na leitura mesmo com extensão (CreateFileW sem
+  // prefixo \\?\ falha).
+  con: "/ability-images/con_.png",
   int: "/ability-images/int.png",
   wis: "/ability-images/wis.png",
   cha: "/ability-images/cha.png",
