@@ -3,7 +3,7 @@
 export const ABILITY_IMAGES = {
   str: "/ability-images/str.png",
   dex: "/ability-images/dex.png",
-  con: "/ability-images/con.png",
+  con: "/ability-images/con_.png",
   int: "/ability-images/int.png",
   wis: "/ability-images/wis.png",
   cha: "/ability-images/cha.png",
