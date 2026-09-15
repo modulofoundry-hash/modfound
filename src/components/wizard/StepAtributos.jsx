@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ABILITIES, ABILITY_LABELS } from "../../schema/character";
 import { AbilitiesInput } from "../AbilitiesInput";
+import { AbilityIconLabel } from "../AbilityIconLabel";
 
 const STANDARD_ARRAY = [15, 14, 13, 12, 10, 8];
 const POINT_BUY_COST = { 8: 0, 9: 1, 10: 2, 11: 3, 12: 4, 13: 5, 14: 7, 15: 9 };
@@ -157,7 +158,7 @@ function AssignPool({ pool, slotFor, onAssign, onUnassign }) {
               }}
               onDrop={(event) => handleDrop(key, event)}
             >
-              <span className="ability-drop-zone-label">{ABILITY_LABELS[key]}</span>
+              <AbilityIconLabel ability={key} />
               <span className="ability-drop-zone-value">{item ? item.value : "—"}</span>
               {item && (
                 <button
@@ -204,7 +205,7 @@ function PointBuyView({ abilities, bonusFor, onChange }) {
       <div className="abilities-grid">
         {ABILITIES.map((key) => (
           <div key={key} className="ability-field ability-point-buy-field">
-            {ABILITY_LABELS[key]}
+            <AbilityIconLabel ability={key} />
             <div className="ability-point-buy-controls">
               <button type="button" onClick={() => adjust(key, -1)} disabled={baseValue(key) <= 8}>
                 −
@@ -285,13 +286,32 @@ function RollView({ rolledValues, onRoll, pool, slotFor, onAssign, onUnassign })
   );
 }
 
-export function StepAtributos({ abilities, onChange, raceAbilityBonusPicks, backgroundAbilityBonusPicks }) {
-  const [method, setMethod] = useState("manual");
-  const [rolledValues, setRolledValues] = useState([null, null, null, null, null, null]);
-  // Qual valor do conjunto (por id, não por número — a rolagem pode empatar
-  // dois dados) está em cada atributo. Compartilhado entre Array e Rolagem,
-  // já que as duas são "arraste o valor pro atributo".
-  const [slotFor, setSlotFor] = useState({});
+// `rollState`/`onChangeRollState` (controlado pelo wizard pai, ver
+// CharacterCreationWizard.jsx) guardam `method`/`rolledValues`/`slotFor` --
+// precisa ficar fora deste componente porque ele desmonta toda vez que o
+// wizard troca de etapa e volta (achado ao vivo: um `useState` local aqui
+// resetava a rolagem de dados inteira nessa troca).
+export function StepAtributos({ abilities, onChange, raceAbilityBonusPicks, backgroundAbilityBonusPicks, rollState, onChangeRollState }) {
+  const { method, rolledValues, slotFor } = rollState;
+  // Forma funcional (`prev => ...`) em todo shim -- `selectMethod` abaixo
+  // chama `setMethod`/`setSlotFor`/`setRolledValues` em sequência na MESMA
+  // função; com objeto direto (fechando sobre `rollState` capturado no
+  // início do render) a 2ª chamada apagava a 1ª, já que as duas partiam do
+  // mesmo `rollState` desatualizado. Como `onChangeRollState` É o setState
+  // de verdade do wizard pai, a forma funcional resolve isso igual
+  // `setState(prev => ...)` resolveria.
+  function setMethod(next) {
+    onChangeRollState((prev) => ({ ...prev, method: next }));
+  }
+  function setRolledValues(updater) {
+    onChangeRollState((prev) => ({
+      ...prev,
+      rolledValues: typeof updater === "function" ? updater(prev.rolledValues) : updater,
+    }));
+  }
+  function setSlotFor(next) {
+    onChangeRollState((prev) => ({ ...prev, slotFor: next }));
+  }
 
   // Bônus já escolhido nas etapas de Raça (2014) / Antecedente (2024) --
   // precisa ser reaplicado em cima de qualquer método aqui, senão trocar de

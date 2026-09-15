@@ -168,6 +168,76 @@
     "spellGrants": null
   },
   {
+    "name": "Arctic",
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
+    "rules": "2014",
+    "category": "landTerrain",
+    "classes": [
+      "Druid"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>Circle of the Land terrain: Arctic. You always have the following spells prepared once you reach the Druid level noted for each. If you gain access to a spell that doesn't appear on the druid spell list, the spell is nonetheless a druid spell for you.</p><ul><li>3rd/th level: hold person, spike growth</li><li>5rd/th level: sleet storm, slow</li><li>7rd/th level: freedom of movement, ice storm</li><li>9rd/th level: commune with nature, cone of cold</li></ul>",
+    "spellGrants": [
+      {
+        "prepared": {
+          "3": [
+            "hold person",
+            "spike growth"
+          ],
+          "5": [
+            "sleet storm",
+            "slow"
+          ],
+          "7": [
+            "freedom of movement",
+            "ice storm"
+          ],
+          "9": [
+            "commune with nature",
+            "cone of cold"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "name": "Arid Land",
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
+    "rules": "2024",
+    "category": "landTerrain",
+    "classes": [
+      "Druid"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>Circle of the Land terrain: Arid Land. You always have the following spells prepared once you reach the Druid level noted for each.</p><ul><li>Level 3: blur, burning hands, fire bolt</li><li>Level 5: fireball</li><li>Level 7: blight</li><li>Level 9: wall of stone</li></ul>",
+    "spellGrants": [
+      {
+        "prepared": {
+          "3": [
+            "blur",
+            "burning hands",
+            "fire bolt"
+          ],
+          "5": [
+            "fireball"
+          ],
+          "7": [
+            "blight"
+          ],
+          "9": [
+            "wall of stone"
+          ]
+        }
+      }
+    ]
+  },
+  {
     "name": "Armor of Magical Strength",
     "source": "TCE",
     "sourceBook": "Tasha's Cauldron of Everything",
@@ -949,6 +1019,42 @@
     ]
   },
   {
+    "name": "Coast",
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
+    "rules": "2014",
+    "category": "landTerrain",
+    "classes": [
+      "Druid"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>Circle of the Land terrain: Coast. You always have the following spells prepared once you reach the Druid level noted for each. If you gain access to a spell that doesn't appear on the druid spell list, the spell is nonetheless a druid spell for you.</p><ul><li>3rd/th level: mirror image, misty step</li><li>5rd/th level: water breathing, water walk</li><li>7rd/th level: control water, freedom of movement</li><li>9rd/th level: conjure elemental, scrying</li></ul>",
+    "spellGrants": [
+      {
+        "prepared": {
+          "3": [
+            "mirror image",
+            "misty step"
+          ],
+          "5": [
+            "water breathing",
+            "water walk"
+          ],
+          "7": [
+            "control water",
+            "freedom of movement"
+          ],
+          "9": [
+            "conjure elemental",
+            "scrying"
+          ]
+        }
+      }
+    ]
+  },
+  {
     "name": "Colossus Slayer",
     "source": "PHB",
     "sourceBook": "Player's Handbook (2014)",
@@ -1096,6 +1202,42 @@
     "consumes": null,
     "description": "<p>While you’re wearing Light, Medium, or Heavy armor, you gain a +1 bonus to Armor Class.</p>",
     "spellGrants": null
+  },
+  {
+    "name": "Desert",
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
+    "rules": "2014",
+    "category": "landTerrain",
+    "classes": [
+      "Druid"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>Circle of the Land terrain: Desert. You always have the following spells prepared once you reach the Druid level noted for each. If you gain access to a spell that doesn't appear on the druid spell list, the spell is nonetheless a druid spell for you.</p><ul><li>3rd/th level: blur, silence</li><li>5rd/th level: create food and water, protection from energy</li><li>7rd/th level: blight, hallucinatory terrain</li><li>9rd/th level: insect plague, wall of stone</li></ul>",
+    "spellGrants": [
+      {
+        "prepared": {
+          "3": [
+            "blur",
+            "silence"
+          ],
+          "5": [
+            "create food and water",
+            "protection from energy"
+          ],
+          "7": [
+            "blight",
+            "hallucinatory terrain"
+          ],
+          "9": [
+            "insect plague",
+            "wall of stone"
+          ]
+        }
+      }
+    ]
   },
   {
     "name": "Devil's Sight",
@@ -2220,6 +2362,42 @@
     ]
   },
   {
+    "name": "Forest",
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
+    "rules": "2014",
+    "category": "landTerrain",
+    "classes": [
+      "Druid"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>Circle of the Land terrain: Forest. You always have the following spells prepared once you reach the Druid level noted for each. If you gain access to a spell that doesn't appear on the druid spell list, the spell is nonetheless a druid spell for you.</p><ul><li>3rd/th level: barkskin, spider climb</li><li>5rd/th level: call lightning, plant growth</li><li>7rd/th level: divination, freedom of movement</li><li>9rd/th level: commune with nature, tree stride</li></ul>",
+    "spellGrants": [
+      {
+        "prepared": {
+          "3": [
+            "barkskin",
+            "spider climb"
+          ],
+          "5": [
+            "call lightning",
+            "plant growth"
+          ],
+          "7": [
+            "divination",
+            "freedom of movement"
+          ],
+          "9": [
+            "commune with nature",
+            "tree stride"
+          ]
+        }
+      }
+    ]
+  },
+  {
     "name": "Friend Rune (BGG)",
     "source": "BGG",
     "sourceBook": "Bigby Presents: Glory of the Giants",
@@ -2685,6 +2863,42 @@
     },
     "description": "<p>When this arrow strikes its target, conjuration magic creates grasping, poisonous brambles, which wrap around the target. The creature hit by the arrow takes an extra {@damage 2d6} poison damage, its speed is reduced by 10 feet, and it takes {@damage 2d6} slashing damage the first time on each turn it moves 1 foot or more without teleporting. The target or any creature that can reach it can use its action to remove the brambles with a successful Strength ({@skill Athletics}) check against your Arcane Shot save DC. Otherwise, the brambles last for 1 minute or until you use this option again.</p><p>The poison damage and slashing damage both increase to {@damage 4d6} when you reach 18th level in this class.</p>",
     "spellGrants": null
+  },
+  {
+    "name": "Grassland",
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
+    "rules": "2014",
+    "category": "landTerrain",
+    "classes": [
+      "Druid"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>Circle of the Land terrain: Grassland. You always have the following spells prepared once you reach the Druid level noted for each. If you gain access to a spell that doesn't appear on the druid spell list, the spell is nonetheless a druid spell for you.</p><ul><li>3rd/th level: invisibility, pass without trace</li><li>5rd/th level: daylight, haste</li><li>7rd/th level: divination, freedom of movement</li><li>9rd/th level: dream, insect plague</li></ul>",
+    "spellGrants": [
+      {
+        "prepared": {
+          "3": [
+            "invisibility",
+            "pass without trace"
+          ],
+          "5": [
+            "daylight",
+            "haste"
+          ],
+          "7": [
+            "divination",
+            "freedom of movement"
+          ],
+          "9": [
+            "dream",
+            "insect plague"
+          ]
+        }
+      }
+    ]
   },
   {
     "name": "Great Weapon Fighting",
@@ -3697,6 +3911,42 @@
     ]
   },
   {
+    "name": "Mountain",
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
+    "rules": "2014",
+    "category": "landTerrain",
+    "classes": [
+      "Druid"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>Circle of the Land terrain: Mountain. You always have the following spells prepared once you reach the Druid level noted for each. If you gain access to a spell that doesn't appear on the druid spell list, the spell is nonetheless a druid spell for you.</p><ul><li>3rd/th level: spider climb, spike growth</li><li>5rd/th level: lightning bolt, meld into stone</li><li>7rd/th level: stone shape, stoneskin</li><li>9rd/th level: passwall, wall of stone</li></ul>",
+    "spellGrants": [
+      {
+        "prepared": {
+          "3": [
+            "spider climb",
+            "spike growth"
+          ],
+          "5": [
+            "lightning bolt",
+            "meld into stone"
+          ],
+          "7": [
+            "stone shape",
+            "stoneskin"
+          ],
+          "9": [
+            "passwall",
+            "wall of stone"
+          ]
+        }
+      }
+    ]
+  },
+  {
     "name": "Mountain Rune (BGG)",
     "source": "BGG",
     "sourceBook": "Bigby Presents: Glory of the Giants",
@@ -4099,6 +4349,40 @@
     "spellGrants": null
   },
   {
+    "name": "Polar Land",
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
+    "rules": "2024",
+    "category": "landTerrain",
+    "classes": [
+      "Druid"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>Circle of the Land terrain: Polar Land. You always have the following spells prepared once you reach the Druid level noted for each.</p><ul><li>Level 3: fog cloud, hold person, ray of frost</li><li>Level 5: sleet storm</li><li>Level 7: ice storm</li><li>Level 9: cone of cold</li></ul>",
+    "spellGrants": [
+      {
+        "prepared": {
+          "3": [
+            "fog cloud",
+            "hold person",
+            "ray of frost"
+          ],
+          "5": [
+            "sleet storm"
+          ],
+          "7": [
+            "ice storm"
+          ],
+          "9": [
+            "cone of cold"
+          ]
+        }
+      }
+    ]
+  },
+  {
     "name": "Precision Attack",
     "source": "PHB",
     "sourceBook": "Player's Handbook (2014)",
@@ -4320,6 +4604,51 @@
     },
     "consumes": null,
     "description": "<p>This magic weapon grants a +1 bonus to attack and damage rolls made with it. While holding it, the wielder can take a bonus action to cause it to shed bright light in a 30-foot radius and dim light for an additional 30 feet. The wielder can extinguish the light as a bonus action.</p><p>The weapon has 4 charges. As a reaction immediately after being hit by an attack, the wielder can expend 1 charge and cause the attacker to be blinded until the end of the attacker's next turn, unless the attacker succeeds on a Constitution saving throw against your spell save DC. The weapon regains 1d4 expended charges daily at dawn.</p>",
+    "spellGrants": null
+  },
+  {
+    "name": "Raging Storm (Desert)",
+    "source": "XGE",
+    "sourceBook": "Xanathar's Guide to Everything",
+    "tier": "official",
+    "rules": "2014",
+    "category": "stormEnvironment",
+    "classes": [
+      "Barbarian"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>At 14th level, immediately after a creature in your aura hits you with an attack, you can use your reaction to force that creature to make a Dexterity saving throw. On a failed save, the creature takes fire damage equal to half your barbarian level.</p>",
+    "spellGrants": null
+  },
+  {
+    "name": "Raging Storm (Sea)",
+    "source": "XGE",
+    "sourceBook": "Xanathar's Guide to Everything",
+    "tier": "official",
+    "rules": "2014",
+    "category": "stormEnvironment",
+    "classes": [
+      "Barbarian"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>At 14th level, when you hit a creature in your aura with an attack, you can use your reaction to force that creature to make a Strength saving throw. On a failed save, the creature is knocked prone, as if struck by a wave.</p>",
+    "spellGrants": null
+  },
+  {
+    "name": "Raging Storm (Tundra)",
+    "source": "XGE",
+    "sourceBook": "Xanathar's Guide to Everything",
+    "tier": "official",
+    "rules": "2014",
+    "category": "stormEnvironment",
+    "classes": [
+      "Barbarian"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>At 14th level, whenever the effect of your Storm Aura is activated, you can choose one creature you can see in the aura. That creature must succeed on a Strength saving throw, or its speed is reduced to 0 until the start of your next turn, as magical frost covers it.</p>",
     "spellGrants": null
   },
   {
@@ -5035,6 +5364,51 @@
     ]
   },
   {
+    "name": "Storm Aura (Desert)",
+    "source": "XGE",
+    "sourceBook": "Xanathar's Guide to Everything",
+    "tier": "official",
+    "rules": "2014",
+    "category": "stormEnvironment",
+    "classes": [
+      "Barbarian"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>Starting at 3rd level, you emanate a stormy, magical aura while you rage. The aura extends 10 feet from you in every direction. Your aura's effect activates when you enter your rage, and you can activate it again on each of your turns as a bonus action.</p><p><strong>Desert</strong>: When this effect is activated, all other creatures in your aura take 2 fire damage each. The damage increases to 3 at 5th level, 4 at 10th level, 5 at 15th level, and 6 at 20th level.</p>",
+    "spellGrants": null
+  },
+  {
+    "name": "Storm Aura (Sea)",
+    "source": "XGE",
+    "sourceBook": "Xanathar's Guide to Everything",
+    "tier": "official",
+    "rules": "2014",
+    "category": "stormEnvironment",
+    "classes": [
+      "Barbarian"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>Starting at 3rd level, you emanate a stormy, magical aura while you rage. The aura extends 10 feet from you in every direction. Your aura's effect activates when you enter your rage, and you can activate it again on each of your turns as a bonus action.</p><p><strong>Sea</strong>: When this effect is activated, you can choose one other creature you can see in your aura. The target must make a Dexterity saving throw, taking 1d6 lightning damage on a failed save, or half as much on a success. The damage increases to 2d6 at 10th level, 3d6 at 15th level, and 4d6 at 20th level.</p>",
+    "spellGrants": null
+  },
+  {
+    "name": "Storm Aura (Tundra)",
+    "source": "XGE",
+    "sourceBook": "Xanathar's Guide to Everything",
+    "tier": "official",
+    "rules": "2014",
+    "category": "stormEnvironment",
+    "classes": [
+      "Barbarian"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>Starting at 3rd level, you emanate a stormy, magical aura while you rage. The aura extends 10 feet from you in every direction. Your aura's effect activates when you enter your rage, and you can activate it again on each of your turns as a bonus action.</p><p><strong>Tundra</strong>: When this effect is activated, each creature of your choice in your aura gains 2 temporary hit points, as icy spirits inure it to suffering. The temporary hit points increase to 3 at 5th level, 4 at 10th level, 5 at 15th level, and 6 at 20th level.</p>",
+    "spellGrants": null
+  },
+  {
     "name": "Storm Rune",
     "source": "TCE",
     "sourceBook": "Tasha's Cauldron of Everything",
@@ -5097,6 +5471,51 @@
     ]
   },
   {
+    "name": "Storm Soul (Desert)",
+    "source": "XGE",
+    "sourceBook": "Xanathar's Guide to Everything",
+    "tier": "official",
+    "rules": "2014",
+    "category": "stormEnvironment",
+    "classes": [
+      "Barbarian"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>At 6th level, you gain resistance to fire damage, and you don't suffer the effects of extreme heat. Moreover, as an action, you can touch a flammable object that isn't being worn or carried by anyone else and set it on fire.</p>",
+    "spellGrants": null
+  },
+  {
+    "name": "Storm Soul (Sea)",
+    "source": "XGE",
+    "sourceBook": "Xanathar's Guide to Everything",
+    "tier": "official",
+    "rules": "2014",
+    "category": "stormEnvironment",
+    "classes": [
+      "Barbarian"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>At 6th level, you gain resistance to lightning damage, and you can breathe underwater. You also gain a swimming speed of 30 feet.</p>",
+    "spellGrants": null
+  },
+  {
+    "name": "Storm Soul (Tundra)",
+    "source": "XGE",
+    "sourceBook": "Xanathar's Guide to Everything",
+    "tier": "official",
+    "rules": "2014",
+    "category": "stormEnvironment",
+    "classes": [
+      "Barbarian"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>At 6th level, you gain resistance to cold damage, and you don't suffer the effects of extreme cold. Moreover, as an action, you can touch water and turn a 5-foot cube of it into ice, which melts after 1 minute. This action fails if a creature is in the cube.</p>",
+    "spellGrants": null
+  },
+  {
     "name": "Subtle Spell",
     "source": "PHB",
     "sourceBook": "Player's Handbook (2014)",
@@ -5144,6 +5563,42 @@
     "consumes": null,
     "description": "<p>You learn one maneuver of your choice from among those available to the Battle Master archetype. If a maneuver you use requires your target to make a saving throw to resist the maneuver's effects, the saving throw DC equals 8 + your proficiency bonus + your Strength or Dexterity modifier (your choice).</p><p>You gain one superiority die, which is a d6 (this die is added to any superiority dice you have from another source). This die is used to fuel your maneuvers. A superiority die is expended when you use it. You regain your expended superiority dice when you finish a short or long rest.</p>",
     "spellGrants": null
+  },
+  {
+    "name": "Swamp",
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
+    "rules": "2014",
+    "category": "landTerrain",
+    "classes": [
+      "Druid"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>Circle of the Land terrain: Swamp. You always have the following spells prepared once you reach the Druid level noted for each. If you gain access to a spell that doesn't appear on the druid spell list, the spell is nonetheless a druid spell for you.</p><ul><li>3rd/th level: darkness, Melf's acid arrow</li><li>5rd/th level: water walk, stinking cloud</li><li>7rd/th level: freedom of movement, locate creature</li><li>9rd/th level: insect plague, scrying</li></ul>",
+    "spellGrants": [
+      {
+        "prepared": {
+          "3": [
+            "darkness",
+            "Melf's acid arrow"
+          ],
+          "5": [
+            "water walk",
+            "stinking cloud"
+          ],
+          "7": [
+            "freedom of movement",
+            "locate creature"
+          ],
+          "9": [
+            "insect plague",
+            "scrying"
+          ]
+        }
+      }
+    ]
   },
   {
     "name": "Sweeping Attack",
@@ -5241,6 +5696,40 @@
     },
     "description": "<p>When you make an Intelligence (Investigation), an Intelligence (History), or a Wisdom (Insight) check, you can expend one superiority die and add the superiority die to the ability check.</p>",
     "spellGrants": null
+  },
+  {
+    "name": "Temperate Land",
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
+    "rules": "2024",
+    "category": "landTerrain",
+    "classes": [
+      "Druid"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>Circle of the Land terrain: Temperate Land. You always have the following spells prepared once you reach the Druid level noted for each.</p><ul><li>Level 3: misty step, shocking grasp, sleep</li><li>Level 5: lightning bolt</li><li>Level 7: freedom of movement</li><li>Level 9: tree stride</li></ul>",
+    "spellGrants": [
+      {
+        "prepared": {
+          "3": [
+            "misty step",
+            "shocking grasp",
+            "sleep"
+          ],
+          "5": [
+            "lightning bolt"
+          ],
+          "7": [
+            "freedom of movement"
+          ],
+          "9": [
+            "tree stride"
+          ]
+        }
+      }
+    ]
   },
   {
     "name": "Thaumaturge",
@@ -5519,6 +6008,40 @@
     "spellGrants": null
   },
   {
+    "name": "Tropical Land",
+    "source": "XPHB",
+    "sourceBook": "Player's Handbook (2024)",
+    "tier": "official",
+    "rules": "2024",
+    "category": "landTerrain",
+    "classes": [
+      "Druid"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>Circle of the Land terrain: Tropical Land. You always have the following spells prepared once you reach the Druid level noted for each.</p><ul><li>Level 3: acid splash, ray of sickness, web</li><li>Level 5: stinking cloud</li><li>Level 7: polymorph</li><li>Level 9: insect plague</li></ul>",
+    "spellGrants": [
+      {
+        "prepared": {
+          "3": [
+            "acid splash",
+            "ray of sickness",
+            "web"
+          ],
+          "5": [
+            "stinking cloud"
+          ],
+          "7": [
+            "polymorph"
+          ],
+          "9": [
+            "insect plague"
+          ]
+        }
+      }
+    ]
+  },
+  {
     "name": "Twinned Spell",
     "source": "PHB",
     "sourceBook": "Player's Handbook (2014)",
@@ -5647,6 +6170,42 @@
     "consumes": null,
     "description": "<p>When an attacker that you can see hits you with an attack, you can use your reaction to halve the attack's damage against you.</p>",
     "spellGrants": null
+  },
+  {
+    "name": "Underdark",
+    "source": "PHB",
+    "sourceBook": "Player's Handbook (2014)",
+    "tier": "official",
+    "rules": "2014",
+    "category": "landTerrain",
+    "classes": [
+      "Druid"
+    ],
+    "prerequisites": null,
+    "consumes": null,
+    "description": "<p>Circle of the Land terrain: Underdark. You always have the following spells prepared once you reach the Druid level noted for each. If you gain access to a spell that doesn't appear on the druid spell list, the spell is nonetheless a druid spell for you.</p><ul><li>3rd/th level: spider climb, web</li><li>5rd/th level: gaseous form, stinking cloud</li><li>7rd/th level: greater invisibility, stone shape</li><li>9rd/th level: cloudkill, insect plague</li></ul>",
+    "spellGrants": [
+      {
+        "prepared": {
+          "3": [
+            "spider climb",
+            "web"
+          ],
+          "5": [
+            "gaseous form",
+            "stinking cloud"
+          ],
+          "7": [
+            "greater invisibility",
+            "stone shape"
+          ],
+          "9": [
+            "cloudkill",
+            "insect plague"
+          ]
+        }
+      }
+    ]
   },
   {
     "name": "Underwater Adaptation (GGR)",

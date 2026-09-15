@@ -661,17 +661,48 @@ input {
 
 .abilities-grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 10px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px 10px;
 }
 
 .ability-field {
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  gap: 6px;
 }
 
 .ability-field input {
   width: 100%;
   text-align: center;
+  background: linear-gradient(#3a3a3a, #1c1c1c);
+  color: #fff;
+  border: 1px solid #000;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 6px 8px;
+}
+
+.ability-icon-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.ability-icon {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+
+.ability-icon-name {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
 }
 
 .saving-throws-grid {
@@ -1129,21 +1160,22 @@ input {
 .equipment-slots {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 4px;
 }
 
 .equipment-slot {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 3px;
 }
 
 .equipment-option {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
+  gap: 6px;
   flex-wrap: wrap;
+  font-size: 13px;
 }
 
 .equipment-option-text {
@@ -1174,7 +1206,7 @@ input {
 .choice-picker {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
 }
 
 .choice-picker-search {
@@ -1193,7 +1225,7 @@ input {
 .choice-picker-list {
   display: flex;
   flex-direction: column;
-  max-height: 220px;
+  max-height: 180px;
   overflow-y: auto;
   border: 1px solid var(--border);
   border-radius: 6px;
@@ -1203,9 +1235,9 @@ input {
 .choice-picker-option {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 13px;
-  padding: 6px 10px;
+  gap: 6px;
+  font-size: 12px;
+  padding: 3px 8px;
   border-bottom: 1px solid var(--border);
 }
 
@@ -1377,6 +1409,7 @@ input {
   overflow: auto;
   border: 1px solid var(--border);
   border-radius: 6px;
+  background: var(--surface);
 }
 
 .spell-browser-table {
@@ -1663,6 +1696,7 @@ input {
   overflow: auto;
   border: 1px solid var(--border);
   border-radius: 6px;
+  background: var(--surface);
 }
 
 .origin-table {
@@ -1700,7 +1734,7 @@ input {
 }
 
 .origin-table-row-selected {
-  background: color-mix(in srgb, var(--accent) 15%, transparent);
+  background: color-mix(in srgb, var(--accent) 15%, var(--surface));
 }
 
 .origin-table-pick {
@@ -1836,7 +1870,7 @@ input {
 
 .class-grid-card-selected {
   border-color: var(--accent);
-  background: color-mix(in srgb, var(--accent) 15%, transparent);
+  background: color-mix(in srgb, var(--accent) 15%, var(--surface));
 }
 
 .class-grid-name {
@@ -1877,7 +1911,7 @@ input {
 
 .ability-method-option-selected {
   border-color: var(--accent);
-  background: color-mix(in srgb, var(--accent) 15%, transparent);
+  background: color-mix(in srgb, var(--accent) 15%, var(--surface));
 }
 
 .ability-method-option-selected button {
@@ -1939,7 +1973,7 @@ input {
   height: 44px;
   border-radius: 50%;
   border: 2px solid var(--accent);
-  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  background: color-mix(in srgb, var(--accent) 12%, var(--surface));
   color: var(--text);
   font-weight: 700;
   font-size: 16px;
@@ -1974,19 +2008,20 @@ input {
 .ability-drop-zone-filled {
   border-style: solid;
   border-color: var(--accent);
-  background: color-mix(in srgb, var(--accent) 10%, transparent);
-}
-
-.ability-drop-zone-label {
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--text-muted);
+  background: color-mix(in srgb, var(--accent) 10%, var(--surface));
 }
 
 .ability-drop-zone-value {
-  font-size: 22px;
+  display: inline-block;
+  min-width: 44px;
+  font-size: 18px;
   font-weight: 700;
+  color: #fff;
+  background: linear-gradient(#3a3a3a, #1c1c1c);
+  border: 1px solid #000;
+  border-radius: 4px;
+  padding: 4px 10px;
+  text-align: center;
 }
 
 .wizard-step-melhorias {
@@ -2116,21 +2151,30 @@ input {
 .pericias-grant-summary {
   border: 1px solid var(--border);
   border-radius: 8px;
-  padding: 10px 14px;
-  margin-bottom: 10px;
+  padding: 6px 10px;
+  margin-bottom: 6px;
   background: var(--surface);
 }
 
 .pericias-grant-summary h4 {
-  margin: 0 0 6px;
-  font-size: 13px;
+  margin: 0 0 4px;
+  font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.03em;
   color: var(--text-muted);
 }
 
 .pericias-grant-summary p {
-  margin: 4px 0;
+  margin: 3px 0;
+  font-size: 13px;
+}
+
+.pericias-grant-summary button,
+.choice-picker button,
+.equipment-option button {
+  padding: 3px 10px;
+  font-size: 12px;
+  border-radius: 4px;
 }
 
 .ability-drop-zone-clear {
@@ -2164,10 +2208,15 @@ input {
 }
 
 .ability-point-buy-controls span {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 700;
-  min-width: 24px;
+  min-width: 40px;
   text-align: center;
+  color: #fff;
+  background: linear-gradient(#3a3a3a, #1c1c1c);
+  border: 1px solid #000;
+  border-radius: 4px;
+  padding: 4px 6px;
 }
 
 .ability-point-buy-controls button {

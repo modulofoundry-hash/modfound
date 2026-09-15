@@ -1,4 +1,5 @@
-import { ABILITIES, ABILITY_LABELS } from "../schema/character";
+import { ABILITIES } from "../schema/character";
+import { AbilityIconLabel } from "./AbilityIconLabel";
 
 export function AbilitiesInput({ abilities, onChange }) {
   function update(key, value) {
@@ -9,7 +10,7 @@ export function AbilitiesInput({ abilities, onChange }) {
     <div className="abilities-grid">
       {ABILITIES.map((key) => (
         <label key={key} className="ability-field">
-          {ABILITY_LABELS[key]}
+          <AbilityIconLabel ability={key} />
           <input
             type="number"
             min="1"

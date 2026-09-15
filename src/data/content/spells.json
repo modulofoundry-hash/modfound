@@ -12015,7 +12015,7 @@
     "level": 8,
     "school": "Evocation",
     "time": "Action",
-    "range": " ft",
+    "range": "Special",
     "concentration": false,
     "ritual": false,
     "classes": [
@@ -12028,7 +12028,7 @@
     "level": 8,
     "school": "Divination",
     "time": "Action",
-    "range": " ft",
+    "range": "Special",
     "concentration": false,
     "ritual": false,
     "classes": [
@@ -12634,7 +12634,7 @@
     "level": 8,
     "school": "Conjuration",
     "time": "1 minute",
-    "range": " ft",
+    "range": "Special",
     "concentration": true,
     "ritual": false,
     "classes": [

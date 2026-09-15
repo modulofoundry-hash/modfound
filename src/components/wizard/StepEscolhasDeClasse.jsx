@@ -6,6 +6,8 @@ import { OriginTableBrowser } from "../OriginTableBrowser";
 const CATEGORY_LABELS = {
   fightingStyle: "Estilo de Luta",
   metamagic: "Metamagia",
+  landTerrain: "Terreno (Circle of the Land)",
+  stormEnvironment: "Ambiente da Tempestade (Storm Herald)",
   eldritchInvocation: "Invocação Mística",
   maneuver: "Manobra (Battle Master)",
   elementalDiscipline: "Disciplina Elemental (Way of the Four Elements)",

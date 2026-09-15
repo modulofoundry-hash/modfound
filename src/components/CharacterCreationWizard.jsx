@@ -549,6 +549,20 @@ export function CharacterCreationWizard({ initialValue, onSubmit, onCancel }) {
   // invalidava aquele memo em toda tecla digitada, mesmo depois de restringir as
   // outras dependências aos campos certos.
   const classMatches = useMemo(() => Object.values(classesMatches), [classesMatches]);
+  // Mesmo motivo do `classesMatches` acima: guardado aqui (nunca desmonta) em
+  // vez de `useState` dentro do `StepAtributos` -- achado ao vivo (usuário
+  // reportou): rolar os 6 dados do método "Rolagem", trocar de etapa (ex:
+  // Raça) e voltar pra Atributos resetava tudo (dados rolados, distribuição
+  // nos atributos e até o método escolhido, sempre voltando pra "Manual") por
+  // ser `useState` local -- React desmonta o componente da etapa antiga ao
+  // trocar. Os NÚMEROS finais de `character.abilities` já sobreviviam (isso é
+  // lifted state de verdade), mas a UI de "quais dados vieram, o que já foi
+  // arrastado pra onde" sumia.
+  const [abilityRollState, setAbilityRollState] = useState(() => ({
+    method: "manual",
+    rolledValues: [null, null, null, null, null, null],
+    slotFor: {},
+  }));
   const [stepKey, setStepKey] = useState(STEP_DEFS[0].key);
   // Achado ao vivo (sync real quebrando): o wizard deixava "Concluir" sem
   // nome nenhum -- Firestore aceita `name: ""` de boa, mas `Actor.create` do
@@ -930,6 +944,8 @@ export function CharacterCreationWizard({ initialValue, onSubmit, onCancel }) {
             onChange={(abilities) => set("abilities", abilities)}
             raceAbilityBonusPicks={character.raceAbilityBonusPicks}
             backgroundAbilityBonusPicks={character.backgroundAbilityBonusPicks}
+            rollState={abilityRollState}
+            onChangeRollState={setAbilityRollState}
           />
         );
       case "melhorias":

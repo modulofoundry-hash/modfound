@@ -4805,35 +4805,35 @@
     "armor": [],
     "weaponChoice": null,
     "originFeat": null,
-    "description": "Uma consciência que despertou dentro de um objeto de tonalidade azul fosca não natural — arma, armadura, foco arcano ou item — e passou a projetar um corpo humanoide instável, marcado por veios ou pele azul-profundo. Nasce sem passado, sem memória, buscando propósito e reconhecimento entre os povos que encontra.",
+    "description": "<p>Uma consciência que despertou dentro de um objeto de tonalidade azul fosca não natural — arma, armadura, foco arcano ou item — e passou a projetar um corpo humanoide instável, marcado por veios ou pele azul-profundo. Nasce sem passado, sem memória, buscando propósito e reconhecimento entre os povos que encontra.</p>",
     "traits": [
       {
         "name": "Objeto: Arma",
-        "description": "Sua verdadeira forma é uma arma — seja lâmina, arco, machado ou qualquer outro instrumento de combate. Escolha uma arma específica que represente sua identidade. Sempre que utilizá-la, você adiciona um bônus às jogadas de ataque e de dano, somando-se a qualquer outro modificador aplicável — esse bônus começa no 5° nível (+1), 10° nível (+2) e 15° nível (+3)."
+        "description": "<p>Sua verdadeira forma é uma arma — seja lâmina, arco, machado ou qualquer outro instrumento de combate. Escolha uma arma específica que represente sua identidade. Sempre que utilizá-la, você adiciona um bônus às jogadas de ataque e de dano, somando-se a qualquer outro modificador aplicável — esse bônus começa no 5° nível (+1), 10° nível (+2) e 15° nível (+3).</p>"
       },
       {
         "name": "Idade",
-        "description": "Um Empunhai pode persistir por séculos sem qualquer desgaste natural. A pergunta \"quanto tempo dura uma boa lâmina, armadura ou adorno?\" costuma ser a resposta mais honesta à sua expectativa de vida."
+        "description": "<p>Um Empunhai pode persistir por séculos sem qualquer desgaste natural. A pergunta \"quanto tempo dura uma boa lâmina, armadura ou adorno?\" costuma ser a resposta mais honesta à sua expectativa de vida.</p>"
       },
       {
         "name": "Tendência",
-        "description": "Tendem à neutralidade e à lealdade. Vivem buscando propósito e pertencimento; valorizam intensamente qualquer um que reconheça sua verdadeira forma e trate sua existência com respeito."
+        "description": "<p>Tendem à neutralidade e à lealdade. Vivem buscando propósito e pertencimento; valorizam intensamente qualquer um que reconheça sua verdadeira forma e trate sua existência com respeito.</p>"
       },
       {
         "name": "Tamanho",
-        "description": "Sempre de tamanho Médio. A projeção humanoide não expressa força ou carne — apenas intenção — e intenção raramente excede esse limite. Você é Humanoide."
+        "description": "<p>Sempre de tamanho Médio. A projeção humanoide não expressa força ou carne — apenas intenção — e intenção raramente excede esse limite. Você é Humanoide.</p>"
       },
       {
         "name": "Idiomas",
-        "description": "Você pode falar, ler e escrever Comum e Abissal. Ainda que não saibam por quê, os Empunhais compreendem o Abissal com naturalidade, como se lidassem com algo igualmente fora do ciclo normal de vida."
+        "description": "<p>Você pode falar, ler e escrever Comum e Abissal. Ainda que não saibam por quê, os Empunhais compreendem o Abissal com naturalidade, como se lidassem com algo igualmente fora do ciclo normal de vida.</p>"
       },
       {
         "name": "Feito pra isso",
-        "description": "Você recebe proficiência em testes de Carisma (Intimidação)."
+        "description": "<p>Você recebe proficiência em testes de Carisma (Intimidação).</p>"
       },
       {
         "name": "Encontrando um propósito",
-        "description": "Conforme você recebe níveis, sua natureza de objeto se aprimora — uma vez por turno, quando você causa dano com um ataque com arma, você pode causar um efeito adicional como parte do mesmo ataque, escolhendo entre: Atacar e Defender (recebe 5 + metade do seu nível de vida temporária), Movimento Rápido (move metade do seu movimento sem causar ataques de oportunidade) ou Aptidão Perigosa (reduz o movimento do alvo pela metade até o final do próximo turno). Usos limitados (contador abaixo) — todos recuperados ao terminar um descanso longo."
+        "description": "<p>Conforme você recebe níveis, sua natureza de objeto se aprimora — uma vez por turno, quando você causa dano com um ataque com arma, você pode causar um efeito adicional como parte do mesmo ataque, escolhendo entre: Atacar e Defender (recebe 5 + metade do seu nível de vida temporária), Movimento Rápido (move metade do seu movimento sem causar ataques de oportunidade) ou Aptidão Perigosa (reduz o movimento do alvo pela metade até o final do próximo turno). Usos limitados (contador abaixo) — todos recuperados ao terminar um descanso longo.</p>"
       }
     ],
     "spellChoices": [],
@@ -4866,35 +4866,35 @@
     "armor": [],
     "weaponChoice": null,
     "originFeat": null,
-    "description": "Uma consciência que despertou dentro de um objeto de tonalidade azul fosca não natural — arma, armadura, foco arcano ou item — e passou a projetar um corpo humanoide instável, marcado por veios ou pele azul-profundo. Nasce sem passado, sem memória, buscando propósito e reconhecimento entre os povos que encontra.",
+    "description": "<p>Uma consciência que despertou dentro de um objeto de tonalidade azul fosca não natural — arma, armadura, foco arcano ou item — e passou a projetar um corpo humanoide instável, marcado por veios ou pele azul-profundo. Nasce sem passado, sem memória, buscando propósito e reconhecimento entre os povos que encontra.</p>",
     "traits": [
       {
         "name": "Objeto: Armadura",
-        "description": "Sua verdadeira forma é uma armadura — leve, média ou pesada — ou um escudo. Escolha uma peça específica que represente sua identidade. Sempre que estiver usando esse equipamento, você adiciona um bônus à sua Classe de Armadura, somando-se a qualquer outro modificador aplicável — esse bônus começa no 5° nível (+1), 10° nível (+2) e 15° nível (+3)."
+        "description": "<p>Sua verdadeira forma é uma armadura — leve, média ou pesada — ou um escudo. Escolha uma peça específica que represente sua identidade. Sempre que estiver usando esse equipamento, você adiciona um bônus à sua Classe de Armadura, somando-se a qualquer outro modificador aplicável — esse bônus começa no 5° nível (+1), 10° nível (+2) e 15° nível (+3).</p>"
       },
       {
         "name": "Idade",
-        "description": "Um Empunhai pode persistir por séculos sem qualquer desgaste natural. A pergunta \"quanto tempo dura uma boa lâmina, armadura ou adorno?\" costuma ser a resposta mais honesta à sua expectativa de vida."
+        "description": "<p>Um Empunhai pode persistir por séculos sem qualquer desgaste natural. A pergunta \"quanto tempo dura uma boa lâmina, armadura ou adorno?\" costuma ser a resposta mais honesta à sua expectativa de vida.</p>"
       },
       {
         "name": "Tendência",
-        "description": "Tendem à neutralidade e à lealdade. Vivem buscando propósito e pertencimento; valorizam intensamente qualquer um que reconheça sua verdadeira forma e trate sua existência com respeito."
+        "description": "<p>Tendem à neutralidade e à lealdade. Vivem buscando propósito e pertencimento; valorizam intensamente qualquer um que reconheça sua verdadeira forma e trate sua existência com respeito.</p>"
       },
       {
         "name": "Tamanho",
-        "description": "Sempre de tamanho Médio. A projeção humanoide não expressa força ou carne — apenas intenção — e intenção raramente excede esse limite. Você é Humanoide."
+        "description": "<p>Sempre de tamanho Médio. A projeção humanoide não expressa força ou carne — apenas intenção — e intenção raramente excede esse limite. Você é Humanoide.</p>"
       },
       {
         "name": "Idiomas",
-        "description": "Você pode falar, ler e escrever Comum e Abissal. Ainda que não saibam por quê, os Empunhais compreendem o Abissal com naturalidade, como se lidassem com algo igualmente fora do ciclo normal de vida."
+        "description": "<p>Você pode falar, ler e escrever Comum e Abissal. Ainda que não saibam por quê, os Empunhais compreendem o Abissal com naturalidade, como se lidassem com algo igualmente fora do ciclo normal de vida.</p>"
       },
       {
         "name": "Feito pra isso",
-        "description": "Você recebe proficiência em testes de Sabedoria (Intuição)."
+        "description": "<p>Você recebe proficiência em testes de Sabedoria (Intuição).</p>"
       },
       {
         "name": "Encontrando um propósito",
-        "description": "Conforme você ganha experiência, uma vez por turno, quando você recebe dano, você pode ativar um efeito adicional como reação, escolhendo entre: Defesa Absoluta (resistência a um tipo de dano elemental sofrido imediatamente e pelo próximo minuto, uma vez por descanso longo), Ferimentos Leves (reduz o dano recebido em 1d6 + metade do seu nível) ou Aptidão Protetora (a criatura que lhe causou dano sofre desvantagem em seus ataques até o final do próximo turno). Usos limitados (contador abaixo) — todos recuperados ao terminar um descanso longo."
+        "description": "<p>Conforme você ganha experiência, uma vez por turno, quando você recebe dano, você pode ativar um efeito adicional como reação, escolhendo entre: Defesa Absoluta (resistência a um tipo de dano elemental sofrido imediatamente e pelo próximo minuto, uma vez por descanso longo), Ferimentos Leves (reduz o dano recebido em 1d6 + metade do seu nível) ou Aptidão Protetora (a criatura que lhe causou dano sofre desvantagem em seus ataques até o final do próximo turno). Usos limitados (contador abaixo) — todos recuperados ao terminar um descanso longo.</p>"
       }
     ],
     "spellChoices": [],
@@ -4927,35 +4927,35 @@
     "armor": [],
     "weaponChoice": null,
     "originFeat": null,
-    "description": "Uma consciência que despertou dentro de um objeto de tonalidade azul fosca não natural — arma, armadura, foco arcano ou item — e passou a projetar um corpo humanoide instável, marcado por veios ou pele azul-profundo. Nasce sem passado, sem memória, buscando propósito e reconhecimento entre os povos que encontra.",
+    "description": "<p>Uma consciência que despertou dentro de um objeto de tonalidade azul fosca não natural — arma, armadura, foco arcano ou item — e passou a projetar um corpo humanoide instável, marcado por veios ou pele azul-profundo. Nasce sem passado, sem memória, buscando propósito e reconhecimento entre os povos que encontra.</p>",
     "traits": [
       {
         "name": "Objeto: Foco Arcano",
-        "description": "Sua verdadeira forma é um foco arcano — um adorno mágico. Escolha um foco que represente sua identidade. Sempre que estiver usando esse equipamento, você adiciona um bônus à Classe de Dificuldade dos seus feitiços, somando-se a qualquer outro modificador aplicável — esse bônus começa no 5° nível (+1), 10° nível (+2) e 15° nível (+3)."
+        "description": "<p>Sua verdadeira forma é um foco arcano — um adorno mágico. Escolha um foco que represente sua identidade. Sempre que estiver usando esse equipamento, você adiciona um bônus à Classe de Dificuldade dos seus feitiços, somando-se a qualquer outro modificador aplicável — esse bônus começa no 5° nível (+1), 10° nível (+2) e 15° nível (+3).</p>"
       },
       {
         "name": "Idade",
-        "description": "Um Empunhai pode persistir por séculos sem qualquer desgaste natural. A pergunta \"quanto tempo dura uma boa lâmina, armadura ou adorno?\" costuma ser a resposta mais honesta à sua expectativa de vida."
+        "description": "<p>Um Empunhai pode persistir por séculos sem qualquer desgaste natural. A pergunta \"quanto tempo dura uma boa lâmina, armadura ou adorno?\" costuma ser a resposta mais honesta à sua expectativa de vida.</p>"
       },
       {
         "name": "Tendência",
-        "description": "Tendem à neutralidade e à lealdade. Vivem buscando propósito e pertencimento; valorizam intensamente qualquer um que reconheça sua verdadeira forma e trate sua existência com respeito."
+        "description": "<p>Tendem à neutralidade e à lealdade. Vivem buscando propósito e pertencimento; valorizam intensamente qualquer um que reconheça sua verdadeira forma e trate sua existência com respeito.</p>"
       },
       {
         "name": "Tamanho",
-        "description": "Sempre de tamanho Médio. A projeção humanoide não expressa força ou carne — apenas intenção — e intenção raramente excede esse limite. Você é Humanoide."
+        "description": "<p>Sempre de tamanho Médio. A projeção humanoide não expressa força ou carne — apenas intenção — e intenção raramente excede esse limite. Você é Humanoide.</p>"
       },
       {
         "name": "Idiomas",
-        "description": "Você pode falar, ler e escrever Comum e Abissal. Ainda que não saibam por quê, os Empunhais compreendem o Abissal com naturalidade, como se lidassem com algo igualmente fora do ciclo normal de vida."
+        "description": "<p>Você pode falar, ler e escrever Comum e Abissal. Ainda que não saibam por quê, os Empunhais compreendem o Abissal com naturalidade, como se lidassem com algo igualmente fora do ciclo normal de vida.</p>"
       },
       {
         "name": "Feito pra isso",
-        "description": "Você recebe proficiência em testes de Inteligência (Arcanismo)."
+        "description": "<p>Você recebe proficiência em testes de Inteligência (Arcanismo).</p>"
       },
       {
         "name": "Encontrando um propósito",
-        "description": "Conforme você ganha experiência, uma vez por turno, quando conjurar um feitiço, você pode ativar um efeito adicional, escolhendo entre: Magia Nata (o feitiço causa dano de Força em vez do tipo normal), Proteção Rápida (se direcionado a um aliado, você recebe +5 na sua CA até o final do próximo turno) ou Aptidão Mágica (se o feitiço exigir teste de resistência, você pode impor desvantagem ao alvo — uma vez por descanso longo). Usos limitados (contador abaixo) — todos recuperados ao terminar um descanso longo."
+        "description": "<p>Conforme você ganha experiência, uma vez por turno, quando conjurar um feitiço, você pode ativar um efeito adicional, escolhendo entre: Magia Nata (o feitiço causa dano de Força em vez do tipo normal), Proteção Rápida (se direcionado a um aliado, você recebe +5 na sua CA até o final do próximo turno) ou Aptidão Mágica (se o feitiço exigir teste de resistência, você pode impor desvantagem ao alvo — uma vez por descanso longo). Usos limitados (contador abaixo) — todos recuperados ao terminar um descanso longo.</p>"
       }
     ],
     "spellChoices": [],
@@ -4993,35 +4993,35 @@
     "armor": [],
     "weaponChoice": null,
     "originFeat": null,
-    "description": "Uma consciência que despertou dentro de um objeto de tonalidade azul fosca não natural — arma, armadura, foco arcano ou item — e passou a projetar um corpo humanoide instável, marcado por veios ou pele azul-profundo. Nasce sem passado, sem memória, buscando propósito e reconhecimento entre os povos que encontra.",
+    "description": "<p>Uma consciência que despertou dentro de um objeto de tonalidade azul fosca não natural — arma, armadura, foco arcano ou item — e passou a projetar um corpo humanoide instável, marcado por veios ou pele azul-profundo. Nasce sem passado, sem memória, buscando propósito e reconhecimento entre os povos que encontra.</p>",
     "traits": [
       {
         "name": "Objeto: Item Mágico",
-        "description": "Sua verdadeira forma é um item ou acessório — um anel, pingente, livro ou qualquer objeto deixado para trás há muito tempo. Escolha um item que represente sua identidade. Sempre que estiver usando esse equipamento, você adiciona um bônus a qualquer teste de resistência que fizer, somando-se a outros modificadores aplicáveis — esse bônus começa no 5° nível (+1), 10° nível (+2) e 15° nível (+3). (Simplificação: RAW restringe esse bônus só a testes de resistência em que você NÃO é proficiente; automatizado aqui como bônus geral por não haver como checar proficiência individual em tempo de efeito.)"
+        "description": "<p>Sua verdadeira forma é um item ou acessório — um anel, pingente, livro ou qualquer objeto deixado para trás há muito tempo. Escolha um item que represente sua identidade. Sempre que estiver usando esse equipamento, você adiciona um bônus a qualquer teste de resistência que fizer, somando-se a outros modificadores aplicáveis — esse bônus começa no 5° nível (+1), 10° nível (+2) e 15° nível (+3). (Simplificação: RAW restringe esse bônus só a testes de resistência em que você NÃO é proficiente; automatizado aqui como bônus geral por não haver como checar proficiência individual em tempo de efeito.)</p>"
       },
       {
         "name": "Idade",
-        "description": "Um Empunhai pode persistir por séculos sem qualquer desgaste natural. A pergunta \"quanto tempo dura uma boa lâmina, armadura ou adorno?\" costuma ser a resposta mais honesta à sua expectativa de vida."
+        "description": "<p>Um Empunhai pode persistir por séculos sem qualquer desgaste natural. A pergunta \"quanto tempo dura uma boa lâmina, armadura ou adorno?\" costuma ser a resposta mais honesta à sua expectativa de vida.</p>"
       },
       {
         "name": "Tendência",
-        "description": "Tendem à neutralidade e à lealdade. Vivem buscando propósito e pertencimento; valorizam intensamente qualquer um que reconheça sua verdadeira forma e trate sua existência com respeito."
+        "description": "<p>Tendem à neutralidade e à lealdade. Vivem buscando propósito e pertencimento; valorizam intensamente qualquer um que reconheça sua verdadeira forma e trate sua existência com respeito.</p>"
       },
       {
         "name": "Tamanho",
-        "description": "Sempre de tamanho Médio. A projeção humanoide não expressa força ou carne — apenas intenção — e intenção raramente excede esse limite. Você é Humanoide."
+        "description": "<p>Sempre de tamanho Médio. A projeção humanoide não expressa força ou carne — apenas intenção — e intenção raramente excede esse limite. Você é Humanoide.</p>"
       },
       {
         "name": "Idiomas",
-        "description": "Você pode falar, ler e escrever Comum e Abissal. Ainda que não saibam por quê, os Empunhais compreendem o Abissal com naturalidade, como se lidassem com algo igualmente fora do ciclo normal de vida."
+        "description": "<p>Você pode falar, ler e escrever Comum e Abissal. Ainda que não saibam por quê, os Empunhais compreendem o Abissal com naturalidade, como se lidassem com algo igualmente fora do ciclo normal de vida.</p>"
       },
       {
         "name": "Feito pra isso",
-        "description": "Você recebe proficiência em testes de Carisma (Persuasão)."
+        "description": "<p>Você recebe proficiência em testes de Carisma (Persuasão).</p>"
       },
       {
         "name": "Encontrando um propósito",
-        "description": "Conforme você ganha experiência, uma vez por turno, com uma ação bônus, você pode ativar um efeito, escolhendo entre: Alvo Claro (o próximo ataque contra a criatura escolhida é feito com +2 na rolagem de acerto até o final do próximo turno), Prevenção de Vontade (um aliado, podendo ser você, tem vantagem na próxima rolagem de iniciativa) ou Aptidão Efetiva (remove uma condição à sua escolha, exceto exaustão, de um aliado que possa ver). Usos limitados (contador abaixo) — todos recuperados ao terminar um descanso longo."
+        "description": "<p>Conforme você ganha experiência, uma vez por turno, com uma ação bônus, você pode ativar um efeito, escolhendo entre: Alvo Claro (o próximo ataque contra a criatura escolhida é feito com +2 na rolagem de acerto até o final do próximo turno), Prevenção de Vontade (um aliado, podendo ser você, tem vantagem na próxima rolagem de iniciativa) ou Aptidão Efetiva (remove uma condição à sua escolha, exceto exaustão, de um aliado que possa ver). Usos limitados (contador abaixo) — todos recuperados ao terminar um descanso longo.</p>"
       }
     ],
     "spellChoices": [],
@@ -13496,7 +13496,32 @@
       }
     ],
     "spellChoices": [],
-    "spellGrants": null
+    "spellGrants": [
+      {
+        "ability": "cha",
+        "known": {
+          "1": [
+            "thaumaturgy#c"
+          ]
+        },
+        "innate": {
+          "3": {
+            "daily": {
+              "1": [
+                "hellish rebuke#2"
+              ]
+            }
+          },
+          "5": {
+            "daily": {
+              "1": [
+                "darkness"
+              ]
+            }
+          }
+        }
+      }
+    ]
   },
   {
     "name": "Tiefling",

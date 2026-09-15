@@ -1,5 +1,6 @@
 import { ABILITIES, ABILITY_LABELS } from "../../schema/character";
 import { OriginTableBrowser } from "../OriginTableBrowser";
+import { AbilityIconLabel } from "../AbilityIconLabel";
 
 // Cada opção de bônus de atributo é um "chip" arrastável — "+2 num atributo"
 // tem 1 chip de valor 2, "+1 em dois atributos" tem 2 chips de valor 1. Único
@@ -76,7 +77,7 @@ function AbilityBonusAssign({ choice, assignments, abilities, onMove, onUnassign
               }}
               onDrop={(event) => handleDrop(key, event)}
             >
-              <span className="ability-drop-zone-label">{ABILITY_LABELS[key]}</span>
+              <AbilityIconLabel ability={key} />
               <span className="ability-drop-zone-value">
                 {abilities[key]}
                 {chip && ` (+${chip.amount})`}
