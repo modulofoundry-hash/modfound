@@ -179,6 +179,32 @@ export function computeGrantedSpells({ character, raceMatch, classMatches, feats
   Object.values(classMatches ?? {}).forEach((match, index) => {
     const classLevel = character.classes?.[index]?.level ?? 0;
     if (match?.subclassData?.spellGrants) addFrom(match.subclassData.spellGrants, match.subclassData.name, classLevel);
+    // `spellGrants` de CLASSE BASE -- 2 lugares possíveis (achado revisando
+    // Artificer 2024 "Tinker's Magic"/Mending): direto na raiz da classe (ex:
+    // Paladin "Faithful Steed", `class.spellGrants`) OU dentro de uma feature
+    // específica (`class.features[].spellGrants`, mesmo padrão que subclasse
+    // já usa por feature -- `mergeFeatureSpellGrants` no módulo resolve os
+    // dois formatos, mas este função nunca tinha olhado pra nenhum dos dois,
+    // só subclasse/raça/talento/escolha de classe -- toda concessão de magia
+    // de classe base ficava sem aviso nenhum aqui, mesmo já funcionando de
+    // verdade no Foundry). Feature só conta depois do nível em que ela
+    // existe (`feature.level`), mesmo critério que o resto do wizard usa.
+    if (match?.classData?.spellGrants) addFrom(match.classData.spellGrants, match.classData.name, classLevel);
+    for (const feature of match?.classData?.features ?? []) {
+      if (feature.spellGrants && classLevel >= (feature.level ?? 0)) {
+        addFrom(feature.spellGrants, feature.name, classLevel);
+      }
+    }
+    // Mesma ideia, feature de SUBCLASSE (ex: College of Lore "Magical
+    // Discoveries") -- hoje só produz escolha por filtro (ignorada de
+    // propósito por `grantsFromRaw`, sem nome fixo pra alucinar), mas cobre
+    // qualquer subclasse futura com magia NOMEADA fixa numa feature em vez
+    // de na raiz da subclasse.
+    for (const feature of match?.subclassData?.features ?? []) {
+      if (feature.spellGrants && classLevel >= (feature.level ?? 0)) {
+        addFrom(feature.spellGrants, feature.name, classLevel);
+      }
+    }
   });
 
   for (const choice of character.classChoices ?? []) {
