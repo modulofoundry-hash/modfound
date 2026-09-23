@@ -255,6 +255,94 @@
     "optionalFeatureChoices": []
   },
   {
+    "name": "Agent of the Ninth Quill",
+    "source": "AU",
+    "sourceBook": "Arcana Unleashed",
+    "tier": "official",
+    "rules": "2024",
+    "skills": [
+      "Arcanismo",
+      "Prestidigitação"
+    ],
+    "skillChoice": null,
+    "tools": [
+      "Thieves' Tools"
+    ],
+    "toolChoice": null,
+    "languages": "",
+    "languageChoice": null,
+    "equipmentSlots": [
+      {
+        "choice": true,
+        "options": [
+          {
+            "label": "A",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "Dagger",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Light Hammer",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Thieves' Tools",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Iron Spikes",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Rope",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Traveler's Clothes",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "17 po",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "B",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "50 po",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "dex",
+        "int",
+        "cha"
+      ]
+    },
+    "originFeat": "Arcane Infiltrator",
+    "originFeatChoice": null,
+    "description": "Your sharp mind and keen burgling skills led you to fall in with the Ninth Quill, a collective of thieves, saboteurs, and spies who steal magical lore and relics from others. Through your escapades—from purloining magic items and arcane tomes to sabotaging groups of mages—you've developed cunning skills and magical tricks to further your spy craft.",
+    "feature": null,
+    "optionalFeatureChoices": []
+  },
+  {
     "name": "Anthropologist",
     "source": "ToA",
     "sourceBook": "Tomb of Annihilation",
@@ -1872,6 +1960,79 @@
     "optionalFeatureChoices": []
   },
   {
+    "name": "Bejeweled Conclave Spy",
+    "source": "AU",
+    "sourceBook": "Arcana Unleashed",
+    "tier": "official",
+    "rules": "2024",
+    "skills": [
+      "Enganação",
+      "Percepção"
+    ],
+    "skillChoice": null,
+    "tools": [
+      "Disguise Kit"
+    ],
+    "toolChoice": null,
+    "languages": "",
+    "languageChoice": null,
+    "equipmentSlots": [
+      {
+        "choice": true,
+        "options": [
+          {
+            "label": "A",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "Disguise Kit",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Fine Clothes",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Perfume",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "5 po",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "B",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "50 po",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "dex",
+        "wis",
+        "cha"
+      ]
+    },
+    "originFeat": "Arcane Eloquence",
+    "originFeatChoice": null,
+    "description": "Publicly, you're a courtier, a mediator, or an entertainer. But behind that glamorous visage is a mind honed for gathering secrets. Trained by the enchanters of the Bejeweled Conclave, you know how to use your charm and wit (plus a little magic) to infiltrate organizations, uncover information, and broker deals.",
+    "feature": null,
+    "optionalFeatureChoices": []
+  },
+  {
     "name": "Boros Legionnaire",
     "source": "GGR",
     "sourceBook": "Guildmasters' Guide to Ravnica",
@@ -2672,6 +2833,85 @@
     "optionalFeatureChoices": []
   },
   {
+    "name": "Cosmic Dawn Experiment",
+    "source": "AU",
+    "sourceBook": "Arcana Unleashed",
+    "tier": "official",
+    "rules": "2024",
+    "skills": [
+      "Atletismo",
+      "Sobrevivência"
+    ],
+    "skillChoice": null,
+    "tools": [],
+    "toolChoice": {
+      "count": 1,
+      "category": "toolArtisan"
+    },
+    "languages": "",
+    "languageChoice": null,
+    "equipmentSlots": [
+      {
+        "choice": true,
+        "options": [
+          {
+            "label": "A",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "Artisan's Tools (same as above)",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Backpack",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Robe",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Traveler's Clothes",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "30 po",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "B",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "50 po",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "dex",
+        "con"
+      ]
+    },
+    "originFeat": "Transmuted Anatomy",
+    "originFeatChoice": null,
+    "description": "Your body has been warped by the transmutation practices of the Bringers of the Cosmic Dawn. Perhaps you were inadvertently caught up in one of the organization's experiments, or maybe you were a member of the organization and sought to improve your physical form through magical might. Whatever the case, you use your strange anatomy to your benefit.",
+    "feature": null,
+    "optionalFeatureChoices": []
+  },
+  {
     "name": "Courtier",
     "source": "SCAG",
     "sourceBook": "Sword Coast Adventurer's Guide",
@@ -2718,6 +2958,84 @@
       "name": "Court Functionary",
       "description": "<p>Your knowledge of how bureaucracies function lets you gain access to the records and inner workings of any noble court or government you encounter. You know who the movers and shakers are, whom to go to for the favors you seek, and what the current intrigues of interest in the group are.</p>"
     },
+    "optionalFeatureChoices": []
+  },
+  {
+    "name": "Covenant of the Grave Recruit",
+    "source": "AU",
+    "sourceBook": "Arcana Unleashed",
+    "tier": "official",
+    "rules": "2024",
+    "skills": [
+      "História",
+      "Medicina"
+    ],
+    "skillChoice": null,
+    "tools": [
+      "Herbalism Kit"
+    ],
+    "toolChoice": null,
+    "languages": "",
+    "languageChoice": null,
+    "equipmentSlots": [
+      {
+        "choice": true,
+        "options": [
+          {
+            "label": "A",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "Dagger",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Herbalism Kit",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Book (anatomy)",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Shovel",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "16 po",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "B",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "50 po",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "int",
+        "wis"
+      ]
+    },
+    "originFeat": "Arcane Undertaker",
+    "originFeatChoice": null,
+    "description": "Death has always fascinated you. You've studied that morbid topic alongside members of the Covenant of the Grave, analyzing the macabre with scientific precision. Through these studies, you've amassed knowledge of medication, necromancy, and history.",
+    "feature": null,
     "optionalFeatureChoices": []
   },
   {
@@ -2863,6 +3181,84 @@
     "originFeat": "Alert",
     "originFeatChoice": null,
     "description": "<p>You eked out a living in dark alleyways, cutting purses or burgling shops. Perhaps you were part of a small gang of like-minded wrongdoers who looked out for each other. Or maybe you were a lone wolf, fending for yourself against the local thieves' guild and more fearsome lawbreakers.</p>",
+    "feature": null,
+    "optionalFeatureChoices": []
+  },
+  {
+    "name": "Crucible Storm Chaser",
+    "source": "AU",
+    "sourceBook": "Arcana Unleashed",
+    "tier": "official",
+    "rules": "2024",
+    "skills": [
+      "Atletismo",
+      "Natureza"
+    ],
+    "skillChoice": null,
+    "tools": [
+      "Glassblower's Tools"
+    ],
+    "toolChoice": null,
+    "languages": "",
+    "languageChoice": null,
+    "equipmentSlots": [
+      {
+        "choice": true,
+        "options": [
+          {
+            "label": "A",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "Glassblower's Tools",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Backpack",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Rope",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Traveler's Clothes",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "15 po",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "B",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "50 po",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "str",
+        "con",
+        "int"
+      ]
+    },
+    "originFeat": "Arcane Overload",
+    "originFeatChoice": null,
+    "description": "Your daredevil tendencies and thirst for excitement led you to the Crucible Keepers, an organization dedicated to studying natural and magical catastrophes. From playing with molten glass to charging into a hurricane's eye, you thrive when disaster is mere steps away.",
     "feature": null,
     "optionalFeatureChoices": []
   },
@@ -3595,6 +3991,105 @@
       "name": "Supply Chain",
       "description": "<p>From your time as a merchant, you retain connections with wholesalers, suppliers, and other merchants and entrepreneurs. You can call upon these connections when looking for items or information.</p>"
     },
+    "optionalFeatureChoices": []
+  },
+  {
+    "name": "Familiar Trainer",
+    "source": "AU",
+    "sourceBook": "Arcana Unleashed",
+    "tier": "official",
+    "rules": "2024",
+    "skills": [
+      "Adestrar Animais",
+      "Arcanismo"
+    ],
+    "skillChoice": null,
+    "tools": [],
+    "toolChoice": {
+      "count": 1,
+      "category": "setGaming"
+    },
+    "languages": "",
+    "languageChoice": null,
+    "equipmentSlots": [
+      {
+        "choice": true,
+        "options": [
+          {
+            "label": "A",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "Quarterstaff",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Gaming Set (same as above)",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Bedroll",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Bell",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "String",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Tinderbox",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Traveler's Clothes",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Waterskin",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "44 po",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "B",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "50 po",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "con",
+        "int",
+        "wis"
+      ]
+    },
+    "originFeat": "Familiar Friend",
+    "originFeatChoice": null,
+    "description": "A magical familiar bonded with you when you were young, accompanying you throughout your adolescence. Now, you can't imagine life without your furry—or feathery, scaly, or slimy—friend at your side. You've learned to work in tandem with your familiar, and when adventure presents its challenges, your familiar is quick to remind you of the small joys in life.",
+    "feature": null,
     "optionalFeatureChoices": []
   },
   {
@@ -5326,6 +5821,99 @@
     "originFeat": "Healer",
     "originFeatChoice": null,
     "description": "<p>You spent your early years secluded in a hut or monastery located well beyond the outskirts of the nearest settlement. In those days, your only companions were the creatures of the forest and those who would occasionally visit to bring news of the outside world and supplies. The solitude allowed you to spend many hours pondering the mysteries of creation.</p>",
+    "feature": null,
+    "optionalFeatureChoices": []
+  },
+  {
+    "name": "Horizon Weaver Initiate",
+    "source": "AU",
+    "sourceBook": "Arcana Unleashed",
+    "tier": "official",
+    "rules": "2024",
+    "skills": [
+      "Acrobacia",
+      "Sobrevivência"
+    ],
+    "skillChoice": null,
+    "tools": [
+      "Weaver's Tools"
+    ],
+    "toolChoice": null,
+    "languages": "",
+    "languageChoice": null,
+    "equipmentSlots": [
+      {
+        "choice": true,
+        "options": [
+          {
+            "label": "A",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "Shortbow",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Arrows",
+                "quantity": 20
+              },
+              {
+                "type": "fixed",
+                "name": "Weaver's Tools",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Map",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Quiver",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Rope",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Traveler's Clothes",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "18 po",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "B",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "50 po",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "dex",
+        "con",
+        "wis"
+      ]
+    },
+    "originFeat": "Portal Jumper",
+    "originFeatChoice": null,
+    "description": "Your adolescence was marked by unquenchable wanderlust. You left home and began your travels as soon as you were able. Along the way, you encountered the adventurous conjurers of the Horizon Weavers, who taught you some of their teleportation magic to further your explorations.",
     "feature": null,
     "optionalFeatureChoices": []
   },
@@ -8609,6 +9197,89 @@
     "optionalFeatureChoices": []
   },
   {
+    "name": "Phantasmic Circus Trouper",
+    "source": "AU",
+    "sourceBook": "Arcana Unleashed",
+    "tier": "official",
+    "rules": "2024",
+    "skills": [
+      "Enganação",
+      "Atuação"
+    ],
+    "skillChoice": null,
+    "tools": [
+      "Disguise Kit"
+    ],
+    "toolChoice": null,
+    "languages": "",
+    "languageChoice": null,
+    "equipmentSlots": [
+      {
+        "choice": true,
+        "options": [
+          {
+            "label": "A",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "Disguise Kit",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Gaming Set (any)",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Costume",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Mirror",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Traveler's Clothes",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "12 po",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "B",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "50 po",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "dex",
+        "con",
+        "cha"
+      ]
+    },
+    "originFeat": "Arcane Artist",
+    "originFeatChoice": null,
+    "description": "Whether as a performer or a circus hand, you found a home among the members of the Phantasmic Circus. As you traveled across the world bringing magic and wonder to excited audiences, you learned some illusion magic and honed your talents for performance and misdirection.",
+    "feature": null,
+    "optionalFeatureChoices": []
+  },
+  {
     "name": "Plaintiff",
     "source": "AI",
     "sourceBook": "Acquisitions Incorporated",
@@ -9872,6 +10543,104 @@
     "originFeat": "Skilled",
     "originFeatChoice": null,
     "description": "<p>You spent formative years in a scriptorium, a monastery dedicated to the preservation of knowledge, or a government agency, where you learned to write with a clear hand and produce finely written texts. Perhaps you scribed government documents or copied tomes of literature. You might have some skill as a writer of poetry, narrative, or scholarly research. Above all, you have a careful attention to detail, helping you avoid introducing mistakes to the documents you copy and create.</p>",
+    "feature": null,
+    "optionalFeatureChoices": []
+  },
+  {
+    "name": "Seer Apprentice",
+    "source": "AU",
+    "sourceBook": "Arcana Unleashed",
+    "tier": "official",
+    "rules": "2024",
+    "skills": [
+      "História",
+      "Intuição"
+    ],
+    "skillChoice": null,
+    "tools": [
+      "Navigator's Tools"
+    ],
+    "toolChoice": null,
+    "languages": "",
+    "languageChoice": null,
+    "equipmentSlots": [
+      {
+        "choice": true,
+        "options": [
+          {
+            "label": "A",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "Navigator's Tools",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Candle",
+                "quantity": 8
+              },
+              {
+                "type": "fixed",
+                "name": "Ink",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Ink Pen",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Parchment",
+                "quantity": 9
+              },
+              {
+                "type": "fixed",
+                "name": "Pouch",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Tinderbox",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Traveler's Clothes",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "11 po",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "B",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "50 po",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "int",
+        "wis",
+        "cha"
+      ]
+    },
+    "originFeat": "Arcane Omens",
+    "originFeatChoice": null,
+    "description": "As an apprentice among the Seers of Sea and Sky, you learned to interpret minor omens from the clouds above and the fathoms below. The organization's rich network of libraries furthered your education, and you now travel across the world, imparting advice and aid to others.",
     "feature": null,
     "optionalFeatureChoices": []
   },
@@ -11410,6 +12179,104 @@
       "name": "Shadow Network",
       "description": "<p>You have access to the Volstrucker shadow network, which allows you to communicate with other members of the order over long distances. If you write a letter in a special arcane ink, address it to a member of the Volstrucker, and cast it into a fire, the letter will burn to cinders and materialize whole again on the person of the agent you addressed it to.</p><p>The ink used to send a letter across the shadow network is the same as that used by a wizard to scribe spells in a spellbook. Writing a letter in this ink costs 10 gp per page.</p>"
     },
+    "optionalFeatureChoices": []
+  },
+  {
+    "name": "Ward of the Sheltering Hands",
+    "source": "AU",
+    "sourceBook": "Arcana Unleashed",
+    "tier": "official",
+    "rules": "2024",
+    "skills": [
+      "Intuição",
+      "Medicina"
+    ],
+    "skillChoice": null,
+    "tools": [
+      "Cook's Utensils"
+    ],
+    "toolChoice": null,
+    "languages": "",
+    "languageChoice": null,
+    "equipmentSlots": [
+      {
+        "choice": true,
+        "options": [
+          {
+            "label": "A",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "Cook's Utensils",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Blanket",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Healer's Kit",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Lamp",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Oil",
+                "quantity": 3
+              },
+              {
+                "type": "fixed",
+                "name": "Tinderbox",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Traveler's Clothes",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Waterskin",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "40 po",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "B",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "50 po",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "abilityBonus": {
+      "points": 3,
+      "from": [
+        "con",
+        "wis",
+        "cha"
+      ]
+    },
+    "originFeat": "Arcane Safeguard",
+    "originFeatChoice": null,
+    "description": "A turn of ill luck led you to the Sheltering Hands, an altruistic organization dedicated to defending the downtrodden. The organization helped you regain your footing and taught you some of its protective magic—in the hope that one day you too would shelter the less fortunate in their time of need.",
+    "feature": null,
     "optionalFeatureChoices": []
   },
   {

@@ -106,12 +106,53 @@ function findEquipped(character, equipmentData) {
   let armor = null;
   let hasShield = false;
   for (const item of equipmentData ?? []) {
+    // `foundryType==="equipment"` cobre TANTO armadura mundana quanto armadura/escudo
+    // MÁGICO com CA própria (Armor of Invulnerability, Sentinel Shield etc.) -- o
+    // achatamento do catálogo unificado (`flatten-equipment-entry.mjs`) já normaliza
+    // os dois pro MESMO formato (`armorType`/`ac`/`dexCap`), então este loop não
+    // precisa saber a diferença.
     if (item.foundryType !== "equipment" || !item.armorType) continue;
     if (!equippedNames.has((item.name ?? "").toLowerCase())) continue;
     if (item.armorType === "shield") hasShield = true;
     else armor = item;
   }
   return { armor, hasShield };
+}
+
+// Bônus de CA de item mágico "avulso" (soma em cima de QUALQUER armadura, ex: Anel de
+// Proteção) -- achado na unificação do banco de equipamento (set/2026): item
+// `foundryType:"magicItem"` com `armorBonus` numérico nunca era somado na CA, porque o
+// catálogo antigo (110 itens, só arma/armadura de PHB) nunca tinha item mágico algum.
+// Sintonia exigida (`requiresAttunement`) só conta se o jogador marcou "Sintonizado"
+// no item (`character.equipment[].attuned`, mesmo campo que `StepEquipamento.jsx` já
+// usa) -- item que exige sintonia mas não foi sintonizado não concede o bônus.
+// LIMITAÇÃO ACEITA: alguns itens mais antigos (ex: "+1 Shield"/"+2 Shield", extraídos
+// antes desta unificação pela feature Replicate Magic Item) guardam o bônus como
+// Active Effect do Foundry (`mechanical.effects`), não como `armorBonus` plano --
+// esses continuam funcionando DENTRO do Foundry, mas não são somados aqui (não dá pra
+// interpretar `changes`/fórmula de Active Effect de forma genérica e segura fora do
+// Foundry sem risco de inventar um número errado).
+function magicAcBonus(character, equipmentData) {
+  const equippedByName = new Map(
+    (character.equipment ?? []).filter((e) => e.equipped && e.name).map((e) => [e.name.trim().toLowerCase(), e])
+  );
+  // O MESMO nome de item pode existir mais de 1 vez no catálogo (reimpressão 2014/2024,
+  // ex: "Ring of Protection" em DMG e XDMG, ambos armorBonus:1) -- contar cada NOME
+  // equipado só 1 vez evita dobrar o bônus quando as duas edições batem no mesmo
+  // `character.equipment[].name`, igual `findEquipped` já faz pra armadura (última
+  // correspondência substitui, nunca soma duas).
+  const countedNames = new Set();
+  let bonus = 0;
+  for (const item of equipmentData ?? []) {
+    if (item.foundryType !== "magicItem" || typeof item.armorBonus !== "number") continue;
+    const key = (item.name ?? "").toLowerCase();
+    const equipped = equippedByName.get(key);
+    if (!equipped || countedNames.has(key)) continue;
+    if (item.requiresAttunement && !equipped.attuned) continue;
+    countedNames.add(key);
+    bonus += item.armorBonus;
+  }
+  return bonus;
 }
 
 function armorFormula(armor, mods) {
@@ -162,6 +203,8 @@ export function computeArmorClass(character, { equipmentData }) {
     if (!bonus.condition(equipped)) continue;
     base += bonus.value(mods);
   }
+
+  base += magicAcBonus(character, equipmentData);
 
   return base;
 }
