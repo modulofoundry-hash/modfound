@@ -32,10 +32,43 @@ const RACE_AC_OVERRIDES = [
   { raceNamePrefix: "Locathah", value: (m) => 12 + m.dex },
   { raceNamePrefix: "Loxodon", value: (m) => 12 + m.con },
   { raceNamePrefix: "Bearfolk", value: (m) => 13 + m.dex },
+  { raceNamePrefix: "Autognome", value: (m) => 13 + m.dex },
+  { raceNamePrefix: "Thri-kreen", value: (m) => 13 + m.dex },
 ];
 
 // Bônus fixo que soma por cima de qualquer base (armadura, override, ou padrão).
 const RACE_AC_ADDONS = [{ raceNamePrefix: "Warforged", value: () => 1 }];
+
+// Bônus fixos concedidos por uma escolha (classChoices) em vez de raça/classe/
+// equipamento direto -- mesma tabela curada, só que lida contra `classChoices`
+// (achatado por categoria, ver useClassChoices.js). `condition` recebe o
+// resultado de `findEquipped` (armadura equipada de verdade, não o override
+// racial) porque a regra real ("enquanto vestindo armadura") fala do item
+// físico, não da CA final calculada.
+const CLASS_CHOICE_AC_BONUSES = [
+  // Estilo de Luta "Defense" -- +1 CA enquanto vestindo armadura (qualquer
+  // peso). Nome idêntico nas duas edições (2014 optionalfeature / 2024 feat
+  // subtype "fightingStyle"); "Defense Style" é o nome órfão que sobrou da
+  // extração do 5etools em phb-2024-optionalfeatures.json (o slot 2024 de
+  // verdade usa feats.json, mas cobrimos os dois por segurança).
+  {
+    category: "fightingStyle",
+    names: ["Defense", "Defense Style"],
+    condition: ({ armor }) => !!armor,
+    value: () => 1,
+  },
+];
+
+// Mesma ideia, mas pra `character.animalEnhancementChoices` (Simic Hybrid --
+// mecanismo dedicado, não `classChoices`, ver animalEnhancement.js).
+const ANIMAL_ENHANCEMENT_AC_BONUSES = [
+  // Carapace -- +1 CA quando NÃO estiver de armadura pesada.
+  {
+    names: ["Carapace (GGR)"],
+    condition: ({ armor }) => !armor || armor.armorType !== "heavy",
+    value: () => 1,
+  },
+];
 
 function matchesName(entryName, characterName) {
   if (!characterName) return false;
@@ -114,6 +147,21 @@ export function computeArmorClass(character, { equipmentData }) {
 
   if (hasShield) base += 2;
   if (raceAddon) base += raceAddon.value(mods);
+
+  const equipped = { armor, hasShield };
+  const chosenNames = new Set((character.classChoices ?? []).map((c) => c.name));
+  for (const bonus of CLASS_CHOICE_AC_BONUSES) {
+    if (!bonus.names.some((n) => chosenNames.has(n))) continue;
+    if (!bonus.condition(equipped)) continue;
+    base += bonus.value(mods);
+  }
+
+  const enhancementNames = new Set((character.animalEnhancementChoices ?? []).map((c) => c.name));
+  for (const bonus of ANIMAL_ENHANCEMENT_AC_BONUSES) {
+    if (!bonus.names.some((n) => enhancementNames.has(n))) continue;
+    if (!bonus.condition(equipped)) continue;
+    base += bonus.value(mods);
+  }
 
   return base;
 }

@@ -19,6 +19,9 @@ import { FoundrySheetView } from "./FoundrySheetView";
 import { FeatsInput } from "./FeatsInput";
 import featsData from "../data/content/feats.json";
 import optionalFeaturesData from "../data/content/optionalfeatures.json";
+import equipmentData from "../data/content/equipment.json";
+import { computeArmorClass } from "../utils/computeArmorClass";
+import { computeHitPoints } from "../utils/computeHitPoints";
 import { useCharacterAppliers } from "../hooks/useCharacterAppliers";
 import { useAbilityImprovements } from "../hooks/useAbilityImprovements";
 import { useClassChoices } from "../hooks/useClassChoices";
@@ -445,11 +448,12 @@ function StepNivel({ targetLevel, onChange }) {
 // Linhas do resumo — usadas tanto no painel lateral fixo (visível em toda
 // etapa) quanto numa versão maior na etapa final de Confirmação, sem
 // duplicar a lógica.
-function summaryRows(character, targetLevel) {
+function summaryRows(character, targetLevel, ac, hp) {
   const classSummary = (character.classes ?? [])
     .filter((c) => c.name)
     .map((c) => `${c.name}${c.subclass ? ` (${c.subclass})` : ""} ${c.level}`)
     .join(" / ");
+  const hasClass = character.classes?.some((c) => c.name);
 
   return [
     ["Regras", character.rulesMode ? (character.rulesMode === "2014" ? "2014" : "2024") : null],
@@ -457,6 +461,8 @@ function summaryRows(character, targetLevel) {
     ["Raça", character.race || null],
     ["Antecedente", character.background || null],
     ["Classe", classSummary || null],
+    ["CA", character.race || hasClass || character.equipment?.length ? ac : null],
+    ["PV", hasClass ? hp : null],
     [
       "Atributos",
       Object.values(character.abilities ?? {}).some((v) => v !== 10)
@@ -480,7 +486,25 @@ function summaryRows(character, targetLevel) {
 // escolhas já feitas devem ficar visíveis o tempo todo, não só na
 // confirmação final).
 function WizardSummary({ character, targetLevel }) {
-  const rows = summaryRows(character, targetLevel);
+  // Mesmo padrão de memoização de FoundrySheetView.jsx (`computedAc`): chaveado
+  // só nos campos que `computeArmorClass` de fato lê, não em `character`
+  // inteiro -- digitar em Nome/Biografia/Notas não deve reprocessar a busca
+  // em equipment.json a cada tecla. Respeita `acAuto:false` (edição manual
+  // feita na etapa de Confirmação) do mesmo jeito que a ficha final já faz,
+  // pra não mostrar dois números diferentes de CA ao mesmo tempo no wizard.
+  const computedAc = useMemo(
+    () => computeArmorClass(character, { equipmentData }),
+    [character.abilities, character.equipment, character.classes, character.race, character.classChoices, character.animalEnhancementChoices],
+  );
+  const ac = (character.acAuto ?? true) ? computedAc : character.ac;
+  // Mesma ideia pro PV -- `computeHitPoints` só lê classes/hpRolls/abilities.con/
+  // feats/race, não `character` inteiro.
+  const computedHp = useMemo(
+    () => computeHitPoints(character, { classesData }),
+    [character.classes, character.abilities?.con, character.feats, character.race, character.raceRules],
+  );
+  const hp = (character.hpAuto ?? true) ? computedHp : character.hp?.max;
+  const rows = summaryRows(character, targetLevel, ac, hp);
   return (
     <aside className="wizard-summary">
       <h3>Resumo</h3>

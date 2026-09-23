@@ -13,6 +13,10 @@ import optionalFeaturesData from "../data/content/optionalfeatures.json";
 import spellsData from "../data/content/spells.json";
 import equipmentData from "../data/content/equipment.json";
 import { computeArmorClass } from "../utils/computeArmorClass";
+import { computeHitPoints } from "../utils/computeHitPoints";
+import { formatSpeed } from "../utils/formatSpeed";
+import { WEAPON_MASTERY_TABLE } from "../utils/weaponMastery";
+import { CLASS_CHOICE_CATEGORY_LABELS } from "../utils/classChoiceLabels";
 import { sendRollRequest } from "../data/chatMessages";
 
 function abilityMod(score) {
@@ -71,6 +75,35 @@ function findSpellMatch(name, rulesMode) {
     spellsData.find((s) => s.name === name) ??
     null
   );
+}
+
+// `character.classChoices` (Estilo de Luta/Metamagia/Invocação/Manobra/Infusão/etc.)
+// pode vir de `optionalfeatures.json` (category) OU de `feats.json` (subtype "fightingStyle"
+// na edição 2024, ver StepEscolhasDeClasse.jsx) -- mesma busca em cascata do resto do
+// arquivo, tentando a edição exata da escolha antes de cair pro nome sozinho.
+function findClassChoiceMatch(choice) {
+  return (
+    optionalFeaturesData.find((f) => f.name === choice.name && f.category === choice.category && f.rules === choice.rules) ??
+    optionalFeaturesData.find((f) => f.name === choice.name && f.category === choice.category) ??
+    featsData.find((f) => f.name === choice.name && f.subtype === choice.category && f.rules === choice.rules) ??
+    featsData.find((f) => f.name === choice.name && f.subtype === choice.category) ??
+    null
+  );
+}
+
+// Aprimoramento Animal (Simic Hybrid) vive em `optionalfeatures.json` sem `category`
+// (não é um "classChoice" genérico, ver animalEnhancement.js) -- busca só pelo nome.
+function findAnimalEnhancementMatch(name) {
+  return optionalFeaturesData.find((f) => f.name === name) ?? null;
+}
+
+// Chave de arma (Foundry, ex: "longsword") -> nome de exibição. `WEAPON_MASTERY_TABLE`
+// só cobre armas que TÊM mastery na 2024 (não inclui "net", só usado em proficiência
+// aberta 2014) -- por isso o fallback capitaliza a chave crua em vez de assumir presença.
+function weaponLabel(key) {
+  const found = WEAPON_MASTERY_TABLE[key]?.label;
+  if (found) return found;
+  return key ? key.charAt(0).toUpperCase() + key.slice(1) : key;
 }
 
 const ARMOR_LABELS = { light: "Leve", medium: "Média", heavy: "Pesada", shields: "Escudos" };
@@ -428,7 +461,35 @@ function InventoryTab({ character, editable, onChange, profileId }) {
   );
 }
 
-function FeatsTab({ character, editable, onChange, raceMatch }) {
+// Traços de Classe/Subclasse -- `classesData`/`subclassesData` já têm um campo `features`
+// curado (`[{level, name, description}]`, mesmo texto oficial usado no resto do projeto),
+// só nunca era lido aqui. Filtrado até o nível ATUAL de cada classe (não mostra feature de
+// nível futuro que o personagem ainda não tem).
+function classFeatureGroups(character, classMatches) {
+  return (character.classes ?? [])
+    .map((row, index) => {
+      if (!row.name) return null;
+      const match = classMatches?.[index];
+      const level = Number(row.level) || 0;
+      const features = [...(match?.classData?.features ?? []), ...(match?.subclassData?.features ?? [])]
+        .filter((f) => (f.level ?? 0) <= level)
+        .sort((a, b) => (a.level ?? 0) - (b.level ?? 0));
+      if (!features.length) return null;
+      return { key: index, label: `${row.name}${row.subclass ? ` (${row.subclass})` : ""}`, features };
+    })
+    .filter(Boolean);
+}
+
+function FeatsTab({ character, editable, onChange, raceMatch, classMatches }) {
+  const featureGroups = classFeatureGroups(character, classMatches);
+  const classChoiceEntries = (character.classChoices ?? []).map((c) => ({ ...c, match: findClassChoiceMatch(c) }));
+  const masteryEntries = (character.weaponMasteryChoices ?? []).map((c) => c.weaponKey).filter(Boolean).map(weaponLabel);
+  const proficiencyEntries = (character.weaponProficiencies ?? []).map((c) => weaponLabel(c.weaponKey));
+  const enhancementEntries = (character.animalEnhancementChoices ?? []).map((c) => ({
+    ...c,
+    match: findAnimalEnhancementMatch(c.name),
+  }));
+
   return (
     <div className="foundry-feats-tab">
       <div className="foundry-box">
@@ -472,6 +533,83 @@ function FeatsTab({ character, editable, onChange, raceMatch }) {
           <EmptyRow />
         )}
       </div>
+
+      {featureGroups.map((group) => (
+        <div className="foundry-box" key={group.key}>
+          <h4>Traços de Classe · {group.label}</h4>
+          <ul className="foundry-feature-list">
+            {group.features.map((f, index) => (
+              <li key={index}>
+                <strong>
+                  {f.name} <span className="field-hint">(nível {f.level})</span>
+                </strong>
+                {f.description && <p>{excerpt(f.description)}</p>}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+
+      {classChoiceEntries.length > 0 && (
+        <div className="foundry-box">
+          <h4>Escolhas de Classe</h4>
+          <ul className="foundry-feature-list">
+            {classChoiceEntries.map((entry, index) => (
+              <li key={index}>
+                <strong>
+                  {entry.name}{" "}
+                  <span className="field-hint">({CLASS_CHOICE_CATEGORY_LABELS[entry.category] ?? entry.category})</span>
+                </strong>
+                {entry.match?.description && <p>{excerpt(entry.match.description)}</p>}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {enhancementEntries.length > 0 && (
+        <div className="foundry-box">
+          <h4>Aprimoramento Animal</h4>
+          <ul className="foundry-feature-list">
+            {enhancementEntries.map((entry, index) => (
+              <li key={index}>
+                <strong>{entry.name}</strong>
+                {entry.match?.description && <p>{excerpt(entry.match.description)}</p>}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {(masteryEntries.length > 0 || proficiencyEntries.length > 0) && (
+        <div className="foundry-box">
+          <h4>Armas — Maestria e Proficiência Concedida</h4>
+          {masteryEntries.length > 0 && (
+            <>
+              <p className="field-hint">Maestria de Arma</p>
+              <div className="foundry-tag-row">
+                {masteryEntries.map((label, index) => (
+                  <span key={index} className="foundry-tag">
+                    {label}
+                  </span>
+                ))}
+              </div>
+            </>
+          )}
+          {proficiencyEntries.length > 0 && (
+            <>
+              <p className="field-hint">Proficiência de Arma (escolha aberta)</p>
+              <div className="foundry-tag-row">
+                {proficiencyEntries.map((label, index) => (
+                  <span key={index} className="foundry-tag">
+                    {label}
+                  </span>
+                ))}
+              </div>
+            </>
+          )}
+        </div>
+      )}
     </div>
   );
 }
@@ -742,7 +880,7 @@ function BiographyTab({ character, editable, onChange }) {
 // escolhas de classe, magias concedidas etc.) é estrutural e continua só no
 // Assistente completo, pra não duplicar/discordar da lógica de lá.
 const EDITABLE_KEYS = [
-  "name", "alignment", "inspiration", "hp", "ac", "acAuto", "abilities",
+  "name", "alignment", "inspiration", "hp", "hpAuto", "ac", "acAuto", "abilities",
   "senses", "toolProficiencies", "languages", "skillProficiencies", "skillExpertise",
   "currency", "equipment", "feats", "spells", "conditions",
   "personality", "appearance", "notes",
@@ -827,6 +965,22 @@ export function FoundrySheetView({ character, onSave, profileId }) {
   }
   function resetAcToAuto() {
     onChange({ ac: computeArmorClass(view, { equipmentData }), acAuto: true });
+  }
+
+  // Mesmo padrão pro PV MÁXIMO -- `hp.value` (PV atual) continua sempre editável
+  // direto, independente de `hpAuto` (pode cair por dano, isso não é "cálculo
+  // errado"). `computeHitPoints` só lê classes/hpRolls/Constituição/feats/raça.
+  const computedHpMax = useMemo(
+    () => computeHitPoints(view, { classesData }),
+    [view.classes, view.abilities?.con, view.feats, view.race, view.raceRules],
+  );
+  const hpAuto = view.hpAuto ?? true;
+  const displayedHpMax = hpAuto ? computedHpMax : hp.max;
+  function setManualHpMax(value) {
+    onChange({ hp: { ...hp, max: value }, hpAuto: false });
+  }
+  function resetHpMaxToAuto() {
+    onChange({ hp: { ...hp, max: computeHitPoints(view, { classesData }) }, hpAuto: true });
   }
 
   const [tab, setTab] = useState("details");
@@ -918,7 +1072,7 @@ export function FoundrySheetView({ character, onSave, profileId }) {
             <span className="foundry-sheet-badge-label">Iniciativa</span>
           </div>
           <div className="foundry-sheet-badge" title={raceMatch ? undefined : "Escolha uma raça pra saber o deslocamento"}>
-            <span className="foundry-sheet-badge-value">{speed ?? "—"}</span>
+            <span className="foundry-sheet-badge-value">{formatSpeed(speed) ?? "—"}</span>
             <span className="foundry-sheet-badge-label">Deslocamento</span>
           </div>
           <div className={`foundry-sheet-badge ${editing ? "foundry-sheet-badge-editable" : ""}`}>
@@ -957,16 +1111,31 @@ export function FoundrySheetView({ character, onSave, profileId }) {
                 /
                 <input
                   type="number"
-                  value={hp.max ?? 0}
-                  onChange={(e) => onChange({ hp: { ...hp, max: Number(e.target.value) } })}
+                  value={displayedHpMax ?? 0}
+                  onChange={(e) => setManualHpMax(Number(e.target.value))}
                 />
               </span>
             ) : (
               <span className="foundry-sheet-badge-value">
-                {hp.value ?? 0}/{hp.max ?? 0}
+                {/* PV atual continua manual de verdade, mas parte igual ao máximo
+                    enquanto ninguém mexeu nele -- sem isso, um personagem recém-criado
+                    mostraria "0/12" (parece caído/inconsciente) em vez de cheio. */}
+                {hp.value || displayedHpMax || 0}/{displayedHpMax ?? 0}
               </span>
             )}
-            <span className="foundry-sheet-badge-label">PV</span>
+            <span className="foundry-sheet-badge-label">
+              PV{!hpAuto && " (máx. manual)"}
+            </span>
+            {editing && !hpAuto && (
+              <button
+                type="button"
+                className="foundry-sheet-badge-reset"
+                title="Voltar a calcular o PV máximo automaticamente"
+                onClick={resetHpMaxToAuto}
+              >
+                ↺
+              </button>
+            )}
           </div>
         </div>
       </header>

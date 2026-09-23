@@ -216,6 +216,10 @@ export function createEmptyCharacter() {
     // pedir explicitamente pra voltar ao automático.
     ac: 10,
     acAuto: true,
+    // Mesmo padrão de `ac`/`acAuto` -- `hp.max` guarda o valor EFETIVO (calculado ou
+    // editado à mão), `hpAuto` controla o modo. `hp.value` continua sempre editável
+    // (PV atual pode ficar abaixo do máximo por dano), só `hp.max` segue o automático.
+    hpAuto: true,
     conditions: [],
     personality: { trait: "", ideal: "", bond: "", flaw: "" },
     appearance: { gender: "", age: "", height: "", weight: "", eyes: "", hair: "", skin: "", faith: "", description: "" },

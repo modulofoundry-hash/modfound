@@ -213,6 +213,7 @@ export function ClassesInput({
                       <HpRollPicker
                         key={lvl}
                         level={lvl}
+                        hitDie={matched.hitDie}
                         value={row.hpRolls?.[lvl - 1]}
                         onChange={(mode) => setHpRoll(index, lvl, mode)}
                       />

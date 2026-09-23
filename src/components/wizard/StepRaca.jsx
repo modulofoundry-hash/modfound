@@ -6,6 +6,14 @@ import { DescriptionPanel } from "../DescriptionPanel";
 import { AbilityBonusPicker } from "../AbilityBonusPicker";
 import { SensesInput } from "../SensesInput";
 import { SIZE_LABELS } from "../../schema/character";
+import { formatSpeed } from "../../utils/formatSpeed";
+
+// Pra ordenar a coluna Velocidade -- `item.speed` pode ser objeto
+// (`{walk:25, burrow:20}`), não dá pra comparar direto (ver formatSpeed.js).
+function speedSortValue(speed) {
+  if (speed == null) return 0;
+  return typeof speed === "number" ? speed : (speed.walk ?? 0);
+}
 
 // Mesmo formato aceito em OriginPicker.jsx: string "M"/"S/M" (raça 2014) ou
 // array ["S","M"] (raça 2024).
@@ -18,7 +26,7 @@ function formatSize(size) {
 const COLUMNS = [
   { key: "name", label: "Nome" },
   { key: "size", label: "Tamanho", render: (item) => formatSize(item.size), sortValue: (item) => formatSize(item.size) },
-  { key: "speed", label: "Velocidade", render: (item) => (item.speed ? `${item.speed} pés` : "—"), sortValue: (item) => item.speed ?? 0 },
+  { key: "speed", label: "Velocidade", render: (item) => formatSpeed(item.speed) ?? "—", sortValue: (item) => speedSortValue(item.speed) },
   { key: "languages", label: "Idiomas", render: (item) => item.languages || "—" },
   { key: "rules", label: "Edição", render: (item) => item.rules || "—" },
 ];

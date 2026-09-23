@@ -18,6 +18,7 @@ import { animalEnhancementSlots, reversedAnimalEnhancementChoices } from "../uti
 import { resolveClassMatches } from "../schema/resolveClassMatches";
 import { computeGrantedSpells, computeSubclassSpellChoices, computeFeatSpellChoices } from "../schema/grantedSpells";
 import { hasActiveSpellcasting } from "../schema/spellProgression";
+import { computeHitPoints } from "../utils/computeHitPoints";
 import { useCharacterAppliers } from "../hooks/useCharacterAppliers";
 import { useAbilityImprovements } from "../hooks/useAbilityImprovements";
 import { useClassChoices } from "../hooks/useClassChoices";
@@ -251,6 +252,13 @@ export function LevelUpWizard({ initialCharacter, onSubmit, onCancel }) {
       racesData.find((r) => r.name === character.race) ??
       null,
     [character.race, character.raceRules],
+  );
+
+  // PV máximo ao vivo no resumo -- mesmo padrão de CharacterCreationWizard.jsx,
+  // atualiza sozinho conforme o jogador escolhe Média/Rolar em cada nível novo.
+  const computedHpMax = useMemo(
+    () => computeHitPoints(character, { classesData }),
+    [character.classes, character.abilities?.con, character.feats, character.race, character.raceRules],
   );
 
   // Todo este bloco (que chama cada slot-finder DUAS vezes -- uma pra `character`,
@@ -518,19 +526,27 @@ export function LevelUpWizard({ initialCharacter, onSubmit, onCancel }) {
         }
         return (
           <div className="wizard-step-pv">
-            {[...byClass.entries()].map(([classIndex, entries]) => (
-              <div key={classIndex} className="levelup-hp-block">
-                <h4>{entries[0].className}</h4>
-                {entries.map(({ level }) => (
-                  <HpRollPicker
-                    key={level}
-                    level={level}
-                    value={character.classes[classIndex]?.hpRolls?.[level - 1]}
-                    onChange={(mode) => setHpRoll(classIndex, level, mode)}
-                  />
-                ))}
-              </div>
-            ))}
+            {[...byClass.entries()].map(([classIndex, entries]) => {
+              const row = character.classes[classIndex];
+              const rules = row?.rules || character.rulesMode;
+              const classMatch =
+                classesData.find((c) => c.name === entries[0].className && c.rules === rules) ??
+                classesData.find((c) => c.name === entries[0].className);
+              return (
+                <div key={classIndex} className="levelup-hp-block">
+                  <h4>{entries[0].className}</h4>
+                  {entries.map(({ level }) => (
+                    <HpRollPicker
+                      key={level}
+                      level={level}
+                      hitDie={classMatch?.hitDie}
+                      value={row?.hpRolls?.[level - 1]}
+                      onChange={(mode) => setHpRoll(classIndex, level, mode)}
+                    />
+                  ))}
+                </div>
+              );
+            })}
           </div>
         );
       }
@@ -643,6 +659,10 @@ export function LevelUpWizard({ initialCharacter, onSubmit, onCancel }) {
                 .map((c) => `${c.name} ${c.level}`)
                 .join(" / ") || "—"}
             </dd>
+          </div>
+          <div className="wizard-summary-row">
+            <dt>PV</dt>
+            <dd>{(character.hpAuto ?? true) ? computedHpMax : character.hp?.max ?? "—"}</dd>
           </div>
         </dl>
       </aside>
