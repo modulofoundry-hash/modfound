@@ -141,6 +141,65 @@ export function useCharacterAppliers(setCharacter, setFeedback) {
     });
   }
 
+  // Versão de applySkills/applyTools LIGADA a um talento (`featName`) --
+  // achado real (set/2026): remover um talento nunca desfazia a perícia/
+  // ferramenta que ele tinha concedido (`applySkills`/`applyTools` só somam
+  // num Set achatado, sem saber QUEM concedeu o quê). Grava em
+  // `character.featGrants[featName]` o que foi concedido por aquele talento
+  // especificamente (acumula em cima do que já tiver -- mesmo padrão de
+  // "Adicionar" repetido do ChoicePicker), pra `revertFeatGrants` poder
+  // desfazer só isso na remoção.
+  function applyFeatSkills(featName, skillLabels) {
+    const ids = skillLabels.map((label) => SKILLS.find((s) => s.label === label)?.id).filter(Boolean);
+    setCharacter((prev) => {
+      const tracked = Array.from(new Set([...(prev.featGrants?.[featName]?.skills ?? []), ...ids]));
+      return {
+        ...prev,
+        skillProficiencies: Array.from(new Set([...prev.skillProficiencies, ...ids])),
+        featGrants: { ...prev.featGrants, [featName]: { ...prev.featGrants?.[featName], skills: tracked } },
+      };
+    });
+    setFeedback?.(`${skillLabels.join(", ")} adicionado(s) em Perícias`);
+  }
+
+  function applyFeatTools(featName, toolLabels) {
+    setCharacter((prev) => {
+      const tracked = Array.from(new Set([...(prev.featGrants?.[featName]?.tools ?? []), ...toolLabels]));
+      return {
+        ...prev,
+        toolProficiencies: Array.from(new Set([...prev.toolProficiencies, ...toolLabels])),
+        featGrants: { ...prev.featGrants, [featName]: { ...prev.featGrants?.[featName], tools: tracked } },
+      };
+    });
+    setFeedback?.(`${toolLabels.join(", ")} adicionado(s) em Proficiências em Ferramentas`);
+  }
+
+  // Desfaz a perícia/ferramenta rastreada em `character.featGrants[featName]`
+  // (chamado ao remover o talento -- `FeatsInput.jsx`/`useAbilityImprovements.js`).
+  // NÃO chama `revertAbilityBonusFor` (bônus de atributo do talento é uma fonte
+  // separada, `"feat-" + featName`, já revertida onde este for chamado).
+  // Limitação aceita: se o MESMO id/rótulo também estiver ativo por outra fonte
+  // não rastreada (raça/antecedente, que ainda não têm esse rastreio), remover
+  // o talento remove o id do Set inteiro, mesmo a outra fonte "querendo" ele
+  // ainda -- mesma limitação de sempre pra fontes não rastreadas, só que agora
+  // MUITO mais rara (antes talento nunca revertia nada).
+  function revertFeatGrants(featName) {
+    setCharacter((prev) => {
+      const grants = prev.featGrants?.[featName];
+      if (!grants) return prev;
+      const skillsToRemove = new Set(grants.skills ?? []);
+      const toolsToRemove = new Set(grants.tools ?? []);
+      const featGrants = { ...prev.featGrants };
+      delete featGrants[featName];
+      return {
+        ...prev,
+        skillProficiencies: prev.skillProficiencies.filter((id) => !skillsToRemove.has(id)),
+        toolProficiencies: prev.toolProficiencies.filter((label) => !toolsToRemove.has(label)),
+        featGrants,
+      };
+    });
+  }
+
   return {
     applySkills,
     applyTools,
@@ -153,5 +212,8 @@ export function useCharacterAppliers(setCharacter, setFeedback) {
     applyAbilityBonus,
     applyAbilityBonusFor,
     revertAbilityBonusFor,
+    applyFeatSkills,
+    applyFeatTools,
+    revertFeatGrants,
   };
 }

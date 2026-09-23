@@ -2,6 +2,7 @@ import { useState } from "react";
 import { SourceItemPicker } from "./SourceItemPicker";
 import { SpellChoicePicker } from "./SpellChoicePicker";
 import { ChoicePicker } from "./ChoicePicker";
+import { FeatAbilityBonusPicker } from "./FeatAbilityBonusPicker";
 import { SKILLS } from "../schema/character";
 
 // Mesmo padrão de "recapitula o que o item concede" já usado em
@@ -11,11 +12,12 @@ import { SKILLS } from "../schema/character";
 // (spellChoices) era tratada. Reaproveita a mesma lógica de "Adicionado"
 // (compara com as proficiências já gravadas no personagem) pro botão de
 // concessão fixa não continuar dizendo "Adicionar" pra sempre.
-function FeatGrants({ found, skillProficiencies, toolProficiencies, onApplySkills, onApplyTools }) {
+export function FeatGrants({ found, skillProficiencies, toolProficiencies, onApplySkills, onApplyTools, onApplyAbilityBonus }) {
   if (!found) return null;
   const hasSkills = found.skills?.length > 0 || found.skillChoice;
   const hasTools = found.tools?.length > 0 || found.toolChoice;
-  if (!hasSkills && !hasTools) return null;
+  const hasAbilityBonus = !!found.abilityBonus && (found.abilityBonus.choice || typeof found.abilityBonus.points === "number");
+  if (!hasSkills && !hasTools && !hasAbilityBonus) return null;
 
   const skillsAdded =
     found.skills?.length > 0 &&
@@ -30,7 +32,7 @@ function FeatGrants({ found, skillProficiencies, toolProficiencies, onApplySkill
       {found.skills?.length > 0 && onApplySkills && (
         <p>
           Perícias: {found.skills.join(", ")}{" "}
-          <button type="button" disabled={skillsAdded} onClick={() => onApplySkills(found.skills)}>
+          <button type="button" disabled={skillsAdded} onClick={() => onApplySkills(found.name, found.skills)}>
             {skillsAdded ? "Adicionado" : "Adicionar"}
           </button>
         </p>
@@ -42,13 +44,13 @@ function FeatGrants({ found, skillProficiencies, toolProficiencies, onApplySkill
           count={found.skillChoice.count}
           from={found.skillChoice.from}
           category={found.skillChoice.category}
-          onAdd={onApplySkills}
+          onAdd={(labels) => onApplySkills(found.name, labels)}
         />
       )}
       {found.tools?.length > 0 && onApplyTools && (
         <p>
           Ferramentas: {found.tools.join(", ")}{" "}
-          <button type="button" disabled={toolsAdded} onClick={() => onApplyTools(found.tools)}>
+          <button type="button" disabled={toolsAdded} onClick={() => onApplyTools(found.name, found.tools)}>
             {toolsAdded ? "Adicionado" : "Adicionar"}
           </button>
         </p>
@@ -60,7 +62,15 @@ function FeatGrants({ found, skillProficiencies, toolProficiencies, onApplySkill
           count={found.toolChoice.count}
           from={found.toolChoice.from}
           category={found.toolChoice.category}
-          onAdd={onApplyTools}
+          onAdd={(labels) => onApplyTools(found.name, labels)}
+        />
+      )}
+      {hasAbilityBonus && onApplyAbilityBonus && (
+        <FeatAbilityBonusPicker
+          key={`${found.name}-abilitybonus`}
+          label="Bônus de Atributo"
+          abilityBonus={found.abilityBonus}
+          onApply={(picks) => onApplyAbilityBonus(`feat-${found.name}`, picks)}
         />
       )}
     </>
@@ -85,6 +95,8 @@ export function FeatsInput({
   onApplySpells,
   onApplySkills,
   onApplyTools,
+  onApplyAbilityBonus,
+  onRevertGrants,
   skillProficiencies,
   toolProficiencies,
   maxFeats,
@@ -101,8 +113,13 @@ export function FeatsInput({
     setText("");
   }
 
+  // Achado real (set/2026): remover o talento tirava só o nome de
+  // `character.feats`, mas a perícia/ferramenta/bônus de atributo que ele
+  // tinha concedido (via os botões "Adicionar" acima) ficava grudada pra
+  // sempre. `onRevertGrants` desfaz os dois de uma vez.
   function removeFeat(name) {
     onChange(feats.filter((f) => f !== name));
+    onRevertGrants?.(name);
   }
 
   return (
@@ -135,6 +152,7 @@ export function FeatsInput({
                 toolProficiencies={toolProficiencies}
                 onApplySkills={onApplySkills}
                 onApplyTools={onApplyTools}
+                onApplyAbilityBonus={onApplyAbilityBonus}
               />
               {onApplySpells &&
                 found?.spellChoices

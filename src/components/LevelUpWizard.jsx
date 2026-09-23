@@ -195,7 +195,7 @@ export function LevelUpWizard({ initialCharacter, onSubmit, onCancel }) {
   const { setImprovementChoice, moveImprovementChip, unassignImprovementChip, pickImprovementFeat, pruneImprovementsAbove } = useAbilityImprovements(
     character,
     setCharacter,
-    appliers.applyAbilityBonus,
+    appliers,
   );
   const { setClassChoice, clearClassChoice } = useClassChoices(setCharacter);
   const { setWeaponMasteryChoice, clearWeaponMasteryChoice } = useWeaponMasteryChoices(setCharacter);
@@ -561,6 +561,11 @@ export function LevelUpWizard({ initialCharacter, onSubmit, onCancel }) {
             onMoveChip={moveImprovementChip}
             onUnassignChip={unassignImprovementChip}
             onPickFeat={pickImprovementFeat}
+            skillProficiencies={character.skillProficiencies}
+            toolProficiencies={character.toolProficiencies}
+            onApplySkills={appliers.applyFeatSkills}
+            onApplyTools={appliers.applyFeatTools}
+            onApplyAbilityBonus={appliers.applyAbilityBonusFor}
           />
         );
       case "escolhas":

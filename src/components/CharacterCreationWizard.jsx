@@ -611,7 +611,7 @@ export function CharacterCreationWizard({ initialValue, onSubmit, onCancel }) {
     moveImprovementChip,
     unassignImprovementChip,
     pickImprovementFeat,
-  } = useAbilityImprovements(character, setCharacter, appliers.applyAbilityBonus);
+  } = useAbilityImprovements(character, setCharacter, appliers);
   const { setClassChoice, clearClassChoice } = useClassChoices(setCharacter);
   const { setWeaponMasteryChoice, clearWeaponMasteryChoice } = useWeaponMasteryChoices(setCharacter);
   const { setWeaponProficiencyChoice, clearWeaponProficiencyChoice } = useWeaponProficiencyChoices(setCharacter);
@@ -983,6 +983,11 @@ export function CharacterCreationWizard({ initialValue, onSubmit, onCancel }) {
             onMoveChip={moveImprovementChip}
             onUnassignChip={unassignImprovementChip}
             onPickFeat={pickImprovementFeat}
+            skillProficiencies={character.skillProficiencies}
+            toolProficiencies={character.toolProficiencies}
+            onApplySkills={appliers.applyFeatSkills}
+            onApplyTools={appliers.applyFeatTools}
+            onApplyAbilityBonus={appliers.applyAbilityBonusFor}
           />
         );
       case "escolhas":
@@ -1071,8 +1076,13 @@ export function CharacterCreationWizard({ initialValue, onSubmit, onCancel }) {
             feats={character.feats}
             onChange={(feats) => set("feats", feats)}
             onApplySpells={appliers.applySpellChoices}
-            onApplySkills={appliers.applySkills}
-            onApplyTools={appliers.applyTools}
+            onApplySkills={appliers.applyFeatSkills}
+            onApplyTools={appliers.applyFeatTools}
+            onApplyAbilityBonus={appliers.applyAbilityBonusFor}
+            onRevertGrants={(name) => {
+              appliers.revertFeatGrants(name);
+              appliers.revertAbilityBonusFor(`feat-${name}`);
+            }}
             skillProficiencies={character.skillProficiencies}
             toolProficiencies={character.toolProficiencies}
             maxFeats={totalFeatSlots(character, raceMatch, backgroundMatch)}

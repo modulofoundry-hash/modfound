@@ -2894,9 +2894,9 @@
     "toolChoice": {
       "count": 1,
       "from": [
-        "smith's tools",
-        "brewer's supplies",
-        "mason's tools"
+        "Smith's Tools",
+        "Brewer's Supplies",
+        "Mason's Tools"
       ]
     },
     "languages": "comum, anão, subcomum",
@@ -3004,9 +3004,9 @@
     "toolChoice": {
       "count": 1,
       "from": [
-        "smith's tools",
-        "brewer's supplies",
-        "mason's tools"
+        "Smith's Tools",
+        "Brewer's Supplies",
+        "Mason's Tools"
       ]
     },
     "languages": "comum, anão",
@@ -3146,9 +3146,9 @@
     "toolChoice": {
       "count": 1,
       "from": [
-        "smith's tools",
-        "brewer's supplies",
-        "mason's tools"
+        "Smith's Tools",
+        "Brewer's Supplies",
+        "Mason's Tools"
       ]
     },
     "languages": "comum, anão",
@@ -3232,9 +3232,9 @@
     "toolChoice": {
       "count": 1,
       "from": [
-        "smith's tools",
-        "brewer's supplies",
-        "mason's tools"
+        "Smith's Tools",
+        "Brewer's Supplies",
+        "Mason's Tools"
       ]
     },
     "languages": "comum, anão",
@@ -7314,7 +7314,7 @@
     "skills": [],
     "skillChoice": null,
     "tools": [
-      "tinker's tools"
+      "Tinker's Tools"
     ],
     "toolChoice": null,
     "languages": "comum, gnômico",

@@ -2,12 +2,25 @@ import { CHIP_DEFS } from "../components/wizard/StepMelhorias";
 
 // Extraído de CharacterCreationWizard.jsx pra ser reaproveitado pelo wizard de
 // Level-Up também -- mesma lógica de Melhoria de Atributo (ASI/Talento), sem
-// duplicar. `applyAbilityBonus` (de useCharacterAppliers) soma/subtrai em cima
-// do que já estiver em `character.abilities` -- reverter um chip é só aplicar
-// o valor negado.
-export function useAbilityImprovements(character, setCharacter, applyAbilityBonus) {
+// duplicar. `appliers` é o objeto inteiro de `useCharacterAppliers` (não só
+// `applyAbilityBonus`) -- passou a precisar também de `revertFeatGrants`/
+// `revertAbilityBonusFor` (ver `revertImprovement`/`pickImprovementFeat`
+// abaixo, achado set/2026: remover/trocar o talento de um slot de Melhoria
+// nunca desfazia a perícia/ferramenta/bônus de atributo que ele tinha
+// concedido, mesmo gap que existia em `FeatsInput.jsx`).
+export function useAbilityImprovements(character, setCharacter, appliers) {
+  const { applyAbilityBonus, revertFeatGrants, revertAbilityBonusFor } = appliers;
+
   function findImprovement(classIndex, level) {
     return character.abilityImprovements.find((i) => i.classIndex === classIndex && i.level === level);
+  }
+
+  // Desfaz TUDO que o talento de um slot concedeu (perícia/ferramenta
+  // rastreada + bônus de atributo, fonte `"feat-" + nome`) -- mesmo par de
+  // funções que `FeatsInput.jsx` usa na remoção direta.
+  function revertFeatOfImprovement(featName) {
+    revertFeatGrants(featName);
+    revertAbilityBonusFor(`feat-${featName}`);
   }
 
   // Desfaz o efeito já aplicado de um slot (bônus de atributo somado ou
@@ -17,6 +30,7 @@ export function useAbilityImprovements(character, setCharacter, applyAbilityBonu
     if (!improvement) return;
     if (improvement.feat) {
       setCharacter((prev) => ({ ...prev, feats: prev.feats.filter((f) => f !== improvement.feat) }));
+      revertFeatOfImprovement(improvement.feat);
     }
     const chips = CHIP_DEFS[improvement.choice] ?? [];
     const negated = {};
@@ -92,6 +106,7 @@ export function useAbilityImprovements(character, setCharacter, applyAbilityBonu
   function pickImprovementFeat(classIndex, level, item) {
     const improvement = findImprovement(classIndex, level) ?? { classIndex, level, choice: "feat", assignments: {}, feat: null };
     if (improvement.feat === item.name) return;
+    if (improvement.feat) revertFeatOfImprovement(improvement.feat);
     setCharacter((prev) => {
       let feats = prev.feats;
       if (improvement.feat) feats = feats.filter((f) => f !== improvement.feat);

@@ -1,23 +1,41 @@
 import { useState } from "react";
 import { SKILLS } from "../schema/character";
 import equipmentCategories from "../data/srd/equipmentCategories.json";
+import equipmentData from "../data/content/equipment.json";
+
+// Lista real de ferramentas do banco unificado (achado set/2026: já existia dado
+// mecânico suficiente pra isso, só não estava achatado direito -- ver
+// `flatten-equipment-entry.mjs`, `raw.type==="tool"` agora vira `foundryType:"tool"`
+// em vez de cair no fallback genérico sem categoria). Dedupe por nome (mesmo item
+// pode existir em edição 2014 E 2024 no catálogo).
+const TOOLS = [...new Set(equipmentData.filter((e) => e.foundryType === "tool").map((e) => e.name))].sort((a, b) =>
+  a.localeCompare(b)
+);
 
 // `from` normalmente é array de rótulo (perícia/ferramenta) — mas o banco também usa
-// o texto-sentinela "qualquer perícia"/"qualquer perícia à escolha" (ex: Bardo,
-// Humano Variante, Custom Lineage) pra dizer "todas as 18", mesmo padrão que o
-// módulo já trata em `resolveSkillPool()` (dnd5eCodes.js). Sem tratar isso aqui,
+// o texto-sentinela "qualquer perícia"/"qualquer ferramenta" (ex: Bardo, Humano
+// Variante, Custom Lineage, Warforged) pra dizer "todas as opções", mesmo padrão que
+// o módulo já trata em `resolveSkillPool()` (dnd5eCodes.js). Sem tratar isso aqui,
 // `from.map` quebrava a página INTEIRA assim que Bardo era escolhido como classe
-// (achado testando ao vivo). `category` (string ou array de strings, ex:
-// "setGaming"/"toolArtisan") é o formato que ~20 antecedentes/talentos usam pra
-// ferramenta de categoria ("qualquer jogo de tabuleiro", "qualquer ferramenta de
-// artesão") — resolve pela mesma tabela que EquipmentSlots.jsx já usa pra grants
-// de equipamento por categoria, em vez de duplicar a lista item por item no banco.
-// Achado ao vivo (playtest): esses ~20 antecedentes tinham só `category`/`label`
-// sem `from` nenhum, e o picker mostrava "Nenhum resultado" pra sempre, mesmo com
-// a categoria certa gravada no banco -- o componente nunca soube ler esse campo.
+// (achado testando ao vivo). Bug real corrigido nesta rodada: as duas sentinelas
+// caíam na MESMA checagem de substring "qualquer" e sempre resolviam pra SKILLS --
+// Warforged (toolChoice: "qualquer ferramenta") mostrava perícia no lugar de
+// ferramenta. Agora resolve pelo texto real ("perícia" vs "ferramenta").
+// `category` (string ou array de strings, ex: "setGaming"/"toolArtisan") é o formato
+// que ~20 antecedentes/talentos usam pra ferramenta de categoria ("qualquer jogo de
+// tabuleiro", "qualquer ferramenta de artesão") — resolve pela mesma tabela que
+// EquipmentSlots.jsx já usa pra grants de equipamento por categoria, em vez de
+// duplicar a lista item por item no banco. Achado ao vivo (playtest): esses ~20
+// antecedentes tinham só `category`/`label` sem `from` nenhum, e o picker mostrava
+// "Nenhum resultado" pra sempre, mesmo com a categoria certa gravada no banco -- o
+// componente nunca soube ler esse campo.
 function resolveChoicePool(from, category) {
   if (Array.isArray(from)) return from;
-  if (typeof from === "string" && from.toLowerCase().includes("qualquer")) return SKILLS.map((s) => s.label);
+  if (typeof from === "string") {
+    const lower = from.toLowerCase();
+    if (lower.includes("ferramenta")) return TOOLS;
+    if (lower.includes("qualquer")) return SKILLS.map((s) => s.label);
+  }
   if (category) {
     const categories = Array.isArray(category) ? category : [category];
     const items = categories.flatMap((key) => equipmentCategories[key] ?? []);

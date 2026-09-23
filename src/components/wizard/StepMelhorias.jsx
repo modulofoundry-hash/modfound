@@ -1,6 +1,7 @@
 import { ABILITIES, ABILITY_LABELS } from "../../schema/character";
 import { OriginTableBrowser } from "../OriginTableBrowser";
 import { AbilityIconLabel } from "../AbilityIconLabel";
+import { FeatGrants } from "../FeatsInput";
 
 // Cada opção de bônus de atributo é um "chip" arrastável — "+2 num atributo"
 // tem 1 chip de valor 2, "+1 em dois atributos" tem 2 chips de valor 1. Único
@@ -100,8 +101,23 @@ function AbilityBonusAssign({ choice, assignments, abilities, onMove, onUnassign
   );
 }
 
-function ImprovementSlotCard({ slot, improvement, abilities, featsData, onSetChoice, onMoveChip, onUnassignChip, onPickFeat }) {
+function ImprovementSlotCard({
+  slot,
+  improvement,
+  abilities,
+  featsData,
+  onSetChoice,
+  onMoveChip,
+  onUnassignChip,
+  onPickFeat,
+  skillProficiencies,
+  toolProficiencies,
+  onApplySkills,
+  onApplyTools,
+  onApplyAbilityBonus,
+}) {
   const choice = improvement?.choice ?? null;
+  const pickedFeat = improvement?.feat ? featsData.find((f) => f.name === improvement.feat) : null;
 
   return (
     <div className="melhoria-slot">
@@ -143,13 +159,37 @@ function ImprovementSlotCard({ slot, improvement, abilities, featsData, onSetCho
             onPick={(item) => onPickFeat(slot.classIndex, slot.level, item)}
             searchPlaceholder="Buscar talento..."
           />
+          {pickedFeat && (
+            <FeatGrants
+              found={pickedFeat}
+              skillProficiencies={skillProficiencies}
+              toolProficiencies={toolProficiencies}
+              onApplySkills={onApplySkills}
+              onApplyTools={onApplyTools}
+              onApplyAbilityBonus={onApplyAbilityBonus}
+            />
+          )}
         </div>
       )}
     </div>
   );
 }
 
-export function StepMelhorias({ slots, abilities, abilityImprovements, featsData, onSetChoice, onMoveChip, onUnassignChip, onPickFeat }) {
+export function StepMelhorias({
+  slots,
+  abilities,
+  abilityImprovements,
+  featsData,
+  onSetChoice,
+  onMoveChip,
+  onUnassignChip,
+  onPickFeat,
+  skillProficiencies,
+  toolProficiencies,
+  onApplySkills,
+  onApplyTools,
+  onApplyAbilityBonus,
+}) {
   return (
     <div className="wizard-step-melhorias">
       {slots.map((slot) => {
@@ -165,6 +205,11 @@ export function StepMelhorias({ slots, abilities, abilityImprovements, featsData
             onMoveChip={onMoveChip}
             onUnassignChip={onUnassignChip}
             onPickFeat={onPickFeat}
+            skillProficiencies={skillProficiencies}
+            toolProficiencies={toolProficiencies}
+            onApplySkills={onApplySkills}
+            onApplyTools={onApplyTools}
+            onApplyAbilityBonus={onApplyAbilityBonus}
           />
         );
       })}
