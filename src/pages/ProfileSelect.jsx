@@ -4,6 +4,7 @@ import { useProfiles } from "../hooks/useProfiles";
 import { createDocument } from "../data/firestoreCollection";
 import { GUEST_PROFILE_ID } from "../constants/profiles";
 import { useAuth } from "../auth/AuthContext";
+import { APK_URL } from "../constants/appDownload";
 
 export function ProfileSelect() {
   // Todos os hooks primeiro, SEMPRE na mesma ordem (regra do React) -- o
@@ -47,6 +48,18 @@ export function ProfileSelect() {
           </Link>
         ))}
       </div>
+
+      {authKind === "main" && (
+        <div className="apk-download-box">
+          <a className="apk-download" href={APK_URL} rel="noopener noreferrer">
+            Baixar o app para Android
+          </a>
+          <span className="apk-download-hint">
+            Abra esta página no celular. O Android baixa o arquivo e pede para instalar; na primeira vez, permita
+            instalar apps do navegador.
+          </span>
+        </div>
+      )}
 
       {creating ? (
         <form className="profile-create-form" onSubmit={handleCreate}>

@@ -1,4 +1,7 @@
+import { useState } from "react";
 import { ListEditor } from "../ListEditor";
+import { EquipmentBrowser } from "../EquipmentBrowser";
+import equipmentData from "../../data/content/equipment.json";
 
 const CURRENCIES = [
   { key: "pp", label: "Platina" },
@@ -9,6 +12,13 @@ const CURRENCIES = [
 ];
 
 export function StepEquipamento({ currency, onChangeCurrency, equipment, onChangeEquipment }) {
+  const [browserOpen, setBrowserOpen] = useState(false);
+
+  function addEquipment(item) {
+    onChangeEquipment([...equipment, { name: item.name, quantity: 1, equipped: false, attuned: false }]);
+    setBrowserOpen(false);
+  }
+
   return (
     <div className="wizard-step-equipamento">
       <h3>Dinheiro</h3>
@@ -28,7 +38,7 @@ export function StepEquipamento({ currency, onChangeCurrency, equipment, onChang
       <ListEditor
         items={equipment}
         onChange={onChangeEquipment}
-        addLabel="Adicionar item"
+        allowAdd={false}
         fields={[
           { key: "name", label: "Item" },
           { key: "quantity", label: "Qtd", type: "number", default: 1 },
@@ -36,6 +46,27 @@ export function StepEquipamento({ currency, onChangeCurrency, equipment, onChang
           { key: "attuned", label: "Sintonizado", type: "checkbox", default: false },
         ]}
       />
+      <button type="button" onClick={() => setBrowserOpen(true)}>
+        Adicionar item
+      </button>
+      {browserOpen && (
+        <div
+          className="modal-backdrop"
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) setBrowserOpen(false);
+          }}
+        >
+          <div className="modal-panel modal-panel-wide" onMouseDown={(event) => event.stopPropagation()}>
+            <div className="modal-header">
+              <h3>Equipamento</h3>
+              <button type="button" onClick={() => setBrowserOpen(false)}>
+                Fechar
+              </button>
+            </div>
+            <EquipmentBrowser items={equipmentData} onAdd={addEquipment} />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

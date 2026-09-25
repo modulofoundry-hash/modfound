@@ -99,6 +99,15 @@ function findClassOverride(character) {
   return null;
 }
 
+// `armor`: item de armadura MUNDANA (`foundryType:"equipment"`, fórmula própria
+// ac/dexCap) equipado, se houver. `hasShield`: true se HOUVER algum escudo equipado --
+// tanto mundano (`foundryType:"equipment", armorType:"shield"`) quanto mágico "de
+// encantamento" (`foundryType:"magicItem", category:"shield"`, ex: +1 Shield, Repulsion
+// Shield) -- achado numa auditoria de CA (set/2026): esse 2º formato nunca tinha sido
+// reconhecido aqui, então NENHUM escudo mágico desse padrão concedia nem o +2 base,
+// mesmo os que já tinham `armorBonus` preenchido certo (ex: Repulsion Shield). O bônus
+// mágico numérico em cima (se houver) soma à parte, via `magicAcBonus` -- esta função só
+// decide "hasShield sim/não" pro +2 base.
 function findEquipped(character, equipmentData) {
   const equippedNames = new Set(
     (character.equipment ?? []).filter((e) => e.equipped && e.name).map((e) => e.name.trim().toLowerCase())
@@ -106,15 +115,13 @@ function findEquipped(character, equipmentData) {
   let armor = null;
   let hasShield = false;
   for (const item of equipmentData ?? []) {
-    // `foundryType==="equipment"` cobre TANTO armadura mundana quanto armadura/escudo
-    // MÁGICO com CA própria (Armor of Invulnerability, Sentinel Shield etc.) -- o
-    // achatamento do catálogo unificado (`flatten-equipment-entry.mjs`) já normaliza
-    // os dois pro MESMO formato (`armorType`/`ac`/`dexCap`), então este loop não
-    // precisa saber a diferença.
-    if (item.foundryType !== "equipment" || !item.armorType) continue;
     if (!equippedNames.has((item.name ?? "").toLowerCase())) continue;
-    if (item.armorType === "shield") hasShield = true;
-    else armor = item;
+    if (item.foundryType === "equipment" && item.armorType) {
+      if (item.armorType === "shield") hasShield = true;
+      else armor = item;
+    } else if (item.foundryType === "magicItem" && item.category === "shield") {
+      hasShield = true;
+    }
   }
   return { armor, hasShield };
 }
@@ -126,13 +133,11 @@ function findEquipped(character, equipmentData) {
 // Sintonia exigida (`requiresAttunement`) só conta se o jogador marcou "Sintonizado"
 // no item (`character.equipment[].attuned`, mesmo campo que `StepEquipamento.jsx` já
 // usa) -- item que exige sintonia mas não foi sintonizado não concede o bônus.
-// LIMITAÇÃO ACEITA: alguns itens mais antigos (ex: "+1 Shield"/"+2 Shield", extraídos
-// antes desta unificação pela feature Replicate Magic Item) guardam o bônus como
-// Active Effect do Foundry (`mechanical.effects`), não como `armorBonus` plano --
-// esses continuam funcionando DENTRO do Foundry, mas não são somados aqui (não dá pra
-// interpretar `changes`/fórmula de Active Effect de forma genérica e segura fora do
-// Foundry sem risco de inventar um número errado).
-function magicAcBonus(character, equipmentData) {
+// `entry.armorBonus` hoje cobre tanto item com bônus plano autorado (Ring of Protection)
+// quanto o padrão de encantamento "+X Shield"/"+X Armor" do DMG 2024, cujo número é
+// extraído do próprio NOME em `flatten-equipment-entry.mjs` (não dava pra ler a Active
+// Effect genericamente sem risco de inventar valor errado).
+function magicAcBonusParts(character, equipmentData) {
   const equippedByName = new Map(
     (character.equipment ?? []).filter((e) => e.equipped && e.name).map((e) => [e.name.trim().toLowerCase(), e])
   );
@@ -142,7 +147,7 @@ function magicAcBonus(character, equipmentData) {
   // `character.equipment[].name`, igual `findEquipped` já faz pra armadura (última
   // correspondência substitui, nunca soma duas).
   const countedNames = new Set();
-  let bonus = 0;
+  const parts = [];
   for (const item of equipmentData ?? []) {
     if (item.foundryType !== "magicItem" || typeof item.armorBonus !== "number") continue;
     const key = (item.name ?? "").toLowerCase();
@@ -150,9 +155,9 @@ function magicAcBonus(character, equipmentData) {
     if (!equipped || countedNames.has(key)) continue;
     if (item.requiresAttunement && !equipped.attuned) continue;
     countedNames.add(key);
-    bonus += item.armorBonus;
+    parts.push({ label: item.name, value: item.armorBonus });
   }
-  return bonus;
+  return parts;
 }
 
 function armorFormula(armor, mods) {
@@ -161,7 +166,11 @@ function armorFormula(armor, mods) {
   return armor.ac + capped;
 }
 
-export function computeArmorClass(character, { equipmentData }) {
+// Detalhamento completo -- `{ total, parts: [{label, value}] }` -- usado pelo tooltip
+// clicável da CA (FoundrySheetView.jsx/WizardSummary, site e app) pra mostrar exatamente
+// de onde cada ponto vem. `computeArmorClass` (abaixo) é só um atalho que devolve
+// `.total`, mesma assinatura de sempre pros chamadores que só querem o número.
+export function computeArmorClassBreakdown(character, { equipmentData }) {
   const mods = abilityMods(character.abilities);
   const { armor, hasShield } = findEquipped(character, equipmentData);
   const classOverride = findClassOverride(character);
@@ -171,40 +180,50 @@ export function computeArmorClass(character, { equipmentData }) {
   // afeta é se a fórmula do traço de classe entra como candidata, não o bônus do
   // escudo em si (que continua valendo em cima de base/armadura/raça).
   const classBlockedByShield = !!classOverride?.requiresNoShield && hasShield;
+  // Sem armadura, o traço de classe SEMPRE entra como candidato (não depende de
+  // `allowedArmor` -- essa lista só restringe QUAL armadura VESTIDA é compatível,
+  // "sem armadura nenhuma" é sempre compatível com qualquer traço). Com armadura
+  // equipada, só entra se o tipo dela estiver na lista permitida.
+  const classAllowed = !!classOverride && !classBlockedByShield && (!armor || classOverride.allowedArmor.includes(armor.armorType));
 
-  let base;
-  if (armor) {
-    base = armorFormula(armor, mods);
-    if (raceOverride) base = Math.max(base, raceOverride.value(mods));
-    if (classOverride && !classBlockedByShield && classOverride.allowedArmor.includes(armor.armorType)) {
-      base = Math.max(base, classOverride.value(mods));
-    }
-  } else {
-    const candidates = [10 + mods.dex];
-    if (classOverride && !classBlockedByShield) candidates.push(classOverride.value(mods));
-    if (raceOverride) candidates.push(raceOverride.value(mods));
-    base = Math.max(...candidates);
+  // Base: candidatos disputam por Math.max, mas o tooltip só deve mostrar QUEM
+  // venceu (não uma lista confusa de "candidatos perdedores") -- reduce em vez de
+  // Math.max solto, pra guardar o rótulo junto do valor vencedor.
+  const baseCandidates = [];
+  if (armor) baseCandidates.push({ label: `Armadura (${armor.name})`, value: armorFormula(armor, mods) });
+  else baseCandidates.push({ label: "Sem armadura (10 + mod. Destreza)", value: 10 + mods.dex });
+  if (raceOverride) baseCandidates.push({ label: `Traço racial: ${character.race}`, value: raceOverride.value(mods) });
+  if (classAllowed) {
+    const label = classOverride.className ? `Defesa de classe: ${classOverride.className}` : `Defesa de subclasse: ${classOverride.subclassName}`;
+    baseCandidates.push({ label, value: classOverride.value(mods) });
   }
+  const base = baseCandidates.reduce((best, candidate) => (candidate.value > best.value ? candidate : best));
 
-  if (hasShield) base += 2;
-  if (raceAddon) base += raceAddon.value(mods);
+  const parts = [base];
+  if (hasShield) parts.push({ label: "Escudo (base)", value: 2 });
+  if (raceAddon) parts.push({ label: `Traço racial: ${character.race}`, value: raceAddon.value(mods) });
 
   const equipped = { armor, hasShield };
   const chosenNames = new Set((character.classChoices ?? []).map((c) => c.name));
   for (const bonus of CLASS_CHOICE_AC_BONUSES) {
     if (!bonus.names.some((n) => chosenNames.has(n))) continue;
     if (!bonus.condition(equipped)) continue;
-    base += bonus.value(mods);
+    parts.push({ label: bonus.names[0], value: bonus.value(mods) });
   }
 
   const enhancementNames = new Set((character.animalEnhancementChoices ?? []).map((c) => c.name));
   for (const bonus of ANIMAL_ENHANCEMENT_AC_BONUSES) {
     if (!bonus.names.some((n) => enhancementNames.has(n))) continue;
     if (!bonus.condition(equipped)) continue;
-    base += bonus.value(mods);
+    parts.push({ label: bonus.names[0], value: bonus.value(mods) });
   }
 
-  base += magicAcBonus(character, equipmentData);
+  parts.push(...magicAcBonusParts(character, equipmentData));
 
-  return base;
+  const total = parts.reduce((sum, part) => sum + part.value, 0);
+  return { total, parts };
+}
+
+export function computeArmorClass(character, options) {
+  return computeArmorClassBreakdown(character, options).total;
 }

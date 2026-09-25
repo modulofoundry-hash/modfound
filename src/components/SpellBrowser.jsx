@@ -1,9 +1,11 @@
 import { useMemo, useState } from "react";
+import { isSpellRulesCompatible } from "../schema/spellEditions";
 
 // `spells` vem de site/src/data/content/spells.json (extraído ao vivo do
-// compêndio do Foundry, ver shared/schema/README.md). Edição é filtro DURO
-// (igual classe) -- `rulesMode` do personagem decide de cara qual metade da
-// base entra em jogo, sem alternar dentro do próprio navegador.
+// compêndio do Foundry, ver shared/schema/README.md). Edição só filtra de
+// verdade quando a magia existe nas DUAS edições (mesmo nome, `rules`
+// diferente) -- ver schema/spellEditions.js. Magia de livro de edição única
+// (a maioria dos livros de terceiros) aparece pra qualquer `rulesMode`.
 const LEVEL_LABEL = (level) => (level === 0 ? "Truque" : `${level}º`);
 
 function compareByColumn(a, b, column) {
@@ -33,7 +35,7 @@ export function SpellBrowser({ spells, rulesMode, onAdd, canAdd, bonusEligibilit
   const [sort, setSort] = useState({ column: "name", dir: "asc" });
 
   const editionSpells = useMemo(
-    () => spells.filter((s) => s.rules === rulesMode && allowedNames.has(s.name)),
+    () => spells.filter((s) => isSpellRulesCompatible(s, rulesMode) && allowedNames.has(s.name)),
     [spells, rulesMode, allowedNames],
   );
 

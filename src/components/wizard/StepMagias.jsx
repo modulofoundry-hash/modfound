@@ -5,6 +5,7 @@ import { SpellChoicePicker } from "../SpellChoicePicker";
 import { spellProgressionForCharacter, isCantripName } from "../../schema/spellProgression";
 import { computeGrantedSpells, computeSubclassSpellChoices, computeFeatSpellChoices, computeOptionalFeatureSpellChoices } from "../../schema/grantedSpells";
 import { computeExpandedSpellPool } from "../../schema/expandedSpellPool";
+import { isSpellRulesCompatible } from "../../schema/spellEditions";
 import spellsData from "../../data/content/spells.json";
 import featsData from "../../data/content/feats.json";
 import optionalFeaturesData from "../../data/content/optionalfeatures.json";
@@ -103,7 +104,7 @@ export function StepMagias({ character, raceMatch, classMatches, spells, onChang
   const characterClassNames = (character.classes ?? []).map((c) => c.name).filter(Boolean);
   const allowedSpellNames = new Set();
   for (const spell of spellsData) {
-    if (spell.rules !== character.rulesMode) continue;
+    if (!isSpellRulesCompatible(spell, character.rulesMode)) continue;
     if (spell.classes.some((c) => characterClassNames.includes(c))) allowedSpellNames.add(spell.name);
   }
   for (const names of bonusEligibility.values()) for (const name of names) allowedSpellNames.add(name);

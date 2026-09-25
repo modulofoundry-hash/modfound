@@ -369,7 +369,13 @@
               ]
             }
           }
-        ]
+        ],
+        "uses": {
+          "max": "max(1, @abilities.int.mod)",
+          "recovery": {
+            "lr": "all"
+          }
+        }
       },
       {
         "level": 2,
@@ -399,13 +405,27 @@
         "level": 6,
         "name": "Magic Item Tinker",
         "description": "<p>Your Replicate Magic Item feature gains the following options.</p><p>Charge Magic Item<br>As a Bonus Action, you can touch a magic item within 5 feet of yourself that you created with Replicate Magic Item and that uses charges. You expend a level 1+ spell slot and recharge the item. The number of charges the item regains is equal to the level of spell slot expended.</p><p>Drain Magic Item<br>As a Bonus Action, you can touch a magic item within 5 feet of yourself that you created with Replicate Magic Item and cause the item to vanish, converting its magical energy into a spell slot. The slot is level 1 if the item is Common or level 2 if the item is Uncommon or Rare. Once you use this feature, you can't do so again until you finish a Long Rest. Any spell slot you create with this feature vanishes when you finish a Long Rest.</p><p>Transmute Magic Item<br>As a Magic action, you can touch one magic item within 5 feet of yourself that you created with Replicate Magic Item and transform it into a different magic item. The resulting item must be based on a magic item plan you know. Once you use this feature, you can't do so again until you finish a Long Rest.</p>",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": 2,
+          "recovery": {
+            "lr": "all"
+          }
+        }
       },
       {
         "level": 7,
         "name": "Flash of Genius",
         "description": "<p>When you or a creature you can see within 30 feet of you fails an ability check or a saving throw, you can take a Reaction to add a bonus to the roll, potentially causing it to succeed. The bonus equals your Intelligence modifier (minimum of +1).</p><p>You can take this Reaction a number of times equal to your Intelligence modifier (minimum of once). You regain all expended uses when you finish a Long Rest.</p>",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": "max(1, @abilities.int.mod)",
+          "recovery": {
+            "lr": "all",
+            "sr": 1,
+            "srFrom": 14
+          }
+        }
       },
       {
         "level": 8,
@@ -429,7 +449,13 @@
         "level": 11,
         "name": "Spell-Storing Item",
         "description": "<p>Whenever you finish a Long Rest, you can touch one Simple or Martial weapon or one item that you can use as a Spellcasting Focus, and you store a spell in it, choosing a level 1, 2, or 3 Artificer spell that has a casting time of an action and doesn't require a Material component that is consumed by the spell (you needn't have the spell prepared).</p><p>While holding the object, a creature can take a Magic action to produce the spell's effect from it, using your spellcasting ability modifier. If the spell requires Concentration, the creature must concentrate. Once a creature has used the object to produce the spell's effect, the object can't be used this way again until the start of the creature's next turn.</p><p>The spell stays in the object until it's been used a number of times equal to twice your Intelligence modifier (minimum of twice) or until you use this feature again to store a spell in an object.</p>",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": "max(2, 2 * @abilities.int.mod)",
+          "recovery": {
+            "lr": "all"
+          }
+        }
       },
       {
         "level": 12,
@@ -699,7 +725,13 @@
         "level": 7,
         "name": "Flash of Genius",
         "description": "<p>7th-level artificer feature</p><p>You've gained the ability to come up with solutions under pressure. When you or another creature you can see within 30 feet of you makes an ability check or a saving throw, you can use your reaction to add your Intelligence modifier to the roll.</p><p>You can use this feature a number of times equal to your Intelligence modifier (minimum of once). You regain all expended uses when you finish a long rest.</p>",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": "max(1, @abilities.int.mod)",
+          "recovery": {
+            "lr": "all"
+          }
+        }
       },
       {
         "level": 8,
@@ -723,7 +755,13 @@
         "level": 11,
         "name": "Spell-Storing Item",
         "description": "<p>11th-level artificer feature</p><p>You can now store a spell in an object. Whenever you finish a long rest, you can touch one simple or martial weapon or one item that you can use as a spellcasting focus, and you store a spell in it, choosing a 1st- or 2nd-level spell from the artificer spell list that requires 1 action to cast (you needn't have it prepared).</p><p>While holding the object, a creature can take an action to produce the spell's effect from it, using your spellcasting ability modifier. If the spell requires concentration, the creature must concentrate. The spell stays in the object until it's been used a number of times equal to twice your Intelligence modifier (minimum of twice) or until you use this feature again to store a spell in an object.</p>",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": "max(2, 2 * @abilities.int.mod)",
+          "recovery": {
+            "lr": "all"
+          }
+        }
       },
       {
         "level": 12,
@@ -896,7 +934,41 @@
         "level": 1,
         "name": "Rage",
         "description": "<p>In battle, you fight with primal ferocity. On your turn, you can enter a rage as a bonus action.</p><p>While raging, you gain the following benefits if you aren't wearing heavy armor:</p><ul><li>You have advantage on Strength checks and Strength saving throws.</li><li>When you make a melee weapon attack using Strength, you gain a +2 bonus to the damage roll. This bonus increases as you level.</li><li>You have resistance to bludgeoning, piercing, and slashing damage.</li></ul><p>If you are able to cast spells, you can't cast them or concentrate on them while raging.</p><p>Your rage lasts for 1 minute. It ends early if you are knocked unconscious or if your turn ends and you haven't attacked a hostile creature since your last turn or taken damage since then. You can also end your rage on your turn as a bonus action.</p><p>Once you have raged the maximum number of times for your barbarian level, you must finish a long rest before you can rage again. You may rage 2 times at 1st level, 3 at 3rd, 4 at 6th, 5 at 12th, and 6 at 17th.</p>",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": "@scale.barbarian.rages",
+          "recovery": {
+            "lr": "all"
+          },
+          "scales": {
+            "@scale.barbarian.rages": [
+              [
+                1,
+                2
+              ],
+              [
+                3,
+                3
+              ],
+              [
+                6,
+                4
+              ],
+              [
+                12,
+                5
+              ],
+              [
+                17,
+                6
+              ],
+              [
+                20,
+                999
+              ]
+            ]
+          }
+        }
       },
       {
         "level": 1,
@@ -1128,7 +1200,38 @@
         "level": 1,
         "name": "Rage",
         "description": "<p>You can imbue yourself with a primal power called Rage, a force that grants you extraordinary might and resilience. You can enter it as a Bonus Action if you aren't wearing Heavy armor.</p><p>You can enter your Rage the number of times shown for your Barbarian level in the Rages column of the Barbarian Features table. You regain one expended use when you finish a Short Rest, and you regain all expended uses when you finish a Long Rest.</p><p>While active, your Rage follows the rules below.</p><p>Damage Resistance: You have Resistance to Bludgeoning, Piercing, and Slashing damage.</p><p>Rage Damage: When you make an attack using Strength—with either a weapon or an Unarmed Strike—and deal damage to the target, you gain a bonus to the damage that increases as you gain levels as a Barbarian, as shown in the Rage Damage column of the Barbarian Features table.</p><p>Strength Advantage: You have Advantage on Strength checks and Strength saving throws.</p><p>No Concentration or Spells: You can't maintain Concentration, and you can't cast spells.</p><p>Duration: The Rage lasts until the end of your next turn, and it ends early if you don Heavy armor or have the Incapacitated condition. If your Rage is still active on your next turn, you can extend the Rage for another round by doing one of the following:</p><ul><li>Make an attack roll against an enemy.</li><li>Force an enemy to make a saving throw.</li><li>Take a Bonus Action to extend your Rage.</li></ul><p>Each time the Rage is extended, it lasts until the end of your next turn. You can maintain a Rage for up to 10 minutes.</p>",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": "@scale.barbarian.rages",
+          "recovery": {
+            "lr": "all",
+            "sr": 1
+          },
+          "scales": {
+            "@scale.barbarian.rages": [
+              [
+                1,
+                2
+              ],
+              [
+                3,
+                3
+              ],
+              [
+                6,
+                4
+              ],
+              [
+                12,
+                5
+              ],
+              [
+                17,
+                6
+              ]
+            ]
+          }
+        }
       },
       {
         "level": 1,
@@ -1248,7 +1351,13 @@
         "level": 15,
         "name": "Persistent Rage",
         "description": "<p>When you roll Initiative, you can regain all expended uses of Rage. After you regain uses of Rage in this way, you can't do so again until you finish a Long Rest.</p><p>In addition, your Rage is so fierce that it now lasts for 10 minutes without you needing to do anything to extend it from round to round. Your Rage ends early if you have the Unconscious condition (not just the Incapacitated condition) or don Heavy armor.</p>",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": 1,
+          "recovery": {
+            "lr": "all"
+          }
+        }
       },
       {
         "level": 16,
@@ -1479,7 +1588,15 @@
         "level": 1,
         "name": "Bardic Inspiration",
         "description": "<p>You can inspire others through stirring words or music. To do so, you use a bonus action on your turn to choose one creature other than yourself within 60 feet of you who can hear you. That creature gains one Bardic Inspiration die, a d6.</p><p>Once within the next 10 minutes, the creature can roll the die and add the number rolled to one ability check, attack roll, or saving throw it makes. The creature can wait until after it rolls the d20 before deciding to use the Bardic Inspiration die, but must decide before the DM says whether the roll succeeds or fails. Once the Bardic Inspiration die is rolled, it is lost. A creature can have only one Bardic Inspiration die at a time.</p><p>You can use this feature a number of times equal to your Charisma modifier (a minimum of once). You regain any expended uses when you finish a long rest.</p><p>Your Bardic Inspiration die changes when you reach certain levels in this class. The die becomes a d8 at 5th level, a d10 at 10th level, and a d12 at 15th level.</p>",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": "max(1, @abilities.cha.mod)",
+          "recovery": {
+            "lr": "all",
+            "sr": "all",
+            "srFrom": 5
+          }
+        }
       },
       {
         "level": 1,
@@ -1759,7 +1876,15 @@
         "level": 1,
         "name": "Bardic Inspiration",
         "description": "<p>You can supernaturally inspire others through words, music, or dance. This inspiration is represented by your Bardic Inspiration die, which is a d6.</p><p>Using Bardic Inspiration: As a Bonus Action, you can inspire another creature within 60 feet of yourself who can see or hear you. That creature gains one of your Bardic Inspiration dice. A creature can have only one Bardic Inspiration die at a time.</p><p>Once within the next hour when the creature fails a D20 Test, the creature can roll the Bardic Inspiration die and add the number rolled to the d20, potentially turning the failure into a success. A Bardic Inspiration die is expended when it's rolled.</p><p>Number of Uses: You can confer a Bardic Inspiration die a number of times equal to your Charisma modifier (minimum of once), and you regain all expended uses when you finish a Long Rest.</p><p>At Higher Levels: Your Bardic Inspiration die changes when you reach certain Bard levels, as shown in the Bardic Die column of the Bard Features table. The die becomes a d8 at level 5, a d10 at level 10, and a d12 at level 15.</p>",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": "max(1, @abilities.cha.mod)",
+          "recovery": {
+            "lr": "all",
+            "sr": "all",
+            "srFrom": 5
+          }
+        }
       },
       {
         "level": 1,
@@ -2112,7 +2237,34 @@
         "level": 2,
         "name": "Channel Divinity",
         "description": "<p>At 2nd level, you gain the ability to channel divine energy directly from your deity, using that energy to fuel magical effects. You start with two such effects: Turn Undead and an effect determined by your domain. Some domains grant you additional effects as you advance in levels, as noted in the domain description.</p><p>When you use your Channel Divinity, you choose which effect to create. You must then finish a short or long rest to use your Channel Divinity again.</p><p>Some Channel Divinity effects require saving throws. When you use such an effect from this class, the DC equals your cleric spell save DC.</p><p>Beginning at 6th level, you can use your Channel Divinity twice between rests, and beginning at 18th level, you can use it three times between rests. When you finish a short or long rest, you regain your expended uses.</p><p>[Ver feature: Channel Divinity: Turn Undead]</p>",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": "@scale.cleric.channel-divinity",
+          "recovery": {
+            "sr": "all",
+            "lr": "all"
+          },
+          "scales": {
+            "@scale.cleric.channel-divinity": [
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                1
+              ],
+              [
+                6,
+                2
+              ],
+              [
+                18,
+                3
+              ]
+            ]
+          }
+        }
       },
       {
         "level": 2,
@@ -2172,7 +2324,13 @@
         "level": 10,
         "name": "Divine Intervention",
         "description": "<p>Beginning at 10th level, you can call on your deity to intervene on your behalf when your need is great.</p><p>Imploring your deity's aid requires you to use your action. Describe the assistance you seek, and roll percentile dice. If you roll a number equal to or lower than your cleric level, your deity intervenes. The DM chooses the nature of the intervention; the effect of any cleric spell or cleric domain spell would be appropriate. If your deity intervenes, you can't use this feature again for 7 days. Otherwise, you can use it again after you finish a long rest.</p><p>At 20th level, your call for intervention succeeds automatically, no roll required.</p>",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": 1,
+          "recovery": {
+            "lr": "all"
+          }
+        }
       },
       {
         "level": 11,
@@ -2381,7 +2539,34 @@
         "level": 2,
         "name": "Channel Divinity",
         "description": "<p>You can channel divine energy directly from the Outer Planes to fuel magical effects. You start with two such effects: Divine Spark and Turn Undead, each of which is described below. Each time you use this class's Channel Divinity, choose which Channel Divinity effect from this class to create. You gain additional effect options at higher Cleric levels.</p><p>You can use this class's Channel Divinity twice. You regain one of its expended uses when you finish a Short Rest, and you regain all expended uses when you finish a Long Rest. You gain additional uses when you reach certain Cleric levels, as shown in the Channel Divinity column of the Cleric Features table.</p><p>If a Channel Divinity effect requires a saving throw, the DC equals the spell save DC from this class's Spellcasting feature.</p><p>[Ver feature: Divine Spark]</p><p>[Ver feature: Turn Undead]</p>",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": "@scale.cleric.channel-divinity",
+          "recovery": {
+            "lr": "all",
+            "sr": 1
+          },
+          "scales": {
+            "@scale.cleric.channel-divinity": [
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                2
+              ],
+              [
+                6,
+                3
+              ],
+              [
+                18,
+                4
+              ]
+            ]
+          }
+        }
       },
       {
         "level": 2,
@@ -2447,7 +2632,13 @@
         "level": 10,
         "name": "Divine Intervention",
         "description": "<p>You can call on your deity or pantheon to intervene on your behalf. As a Magic action, choose any Cleric spell of level 5 or lower that doesn't require a Reaction to cast. As part of the same action, you cast that spell without expending a spell slot or needing Material components. You can't use this feature again until you finish a Long Rest.</p>",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": 1,
+          "recovery": {
+            "lr": "all"
+          }
+        }
       },
       {
         "level": 12,
@@ -2658,7 +2849,26 @@
         "level": 2,
         "name": "Wild Shape",
         "description": "<p>Starting at 2nd level, you can use your action to magically assume the shape of a beast that you have seen before. You can use this feature twice. You regain expended uses when you finish a short or long rest.</p><p>Your druid level determines the beasts you can transform into, as shown in the Beast Shapes table. At 2nd level, for example, you can transform into any beast that has a challenge rating of 1/4 or lower that doesn't have a flying or swimming speed.</p><p><strong>Beast Shapes</strong></p><table><thead><tr><th>Level</th><th>Max. CR</th><th>Limitations</th><th>Example</th></tr></thead><tbody><tr><td>2nd</td><td>1/4</td><td>No flying or swimming speed</td><td>Wolf</td></tr><tr><td>4th</td><td>1/2</td><td>No flying speed</td><td>Crocodile</td></tr><tr><td>8th</td><td>1</td><td>—</td><td>Giant eagle</td></tr></tbody></table><p>You can stay in a beast shape for a number of hours equal to half your druid level (rounded down). You then revert to your normal form unless you expend another use of this feature. You can revert to your normal form earlier by using a bonus action on your turn. You automatically revert if you fall unconscious, drop to 0 hit points, or die.</p><p>While you are transformed, the following rules apply:</p><ul><li>Your game statistics are replaced by the statistics of the beast, but you retain your alignment, personality, and Intelligence, Wisdom, and Charisma scores. You also retain all of your skill and saving throw proficiencies, in addition to gaining those of the creature. If the creature has the same proficiency as you and the bonus in its stat block is higher than yours, use the creature's bonus instead of yours. If the creature has any legendary or lair actions, you can't use them.</li><li>When you transform, you assume the beast's hit points and Hit Dice. When you revert to your normal form, you return to the number of hit points you had before you transformed. However, if you revert as a result of dropping to 0 hit points, any excess damage carries over to your normal form. For example, if you take 10 damage in animal form and have only 1 hit point left, you revert and take 9 damage. As long as the excess damage doesn't reduce your normal form to 0 hit points, you aren't knocked unconscious.</li><li>You can't cast spells, and your ability to speak or take any action that requires hands is limited to the capabilities of your beast form. Transforming doesn't break your concentration on a spell you've already cast, however, or prevent you from taking actions that are part of a spell, such as call lightning, that you've already cast.</li><li>You retain the benefit of any features from your class, race, or other source and can use them if the new form is physically capable of doing so. However, you can't use any of your special senses, such as darkvision, unless your new form also has that sense.</li><li>You choose whether your equipment falls to the ground in your space, merges into your new form, or is worn by it. Worn equipment functions as normal, but the DM decides whether it is practical for the new form to wear a piece of equipment, based on the creature's shape and size. Your equipment doesn't change size or shape to match the new form, and any equipment that the new form can't wear must either fall to the ground or merge with it. Equipment that merges with the form has no effect until you leave the form.</li></ul>",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": "@scale.druid.wild-shape",
+          "recovery": {
+            "sr": "all",
+            "lr": "all"
+          },
+          "scales": {
+            "@scale.druid.wild-shape": [
+              [
+                2,
+                2
+              ],
+              [
+                20,
+                999
+              ]
+            ]
+          }
+        }
       },
       {
         "level": 4,
@@ -2917,7 +3127,34 @@
         "level": 2,
         "name": "Wild Shape",
         "description": "<p>The power of nature allows you to assume the form of an animal. As a Bonus Action, you shape-shift into a Beast form that you have learned for this feature (see \"Known Forms\" below). You stay in that form for a number of hours equal to half your Druid level or until you use Wild Shape again, have the Incapacitated condition, or die. You can also leave the form early as a Bonus Action.</p><p>Number of Uses: You can use Wild Shape twice. You regain one expended use when you finish a Short Rest, and you regain all expended uses when you finish a Long Rest.</p><p>You gain additional uses when you reach certain Druid levels, as shown in the Wild Shape column of the Druid Features table.</p><p>Known Forms: You know four Beast forms for this feature, chosen from among Beast stat blocks that have a maximum Challenge Rating of 1/4 and that lack a Fly Speed (see appendix B for stat block options). The Rat, Riding Horse, Spider, and Wolf are recommended. Whenever you finish a Long Rest, you can replace one of your known forms with another eligible form.</p><p>When you reach certain Druid levels, your number of known forms and the maximum Challenge Rating for those forms increases, as shown in the Beast Shapes table. In addition, starting at level 8, you can adopt a form that has a Fly Speed.</p><p>When choosing known forms, you may look in the Monster Manual or elsewhere for eligible Beasts if the Dungeon Master permits you to do so.</p><p><strong>Beast Shapes</strong></p><table><thead><tr><th>Druid Level</th><th>Known Forms</th><th>Max CR</th><th>Fly Speed</th></tr></thead><tbody><tr><td>2</td><td>4</td><td>1/4</td><td>No</td></tr><tr><td>4</td><td>6</td><td>1/2</td><td>No</td></tr><tr><td>8</td><td>8</td><td>1</td><td>Yes</td></tr></tbody></table><p>Rules While Shape-Shifted: While in a form, you retain your personality, memories, and ability to speak, and the following rules apply:</p><ul><li>Temporary Hit Points: When you assume a Wild Shape form, you gain a number of Temporary Hit Points equal to your Druid level.</li><li>Game Statistics: Your game statistics are replaced by the Beast's stat block, but you retain your creature type; Hit Points; Hit Point Dice; Intelligence, Wisdom, and Charisma scores; class features; languages; and feats. You also retain your skill and saving throw proficiencies and use your Proficiency Bonus for them, in addition to gaining the proficiencies of the creature. If a skill or saving throw modifier in the Beast's stat block is higher than yours, use the one in the stat block.</li><li>No Spellcasting: You can't cast spells, but shape-shifting doesn't break your Concentration or otherwise interfere with a spell you've already cast.</li><li>Objects: Your ability to handle objects is determined by the form's limbs rather than your own. In addition, you choose whether your equipment falls in your space, merges into your new form, or is worn by it. Worn equipment functions as normal, but the DM decides whether it's practical for the new form to wear a piece of equipment based on the creature's size and shape. Your equipment doesn't change size or shape to match the new form, and any equipment that the new form can't wear must either fall to the ground or merge with the form. Equipment that merges with the form has no effect while you're in that form.</li></ul>",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": "@scale.druid.wild-shape",
+          "recovery": {
+            "lr": "all",
+            "sr": 1
+          },
+          "scales": {
+            "@scale.druid.wild-shape": [
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                2
+              ],
+              [
+                6,
+                3
+              ],
+              [
+                17,
+                4
+              ]
+            ]
+          }
+        }
       },
       {
         "level": 3,
@@ -2935,7 +3172,13 @@
         "level": 5,
         "name": "Wild Resurgence",
         "description": "<p>Once on each of your turns, if you have no uses of Wild Shape left, you can give yourself one use by expending a spell slot (no action required).</p><p>In addition, you can expend one use of Wild Shape (no action required) to give yourself a level 1 spell slot, but you can't do so again until you finish a Long Rest.</p>",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": 1,
+          "recovery": {
+            "lr": "all"
+          }
+        }
       },
       {
         "level": 6,
@@ -3212,13 +3455,39 @@
         "level": 1,
         "name": "Second Wind",
         "description": "<p>You have a limited well of stamina that you can draw on to protect yourself from harm. On your turn, you can use a bonus action to regain hit points equal to 1d10 + your fighter level.</p><p>Once you use this feature, you must finish a short or long rest before you can use it again.</p>",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": 1,
+          "recovery": {
+            "sr": "all",
+            "lr": "all"
+          }
+        }
       },
       {
         "level": 2,
         "name": "Action Surge",
         "description": "<p>Starting at 2nd level, you can push yourself beyond your normal limits for a moment. On your turn, you can take one additional action.</p><p>Once you use this feature, you must finish a short or long rest before you can use it again. Starting at 17th level, you can use it twice before a rest, but only once on the same turn.</p>",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": "@scale.fighter.action-surge",
+          "recovery": {
+            "sr": "all",
+            "lr": "all"
+          },
+          "scales": {
+            "@scale.fighter.action-surge": [
+              [
+                2,
+                1
+              ],
+              [
+                17,
+                2
+              ]
+            ]
+          }
+        }
       },
       {
         "level": 3,
@@ -3260,7 +3529,29 @@
         "level": 9,
         "name": "Indomitable",
         "description": "<p>Beginning at 9th level, you can reroll a saving throw that you fail. If you do so, you must use the new roll, and you can't use this feature again until you finish a long rest.</p><p>You can use this feature twice between long rests starting at 13th level and three times between long rests starting at 17th level.</p>",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": "@scale.fighter.indomitable",
+          "recovery": {
+            "lr": "all"
+          },
+          "scales": {
+            "@scale.fighter.indomitable": [
+              [
+                9,
+                1
+              ],
+              [
+                13,
+                2
+              ],
+              [
+                17,
+                3
+              ]
+            ]
+          }
+        }
       },
       {
         "level": 10,
@@ -3507,7 +3798,30 @@
         "level": 1,
         "name": "Second Wind",
         "description": "<p>You have a limited well of physical and mental stamina that you can draw on. As a Bonus Action, you can use it to regain Hit Points equal to 1d10 plus your Fighter level.</p><p>You can use this feature twice. You regain one expended use when you finish a Short Rest, and you regain all expended uses when you finish a Long Rest.</p><p>When you reach certain Fighter levels, you gain more uses of this feature, as shown in the Second Wind column of the Fighter Features table.</p>",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": "@scale.fighter.second-wind",
+          "recovery": {
+            "lr": "all",
+            "sr": 1
+          },
+          "scales": {
+            "@scale.fighter.second-wind": [
+              [
+                1,
+                2
+              ],
+              [
+                4,
+                3
+              ],
+              [
+                10,
+                4
+              ]
+            ]
+          }
+        }
       },
       {
         "level": 1,
@@ -3519,7 +3833,26 @@
         "level": 2,
         "name": "Action Surge",
         "description": "<p>You can push yourself beyond your normal limits for a moment. On your turn, you can take one additional action, except the Magic action.</p><p>Once you use this feature, you can't do so again until you finish a Short or Long Rest. Starting at level 17, you can use it twice before a rest but only once on a turn.</p>",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": "@scale.fighter.action-surge",
+          "recovery": {
+            "sr": "all",
+            "lr": "all"
+          },
+          "scales": {
+            "@scale.fighter.action-surge": [
+              [
+                2,
+                1
+              ],
+              [
+                17,
+                2
+              ]
+            ]
+          }
+        }
       },
       {
         "level": 2,
@@ -3573,7 +3906,29 @@
         "level": 9,
         "name": "Indomitable",
         "description": "<p>If you fail a saving throw, you can reroll it with a bonus equal to your Fighter level. You must use the new roll, and you can't use this feature again until you finish a Long Rest.</p><p>You can use this feature twice before a Long Rest starting at level 13 and three times before a Long Rest starting at level 17.</p>",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": "@scale.fighter.indomitable",
+          "recovery": {
+            "lr": "all"
+          },
+          "scales": {
+            "@scale.fighter.indomitable": [
+              [
+                9,
+                1
+              ],
+              [
+                13,
+                2
+              ],
+              [
+                17,
+                3
+              ]
+            ]
+          }
+        }
       },
       {
         "level": 9,
@@ -3812,7 +4167,13 @@
         "level": 2,
         "name": "Ki",
         "description": "<p>Starting at 2nd level, your training allows you to harness the mystic energy of ki. Your access to this energy is represented by a number of ki points. Your monk level determines the number of points you have, as shown in the Ki Points column of the Monk table.</p><p>You can spend these points to fuel various ki features. You start knowing three such features: Flurry of Blows, Patient Defense, and Step of the Wind. You learn more ki features as you gain levels in this class.</p><p>When you spend a ki point, it is unavailable until you finish a short or long rest, at the end of which you draw all of your expended ki back into yourself. You must spend at least 30 minutes of the rest meditating to regain your ki points.</p><p>Some of your ki features require your target to make a saving throw to resist the feature's effects. The saving throw DC is calculated as follows:</p><p>CD de Ki = 8 + bônus de proficiência + modificador de WIS</p><p>[Ver feature: Flurry of Blows]</p><p>[Ver feature: Patient Defense]</p><p>[Ver feature: Step of the Wind]</p>",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": "@classes.monk.levels",
+          "recovery": {
+            "sr": "all"
+          }
+        }
       },
       {
         "level": 2,
@@ -4112,7 +4473,13 @@
         "level": 2,
         "name": "Monk's Focus",
         "description": "<p>Your focus and martial training allow you to harness a well of extraordinary energy within yourself. This energy is represented by Focus Points. Your Monk level determines the number of points you have, as shown in the Focus Points column of the Monk Features table.</p><p>You can expend these points to enhance or fuel certain Monk features. You start knowing three such features: Flurry of Blows, Patient Defense, and Step of the Wind, each of which is detailed below.</p><p>When you expend a Focus Point, it is unavailable until you finish a Short or Long Rest, at the end of which you regain all your expended points.</p><p>Some features that use Focus Points require your target to make a saving throw. The save DC equals 8 plus your Wisdom modifier and Proficiency Bonus.</p><p>[Ver feature: Flurry of Blows]</p><p>[Ver feature: Patient Defense]</p><p>[Ver feature: Step of the Wind]</p>",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": "@classes.monk.levels",
+          "recovery": {
+            "sr": "all"
+          }
+        }
       },
       {
         "level": 2,
@@ -4136,7 +4503,13 @@
         "level": 2,
         "name": "Uncanny Metabolism",
         "description": "<p>When you roll Initiative, you can regain all expended Focus Points. When you do so, roll your Martial Arts die, and regain a number of Hit Points equal to your Monk level plus the number rolled.</p><p>Once you use this feature, you can't use it again until you finish a Long Rest.</p>",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": 1,
+          "recovery": {
+            "lr": "all"
+          }
+        }
       },
       {
         "level": 3,
@@ -4446,13 +4819,25 @@
         "level": 1,
         "name": "Divine Sense",
         "description": "<p>The presence of strong evil registers on your senses like a noxious odor, and powerful good rings like heavenly music in your ears. As an action, you can open your awareness to detect such forces. Until the end of your next turn, you know the location of any celestial, fiend, or undead within 60 feet of you that is not behind total cover. You know the type (celestial, fiend, or undead) of any being whose presence you sense, but not its identity (the vampire Count Strahd von Zarovich, for instance). Within the same radius, you also detect the presence of any place or object that has been consecrated or desecrated, as with the hallow spell.</p><p>You can use this feature a number of times equal to 1 + your Charisma modifier. When you finish a long rest, you regain all expended uses.</p>",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": "1 + @abilities.cha.mod",
+          "recovery": {
+            "lr": "all"
+          }
+        }
       },
       {
         "level": 1,
         "name": "Lay on Hands",
         "description": "<p>Your blessed touch can heal wounds. You have a pool of healing power that replenishes when you take a long rest. With that pool, you can restore a total number of hit points equal to your paladin level × 5.</p><p>As an action, you can touch a creature and draw power from the pool to restore a number of hit points to that creature, up to the maximum amount remaining in your pool.</p><p>Alternatively, you can expend 5 hit points from your pool of healing to cure the target of one disease or neutralize one poison affecting it. You can cure multiple diseases and neutralize multiple poisons with a single use of Lay on Hands, expending hit points separately for each one.</p><p>This feature has no effect on undead and constructs.</p>",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": "5 * @classes.paladin.levels",
+          "recovery": {
+            "lr": "all"
+          }
+        }
       },
       {
         "level": 2,
@@ -4476,7 +4861,14 @@
         "level": 3,
         "name": "Channel Divinity",
         "description": "<p>Your oath allows you to channel divine energy to fuel magical effects. Each Channel Divinity option provided by your oath explains how to use it.</p><p>When you use your Channel Divinity, you choose which option to use. You must then finish a short or long rest to use your Channel Divinity again.</p><p>Some Channel Divinity effects require saving throws. When you use such an effect from this class, the DC equals your paladin spell save DC.</p>",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": 1,
+          "recovery": {
+            "sr": "all",
+            "lr": "all"
+          }
+        }
       },
       {
         "level": 3,
@@ -4542,7 +4934,13 @@
         "level": 14,
         "name": "Cleansing Touch",
         "description": "<p>Beginning at 14th level, you can use your action to end one spell on yourself or on one willing creature that you touch.</p><p>You can use this feature a number of times equal to your Charisma modifier (a minimum of once). You regain expended uses when you finish a long rest.</p>",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": "max(1, @abilities.cha.mod)",
+          "recovery": {
+            "lr": "all"
+          }
+        }
       },
       {
         "level": 15,
@@ -4714,7 +5112,13 @@
         "level": 1,
         "name": "Lay on Hands",
         "description": "<p>Your blessed touch can heal wounds. You have a pool of healing power that replenishes when you finish a Long Rest. With that pool, you can restore a total number of Hit Points equal to five times your Paladin level.</p><p>As a Bonus Action, you can touch a creature (which could be yourself) and draw power from the pool of healing to restore a number of Hit Points to that creature, up to the maximum amount remaining in the pool.</p><p>You can also expend 5 Hit Points from the pool of healing power to remove the Poisoned condition from the creature; those points don't also restore Hit Points to the creature.</p>",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": "5 * @classes.paladin.levels",
+          "recovery": {
+            "lr": "all"
+          }
+        }
       },
       {
         "level": 1,
@@ -4738,13 +5142,42 @@
         "level": 2,
         "name": "Paladin's Smite",
         "description": "<p>You always have the Divine Smite spell prepared. In addition, you can cast it without expending a spell slot, but you must finish a Long Rest before you can cast it in this way again.</p>",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": 1,
+          "recovery": {
+            "lr": "all"
+          }
+        }
       },
       {
         "level": 3,
         "name": "Channel Divinity",
         "description": "<p>You can channel divine energy directly from the Outer Planes, using it to fuel magical effects. You start with one such effect: Divine Sense, which is described below. Other Paladin features give additional Channel Divinity effect options. Each time you use this class's Channel Divinity, you choose which effect from this class to create.</p><p>You can use this class's Channel Divinity twice. You regain one of its expended uses when you finish a Short Rest, and you regain all expended uses when you finish a Long Rest. You gain an additional use when you reach Paladin level 11.</p><p>If a Channel Divinity effect requires a saving throw, the DC equals the spell save DC from this class's Spellcasting feature.</p><p>[Ver feature: Divine Sense]</p>",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": "@scale.paladin.channel-divinity",
+          "recovery": {
+            "lr": "all",
+            "sr": 1
+          },
+          "scales": {
+            "@scale.paladin.channel-divinity": [
+              [
+                1,
+                0
+              ],
+              [
+                3,
+                2
+              ],
+              [
+                11,
+                3
+              ]
+            ]
+          }
+        }
       },
       {
         "level": 3,
@@ -4774,7 +5207,13 @@
         "level": 5,
         "name": "Faithful Steed",
         "description": "<p>You can call on the aid of an otherworldly steed. You always have the Find Steed spell prepared.</p><p>You can also cast the spell once without expending a spell slot, and you regain the ability to do so when you finish a Long Rest.</p>",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": 1,
+          "recovery": {
+            "lr": "all"
+          }
+        }
       },
       {
         "level": 6,
@@ -4987,19 +5426,88 @@
         "level": 2,
         "name": "Bloodied But Unbowed",
         "description": "When you take damage, you can take a Reaction to regain all your expended Moxie. If you are Bloodied when you take this Reaction, you also gain Temporary Hit Points equal to four times your Pugilist level. These Temporary Hit Points vanish if any remain when you finish a Short Rest.\n\nOnce you use this feature, you can't use it again until you finish a Short Rest or Long Rest.",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": 1,
+          "recovery": {
+            "sr": "all",
+            "lr": "all"
+          }
+        }
       },
       {
         "level": 2,
         "name": "Moxie",
         "description": "Your experiences of beating the odds have given you a moxie you can channel in the midst of battle. This swagger is represented by a number of Moxie Points. Your Pugilist level determines the maximum number of points you have, as shown in the Moxie Points column of the Pugilist Features table.\n\nYou can spend these points to enhance or fuel certain Pugilist features. You start knowing three such features: Brace Up, One-Two Punch, and Stick and Move, each of which is detailed below.\n\nWhen you expend a Moxie Point, it is unavailable until you finish a Short Rest or Long Rest, at the end of which you regain all your expended points.\n\nBrace Up: You can use a Bonus Action and expend 1 Moxie Point to brace for attacks. When you do so, roll your Fisticuffs die, and gain a number of Temporary Hit Points equal to the number rolled plus your Pugilist level and your Constitution modifier. These Temporary Hit Points vanish if any remain after 10 minutes.\n\nOne-Two Punch: You can expend 1 Moxie Point to make two Unarmed Strike as a Bonus Action.\n\nStick and Move: You can use a Bonus Action and expend 1 Moxie Point to make an Unarmed Strike and take the Dash or Disengage action.",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": "@scale.pugilist.moxie",
+          "recovery": {
+            "sr": "all",
+            "lr": "all"
+          },
+          "scales": {
+            "@scale.pugilist.moxie": [
+              [
+                2,
+                2
+              ],
+              [
+                4,
+                3
+              ],
+              [
+                6,
+                4
+              ],
+              [
+                8,
+                5
+              ],
+              [
+                10,
+                6
+              ],
+              [
+                12,
+                7
+              ],
+              [
+                14,
+                8
+              ],
+              [
+                16,
+                9
+              ],
+              [
+                18,
+                10
+              ],
+              [
+                19,
+                11
+              ],
+              [
+                20,
+                12
+              ]
+            ]
+          }
+        }
       },
       {
         "level": 2,
         "name": "Swagger Streak",
         "description": "When you fail a Strength, Dexterity, Constitution, or Charisma check, you can expend a Moxie to attempt to swagger your way to success. Roll your Fisticuffs die and add the number rolled to the ability check, potentially turning it into a success. If the ability check still fails, you regain the expended Moxie Point and can't use this feature again until you finish a Short Rest or Long Rest.",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": 1,
+          "recovery": {
+            "sr": "all",
+            "lr": "all"
+          }
+        }
       },
       {
         "level": 3,
@@ -5023,7 +5531,13 @@
         "level": 4,
         "name": "Dig Deep",
         "description": "You can use a Bonus Action to dig deep. For 10 minutes, you have Resistance to Bludgeoning, Piercing, and Slashing damage and you ignore the effects of Exhaustion levels less than 6.\n\nOnce you use this feature, you can't use it again until you finish a Long Rest unless you gain 1 Exhaustion level (no action required by you) to restore your use of it.",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": 1,
+          "recovery": {
+            "lr": "all"
+          }
+        }
       },
       {
         "level": 5,
@@ -5053,7 +5567,13 @@
         "level": 7,
         "name": "Down But Not Out",
         "description": "When you use your Bloodied But Unbowed while you are Bloodied, you can add a bonus to the damage of your Unarmed Strike and attacks with Pugilist weapons for the next minute. This bonus equals your Constitution modifier plus the number of levels of Exhaustion you have.\n\nOnce you use this feature, you can't use it again until you finish a Long Rest.",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": 1,
+          "recovery": {
+            "lr": "all"
+          }
+        }
       },
       {
         "level": 8,
@@ -5077,7 +5597,13 @@
         "level": 10,
         "name": "Shake It Off",
         "description": "With unflappable resolve, you can remove one of the following conditions from yourself at the start of each of your turns: Blinded, Charmed, Deafened, one level of Exhaustion, Frightened, Paralyzed, Poisoned, Restrained, or Stunned.\n\nOnce you use this feature, you can't use it again until you finish a Long Rest unless you take a level of Exhaustion (no action required by you) to restore your use of it.",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": 1,
+          "recovery": {
+            "lr": "all"
+          }
+        }
       },
       {
         "level": 11,
@@ -5095,7 +5621,25 @@
         "level": 13,
         "name": "Dig Deeper",
         "description": "You can use a Bonus Action to dig deeper. For 1 minute, you have all the benefits of your Dig Deep and can use your School of Hard Knocks twice per turn instead of once.\n\nOnce you use this feature, you can't use it again until you finish a Long Rest. Starting at level 20, you can use it twice before a Long Rest.",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": "@scale.pugilist.dig-deeper",
+          "recovery": {
+            "lr": "all"
+          },
+          "scales": {
+            "@scale.pugilist.dig-deeper": [
+              [
+                13,
+                1
+              ],
+              [
+                20,
+                2
+              ]
+            ]
+          }
+        }
       },
       {
         "level": 14,
@@ -5107,7 +5651,13 @@
         "level": 15,
         "name": "Pugnacious",
         "description": "When you roll Initiative, you can remove one level of Exhaustion on yourself and regain your uses of Down But Not Out, Dig Deep, and Shake It Off.\n\nOnce you use this feature, you can't use it again until you finish a Long Rest.",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": 1,
+          "recovery": {
+            "lr": "all"
+          }
+        }
       },
       {
         "level": 16,
@@ -5125,7 +5675,13 @@
         "level": 18,
         "name": "Fighting Spirit",
         "description": "When you are reduced to 0 Hit Points but not killed outright, you can drop to 1 Hit Points instead. When you do, you gain Temporary Hit Points equal to half of your maximum Hit Points, regain all your expended Moxie, and have Resistance to all damage except Force for the next minute.\n\nOnce you use this feature, you can't use it again until you finish a Long Rest.",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": 1,
+          "recovery": {
+            "lr": "all"
+          }
+        }
       },
       {
         "level": 19,
@@ -5605,7 +6161,37 @@
         "level": 1,
         "name": "Favored Enemy",
         "description": "<p>You always have the Hunter's Mark spell prepared. You can cast it twice without expending a spell slot, and you regain all expended uses of this ability when you finish a Long Rest.</p><p>The number of times you can cast the spell without a spell slot increases when you reach certain Ranger levels, as shown in the Favored Enemy column of the Ranger Features table.</p>",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": "@scale.ranger.favored-enemy",
+          "recovery": {
+            "lr": "all"
+          },
+          "scales": {
+            "@scale.ranger.favored-enemy": [
+              [
+                1,
+                2
+              ],
+              [
+                5,
+                3
+              ],
+              [
+                9,
+                4
+              ],
+              [
+                13,
+                5
+              ],
+              [
+                17,
+                6
+              ]
+            ]
+          }
+        }
       },
       {
         "level": 1,
@@ -5677,7 +6263,13 @@
         "level": 10,
         "name": "Tireless",
         "description": "<p>Primal forces now help fuel you on your journeys, granting you the following benefits.</p><p>Temporary Hit Points: As a Magic action, you can give yourself a number of Temporary Hit Points equal to 1d8 plus your Wisdom modifier (minimum of 1). You can use this action a number of times equal to your Wisdom modifier (minimum of once), and you regain all expended uses when you finish a Long Rest.</p><p>Decrease Exhaustion: Whenever you finish a Short Rest, your Exhaustion level, if any, decreases by 1.</p>",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": "max(1, @abilities.wis.mod)",
+          "recovery": {
+            "lr": "all"
+          }
+        }
       },
       {
         "level": 11,
@@ -5701,7 +6293,13 @@
         "level": 14,
         "name": "Nature's Veil",
         "description": "<p>You invoke spirits of nature to magically hide yourself. As a Bonus Action, you can give yourself the Invisible condition until the end of your next turn.</p><p>You can use this feature a number of times equal to your Wisdom modifier (minimum of once), and you regain all expended uses when you finish a Long Rest.</p>",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": "max(1, @abilities.wis.mod)",
+          "recovery": {
+            "lr": "all"
+          }
+        }
       },
       {
         "level": 15,
@@ -6056,7 +6654,14 @@
         "level": 20,
         "name": "Stroke of Luck",
         "description": "<p>At 20th level, you have an uncanny knack for succeeding when you need to. If your attack misses a target within range, you can turn the miss into a hit. Alternatively, if you fail an ability check, you can treat the d20 roll as a 20.</p><p>Once you use this feature, you can't use it again until you finish a short or long rest.</p>",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": 1,
+          "recovery": {
+            "sr": "all",
+            "lr": "all"
+          }
+        }
       }
     ],
     "description": "<p>Rogue: Signaling for her companions to wait, a halfling creeps forward through the dungeon hall. She presses an ear to the door, then pulls out a set of tools and picks the lock in the blink of an eye. Then she disappears into the shadows as her fighter friend moves forward to kick the door open.</p><p>A human lurks in the shadows of an alley while his accomplice prepares for her part in the ambush. When their target—a notorious slaver—passes the alleyway, the accomplice cries out, the slaver comes to investigate, and the assassin's blade cuts his throat before he can make a sound.</p><p>Suppressing a giggle, a gnome waggles her fingers and magically lifts the key ring from the guard's belt. In a moment, the keys are in her hand, the cell door is open, and she and her companions are free to make their escape.</p><p>Rogues rely on skill, stealth, and their foes' vulnerabilities to get the upper hand in any situation. They have a knack for finding the solution to just about any problem, demonstrating a resourcefulness and versatility that is the cornerstone of any successful adventuring party.</p><p>Skill and Precision: Rogues devote as much effort to mastering the use of a variety of skills as they do to perfecting their combat abilities, giving them a broad expertise that few other characters can match. Many rogues focus on stealth and deception, while others refine the skills that help them in a dungeon environment, such as climbing, finding and disarming traps, and opening locks.</p><p>When it comes to combat, rogues prioritize cunning over brute strength. A rogue would rather make one precise strike, placing it exactly where the attack will hurt the target most, than wear an opponent down with a barrage of attacks. Rogues have an almost supernatural knack for avoiding danger, and a few learn magical tricks to supplement their other abilities.</p><p>A Shady Living: Every town and city has its share of rogues. Most of them live up to the worst stereotypes of the class, making a living as burglars, assassins, cutpurses, and con artists. Often, these scoundrels are organized into thieves' guilds or crime families. Plenty of rogues operate independently, but even they sometimes recruit apprentices to help them in their scams and heists. A few rogues make an honest living as locksmiths, investigators, or exterminators, which can be a dangerous job in a world where dire rats—and wererats—haunt the sewers.</p><p>As adventurers, rogues fall on both sides of the law. Some are hardened criminals who decide to seek their fortune in treasure hoards, while others take up a life of adventure to escape from the law. Some have learned and perfected their skills with the explicit purpose of infiltrating ancient ruins and hidden crypts in search of treasure.</p><p>Creating a Rogue: As you create your rogue character, consider the character's relationship to the law. Do you have a criminal past—or present? Are you on the run from the law or from an angry thieves' guild master? Or did you leave your guild in search of bigger risks and bigger rewards? Is it greed that drives you in your adventures, or some other desire or ideal?</p><p>What was the trigger that led you away from your previous life? Did a great con or heist gone terribly wrong cause you to reevaluate your career? Maybe you were lucky and a successful robbery gave you the coin you needed to escape the squalor of your life. Did wanderlust finally call you away from your home? Perhaps you suddenly found yourself cut off from your family or your mentor, and you had to find a new means of support. Or maybe you made a new friend—another member of your adventuring party—who showed you new possibilities for earning a living and employing your particular talents.</p><p>Quick Build: You can make a rogue quickly by following these suggestions. First, Dexterity should be your highest ability score. Make Intelligence your next-highest if you want to excel at Investigation or plan to take up the Arcane Trickster archetype. Choose Charisma instead if you plan to emphasize deception and social interaction. Second, choose the charlatan background.</p><p>\"People forget that the entire point of venturing down into a dusty tomb is to bring back the prizes hidden away there. Fighting is for fools. Dead men can't spend their fortunes.\" — Barnabas Bladecutter</p><p>When brute force won't get the job done, or when magic isn't available or appropriate, the rogue rises to the fore. With skills tied to stealth, subterfuge, and trickery, rogues can get into and out of trouble in ways that few other characters can emulate.</p><p>Some rogues who turn to adventuring are former criminals who have decided that dodging monsters is preferable to remaining one step ahead of the law. Others are professional killers in search of a profitable application of their talents between contracts. Some simply love the thrill of overcoming any challenge that stands in their way.</p><p>On adventures, a rogue is likely to mix an outwardly cautious approach—few rogues enjoy combat—with a ravenous hunger for loot. Most of the time, in a rogue's mind, taking up arms against a creature is not about killing the creature but about becoming the new owner of its treasure.</p><p>The following sections explore certain facets of what it means to be a rogue, which you can use to add depth to your character.</p><p>\"Thieves are the worst. I hate anyone that handles my stuff when I'm not looking, especially if they don't put it back where they found it.\" — Xanathar</p><p>Guilty Pleasures: Most of what rogues do revolves around obtaining treasure and preventing others from doing the same. Little gets in the way of attaining those goals, except that many rogues are enticed away from that path by a compulsion that clouds their thinking—an irresistible need that must be satisfied, even if doing so is risky.</p><p>A rogue's guilty pleasure could be the acquisition of a physical item, something to be experienced, or a way of conducting oneself at certain times. One rogue might not be able to pass up any loot made of silver, for instance, even if said loot is hanging around the neck of a castle guard. Another one can't go through a day in the city without lifting a purse or two, just to keep in practice.</p><p>What's the one form of temptation that your rogue character can't resist when the opportunity presents itself, even if giving into it might mean trouble for you and your companions?</p><p><strong>Guilty Pleasures</strong></p><table><thead><tr><th>d6</th><th>Pleasure</th></tr></thead><tbody><tr><td>[object Object]</td><td>Large gems</td></tr><tr><td>[object Object]</td><td>A smile from a pretty face</td></tr><tr><td>[object Object]</td><td>A new ring for your finger</td></tr><tr><td>[object Object]</td><td>The chance to deflate someone's ego</td></tr><tr><td>[object Object]</td><td>The finest food and drink</td></tr><tr><td>[object Object]</td><td>Adding to your collection of exotic coins</td></tr></tbody></table><p>Adversaries: Naturally, those who enforce the law are bound to come up against those who break it, and it's the rare rogue who isn't featured on at least one wanted poster. Beyond that, it's in the nature of their profession that rogues often come into contact with criminal elements, whether out of choice or necessity. Some of those people can be adversaries too, and they're likely to be harder to deal with than the average member of the city watch.</p><p>If your character's backstory doesn't already include a personage of this sort, you could work with your DM to come up with a reason why an adversary has appeared in your life. Perhaps you've been the subject of scrutiny for a while from someone who wants to use you for nefarious purposes and has just now become known to you. Such an incident could be the basis for an upcoming adventure.</p><p>Does your rogue character have an adversary who also happens to be a criminal? If so, how is this relationship affecting your life?</p><p><strong>Adversaries</strong></p><table><thead><tr><th>d6</th><th>Adversary</th></tr></thead><tbody><tr><td>[object Object]</td><td>The pirate captain on whose ship you once served; what you call moving on, the captain calls mutiny</td></tr><tr><td>[object Object]</td><td>A master spy to whom you unwittingly fed bad information, which led to the assassination of the wrong target</td></tr><tr><td>[object Object]</td><td>The master of the local thieves' guild, who wants you to join the organization or leave town</td></tr><tr><td>[object Object]</td><td>An art collector who uses illegal means to acquire masterpieces</td></tr><tr><td>[object Object]</td><td>A fence who uses you as a messenger to set up illicit meetings</td></tr><tr><td>[object Object]</td><td>The proprietor of an illegal pit fighting arena where you once took bets</td></tr></tbody></table><p>Benefactor: Few rogues make it far in life before needing someone's help, which means thereafter owing that benefactor a significant debt.</p><p>If your character's backstory doesn't already include a personage of this sort, you could work with your DM to determine why a benefactor has appeared in your life. Perhaps you benefited from something your benefactor did for you without realizing who was responsible, and that person has now just become known to you. Who helped you in the past, whether or not you knew it at the time, and what do you owe that person as recompense?</p><p><strong>Benefactors</strong></p><table><thead><tr><th>d6</th><th>Benefactor</th></tr></thead><tbody><tr><td>[object Object]</td><td>A smuggler kept you from getting caught but lost a valuable shipment in doing so. Now you owe that person an equally valuable favor.</td></tr><tr><td>[object Object]</td><td>The Beggar King has hidden you from your pursuers many times, in return for future considerations.</td></tr><tr><td>[object Object]</td><td>A magistrate once kept you out of jail in return for information on a powerful crime lord.</td></tr><tr><td>[object Object]</td><td>Your parents used their savings to bail you out of trouble in your younger days and are now destitute.</td></tr><tr><td>[object Object]</td><td>A dragon didn't eat you when it had a chance, and in return you promised to set aside choice pieces of treasure for it.</td></tr><tr><td>[object Object]</td><td>A druid once helped you out of a tight spot; now any random animal you see could be that benefactor, perhaps come to claim a return favor.</td></tr></tbody></table>",
@@ -6375,7 +6980,14 @@
         "level": 20,
         "name": "Stroke of Luck",
         "description": "<p>You have a marvelous knack for succeeding when you need to. If you fail a D20 Test, you can turn the roll into a 20.</p><p>Once you use this feature, you can't use it again until you finish a Short or Long Rest.</p>",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": 1,
+          "recovery": {
+            "sr": "all",
+            "lr": "all"
+          }
+        }
       }
     ],
     "description": "<p>Rogue: Rogues rely on cunning, stealth, and their foes' vulnerabilities to get the upper hand in any situation. They have a knack for finding the solution to just about any problem. A few even learn magical tricks to supplement their other abilities. Many Rogues focus on stealth and deception, while others refine skills that help them in a dungeon environment, such as climbing, finding and disarming traps, and opening locks.</p><p>In combat, Rogues prioritize subtle strikes over brute strength. They would rather make one precise strike than wear an opponent down with a barrage of blows.</p><p>Some Rogues began their careers as criminals, while others used their cunning to fight crime. Whatever a Rogue's relation to the law, no common criminal or officer of the law can match the subtle brilliance of the greatest Rogues.</p>",
@@ -6593,7 +7205,13 @@
         "level": 2,
         "name": "Sorcery Points",
         "description": "<p>You have 2 sorcery points, and you gain one additional point every time you level up, to a maximum of 20 at level 20. You can never have more sorcery points than shown on the table for your level. You regain all spent sorcery points when you finish a long rest.</p>",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": "@classes.sorcerer.levels",
+          "recovery": {
+            "lr": "all"
+          }
+        }
       },
       {
         "level": 3,
@@ -6802,7 +7420,13 @@
         "level": 1,
         "name": "Innate Sorcery",
         "description": "<p>An event in your past left an indelible mark on you, infusing you with simmering magic. As a Bonus Action, you can unleash that magic for 1 minute, during which you gain the following benefits:</p><ul><li>The spell save DC of your Sorcerer spells increases by 1.</li><li>You have Advantage on the attack rolls of Sorcerer spells you cast.</li></ul><p>You can use this feature twice, and you regain all expended uses of it when you finish a Long Rest.</p>",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": 2,
+          "recovery": {
+            "lr": "all"
+          }
+        }
       },
       {
         "level": 1,
@@ -6814,7 +7438,13 @@
         "level": 2,
         "name": "Font of Magic",
         "description": "<p>You can tap into the wellspring of magic within yourself. This wellspring is represented by Sorcery Points, which allow you to create a variety of magical effects.</p><p>You have 2 Sorcery Points, and you gain more as you reach higher levels, as shown in the Sorcery Points column of the Sorcerer Features table. You can't have more Sorcery Points than the number shown in the table for your level. You regain all expended Sorcery Points when you finish a Long Rest.</p><p>You can use your Sorcery Points to fuel the options below, along with other features, such as Metamagic, that use those points.</p><p>Converting Spell Slots to Sorcery Points: You can expend a spell slot to gain a number of Sorcery Points equal to the slot's level (no action required).</p><p>Creating Spell Slots: As a Bonus Action, you can transform unexpended Sorcery Points into one spell slot. The Creating Spell Slots table shows the cost of creating a spell slot of a given level, and it lists the minimum Sorcerer level you must be to create a slot. You can create a spell slot no higher than level 5.</p><p>Any spell slot you create with this feature vanishes when you finish a Long Rest.</p><p><strong>Creating Spell Slots</strong></p><table><thead><tr><th>Spell Slot Level</th><th>Sorcery Point Cost</th><th>Min. Sorcerer Level</th></tr></thead><tbody><tr><td>1</td><td>2</td><td>2</td></tr><tr><td>2</td><td>3</td><td>3</td></tr><tr><td>3</td><td>5</td><td>5</td></tr><tr><td>4</td><td>6</td><td>7</td></tr><tr><td>5</td><td>7</td><td>9</td></tr></tbody></table>",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": "@classes.sorcerer.levels",
+          "recovery": {
+            "lr": "all"
+          }
+        }
       },
       {
         "level": 2,
@@ -6844,7 +7474,13 @@
         "level": 5,
         "name": "Sorcerous Restoration",
         "description": "<p>When you finish a Short Rest, you can regain expended Sorcery Points, but no more than a number equal to half your Sorcerer level (round down). Once you use this feature, you can't do so again until you finish a Long Rest.</p>",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": 1,
+          "recovery": {
+            "lr": "all"
+          }
+        }
       },
       {
         "level": 6,
@@ -7180,7 +7816,13 @@
               }
             }
           }
-        ]
+        ],
+        "uses": {
+          "max": 1,
+          "recovery": {
+            "lr": "all"
+          }
+        }
       },
       {
         "level": 12,
@@ -7206,7 +7848,13 @@
               }
             }
           }
-        ]
+        ],
+        "uses": {
+          "max": 1,
+          "recovery": {
+            "lr": "all"
+          }
+        }
       },
       {
         "level": 14,
@@ -7232,7 +7880,13 @@
               }
             }
           }
-        ]
+        ],
+        "uses": {
+          "max": 1,
+          "recovery": {
+            "lr": "all"
+          }
+        }
       },
       {
         "level": 16,
@@ -7258,7 +7912,13 @@
               }
             }
           }
-        ]
+        ],
+        "uses": {
+          "max": 1,
+          "recovery": {
+            "lr": "all"
+          }
+        }
       },
       {
         "level": 19,
@@ -7270,7 +7930,13 @@
         "level": 20,
         "name": "Eldritch Master",
         "description": "<p>At 20th level, you can draw on your inner reserve of mystical power while entreating your patron to regain expended spell slots. You can spend 1 minute entreating your patron for aid to regain all your expended spell slots from your Pact Magic feature. Once you regain spell slots with this feature, you must finish a long rest before you can do so again.</p>",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": 1,
+          "recovery": {
+            "lr": "all"
+          }
+        }
       }
     ],
     "description": "<p>Warlock: With a pseudodragon curled on his shoulder, a young elf in golden robes smiles warmly, weaving a magical charm into his honeyed words and bending the palace sentinel to his will.</p><p>As flames spring to life in her hands, a wizened human whispers the secret name of her demonic patron, infusing her spell with fiendish magic.</p><p>Shifting his gaze between a battered tome and the odd alignment of the stars overhead, a wild-eyed tiefling chants the mystic ritual that will open a doorway to a distant world.</p><p>Warlocks are seekers of the knowledge that lies hidden in the fabric of the multiverse. Through pacts made with mysterious beings of supernatural power, warlocks unlock magical effects both subtle and spectacular. Drawing on the ancient knowledge of beings such as fey nobles, demons, devils, hags, and alien entities of the Far Realm, warlocks piece together arcane secrets to bolster their own power.</p><p>Sworn and Beholden: A warlock is defined by a pact with an otherworldly being. Sometimes the relationship between warlock and patron is like that of a cleric and a deity, though the beings that serve as patrons for warlocks are not gods. A warlock might lead a cult dedicated to a demon prince, an archdevil, or an utterly alien entity—beings not typically served by clerics. More often, though, the arrangement is similar to that between a master and an apprentice. The warlock learns and grows in power, at the cost of occasional services performed on the patron's behalf.</p><p>The magic bestowed on a warlock ranges from minor but lasting alterations to the warlock's being (such as the ability to see in darkness or to read any language) to access to powerful spells. Unlike bookish wizards, warlocks supplement their magic with some facility at hand-to-hand combat. They are comfortable in light armor and know how to use simple weapons.</p><p>Delvers into Secrets: Warlocks are driven by an insatiable need for knowledge and power, which compels them into their pacts and shapes their lives. This thirst drives warlocks into their pacts and shapes their later careers as well.</p><p>Stories of warlocks binding themselves to fiends are widely known. But many warlocks serve patrons that are not fiendish. Sometimes a traveler in the wilds comes to a strangely beautiful tower, meets its fey lord or lady, and stumbles into a pact without being fully aware of it. And sometimes, while poring over tomes of forbidden lore, a brilliant but crazed student's mind is opened to realities beyond the material world and to the alien beings that dwell in the outer void.</p><p>Once a pact is made, a warlock's thirst for knowledge and power can't be slaked with mere study and research. No one makes a pact with such a mighty patron if he or she doesn't intend to use the power thus gained. Rather, the vast majority of warlocks spend their days in active pursuit of their goals, which typically means some kind of adventuring. Furthermore, the demands of their patrons drive warlocks toward adventure.</p><p>Creating a Warlock: As you make your warlock character, spend some time thinking about your patron and the obligations that your pact imposes upon you. What led you to make the pact, and how did you make contact with your patron? Were you seduced into summoning a devil, or did you seek out the ritual that would allow you to make contact with an alien elder god? Did you search for your patron, or did your patron find and choose you? Do you chafe under the obligations of your pact or serve joyfully in anticipation of the rewards promised to you?</p><p>Work with your DM to determine how big a part your pact will play in your character's adventuring career. Your patron's demands might drive you into adventures, or they might consist entirely of small favors you can do between adventures.</p><p>What kind of relationship do you have with your patron? Is it friendly, antagonistic, uneasy, or romantic? How important does your patron consider you to be? What part do you play in your patron's plans? Do you know other servants of your patron?</p><p>How does your patron communicate with you? If you have a familiar, it might occasionally speak with your patron's voice. Some warlocks find messages from their patrons etched on trees, mingled among tea leaves, or adrift in the clouds—messages that only the warlock can see. Other warlocks converse with their patrons in dreams or waking visions, or deal only with intermediaries.</p><p>Quick Build: You can make a warlock quickly by following these suggestions. First, Charisma should be your highest ability score, followed by Constitution. Second, choose the charlatan background. Third, choose the eldritch blast and chill touch cantrips, along with the 1st-level spells charm person and witch bolt.</p><p>\"You think me mad? I think true insanity is being content to live a life of mortal drudgery when knowledge and power is there for the taking in the realm beyond.\" — Xarren, herald of Acamar</p><p>Warlocks are finders and keepers of secrets. They push at the edge of our understanding of the world, always seeking to expand their expertise. Where sages or wizards might heed a clear sign of danger and end their research, a warlock plunges ahead, heedless of the cost. Thus, it takes a peculiar mixture of intelligence, curiosity, and recklessness to produce a warlock. Many folk would describe that combination as evidence of madness. Warlocks see it as a demonstration of bravery.</p><p>Warlocks are defined by two elements that work in concert to forge their path into this class. The first element is the event or circumstances that led to a warlock's entering into a pact with a planar entity. The second one is the nature of the entity a warlock is bound to. Unlike clerics, who typically embrace a deity and that god's ethos, a warlock might have no love for a patron, or vice versa.</p><p>The sections that follow provide ways to embellish a warlock character that could generate some intriguing story and roleplaying opportunities.</p><p>\"So you got your powers by making a contract with something? Is it in writing, perchance? Well, never mind. Just tell me this: Can I get your powers by eating you?\" — Xanathar</p><p>Patron's Attitude: Every relationship is a two-way street, but in the case of warlocks and their patrons it's not necessarily true that both sides of the street are the same width or made of the same stuff. The feeling that a warlock holds for their patron, whether positive or negative, might be reciprocated by the patron, or the two participants in the pact might view one another with opposing emotions.</p><p>When you determine the attitude your warlock character holds toward your patron, also consider how things look from the patron's perspective. How does your patron behave toward you? Is your patron a friend and ally, or an enemy that grants you power only because you forced a pact upon it?</p><p><strong>Patron Attitudes</strong></p><table><thead><tr><th>d6</th><th>Attitude</th></tr></thead><tbody><tr><td>[object Object]</td><td>Your patron has guided and helped your family for generations and is kindly toward you.</td></tr><tr><td>[object Object]</td><td>Each interaction with your capricious patron is a surprise, whether pleasant or painful.</td></tr><tr><td>[object Object]</td><td>Your patron is the spirit of a long-dead hero who sees your pact as a way for it to continue to influence the world.</td></tr><tr><td>[object Object]</td><td>Your patron is a strict disciplinarian but treats you with a measure of respect.</td></tr><tr><td>[object Object]</td><td>Your patron tricked you into a pact and treats you as a slave.</td></tr><tr><td>[object Object]</td><td>You are mostly left to your own devices with no interference from your patron. Sometimes you dread the demands it will make when it does appear.</td></tr></tbody></table><p>Special Terms of the Pact: A pact can range from a loose agreement to a formal contract with lengthy, detailed clauses and lists of requirements. The terms of a pact—what a warlock must do to receive a patron's favor—are always dictated by the patron. On occasion, those terms include a special proviso that might seem odd or whimsical, but warlocks take these dictates as seriously as they do the other requirements of their pacts.</p><p>Does your character have a pact that requires you to change your behavior in an unusual or seemingly frivolous way? Even if your patron hasn't imposed such a duty on you already, that's not to say it couldn't still happen.</p><p><strong>Special Terms</strong></p><table><thead><tr><th>d6</th><th>Term</th></tr></thead><tbody><tr><td>[object Object]</td><td>When directed, you must take immediate action against a specific enemy of your patron.</td></tr><tr><td>[object Object]</td><td>Your pact tests your willpower; you are required to abstain from alcohol and other intoxicants.</td></tr><tr><td>[object Object]</td><td>At least once a day, you must inscribe or carve your patron's name or symbol on the wall of a building.</td></tr><tr><td>[object Object]</td><td>You must occasionally conduct bizarre rituals to maintain your pact.</td></tr><tr><td>[object Object]</td><td>You can never wear the same outfit twice, since your patron finds such predictability to be boring.</td></tr><tr><td>[object Object]</td><td>When you use an eldritch invocation, you must speak your patron's name aloud or risk incurring its displeasure.</td></tr></tbody></table><p>Binding Mark: Some patrons make a habit of, and often enjoy, marking the warlocks under their sway in some fashion. A binding mark makes it clear—to those who know about such things—that the individual in question is bound to the patron's service. A warlock might take advantage of such a mark, claiming it as proof of one's pact, or might want to keep it under wraps (if possible) to avoid the difficulties it might bring.</p><p>If your warlock's pact comes with a binding mark, how you feel about displaying it probably depends on the nature of your relationship with the one who gave it to you. Is the mark a source of pride or something you are secretly ashamed of?</p><p><strong>Binding Marks</strong></p><table><thead><tr><th>d6</th><th>Mark</th></tr></thead><tbody><tr><td>1</td><td>One of your eyes looks the same as one of your patron's eyes.</td></tr><tr><td>2</td><td>Each time you wake up, the small blemish on your face appears in a different place.</td></tr><tr><td>3</td><td>You display outward symptoms of a disease but suffer no ill effects from it.</td></tr><tr><td>4</td><td>Your tongue is an unnatural color.</td></tr><tr><td>5</td><td>You have a vestigial tail.</td></tr><tr><td>6</td><td>Your nose glows in the dark.</td></tr></tbody></table>",
@@ -7440,7 +8106,13 @@
         "level": 2,
         "name": "Magical Cunning",
         "description": "<p>You can perform an esoteric rite for 1 minute. At the end of it, you regain expended Pact Magic spell slots but no more than a number equal to half your maximum (round up). Once you use this feature, you can't do so again until you finish a Long Rest.</p>",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": 1,
+          "recovery": {
+            "lr": "all"
+          }
+        }
       },
       {
         "level": 3,
@@ -7470,7 +8142,13 @@
         "level": 9,
         "name": "Contact Patron",
         "description": "<p>In the past, you usually contacted your patron through intermediaries. Now you can communicate directly; you always have the Contact Other Plane spell prepared. With this feature, you can cast the spell without expending a spell slot to contact your patron, and you automatically succeed on the spell's saving throw.</p><p>Once you cast the spell with this feature, you can't do so in this way again until you finish a Long Rest.</p>",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": 1,
+          "recovery": {
+            "lr": "all"
+          }
+        }
       },
       {
         "level": 10,
@@ -7496,7 +8174,13 @@
               }
             }
           }
-        ]
+        ],
+        "uses": {
+          "max": "floor((@classes.warlock.levels - 9) / 2)",
+          "recovery": {
+            "lr": "all"
+          }
+        }
       },
       {
         "level": 12,
@@ -7745,7 +8429,13 @@
         "level": 1,
         "name": "Arcane Recovery",
         "description": "<p>You have learned to regain some of your magical energy by studying your spellbook. Once per day when you finish a short rest, you can choose expended spell slots to recover. The spell slots can have a combined level that is equal to or less than half your wizard level (rounded up), and none of the slots can be 6th level or higher.</p><p>For example, if you're a 4th-level wizard, you can recover up to two levels worth of spell slots. You can recover either a 2nd-level spell slot or two 1st-level spell slots.</p>",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": 1,
+          "recovery": {
+            "lr": "all"
+          }
+        }
       },
       {
         "level": 1,
@@ -7853,7 +8543,14 @@
               }
             }
           }
-        ]
+        ],
+        "uses": {
+          "max": 2,
+          "recovery": {
+            "sr": "all",
+            "lr": "all"
+          }
+        }
       }
     ],
     "description": "<p>Wizard: Clad in the silver robes that denote her station, an elf closes her eyes to shut out the distractions of the battlefield and begins her quiet chant. Fingers weaving in front of her, she completes her spell and launches a tiny bead of fire toward the enemy ranks, where it erupts into a conflagration that engulfs the soldiers.</p><p>Checking and rechecking his work, a human scribes an intricate magic circle in chalk on the bare stone floor, then sprinkles powdered iron along every line and graceful curve. When the circle is complete, he drones a long incantation. A hole opens in space inside the circle, bringing a whiff of brimstone from the otherworldly plane beyond.</p><p>Crouching on the floor in a dungeon intersection, a gnome tosses a handful of small bones inscribed with mystic symbols, muttering a few words of power over them. Closing his eyes to see the visions more clearly, he nods slowly, then opens his eyes and points down the passage to his left.</p><p>Wizards are supreme magic-users, defined and united as a class by the spells they cast. Drawing on the subtle weave of magic that permeates the cosmos, wizards cast spells of explosive fire, arcing lightning, subtle deception, and brute-force mind control. Their magic conjures monsters from other planes of existence, glimpses the future, or turns slain foes into zombies. Their mightiest spells change one substance into another, call meteors down from the sky, or open portals to other worlds.</p><p>Scholars of the Arcane: Wild and enigmatic, varied in form and function, the power of magic draws students who seek to master its mysteries. Some aspire to become like the gods, shaping reality itself. Though the casting of a typical spell requires merely the utterance of a few strange words, fleeting gestures, and sometimes a pinch or clump of exotic materials, these surface components barely hint at the expertise attained after years of apprenticeship and countless hours of study.</p><p>Wizards live and die by their spells. Everything else is secondary. They learn new spells as they experiment and grow in experience. They can also learn them from other wizards, from ancient tomes or inscriptions, and from ancient creatures (such as the fey) that are steeped in magic.</p><p>The Lure of Knowledge: Wizards' lives are seldom mundane. The closest a wizard is likely to come to an ordinary life is working as a sage or lecturer in a library or university, teaching others the secrets of the multiverse. Other wizards sell their services as diviners, serve in military forces, or pursue lives of crime or domination.</p><p>But the lure of knowledge and power calls even the most unadventurous wizards out of the safety of their libraries and laboratories and into crumbling ruins and lost cities. Most wizards believe that their counterparts in ancient civilizations knew secrets of magic that have been lost to the ages, and discovering those secrets could unlock the path to a power greater than any magic available in the present age.</p><p>Creating a Wizard: Creating a wizard character demands a backstory dominated by at least one extraordinary event. How did your character first come into contact with magic? How did you discover you had an aptitude for it? Do you have a natural talent, or did you simply study hard and practice incessantly? Did you encounter a magical creature or an ancient tome that taught you the basics of magic?</p><p>What drew you forth from your life of study? Did your first taste of magical knowledge leave you hungry for more? Have you received word of a secret repository of knowledge not yet plundered by any other wizard? Perhaps you're simply eager to put your newfound magical skills to the test in the face of danger.</p><p>Quick Build: You can make a wizard quickly by following these suggestions. First, Intelligence should be your highest ability score, followed by Constitution or Dexterity. If you plan to join the School of Enchantment, make Charisma your next-best score. Second, choose the sage background. Third, choose the mage hand, light, and ray of frost cantrips, along with the following 1st-level spells for your spellbook: burning hands, charm person, feather fall, mage armor, magic missile, and sleep.</p><p>\"Wizardry requires understanding. The knowledge of how and why magic works, and our efforts to broaden that understanding, have brought about the key advances in civilization over the centuries.\" — Gimble the illusionist</p><p>Only a select few people in the world are wielders of magic. Of all those, wizards stand at the pinnacle of the craft. Even the least of them can manipulate forces that flout the laws of nature, and the most accomplished among them can cast spells with world-shaking effects.</p><p>The price that wizards pay for their mastery is that most valuable of commodities: time. It takes years of study, instruction, and experimentation to learn how to harness magical energy and carry spells around in one's own mind. For adventuring wizards and other spellcasters who aspire to the highest echelons of the profession, the studying never ends, nor does the quest for knowledge and power.</p><p>If you're playing a wizard, take advantage of the opportunity to make your character more than just a stereotypical spell-slinger. Use the advice that follows to add some intriguing details to how your wizard interacts with the world.</p><p>\"Watch. I love this trick.</p><p>Hey, wizard! You can't do magic. Oops, now you can. Oops, now you can't anymore. Ha ha ha!\" — Xanathar</p><p>Spellbook: Your wizard character's most prized possession—your spellbook—might be an innocuous-looking volume whose covers show no hint of what's inside. Or you might display some flair, as many wizards do, by carrying a spellbook of an unusual sort. If you don't own such an item already, one of your goals might be to find a spellbook that sets you apart by its appearance or its means of manufacture.</p><p><strong>Spellbooks</strong></p><table><thead><tr><th>d6</th><th>Spellbook</th></tr></thead><tbody><tr><td>[object Object]</td><td>A tome with pages that are thin sheets of metal, spells etched into them with acid</td></tr><tr><td>[object Object]</td><td>Long straps of leather on which spells are written, wrapped around a staff for ease of transport</td></tr><tr><td>[object Object]</td><td>A battered tome filled with pictographs that only you can understand</td></tr><tr><td>[object Object]</td><td>Small stones inscribed with spells and kept in a cloth bag</td></tr><tr><td>[object Object]</td><td>A scorched book, ravaged by dragon fire, with the script of your spells barely visible on its pages</td></tr><tr><td>[object Object]</td><td>A tome full of black pages whose writing is visible only in dim light or darkness</td></tr></tbody></table><p>Ambition: Few aspiring wizards undertake the study of magic without some personal goal in mind. Many wizards use their spells as a tool to produce a tangible benefit, in material goods or in status, for themselves or their companions. For others, the theoretical aspect of magic might have a strong appeal, pushing those wizards to seek out knowledge that supports new theories of the arcane or confirms old ones.</p><p>Beyond the obvious, why does your wizard character study magic, and what do you want to achieve? If you haven't given these questions much thought, you can do so now, and the answers you come up with will likely affect how your future unfolds.</p><p><strong>Ambitions</strong></p><table><thead><tr><th>d6</th><th>Ambition</th></tr></thead><tbody><tr><td>[object Object]</td><td>You will prove that the gods aren't as powerful as folk believe.</td></tr><tr><td>[object Object]</td><td>Immortality is the end goal of your studies.</td></tr><tr><td>[object Object]</td><td>If you can fully understand magic, you can unlock its use for all and usher in an era of equality.</td></tr><tr><td>[object Object]</td><td>Magic is a dangerous tool. You use it to protect what you treasure.</td></tr><tr><td>[object Object]</td><td>Arcane power must be taken away from those who would abuse it.</td></tr><tr><td>[object Object]</td><td>You will become the greatest wizard the world has seen in generations.</td></tr></tbody></table><p>Eccentricity: Endless hours of solitary study and research can have a negative effect on anyone's social skills. Wizards, who are a breed apart to begin with, are no exception. An odd mannerism or two is not necessarily a drawback, though; an eccentricity of this sort is usually harmless and could provide a source of amusement or serve as a calling card of sorts.</p><p>If your character has an eccentricity, is it a physical tic or a mental one? Are you well known in some circles because of it? Do you fight to overcome it, or do you embrace this minor claim to fame of yours?</p><p><strong>Eccentricities</strong></p><table><thead><tr><th>d6</th><th>Eccentricity</th></tr></thead><tbody><tr><td>[object Object]</td><td>You have the habit of tapping your foot incessantly, which often annoys those around you.</td></tr><tr><td>[object Object]</td><td>Your memory is quite good, but you have no trouble pretending to be absentminded when it suits your purposes.</td></tr><tr><td>[object Object]</td><td>You never enter a room without looking to see what's hanging from the ceiling.</td></tr><tr><td>[object Object]</td><td>Your most prized possession is a dead worm that you keep inside a potion vial.</td></tr><tr><td>[object Object]</td><td>When you want people to leave you alone, you start talking to yourself. That usually does the trick.</td></tr><tr><td>[object Object]</td><td>Your fashion sense and grooming, or more accurately lack thereof, sometimes cause others to assume you are a beggar.</td></tr></tbody></table>",
@@ -7989,7 +8686,13 @@
         "level": 1,
         "name": "Arcane Recovery",
         "description": "<p>You can regain some of your magical energy by studying your spellbook. When you finish a Short Rest, you can choose expended spell slots to recover. The spell slots can have a combined level equal to no more than half your Wizard level (round up), and none of the slots can be level 6 or higher. For example, if you're a level 4 Wizard, you can recover up to two levels' worth of spell slots, regaining either one level 2 spell slot or two level 1 spell slots.</p><p>Once you use this feature, you can't do so again until you finish a Long Rest.</p>",
-        "spellGrants": null
+        "spellGrants": null,
+        "uses": {
+          "max": 1,
+          "recovery": {
+            "lr": "all"
+          }
+        }
       },
       {
         "level": 1,
@@ -8115,7 +8818,14 @@
               }
             }
           }
-        ]
+        ],
+        "uses": {
+          "max": 2,
+          "recovery": {
+            "sr": "all",
+            "lr": "all"
+          }
+        }
       }
     ],
     "description": "<p>Wizard: Wizards are defined by their exhaustive study of magic's inner workings. They cast spells of explosive fire, arcing lightning, subtle deception, and spectacular transformations. Their magic conjures monsters from other planes of existence, glimpses the future, or forms protective barriers. Their mightiest spells change one substance into another, call meteors from the sky, or open portals to other worlds.</p><p>Most Wizards share a scholarly approach to magic. They examine the theoretical underpinnings of magic, particularly the categorization of spells into schools of magic. Renowned Wizards such as Bigby, Tasha, Mordenkainen, and Yolande have built on their studies to invent iconic spells now used across the multiverse.</p><p>The closest a Wizard is likely to come to an ordinary life is working as a sage or lecturer. Other Wizards sell their services as advisers, serve in military forces, or pursue lives of crime or domination.</p><p>But the lure of knowledge calls even the most unadventurous Wizards from the safety of their libraries and laboratories and into crumbling ruins and lost cities. Most Wizards believe that their counterparts in ancient civilizations knew secrets of magic that have been lost to the ages, and discovering those secrets could unlock the path to a power greater than any magic available in the present age.</p>",

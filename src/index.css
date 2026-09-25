@@ -157,6 +157,36 @@ input {
   border-color: var(--accent);
 }
 
+.apk-download-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  max-width: 340px;
+  padding: 14px 16px;
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+}
+
+.apk-download {
+  padding: 10px 20px;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.apk-download:hover {
+  filter: brightness(1.1);
+}
+
+.apk-download-hint {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
 .profile-create-form {
   display: flex;
   gap: 8px;
@@ -2544,6 +2574,71 @@ input {
   color: var(--text);
 }
 
+.foundry-sheet-badge-value-clickable,
+.foundry-sheet-badge-label-clickable {
+  cursor: pointer;
+}
+
+.ac-breakdown-popover {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  width: 240px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  padding: 10px 12px;
+  text-align: left;
+  cursor: default;
+}
+
+.ac-breakdown-note {
+  margin: 0 0 8px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.ac-breakdown-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ac-breakdown-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--text);
+}
+
+.ac-breakdown-total {
+  margin: 8px 0 0;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--text);
+}
+
+.ac-breakdown-use-auto {
+  width: 100%;
+  margin-top: 8px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: var(--bg);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
 .foundry-sheet-hp-inputs {
   display: flex;
   align-items: center;
@@ -2980,6 +3075,22 @@ input {
   cursor: pointer;
 }
 
+.foundry-item-toggles {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.foundry-item-toggle {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: var(--text-muted);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
 .foundry-spell-list li {
   flex-wrap: wrap;
 }
@@ -2988,6 +3099,154 @@ input {
   font-size: 11px;
   color: var(--text-muted);
   text-transform: uppercase;
+}
+
+.spell-info-icon {
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text-muted);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  line-height: 1;
+  font-size: 13px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.spell-info-modal {
+  text-align: left;
+}
+
+.spell-info-subtitle {
+  margin: 0 0 12px;
+  font-style: italic;
+  color: var(--text-muted);
+}
+
+.spell-info-meta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 16px;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.spell-info-meta-grid div {
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+}
+
+.spell-info-meta-grid strong {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.spell-info-description {
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.spell-info-description p {
+  margin: 0 0 10px;
+}
+
+.spell-info-grantors {
+  font-size: 13px;
+  margin: 0 0 8px;
+}
+
+.spell-info-source {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin: 12px 0 0;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+
+.foundry-spell-roll-actions {
+  position: relative;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  width: 100%;
+  margin-top: 4px;
+}
+
+.foundry-spell-roll-popover {
+  top: calc(100% + 6px);
+  left: 0;
+  transform: none;
+}
+
+/* Selos "Ataque com Magia"/"CD de Resistência" no topo da aba Magias --
+   imagem tem um quadrado branco vazado no centro, o número entra por cima
+   via posição absoluta em porcentagem (medida em pixel real de cada PNG,
+   não estimada a olho -- ver conversa que gerou isto). */
+.foundry-spell-stats-header {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin-bottom: 4px;
+}
+
+.spell-stat-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.spell-stat-badge-frame {
+  position: relative;
+  width: 92px;
+}
+
+.spell-stat-badge-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.spell-stat-badge-value {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  color: #241a10;
+  line-height: 1;
+}
+
+.spell-stat-badge.attack .spell-stat-badge-frame {
+  aspect-ratio: 523 / 683;
+}
+.spell-stat-badge.attack .spell-stat-badge-value {
+  left: 32.9%;
+  top: 40.8%;
+  width: 40%;
+  height: 30.5%;
+  font-size: 22px;
+}
+
+.spell-stat-badge.save .spell-stat-badge-frame {
+  aspect-ratio: 587 / 615;
+}
+.spell-stat-badge.save .spell-stat-badge-value {
+  left: 36.1%;
+  top: 34.3%;
+  width: 32.7%;
+  height: 30.7%;
+  font-size: 22px;
+}
+
+.spell-stat-badge-label {
+  font-size: 11px;
+  color: var(--text-muted);
 }
 
 /* Aba Talentos */
@@ -3010,31 +3269,6 @@ input {
   margin: 2px 0 0;
   font-size: 12px;
   color: var(--text-muted);
-}
-
-/* Aba Efeitos — checklist manual de condições (não sincronizada do Foundry,
-   ver foundry_character_sheet_ui_architecture.md). */
-.foundry-conditions-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 8px;
-}
-
-.foundry-condition-pill {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 6px 10px;
-  font-size: 13px;
-  cursor: pointer;
-}
-
-.foundry-condition-pill.is-active {
-  border-color: var(--accent);
-  color: var(--accent);
-  background: var(--surface);
 }
 
 /* Aba Biografia */
@@ -3154,6 +3388,51 @@ input {
 .levelup-hp-block h4,
 .levelup-subclass-block h4 {
   margin: 0 0 8px;
+}
+
+/* Etapa Subclasse (só leitura): o que a subclasse já escolhida concede em cada nível novo. */
+.levelup-subclass-gains {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.levelup-subclass-gain {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  background: var(--surface);
+}
+
+.levelup-subclass-gain h5 {
+  margin: 0 0 6px;
+}
+
+.levelup-subclass-feature {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+  margin: 0 0 6px;
+  padding: 0;
+  border: 0;
+  background: none;
+  text-align: left;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  white-space: pre-line;
+}
+
+.levelup-subclass-feature span {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.levelup-subclass-section {
+  margin: 4px 0;
+  font-size: 13px;
 }
 
 .chat-panel {

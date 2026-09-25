@@ -1,20 +1,26 @@
-import { useEffect, useMemo, useState } from "react";
-import { ABILITIES, ABILITY_LABELS, ALIGNMENTS, CONDITIONS, LANGUAGES, SKILLS } from "../schema/character";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { ABILITIES, ABILITY_LABELS, ALIGNMENTS, LANGUAGES, SKILLS } from "../schema/character";
 import { resolveClassMatches } from "../schema/resolveClassMatches";
 import { computeGrantedSpells } from "../schema/grantedSpells";
+import { computeAllowedSpellNames } from "../schema/expandedSpellPool";
 import { AbilitiesInput } from "./AbilitiesInput";
 import { SensesInput } from "./SensesInput";
 import { TagListInput } from "./TagListInput";
 import { ListEditor } from "./ListEditor";
+import { SpellBrowser } from "./SpellBrowser";
+import { FeatBrowser } from "./FeatBrowser";
+import { EquipmentBrowser } from "./EquipmentBrowser";
 import racesData from "../data/content/races.json";
 import classesData from "../data/content/classes.json";
 import featsData from "../data/content/feats.json";
 import optionalFeaturesData from "../data/content/optionalfeatures.json";
 import spellsData from "../data/content/spells.json";
 import equipmentData from "../data/content/equipment.json";
-import { computeArmorClass } from "../utils/computeArmorClass";
+import { computeArmorClass, computeArmorClassBreakdown } from "../utils/computeArmorClass";
 import { computeHitPoints } from "../utils/computeHitPoints";
 import { formatSpeed } from "../utils/formatSpeed";
+import { spellAttackMod, spellDamageFormula, spellSaveDC, spellHealFormula } from "../schema/spellMechanics";
+import { rollFormula } from "../utils/rollDice";
 import { WEAPON_MASTERY_TABLE } from "../utils/weaponMastery";
 import { CLASS_CHOICE_CATEGORY_LABELS } from "../utils/classChoiceLabels";
 import { sendRollRequest } from "../data/chatMessages";
@@ -40,6 +46,57 @@ function stripHtml(html) {
 function excerpt(text, max = 150) {
   const clean = stripHtml(text);
   return clean.length > max ? `${clean.slice(0, max).trimEnd()}…` : clean;
+}
+
+// Achado numa auditoria de CA (set/2026): o botão "⚔ Atacar" do Inventário aparecia em
+// TODA linha (armadura, escudo, poção...), decisão antiga de quando `character.equipment`
+// era só nome+qtd livre, sem tipo nenhum pra cruzar. Hoje `equipmentData` (catálogo
+// unificado) já tem `foundryType` real -- `weapon`/`armorModelWeapon`/item `raw` tipo
+// arma SEMPRE ganham uma Activity de ataque de verdade no Foundry (buildEquipmentItem.js),
+// então esses três continuam liberando o botão por `foundryType` mesmo.
+// Item mágico (`foundryType:"magicItem"`) é DIFERENTE: só ganha Activity de ataque quando
+// `entry.mechanical.activities` foi autorado à mão (achado numa auditoria de ataque, set/
+// 2026: `category:"weapon"` sozinho NÃO bastava -- "+1/+2 Weapon", o encantamento genérico
+// aplicado a OUTRA arma, é `category:"weapon"` mas nunca tem Activity própria; e itens como
+// Rod of Lordly Might/Wand of Orcus funcionam como arma de verdade no texto oficial mas são
+// `category:"rod"`/`"wand"`, não "weapon"). `hasAttackActivity` (flatten-equipment-entry.mjs)
+// é o sinal real -- reflete exatamente se o Item que o módulo monta vai ter Activity
+// `type:"attack"` ou não, nunca mais depende de qual categoria de item mágico é.
+// Nome que não bate com NADA do catálogo (homebrew digitado à mão) continua mostrando o
+// botão -- mesmo comportamento permissivo de sempre, só os itens catalogados E claramente
+// não-arma (armadura/ferramenta/consumível/etc.) é que somem.
+const KNOWN_EQUIPMENT_NAMES = new Set(equipmentData.map((e) => e.name));
+const WEAPON_EQUIPMENT_NAMES = new Set(
+  equipmentData
+    .filter((e) => e.foundryType === "weapon" || e.foundryType === "armorModelWeapon" || (e.foundryType === "magicItem" && e.hasAttackActivity))
+    .map((e) => e.name),
+);
+function looksAttackable(itemName) {
+  return !KNOWN_EQUIPMENT_NAMES.has(itemName) || WEAPON_EQUIPMENT_NAMES.has(itemName);
+}
+
+// Mesmo modal usado em StepMagias.jsx (criação/level-up) -- reaproveitado aqui
+// pra Talento/Magia/Equipamento na ficha editável, trocando o antigo campo de
+// texto livre por busca+lista clicável, mesmo padrão nos 3 campos.
+function BrowserModal({ title, onClose, children }) {
+  return (
+    <div
+      className="modal-backdrop"
+      onMouseDown={(event) => {
+        if (event.target === event.currentTarget) onClose();
+      }}
+    >
+      <div className="modal-panel modal-panel-wide" onMouseDown={(event) => event.stopPropagation()}>
+        <div className="modal-header">
+          <h3>{title}</h3>
+          <button type="button" onClick={onClose}>
+            Fechar
+          </button>
+        </div>
+        {children}
+      </div>
+    </div>
+  );
 }
 
 // Raça/Antecedente podem ter a mesma edição errada de propósito (não são
@@ -124,7 +181,6 @@ const TABS = [
   { key: "inventory", label: "Inventário" },
   { key: "feats", label: "Talentos" },
   { key: "spells", label: "Magias" },
-  { key: "effects", label: "Efeitos" },
   { key: "biography", label: "Biografia" },
 ];
 
@@ -142,8 +198,6 @@ function renderTabContent(key, props) {
       return <FeatsTab {...props} />;
     case "spells":
       return <SpellsTab {...props} />;
-    case "effects":
-      return <EffectsTab {...props} />;
     case "biography":
       return <BiographyTab {...props} />;
     default:
@@ -163,11 +217,17 @@ function downloadCharacterJSON(character) {
   URL.revokeObjectURL(url);
 }
 
-function DetailsTab({ character, editable, onChange, originalClassMatch, totalLevel }) {
+function DetailsTab({ character, editable, onChange, originalClassMatch, totalLevel, raceMatch, classMatches }) {
   const prof = proficiencyBonus(totalLevel);
   const expertiseSkills = new Set(character.skillExpertise ?? []);
   const proficientSkills = new Set(character.skillProficiencies ?? []);
   const savingThrowProfs = new Set(originalClassMatch?.savingThrows ?? []);
+  // Concedidas por Raça/Feat/Subclasse/Escolha de Classe -- morava na aba
+  // Magias até o usuário pedir pra mover pra cá (set/2026): a aba Magias é
+  // pra magia que o JOGADOR escolhe/prepara, não pra automação de fundo. Só
+  // exibição, ver schema/grantedSpells.js pro porquê de nunca entrar em
+  // `character.spells`.
+  const grantedSpells = computeGrantedSpells({ character, raceMatch, classMatches, featsData, optionalFeaturesData });
 
   function toggleSkillProf(id, checked) {
     const set = new Set(character.skillProficiencies ?? []);
@@ -383,13 +443,52 @@ function DetailsTab({ character, editable, onChange, originalClassMatch, totalLe
             </div>
           ))}
         {!character.race && !character.background && character.classes?.every((c) => !c.name) && <EmptyRow />}
+        {grantedSpells.length > 0 && (
+          <div className="foundry-box">
+            <div className="foundry-box-header-row">
+              <h4>Magias Concedidas Automaticamente</h4>
+            </div>
+            <ul className="foundry-item-list foundry-spell-list">
+              {grantedSpells.map((entry, index) => (
+                <li key={index}>
+                  <span className="foundry-skill-dot" aria-hidden="true" />
+                  <span className="foundry-item-name">{entry.name}</span>
+                  <span className="foundry-spell-meta">
+                    {entry.source}
+                    {!entry.unlocked && ` · a partir do nível ${entry.level}`}
+                  </span>
+                </li>
+              ))}
+            </ul>
+            <p className="field-hint">
+              O Foundry adiciona essas magias sozinho ao sincronizar — não aparecem na aba Magias.
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );
 }
 
-function InventoryTab({ character, editable, onChange, profileId }) {
+function InventoryTab({ character, editable, onChange, profileId, onSave }) {
   const currency = character.currency ?? {};
+  const [browserOpen, setBrowserOpen] = useState(false);
+
+  function addEquipment(item) {
+    onChange({ equipment: [...(character.equipment ?? []), { name: item.name, quantity: 1 }] });
+    setBrowserOpen(false);
+  }
+
+  // Equipar/sintonizar é uma ação leve e frequente (igual marcar dano de PV) --
+  // não faz sentido obrigar "Editar ficha" -> achar o item -> "Salvar" só pra
+  // isso. Grava direto (`onSave`, o MESMO usado pelo toggle "Editar ficha",
+  // ignora completamente o estado local `editing`/`draft`) -- só existe fora
+  // do modo de edição (`!editable`), onde `character` já é o estado
+  // persistido de verdade (não um rascunho não salvo).
+  function quickToggleEquipmentField(index, key, value) {
+    const next = (character.equipment ?? []).map((item, i) => (i === index ? { ...item, [key]: value } : item));
+    onSave?.({ equipment: next });
+  }
 
   // Sem distinção "isso é arma" nos dados do site (equipment é só nome+qtd
   // livre) -- em vez de adivinhar por heurística de nome, manda o pedido de
@@ -431,15 +530,27 @@ function InventoryTab({ character, editable, onChange, profileId }) {
           {!editable && <span>Quantidade</span>}
         </div>
         {editable ? (
-          <ListEditor
-            items={character.equipment ?? []}
-            onChange={(items) => onChange({ equipment: items })}
-            addLabel="Adicionar item"
-            fields={[
-              { key: "name", label: "Nome" },
-              { key: "quantity", label: "Qtd.", type: "number", default: 1 },
-            ]}
-          />
+          <>
+            <ListEditor
+              items={character.equipment ?? []}
+              onChange={(items) => onChange({ equipment: items })}
+              allowAdd={false}
+              fields={[
+                { key: "name", label: "Nome" },
+                { key: "quantity", label: "Qtd.", type: "number", default: 1 },
+                { key: "equipped", label: "Equipado", type: "checkbox", default: false },
+                { key: "attuned", label: "Sintonizado", type: "checkbox", default: false },
+              ]}
+            />
+            <button type="button" onClick={() => setBrowserOpen(true)}>
+              Adicionar item
+            </button>
+            {browserOpen && (
+              <BrowserModal title="Equipamento" onClose={() => setBrowserOpen(false)}>
+                <EquipmentBrowser items={equipmentData} onAdd={addEquipment} />
+              </BrowserModal>
+            )}
+          </>
         ) : character.equipment?.length ? (
           <ul className="foundry-item-list">
             {character.equipment.map((item, index) => (
@@ -447,9 +558,31 @@ function InventoryTab({ character, editable, onChange, profileId }) {
                 <span className="foundry-skill-dot" aria-hidden="true" />
                 <span className="foundry-item-name">{item.name}</span>
                 <span className="foundry-item-qty">{item.quantity > 1 ? `${item.quantity}x` : "1x"}</span>
-                <button type="button" className="foundry-item-attack" onClick={() => attackWith(item.name)}>
-                  ⚔ Atacar
-                </button>
+                {onSave && (
+                  <span className="foundry-item-toggles">
+                    <label className="foundry-item-toggle">
+                      <input
+                        type="checkbox"
+                        checked={!!item.equipped}
+                        onChange={(e) => quickToggleEquipmentField(index, "equipped", e.target.checked)}
+                      />
+                      Equipado
+                    </label>
+                    <label className="foundry-item-toggle">
+                      <input
+                        type="checkbox"
+                        checked={!!item.attuned}
+                        onChange={(e) => quickToggleEquipmentField(index, "attuned", e.target.checked)}
+                      />
+                      Sintonizado
+                    </label>
+                  </span>
+                )}
+                {looksAttackable(item.name) && (
+                  <button type="button" className="foundry-item-attack" onClick={() => attackWith(item.name)}>
+                    ⚔ Atacar
+                  </button>
+                )}
               </li>
             ))}
           </ul>
@@ -489,18 +622,43 @@ function FeatsTab({ character, editable, onChange, raceMatch, classMatches }) {
     ...c,
     match: findAnimalEnhancementMatch(c.name),
   }));
+  const [browserOpen, setBrowserOpen] = useState(false);
+
+  function addFeat(name) {
+    if (!(character.feats ?? []).includes(name)) onChange({ feats: [...(character.feats ?? []), name] });
+    setBrowserOpen(false);
+  }
 
   return (
     <div className="foundry-feats-tab">
       <div className="foundry-box">
         <h4>Talentos</h4>
         {editable ? (
-          <TagListInput
-            items={character.feats ?? []}
-            onChange={(items) => onChange({ feats: items })}
-            placeholder="Ex: Alerta"
-            addLabel="Adicionar talento"
-          />
+          <>
+            <ul className="foundry-feature-list">
+              {(character.feats ?? []).map((name, index) => (
+                <li key={index}>
+                  <div className="feats-list-item-row">
+                    <strong>{name}</strong>
+                    <button
+                      type="button"
+                      onClick={() => onChange({ feats: character.feats.filter((f) => f !== name) })}
+                    >
+                      Remover
+                    </button>
+                  </div>
+                </li>
+              ))}
+            </ul>
+            <button type="button" onClick={() => setBrowserOpen(true)}>
+              Adicionar talento
+            </button>
+            {browserOpen && (
+              <BrowserModal title="Talentos" onClose={() => setBrowserOpen(false)}>
+                <FeatBrowser items={featsData} excludeNames={new Set(character.feats ?? [])} onAdd={addFeat} />
+              </BrowserModal>
+            )}
+          </>
         ) : character.feats?.length ? (
           <ul className="foundry-feature-list">
             {character.feats.map((name, index) => {
@@ -614,7 +772,226 @@ function FeatsTab({ character, editable, onChange, raceMatch, classMatches }) {
   );
 }
 
-function SpellsTab({ character, editable, onChange, raceMatch, classMatches }) {
+// Componentes V/S/M formatados igual 5etools ("V, S, M (a tiny ball of bat
+// guano and sulfur)") -- `spell.components`, campo novo de `spells.json`
+// (Fase A do plano "Tela de Magias").
+function formatComponents(components) {
+  if (!components) return "—";
+  const letters = [];
+  if (components.vocal) letters.push("V");
+  if (components.somatic) letters.push("S");
+  if (components.material) letters.push("M");
+  if (!letters.length) return "—";
+  let text = letters.join(", ");
+  if (components.material && components.materialText) text += ` (${components.materialText})`;
+  return text;
+}
+
+// Modal de detalhe da magia no formato 5etools (pedido do usuário, set/2026)
+// -- ícone "ⓘ" ao lado do nome abre isso. `spell` é a entrada JÁ achatada de
+// `spells.json` (campos novos: descriptionHtml/components/durationText/
+// sourceBook/grantors, ver generate-spells-catalog.mjs).
+function SpellInfoModal({ spell, onClose }) {
+  const grantors = spell.grantors ?? {};
+  return (
+    <BrowserModal title={spell.name} onClose={onClose}>
+      <div className="spell-info-modal">
+        <p className="spell-info-subtitle">
+          {spell.level === 0 ? "Truque" : `Nível ${spell.level}`} — {spell.school}
+        </p>
+        <div className="spell-info-meta-grid">
+          <div>
+            <strong>Tempo de Conjuração</strong>
+            <span>{spell.time}</span>
+          </div>
+          <div>
+            <strong>Alcance</strong>
+            <span>{spell.range}</span>
+          </div>
+          <div>
+            <strong>Componentes</strong>
+            <span>{formatComponents(spell.components)}</span>
+          </div>
+          <div>
+            <strong>Duração</strong>
+            <span>
+              {spell.durationText}
+              {spell.concentration ? " (Concentração)" : ""}
+            </span>
+          </div>
+        </div>
+        {spell.descriptionHtml && (
+          <div className="spell-info-description" dangerouslySetInnerHTML={{ __html: spell.descriptionHtml }} />
+        )}
+        {spell.classes?.length > 0 && (
+          <p className="spell-info-grantors">
+            <strong>Classes:</strong> {spell.classes.join(", ")}
+          </p>
+        )}
+        {grantors.subclasses?.length > 0 && (
+          <p className="spell-info-grantors">
+            <strong>Subclasses:</strong> {grantors.subclasses.join(", ")}
+          </p>
+        )}
+        {grantors.optionalVariantClasses?.length > 0 && (
+          <p className="spell-info-grantors">
+            <strong>Classes Opcionais/Variante:</strong> {grantors.optionalVariantClasses.join(", ")}
+          </p>
+        )}
+        {grantors.feats?.length > 0 && (
+          <p className="spell-info-grantors">
+            <strong>Talentos:</strong> {grantors.feats.join(", ")}
+          </p>
+        )}
+        {spell.sourceBook && (
+          <p className="spell-info-source">
+            Fonte: {spell.sourceBook}
+            {spell.rules ? ` (${spell.rules})` : ""}
+          </p>
+        )}
+      </div>
+    </BrowserModal>
+  );
+}
+
+// Ícone "ⓘ" que abre o SpellInfoModal -- `spell` pode ser `null` (magia sem
+// correspondência no banco, ex: nome digitado errado à mão) e nesse caso o
+// ícone nem aparece, não tem o que mostrar.
+function SpellInfoButton({ spell }) {
+  const [open, setOpen] = useState(false);
+  if (!spell) return null;
+  return (
+    <>
+      <button type="button" className="spell-info-icon" onClick={() => setOpen(true)} aria-label={`Detalhes de ${spell.name}`}>
+        ⓘ
+      </button>
+      {open && <SpellInfoModal spell={spell} onClose={() => setOpen(false)} />}
+    </>
+  );
+}
+
+// Ataque/dano/cura/CD de magia -- porta o mesmo componente já validado ao
+// vivo no app (`SpellRollActions`, `app/src/components/character/
+// SpellsTab.js`), só que rolando LOCAL no navegador em vez de `onRollD20`/
+// `roll` (RN) -- ver `utils/rollDice.js` pro porquê. Só aparece quando a
+// magia tem mecânica REAL extraída (`spell.match.activities[0]`); sem isso,
+// nenhum botão (não inventa).
+function SpellRollActions({ spell, character, totalLevel }) {
+  const [result, setResult] = useState(null);
+  const activity = spell.match?.activities?.[0];
+  if (!activity) return null;
+
+  function doRoll(label, formula) {
+    setResult(formula ? { label, ...rollFormula(formula) } : null);
+  }
+
+  const buttons = [];
+  if (activity.type === "attack") {
+    const atkMod = spellAttackMod(character, totalLevel, { equipmentData });
+    if (atkMod != null) {
+      buttons.push(
+        <button key="atk" type="button" className="foundry-item-attack" onClick={() => doRoll(`${spell.name} (ataque)`, `1d20${atkMod >= 0 ? "+" : ""}${atkMod}`)}>
+          ⚔ Ataque
+        </button>,
+      );
+    }
+    const dmg = spellDamageFormula(activity, character, totalLevel);
+    if (dmg) {
+      buttons.push(
+        <button key="dmg" type="button" className="foundry-item-attack" onClick={() => doRoll(`${spell.name} (dano)`, dmg)}>
+          🎲 Dano
+        </button>,
+      );
+    }
+  } else if (activity.type === "damage") {
+    const dmg = spellDamageFormula(activity, character, totalLevel);
+    if (dmg) {
+      buttons.push(
+        <button key="dmg" type="button" className="foundry-item-attack" onClick={() => doRoll(`${spell.name} (dano)`, dmg)}>
+          🎲 Dano
+        </button>,
+      );
+    }
+  } else if (activity.type === "heal") {
+    const heal = spellHealFormula(activity, character, totalLevel);
+    if (heal) {
+      buttons.push(
+        <button key="heal" type="button" className="foundry-item-attack" onClick={() => doRoll(`${spell.name} (cura)`, heal)}>
+          💚 Cura
+        </button>,
+      );
+    }
+  } else if (activity.type === "save") {
+    const dc = spellSaveDC(character, totalLevel, { equipmentData });
+    if (dc != null) buttons.push(<span key="cd" className="foundry-spell-meta">CD {dc}</span>);
+    const dmg = activity.damage ? spellDamageFormula(activity, character, totalLevel) : null;
+    if (dmg) {
+      buttons.push(
+        <button key="dmg" type="button" className="foundry-item-attack" onClick={() => doRoll(`${spell.name} (dano)`, dmg)}>
+          🎲 Dano
+        </button>,
+      );
+    }
+  }
+  if (!buttons.length) return null;
+
+  return (
+    <span className="foundry-spell-roll-actions">
+      {buttons}
+      {result && (
+        <span className="ac-breakdown-popover foundry-spell-roll-popover">
+          <p className="ac-breakdown-note">{result.label}</p>
+          {result.rolls ? (
+            <>
+              <ul className="ac-breakdown-list">
+                <li>
+                  <span>{result.formula}</span>
+                  <span>{result.rolls.join(" + ")}{result.bonus ? ` ${result.bonus >= 0 ? "+" : ""}${result.bonus}` : ""}</span>
+                </li>
+              </ul>
+              <p className="ac-breakdown-total">Total: {result.total}</p>
+            </>
+          ) : (
+            <p className="ac-breakdown-note">Fórmula não reconhecida.</p>
+          )}
+          <button type="button" className="ac-breakdown-use-auto" onClick={() => setResult(null)}>
+            Fechar
+          </button>
+        </span>
+      )}
+    </span>
+  );
+}
+
+// Estatísticas de conjuração do personagem (não de uma magia específica) --
+// mesmas `spellAttackMod`/`spellSaveDC` já usadas por magia em
+// `SpellRollActions`, calculadas uma vez só pra classe conjuradora
+// encontrada. Sem classe conjuradora, mostra "—" em vez de esconder o
+// cabeçalho (decisão do usuário) -- nunca inventa um número.
+function SpellStatsHeader({ character, totalLevel }) {
+  const atkMod = spellAttackMod(character, totalLevel, { equipmentData });
+  const dc = spellSaveDC(character, totalLevel, { equipmentData });
+  return (
+    <div className="foundry-spell-stats-header">
+      <div className="spell-stat-badge attack">
+        <div className="spell-stat-badge-frame">
+          <img src="/spell-icons/spell-attack-icon.png" alt="" />
+          <span className="spell-stat-badge-value">{atkMod == null ? "—" : fmtMod(atkMod)}</span>
+        </div>
+        <span className="spell-stat-badge-label">Ataque com Magia</span>
+      </div>
+      <div className="spell-stat-badge save">
+        <div className="spell-stat-badge-frame">
+          <img src="/spell-icons/spell-save-dc-icon.png" alt="" />
+          <span className="spell-stat-badge-value">{dc == null ? "—" : dc}</span>
+        </div>
+        <span className="spell-stat-badge-label">CD de Resistência</span>
+      </div>
+    </div>
+  );
+}
+
+function SpellsTab({ character, editable, onChange, classMatches, totalLevel }) {
   const entries = (character.spells ?? []).map((s) => ({
     ...s,
     match: findSpellMatch(s.name, character.rulesMode),
@@ -627,49 +1004,48 @@ function SpellsTab({ character, editable, onChange, raceMatch, classMatches }) {
   }
   const levels = [...byLevel.keys()].sort((a, b) => a - b);
 
-  // Concedidas por Raça/Feat/Subclasse/Escolha de Classe -- só exibição, ver
-  // schema/grantedSpells.js pro porquê de nunca entrar em `character.spells`.
-  const granted = computeGrantedSpells({ character, raceMatch, classMatches, featsData, optionalFeaturesData });
+  const [browserOpen, setBrowserOpen] = useState(false);
+
+  function addSpell(name) {
+    if (!(character.spells ?? []).some((s) => s.name === name)) {
+      onChange({ spells: [...(character.spells ?? []), { name, prepared: false }] });
+    }
+    setBrowserOpen(false);
+  }
 
   if (editable) {
+    const allowedSpellNames = computeAllowedSpellNames({ character, classMatches, spellsData });
     return (
       <div className="foundry-spells-tab">
+        <SpellStatsHeader character={character} totalLevel={totalLevel} />
         <div className="foundry-box">
           <h4>Magias Conhecidas/Preparadas</h4>
           <ListEditor
             items={character.spells ?? []}
             onChange={(items) => onChange({ spells: items })}
-            addLabel="Adicionar magia"
+            allowAdd={false}
             fields={[
               { key: "name", label: "Nome" },
               { key: "prepared", label: "Preparada", type: "checkbox" },
             ]}
           />
+          <button type="button" onClick={() => setBrowserOpen(true)}>
+            Adicionar magia
+          </button>
+          {browserOpen && (
+            <BrowserModal title="Magias" onClose={() => setBrowserOpen(false)}>
+              <SpellBrowser spells={spellsData} rulesMode={character.rulesMode} allowedNames={allowedSpellNames} onAdd={addSpell} />
+            </BrowserModal>
+          )}
         </div>
-        {granted.length > 0 && (
-          <div className="foundry-box">
-            <div className="foundry-box-header-row">
-              <h4>Concedidas automaticamente</h4>
-            </div>
-            <ul className="foundry-item-list foundry-spell-list">
-              {granted.map((entry, index) => (
-                <li key={index}>
-                  <span className="foundry-skill-dot" aria-hidden="true" />
-                  <span className="foundry-item-name">{entry.name}</span>
-                  <span className="foundry-spell-meta">{entry.source}</span>
-                </li>
-              ))}
-            </ul>
-            <p className="field-hint">Essas vêm de raça/talento/classe — não precisa (nem dá pra) editar aqui.</p>
-          </div>
-        )}
       </div>
     );
   }
 
-  if (!entries.length && !granted.length) {
+  if (!entries.length) {
     return (
       <div className="foundry-spells-tab">
+        <SpellStatsHeader character={character} totalLevel={totalLevel} />
         <EmptyRow />
       </div>
     );
@@ -677,28 +1053,7 @@ function SpellsTab({ character, editable, onChange, raceMatch, classMatches }) {
 
   return (
     <div className="foundry-spells-tab">
-      {granted.length > 0 && (
-        <div className="foundry-box">
-          <div className="foundry-box-header-row">
-            <h4>Concedidas automaticamente</h4>
-          </div>
-          <ul className="foundry-item-list foundry-spell-list">
-            {granted.map((entry, index) => (
-              <li key={index}>
-                <span className="foundry-skill-dot" aria-hidden="true" />
-                <span className="foundry-item-name">{entry.name}</span>
-                <span className="foundry-spell-meta">
-                  {entry.source}
-                  {!entry.unlocked && ` · a partir do nível ${entry.level}`}
-                </span>
-              </li>
-            ))}
-          </ul>
-          <p className="field-hint">
-            O Foundry adiciona essas magias sozinho ao sincronizar (não precisa buscar/adicionar aqui).
-          </p>
-        </div>
-      )}
+      <SpellStatsHeader character={character} totalLevel={totalLevel} />
       {levels.map((level) => (
         <div className="foundry-box" key={level}>
           <div className="foundry-box-header-row">
@@ -716,56 +1071,19 @@ function SpellsTab({ character, editable, onChange, raceMatch, classMatches }) {
                     {entry.name}
                     {entry.prepared ? " (preparada)" : ""}
                   </span>
+                  <SpellInfoButton spell={entry.match} />
                   {entry.match && (
                     <span className="foundry-spell-meta">
                       {SCHOOL_ABBR[entry.match.school] ?? entry.match.school} · {entry.match.time} ·{" "}
                       {entry.match.range}
                     </span>
                   )}
+                  <SpellRollActions spell={entry} character={character} totalLevel={totalLevel} />
                 </li>
               ))}
           </ul>
         </div>
       ))}
-    </div>
-  );
-}
-
-// Nova aba (o Foundry deriva isso de Active Effects de verdade; o site não
-// recebe esse dado sincronizado — ver foundry_character_sheet_ui_architecture.md
-// e a decisão do usuário — então aqui é uma checklist manual mesmo, sem
-// pretensão de refletir o estado real da ficha no Foundry).
-function EffectsTab({ character, editable, onChange }) {
-  const active = new Set(character.conditions ?? []);
-
-  function toggle(id, checked) {
-    const set = new Set(character.conditions ?? []);
-    if (checked) set.add(id);
-    else set.delete(id);
-    onChange({ conditions: [...set] });
-  }
-
-  return (
-    <div className="foundry-effects-tab">
-      <p className="field-hint">
-        Condições marcadas manualmente — o site não recebe do Foundry quais efeitos estão ativos de verdade.
-      </p>
-      <div className="foundry-box">
-        <h4>Condições</h4>
-        <div className="foundry-conditions-grid">
-          {CONDITIONS.map((c) => (
-            <label key={c.id} className={`foundry-condition-pill ${active.has(c.id) ? "is-active" : ""}`}>
-              {editable ? (
-                <input type="checkbox" checked={active.has(c.id)} onChange={(e) => toggle(c.id, e.target.checked)} />
-              ) : (
-                <input type="checkbox" checked={active.has(c.id)} disabled readOnly />
-              )}
-              {c.label}
-            </label>
-          ))}
-        </div>
-        {!editable && !active.size && <EmptyRow />}
-      </div>
     </div>
   );
 }
@@ -882,12 +1200,12 @@ function BiographyTab({ character, editable, onChange }) {
 const EDITABLE_KEYS = [
   "name", "alignment", "inspiration", "hp", "hpAuto", "ac", "acAuto", "abilities",
   "senses", "toolProficiencies", "languages", "skillProficiencies", "skillExpertise",
-  "currency", "equipment", "feats", "spells", "conditions",
+  "currency", "equipment", "feats", "spells",
   "personality", "appearance", "notes",
 ];
 
 // Visual inspirado na ficha real do Foundry (cabeçalho escuro, retrato,
-// abas Detalhes/Inventário/Talentos/Magias/Efeitos/Biografia, iguais à
+// abas Detalhes/Inventário/Talentos/Magias/Biografia, iguais à
 // navegação de verdade do sistema dnd5e) mas com a IDENTIDADE VISUAL do
 // site (cores/fonte de src/index.css :root), não uma cópia literal do tema
 // do Foundry — pedido explícito do usuário. Ganhou um toggle "Editar" (como
@@ -954,17 +1272,39 @@ export function FoundrySheetView({ character, onSave, profileId }) {
   // `computeArmorClass` só lê `abilities`/`equipment`/`classes`/`race` — chaveando
   // nesses 4 em vez de `view` inteiro, editar campos não relacionados (nome,
   // biografia, PV manual etc.) não repete a varredura de `equipment.json`.
-  const computedAc = useMemo(
-    () => computeArmorClass(view, { equipmentData }),
+  const acBreakdown = useMemo(
+    () => computeArmorClassBreakdown(view, { equipmentData }),
     [view.abilities, view.equipment, view.classes, view.race],
   );
+  const computedAc = acBreakdown.total;
   const acAuto = view.acAuto ?? true;
   const displayedAc = acAuto ? computedAc : view.ac;
+  const [showAcBreakdown, setShowAcBreakdown] = useState(false);
+  const acBadgeRef = useRef(null);
+  useEffect(() => {
+    if (!showAcBreakdown) return;
+    function handleClickOutside(event) {
+      if (acBadgeRef.current && !acBadgeRef.current.contains(event.target)) setShowAcBreakdown(false);
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [showAcBreakdown]);
   function setManualAc(value) {
     onChange({ ac: value, acAuto: false });
   }
   function resetAcToAuto() {
     onChange({ ac: computeArmorClass(view, { equipmentData }), acAuto: true });
+  }
+  // Botão "Usar automático" do tooltip -- precisa funcionar tanto editando
+  // (grava no rascunho, igual `resetAcToAuto`, só persiste no "Salvar") quanto
+  // FORA da edição (grava direto via `onSave`, mesmo padrão de
+  // `quickToggleEquipmentField` do Inventário -- equipar item e destravar CA
+  // manual são as duas metades do mesmo fluxo: "acabei de mudar o equipamento,
+  // quero que a CA reflita isso agora", sem forçar entrar no modo de edição).
+  function useAutomaticAc() {
+    if (editing) resetAcToAuto();
+    else onSave?.({ ac: acBreakdown.total, acAuto: true });
+    setShowAcBreakdown(false);
   }
 
   // Mesmo padrão pro PV MÁXIMO -- `hp.value` (PV atual) continua sempre editável
@@ -985,8 +1325,8 @@ export function FoundrySheetView({ character, onSave, profileId }) {
 
   const [tab, setTab] = useState("details");
 
-  const tabProps = { character: view, editable: editing, onChange, originalClassMatch, totalLevel, raceMatch, classMatches, profileId };
-  const printTabProps = { ...tabProps, character, editable: false, onChange: () => {} };
+  const tabProps = { character: view, editable: editing, onChange, originalClassMatch, totalLevel, raceMatch, classMatches, profileId, onSave };
+  const printTabProps = { ...tabProps, character, editable: false, onChange: () => {}, onSave: undefined };
 
   return (
     <div className="foundry-sheet">
@@ -1075,7 +1415,7 @@ export function FoundrySheetView({ character, onSave, profileId }) {
             <span className="foundry-sheet-badge-value">{formatSpeed(speed) ?? "—"}</span>
             <span className="foundry-sheet-badge-label">Deslocamento</span>
           </div>
-          <div className={`foundry-sheet-badge ${editing ? "foundry-sheet-badge-editable" : ""}`}>
+          <div ref={acBadgeRef} className={`foundry-sheet-badge foundry-sheet-badge-ac ${editing ? "foundry-sheet-badge-editable" : ""}`}>
             {editing ? (
               <input
                 type="number"
@@ -1084,9 +1424,19 @@ export function FoundrySheetView({ character, onSave, profileId }) {
                 onChange={(e) => setManualAc(Number(e.target.value))}
               />
             ) : (
-              <span className="foundry-sheet-badge-value">{displayedAc ?? "—"}</span>
+              <span
+                className="foundry-sheet-badge-value foundry-sheet-badge-value-clickable"
+                onClick={() => setShowAcBreakdown((v) => !v)}
+                title="Ver de onde vem a CA"
+              >
+                {displayedAc ?? "—"}
+              </span>
             )}
-            <span className="foundry-sheet-badge-label">
+            <span
+              className="foundry-sheet-badge-label foundry-sheet-badge-label-clickable"
+              onClick={() => setShowAcBreakdown((v) => !v)}
+              title="Ver de onde vem a CA"
+            >
               CA{!acAuto && " (manual)"}
             </span>
             {editing && !acAuto && (
@@ -1098,6 +1448,31 @@ export function FoundrySheetView({ character, onSave, profileId }) {
               >
                 ↺
               </button>
+            )}
+            {showAcBreakdown && (
+              <div className="ac-breakdown-popover" onClick={(e) => e.stopPropagation()}>
+                {!acAuto && (
+                  <p className="ac-breakdown-note">
+                    CA definida manualmente ({view.ac}) — abaixo está o que o cálculo automático daria:
+                  </p>
+                )}
+                <ul className="ac-breakdown-list">
+                  {acBreakdown.parts.map((part, index) => (
+                    <li key={index}>
+                      <span>{part.label}</span>
+                      <span>{part.value >= 0 ? `+${part.value}` : part.value}</span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="ac-breakdown-total">
+                  Total automático: <strong>{acBreakdown.total}</strong>
+                </p>
+                {!acAuto && onSave && (
+                  <button type="button" className="ac-breakdown-use-auto" onClick={useAutomaticAc}>
+                    Usar automático ({acBreakdown.total})
+                  </button>
+                )}
+              </div>
             )}
           </div>
           <div className={`foundry-sheet-badge foundry-sheet-badge-hp ${editing ? "foundry-sheet-badge-editable" : ""}`}>

@@ -8,6 +8,7 @@ import { StepMaestriaDeArma } from "./wizard/StepMaestriaDeArma";
 import { StepProficienciaDeArma } from "./wizard/StepProficienciaDeArma";
 import { StepAnimalEnhancement } from "./wizard/StepAnimalEnhancement";
 import { StepMagias } from "./wizard/StepMagias";
+import { SubclassGainsView } from "./wizard/SubclassGainsView";
 import { SubclassPicker } from "./SubclassPicker";
 import { HpRollPicker } from "./HpRollPicker";
 import { FoundrySheetView } from "./FoundrySheetView";
@@ -19,6 +20,7 @@ import { resolveClassMatches } from "../schema/resolveClassMatches";
 import { computeGrantedSpells, computeSubclassSpellChoices, computeFeatSpellChoices } from "../schema/grantedSpells";
 import { hasActiveSpellcasting } from "../schema/spellProgression";
 import { computeHitPoints } from "../utils/computeHitPoints";
+import { subclassChoicePending, subclassGainBlocks } from "../utils/levelUpSubclass";
 import { useCharacterAppliers } from "../hooks/useCharacterAppliers";
 import { useAbilityImprovements } from "../hooks/useAbilityImprovements";
 import { useClassChoices } from "../hooks/useClassChoices";
@@ -69,6 +71,15 @@ const STEP_DEFS = [
     blurb:
       "Marque até que nível cada classe deve subir (níveis já alcançados aparecem travados). " +
       "Dá pra multiclassar adicionando uma classe nova. O nível total do personagem nunca passa de 20.",
+  },
+  {
+    key: "subclasse",
+    label: "Subclasse",
+    title: "Subclasse",
+    blurb:
+      "A subclasse é escolhida no nível em que a classe a libera (obrigatória) e nunca muda depois. Quando a subclasse já " +
+      "escolhida concede algo nos níveis novos — features, magias, escolhas —, aparece aqui o que você recebe.",
+    conditional: ({ pendingSubclassRows, subclassGainRows }) => pendingSubclassRows.length > 0 || subclassGainRows.length > 0,
   },
   {
     key: "pericias",
@@ -131,13 +142,6 @@ const STEP_DEFS = [
     conditional: ({ hasNewAnimalEnhancementSlots }) => hasNewAnimalEnhancementSlots,
   },
   {
-    key: "subclasse",
-    label: "Subclasse",
-    title: "Subclasse",
-    blurb: "Algum nível novo liberou a escolha de subclasse.",
-    conditional: ({ pendingSubclassRows }) => pendingSubclassRows.length > 0,
-  },
-  {
     key: "magias",
     label: "Magias",
     title: "Magias",
@@ -179,6 +183,9 @@ export function LevelUpWizard({ initialCharacter, onSubmit, onCancel }) {
     JSON.parse(JSON.stringify({ ...createEmptyCharacter(), ...initialCharacter })),
   );
   const [originalLevels] = useState(() => (initialCharacter.classes ?? []).map((c) => c.level ?? 1));
+  // Subclasse não muda depois de escolhida: só escolhe quem ainda não tinha ao abrir o assistente E cuja classe atravessa
+  // o nível de subclasse nesta subida.
+  const [originalSubclasses] = useState(() => (initialCharacter.classes ?? []).map((c) => c.subclass || ""));
   const [classesMatches, setClassesMatches] = useState(() =>
     resolveClassMatches(initialCharacter.classes, initialCharacter.rulesMode),
   );
@@ -324,15 +331,11 @@ export function LevelUpWizard({ initialCharacter, onSubmit, onCancel }) {
       for (const level of levels) pendingHp.push({ classIndex: index, level, className: row.name });
     });
 
-    // Mesma ideia -- baseado só em `row.level` (nunca muda ao ESCOLHER a
-    // subclasse), não em `!row.subclass` (que sumiria a aba assim que a
-    // primeira classe elegível fosse resolvida, mesmo com outra ainda
-    // pendente). O corpo da etapa mostra o picker pra toda classe elegível,
-    // já escolhida ou não -- mesmo padrão de "sempre mostra, se autocura" do
-    // resto do wizard (o picker já destaca a seleção atual sozinho).
+    // A escolha só existe na subida que ATRAVESSA o nível de subclasse da classe (nível da CLASSE, não do personagem) e
+    // só pra quem ainda não tinha subclasse. Não existe escolher tarde nem trocar depois.
     const eligibleSubclassRows = character.classes
       .map((row, index) => ({ row, index }))
-      .filter(({ row, index }) => (row.level ?? 0) >= (classMatches[index]?.classData?.subclassLevel ?? Infinity));
+      .filter(({ row, index }) => !originalSubclasses[index] && subclassChoicePending(classMatches[index]?.classData, originalLevels[index], row.level));
 
     // Índice >= originalLevels.length = classe que não existia antes desta
     // sessão (entrou via "Adicionar classe"). Só ela pode ter concessão de
@@ -392,9 +395,20 @@ export function LevelUpWizard({ initialCharacter, onSubmit, onCancel }) {
     character.raceRules,
     classMatches,
     originalLevels,
+    originalSubclasses,
   ]);
 
+  // O que a subclasse (já escolhida, ou escolhida agora) concede nos níveis novos.
+  const subclassBlocks = useMemo(
+    () => subclassGainBlocks({ character, classMatches, originalLevels }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [character.classes, character.abilities, classMatches, originalLevels],
+  );
+  const subclassGainRows = [...new Set(subclassBlocks.map((block) => block.classIndex))].map((index) => ({ row: character.classes[index], index }));
+  const subclassMissing = eligibleSubclassRows.some(({ row }) => !row.subclass);
+
   const conditionalCtx = {
+    subclassGainRows,
     character,
     raceMatch,
     pendingHp,
@@ -426,6 +440,7 @@ export function LevelUpWizard({ initialCharacter, onSubmit, onCancel }) {
       hasNewWeaponProficiencySlots,
       hasNewAnimalEnhancementSlots,
       eligibleSubclassRows,
+      subclassBlocks,
       hasNewClassGrants,
       character.classes,
       character.abilities,
@@ -443,7 +458,12 @@ export function LevelUpWizard({ initialCharacter, onSubmit, onCancel }) {
   const isFirst = stepIndex === 0;
   const isLast = stepIndex === visibleSteps.length - 1;
 
+  // Escolha de subclasse pendente é obrigatória: não passa da etapa Subclasse (nem por Próximo, nem pelas abas) sem escolher.
+  const subclassStepIndex = visibleSteps.findIndex((st) => st.key === "subclasse");
+  const subclassLockIndex = subclassMissing && subclassStepIndex >= 0 ? subclassStepIndex : Infinity;
+
   function goTo(index) {
+    if (index > subclassLockIndex) return;
     const clamped = Math.min(Math.max(index, 0), visibleSteps.length - 1);
     setStepKey(visibleSteps[clamped].key);
   }
@@ -451,6 +471,7 @@ export function LevelUpWizard({ initialCharacter, onSubmit, onCancel }) {
     goTo(stepIndex - 1);
   }
   function goNext() {
+    if (stepIndex >= subclassLockIndex) return;
     if (isLast) {
       // Classe adicionada nesta sessão mas nunca marcada (ficou em nível 0)
       // não faz sentido entrar na ficha final -- descarta antes de submeter.
@@ -610,24 +631,40 @@ export function LevelUpWizard({ initialCharacter, onSubmit, onCancel }) {
             onClear={clearAnimalEnhancementChoice}
           />
         );
-      case "subclasse":
+      case "subclasse": {
+        const indexes = [...new Set([...eligibleSubclassRows.map(({ index }) => index), ...subclassGainRows.map(({ index }) => index)])].sort((x, y) => x - y);
         return (
           <div className="wizard-step-subclasse">
-            {eligibleSubclassRows.map(({ row, index }) => (
-              <div key={index} className="levelup-subclass-block">
-                <h4>{row.name}</h4>
-                <SubclassPicker
-                  classData={classMatches[index]?.classData}
-                  subclassesData={subclassesData}
-                  level={row.level}
-                  value={row.subclass}
-                  selectedRules={row.subclassRules}
-                  onPick={(item) => pickSubclass(index, item)}
-                />
-              </div>
-            ))}
+            {indexes.map((index) => {
+              const row = character.classes[index];
+              const pending = eligibleSubclassRows.some((entry) => entry.index === index);
+              const blocks = subclassBlocks.filter((block) => block.classIndex === index);
+              return (
+                <div key={index} className="levelup-subclass-block">
+                  <h4>{row.name} — subclasse</h4>
+                  {pending ? (
+                    <SubclassPicker
+                      classData={classMatches[index]?.classData}
+                      subclassesData={subclassesData}
+                      level={row.level}
+                      value={row.subclass}
+                      selectedRules={row.subclassRules}
+                      onPick={(item) => pickSubclass(index, item)}
+                    />
+                  ) : (
+                    <p className="field-hint">Subclasse: {row.subclass} 🔒 (não muda depois de escolhida)</p>
+                  )}
+                  {blocks.length > 0 ? (
+                    <SubclassGainsView blocks={blocks} />
+                  ) : pending && row.subclass ? (
+                    <p className="field-hint">A subclasse não concede nada nos níveis novos.</p>
+                  ) : null}
+                </div>
+              );
+            })}
           </div>
         );
+      }
       case "magias":
         return (
           <StepMagias
@@ -675,7 +712,7 @@ export function LevelUpWizard({ initialCharacter, onSubmit, onCancel }) {
         <ol className="wizard-progress">
           {visibleSteps.map((s, index) => (
             <li key={s.key} className={index === stepIndex ? "wizard-progress-current" : index < stepIndex ? "wizard-progress-done" : ""}>
-              <button type="button" onClick={() => goTo(index)}>
+              <button type="button" onClick={() => goTo(index)} disabled={index > subclassLockIndex}>
                 {s.label}
               </button>
             </li>
@@ -684,6 +721,9 @@ export function LevelUpWizard({ initialCharacter, onSubmit, onCancel }) {
 
         <h2>{step.title}</h2>
         <p className="wizard-blurb">{step.blurb}</p>
+        {subclassMissing && step.key === "subclasse" && (
+          <p className="field-hint field-hint-warn">Escolha a subclasse para continuar — ela é obrigatória neste nível e não muda depois.</p>
+        )}
 
         <div className="wizard-step-body">{renderStepBody()}</div>
 
@@ -695,7 +735,7 @@ export function LevelUpWizard({ initialCharacter, onSubmit, onCancel }) {
             <button type="button" onClick={goBack} disabled={isFirst}>
               Voltar
             </button>
-            <button type="button" onClick={goNext}>
+            <button type="button" onClick={goNext} disabled={stepIndex >= subclassLockIndex}>
               {isLast ? "Concluir Level-Up" : "Próximo"}
             </button>
           </div>

@@ -1,3 +1,5 @@
+import { isSpellRulesCompatible } from "./spellEditions";
+
 // Deriva o pool de magias que uma classe/subclasse EXPANDE (`additionalSpells.expanded`
 // do 5etools, mesmo `spellGrants.raw` cru que `grantedSpells.js` já lê pra known/prepared/
 // innate) -- diferente de `computeGrantedSpells`: aqui a magia NÃO é concedida
@@ -157,7 +159,7 @@ function expandedFromRaw(raw, spells, className) {
 // StepMagias.jsx). `classMatches` aceita array ou objeto indexado por posição, mesmo
 // padrão de `computeGrantedSpells`.
 export function computeExpandedSpellPool({ character, classMatches, spellsData }) {
-  const editionSpells = spellsData.filter((s) => s.rules === character.rulesMode);
+  const editionSpells = spellsData.filter((s) => isSpellRulesCompatible(s, character.rulesMode));
   const results = [];
 
   Object.values(classMatches ?? {}).forEach((match, index) => {
@@ -186,4 +188,25 @@ export function computeExpandedSpellPool({ character, classMatches, spellsData }
     seen.add(key);
     return true;
   });
+}
+
+// União da lista normal de cada classe do personagem (`character.classes[].name`
+// batendo em `spell.classes`) com tudo que `computeExpandedSpellPool` já libera fora
+// da lista (Warlock Patron, Divine Soul, Eldritch Knight/Arcane Trickster, Bardo
+// Magical Secrets) -- `Set<spellName>` usado pra travar o `SpellBrowser` (busca
+// principal do wizard E da ficha editável) nunca mostrar/deixar adicionar magia de
+// fora da lista real do personagem. Extraído de StepMagias.jsx pra ser reaproveitado
+// também em FoundrySheetView.jsx (ficha editável), sem duplicar a lógica.
+export function computeAllowedSpellNames({ character, classMatches, spellsData }) {
+  const expandedPool = computeExpandedSpellPool({ character, classMatches, spellsData });
+  const characterClassNames = (character.classes ?? []).map((c) => c.name).filter(Boolean);
+  const allowedSpellNames = new Set();
+  for (const spell of spellsData) {
+    if (!isSpellRulesCompatible(spell, character.rulesMode)) continue;
+    if (spell.classes.some((c) => characterClassNames.includes(c))) allowedSpellNames.add(spell.name);
+  }
+  for (const entry of expandedPool) {
+    if (entry.unlocked) allowedSpellNames.add(entry.name);
+  }
+  return allowedSpellNames;
 }
