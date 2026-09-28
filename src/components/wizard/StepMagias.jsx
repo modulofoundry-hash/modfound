@@ -78,7 +78,25 @@ export function StepMagias({ character, raceMatch, classMatches, spells, onChang
   const classSpells = spells.filter((s) => !s.bonus);
   const cantripCount = classSpells.filter((s) => isCantripName(s.name, spellsData)).length;
   const knownCount = classSpells.length - cantripCount;
-  const preparedCount = classSpells.filter((s) => s.prepared).length;
+  // Truque nunca conta preparo (a tabela `maxPrepared` do livro é só pra magia de 1º nível
+  // ou mais) -- antes disso não importava porque nenhuma magia era adicionada já preparada,
+  // mas agora que `handleAdd` marca `prepared:true` direto (ver abaixo), sem esse filtro um
+  // truque contaria contra o teto de preparo por engano.
+  const preparedCount = classSpells.filter((s) => s.prepared && !isCantripName(s.name, spellsData)).length;
+
+  // Único caso com DUAS etapas de verdade (aprender no grimório, depois escolher o que
+  // preparar) -- ver `spellProgression.js`. Toda outra classe (sabe a lista toda OU
+  // conhece fixo) usa a mesma etapa única: adicionar já marca ativa, sem checkbox
+  // "Preparada" (não existe essa distinção na regra real pra elas). Simplificação aceita
+  // em multiclasse Mago+outra classe: TODAS as magias passam pelo fluxo de duas etapas
+  // nesse caso (mais manual do que o estritamente necessário pra parte não-Mago, mas nunca
+  // errado -- mesmo espírito de outras simplificações já aceitas neste arquivo).
+  const isTwoStep = spellCaps.hasWizard;
+  // Teto único de "magia ativa" pra quem usa a etapa única -- some `spellsKnown` (conhece
+  // fixo) com `maxPrepared` (sabe a lista toda) porque, nesse fluxo, as duas coisas viram o
+  // mesmo conceito (adicionou = ativa); cobre multiclasse misturando as duas categorias
+  // (ex: Bardo + Clérigo) sem precisar rastrear de qual classe cada magia veio.
+  const combinedActiveCap = (spellCaps.spellsKnown ?? 0) + (spellCaps.maxPrepared ?? 0);
 
   function handleAddMany(names, bonus) {
     const existing = new Set(spells.map((s) => s.name));
@@ -119,18 +137,25 @@ export function StepMagias({ character, raceMatch, classMatches, spells, onChang
   // barrado, mesmo que o personagem já estivesse acima do teto antes.
   function handleChange(nextItems) {
     if (spellCaps.maxPrepared !== null) {
-      // Mesma exclusão de `classSpells` acima -- uma magia sempre-preparada
+      // Mesma exclusão de `classSpells`/truque acima -- uma magia sempre-preparada
       // de talento/subclasse marcada "Preparada" na lista (redundante, mas o
-      // jogador pode clicar) não deve contar pro teto da classe.
-      const nextPrepared = nextItems.filter((s) => s.prepared && !s.bonus).length;
+      // jogador pode clicar) não deve contar pro teto da classe, nem truque.
+      const nextPrepared = nextItems.filter((s) => s.prepared && !s.bonus && !isCantripName(s.name, spellsData)).length;
       if (nextPrepared > spellCaps.maxPrepared && nextPrepared > preparedCount) return;
     }
     onChangeSpells(nextItems);
   }
 
+  // Fora do Mago (`isTwoStep`), adicionar já marca ativa direto -- não existe uma etapa
+  // separada de "escolher pra lista" seguida de "marcar preparada" na regra real pra quem
+  // sabe a lista toda OU pra quem conhece fixo, só o Mago tem essas duas etapas de
+  // verdade (grimório, depois o que preparar). Cantrip nunca é "preparado" em nenhuma
+  // edição/classe -- sempre `false` (o checkbox nem aparece pra elas, ver ListEditor
+  // abaixo, mas o valor guardado continua consistente).
   function handleAdd(name) {
     if (spells.some((s) => s.name === name)) return;
-    onChangeSpells([...spells, { name, prepared: false }]);
+    const active = !isTwoStep && !isCantripName(name, spellsData);
+    onChangeSpells([...spells, { name, prepared: active }]);
   }
 
   return (
@@ -196,18 +221,26 @@ export function StepMagias({ character, raceMatch, classMatches, spells, onChang
       ))}
       <p className="field-hint">
         Truques: {cantripCount}/{spellCaps.cantripsKnown}
-        {spellCaps.spellsKnown !== null && ` · Magias conhecidas: ${knownCount}/${spellCaps.spellsKnown}`}
-        {spellCaps.maxPrepared !== null && ` · Preparadas: ${preparedCount}/${spellCaps.maxPrepared}`}
+        {isTwoStep
+          ? <>
+              {` · Magias no grimório: ${knownCount}/${spellCaps.spellbookSize}`}
+              {` · Preparadas: ${preparedCount}/${spellCaps.maxPrepared}`}
+            </>
+          : ` · Magias: ${knownCount}/${combinedActiveCap}`}
       </p>
       <ListEditor
         items={spells}
         onChange={handleChange}
         addLabel="Adicionar magia"
         allowAdd={false}
-        fields={[
-          { key: "name", label: "Magia" },
-          { key: "prepared", label: "Preparada", type: "checkbox", default: false },
-        ]}
+        fields={
+          isTwoStep
+            ? [
+                { key: "name", label: "Magia" },
+                { key: "prepared", label: "Preparada", type: "checkbox", default: false },
+              ]
+            : [{ key: "name", label: "Magia" }]
+        }
       />
       <button type="button" onClick={() => onToggleBrowser(true)}>
         Buscar magia
@@ -255,7 +288,7 @@ export function StepMagias({ character, raceMatch, classMatches, spells, onChang
                           ? false
                           : spell.level === 0
                             ? cantripCount < spellCaps.cantripsKnown
-                            : spellCaps.spellsKnown === null || knownCount < spellCaps.spellsKnown
+                            : knownCount < (isTwoStep ? spellCaps.spellbookSize : combinedActiveCap)
                 }
                 bonusEligibility={scoped ? undefined : bonusEligibility}
                 allowedNames={scoped ? new Set(scoped.pool) : allowedSpellNames}

@@ -50,12 +50,23 @@ const FULL_CASTER_MAX_SPELL_LEVEL = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8
 // círculo pra sempre (`DND5E.pactCastingProgression`, dnd5e.mjs).
 const PACT_MAX_SPELL_LEVEL = { 1: 1, 3: 2, 5: 3, 7: 4, 9: 5 };
 
+// Único caso do jogo com grimório (pool de magias aprendidas menor que a lista inteira da
+// classe, mesmo sendo um conjurador "preparado"): o Mago. Não existe campo nenhum no banco
+// de conteúdo pra isso (`spellcasting`/`spellProgression` não distingue "prepara da lista
+// inteira" de "prepara só do que já aprendeu") -- identificado pelo NOME da classe, mesmo
+// padrão já usado em `unarmedStrike.js` pra exceções de uma classe só. Fórmula real (igual
+// nas duas edições, texto da feature "Spellbook"): começa com 6 magias de 1º nível, +2 a
+// cada nível de Mago ganho depois do 1º.
+const WIZARD_SPELLBOOK_START = 6;
+
 export function spellProgressionForCharacter(character, classMatches) {
   let cantripsKnown = 0;
   let spellsKnown = 0;
   let hasKnownCap = false;
   let maxPrepared = 0;
   let hasPreparedCap = false;
+  let spellbookSize = 0;
+  let hasWizard = false;
   // Nível efetivo COMBINADO (regra real de multiclasse: cada classe conjuradora soma
   // nível/divisor arredondado pra cima, e um ÚNICO valor combinado indexa a tabela de
   // espaços -- não um lookup por classe separado, senão um personagem Mago3/Paladino4
@@ -100,6 +111,10 @@ export function spellProgressionForCharacter(character, classMatches) {
   (character.classes ?? []).forEach((row, index) => {
     const match = classMatches[index];
     const level = row.level ?? 1;
+    if (row.name === "Wizard") {
+      hasWizard = true;
+      spellbookSize += WIZARD_SPELLBOOK_START + 2 * Math.max(0, level - 1);
+    }
     accumulate(match?.classData?.spellcasting, match?.classData?.spellProgression ?? {}, level);
     // Conjurador que só existe na SUBCLASSE, não na classe base (Eldritch Knight/Arcane
     // Trickster -- Fighter/Rogue não têm `spellcasting` nenhum) -- achado a pedido do
@@ -121,6 +136,12 @@ export function spellProgressionForCharacter(character, classMatches) {
     // TODAS as fontes -- usado só pra travar o buscador (não deixar escolher magia de
     // círculo acima do que já dá pra conjurar), nunca pra calcular quantidade de espaço.
     maxSpellLevel: Math.max(nonPactMaxLevel, pactSpellLevel),
+    // Único caso com pool de magias APRENDIDAS menor que a lista inteira, mesmo sendo
+    // "preparado" -- ver `hasWizard` acima. `null` quando não é Mago (StepMagias usa isso
+    // pra decidir se mostra o fluxo de duas etapas -- buscar pro grimório, depois marcar
+    // preparada -- ou o fluxo direto de todo mundo).
+    hasWizard,
+    spellbookSize: hasWizard ? spellbookSize : null,
   };
 }
 
