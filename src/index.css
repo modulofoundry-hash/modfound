@@ -3631,3 +3631,62 @@ input {
   background: var(--bg);
   color: var(--text);
 }
+
+/* Reset de <button> usado nos elementos clicáveis da ficha (atributo/
+   perícia/resistência/ação) -- eram <span> sem caixa própria; preserva a
+   aparência original, só acrescenta affordance de clique. */
+.foundry-rollable {
+  font: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+
+button.foundry-rollable {
+  background: none;
+  border: none;
+  padding: 0;
+  color: inherit;
+}
+
+button.foundry-ability-badge.foundry-rollable {
+  padding: 8px 10px;
+}
+
+.foundry-rollable:hover {
+  color: var(--accent);
+}
+
+/* Chat geral do site -- ícone ao lado de "Trocar perfil" (ProfileLayout.jsx),
+   painel flutuante abaixo dele. */
+.global-chat {
+  position: relative;
+}
+
+.global-chat-toggle {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.global-chat-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 20;
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+  background: var(--surface);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 25%);
+}
+
+.global-chat-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 320px;
+  overflow-y: auto;
+}

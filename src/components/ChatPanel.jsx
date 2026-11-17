@@ -42,13 +42,16 @@ function describeRequest(request) {
   }
 }
 
-function formatTime(timestamp) {
+export function formatTime(timestamp) {
   const date = timestamp?.toDate?.();
   if (!date) return "";
   return date.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
 }
 
-function ChatMessageCard({ message }) {
+// Exportado -- o chat geral (GlobalChatPanel.jsx) mostra a MESMA coleção de
+// mensagens (texto e rollRequest), só que combinando todos os perfis; reusa
+// o card em vez de duplicar a lógica de descrição/status/crítico-falha.
+export function ChatMessageCard({ message }) {
   const isRoll = message.kind === "rollRequest";
   const resultClass = message.status === "error" ? "chat-message-error" : "chat-message-roll";
 

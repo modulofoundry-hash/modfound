@@ -2,6 +2,7 @@ import { Navigate, NavLink, Outlet, useParams } from "react-router-dom";
 import { useProfiles } from "../hooks/useProfiles";
 import { GUEST_PROFILE_ID } from "../constants/profiles";
 import { useAuth } from "../auth/AuthContext";
+import { GlobalChatPanel } from "../components/GlobalChatPanel";
 
 export function ProfileLayout() {
   const { profileId } = useParams();
@@ -40,6 +41,7 @@ export function ProfileLayout() {
           {!isGuest && <NavLink to="cenas">Cenas</NavLink>}
         </nav>
         <div className="profile-header-actions">
+          <GlobalChatPanel profile={profile} />
           <NavLink to="/perfis">Trocar perfil</NavLink>
           <button type="button" onClick={logout}>
             Sair

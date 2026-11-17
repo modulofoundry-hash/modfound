@@ -220,8 +220,27 @@ function downloadCharacterJSON(character) {
   URL.revokeObjectURL(url);
 }
 
-function DetailsTab({ character, editable, onChange, originalClassMatch, totalLevel, raceMatch, classMatches }) {
+function DetailsTab({
+  character,
+  editable,
+  onChange,
+  originalClassMatch,
+  totalLevel,
+  raceMatch,
+  classMatches,
+  profileId,
+}) {
   const prof = proficiencyBonus(totalLevel);
+
+  // Clique em perícia/resistência/ação de ataque rola de verdade, mesmo
+  // mecanismo que o botão "⚔ Atacar" do Inventário já usa (sendRollRequest) --
+  // escreve em profiles/{profileId}/chatMessages, o GM ativo no Foundry
+  // resolve (liveRollBridge.js) e o resultado aparece tanto no chat da ficha
+  // (ChatPanel) quanto no chat geral (GlobalChatPanel), já que os dois leem a
+  // mesma coleção.
+  function rollRequest(request) {
+    sendRollRequest(profileId, { sourceId: character.id, authorName: character.name, request });
+  }
   const expertiseSkills = new Set(character.skillExpertise ?? []);
   const proficientSkills = new Set(character.skillProficiencies ?? []);
   const savingThrowProfs = new Set(originalClassMatch?.savingThrows ?? []);
@@ -296,7 +315,14 @@ function DetailsTab({ character, editable, onChange, originalClassMatch, totalLe
                     <span className="foundry-skill-dot" aria-hidden="true" />
                   )}
                   <span className="foundry-skill-ability">{skill.ability.toUpperCase()}</span>
-                  <span className="foundry-skill-label">{skill.label}</span>
+                  <button
+                    type="button"
+                    className="foundry-skill-label foundry-rollable"
+                    onClick={() => rollRequest({ type: "skill", key: skill.id })}
+                    title={`Rolar ${skill.label}`}
+                  >
+                    {skill.label}
+                  </button>
                   <span className="foundry-skill-mod">{fmtMod(mod)}</span>
                   <span className="foundry-skill-passive">{10 + mod}</span>
                 </li>
@@ -339,13 +365,53 @@ function DetailsTab({ character, editable, onChange, originalClassMatch, totalLe
               return (
                 <div key={key} className={`foundry-save-row ${proficient ? "is-proficient" : ""}`}>
                   <span className="foundry-skill-dot" aria-hidden="true" />
-                  <span className="foundry-skill-ability">{ABILITY_LABELS[key]}</span>
+                  <button
+                    type="button"
+                    className="foundry-skill-ability foundry-rollable"
+                    onClick={() => rollRequest({ type: "save", key })}
+                    title={`Rolar resistência de ${ABILITY_LABELS[key]}`}
+                  >
+                    {ABILITY_LABELS[key]}
+                  </button>
                   <span className="foundry-skill-mod">{fmtMod(mod)}</span>
                 </div>
               );
             })}
           </div>
           <p className="field-hint">Proficiência de resistência vem da classe original, não é editável aqui.</p>
+        </div>
+
+        <div className="foundry-box">
+          <h4>Ações</h4>
+          <ul className="foundry-item-list">
+            <li>
+              <span className="foundry-skill-dot" aria-hidden="true" />
+              <button
+                type="button"
+                className="foundry-item-name foundry-rollable"
+                onClick={() => rollRequest({ type: "attack", itemName: "Unarmed Strike" })}
+              >
+                Ataque Desarmado
+              </button>
+            </li>
+            {(character.equipment ?? [])
+              .filter((item) => item.equipped && looksAttackable(item.name))
+              .map((item, index) => (
+                <li key={`${item.name}-${index}`}>
+                  <span className="foundry-skill-dot" aria-hidden="true" />
+                  <button
+                    type="button"
+                    className="foundry-item-name foundry-rollable"
+                    onClick={() => rollRequest({ type: "attack", itemName: item.name })}
+                  >
+                    {item.name}
+                  </button>
+                </li>
+              ))}
+          </ul>
+          {!(character.equipment ?? []).some((item) => item.equipped && looksAttackable(item.name)) && (
+            <p className="field-hint">Equipe uma arma no Inventário pra ela aparecer aqui.</p>
+          )}
         </div>
 
         {originalClassMatch?.armor?.length > 0 && (
@@ -1614,11 +1680,23 @@ export function FoundrySheetView({ character, onSave, profileId }) {
           ABILITIES.map((key) => {
             const score = view.abilities?.[key] ?? 10;
             return (
-              <div key={key} className="foundry-ability-badge">
+              <button
+                type="button"
+                key={key}
+                className="foundry-ability-badge foundry-rollable"
+                onClick={() =>
+                  sendRollRequest(profileId, {
+                    sourceId: character.id,
+                    authorName: character.name,
+                    request: { type: "check", key },
+                  })
+                }
+                title={`Rolar teste de ${ABILITY_LABELS[key]}`}
+              >
                 <span className="foundry-ability-label">{ABILITY_LABELS[key]}</span>
                 <span className="foundry-ability-score">{score}</span>
                 <span className="foundry-ability-mod">{fmtMod(abilityMod(score))}</span>
-              </div>
+              </button>
             );
           })
         )}
