@@ -823,6 +823,11 @@
               },
               {
                 "type": "fixed",
+                "name": "Pouch",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
                 "name": "10 po",
                 "quantity": 1
               }
@@ -855,7 +860,11 @@
     "tools": [
       "thieves' tools"
     ],
-    "toolChoice": null,
+    "toolChoice": {
+      "count": 1,
+      "category": "setGaming",
+      "label": "qualquer jogo de tabuleiro/dados"
+    },
     "languages": "",
     "languageChoice": null,
     "equipmentSlots": [
@@ -1558,6 +1567,11 @@
                 "type": "fixed",
                 "name": "Purse",
                 "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "25 po",
+                "quantity": 1
               }
             ]
           }
@@ -1748,7 +1762,7 @@
             "grants": [
               {
                 "type": "fixed",
-                "name": "Belaying pin",
+                "name": "Club",
                 "quantity": 1
               },
               {
@@ -1866,7 +1880,7 @@
             "grants": [
               {
                 "type": "fixed",
-                "name": "Playing Cards Set",
+                "name": "Playing Card Set",
                 "quantity": 1
               }
             ]
@@ -2136,8 +2150,8 @@
                 "quantity": 1
               },
               {
-                "type": "fixed",
-                "name": "Gaming Set (same as chosen proficiency)",
+                "type": "category",
+                "category": "setGaming",
                 "quantity": 1
               },
               {
@@ -2238,6 +2252,11 @@
               {
                 "type": "fixed",
                 "name": "Fine Clothes",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Pouch",
                 "quantity": 1
               },
               {
@@ -2594,6 +2613,11 @@
                 "type": "fixed",
                 "name": "Pouch",
                 "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "10 po",
+                "quantity": 1
               }
             ]
           }
@@ -2656,6 +2680,11 @@
               {
                 "type": "fixed",
                 "name": "Pouch",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "15 po",
                 "quantity": 1
               }
             ]
@@ -2741,6 +2770,11 @@
               {
                 "type": "fixed",
                 "name": "Pouch",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "10 po",
                 "quantity": 1
               }
             ]
@@ -2858,8 +2892,8 @@
             "label": "A",
             "grants": [
               {
-                "type": "fixed",
-                "name": "Artisan's Tools (same as above)",
+                "type": "category",
+                "category": "toolArtisan",
                 "quantity": 1
               },
               {
@@ -2943,6 +2977,11 @@
               {
                 "type": "fixed",
                 "name": "Pouch",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "5 po",
                 "quantity": 1
               }
             ]
@@ -3915,6 +3954,11 @@
                 "type": "fixed",
                 "name": "Pouch",
                 "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "15 po",
+                "quantity": 1
               }
             ]
           }
@@ -3975,6 +4019,11 @@
               },
               {
                 "type": "fixed",
+                "name": "Pouch",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
                 "name": "10 po",
                 "quantity": 1
               }
@@ -4024,8 +4073,8 @@
                 "quantity": 1
               },
               {
-                "type": "fixed",
-                "name": "Gaming Set (same as above)",
+                "type": "category",
+                "category": "setGaming",
                 "quantity": 1
               },
               {
@@ -4141,6 +4190,11 @@
               {
                 "type": "fixed",
                 "name": "Pouch",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "5 po",
                 "quantity": 1
               }
             ]
@@ -4628,6 +4682,11 @@
               },
               {
                 "type": "fixed",
+                "name": "Pouch",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
                 "name": "15 po",
                 "quantity": 1
               }
@@ -4682,11 +4741,6 @@
               },
               {
                 "type": "fixed",
-                "name": "Ink Pen",
-                "quantity": 1
-              },
-              {
-                "type": "fixed",
                 "name": "Ink",
                 "quantity": 1
               },
@@ -4703,6 +4757,31 @@
               {
                 "type": "fixed",
                 "name": "10 po",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "choice": true,
+        "options": [
+          {
+            "label": "a",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "Ink Pen",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "b",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "Quill",
                 "quantity": 1
               }
             ]
@@ -4852,6 +4931,31 @@
             ]
           }
         ]
+      },
+      {
+        "choice": true,
+        "options": [
+          {
+            "label": "a",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "Small stone that reminds you of home",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "b",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "Sprig that reminds you of home",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
       }
     ],
     "abilityBonus": null,
@@ -4910,6 +5014,31 @@
               {
                 "type": "fixed",
                 "name": "10 po",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "choice": true,
+        "options": [
+          {
+            "label": "A",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "Pet beetle",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "label": "B",
+            "grants": [
+              {
+                "type": "fixed",
+                "name": "Pet spider",
                 "quantity": 1
               }
             ]
@@ -5647,7 +5776,7 @@
               },
               {
                 "type": "fixed",
-                "name": "1 po",
+                "name": "1 sp",
                 "quantity": 1
               }
             ]
@@ -7214,6 +7343,11 @@
                 "type": "fixed",
                 "name": "Pouch",
                 "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "15 po",
+                "quantity": 1
               }
             ]
           }
@@ -7609,7 +7743,7 @@
               },
               {
                 "type": "fixed",
-                "name": "Playing Cards Set",
+                "name": "Playing Card Set",
                 "quantity": 1
               },
               {
@@ -7788,6 +7922,11 @@
               {
                 "type": "fixed",
                 "name": "Pouch",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "10 po",
                 "quantity": 1
               }
             ]
@@ -8329,6 +8468,11 @@
                 "type": "fixed",
                 "name": "Pouch",
                 "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "10 po",
+                "quantity": 1
               }
             ]
           }
@@ -8773,7 +8917,11 @@
     "tools": [
       "thieves' tools"
     ],
-    "toolChoice": null,
+    "toolChoice": {
+      "count": 1,
+      "category": "setGaming",
+      "label": "qualquer jogo de tabuleiro/dados"
+    },
     "languages": "",
     "languageChoice": null,
     "equipmentSlots": [
@@ -8962,6 +9110,11 @@
               {
                 "type": "fixed",
                 "name": "Purse",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "25 po",
                 "quantity": 1
               }
             ]
@@ -9226,8 +9379,8 @@
                 "quantity": 1
               },
               {
-                "type": "fixed",
-                "name": "Gaming Set (any)",
+                "type": "category",
+                "category": "setGaming",
                 "quantity": 1
               },
               {
@@ -9427,7 +9580,7 @@
         "choice": false,
         "options": [
           {
-            "label": "A",
+            "label": "",
             "grants": [
               {
                 "type": "fixed",
@@ -9438,12 +9591,42 @@
                 "type": "fixed",
                 "name": "Ink Pen",
                 "quantity": 1
-              },
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "choice": true,
+        "options": [
+          {
+            "label": "A",
+            "grants": [
               {
                 "type": "category",
                 "category": "toolArtisan",
                 "quantity": 1
-              },
+              }
+            ]
+          },
+          {
+            "label": "B",
+            "grants": [
+              {
+                "type": "category",
+                "category": "instrumentMusical",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "choice": false,
+        "options": [
+          {
+            "label": "",
+            "grants": [
               {
                 "type": "fixed",
                 "name": "School Uniform",
@@ -9835,7 +10018,7 @@
             "grants": [
               {
                 "type": "fixed",
-                "name": "Belaying pin",
+                "name": "Club",
                 "quantity": 1
               },
               {
@@ -10005,6 +10188,11 @@
               },
               {
                 "type": "fixed",
+                "name": "Pouch",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
                 "name": "10 po",
                 "quantity": 1
               }
@@ -10134,6 +10322,21 @@
               {
                 "type": "category",
                 "category": "toolArtisan",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Small knife",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Whetstone",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "Common Clothes",
                 "quantity": 1
               },
               {
@@ -10342,7 +10545,7 @@
             "grants": [
               {
                 "type": "fixed",
-                "name": "Belaying pin",
+                "name": "Club",
                 "quantity": 1
               },
               {
@@ -11319,7 +11522,7 @@
             "grants": [
               {
                 "type": "fixed",
-                "name": "Playing Cards Set",
+                "name": "Playing Card Set",
                 "quantity": 1
               }
             ]
@@ -11576,7 +11779,7 @@
               {
                 "type": "fixed",
                 "name": "Paper",
-                "quantity": 1
+                "quantity": 5
               },
               {
                 "type": "fixed",
@@ -11672,6 +11875,11 @@
               {
                 "type": "fixed",
                 "name": "Pouch",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "20 po",
                 "quantity": 1
               }
             ]
@@ -11809,6 +12017,11 @@
                 "type": "fixed",
                 "name": "Pouch",
                 "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "10 po",
+                "quantity": 1
               }
             ]
           }
@@ -11906,8 +12119,8 @@
               },
               {
                 "type": "fixed",
-                "name": "Oil (3 flasks)",
-                "quantity": 1
+                "name": "Oil",
+                "quantity": 3
               },
               {
                 "type": "fixed",
@@ -12004,8 +12217,8 @@
               },
               {
                 "type": "fixed",
-                "name": "Oil (3 flasks)",
-                "quantity": 1
+                "name": "Oil",
+                "quantity": 3
               },
               {
                 "type": "fixed",
@@ -12098,6 +12311,11 @@
               {
                 "type": "fixed",
                 "name": "Pouch",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "10 po",
                 "quantity": 1
               }
             ]
@@ -12328,6 +12546,11 @@
               {
                 "type": "fixed",
                 "name": "Purse",
+                "quantity": 1
+              },
+              {
+                "type": "fixed",
+                "name": "20 po",
                 "quantity": 1
               }
             ]
