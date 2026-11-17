@@ -12,13 +12,18 @@ const COLUMNS = [
 // 1 pick por slot (não N como StepMaestriaDeArma/StepEscolhasDeClasse) -- pool já
 // vem pronto do slot (`animalEnhancementSlots`, com a exclusão do nível 1 já
 // aplicada no pool do nível 5).
-function SlotCard({ slot, optionalFeaturesData, chosenName, onPick, onClear }) {
+function SlotCard({ slot, optionalFeaturesData, chosenName, locked, onPick, onClear }) {
   const pool = slot.pool.map((name) => optionalFeaturesData.find((f) => f.name === name)).filter(Boolean);
   return (
     <div className="melhoria-slot">
       <h4 className="melhoria-slot-title">Animal Enhancement — {slot.label}</h4>
       <div className="melhoria-feat-picker">
-        {chosenName && (
+        {chosenName && locked && (
+          <p className="field-hint">
+            Escolhido: <strong>{chosenName}</strong> — já definido numa sessão anterior, não pode ser alterado.
+          </p>
+        )}
+        {chosenName && !locked && (
           <p className="field-hint">
             Escolhido: <strong>{chosenName}</strong>{" "}
             <button type="button" onClick={() => onClear(slot.slotKey)}>
@@ -45,7 +50,15 @@ function SlotCard({ slot, optionalFeaturesData, chosenName, onPick, onClear }) {
 // aparece pra ficha que veio de "Enviar pro site" -- o Foundry não guarda em qual
 // nível cada Item foi concedido, então fica numa lista à parte, sem picker (só
 // remover), em vez de forçada num dos 2 slots normais.
-export function StepAnimalEnhancement({ slots, animalEnhancementChoices, reversedChoices, optionalFeaturesData, onPick, onClear }) {
+export function StepAnimalEnhancement({
+  slots,
+  animalEnhancementChoices,
+  reversedChoices,
+  optionalFeaturesData,
+  onPick,
+  onClear,
+  lockedKeys = new Set(),
+}) {
   if (!slots.length && !reversedChoices.length) {
     return <p className="field-hint">Este personagem não é Simic Hybrid (GGR) — sem Animal Enhancement pra escolher.</p>;
   }
@@ -57,6 +70,7 @@ export function StepAnimalEnhancement({ slots, animalEnhancementChoices, reverse
           slot={slot}
           optionalFeaturesData={optionalFeaturesData}
           chosenName={animalEnhancementChoices.find((c) => c.slotKey === slot.slotKey)?.name}
+          locked={lockedKeys.has(slot.slotKey)}
           onPick={onPick}
           onClear={onClear}
         />

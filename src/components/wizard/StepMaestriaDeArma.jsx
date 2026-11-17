@@ -16,7 +16,7 @@ function poolFor(slot, proficientKeys) {
 // esqueleto visual de ChoiceSlotCard (StepEscolhasDeClasse.jsx), só que o pool aqui não
 // vem de um JSON de conteúdo, é computado (armas que o personagem já é proficiente, ver
 // resolveFixedWeaponProficiency em utils/weaponMastery.js).
-function WeaponMasterySlotCard({ slot, proficientKeys, weapons, onPick, onClear }) {
+function WeaponMasterySlotCard({ slot, proficientKeys, weapons, lockedCount, onPick, onClear }) {
   return (
     <div className="melhoria-slot">
       <h4 className="melhoria-slot-title">
@@ -26,6 +26,13 @@ function WeaponMasterySlotCard({ slot, proficientKeys, weapons, onPick, onClear 
         {Array.from({ length: slot.count }, (_, i) => {
           const chosenKey = weapons[i];
           const chosenLabel = chosenKey ? (WEAPON_MASTERY_TABLE[chosenKey]?.label ?? chosenKey) : null;
+          if (i < lockedCount) {
+            return (
+              <p key={i} className="field-hint">
+                Escolha {i + 1}: <strong>{chosenLabel}</strong> — já definido numa sessão anterior, não pode ser alterado.
+              </p>
+            );
+          }
           return (
             <div key={i} className="class-choice-pick">
               {chosenLabel && (
@@ -56,7 +63,7 @@ function WeaponMasterySlotCard({ slot, proficientKeys, weapons, onPick, onClear 
 // `slots` já vem pronto do wizard principal (weaponMasterySlots). `proficientKeys` (Set)
 // já vem pronto também (resolveFixedWeaponProficiency) -- ver comentário lá sobre a
 // limitação assumida (escolhas abertas de arma não capturadas hoje).
-export function StepMaestriaDeArma({ slots, weaponMasteryChoices, proficientKeys, onPick, onClear }) {
+export function StepMaestriaDeArma({ slots, weaponMasteryChoices, proficientKeys, onPick, onClear, lockedCounts = new Map() }) {
   if (!slots.length) {
     return <p className="field-hint">Nenhuma classe ou talento deste personagem concede Weapon Mastery (2024) ainda.</p>;
   }
@@ -70,6 +77,7 @@ export function StepMaestriaDeArma({ slots, weaponMasteryChoices, proficientKeys
             slot={slot}
             proficientKeys={proficientKeys}
             weapons={weapons}
+            lockedCount={lockedCounts.get(slot.sourceKey) ?? 0}
             onPick={onPick}
             onClear={onClear}
           />

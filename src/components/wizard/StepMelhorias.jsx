@@ -101,6 +101,18 @@ function AbilityBonusAssign({ choice, assignments, abilities, onMove, onUnassign
   );
 }
 
+// Resumo em texto do que já foi escolhido num slot travado -- "+2 em Força",
+// "+1 em Força e +1 em Destreza" ou o nome do talento.
+function improvementSummary(choice, improvement) {
+  if (choice === "feat") return improvement?.feat ? `Talento: ${improvement.feat}` : "Talento ainda não escolhido.";
+  const chips = CHIP_DEFS[choice] ?? [];
+  const parts = chips
+    .map((chip) => improvement?.assignments?.[chip.id])
+    .filter(Boolean)
+    .map((abilityKey) => `+${chips.find((c) => improvement.assignments[c.id] === abilityKey)?.amount} em ${ABILITY_LABELS[abilityKey]}`);
+  return parts.length ? parts.join(", ") : "Bônus ainda não distribuído.";
+}
+
 function ImprovementSlotCard({
   slot,
   improvement,
@@ -115,9 +127,24 @@ function ImprovementSlotCard({
   onApplySkills,
   onApplyTools,
   onApplyAbilityBonus,
+  locked,
 }) {
   const choice = improvement?.choice ?? null;
   const pickedFeat = improvement?.feat ? featsData.find((f) => f.name === improvement.feat) : null;
+
+  if (locked) {
+    return (
+      <div className="melhoria-slot melhoria-slot-locked">
+        <h4 className="melhoria-slot-title">
+          {slot.className || "Classe"} — Nível {slot.level}
+        </h4>
+        <p className="field-hint">
+          {choice ? improvementSummary(choice, improvement) : "Sem escolha registrada."}
+          {" — já definido numa sessão anterior, não pode ser alterado."}
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="melhoria-slot">
@@ -189,6 +216,7 @@ export function StepMelhorias({
   onApplySkills,
   onApplyTools,
   onApplyAbilityBonus,
+  lockedKeys = new Set(),
 }) {
   return (
     <div className="wizard-step-melhorias">
@@ -210,6 +238,7 @@ export function StepMelhorias({
             onApplySkills={onApplySkills}
             onApplyTools={onApplyTools}
             onApplyAbilityBonus={onApplyAbilityBonus}
+            locked={lockedKeys.has(`${slot.classIndex}-${slot.level}`)}
           />
         );
       })}

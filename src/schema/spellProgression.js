@@ -13,6 +13,8 @@
 // Patrulheiro 2014, Artificiante) o preparo é calculado na hora — mod de
 // habilidade + nível cheio/metade, regra real do livro, sem precisar de dado
 // novo no banco.
+import { isSpellRulesCompatible } from "./spellEditions";
+
 function abilityMod(score) {
   return Math.floor(((score ?? 10) - 10) / 2);
 }
@@ -58,6 +60,50 @@ const PACT_MAX_SPELL_LEVEL = { 1: 1, 3: 2, 5: 3, 7: 4, 9: 5 };
 // nas duas edições, texto da feature "Spellbook"): começa com 6 magias de 1º nível, +2 a
 // cada nível de Mago ganho depois do 1º.
 const WIZARD_SPELLBOOK_START = 6;
+
+// Classes "sabe a lista toda" (prepara de um pool que É a lista inteira da classe, não um
+// subconjunto permanentemente conhecido) -- pedido explícito do usuário (20/10/2026), lista
+// EXATA confirmada por ele, não derivada de nenhuma regra geral 2014-vs-2024: Clérigo,
+// Druida, Paladino, Patrulheiro (só 2014 -- a versão 2024 NÃO entra), Artífice (as duas
+// edições). Diferente do Mago (grimório, pool menor que a lista) e de quem "conhece fixo"
+// (Bardo/Feiticeiro/Bruxo/Patrulheiro 2024 -- escolhe magias individuais que ficam sempre
+// ativas, nunca vê a lista inteira).
+const FULL_LIST_CLASS_NAMES = new Set(["Cleric", "Druid", "Paladin", "Artificer"]);
+
+export function isFullListCaster(classData) {
+  if (!classData?.name) return false;
+  if (classData.name === "Ranger") return classData.rules === "2014";
+  return FULL_LIST_CLASS_NAMES.has(classData.name);
+}
+
+// Nomes de classe (não edição) do personagem que são "sabe a lista toda" -- usado tanto pra
+// montar o pool mostrado na aba/etapa Magias quanto pra EXCLUIR essas classes do buscador de
+// magia de nível 1+ (a aba/etapa já mostra a lista inteira direto, sem precisar buscar).
+export function fullListClassNames(character, classMatches) {
+  const names = new Set();
+  (character.classes ?? []).forEach((row, index) => {
+    if (row.name && isFullListCaster(classMatches[index]?.classData)) names.add(row.name);
+  });
+  return names;
+}
+
+// Toda magia de nível 1+ que o personagem já tem ACESSO de verdade (não "conhece", tem
+// DIREITO a preparar) por uma classe "sabe a lista toda" -- até o círculo máximo que ele já
+// consegue conjurar (`spellCaps.maxSpellLevel`, combinado entre todas as classes, igual ao
+// buscador normal já usa), na edição certa. Truque fica de fora de propósito: nunca existiu
+// "prepara truque da lista inteira" em nenhuma edição real -- truque continua escolhido
+// individualmente pra QUALQUER classe (ver handleAdd em StepMagias.jsx).
+export function fullListSpellPool(character, classMatches, spellsData, spellCaps) {
+  const names = fullListClassNames(character, classMatches);
+  if (!names.size) return [];
+  return spellsData.filter(
+    (s) =>
+      s.level >= 1 &&
+      s.level <= spellCaps.maxSpellLevel &&
+      s.classes.some((c) => names.has(c)) &&
+      isSpellRulesCompatible(s, character.rulesMode),
+  );
+}
 
 export function spellProgressionForCharacter(character, classMatches) {
   let cantripsKnown = 0;

@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { createEmptyCharacter } from "../schema/character";
+import { createEmptyCharacter, resolveProgressiveSize } from "../schema/character";
 import { StepSelecionarNiveis } from "./wizard/StepSelecionarNiveis";
 import { StepPericias } from "./wizard/StepPericias";
 import { StepMelhorias } from "./wizard/StepMelhorias";
@@ -24,6 +24,7 @@ import { subclassChoicePending, subclassGainBlocks } from "../utils/levelUpSubcl
 import { useCharacterAppliers } from "../hooks/useCharacterAppliers";
 import { useAbilityImprovements } from "../hooks/useAbilityImprovements";
 import { useClassChoices } from "../hooks/useClassChoices";
+import { useLessonsOfTheFirstOnes } from "../hooks/useLessonsOfTheFirstOnes";
 import { useWeaponMasteryChoices } from "../hooks/useWeaponMasteryChoices";
 import { useWeaponProficiencyChoices } from "../hooks/useWeaponProficiencyChoices";
 import { useAnimalEnhancementChoices } from "../hooks/useAnimalEnhancementChoices";
@@ -186,6 +187,54 @@ export function LevelUpWizard({ initialCharacter, onSubmit, onCancel }) {
   // Subclasse não muda depois de escolhida: só escolhe quem ainda não tinha ao abrir o assistente E cuja classe atravessa
   // o nível de subclasse nesta subida.
   const [originalSubclasses] = useState(() => (initialCharacter.classes ?? []).map((c) => c.subclass || ""));
+  // Escolhas já resolvidas ANTES de abrir este wizard (criação ou level-up
+  // anterior) -- fotografadas uma vez no mount, nunca atualizadas depois.
+  // Usado só pra travar essas posições específicas nas etapas de escolha
+  // abaixo (Melhorias/Escolhas de Classe/Maestria/Proficiência/Animal
+  // Enhancement): o jogador não pode reabrir uma decisão de uma sessão
+  // passada, só preencher o que é NOVO nesta subida. Bug real achado (set/2026):
+  // nenhuma dessas etapas tinha esse conceito -- todo slot (velho ou novo) era
+  // renderizado igualmente editável, deixando trocar o atributo/talento de um
+  // ASI escolhido há vários níveis só por abrir o wizard de novo.
+  const [originalAbilityImprovements] = useState(() => initialCharacter.abilityImprovements ?? []);
+  const [originalClassChoices] = useState(() => initialCharacter.classChoices ?? []);
+  const [originalWeaponMasteryChoices] = useState(() => initialCharacter.weaponMasteryChoices ?? []);
+  const [originalWeaponProficiencyChoices] = useState(() => initialCharacter.weaponProficiencies ?? []);
+  const [originalAnimalEnhancementChoices] = useState(() => initialCharacter.animalEnhancementChoices ?? []);
+  // `classIndex-level` -- mesma chave de identidade já usada em StepMelhorias/
+  // useAbilityImprovements.
+  const lockedImprovementKeys = useMemo(
+    () => new Set(originalAbilityImprovements.map((i) => `${i.classIndex}-${i.level}`)),
+    [originalAbilityImprovements],
+  );
+  // Categoria/sourceKey -> quantas posições (índices 0..N-1) já existiam antes
+  // desta sessão -- `classChoices`/`weaponMasteryChoices`/`weaponProficiencyChoices`
+  // são listas achatadas por categoria/fonte, na mesma ORDEM que os Steps já
+  // usam pra recortar `chosenNames`/`weapons`/`slot.chosen` (ver StepEscolhasDeClasse/
+  // StepMaestriaDeArma/StepProficienciaDeArma) -- contar quantas entradas
+  // ORIGINAIS existem por chave reproduz exatamente até que posição ficou
+  // decidida antes de abrir o wizard.
+  function countByKey(list, keyFn) {
+    const counts = new Map();
+    for (const item of list) counts.set(keyFn(item), (counts.get(keyFn(item)) ?? 0) + 1);
+    return counts;
+  }
+  const lockedClassChoiceCounts = useMemo(
+    () => countByKey(originalClassChoices, (c) => c.category),
+    [originalClassChoices],
+  );
+  const lockedWeaponMasteryCounts = useMemo(
+    () => countByKey(originalWeaponMasteryChoices, (c) => c.sourceKey),
+    [originalWeaponMasteryChoices],
+  );
+  const lockedWeaponProficiencyCounts = useMemo(
+    () => countByKey(originalWeaponProficiencyChoices, (c) => c.sourceKey),
+    [originalWeaponProficiencyChoices],
+  );
+  const lockedAnimalEnhancementKeys = useMemo(
+    () => new Set(originalAnimalEnhancementChoices.map((c) => c.slotKey)),
+    [originalAnimalEnhancementChoices],
+  );
   const [classesMatches, setClassesMatches] = useState(() =>
     resolveClassMatches(initialCharacter.classes, initialCharacter.rulesMode),
   );
@@ -205,6 +254,8 @@ export function LevelUpWizard({ initialCharacter, onSubmit, onCancel }) {
     appliers,
   );
   const { setClassChoice, clearClassChoice } = useClassChoices(setCharacter);
+  const { pickFeat: pickLessonsFeat, clearFeat: clearLessonsFeat, removeOccurrence: removeLessonsOccurrence } =
+    useLessonsOfTheFirstOnes(setCharacter);
   const { setWeaponMasteryChoice, clearWeaponMasteryChoice } = useWeaponMasteryChoices(setCharacter);
   const { setWeaponProficiencyChoice, clearWeaponProficiencyChoice } = useWeaponProficiencyChoices(setCharacter);
   const { setAnimalEnhancementChoice, clearAnimalEnhancementChoice } = useAnimalEnhancementChoices(setCharacter);
@@ -353,14 +404,26 @@ export function LevelUpWizard({ initialCharacter, onSubmit, onCancel }) {
     // `const classMatches = classesMatches` acima) -- StepPericias espera
     // array, por isso o `character.classes.map` (não `classMatches.map`).
     const newClassGrantsMatches = character.classes.map((_, index) => {
-      if (index < originalLevels.length) return null;
       const match = classMatches[index];
+      // Classe já existia (não é nova nesta sessão) -- a única concessão que ainda pode
+      // estar em aberto é a da SUBCLASSE, se ela está sendo escolhida justo nesta subida
+      // (ver `eligibleSubclassRows` acima). Achado auditando o Bardo do zero: a escolha de
+      // perícia da subclasse (ex: College of Lore, "três perícias à escolha") nunca tinha
+      // UI nenhuma aqui nem na criação -- só a da CLASSE era considerada.
+      if (index < originalLevels.length) {
+        const subclassEligible = eligibleSubclassRows.some((r) => r.index === index);
+        if (!subclassEligible || !match?.subclassData) return null;
+        return { classData: null, subclassData: match.subclassData };
+      }
       if (!match?.classData) return match;
       return { ...match, classData: { ...match.classData, equipmentSlots: [] } };
     });
     const hasNewClassGrants = newClassGrantsMatches.some((match) => {
       const cd = match?.classData;
-      return cd && (cd.skillChoice || cd.toolChoice || cd.skills?.length > 0 || cd.tools?.length > 0);
+      const sd = match?.subclassData;
+      const hasClassGrant = cd && (cd.skillChoice || cd.toolChoice || cd.skills?.length > 0 || cd.tools?.length > 0);
+      const hasSubclassGrant = sd && (sd.skillChoice || sd.toolChoice || sd.skills?.length > 0 || sd.tools?.length > 0);
+      return hasClassGrant || hasSubclassGrant;
     });
 
     return {
@@ -503,7 +566,16 @@ export function LevelUpWizard({ initialCharacter, onSubmit, onCancel }) {
           return { ...choice, sourceKey: `class:${indexMap.get(oldIndex)}` };
         })
         .filter(Boolean);
-      onSubmit({ ...character, classes, abilityImprovements, weaponMasteryChoices });
+      // Raça com `sizeProgression` (tamanho que muda sozinho com o nível, ex:
+      // Verdan — Pequeno até o 4º, Médio a partir do 5º) — recalcula contra o
+      // NOVO nível total (`classes` já filtrada/reindexada acima), não o
+      // antigo. Mesma função usada em CharacterCreationWizard.jsx.
+      const newTotalLevel = classes.reduce((sum, c) => sum + (Number(c.level) || 0), 0);
+      const progressiveSize = resolveProgressiveSize(raceMatch?.sizeProgression, newTotalLevel);
+      onSubmit({
+        ...character, classes, abilityImprovements, weaponMasteryChoices,
+        ...(progressiveSize ? { size: progressiveSize } : {}),
+      });
       return;
     }
     goTo(stepIndex + 1);
@@ -587,6 +659,7 @@ export function LevelUpWizard({ initialCharacter, onSubmit, onCancel }) {
             onApplySkills={appliers.applyFeatSkills}
             onApplyTools={appliers.applyFeatTools}
             onApplyAbilityBonus={appliers.applyAbilityBonusFor}
+            lockedKeys={lockedImprovementKeys}
           />
         );
       case "escolhas":
@@ -599,6 +672,11 @@ export function LevelUpWizard({ initialCharacter, onSubmit, onCancel }) {
             character={character}
             onPick={setClassChoice}
             onClear={clearClassChoice}
+            lessonsFeats={character.lessonsOfTheFirstOnesFeats}
+            onPickLessonsFeat={pickLessonsFeat}
+            onClearLessonsFeat={clearLessonsFeat}
+            onRemoveLessonsOccurrence={removeLessonsOccurrence}
+            lockedCounts={lockedClassChoiceCounts}
           />
         );
       case "proficiencia":
@@ -608,6 +686,7 @@ export function LevelUpWizard({ initialCharacter, onSubmit, onCancel }) {
             weaponProficiencies={character.weaponProficiencies ?? []}
             onPick={setWeaponProficiencyChoice}
             onClear={clearWeaponProficiencyChoice}
+            lockedCounts={lockedWeaponProficiencyCounts}
           />
         );
       case "maestria":
@@ -618,6 +697,7 @@ export function LevelUpWizard({ initialCharacter, onSubmit, onCancel }) {
             proficientKeys={resolveFixedWeaponProficiency(character, classMatches, racesData)}
             onPick={setWeaponMasteryChoice}
             onClear={clearWeaponMasteryChoice}
+            lockedCounts={lockedWeaponMasteryCounts}
           />
         );
       case "animalEnhancement":
@@ -629,6 +709,7 @@ export function LevelUpWizard({ initialCharacter, onSubmit, onCancel }) {
             optionalFeaturesData={optionalFeaturesData}
             onPick={setAnimalEnhancementChoice}
             onClear={clearAnimalEnhancementChoice}
+            lockedKeys={lockedAnimalEnhancementKeys}
           />
         );
       case "subclasse": {

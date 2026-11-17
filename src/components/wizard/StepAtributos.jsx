@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ABILITIES, ABILITY_LABELS } from "../../schema/character";
 import { AbilitiesInput } from "../AbilitiesInput";
 import { AbilityIconLabel } from "../AbilityIconLabel";
+import { InfoTooltip } from "../InfoTooltip";
 
 const STANDARD_ARRAY = [15, 14, 13, 12, 10, 8];
 const POINT_BUY_COST = { 8: 0, 9: 1, 10: 2, 11: 3, 12: 4, 13: 5, 14: 7, 15: 9 };
@@ -66,27 +67,6 @@ const METHODS = [
     info: "Digite os valores finais direto, sem seguir nenhum método específico.",
   },
 ];
-
-function InfoTooltip({ text }) {
-  const [open, setOpen] = useState(false);
-  return (
-    <span className="info-tooltip-wrap">
-      <button
-        type="button"
-        className="info-tooltip-btn"
-        aria-label="Mais informações"
-        onClick={(event) => {
-          event.stopPropagation();
-          setOpen((v) => !v);
-        }}
-        onBlur={() => setOpen(false)}
-      >
-        ⓘ
-      </button>
-      {open && <div className="info-tooltip-box">{text}</div>}
-    </span>
-  );
-}
 
 function MethodPicker({ method, onChange }) {
   return (

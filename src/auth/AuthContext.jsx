@@ -3,7 +3,35 @@ import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebas
 import { auth } from "../firebase";
 
 const STORAGE_KEY = "oos_authenticated";
+// Timestamp (ms) da última vez que ESTA origem percebeu que deixou de estar
+// autenticada -- em `localStorage` (não `sessionStorage`) de propósito, pra
+// ser visível em QUALQUER aba, já que o Firebase Auth usa persistência
+// compartilhada entre abas por padrão (`onAuthStateChanged` dispara em todas
+// quando uma desloga). Usado só pra decidir se o PRÓXIMO redirecionamento pro
+// login deve ou não carregar "de onde vim" -- ver `wasJustLoggedOut`/
+// `RequireAuth.jsx`.
+const JUST_LOGGED_OUT_KEY = "oos_logged_out_at";
+// Janela curta o bastante pra cobrir "clicou Sair, viu a tela de login, digitou
+// a senha de novo" (segundos), mas longa o bastante pra nunca disparar à toa
+// numa visita legítima sem relação nenhuma com um logout recente.
+const JUST_LOGGED_OUT_WINDOW_MS = 10000;
 const AuthContext = createContext(null);
+
+// Bug real achado (set/2026): deslogar e logar com OUTRA conta na mesma aba
+// (ou numa aba irmã, por causa da persistência compartilhada) te devolvia pra
+// dentro da sessão ANTERIOR -- `RequireAuth` sempre carrega "de onde vim" no
+// redirect pro login, e um logout deixa "de onde vim" = a página da conta que
+// acabou de sair. `Login.jsx` reaproveita esse "de onde vim" pra decidir pra
+// onde mandar a conta NOVA, sem saber que ele é resquício de outra sessão.
+// Corrigido marcando a hora de QUALQUER transição autenticado->deslogado
+// aqui (único lugar que já detecta essa transição, linha abaixo) -- `RequireAuth`
+// consulta essa marca (função exportada) e omite "de onde vim" só na janela
+// logo depois de um logout, preservando o comportamento normal (voltar pro
+// link direto que o usuário tentou abrir sem estar logado) no resto do tempo.
+export function wasJustLoggedOut() {
+  const ts = Number(localStorage.getItem(JUST_LOGGED_OUT_KEY));
+  return ts > 0 && Date.now() - ts < JUST_LOGGED_OUT_WINDOW_MS;
+}
 
 // E-mails fixos das 2 contas reais do Firebase Authentication (criadas no
 // Console, e-mail/senha) -- não são segredo, são só o "usuário" de cada
@@ -65,6 +93,7 @@ export function AuthProvider({ children }) {
       if (!user && sessionStorage.getItem(STORAGE_KEY) === "1") {
         sessionStorage.removeItem(STORAGE_KEY);
         setIsAuthenticated(false);
+        localStorage.setItem(JUST_LOGGED_OUT_KEY, String(Date.now()));
       }
     });
   }, []);
@@ -99,6 +128,7 @@ export function AuthProvider({ children }) {
     sessionStorage.setItem(STORAGE_KEY, "1");
     setIsAuthenticated(true);
     setAuthKind(kind);
+    localStorage.removeItem(JUST_LOGGED_OUT_KEY);
     return kind;
   }
 

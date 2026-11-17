@@ -1,3 +1,4 @@
+import { useParams } from "react-router-dom";
 import { SourceItemPicker } from "./SourceItemPicker";
 import { ClassGridPicker } from "./ClassGridPicker";
 import { SubclassPicker } from "./SubclassPicker";
@@ -51,6 +52,10 @@ export function ClassesInput({
   // alcançou `subclassLevel` da classe (pedido explícito do wizard).
   variant = "search",
 }) {
+  // Mesmo gate de `restrictedToProfile` do SubclassPicker.jsx (variant="grid")
+  // -- este componente também renderiza sempre dentro de `/perfis/:profileId`.
+  const { profileId } = useParams();
+
   function updateRow(index, patch) {
     onChange(classes.map((row, i) => (i === index ? { ...row, ...patch } : row)));
   }
@@ -136,7 +141,11 @@ export function ClassesInput({
         // Subclasse não é filtrada por edição — mostra as das duas juntas,
         // ligadas pelo nome da classe (não pela edição dela), cada uma com
         // sua própria tag (ver SourceItemPicker).
-        const subclassOptions = matched ? subclassesData.filter((s) => s.parentClass === matched.name) : [];
+        const subclassOptions = matched
+          ? subclassesData.filter(
+              (s) => s.parentClass === matched.name && (!s.restrictedToProfile || s.restrictedToProfile === profileId),
+            )
+          : [];
         const isOriginalClass = index === 0;
         const hpLevels = levelsNeedingHpChoice(row.level, isOriginalClass);
 

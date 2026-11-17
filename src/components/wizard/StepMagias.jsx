@@ -2,10 +2,11 @@ import { useState } from "react";
 import { ListEditor } from "../ListEditor";
 import { SpellBrowser } from "../SpellBrowser";
 import { SpellChoicePicker } from "../SpellChoicePicker";
-import { spellProgressionForCharacter, isCantripName } from "../../schema/spellProgression";
+import { PreparedSpellChecklist } from "../PreparedSpellChecklist";
+import { spellProgressionForCharacter, isCantripName, fullListSpellPool } from "../../schema/spellProgression";
 import { computeGrantedSpells, computeSubclassSpellChoices, computeFeatSpellChoices, computeOptionalFeatureSpellChoices } from "../../schema/grantedSpells";
-import { computeExpandedSpellPool } from "../../schema/expandedSpellPool";
-import { isSpellRulesCompatible } from "../../schema/spellEditions";
+import { InfoTooltip } from "../InfoTooltip";
+import { computeExpandedSpellPool, computeAllowedSpellNames } from "../../schema/expandedSpellPool";
 import spellsData from "../../data/content/spells.json";
 import featsData from "../../data/content/feats.json";
 import optionalFeaturesData from "../../data/content/optionalfeatures.json";
@@ -28,6 +29,15 @@ export function StepMagias({ character, raceMatch, classMatches, spells, onChang
   // aqui, nem entra na lista `spells` acima: o Foundry concede essas magias
   // sozinho pela própria raça/subclasse/feat/escolha ao sincronizar.
   const granted = computeGrantedSpells({ character, raceMatch, classMatches, featsData, optionalFeaturesData });
+  // Agrupado por `source` só pra exibição -- `note` (ver schema/grantedSpells.js) é
+  // igual em toda entrada da mesma fonte, então o ícone "ⓘ" aparece uma vez por grupo,
+  // não repetido por magia (ex: Rimekin concede 3 magias, mas só 1 ícone de Cold Fire
+  // Magic ao lado do nome da raça).
+  const grantedBySource = new Map();
+  for (const entry of granted) {
+    if (!grantedBySource.has(entry.source)) grantedBySource.set(entry.source, { entries: [], note: entry.note ?? null });
+    grantedBySource.get(entry.source).entries.push(entry);
+  }
 
   // Magias que uma classe/subclasse EXPANDE pra fora da lista normal (Warlock Patron,
   // Divine Soul, Eldritch Knight/Arcane Trickster, Bardo "Magical Secrets" 2024 -- ver
@@ -98,6 +108,17 @@ export function StepMagias({ character, raceMatch, classMatches, spells, onChang
   // (ex: Bardo + Clérigo) sem precisar rastrear de qual classe cada magia veio.
   const combinedActiveCap = (spellCaps.spellsKnown ?? 0) + (spellCaps.maxPrepared ?? 0);
 
+  // Classes "sabe a lista toda" (Clérigo/Druida/Paladino/Patrulheiro 2014/Artífice) não
+  // "adicionam" magia nenhuma -- já têm acesso à lista inteira (até o círculo que já
+  // conjuram), só marcam quais preparar (ver spellProgression.js `fullListSpellPool`).
+  // `checklistSpells`/`otherSpells` separam essas entradas do resto do array `spells`
+  // (que continua guardando truques + magia de classe "conhece fixo" + grimório do Mago,
+  // intocados por essa mudança).
+  const fullPool = fullListSpellPool(character, classMatches, spellsData, spellCaps);
+  const fullPoolNames = new Set(fullPool.map((s) => s.name));
+  const checklistSpells = spells.filter((s) => fullPoolNames.has(s.name));
+  const otherSpells = spells.filter((s) => !fullPoolNames.has(s.name));
+
   function handleAddMany(names, bonus) {
     const existing = new Set(spells.map((s) => s.name));
     const additions = names
@@ -112,20 +133,14 @@ export function StepMagias({ character, raceMatch, classMatches, spells, onChang
     bonusEligibility.get(entry.className).add(entry.name);
   }
 
-  // Nomes de magia que o personagem pode escolher de verdade -- união da lista
-  // normal de cada classe (`character.classes[].name` batendo em `spell.classes`)
-  // com tudo que `bonusEligibility` já libera fora da lista (Warlock Patron, Divine
-  // Soul, Eldritch Knight/Arcane Trickster, Bardo Magical Secrets). Trava o
-  // SpellBrowser pra nunca mostrar/deixar adicionar magia de fora -- antes disso, o
-  // filtro de classe era só uma conveniência opcional, sem bloquear nada de verdade
-  // (achado revisando o fluxo completo a pedido do usuário).
-  const characterClassNames = (character.classes ?? []).map((c) => c.name).filter(Boolean);
-  const allowedSpellNames = new Set();
-  for (const spell of spellsData) {
-    if (!isSpellRulesCompatible(spell, character.rulesMode)) continue;
-    if (spell.classes.some((c) => characterClassNames.includes(c))) allowedSpellNames.add(spell.name);
-  }
-  for (const names of bonusEligibility.values()) for (const name of names) allowedSpellNames.add(name);
+  // Nomes de magia que o personagem pode BUSCAR e adicionar (truque de qualquer classe,
+  // grimório do Mago, magia de classe "conhece fixo") -- união da lista normal de cada
+  // classe com tudo que `bonusEligibility` já libera fora da lista (Warlock Patron, Divine
+  // Soul, Eldritch Knight/Arcane Trickster, Bardo Magical Secrets). As magias de nível 1+ de
+  // classe "sabe a lista toda" saem daqui de propósito -- já aparecem direto no checklist
+  // abaixo, sem precisar buscar (`fullPoolNames`, calculado acima).
+  const allowedSpellNames = computeAllowedSpellNames({ character, classMatches, spellsData });
+  for (const name of fullPoolNames) allowedSpellNames.delete(name);
   const expandedBySource = new Map();
   for (const entry of expandedPool) {
     if (!expandedBySource.has(entry.source)) expandedBySource.set(entry.source, []);
@@ -135,7 +150,11 @@ export function StepMagias({ character, raceMatch, classMatches, spells, onChang
   // Só bloqueia quando a mudança AUMENTA o total de preparadas acima do teto
   // (marcar mais uma) -- remover magia ou desmarcar preparada nunca é
   // barrado, mesmo que o personagem já estivesse acima do teto antes.
-  function handleChange(nextItems) {
+  // Opera só sobre `otherSpells` (o que o ListEditor mostra) e devolve o array
+  // completo pro pai, recolando `checklistSpells` por cima -- o checklist
+  // "sabe a lista toda" é controlado à parte, por `handleToggleFullList`.
+  function handleChange(nextOtherItems) {
+    const nextItems = [...nextOtherItems, ...checklistSpells];
     if (spellCaps.maxPrepared !== null) {
       // Mesma exclusão de `classSpells`/truque acima -- uma magia sempre-preparada
       // de talento/subclasse marcada "Preparada" na lista (redundante, mas o
@@ -148,14 +167,28 @@ export function StepMagias({ character, raceMatch, classMatches, spells, onChang
 
   // Fora do Mago (`isTwoStep`), adicionar já marca ativa direto -- não existe uma etapa
   // separada de "escolher pra lista" seguida de "marcar preparada" na regra real pra quem
-  // sabe a lista toda OU pra quem conhece fixo, só o Mago tem essas duas etapas de
-  // verdade (grimório, depois o que preparar). Cantrip nunca é "preparado" em nenhuma
-  // edição/classe -- sempre `false` (o checkbox nem aparece pra elas, ver ListEditor
-  // abaixo, mas o valor guardado continua consistente).
+  // conhece fixo, só o Mago tem essas duas etapas de verdade (grimório, depois o que
+  // preparar). Cantrip nunca é "preparado" em nenhuma edição/classe -- sempre `false` (o
+  // checkbox nem aparece pra elas, ver ListEditor abaixo, mas o valor guardado continua
+  // consistente). Só usado pelo buscador (`allowedSpellNames` já exclui as magias "sabe a
+  // lista toda", que passam por `handleToggleFullList` em vez desta função).
   function handleAdd(name) {
     if (spells.some((s) => s.name === name)) return;
     const active = !isTwoStep && !isCantripName(name, spellsData);
     onChangeSpells([...spells, { name, prepared: active }]);
+  }
+
+  // Marca/desmarca uma magia do checklist "sabe a lista toda" -- sempre vira
+  // `prepared:true` direto ao marcar (nunca existe grimório pra essas classes),
+  // mesmo teto combinado (`combinedActiveCap`) que o resto do fluxo de etapa
+  // única já usa pro buscador.
+  function handleToggleFullList(name, checked) {
+    if (checked) {
+      if (spells.some((s) => s.name === name) || knownCount >= combinedActiveCap) return;
+      onChangeSpells([...spells, { name, prepared: true }]);
+    } else {
+      onChangeSpells(spells.filter((s) => s.name !== name));
+    }
   }
 
   return (
@@ -163,9 +196,13 @@ export function StepMagias({ character, raceMatch, classMatches, spells, onChang
       {granted.length > 0 && (
         <p className="field-hint">
           Concedidas automaticamente (o Foundry adiciona sozinho, não precisa buscar aqui):{" "}
-          {granted
-            .map((g) => `${g.name}${g.unlocked ? "" : ` (nível ${g.level})`} — ${g.source}`)
-            .join("; ")}
+          {[...grantedBySource.entries()].map(([source, { entries, note }], index) => (
+            <span key={source}>
+              {index > 0 && "; "}
+              {entries.map((g) => `${g.name}${g.unlocked ? "" : ` (nível ${g.level})`}`).join("; ")} — {source}
+              {note && <InfoTooltip text={note} />}
+            </span>
+          ))}
         </p>
       )}
       {[...expandedBySource.entries()].map(([source, entries]) => {
@@ -228,8 +265,16 @@ export function StepMagias({ character, raceMatch, classMatches, spells, onChang
             </>
           : ` · Magias: ${knownCount}/${combinedActiveCap}`}
       </p>
+      {fullPool.length > 0 && (
+        <PreparedSpellChecklist
+          pool={fullPool}
+          activeNames={new Set(checklistSpells.map((s) => s.name))}
+          atCap={knownCount >= combinedActiveCap}
+          onToggle={handleToggleFullList}
+        />
+      )}
       <ListEditor
-        items={spells}
+        items={otherSpells}
         onChange={handleChange}
         addLabel="Adicionar magia"
         allowAdd={false}

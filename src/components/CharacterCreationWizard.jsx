@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { createEmptyCharacter, deriveDarkvisionFeet } from "../schema/character";
+import { createEmptyCharacter, deriveDarkvisionFeet, resolveProgressiveSize } from "../schema/character";
 import { RulesModeToggle } from "./RulesModeToggle";
 import { StepRaca } from "./wizard/StepRaca";
 import { StepAntecedente } from "./wizard/StepAntecedente";
@@ -25,6 +25,7 @@ import { computeHitPoints } from "../utils/computeHitPoints";
 import { useCharacterAppliers } from "../hooks/useCharacterAppliers";
 import { useAbilityImprovements } from "../hooks/useAbilityImprovements";
 import { useClassChoices } from "../hooks/useClassChoices";
+import { useLessonsOfTheFirstOnes } from "../hooks/useLessonsOfTheFirstOnes";
 import { useWeaponMasteryChoices } from "../hooks/useWeaponMasteryChoices";
 import { weaponMasterySlots, resolveFixedWeaponProficiency } from "../utils/weaponMastery";
 import { useWeaponProficiencyChoices } from "../hooks/useWeaponProficiencyChoices";
@@ -573,6 +574,20 @@ export function CharacterCreationWizard({ initialValue, onSubmit, onCancel }) {
   // invalidava aquele memo em toda tecla digitada, mesmo depois de restringir as
   // outras dependências aos campos certos.
   const classMatches = useMemo(() => Object.values(classesMatches), [classesMatches]);
+  // Versão de `raceMatch` com `skillChoice` CONDICIONAL ao Variable Trait
+  // (Custom Lineage, TCE) -- raça com `variableTrait` no banco guarda
+  // `skillChoice: null` (não é mais incondicional, ver tce.json), e cada
+  // opção carrega o `skillChoice` equivalente só na opção "skill". Em vez de
+  // ensinar StepPericias/GrantSummary sobre Variable Trait, injeta aqui o
+  // `skillChoice` da opção ESCOLHIDA (ou nada, se não escolheu/escolheu
+  // "darkvision") -- StepPericias continua lendo `raceMatch.skillChoice`
+  // normal, sem saber que essa raça é diferente. Raça sem `variableTrait`
+  // passa direto (mesma referência, sem custo extra).
+  const effectiveRaceMatch = useMemo(() => {
+    if (!raceMatch?.variableTrait) return raceMatch;
+    const chosen = raceMatch.variableTrait.options.find((o) => o.key === character.raceVariableTraitChoice);
+    return { ...raceMatch, skillChoice: chosen?.skillChoice ?? null };
+  }, [raceMatch, character.raceVariableTraitChoice]);
   // Mesmo motivo do `classesMatches` acima: guardado aqui (nunca desmonta) em
   // vez de `useState` dentro do `StepAtributos` -- achado ao vivo (usuário
   // reportou): rolar os 6 dados do método "Rolagem", trocar de etapa (ex:
@@ -613,6 +628,8 @@ export function CharacterCreationWizard({ initialValue, onSubmit, onCancel }) {
     pickImprovementFeat,
   } = useAbilityImprovements(character, setCharacter, appliers);
   const { setClassChoice, clearClassChoice } = useClassChoices(setCharacter);
+  const { pickFeat: pickLessonsFeat, clearFeat: clearLessonsFeat, removeOccurrence: removeLessonsOccurrence } =
+    useLessonsOfTheFirstOnes(setCharacter);
   const { setWeaponMasteryChoice, clearWeaponMasteryChoice } = useWeaponMasteryChoices(setCharacter);
   const { setWeaponProficiencyChoice, clearWeaponProficiencyChoice } = useWeaponProficiencyChoices(setCharacter);
   const { setAnimalEnhancementChoice, clearAnimalEnhancementChoice } = useAnimalEnhancementChoices(setCharacter);
@@ -637,6 +654,21 @@ export function CharacterCreationWizard({ initialValue, onSubmit, onCancel }) {
     const options = sizeToLetters(item?.size);
     appliers.applySize(options.length === 1 ? options[0] : "");
     appliers.applySenses({ darkvision: deriveDarkvisionFeet(item?.traits) });
+    // Escolha do Variable Trait (Custom Lineage, TCE) é LIGADA à raça
+    // ANTERIOR, igual bônus de atributo/idioma acima -- trocar de raça
+    // sempre limpa, mesmo que a raça NOVA também tenha `variableTrait` (força
+    // o jogador a escolher de novo, não dá pra inferir se a escolha antiga
+    // ainda faz sentido pra uma fonte diferente). Não precisa reverter
+    // `senses.darkvision` à parte -- `applySenses` acima já sobrescreve com o
+    // valor derivado da raça NOVA.
+    set("raceVariableTraitChoice", "");
+    // Bônus de teste ligado à escolha de skillChoice/toolChoice da RAÇA
+    // (Vedalken "Tireless Precision", ver raceSkillCheckBonus/
+    // raceToolCheckBonus no schema) -- mesmo espírito do reset acima, trocar
+    // de raça sempre limpa (mesmo se a raça NOVA também tiver
+    // `checkBonusOnChoice`, força escolher de novo via GrantSummary).
+    set("raceSkillCheckBonus", null);
+    set("raceToolCheckBonus", null);
     // Idioma FIXO da raça (ex: "comum, anão") entra sozinho, mesmo espírito de
     // applySize/applySenses logo acima -- não é uma escolha do jogador, é
     // concessão garantida, então não faz sentido depender de um clique em
@@ -645,6 +677,19 @@ export function CharacterCreationWizard({ initialValue, onSubmit, onCancel }) {
     // idioma (`languageChoice`) continua manual, via ChoicePicker em
     // StepIdiomas -- essa sim precisa de decisão do jogador.
     if (item?.languages) appliers.applyLanguages(item.languages);
+  }
+
+  // Aplica a escolha do traço "Variable Trait" (Custom Lineage, TCE) -- Visão
+  // no Escuro OU perícia à escolha, nunca as duas (ver `race.variableTrait`
+  // no banco). Sentidos são só um número: sobrescrever é seguro e idempotente
+  // (diferente da perícia escolhida via ChoicePicker em StepPericias, que
+  // preferimos NÃO tentar reverter sozinho ao trocar de opção -- mesma
+  // limitação já aceita pra escolha de perícia de raça/antecedente em geral,
+  // skillProficiencies é um Set achatado sem rastreio de fonte).
+  function pickRaceVariableTrait(key) {
+    const option = raceMatch?.variableTrait?.options?.find((o) => o.key === key);
+    set("raceVariableTraitChoice", key);
+    appliers.applySenses({ darkvision: option?.senses?.darkvision ?? deriveDarkvisionFeet(raceMatch?.traits) });
   }
 
   function pickBackground(item) {
@@ -899,7 +944,15 @@ export function CharacterCreationWizard({ initialValue, onSubmit, onCancel }) {
       goTo(visibleSteps.findIndex((s) => s.key === "identidade"));
       return;
     }
-    onSubmit(character);
+    // Raça com `sizeProgression` (tamanho que muda sozinho com o nível, ex:
+    // Verdan) -- recalcula aqui, não só no level-up, porque dá pra criar um
+    // personagem já num nível alto direto neste wizard (`ClassesInput`
+    // aceita 1-20 de cara) -- sem isso, um Verdan criado já no nível 10
+    // nasceria "Pequeno" por engano, tamanho nunca mais recalculado até o
+    // próximo level-up. Mesma função usada em LevelUpWizard.jsx.
+    const totalLevel = (character.classes ?? []).reduce((sum, c) => sum + (Number(c.level) || 0), 0);
+    const progressiveSize = resolveProgressiveSize(raceMatch?.sizeProgression, totalLevel);
+    onSubmit(progressiveSize ? { ...character, size: progressiveSize } : character);
   }
 
   function goNext() {
@@ -928,6 +981,8 @@ export function CharacterCreationWizard({ initialValue, onSubmit, onCancel }) {
             sizeValue={character.size}
             senses={character.senses}
             onChangeSenses={(senses) => set("senses", senses)}
+            variableTraitChoice={character.raceVariableTraitChoice}
+            onPickVariableTrait={pickRaceVariableTrait}
             appliers={appliers}
           />
         );
@@ -1000,6 +1055,10 @@ export function CharacterCreationWizard({ initialValue, onSubmit, onCancel }) {
             character={character}
             onPick={setClassChoice}
             onClear={clearClassChoice}
+            lessonsFeats={character.lessonsOfTheFirstOnesFeats}
+            onPickLessonsFeat={pickLessonsFeat}
+            onClearLessonsFeat={clearLessonsFeat}
+            onRemoveLessonsOccurrence={removeLessonsOccurrence}
           />
         );
       case "proficiencia":
@@ -1043,7 +1102,7 @@ export function CharacterCreationWizard({ initialValue, onSubmit, onCancel }) {
             }}
             toolProficiencies={character.toolProficiencies}
             onChangeTools={(tools) => set("toolProficiencies", tools)}
-            raceMatch={raceMatch}
+            raceMatch={effectiveRaceMatch}
             backgroundMatch={backgroundMatch}
             classMatches={classMatches}
             appliers={appliers}

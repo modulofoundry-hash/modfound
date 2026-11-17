@@ -10,12 +10,44 @@ import { SKILLS } from "../../schema/character";
 // vez de espalhadas nas etapas de Raça/Antecedente/Classe (removidas de lá,
 // ver OriginSuggestions.jsx/ClassesInput.jsx). Equipamento reaproveita o
 // mesmo `EquipmentSlots` que já existia, só mudou de lugar.
-function GrantSummary({ title, matched, skillProficiencies, toolProficiencies, onApplySkills, onApplyTools, onApplyEquipment }) {
+function GrantSummary({
+  title,
+  matched,
+  skillProficiencies,
+  toolProficiencies,
+  onApplySkills,
+  onApplyTools,
+  onApplyEquipment,
+  onApplySkillCheckBonus,
+  onApplyToolCheckBonus,
+}) {
   if (!matched) return null;
   const hasSkills = matched.skills?.length > 0 || matched.skillChoice;
   const hasTools = matched.tools?.length > 0 || matched.toolChoice;
   const hasEquipment = matched.equipmentSlots?.length > 0;
   if (!hasSkills && !hasTools && !hasEquipment) return null;
+
+  // Vedalken (GGR) "Tireless Precision" (`checkBonusOnChoice` no banco) -- a
+  // escolha feita no ChoicePicker de skillChoice/toolChoice logo abaixo
+  // precisa ALÉM de entrar em skillProficiencies/toolProficiencies (como
+  // qualquer outra), gravar TAMBÉM qual foi essa escolha específica (ver
+  // applyRaceSkillCheckBonus/applyRaceToolCheckBonus). Só raças com esse
+  // campo acionam o wrapper -- sem ele, `onAdd` continua sendo
+  // onApplySkills/onApplyTools puro, sem efeito colateral nenhum (regressão
+  // zero pra qualquer outra raça/antecedente/classe com skillChoice normal).
+  const checkBonusFormula = matched.checkBonusOnChoice?.formula ?? null;
+  const handleSkillChoiceAdd = checkBonusFormula
+    ? (labels) => {
+        onApplySkills(labels);
+        onApplySkillCheckBonus(labels, checkBonusFormula);
+      }
+    : onApplySkills;
+  const handleToolChoiceAdd = checkBonusFormula
+    ? (labels) => {
+        onApplyTools(labels);
+        onApplyToolCheckBonus(labels, checkBonusFormula);
+      }
+    : onApplyTools;
 
   // Mesmo automatismo do botão "Adicionado" já usado em OriginSuggestions.jsx
   // — sem isso, o botão de concessão fixa continuava dizendo "Adicionar" pra
@@ -40,7 +72,7 @@ function GrantSummary({ title, matched, skillProficiencies, toolProficiencies, o
         </p>
       )}
       {matched.skillChoice && (
-        <ChoicePicker title="Perícias" count={matched.skillChoice.count} from={matched.skillChoice.from} onAdd={onApplySkills} />
+        <ChoicePicker title="Perícias" count={matched.skillChoice.count} from={matched.skillChoice.from} onAdd={handleSkillChoiceAdd} />
       )}
       {matched.tools?.length > 0 && (
         <p>
@@ -56,7 +88,7 @@ function GrantSummary({ title, matched, skillProficiencies, toolProficiencies, o
           count={matched.toolChoice.count}
           from={matched.toolChoice.from}
           category={matched.toolChoice.category}
-          onAdd={onApplyTools}
+          onAdd={handleToolChoiceAdd}
         />
       )}
       {hasEquipment && (
@@ -97,6 +129,8 @@ export function StepPericias({
         onApplySkills={appliers.applySkills}
         onApplyTools={appliers.applyTools}
         onApplyEquipment={appliers.applyEquipmentGrants}
+        onApplySkillCheckBonus={appliers.applyRaceSkillCheckBonus}
+        onApplyToolCheckBonus={appliers.applyRaceToolCheckBonus}
       />
       <GrantSummary
         title="Concedido pelo Antecedente"
@@ -109,9 +143,21 @@ export function StepPericias({
       />
       {classMatches?.map((match, index) => (
         <GrantSummary
-          key={index}
+          key={`class-${index}`}
           title={`Concedido pela Classe${match?.classData?.name ? ` (${match.classData.name})` : ""}`}
           matched={match?.classData}
+          skillProficiencies={skillProficiencies}
+          toolProficiencies={toolProficiencies}
+          onApplySkills={appliers.applySkills}
+          onApplyTools={appliers.applyTools}
+          onApplyEquipment={appliers.applyEquipmentGrants}
+        />
+      ))}
+      {classMatches?.map((match, index) => (
+        <GrantSummary
+          key={`subclass-${index}`}
+          title={`Concedido pela Subclasse${match?.subclassData?.name ? ` (${match.subclassData.name})` : ""}`}
+          matched={match?.subclassData}
           skillProficiencies={skillProficiencies}
           toolProficiencies={toolProficiencies}
           onApplySkills={appliers.applySkills}

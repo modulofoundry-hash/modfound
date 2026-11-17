@@ -2174,6 +2174,11 @@ input {
   color: var(--text-muted);
 }
 
+.melhoria-slot-locked {
+  opacity: 0.7;
+  background: var(--surface-muted, var(--surface));
+}
+
 .melhoria-feat-picker {
   margin-top: 10px;
 }
@@ -3192,6 +3197,35 @@ input {
   justify-content: center;
   gap: 28px;
   margin-bottom: 4px;
+  position: relative; /* ancora o .mechagrimorio-toggle (quando existir) sem deslocar os badges */
+}
+
+/* Ícone do Mechagrimório (Tecnomancer, Artificer) -- só renderiza quando a
+   subclasse ativa é Tecnomancer, então nunca afeta o cabeçalho de outra
+   classe. Posicionado à direita via `absolute` pra não competir com o
+   `justify-content: center` dos dois badges normais. */
+.mechagrimorio-toggle {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  line-height: 0;
+}
+.mechagrimorio-toggle img {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  transition: filter 0.15s ease;
+}
+.mechagrimorio-toggle:hover img {
+  filter: brightness(1.2);
+}
+.mechagrimorio-toggle.active img {
+  filter: drop-shadow(0 0 5px gold);
 }
 
 .spell-stat-badge {

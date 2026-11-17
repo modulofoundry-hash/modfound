@@ -21,6 +21,27 @@ export function useCharacterAppliers(setCharacter, setFeedback) {
     setFeedback?.(`${toolLabels.join(", ")} adicionado(s) em Proficiências em Ferramentas`);
   }
 
+  // Vedalken (GGR) "Tireless Precision" (checkBonusOnChoice no banco, ver
+  // GrantSummary em StepPericias.jsx) -- grava qual perícia/ferramenta foi a
+  // escolha ESPECÍFICA do skillChoice/toolChoice da RAÇA que deve ganhar
+  // +1d4 nos testes (`system.skills.<key>.bonuses.check` no Foundry, ver
+  // buildCharacter.js). Separado de applySkills/applyTools (que só somam no
+  // array achatado) porque é a ÚNICA forma de saber DEPOIS qual escolha
+  // específica foi essa -- skillProficiencies/toolProficiencies não
+  // rastreiam fonte. Sobrescreve (não acumula) -- só existe 1 escolha de
+  // bônus por raça (`skillChoice.count`/`toolChoice.count` sempre 1 neste
+  // padrão), reaplicar troca a escolha anterior em vez de duplicar.
+  function applyRaceSkillCheckBonus(skillLabels, formula) {
+    const label = skillLabels[0];
+    const id = SKILLS.find((s) => s.label === label)?.id;
+    setCharacter((prev) => ({ ...prev, raceSkillCheckBonus: id ? { skill: id, formula } : null }));
+  }
+
+  function applyRaceToolCheckBonus(toolLabels, formula) {
+    const tool = toolLabels[0];
+    setCharacter((prev) => ({ ...prev, raceToolCheckBonus: tool ? { tool, formula } : null }));
+  }
+
   // O banco guarda idiomas de raça/antecedente como texto solto (ex: "comum,
   // anão"), não lista — sem separar por vírgula aqui, o idioma inteiro virava
   // UMA entrada só em vez de duas (ver shared/schema/README.md).
@@ -203,6 +224,8 @@ export function useCharacterAppliers(setCharacter, setFeedback) {
   return {
     applySkills,
     applyTools,
+    applyRaceSkillCheckBonus,
+    applyRaceToolCheckBonus,
     applyLanguages,
     applyLanguageChoices,
     applySize,

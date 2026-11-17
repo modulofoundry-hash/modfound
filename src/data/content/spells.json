@@ -41,7 +41,7 @@
                 "formula": ""
               },
               "scaling": {
-                "mode": "whole",
+                "mode": "",
                 "number": 1,
                 "formula": ""
               }
@@ -61,7 +61,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -176,6 +178,7 @@
     "grantors": {
       "subclasses": [
         "Arcane Trickster",
+        "Circle of the Land",
         "College of Lore",
         "Eldritch Knight",
         "Evoker",
@@ -251,6 +254,7 @@
     "grantors": {
       "subclasses": [
         "Arcane Trickster",
+        "Circle of the Land",
         "College of Lore",
         "Eldritch Knight",
         "Evoker",
@@ -348,7 +352,6 @@
       "Artificer",
       "Bard",
       "Cleric",
-      "Druid",
       "Paladin",
       "Ranger"
     ],
@@ -1340,7 +1343,6 @@
     "grantors": {
       "subclasses": [
         "Death Domain",
-        "Grave Domain",
         "Reanimator",
         "The Undead",
         "Undead Patron"
@@ -1385,7 +1387,6 @@
     "grantors": {
       "subclasses": [
         "Death Domain",
-        "Grave Domain",
         "Reanimator",
         "The Undead",
         "Undead Patron"
@@ -1431,6 +1432,7 @@
     "grantors": {
       "subclasses": [
         "Abjurer",
+        "Arcana Domain",
         "Divine Soul"
       ],
       "feats": [],
@@ -1472,6 +1474,7 @@
     "grantors": {
       "subclasses": [
         "Abjurer",
+        "Arcana Domain",
         "Divine Soul"
       ],
       "feats": [],
@@ -1523,7 +1526,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -1562,7 +1567,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -1709,7 +1716,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -1748,7 +1757,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -2195,6 +2206,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Arcana Domain",
         "Divine Soul"
       ],
       "feats": [],
@@ -2211,7 +2223,6 @@
     "ritual": false,
     "classes": [
       "Cleric",
-      "Monk",
       "Warlock",
       "Wizard"
     ],
@@ -2237,6 +2248,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Arcana Domain",
         "Divine Soul"
       ],
       "feats": [],
@@ -2377,7 +2389,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -2835,8 +2849,7 @@
     "ritual": false,
     "classes": [
       "Bard",
-      "Cleric",
-      "Warlock"
+      "Cleric"
     ],
     "rules": "2014",
     "descriptionHtml": "<p>Up to three creatures of your choice that you can see within range must make Charisma saving throws. Whenever a target that fails this saving throw makes an attack roll or a saving throw before the spell ends, the target must roll a d4 and subtract the number rolled from the attack roll or saving throw.</p>\n<p><strong>At Higher Levels.</strong> When you cast this spell using a spell slot of 2nd level or higher, you can target one additional creature for each slot level above 1st.</p>",
@@ -2871,7 +2884,6 @@
       "subclasses": [
         "College of Lore",
         "Divine Soul",
-        "Grave Domain",
         "Hand of Dread",
         "Oath of Vengeance",
         "Oath of the Spelldrinker",
@@ -2935,7 +2947,6 @@
       "subclasses": [
         "College of Lore",
         "Divine Soul",
-        "Grave Domain",
         "Hand of Dread",
         "Oath of Vengeance",
         "Oath of the Spelldrinker",
@@ -3201,6 +3212,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Circle of the Land",
         "College of Lore",
         "Nature Domain"
       ],
@@ -3246,6 +3258,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Circle of the Land",
         "College of Lore",
         "Nature Domain"
       ],
@@ -3586,7 +3599,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -3978,8 +3993,8 @@
                 "formula": ""
               },
               "scaling": {
-                "mode": "whole",
-                "number": 1,
+                "mode": "",
+                "number": null,
                 "formula": ""
               }
             }
@@ -3990,7 +4005,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -4251,11 +4268,10 @@
         "Alchemist",
         "Arcane Trickster",
         "Circle of Spores",
+        "Circle of the Land",
         "Death Domain",
         "Eldritch Knight",
         "Festus Domain",
-        "Grave Domain",
-        "Grave Domain (RHW)",
         "Oathbreaker",
         "Reanimator",
         "Warrior of the Mystic Arts"
@@ -4335,11 +4351,10 @@
         "Alchemist",
         "Arcane Trickster",
         "Circle of Spores",
+        "Circle of the Land",
         "Death Domain",
         "Eldritch Knight",
         "Festus Domain",
-        "Grave Domain",
-        "Grave Domain (RHW)",
         "Oathbreaker",
         "Reanimator",
         "Warrior of the Mystic Arts"
@@ -4704,6 +4719,7 @@
       "subclasses": [
         "Arcane Trickster",
         "Astral Domain",
+        "Circle of the Land",
         "College of Lore",
         "Eldritch Knight",
         "Illusionist",
@@ -4757,6 +4773,7 @@
       "subclasses": [
         "Arcane Trickster",
         "Astral Domain",
+        "Circle of the Land",
         "College of Lore",
         "Eldritch Knight",
         "Illusionist",
@@ -5024,6 +5041,7 @@
       "subclasses": [
         "Arcane Trickster",
         "Circle of Wildfire",
+        "Circle of the Land",
         "College of Lore",
         "Eldritch Knight",
         "Evoker",
@@ -5110,6 +5128,7 @@
       "subclasses": [
         "Arcane Trickster",
         "Circle of Wildfire",
+        "Circle of the Land",
         "College of Lore",
         "Eldritch Knight",
         "Evoker",
@@ -5157,10 +5176,39 @@
     "sourceBook": "Forgotten Realms: Heroes of Faerûn",
     "activities": [
       {
-        "type": "utility",
+        "type": "save",
         "attack": null,
-        "damage": null,
-        "save": null,
+        "damage": {
+          "onSave": "half",
+          "parts": [
+            {
+              "number": 3,
+              "denomination": 6,
+              "bonus": "",
+              "types": [
+                "thunder"
+              ],
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "scaling": {
+                "mode": "whole",
+                "number": 1,
+                "formula": ""
+              }
+            }
+          ]
+        },
+        "save": {
+          "ability": [
+            "con"
+          ],
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
         "healing": null
       }
     ],
@@ -5235,6 +5283,7 @@
     "grantors": {
       "subclasses": [
         "Cartographer",
+        "Circle of the Land",
         "College of Lore",
         "Tempest Domain"
       ],
@@ -5307,6 +5356,7 @@
     "grantors": {
       "subclasses": [
         "Cartographer",
+        "Circle of the Land",
         "College of Lore",
         "Tempest Domain"
       ],
@@ -5561,7 +5611,8 @@
     "classes": [
       "Bard",
       "Sorcerer",
-      "Wizard"
+      "Wizard",
+      "Artificer"
     ],
     "rules": "2024",
     "descriptionHtml": "<p>You make a calming gesture, and up to three willing creatures of your choice that you can see within range have the Unconscious condition for the spell's duration. The spell ends on a target if it takes damage or another creature takes an action to shake it awake. If a target has the Unconscious condition from this spell for the full duration, that target gains the benefits of finishing a Short Rest, and it can't be affected by this spell again until it finishes a Long Rest.</p>",
@@ -5618,10 +5669,21 @@
     "sourceBook": "Xanathar's Guide to Everything",
     "activities": [
       {
-        "type": "utility",
+        "type": "save",
         "attack": null,
-        "damage": null,
-        "save": null,
+        "damage": {
+          "onSave": "half",
+          "parts": []
+        },
+        "save": {
+          "ability": [
+            "wis"
+          ],
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
         "healing": null
       }
     ],
@@ -5743,6 +5805,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Arcana Domain",
         "Evoker"
       ],
       "feats": [],
@@ -5811,6 +5874,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Arcana Domain",
         "Evoker"
       ],
       "feats": [],
@@ -5841,9 +5905,64 @@
     "sourceBook": "Xanathar's Guide to Everything",
     "activities": [
       {
-        "type": "utility",
-        "attack": null,
-        "damage": null,
+        "type": "attack",
+        "attack": {
+          "ability": "",
+          "bonus": "",
+          "flat": false
+        },
+        "damage": {
+          "parts": [
+            {
+              "number": 2,
+              "denomination": 8,
+              "bonus": "",
+              "types": [
+                "acid",
+                "cold",
+                "fire",
+                "force",
+                "lightning",
+                "poison",
+                "psychic",
+                "thunder"
+              ],
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "scaling": {
+                "mode": "",
+                "number": 1,
+                "formula": ""
+              }
+            },
+            {
+              "number": 1,
+              "denomination": 6,
+              "bonus": "",
+              "types": [
+                "acid",
+                "cold",
+                "fire",
+                "force",
+                "lightning",
+                "poison",
+                "psychic",
+                "thunder"
+              ],
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "scaling": {
+                "mode": "whole",
+                "number": 1,
+                "formula": ""
+              }
+            }
+          ]
+        },
         "save": null,
         "healing": null
       }
@@ -6418,7 +6537,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -6486,7 +6607,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -6660,7 +6783,7 @@
     "sourceBook": "Player's Handbook (2024)",
     "activities": [
       {
-        "type": "summon",
+        "type": "utility",
         "attack": null,
         "damage": null,
         "save": null,
@@ -6722,7 +6845,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -6759,7 +6884,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -6915,6 +7042,7 @@
       "subclasses": [
         "Alchemist",
         "Circle of Spores",
+        "Circle of the Land",
         "Death Domain",
         "Festus Domain",
         "Oath of Conquest",
@@ -6992,6 +7120,7 @@
       "subclasses": [
         "Alchemist",
         "Circle of Spores",
+        "Circle of the Land",
         "Death Domain",
         "Festus Domain",
         "Oath of Conquest",
@@ -7367,6 +7496,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Circle of the Land",
         "Oath of the Ancients",
         "Path of the Totem Warrior",
         "Path of the Wild Heart"
@@ -7414,6 +7544,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Circle of the Land",
         "Oath of the Ancients",
         "Path of the Totem Warrior",
         "Path of the Wild Heart"
@@ -7806,6 +7937,7 @@
     "grantors": {
       "subclasses": [
         "Artillerist",
+        "Circle of the Land",
         "Evoker",
         "Frost Sorcery",
         "The Fathomless",
@@ -7884,6 +8016,7 @@
     "grantors": {
       "subclasses": [
         "Artillerist",
+        "Circle of the Land",
         "Evoker",
         "Frost Sorcery",
         "The Fathomless",
@@ -8215,13 +8348,11 @@
           "onSave": "half",
           "parts": [
             {
-              "number": 3,
+              "number": 5,
               "denomination": 8,
               "bonus": "",
               "types": [
-                "bludgeoning",
-                "piercing",
-                "slashing"
+                "force"
               ],
               "custom": {
                 "enabled": false,
@@ -8407,6 +8538,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Circle of the Land",
         "Circle of the Sea",
         "Frost Sorcery"
       ],
@@ -8454,6 +8586,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Circle of the Land",
         "Circle of the Sea",
         "Frost Sorcery"
       ],
@@ -8514,8 +8647,7 @@
     "concentration": true,
     "ritual": false,
     "classes": [
-      "Druid",
-      "Warlock"
+      "Druid"
     ],
     "rules": "2024",
     "descriptionHtml": "<p>You conjure a Medium spirit from the Feywild in an unoccupied space you can see within range. The spirit lasts for the duration, and it looks like a Fey creature of your choice. When the spirit appears, you can make one melee spell attack against a creature within 5 feet of it. On a hit, the target takes Psychic damage equal to 3d12 plus your spellcasting ability modifier, and the target has the &amp;Reference[Frightened] condition until the start of your next turn, with both you and the spirit as the source of the fear.</p><p>As a Bonus Action on your later turns, you can teleport the spirit to an unoccupied space you can see within 30 feet of the space it left and make the attack against a creature within 5 feet of it.</p><p><strong>Using a Higher-Level Spell Slot.</strong> The damage increases by 1d12 for each spell slot level above 6.</p>",
@@ -8755,10 +8887,7 @@
               "denomination": 8,
               "bonus": "",
               "types": [
-                "force",
-                "piercing",
-                "bludgeoning",
-                "slashing"
+                "force"
               ],
               "custom": {
                 "enabled": false,
@@ -8991,7 +9120,7 @@
         "type": "save",
         "attack": null,
         "damage": {
-          "onSave": "half",
+          "onSave": "none",
           "parts": [
             {
               "number": 6,
@@ -9111,7 +9240,7 @@
         "type": "save",
         "attack": null,
         "damage": {
-          "onSave": "half",
+          "onSave": "none",
           "parts": [
             {
               "number": 11,
@@ -9190,7 +9319,8 @@
     ],
     "grantors": {
       "subclasses": [
-        "Abjurer"
+        "Abjurer",
+        "Arcana Domain"
       ],
       "feats": [],
       "optionalVariantClasses": []
@@ -9229,7 +9359,8 @@
     ],
     "grantors": {
       "subclasses": [
-        "Abjurer"
+        "Abjurer",
+        "Arcana Domain"
       ],
       "feats": [],
       "optionalVariantClasses": []
@@ -9439,6 +9570,7 @@
     "grantors": {
       "subclasses": [
         "Arcane Trickster",
+        "Circle of the Land",
         "Circle of the Sea",
         "Divine Soul",
         "Eldritch Knight",
@@ -9516,6 +9648,7 @@
     "grantors": {
       "subclasses": [
         "Arcane Trickster",
+        "Circle of the Land",
         "Circle of the Sea",
         "Divine Soul",
         "Eldritch Knight",
@@ -9567,6 +9700,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Arcana Domain",
         "Divine Soul"
       ],
       "feats": [],
@@ -9608,6 +9742,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Arcana Domain",
         "Divine Soul"
       ],
       "feats": [],
@@ -9947,6 +10082,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Circle of the Land",
         "College of Lore",
         "Divine Soul",
         "Festus Domain",
@@ -9995,6 +10131,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Circle of the Land",
         "College of Lore",
         "Divine Soul",
         "Festus Domain",
@@ -10040,7 +10177,48 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
+      "feats": [],
+      "optionalVariantClasses": []
+    }
+  },
+  {
+    "name": "Create Magen",
+    "level": 7,
+    "school": "Transmutation",
+    "time": "1 hour",
+    "range": "Touch",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2014",
+    "descriptionHtml": "<p>Enquanto conjura a magia, você coloca um frasco de mercúrio no peito de uma boneca humana de tamanho real, recheada de cinzas ou poeira. Você então costura a boneca e pinga seu sangue sobre ela. Ao fim da conjuração, você toca a boneca com um bastão de cristal, transformando-a num magen vestido com o que a boneca estava usando. O tipo de magen é escolhido por você durante a conjuração. Veja o Apêndice C de Icewind Dale: Rime of the Frostmaiden pros diferentes tipos de magen e suas características.</p><p>Quando o magen aparece, seu máximo de pontos de vida diminui numa quantidade igual ao grau de desafio do magen (redução mínima de 1). Só a magia wish pode desfazer essa redução no seu máximo de pontos de vida.</p><p>Qualquer magen criado com esta magia obedece suas ordens sem questionar.</p>",
+    "components": {
+      "vocal": true,
+      "somatic": true,
+      "material": true,
+      "materialText": "um frasco de mercúrio e uma boneca humana de tamanho real, ambos consumidos pela magia, e um bastão de cristal intricado que não é consumido"
+    },
+    "durationText": "Instantaneous",
+    "source": "IDRotF",
+    "sourceBook": "Icewind Dale: Rime of the Frostmaiden",
+    "activities": [
+      {
+        "type": "utility",
+        "attack": null,
+        "damage": null,
+        "save": null,
+        "healing": null
+      }
+    ],
+    "grantors": {
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -10206,6 +10384,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Arcana Domain",
         "Divine Soul"
       ],
       "feats": [],
@@ -10247,6 +10426,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Arcana Domain",
         "Divine Soul"
       ],
       "feats": [],
@@ -10505,7 +10685,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -10959,6 +11141,7 @@
     "grantors": {
       "subclasses": [
         "Arcane Trickster",
+        "Circle of the Land",
         "College of Lore",
         "Eldritch Knight",
         "Evoker",
@@ -11013,6 +11196,7 @@
     "grantors": {
       "subclasses": [
         "Arcane Trickster",
+        "Circle of the Land",
         "College of Lore",
         "Eldritch Knight",
         "Evoker",
@@ -11232,6 +11416,7 @@
     "grantors": {
       "subclasses": [
         "Celestial Patron",
+        "Circle of the Land",
         "College of Lore",
         "Divine Soul",
         "Light Domain",
@@ -11284,6 +11469,7 @@
     "grantors": {
       "subclasses": [
         "Celestial Patron",
+        "Circle of the Land",
         "College of Lore",
         "Divine Soul",
         "Light Domain",
@@ -11377,8 +11563,6 @@
         "Alchemist",
         "Death Domain",
         "Divine Soul",
-        "Grave Domain",
-        "Grave Domain (RHW)",
         "Life Domain",
         "Lunar Sorcery",
         "Reanimator",
@@ -11429,8 +11613,6 @@
         "Alchemist",
         "Death Domain",
         "Divine Soul",
-        "Grave Domain",
-        "Grave Domain (RHW)",
         "Life Domain",
         "Lunar Sorcery",
         "Reanimator",
@@ -11507,6 +11689,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Arcana Domain",
         "Evoker"
       ],
       "feats": [],
@@ -11547,6 +11730,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Arcana Domain",
         "Evoker"
       ],
       "feats": [],
@@ -11587,7 +11771,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -11626,7 +11812,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -11877,7 +12065,6 @@
       "subclasses": [
         "College of Lore",
         "Divine Soul",
-        "Grave Domain (RHW)",
         "The Genie"
       ],
       "feats": [
@@ -11926,7 +12113,6 @@
       "subclasses": [
         "College of Lore",
         "Divine Soul",
-        "Grave Domain (RHW)",
         "The Genie"
       ],
       "feats": [
@@ -11955,7 +12141,6 @@
       "Paladin",
       "Ranger",
       "Sorcerer",
-      "Warlock",
       "Wizard"
     ],
     "rules": "2014",
@@ -12182,7 +12367,7 @@
     "level": 2,
     "school": "Divination",
     "time": "Action",
-    "range": "30 ft",
+    "range": "Self",
     "concentration": true,
     "ritual": false,
     "classes": [
@@ -12315,7 +12500,7 @@
       "Wizard"
     ],
     "rules": "2024",
-    "descriptionHtml": "<p>You create a magical, explosive seed inside a creature you can see within range. The target makes a Constitution saving throw, taking 10d10 Fire damage on a failed save or half as much damage on a successful one.</p><p>An explosion then originates from the target. Each creature in a 60-foot Emanation originating from the target (not including the target) makes a Dexterity saving throw, with Disadvantage if this spell reduced the target to 0 Hit Points. A creature takes 10d10 Fire damage on a failed save or half as much damage on a successful one. Não automatizado aqui: só a Activity da explosão secundária (2ª leva de saves na Emanation de 60 pés) — aplicar manualmente.</p><p>A nonmagical object that isn't being worn or carried also takes the damage if it's in the Emanation, and the object starts burning if it's flammable.</p>",
+    "descriptionHtml": "<p>You create a magical, explosive seed inside a creature you can see within range. The target makes a Constitution saving throw, taking 10d10 Fire damage on a failed save or half as much damage on a successful one.</p><p>An explosion then originates from the target. Each creature in a 60-foot Emanation originating from the target (not including the target) makes a Dexterity saving throw, with Disadvantage if this spell reduced the target to 0 Hit Points. A creature takes 10d10 Fire damage on a failed save or half as much damage on a successful one.</p><p>A nonmagical object that isn't being worn or carried also takes the damage if it's in the Emanation, and the object starts burning if it's flammable.</p>",
     "components": {
       "vocal": true,
       "somatic": true,
@@ -12344,7 +12529,7 @@
                 "formula": ""
               },
               "scaling": {
-                "mode": "whole",
+                "mode": "",
                 "number": 1,
                 "formula": ""
               }
@@ -12362,7 +12547,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -12537,10 +12724,39 @@
     "sourceBook": "Forgotten Realms: Heroes of Faerûn",
     "activities": [
       {
-        "type": "utility",
+        "type": "save",
         "attack": null,
-        "damage": null,
-        "save": null,
+        "damage": {
+          "onSave": "half",
+          "parts": [
+            {
+              "number": 3,
+              "denomination": 10,
+              "bonus": "",
+              "types": [
+                "necrotic"
+              ],
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "scaling": {
+                "mode": "",
+                "number": null,
+                "formula": ""
+              }
+            }
+          ]
+        },
+        "save": {
+          "ability": [
+            "con"
+          ],
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
         "healing": null
       }
     ],
@@ -12730,7 +12946,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -12797,7 +13015,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -12842,8 +13062,7 @@
     ],
     "grantors": {
       "subclasses": [
-        "Divine Soul",
-        "Grave Domain (RHW)"
+        "Divine Soul"
       ],
       "feats": [],
       "optionalVariantClasses": []
@@ -12894,8 +13113,7 @@
     ],
     "grantors": {
       "subclasses": [
-        "Divine Soul",
-        "Grave Domain (RHW)"
+        "Divine Soul"
       ],
       "feats": [],
       "optionalVariantClasses": []
@@ -13056,7 +13274,10 @@
       {
         "type": "save",
         "attack": null,
-        "damage": null,
+        "damage": {
+          "onSave": "none",
+          "parts": []
+        },
         "save": {
           "ability": "con",
           "dc": {
@@ -13281,7 +13502,8 @@
     "classes": [
       "Bard",
       "Warlock",
-      "Wizard"
+      "Wizard",
+      "Artificer"
     ],
     "rules": "2024",
     "descriptionHtml": "<p>You create an illusory spatial dilation that fills a 60-foot-radius Sphere centered on a point within range. For each creature you can see in the Sphere, you can choose one of the following effects for it:</p><p>Dizzying Elongation: The creature makes an Intelligence saving throw. On a failed save, the creature takes 2d10 Psychic damage, and the Sphere is Difficult Terrain for it until the end of its turn.</p><p>Shortened Space: The creature's Speed increases by 20 feet until the end of its next turn. Until the spell ends, whenever a creature enters the Sphere or ends its turn there, you can choose for it to receive one of these effects (uma vez por turno por criatura). Activity abaixo modela só a opção Dizzying Elongation (a mais crocante); Shortened Space é buff narrativo, aplicar manualmente.</p>",
@@ -13375,6 +13597,7 @@
     "grantors": {
       "subclasses": [
         "Arcane Trickster",
+        "Circle of the Land",
         "Divine Soul",
         "Diviner",
         "Eldritch Knight"
@@ -13426,6 +13649,7 @@
     "grantors": {
       "subclasses": [
         "Arcane Trickster",
+        "Circle of the Land",
         "Divine Soul",
         "Diviner",
         "Eldritch Knight"
@@ -13842,7 +14066,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -13893,7 +14119,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -14057,8 +14285,8 @@
                 "formula": ""
               },
               "scaling": {
-                "mode": "whole",
-                "number": 1,
+                "mode": "",
+                "number": null,
                 "formula": ""
               }
             }
@@ -14118,7 +14346,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -14142,7 +14372,7 @@
       "vocal": true,
       "somatic": true,
       "material": true,
-      "materialText": ""
+      "materialText": "a hot pepper"
     },
     "durationText": "1 minute",
     "source": "XPHB",
@@ -14200,7 +14430,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -14237,7 +14469,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -14247,7 +14481,7 @@
     "level": 5,
     "school": "Illusion",
     "time": "1 minute",
-    "range": "Self",
+    "range": "Special",
     "concentration": false,
     "ritual": false,
     "classes": [
@@ -14304,6 +14538,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Circle of the Land",
         "Illusionist",
         "Warrior of the Celestial"
       ],
@@ -14320,7 +14555,7 @@
     "level": 5,
     "school": "Illusion",
     "time": "1 minute",
-    "range": "Special",
+    "range": "Self",
     "concentration": false,
     "ritual": false,
     "classes": [
@@ -14379,6 +14614,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Circle of the Land",
         "Illusionist",
         "Warrior of the Celestial"
       ],
@@ -14425,7 +14661,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -14502,6 +14740,7 @@
       "subclasses": [
         "Arcane Archer",
         "Arcane Archer (AU)",
+        "Circle of the Land",
         "College of Lore",
         "Nature Domain"
       ],
@@ -14549,6 +14788,7 @@
       "subclasses": [
         "Arcane Archer",
         "Arcane Archer (AU)",
+        "Circle of the Land",
         "College of Lore",
         "Nature Domain"
       ],
@@ -14565,10 +14805,10 @@
     "name": "Dueling Ground",
     "level": 2,
     "school": "Abjuration",
-    "time": "Action",
+    "time": "10 minutes",
     "range": "Touch",
     "concentration": false,
-    "ritual": false,
+    "ritual": true,
     "classes": [
       "Bard",
       "Cleric",
@@ -14577,7 +14817,8 @@
       "Ranger",
       "Sorcerer",
       "Warlock",
-      "Wizard"
+      "Wizard",
+      "Artificer"
     ],
     "rules": "2024",
     "descriptionHtml": "<p>You create a magical dueling ground bounded by a glowing, rune-scribed circle in a 15-foot-radius Sphere centered on a point on the ground you touch.</p><p>As part of creating the dueling ground, you designate two willing creatures within the Sphere as the targets. The spell ends early if a creature other than one of the targets enters the Sphere.</p><p>If a target drops to 0 Hit Points while in the dueling ground, the target is Stable and teleports to the nearest unoccupied space outside the dueling ground. If a target is subjected to an effect that would kill it instantly without dealing damage while in the dueling ground, the target doesn't die and instead has 0 Hit Points and the Unconscious condition, is Stable, and teleports to the nearest unoccupied space outside the dueling ground.</p>",
@@ -14709,10 +14950,39 @@
     "sourceBook": "Xanathar's Guide to Everything",
     "activities": [
       {
-        "type": "utility",
+        "type": "save",
         "attack": null,
-        "damage": null,
-        "save": null,
+        "damage": {
+          "onSave": "half",
+          "parts": [
+            {
+              "number": 1,
+              "denomination": 6,
+              "bonus": "",
+              "types": [
+                "bludgeoning"
+              ],
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "scaling": {
+                "mode": "whole",
+                "number": 1,
+                "formula": ""
+              }
+            }
+          ]
+        },
+        "save": {
+          "ability": [
+            "dex"
+          ],
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
         "healing": null
       }
     ],
@@ -14753,10 +15023,21 @@
     "sourceBook": "Xanathar's Guide to Everything",
     "activities": [
       {
-        "type": "utility",
+        "type": "save",
         "attack": null,
-        "damage": null,
-        "save": null,
+        "damage": {
+          "onSave": "half",
+          "parts": []
+        },
+        "save": {
+          "ability": [
+            "str"
+          ],
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
         "healing": null
       }
     ],
@@ -15040,26 +15321,8 @@
         "type": "save",
         "attack": null,
         "damage": {
-          "onSave": "none",
-          "parts": [
-            {
-              "number": 2,
-              "denomination": 6,
-              "bonus": "",
-              "types": [
-                "acid"
-              ],
-              "custom": {
-                "enabled": false,
-                "formula": ""
-              },
-              "scaling": {
-                "mode": "whole",
-                "number": 1,
-                "formula": ""
-              }
-            }
-          ]
+          "onSave": "half",
+          "parts": []
         },
         "save": {
           "ability": [
@@ -15258,7 +15521,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -15365,10 +15630,21 @@
     "sourceBook": "Xanathar's Guide to Everything",
     "activities": [
       {
-        "type": "utility",
+        "type": "save",
         "attack": null,
-        "damage": null,
-        "save": null,
+        "damage": {
+          "onSave": "half",
+          "parts": []
+        },
+        "save": {
+          "ability": [
+            "int"
+          ],
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
         "healing": null
       }
     ],
@@ -15411,10 +15687,10 @@
         "type": "save",
         "attack": null,
         "damage": {
-          "onSave": "none",
+          "onSave": "half",
           "parts": [
             {
-              "number": 2,
+              "number": 4,
               "denomination": 8,
               "bonus": "",
               "types": [
@@ -16115,7 +16391,7 @@
                 "formula": ""
               },
               "scaling": {
-                "mode": "whole",
+                "mode": "",
                 "number": 1,
                 "formula": ""
               }
@@ -16133,7 +16409,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -16247,6 +16525,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Arcana Domain",
         "Divine Soul",
         "Way of the Aether"
       ],
@@ -16291,6 +16570,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Arcana Domain",
         "Divine Soul",
         "Way of the Aether"
       ],
@@ -16325,7 +16605,7 @@
         "type": "save",
         "attack": null,
         "damage": {
-          "onSave": "half",
+          "onSave": "none",
           "parts": [
             {
               "number": 3,
@@ -16399,7 +16679,7 @@
         "type": "save",
         "attack": null,
         "damage": {
-          "onSave": "half",
+          "onSave": "none",
           "parts": [
             {
               "number": 3,
@@ -16590,7 +16870,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -16641,7 +16923,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -16903,8 +17187,6 @@
         "College of Lore",
         "Death Domain",
         "Eldritch Knight",
-        "Grave Domain",
-        "Grave Domain (RHW)",
         "Reanimator",
         "The Undead",
         "The Undying",
@@ -16968,8 +17250,6 @@
         "College of Lore",
         "Death Domain",
         "Eldritch Knight",
-        "Grave Domain",
-        "Grave Domain (RHW)",
         "Reanimator",
         "The Undead",
         "The Undying",
@@ -17051,10 +17331,16 @@
     "sourceBook": "Acquisitions Incorporated",
     "activities": [
       {
-        "type": "utility",
+        "type": "save",
         "attack": null,
         "damage": null,
-        "save": null,
+        "save": {
+          "ability": "wis",
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
         "healing": null
       }
     ],
@@ -17314,7 +17600,7 @@
         "type": "save",
         "attack": null,
         "damage": {
-          "onSave": "half",
+          "onSave": "full",
           "parts": [
             {
               "number": 4,
@@ -17348,7 +17634,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -17644,7 +17932,7 @@
     "sourceBook": "Xanathar's Guide to Everything",
     "activities": [
       {
-        "type": "utility",
+        "type": "summon",
         "attack": null,
         "damage": null,
         "save": null,
@@ -17972,7 +18260,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -18039,7 +18329,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -18104,6 +18396,7 @@
     "grantors": {
       "subclasses": [
         "Arcane Trickster",
+        "Circle of the Land",
         "College of Lore",
         "Eldritch Knight",
         "Evoker",
@@ -18178,6 +18471,7 @@
     "grantors": {
       "subclasses": [
         "Arcane Trickster",
+        "Circle of the Land",
         "College of Lore",
         "Eldritch Knight",
         "Evoker",
@@ -18528,6 +18822,7 @@
       "subclasses": [
         "Arcane Trickster",
         "Artillerist",
+        "Circle of the Land",
         "College of Lore",
         "Eldritch Knight",
         "Evoker",
@@ -18610,6 +18905,7 @@
       "subclasses": [
         "Arcane Trickster",
         "Artillerist",
+        "Circle of the Land",
         "College of Lore",
         "Eldritch Knight",
         "Evoker",
@@ -18662,7 +18958,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -19109,7 +19407,7 @@
   {
     "name": "Flaming Sphere",
     "level": 2,
-    "school": "Conjuration",
+    "school": "Evocation",
     "time": "Action",
     "range": "60 ft",
     "concentration": true,
@@ -19200,7 +19498,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -19216,7 +19516,6 @@
     "classes": [
       "Druid",
       "Sorcerer",
-      "Warlock",
       "Wizard"
     ],
     "rules": "2024",
@@ -19251,7 +19550,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -19391,6 +19692,7 @@
     "grantors": {
       "subclasses": [
         "Arcane Trickster",
+        "Circle of the Land",
         "Circle of the Sea",
         "College of Lore",
         "Eldritch Knight",
@@ -19446,6 +19748,7 @@
     "grantors": {
       "subclasses": [
         "Arcane Trickster",
+        "Circle of the Land",
         "Circle of the Sea",
         "College of Lore",
         "Eldritch Knight",
@@ -19510,7 +19813,7 @@
     "time": "10 minutes",
     "range": "Touch",
     "concentration": false,
-    "ritual": false,
+    "ritual": true,
     "classes": [
       "Cleric"
     ],
@@ -19588,6 +19891,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Arcana Domain",
         "Evoker"
       ],
       "feats": [],
@@ -19629,6 +19933,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Arcana Domain",
         "Evoker"
       ],
       "feats": [],
@@ -19671,6 +19976,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Arcana Domain",
         "Diviner"
       ],
       "feats": [],
@@ -19713,6 +20019,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Arcana Domain",
         "Diviner"
       ],
       "feats": [],
@@ -19841,7 +20148,7 @@
                 "formula": ""
               },
               "scaling": {
-                "mode": "whole",
+                "mode": "",
                 "number": 1,
                 "formula": ""
               }
@@ -19859,7 +20166,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -19901,6 +20210,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Circle of the Land",
         "Clockwork Sorcery",
         "Clockwork Soul",
         "Divine Soul",
@@ -19960,6 +20270,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Circle of the Land",
         "Clockwork Sorcery",
         "Clockwork Soul",
         "Divine Soul",
@@ -20081,6 +20392,73 @@
     }
   },
   {
+    "name": "Frost Fingers",
+    "level": 1,
+    "school": "Evocation",
+    "time": "Action",
+    "range": "Self",
+    "concentration": false,
+    "ritual": false,
+    "classes": [
+      "Wizard"
+    ],
+    "rules": "2014",
+    "descriptionHtml": "<p>Frio congelante explode das pontas dos seus dedos em um cone de 15 pés. Cada criatura naquela área deve ser bem-sucedida num teste de resistência de Constituição, sofrendo 2d8 de dano de frio numa falha, ou metade do dano num sucesso.</p><p>O frio congela líquidos não-mágicos na área que não estejam sendo vestidos ou carregados.</p><p><strong>Em Níveis Superiores.</strong> Quando você conjura essa magia usando um espaço de magia de 2º nível ou superior, o dano aumenta em 1d8 pra cada nível de espaço acima do 1º.</p>",
+    "components": {
+      "vocal": true,
+      "somatic": true,
+      "material": false,
+      "materialText": ""
+    },
+    "durationText": "Instantaneous",
+    "source": "IDRotF",
+    "sourceBook": "Icewind Dale: Rime of the Frostmaiden",
+    "activities": [
+      {
+        "type": "save",
+        "attack": null,
+        "damage": {
+          "onSave": "half",
+          "parts": [
+            {
+              "number": 2,
+              "denomination": 8,
+              "bonus": "",
+              "types": [
+                "cold"
+              ],
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "scaling": {
+                "mode": "whole",
+                "number": 1,
+                "formula": ""
+              }
+            }
+          ]
+        },
+        "save": {
+          "ability": "con",
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
+        "healing": null
+      }
+    ],
+    "grantors": {
+      "subclasses": [
+        "Arcane Trickster",
+        "Eldritch Knight"
+      ],
+      "feats": [],
+      "optionalVariantClasses": []
+    }
+  },
+  {
     "name": "Frostbite",
     "level": 0,
     "school": "Evocation",
@@ -20192,6 +20570,7 @@
         "Alchemist",
         "Arcane Trickster",
         "Circle of Spores",
+        "Circle of the Land",
         "College of Lore",
         "Eldritch Knight",
         "Oath of the Noble Genies",
@@ -20245,6 +20624,7 @@
         "Alchemist",
         "Arcane Trickster",
         "Circle of Spores",
+        "Circle of the Land",
         "College of Lore",
         "Eldritch Knight",
         "Oath of the Noble Genies",
@@ -20296,6 +20676,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Arcana Domain",
         "Divine Soul"
       ],
       "feats": [],
@@ -20338,6 +20719,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Arcana Domain",
         "Divine Soul"
       ],
       "feats": [],
@@ -20528,9 +20910,7 @@
         "Circle of Spores",
         "College of Lore",
         "Divine Soul",
-        "Eldritch Knight",
-        "Grave Domain",
-        "Grave Domain (RHW)"
+        "Eldritch Knight"
       ],
       "feats": [],
       "optionalVariantClasses": []
@@ -20575,9 +20955,7 @@
         "Circle of Spores",
         "College of Lore",
         "Divine Soul",
-        "Eldritch Knight",
-        "Grave Domain",
-        "Grave Domain (RHW)"
+        "Eldritch Knight"
       ],
       "feats": [],
       "optionalVariantClasses": []
@@ -20848,7 +21226,8 @@
     ],
     "grantors": {
       "subclasses": [
-        "Abjurer"
+        "Abjurer",
+        "Arcana Domain"
       ],
       "feats": [],
       "optionalVariantClasses": []
@@ -20888,7 +21267,8 @@
     ],
     "grantors": {
       "subclasses": [
-        "Abjurer"
+        "Abjurer",
+        "Arcana Domain"
       ],
       "feats": [],
       "optionalVariantClasses": []
@@ -21076,7 +21456,7 @@
     "level": 1,
     "school": "Conjuration",
     "time": "Action",
-    "range": "Self",
+    "range": "Touch",
     "concentration": false,
     "ritual": false,
     "classes": [
@@ -21559,6 +21939,7 @@
         "Arcane Trickster",
         "Archfey Patron",
         "Armorer",
+        "Circle of the Land",
         "Eldritch Knight",
         "Gloom Stalker",
         "Illusionist",
@@ -21616,6 +21997,7 @@
         "Arcane Trickster",
         "Archfey Patron",
         "Armorer",
+        "Circle of the Land",
         "Eldritch Knight",
         "Gloom Stalker",
         "Illusionist",
@@ -21648,7 +22030,6 @@
       "Bard",
       "Cleric",
       "Druid",
-      "Paladin",
       "Ranger"
     ],
     "rules": "2014",
@@ -21984,7 +22365,8 @@
     ],
     "grantors": {
       "subclasses": [
-        "Abjurer"
+        "Abjurer",
+        "Arcana Domain"
       ],
       "feats": [],
       "optionalVariantClasses": []
@@ -22024,7 +22406,8 @@
     ],
     "grantors": {
       "subclasses": [
-        "Abjurer"
+        "Abjurer",
+        "Arcana Domain"
       ],
       "feats": [],
       "optionalVariantClasses": []
@@ -22066,6 +22449,7 @@
     "grantors": {
       "subclasses": [
         "Circle of Stars",
+        "Circle of the Land",
         "Circle of the Stars",
         "College of Lore",
         "College of Spirits",
@@ -22120,6 +22504,7 @@
     "grantors": {
       "subclasses": [
         "Circle of Stars",
+        "Circle of the Land",
         "Circle of the Stars",
         "College of Lore",
         "College of Spirits",
@@ -22656,6 +23041,7 @@
     "grantors": {
       "subclasses": [
         "Arcane Trickster",
+        "Circle of the Land",
         "Eldritch Knight",
         "Illusionist",
         "Lunar Sorcery",
@@ -22707,6 +23093,7 @@
     "grantors": {
       "subclasses": [
         "Arcane Trickster",
+        "Circle of the Land",
         "Eldritch Knight",
         "Illusionist",
         "Lunar Sorcery",
@@ -22892,6 +23279,7 @@
     "grantors": {
       "subclasses": [
         "Arcane Trickster",
+        "Circle of the Land",
         "Circle of the Unbroken",
         "College of Lore",
         "Eldritch Knight",
@@ -22942,6 +23330,7 @@
     "grantors": {
       "subclasses": [
         "Arcane Trickster",
+        "Circle of the Land",
         "Circle of the Unbroken",
         "College of Lore",
         "Eldritch Knight",
@@ -23077,11 +23466,19 @@
     "sourceBook": "Xanathar's Guide to Everything",
     "activities": [
       {
-        "type": "utility",
+        "type": "heal",
         "attack": null,
         "damage": null,
         "save": null,
-        "healing": null
+        "healing": {
+          "number": 1,
+          "denomination": 6,
+          "bonus": "",
+          "custom": {
+            "enabled": false,
+            "formula": ""
+          }
+        }
       }
     ],
     "grantors": {
@@ -23229,7 +23626,7 @@
         "type": "save",
         "attack": null,
         "damage": {
-          "onSave": "half",
+          "onSave": "full",
           "parts": [
             {
               "number": 2,
@@ -23756,7 +24153,7 @@
     "name": "Hindsight",
     "level": 9,
     "school": "Divination",
-    "time": "1 minute",
+    "time": "10 minutes",
     "range": "500 ft",
     "concentration": true,
     "ritual": false,
@@ -23784,7 +24181,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -23959,6 +24358,7 @@
     "grantors": {
       "subclasses": [
         "Arcane Trickster",
+        "Circle of the Land",
         "College of Lore",
         "Divine Soul",
         "Eldritch Knight",
@@ -24028,6 +24428,7 @@
     "grantors": {
       "subclasses": [
         "Arcane Trickster",
+        "Circle of the Land",
         "College of Lore",
         "Divine Soul",
         "Eldritch Knight",
@@ -24161,6 +24562,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Arcana Domain",
         "Divine Soul"
       ],
       "feats": [],
@@ -24688,6 +25090,7 @@
       "subclasses": [
         "Arcane Trickster",
         "Artillerist",
+        "Circle of the Land",
         "Circle of the Sea",
         "Eldritch Knight",
         "Evoker",
@@ -24738,22 +25141,24 @@
           "parts": [
             {
               "number": 2,
-              "denomination": "10",
+              "denomination": 10,
               "bonus": "",
               "types": [
                 "bludgeoning"
               ],
               "custom": {
                 "enabled": false,
-                "formula": "(@item.level - 2)d10"
+                "formula": ""
               },
               "scaling": {
-                "mode": "whole"
+                "mode": "whole",
+                "number": 1,
+                "formula": ""
               }
             },
             {
               "number": 4,
-              "denomination": "6",
+              "denomination": 6,
               "bonus": "",
               "types": [
                 "cold"
@@ -24782,6 +25187,7 @@
       "subclasses": [
         "Arcane Trickster",
         "Artillerist",
+        "Circle of the Land",
         "Circle of the Sea",
         "Eldritch Knight",
         "Evoker",
@@ -24945,7 +25351,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -24962,7 +25370,7 @@
       "Wizard"
     ],
     "rules": "2024",
-    "descriptionHtml": "<p>By gathering threads of shadow material from the Shadowfell, you create a Huge shadowy dragon in an unoccupied space that you can see within range. The illusion lasts for the spell's duration and occupies its space as if it were a creature. The illusion is tangible because of the shadow material used to create it but has Immunity to all damage and conditions.</p><p>When the illusion appears, any enemy that can see it makes a Wisdom saving throw. On a failed save, the creature drops whatever it's holding and has the Frightened condition for the duration.</p><p>As a Bonus Action, you can move the illusion up to 60 feet. At any point during its movement, you can cause the shadowy dragon to exhale a blast of energy in a 60-foot Cone. Each creature in the Cone makes an Intelligence saving throw, taking 6d6 Acid, Cold, Fire, Lightning, Necrotic, or Poison damage (your choice when you create the dragon) on a failed save or half as much damage on a successful one. Activity abaixo modela só a exalação (dano); o medo inicial (Wisdom save) é narrativo, aplicar manualmente.</p>",
+    "descriptionHtml": "<p>By gathering threads of shadow material from the Shadowfell, you create a Huge shadowy dragon in an unoccupied space that you can see within range. The illusion lasts for the spell's duration and occupies its space as if it were a creature. The illusion is tangible because of the shadow material used to create it but has Immunity to all damage and conditions.</p><p>When the illusion appears, any enemy that can see it makes a Wisdom saving throw. On a failed save, the creature drops whatever it's holding and has the Frightened condition for the duration.</p><p>As a Bonus Action, you can move the illusion up to 60 feet. At any point during its movement, you can cause the shadowy dragon to exhale a blast of energy in a 60-foot Cone. Each creature in the Cone makes an Intelligence saving throw, taking 6d6 Acid, Cold, Fire, Lightning, Necrotic, or Poison damage (your choice when you create the dragon) on a failed save or half as much damage on a successful one. A 2ª activity \"Fearsome Visage\" modela o medo inicial (save, condição Frightened); o escape por falta de linha de visão e o item solto não são automatizados.</p>",
     "components": {
       "vocal": false,
       "somatic": true,
@@ -24996,7 +25404,7 @@
                 "formula": ""
               },
               "scaling": {
-                "mode": "whole",
+                "mode": "",
                 "number": 1,
                 "formula": ""
               }
@@ -25014,7 +25422,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -25169,7 +25579,7 @@
                 "formula": ""
               },
               "scaling": {
-                "mode": "whole",
+                "mode": "",
                 "number": 1,
                 "formula": ""
               }
@@ -25277,7 +25687,8 @@
     ],
     "grantors": {
       "subclasses": [
-        "Abjurer"
+        "Abjurer",
+        "Arcana Domain"
       ],
       "feats": [],
       "optionalVariantClasses": []
@@ -25328,7 +25739,8 @@
     ],
     "grantors": {
       "subclasses": [
-        "Abjurer"
+        "Abjurer",
+        "Arcana Domain"
       ],
       "feats": [],
       "optionalVariantClasses": []
@@ -25397,7 +25809,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -25464,7 +25878,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -25496,10 +25912,16 @@
     "sourceBook": "Acquisitions Incorporated",
     "activities": [
       {
-        "type": "utility",
+        "type": "save",
         "attack": null,
         "damage": null,
-        "save": null,
+        "save": {
+          "ability": "wis",
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
         "healing": null
       }
     ],
@@ -25888,6 +26310,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Circle of the Land",
         "Divine Soul",
         "Fiend Patron",
         "Nature Domain",
@@ -25966,6 +26389,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Circle of the Land",
         "Divine Soul",
         "Fiend Patron",
         "Nature Domain",
@@ -25991,7 +26415,11 @@
     "concentration": true,
     "ritual": false,
     "classes": [
-      "Artificer"
+      "Artificer",
+      "Bard",
+      "Sorcerer",
+      "Warlock",
+      "Wizard"
     ],
     "rules": "2014",
     "descriptionHtml": "<p>For the duration, you or one willing creature you can see within range has resistance to psychic damage, as well as advantage on Intelligence, Wisdom, and Charisma saving throws.</p><p><strong>At Higher Levels.</strong> When you cast this spell using a spell slot of 4th level or higher, you can target one additional creature for each slot level above 3rd. The creatures must be within 30 feet of each other when you target them.</p>",
@@ -26014,7 +26442,11 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcane Trickster",
+        "Eldritch Knight",
+        "Warrior of the Mystic Arts"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -26054,7 +26486,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -26094,7 +26528,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -26134,7 +26570,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -26174,7 +26612,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -26218,6 +26658,7 @@
       "subclasses": [
         "Arcane Trickster",
         "Astral Domain",
+        "Circle of the Land",
         "College of Lore",
         "Eldritch Knight",
         "Illusionist",
@@ -26276,6 +26717,7 @@
       "subclasses": [
         "Arcane Trickster",
         "Astral Domain",
+        "Circle of the Land",
         "College of Lore",
         "Eldritch Knight",
         "Illusionist",
@@ -26327,7 +26769,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -26351,7 +26795,7 @@
       "material": true,
       "materialText": "a piece of adamantine worth 500+ GP, which the spell consumes"
     },
-    "durationText": "1 minute",
+    "durationText": "10 minutes",
     "source": "AU",
     "sourceBook": "Arcana Unleashed",
     "activities": [
@@ -26364,7 +26808,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -26403,7 +26849,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -26450,8 +26898,8 @@
                 "formula": ""
               },
               "scaling": {
-                "mode": "",
-                "number": null,
+                "mode": "whole",
+                "number": 1,
                 "formula": ""
               }
             },
@@ -26467,8 +26915,8 @@
                 "formula": ""
               },
               "scaling": {
-                "mode": "",
-                "number": null,
+                "mode": "whole",
+                "number": 1,
                 "formula": ""
               }
             }
@@ -26514,10 +26962,16 @@
     "sourceBook": "Acquisitions Incorporated",
     "activities": [
       {
-        "type": "utility",
+        "type": "save",
         "attack": null,
         "damage": null,
-        "save": null,
+        "save": {
+          "ability": "wis",
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
         "healing": null
       }
     ],
@@ -26574,8 +27028,8 @@
                 "formula": ""
               },
               "scaling": {
-                "mode": "whole",
-                "number": 1,
+                "mode": "",
+                "number": null,
                 "formula": ""
               }
             }
@@ -26862,10 +27316,39 @@
     "sourceBook": "Forgotten Realms: Heroes of Faerûn",
     "activities": [
       {
-        "type": "utility",
+        "type": "save",
         "attack": null,
-        "damage": null,
-        "save": null,
+        "damage": {
+          "onSave": "half",
+          "parts": [
+            {
+              "number": 3,
+              "denomination": 10,
+              "bonus": "",
+              "types": [
+                "force"
+              ],
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "scaling": {
+                "mode": "whole",
+                "number": 1,
+                "formula": ""
+              }
+            }
+          ]
+        },
+        "save": {
+          "ability": [
+            "str"
+          ],
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
         "healing": null
       }
     ],
@@ -27419,11 +27902,19 @@
     "sourceBook": "Xanathar's Guide to Everything",
     "activities": [
       {
-        "type": "utility",
+        "type": "heal",
         "attack": null,
         "damage": null,
         "save": null,
-        "healing": null
+        "healing": {
+          "number": 8,
+          "denomination": 8,
+          "bonus": "",
+          "custom": {
+            "enabled": false,
+            "formula": ""
+          }
+        }
       }
     ],
     "grantors": {
@@ -27698,6 +28189,7 @@
       "subclasses": [
         "Arcane Trickster",
         "Armorer",
+        "Circle of the Land",
         "Circle of the Sea",
         "College of Lore",
         "Eldritch Knight",
@@ -27777,6 +28269,7 @@
       "subclasses": [
         "Arcane Trickster",
         "Armorer",
+        "Circle of the Land",
         "Circle of the Sea",
         "College of Lore",
         "Eldritch Knight",
@@ -27883,7 +28376,7 @@
       "Wizard"
     ],
     "rules": "2024",
-    "descriptionHtml": "<p>A ring of crackling electricity fills a 10-foot Emanation originating from you. Whenever the Emanation enters a creature's space and whenever a creature enters the Emanation or ends its turn there, you can force that creature to make a Constitution saving throw. On a failed save, the creature takes 3d6 Lightning damage plus 3d6 Thunder damage, and it has the Deafened condition for 1 minute. On a successful save, the creature takes half as much damage only.</p><p>As a Magic action while the spell is active, you can emit a 60-foot-long, 5-foot-wide Line out from you, dealing 6d6 Lightning damage on a failed Dexterity save or half on success (variante da Linha não modelada como Activity separada aqui, aplicar manualmente).</p>",
+    "descriptionHtml": "<p>A ring of crackling electricity fills a 10-foot Emanation originating from you. Whenever the Emanation enters a creature's space and whenever a creature enters the Emanation or ends its turn there, you can force that creature to make a Constitution saving throw. On a failed save, the creature takes 3d6 Lightning damage plus 3d6 Thunder damage, and it has the Deafened condition for 1 minute. On a successful save, the creature takes half as much damage only.</p><p>As a Magic action while the spell is active, you can emit a 60-foot-long, 5-foot-wide Line out from you, dealing 6d6 Lightning damage on a failed Dexterity save or half on success (2ª activity \"Lightning Line\").</p>",
     "components": {
       "vocal": true,
       "somatic": true,
@@ -27912,7 +28405,7 @@
                 "formula": ""
               },
               "scaling": {
-                "mode": "whole",
+                "mode": "",
                 "number": 1,
                 "formula": ""
               }
@@ -27929,7 +28422,7 @@
                 "formula": ""
               },
               "scaling": {
-                "mode": "whole",
+                "mode": "",
                 "number": 1,
                 "formula": ""
               }
@@ -27947,7 +28440,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -28078,6 +28573,7 @@
       "subclasses": [
         "Arcane Trickster",
         "Cartographer",
+        "Circle of the Land",
         "Divine Soul",
         "Diviner",
         "Eldritch Knight",
@@ -28131,6 +28627,7 @@
       "subclasses": [
         "Arcane Trickster",
         "Cartographer",
+        "Circle of the Land",
         "Divine Soul",
         "Diviner",
         "Eldritch Knight",
@@ -28394,7 +28891,7 @@
                 "formula": ""
               },
               "scaling": {
-                "mode": "whole",
+                "mode": "",
                 "number": 1,
                 "formula": ""
               }
@@ -28414,7 +28911,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -28460,7 +28959,7 @@
                 "formula": ""
               },
               "scaling": {
-                "mode": "whole",
+                "mode": "",
                 "number": 1,
                 "formula": ""
               }
@@ -28741,7 +29240,6 @@
     "grantors": {
       "subclasses": [
         "Abjurer",
-        "Arcana Domain",
         "Arcane Trickster",
         "College of Lore",
         "Divine Soul",
@@ -28802,7 +29300,6 @@
     "grantors": {
       "subclasses": [
         "Abjurer",
-        "Arcana Domain",
         "Arcane Trickster",
         "College of Lore",
         "Divine Soul",
@@ -28847,7 +29344,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -28884,7 +29383,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -29164,7 +29665,7 @@
                 "formula": ""
               },
               "scaling": {
-                "mode": "whole",
+                "mode": "",
                 "number": 1,
                 "formula": ""
               }
@@ -29791,15 +30292,28 @@
     "sourceBook": "Xanathar's Guide to Everything",
     "activities": [
       {
-        "type": "utility",
+        "type": "save",
         "attack": null,
-        "damage": null,
-        "save": null,
+        "damage": {
+          "onSave": "half",
+          "parts": []
+        },
+        "save": {
+          "ability": [
+            "wis"
+          ],
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
         "healing": null
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -29850,7 +30364,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -29901,7 +30417,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -29931,10 +30449,39 @@
     "sourceBook": "Xanathar's Guide to Everything",
     "activities": [
       {
-        "type": "utility",
+        "type": "save",
         "attack": null,
-        "damage": null,
-        "save": null,
+        "damage": {
+          "onSave": "none",
+          "parts": [
+            {
+              "number": 2,
+              "denomination": 6,
+              "bonus": "",
+              "types": [
+                "bludgeoning"
+              ],
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "scaling": {
+                "mode": "",
+                "number": 1,
+                "formula": ""
+              }
+            }
+          ]
+        },
+        "save": {
+          "ability": [
+            "str"
+          ],
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
         "healing": null
       }
     ],
@@ -29980,7 +30527,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -30020,7 +30569,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -30080,6 +30631,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Circle of the Land",
         "College of Lore",
         "Divine Soul",
         "The Genie"
@@ -30145,6 +30697,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Circle of the Land",
         "College of Lore",
         "Divine Soul",
         "The Genie"
@@ -30214,6 +30767,7 @@
       "subclasses": [
         "Alchemist",
         "Arcane Trickster",
+        "Circle of the Land",
         "Eldritch Knight"
       ],
       "feats": [],
@@ -30280,6 +30834,7 @@
       "subclasses": [
         "Alchemist",
         "Arcane Trickster",
+        "Circle of the Land",
         "Eldritch Knight"
       ],
       "feats": [],
@@ -30435,6 +30990,7 @@
     "grantors": {
       "subclasses": [
         "Arcane Trickster",
+        "Circle of the Land",
         "College of Lore",
         "Divine Soul",
         "Eldritch Knight",
@@ -30492,6 +31048,7 @@
     "grantors": {
       "subclasses": [
         "Arcane Trickster",
+        "Circle of the Land",
         "College of Lore",
         "Divine Soul",
         "Eldritch Knight",
@@ -30573,7 +31130,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -30589,7 +31148,6 @@
     "classes": [
       "Artificer",
       "Bard",
-      "Druid",
       "Sorcerer",
       "Wizard"
     ],
@@ -30764,6 +31322,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Arcana Domain",
         "Evoker"
       ],
       "feats": [],
@@ -30848,6 +31407,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Arcana Domain",
         "Evoker"
       ],
       "feats": [],
@@ -30886,7 +31446,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -30925,7 +31487,8 @@
     ],
     "grantors": {
       "subclasses": [
-        "Abjurer"
+        "Abjurer",
+        "Arcana Domain"
       ],
       "feats": [],
       "optionalVariantClasses": []
@@ -30965,7 +31528,8 @@
     ],
     "grantors": {
       "subclasses": [
-        "Abjurer"
+        "Abjurer",
+        "Arcana Domain"
       ],
       "feats": [],
       "optionalVariantClasses": []
@@ -31000,7 +31564,7 @@
         "type": "save",
         "attack": null,
         "damage": {
-          "onSave": "half",
+          "onSave": "none",
           "parts": [
             {
               "number": 1,
@@ -31273,6 +31837,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Arcana Domain",
         "Illusionist"
       ],
       "feats": [],
@@ -31314,6 +31879,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Arcana Domain",
         "Illusionist"
       ],
       "feats": [],
@@ -31358,6 +31924,7 @@
       "subclasses": [
         "Arcane Trickster",
         "Armorer",
+        "Circle of the Land",
         "College of Glamour",
         "College of Lore",
         "Desert Soul",
@@ -31412,6 +31979,7 @@
       "subclasses": [
         "Arcane Trickster",
         "Armorer",
+        "Circle of the Land",
         "College of Glamour",
         "College of Lore",
         "Desert Soul",
@@ -31560,6 +32128,7 @@
         "Arcane Trickster",
         "Archfey Patron",
         "Astral Domain",
+        "Circle of the Land",
         "College of Lore",
         "Eldritch Knight",
         "Fey Wanderer",
@@ -31621,6 +32190,7 @@
         "Arcane Trickster",
         "Archfey Patron",
         "Astral Domain",
+        "Circle of the Land",
         "College of Lore",
         "Eldritch Knight",
         "Fey Wanderer",
@@ -31825,7 +32395,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -32152,7 +32724,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -32190,7 +32764,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -32316,7 +32892,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -32354,7 +32932,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -32384,11 +32964,19 @@
     "sourceBook": "Acquisitions Incorporated",
     "activities": [
       {
-        "type": "utility",
+        "type": "heal",
         "attack": null,
         "damage": null,
         "save": null,
-        "healing": null
+        "healing": {
+          "number": null,
+          "denomination": null,
+          "bonus": "",
+          "custom": {
+            "enabled": true,
+            "formula": "5"
+          }
+        }
       }
     ],
     "grantors": {
@@ -32433,7 +33021,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -32472,7 +33062,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -32908,7 +33500,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -32973,7 +33567,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -33039,7 +33635,7 @@
     "school": "Abjuration",
     "time": "Action",
     "range": "30 ft",
-    "concentration": false,
+    "concentration": true,
     "ritual": false,
     "classes": [
       "Artificer",
@@ -33132,7 +33728,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [
         "Boon of Revelry"
       ],
@@ -33183,7 +33781,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [
         "Boon of Revelry"
       ],
@@ -33224,6 +33824,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Circle of the Land",
         "College of Lore",
         "Shadow Sorcery",
         "Trickery Domain",
@@ -33274,6 +33875,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Circle of the Land",
         "College of Lore",
         "Shadow Sorcery",
         "Trickery Domain",
@@ -33324,7 +33926,8 @@
     "grantors": {
       "subclasses": [
         "Armorer",
-        "Astral Griffon Patron"
+        "Astral Griffon Patron",
+        "Circle of the Land"
       ],
       "feats": [],
       "optionalVariantClasses": [
@@ -33366,7 +33969,8 @@
     "grantors": {
       "subclasses": [
         "Armorer",
-        "Astral Griffon Patron"
+        "Astral Griffon Patron",
+        "Circle of the Land"
       ],
       "feats": [],
       "optionalVariantClasses": [
@@ -33872,7 +34476,6 @@
     "grantors": {
       "subclasses": [
         "Abjurer",
-        "Arcana Domain",
         "Divine Soul"
       ],
       "feats": [],
@@ -33928,7 +34531,6 @@
     "grantors": {
       "subclasses": [
         "Abjurer",
-        "Arcana Domain",
         "Divine Soul"
       ],
       "feats": [],
@@ -33978,6 +34580,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Arcana Domain",
         "Divine Soul"
       ],
       "feats": [],
@@ -34021,6 +34624,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Arcana Domain",
         "Divine Soul"
       ],
       "feats": [],
@@ -34064,6 +34668,7 @@
       "subclasses": [
         "Archfey Patron",
         "Circle of Wildfire",
+        "Circle of the Land",
         "College of Lore",
         "Nature Domain",
         "Oath of the Ancients",
@@ -34112,6 +34717,7 @@
       "subclasses": [
         "Archfey Patron",
         "Circle of Wildfire",
+        "Circle of the Land",
         "College of Lore",
         "Nature Domain",
         "Oath of the Ancients",
@@ -34190,6 +34796,7 @@
     "grantors": {
       "subclasses": [
         "Arcane Trickster",
+        "Circle of the Land",
         "College of Lore",
         "Eldritch Knight",
         "Hand of Dread",
@@ -34267,6 +34874,7 @@
     "grantors": {
       "subclasses": [
         "Arcane Trickster",
+        "Circle of the Land",
         "College of Lore",
         "Eldritch Knight",
         "Hand of Dread",
@@ -34328,6 +34936,7 @@
     "grantors": {
       "subclasses": [
         "Arcane Trickster",
+        "Circle of the Land",
         "Eldritch Knight",
         "Transmuter",
         "Trickery Domain",
@@ -34388,6 +34997,7 @@
     "grantors": {
       "subclasses": [
         "Arcane Trickster",
+        "Circle of the Land",
         "Eldritch Knight",
         "Transmuter",
         "Trickery Domain",
@@ -34564,7 +35174,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -34623,7 +35235,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -34662,7 +35276,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -34682,7 +35298,7 @@
       "Wizard"
     ],
     "rules": "2024",
-    "descriptionHtml": "<p>You speak a word of power that causes waves of intense pain to assail one creature you can see within range. If the target has 100 Hit Points or fewer, it takes 6d8 Force damage and has the Charmed condition for the duration. Otherwise, it takes 6d8 Force damage only.</p><p>While the target is Charmed, its Speed can be no more than 10 feet, and it has Disadvantage on D20 Tests except Constitution saving throws. In addition, when the target tries to cast a spell, it must first succeed on a Constitution saving throw, or the spell dissipates with no effect.</p><p>At the end of each of its turns, the Charmed target makes a Constitution saving throw, ending the spell on itself on a successful save. Sem resistência inicial (magia de dano automático, sem save pra evitar o dano) — Activity abaixo modela como dano direto (attack-less damage), Charmed condicionada a HP<=100 aplicada manualmente.</p>",
+    "descriptionHtml": "<p>You speak a word of power that causes waves of intense pain to assail one creature you can see within range. If the target has 100 Hit Points or fewer, it takes 6d8 Force damage and has the Charmed condition for the duration. Otherwise, it takes 6d8 Force damage only.</p><p>While the target is Charmed, its Speed can be no more than 10 feet, and it has Disadvantage on D20 Tests except Constitution saving throws. In addition, when the target tries to cast a spell, it must first succeed on a Constitution saving throw, or the spell dissipates with no effect.</p><p>At the end of each of its turns, the Charmed target makes a Constitution saving throw, ending the spell on itself on a successful save. Sem resistência inicial (magia de dano automático, sem save pra evitar o dano) — a condição Charmed em si (velocidade travada, save repetível no fim do turno) está automatizada; o gate por PV<=100, a desvantagem em testes-d20 e a interrupção de conjuração não são.</p>",
     "components": {
       "vocal": true,
       "somatic": false,
@@ -34710,7 +35326,7 @@
                 "formula": ""
               },
               "scaling": {
-                "mode": "whole",
+                "mode": "",
                 "number": 1,
                 "formula": ""
               }
@@ -34722,7 +35338,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -34773,7 +35391,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -34813,7 +35433,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -35188,6 +35810,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Arcana Domain",
         "Evoker"
       ],
       "feats": [],
@@ -35261,6 +35884,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Arcana Domain",
         "Evoker"
       ],
       "feats": [],
@@ -35328,7 +35952,8 @@
     ],
     "grantors": {
       "subclasses": [
-        "Abjurer"
+        "Abjurer",
+        "Arcana Domain"
       ],
       "feats": [],
       "optionalVariantClasses": []
@@ -35368,7 +35993,8 @@
     ],
     "grantors": {
       "subclasses": [
-        "Abjurer"
+        "Abjurer",
+        "Arcana Domain"
       ],
       "feats": [],
       "optionalVariantClasses": []
@@ -35431,6 +36057,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Circle of the Land",
         "College of Lore",
         "Nature Domain"
       ],
@@ -35478,6 +36105,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Circle of the Land",
         "College of Lore",
         "Nature Domain"
       ],
@@ -35526,6 +36154,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Arcana Domain",
         "Illusionist"
       ],
       "feats": [],
@@ -35566,6 +36195,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Arcana Domain",
         "Illusionist"
       ],
       "feats": [],
@@ -35606,6 +36236,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Arcana Domain",
         "Illusionist"
       ],
       "feats": [],
@@ -35646,6 +36277,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Arcana Domain",
         "Illusionist"
       ],
       "feats": [],
@@ -35692,6 +36324,7 @@
       "subclasses": [
         "Abjurer",
         "Arcane Trickster",
+        "Circle of the Land",
         "Clockwork Sorcery",
         "Clockwork Soul",
         "College of Lore",
@@ -35752,6 +36385,7 @@
       "subclasses": [
         "Abjurer",
         "Arcane Trickster",
+        "Circle of the Land",
         "Clockwork Sorcery",
         "Clockwork Soul",
         "College of Lore",
@@ -35999,15 +36633,46 @@
     "sourceBook": "Xanathar's Guide to Everything",
     "activities": [
       {
-        "type": "utility",
+        "type": "save",
         "attack": null,
-        "damage": null,
-        "save": null,
+        "damage": {
+          "onSave": "half",
+          "parts": [
+            {
+              "number": 14,
+              "denomination": 6,
+              "bonus": "",
+              "types": [
+                "psychic"
+              ],
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "scaling": {
+                "mode": "",
+                "number": 1,
+                "formula": ""
+              }
+            }
+          ]
+        },
+        "save": {
+          "ability": [
+            "int"
+          ],
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
         "healing": null
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -36206,10 +36871,21 @@
     "sourceBook": "Xanathar's Guide to Everything",
     "activities": [
       {
-        "type": "utility",
+        "type": "save",
         "attack": null,
-        "damage": null,
-        "save": null,
+        "damage": {
+          "onSave": "none",
+          "parts": []
+        },
+        "save": {
+          "ability": [
+            "con"
+          ],
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
         "healing": null
       }
     ],
@@ -36268,8 +36944,6 @@
       "subclasses": [
         "Alchemist",
         "Divine Soul",
-        "Grave Domain",
-        "Grave Domain (RHW)",
         "Life Domain",
         "Reanimator"
       ],
@@ -36284,7 +36958,7 @@
     "level": 5,
     "school": "Necromancy",
     "time": "1 hour",
-    "range": "Self",
+    "range": "Touch",
     "concentration": false,
     "ritual": false,
     "classes": [
@@ -36324,8 +36998,6 @@
       "subclasses": [
         "Alchemist",
         "Divine Soul",
-        "Grave Domain",
-        "Grave Domain (RHW)",
         "Life Domain",
         "Reanimator"
       ],
@@ -36452,10 +37124,37 @@
     "sourceBook": "Fizban's Treasury of Dragons",
     "activities": [
       {
-        "type": "utility",
+        "type": "save",
         "attack": null,
-        "damage": null,
-        "save": null,
+        "damage": {
+          "onSave": "half",
+          "parts": [
+            {
+              "number": 7,
+              "denomination": 6,
+              "bonus": "",
+              "types": [
+                "psychic"
+              ],
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "scaling": {
+                "mode": "whole",
+                "number": 1,
+                "formula": ""
+              }
+            }
+          ]
+        },
+        "save": {
+          "ability": "int",
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
         "healing": null
       }
     ],
@@ -36491,10 +37190,9 @@
     "sourceBook": "Explorer's Guide to Wildemount",
     "activities": [
       {
-        "type": "save",
+        "type": "damage",
         "attack": null,
         "damage": {
-          "onSave": "half",
           "parts": [
             {
               "number": 5,
@@ -36515,13 +37213,7 @@
             }
           ]
         },
-        "save": {
-          "ability": "str",
-          "dc": {
-            "calculation": "spellcasting",
-            "formula": ""
-          }
-        },
+        "save": null,
         "healing": null
       }
     ],
@@ -36577,9 +37269,7 @@
         "Arcane Trickster",
         "College of Lore",
         "Death Domain",
-        "Eldritch Knight",
-        "Grave Domain",
-        "Grave Domain (RHW)"
+        "Eldritch Knight"
       ],
       "feats": [
         "Necromancy Adept"
@@ -36635,9 +37325,7 @@
         "Arcane Trickster",
         "College of Lore",
         "Death Domain",
-        "Eldritch Knight",
-        "Grave Domain",
-        "Grave Domain (RHW)"
+        "Eldritch Knight"
       ],
       "feats": [
         "Necromancy Adept"
@@ -36705,6 +37393,7 @@
     "grantors": {
       "subclasses": [
         "Arcane Trickster",
+        "Circle of the Land",
         "Circle of the Sea",
         "College of Lore",
         "Eldritch Knight",
@@ -36780,6 +37469,7 @@
     "grantors": {
       "subclasses": [
         "Arcane Trickster",
+        "Circle of the Land",
         "Circle of the Sea",
         "College of Lore",
         "Eldritch Knight",
@@ -36857,6 +37547,7 @@
       "subclasses": [
         "Alchemist",
         "Arcane Trickster",
+        "Circle of the Land",
         "College of Lore",
         "Death Domain",
         "Eldritch Knight",
@@ -36934,6 +37625,7 @@
       "subclasses": [
         "Alchemist",
         "Arcane Trickster",
+        "Circle of the Land",
         "College of Lore",
         "Death Domain",
         "Eldritch Knight",
@@ -37279,7 +37971,7 @@
       "vocal": true,
       "somatic": true,
       "material": true,
-      "materialText": "A miniature clock"
+      "materialText": "A miniature cloak"
     },
     "durationText": "1 minute",
     "source": "PHB",
@@ -37295,6 +37987,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Circle of the Land",
         "College of Lore",
         "Divine Soul",
         "Nature Domain"
@@ -37345,6 +38038,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Circle of the Land",
         "College of Lore",
         "Divine Soul",
         "Nature Domain"
@@ -37485,7 +38179,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -37535,7 +38231,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -37589,8 +38287,6 @@
         "Circle of Wildfire",
         "College of Lore",
         "Divine Soul",
-        "Grave Domain",
-        "Grave Domain (RHW)",
         "Life Domain",
         "The Celestial",
         "Vestige Patron"
@@ -37660,8 +38356,6 @@
         "Circle of Wildfire",
         "College of Lore",
         "Divine Soul",
-        "Grave Domain",
-        "Grave Domain (RHW)",
         "Life Domain",
         "The Celestial",
         "Vestige Patron"
@@ -37706,6 +38400,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Arcana Domain",
         "Divine Soul"
       ],
       "feats": [],
@@ -38161,7 +38856,7 @@
         "type": "save",
         "attack": null,
         "damage": {
-          "onSave": "half",
+          "onSave": "none",
           "parts": [
             {
               "number": 1,
@@ -38227,15 +38922,28 @@
     "sourceBook": "Xanathar's Guide to Everything",
     "activities": [
       {
-        "type": "utility",
+        "type": "save",
         "attack": null,
-        "damage": null,
-        "save": null,
+        "damage": {
+          "onSave": "none",
+          "parts": []
+        },
+        "save": {
+          "ability": [
+            "wis"
+          ],
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
         "healing": null
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -38441,6 +39149,7 @@
     "grantors": {
       "subclasses": [
         "Cartographer",
+        "Circle of the Land",
         "Divine Soul",
         "Diviner",
         "Knowledge Domain",
@@ -38507,6 +39216,7 @@
     "grantors": {
       "subclasses": [
         "Cartographer",
+        "Circle of the Land",
         "Divine Soul",
         "Diviner",
         "Knowledge Domain",
@@ -38535,7 +39245,8 @@
     "concentration": true,
     "ritual": false,
     "classes": [
-      "Paladin"
+      "Paladin",
+      "Ranger"
     ],
     "rules": "2014",
     "descriptionHtml": "<p>The next time you hit a creature with a melee weapon attack during the spell's duration, your weapon flares with white-hot intensity, and the attack deals an extra 1d6 fire damage to the target and causes the target to ignite in flames. At the start of each of its turns until the spell ends, the target must make a Constitution saving throw. On a failed save, it takes 1d6 fire damage. On a successful save, the spell ends. If the target or a creature within 5 feet of it uses an action to put out the flames, or if some other effect douses the flames (such as the target being submerged in water), the spell ends.</p><p><strong>At Higher Levels.</strong> When you cast this spell using a spell slot of 2nd level or higher, the initial extra damage dealt by the attack increases by 1d6 for each slot level above 1st.</p>",
@@ -38574,7 +39285,8 @@
     "concentration": false,
     "ritual": false,
     "classes": [
-      "Paladin"
+      "Paladin",
+      "Ranger"
     ],
     "rules": "2024",
     "descriptionHtml": "<p>As you hit the target, it takes an extra 1d6 Fire damage from the attack. At the start of each of its turns until the spell ends, the target takes 1d6 Fire damage and then makes a Constitution saving throw. On a failed save, the spell continues. On a successful save, the spell ends.</p><p><strong>Using a Higher-Level Spell Slot. </strong>All the damage increases by 1d6 for each spell slot level above 1.</p>",
@@ -38991,7 +39703,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -39028,7 +39742,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -39059,9 +39775,33 @@
     "sourceBook": "Xanathar's Guide to Everything",
     "activities": [
       {
-        "type": "utility",
-        "attack": null,
-        "damage": null,
+        "type": "attack",
+        "attack": {
+          "ability": "",
+          "bonus": "",
+          "flat": false
+        },
+        "damage": {
+          "parts": [
+            {
+              "number": 2,
+              "denomination": 8,
+              "bonus": "",
+              "types": [
+                "psychic"
+              ],
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "scaling": {
+                "mode": "",
+                "number": 1,
+                "formula": ""
+              }
+            }
+          ]
+        },
         "save": null,
         "healing": null
       }
@@ -39189,7 +39929,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -39227,7 +39969,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -39325,7 +40069,6 @@
     "classes": [
       "Bard",
       "Sorcerer",
-      "Warlock",
       "Wizard"
     ],
     "rules": "2024",
@@ -39627,6 +40370,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Circle of the Land",
         "Circle of the Unbroken",
         "College of Lore",
         "Nature Domain"
@@ -39675,6 +40419,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Circle of the Land",
         "Circle of the Unbroken",
         "College of Lore",
         "Nature Domain"
@@ -39810,6 +40555,7 @@
     "grantors": {
       "subclasses": [
         "Arcane Trickster",
+        "Circle of the Land",
         "College of Lore",
         "Eldritch Knight",
         "Evoker",
@@ -39885,6 +40631,7 @@
     "grantors": {
       "subclasses": [
         "Arcane Trickster",
+        "Circle of the Land",
         "College of Lore",
         "Eldritch Knight",
         "Evoker",
@@ -39926,10 +40673,39 @@
     "sourceBook": "Xanathar's Guide to Everything",
     "activities": [
       {
-        "type": "utility",
+        "type": "save",
         "attack": null,
-        "damage": null,
-        "save": null,
+        "damage": {
+          "onSave": "none",
+          "parts": [
+            {
+              "number": 4,
+              "denomination": 10,
+              "bonus": "",
+              "types": [
+                "radiant"
+              ],
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "scaling": {
+                "mode": "",
+                "number": 1,
+                "formula": ""
+              }
+            }
+          ]
+        },
+        "save": {
+          "ability": [
+            "con"
+          ],
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
         "healing": null
       }
     ],
@@ -39978,6 +40754,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Circle of the Land",
         "College of Lore",
         "Divine Soul",
         "The Fathomless",
@@ -40027,6 +40804,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Circle of the Land",
         "College of Lore",
         "Divine Soul",
         "The Fathomless",
@@ -40226,7 +41004,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -40264,6 +41044,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Arcana Domain",
         "Illusionist"
       ],
       "feats": [],
@@ -40303,6 +41084,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Arcana Domain",
         "Illusionist"
       ],
       "feats": [],
@@ -40429,6 +41211,7 @@
       "subclasses": [
         "Arcane Trickster",
         "Archfey Patron",
+        "Circle of the Land",
         "College of Lore",
         "Eldritch Knight",
         "Frost Sorcery",
@@ -40494,6 +41277,7 @@
       "subclasses": [
         "Arcane Trickster",
         "Archfey Patron",
+        "Circle of the Land",
         "College of Lore",
         "Eldritch Knight",
         "Frost Sorcery",
@@ -40558,6 +41342,7 @@
     "grantors": {
       "subclasses": [
         "Arcane Trickster",
+        "Circle of the Land",
         "College of Lore",
         "Eldritch Knight",
         "Frost Sorcery",
@@ -40621,6 +41406,7 @@
     "grantors": {
       "subclasses": [
         "Arcane Trickster",
+        "Circle of the Land",
         "College of Lore",
         "Eldritch Knight",
         "Frost Sorcery",
@@ -40685,6 +41471,7 @@
       "subclasses": [
         "Arcane Trickster",
         "Astral Domain",
+        "Circle of the Land",
         "College of Lore",
         "Eldritch Knight",
         "Frost Sorcery",
@@ -40749,6 +41536,7 @@
       "subclasses": [
         "Arcane Trickster",
         "Astral Domain",
+        "Circle of the Land",
         "College of Lore",
         "Eldritch Knight",
         "Frost Sorcery",
@@ -41025,7 +41813,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -41040,8 +41830,7 @@
     "ritual": false,
     "classes": [
       "Artificer",
-      "Cleric",
-      "Druid"
+      "Cleric"
     ],
     "rules": "2014",
     "descriptionHtml": "<p>You touch a living creature that has 0 hit points. The creature becomes &amp;reference[stable]. This spell has no effect on undead or constructs.</p>",
@@ -41157,8 +41946,7 @@
     "classes": [
       "Bard",
       "Druid",
-      "Ranger",
-      "Warlock"
+      "Ranger"
     ],
     "rules": "2014",
     "descriptionHtml": "<p>You gain the ability to comprehend and verbally communicate with beasts for the duration. The knowledge and awareness of many beasts is limited by their intelligence, but at minimum, beasts can give you information about nearby locations and monsters, including whatever they can perceive or have perceived within the past day. You might be able to persuade a beast to perform a small favor for you, at the DM's discretion.</p>",
@@ -41499,8 +42287,8 @@
                 "formula": ""
               },
               "scaling": {
-                "mode": "whole",
-                "number": 1,
+                "mode": "",
+                "number": null,
                 "formula": ""
               }
             }
@@ -41630,6 +42418,7 @@
     "grantors": {
       "subclasses": [
         "Arcane Trickster",
+        "Circle of the Land",
         "College of Lore",
         "Eldritch Knight",
         "Warrior of the Mystic Arts"
@@ -41682,6 +42471,7 @@
     "grantors": {
       "subclasses": [
         "Arcane Trickster",
+        "Circle of the Land",
         "College of Lore",
         "Eldritch Knight",
         "Warrior of the Mystic Arts"
@@ -41751,6 +42541,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Circle of the Land",
         "College of Lore",
         "Nature Domain",
         "The Genie"
@@ -41817,6 +42608,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Circle of the Land",
         "College of Lore",
         "Nature Domain",
         "The Genie"
@@ -41984,10 +42776,11 @@
     "classes": [
       "Cleric",
       "Warlock",
-      "Wizard"
+      "Wizard",
+      "Artificer"
     ],
     "rules": "2024",
-    "descriptionHtml": "<p>You conjure a floating, ghostly black lantern that hovers above you and sheds Dim Light in a 60-foot radius. When an enemy dies within this Dim Light, a fragment of the creature's soul flies into the lantern. The lantern can hold a number of soul fragments equal to your spellcasting ability modifier, and those fragments dissipate when the spell ends.</p><p>As a Bonus Action, you can expend a soul fragment to create one of the following effects.</p><p>Drain Life: The soul fragment darts at a creature of your choice that you can see within 60 feet of yourself. The target makes a Constitution saving throw, taking Necrotic damage equal to 4d8 plus your spellcasting ability modifier on a failed save or half as much damage on a successful one.</p><p>Repair Undead: The soul fragment flies into an Undead creature of your choice that you can see within 60 feet of yourself. That creature regains Hit Points equal to 4d8 plus your spellcasting ability modifier.</p><p>Ward Ally: The soul fragment darts around a creature of your choice that you can see within 60 feet of yourself. Other creatures have Disadvantage on attack rolls against the chosen creature until the start of your next turn. Activity abaixo modela só o efeito Drain Life (o mais crocante); Repair Undead/Ward Ally ficam narrativos, aplicar manualmente.</p>",
+    "descriptionHtml": "<p>You conjure a floating, ghostly black lantern that hovers above you and sheds Dim Light in a 60-foot radius. When an enemy dies within this Dim Light, a fragment of the creature's soul flies into the lantern. The lantern can hold a number of soul fragments equal to your spellcasting ability modifier, and those fragments dissipate when the spell ends.</p><p>As a Bonus Action, you can expend a soul fragment to create one of the following effects.</p><p>Drain Life: The soul fragment darts at a creature of your choice that you can see within 60 feet of yourself. The target makes a Constitution saving throw, taking Necrotic damage equal to 4d8 plus your spellcasting ability modifier on a failed save or half as much damage on a successful one.</p><p>Repair Undead: The soul fragment flies into an Undead creature of your choice that you can see within 60 feet of yourself. That creature regains Hit Points equal to 4d8 plus your spellcasting ability modifier.</p><p>Ward Ally: The soul fragment darts around a creature of your choice that you can see within 60 feet of yourself. Other creatures have Disadvantage on attack rolls against the chosen creature until the start of your next turn. Drain Life e Repair Undead (ambas +@mod) estão automatizadas como activities; Ward Ally (desvantagem pra quem ataca o alvo) fica narrativo.</p>",
     "components": {
       "vocal": true,
       "somatic": true,
@@ -42007,7 +42800,7 @@
             {
               "number": 4,
               "denomination": 8,
-              "bonus": "",
+              "bonus": "@mod",
               "types": [
                 "necrotic"
               ],
@@ -42016,7 +42809,7 @@
                 "formula": ""
               },
               "scaling": {
-                "mode": "whole",
+                "mode": "",
                 "number": 1,
                 "formula": ""
               }
@@ -42271,10 +43064,37 @@
     "sourceBook": "The Book of Many Things",
     "activities": [
       {
-        "type": "utility",
+        "type": "save",
         "attack": null,
-        "damage": null,
-        "save": null,
+        "damage": {
+          "onSave": "half",
+          "parts": [
+            {
+              "number": 2,
+              "denomination": 10,
+              "bonus": "",
+              "types": [
+                "force"
+              ],
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "scaling": {
+                "mode": "whole",
+                "number": 1,
+                "formula": ""
+              }
+            }
+          ]
+        },
+        "save": {
+          "ability": "dex",
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
         "healing": null
       }
     ],
@@ -42547,6 +43367,7 @@
     "grantors": {
       "subclasses": [
         "Arcane Trickster",
+        "Circle of the Land",
         "College of Lore",
         "Eldritch Knight",
         "Festus Domain",
@@ -42607,6 +43428,7 @@
     "grantors": {
       "subclasses": [
         "Arcane Trickster",
+        "Circle of the Land",
         "College of Lore",
         "Eldritch Knight",
         "Festus Domain",
@@ -42659,6 +43481,7 @@
     "grantors": {
       "subclasses": [
         "Arcane Trickster",
+        "Circle of the Land",
         "Divine Soul",
         "Eldritch Knight",
         "The Genie"
@@ -42709,6 +43532,7 @@
     "grantors": {
       "subclasses": [
         "Arcane Trickster",
+        "Circle of the Land",
         "Divine Soul",
         "Eldritch Knight",
         "The Genie"
@@ -42760,6 +43584,7 @@
     "grantors": {
       "subclasses": [
         "Arcane Trickster",
+        "Circle of the Land",
         "Eldritch Knight",
         "Oath of Conquest",
         "Oath of Redemption",
@@ -42812,6 +43637,7 @@
     "grantors": {
       "subclasses": [
         "Arcane Trickster",
+        "Circle of the Land",
         "Eldritch Knight",
         "Oath of Conquest",
         "Oath of Redemption",
@@ -42982,10 +43808,39 @@
     "sourceBook": "Xanathar's Guide to Everything",
     "activities": [
       {
-        "type": "utility",
+        "type": "save",
         "attack": null,
-        "damage": null,
-        "save": null,
+        "damage": {
+          "onSave": "none",
+          "parts": [
+            {
+              "number": 2,
+              "denomination": 6,
+              "bonus": "",
+              "types": [
+                "bludgeoning"
+              ],
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "scaling": {
+                "mode": "whole",
+                "number": 1,
+                "formula": ""
+              }
+            }
+          ]
+        },
+        "save": {
+          "ability": [
+            "str"
+          ],
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
         "healing": null
       }
     ],
@@ -43775,7 +44630,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -43813,7 +44670,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -43843,7 +44702,7 @@
     "sourceBook": "Xanathar's Guide to Everything",
     "activities": [
       {
-        "type": "utility",
+        "type": "summon",
         "attack": null,
         "damage": null,
         "save": null,
@@ -43884,7 +44743,7 @@
     "sourceBook": "Xanathar's Guide to Everything",
     "activities": [
       {
-        "type": "utility",
+        "type": "summon",
         "attack": null,
         "damage": null,
         "save": null,
@@ -43946,7 +44805,10 @@
     "range": "90 ft",
     "concentration": true,
     "ritual": false,
-    "classes": [],
+    "classes": [
+      "Warlock",
+      "Wizard"
+    ],
     "rules": "2014",
     "descriptionHtml": "<p>You call forth a shadowy spirit. It manifests in an unoccupied space that you can see within range. This corporeal form uses the Shadow Spirit stat block. When you cast the spell, choose an emotion: Fury, Despair, or Fear. The creature resembles a misshapen biped marked by the chosen emotion, which determines certain traits in its stat block. The creature disappears when it drops to 0 hit points or when the spell ends.</p><p>The creature is an ally to you and your companions. In combat, the creature shares your initiative count, but it takes its turn immediately after yours. It obeys your verbal commands (no action required by you). If you don't issue any, it takes the Dodge action and uses its move to avoid danger.</p><p><strong>Using a Higher-Level Spell Slot. </strong>When you cast this spell using a spell slot of 4th level or higher, use the higher level wherever the spell's level appears in the stat block.</p>",
     "components": {
@@ -43968,7 +44830,10 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcane Trickster",
+        "Eldritch Knight"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -44122,6 +44987,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Arcana Domain",
         "Divine Soul",
         "Evoker"
       ],
@@ -44193,6 +45059,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Arcana Domain",
         "Divine Soul",
         "Evoker"
       ],
@@ -44265,6 +45132,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Arcana Domain",
         "Divine Soul",
         "Evoker"
       ],
@@ -44336,6 +45204,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Arcana Domain",
         "Divine Soul",
         "Evoker"
       ],
@@ -44517,11 +45386,19 @@
     "sourceBook": "Forgotten Realms: Heroes of Faerûn",
     "activities": [
       {
-        "type": "utility",
+        "type": "heal",
         "attack": null,
         "damage": null,
         "save": null,
-        "healing": null
+        "healing": {
+          "number": null,
+          "denomination": null,
+          "bonus": "",
+          "custom": {
+            "enabled": true,
+            "formula": "5 * @item.level"
+          }
+        }
       }
     ],
     "grantors": {
@@ -44599,6 +45476,7 @@
     "grantors": {
       "subclasses": [
         "Abjurer",
+        "Arcana Domain",
         "Divine Soul"
       ],
       "feats": [],
@@ -44642,6 +45520,7 @@
     "grantors": {
       "subclasses": [
         "Abjurer",
+        "Arcana Domain",
         "Divine Soul"
       ],
       "feats": [],
@@ -44751,7 +45630,8 @@
     ],
     "grantors": {
       "subclasses": [
-        "Alchemist"
+        "Alchemist",
+        "Arcana Domain"
       ],
       "feats": [],
       "optionalVariantClasses": []
@@ -44766,7 +45646,9 @@
     "concentration": true,
     "ritual": false,
     "classes": [
-      "Artificer"
+      "Artificer",
+      "Sorcerer",
+      "Wizard"
     ],
     "rules": "2014",
     "descriptionHtml": "<p>A stream of acid emanates from you in a line 30 feet long and 5 feet wide in a direction you choose. Each creature in the line must succeed on a Dexterity saving throw or be covered in acid for the spell's duration or until a creature uses its action to scrape or wash the acid off itself or another creature. A creature covered in the acid takes 2d4 acid damage at start of each of its turns.</p><p><strong>At Higher Levels.</strong> When you cast this spell using a spell slot of 2nd level or higher, the damage increases by 2d4 for each slot level above 1st.</p>",
@@ -44781,15 +45663,30 @@
     "sourceBook": "Tasha's Cauldron of Everything",
     "activities": [
       {
-        "type": "utility",
+        "type": "save",
         "attack": null,
-        "damage": null,
-        "save": null,
+        "damage": {
+          "onSave": "none",
+          "parts": []
+        },
+        "save": {
+          "ability": [
+            "dex"
+          ],
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
         "healing": null
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcane Trickster",
+        "Eldritch Knight",
+        "Warrior of the Mystic Arts"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -44804,7 +45701,6 @@
     "ritual": false,
     "classes": [
       "Bard",
-      "Warlock",
       "Wizard"
     ],
     "rules": "2014",
@@ -44952,8 +45848,8 @@
                 "formula": ""
               },
               "scaling": {
-                "mode": "whole",
-                "number": 1,
+                "mode": "",
+                "number": null,
                 "formula": ""
               }
             }
@@ -45015,7 +45911,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -45149,7 +46047,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -45186,7 +46086,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -45225,7 +46127,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -45264,7 +46168,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -45564,15 +46470,25 @@
     "sourceBook": "Xanathar's Guide to Everything",
     "activities": [
       {
-        "type": "utility",
+        "type": "heal",
         "attack": null,
         "damage": null,
         "save": null,
-        "healing": null
+        "healing": {
+          "number": null,
+          "denomination": null,
+          "bonus": "50",
+          "custom": {
+            "enabled": false,
+            "formula": ""
+          }
+        }
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -45953,7 +46869,7 @@
         "type": "save",
         "attack": null,
         "damage": {
-          "onSave": "half",
+          "onSave": "none",
           "parts": [
             {
               "number": 1,
@@ -46272,10 +47188,39 @@
     "sourceBook": "Xanathar's Guide to Everything",
     "activities": [
       {
-        "type": "utility",
+        "type": "save",
         "attack": null,
-        "damage": null,
-        "save": null,
+        "damage": {
+          "onSave": "half",
+          "parts": [
+            {
+              "number": 4,
+              "denomination": 8,
+              "bonus": "",
+              "types": [
+                "bludgeoning"
+              ],
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "scaling": {
+                "mode": "",
+                "number": 1,
+                "formula": ""
+              }
+            }
+          ]
+        },
+        "save": {
+          "ability": [
+            "dex"
+          ],
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
         "healing": null
       }
     ],
@@ -46387,7 +47332,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -46425,7 +47372,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -46514,7 +47463,7 @@
                 "formula": ""
               },
               "scaling": {
-                "mode": "",
+                "mode": "whole",
                 "number": null,
                 "formula": ""
               }
@@ -46690,7 +47639,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -46721,10 +47672,21 @@
     "sourceBook": "Xanathar's Guide to Everything",
     "activities": [
       {
-        "type": "utility",
+        "type": "save",
         "attack": null,
-        "damage": null,
-        "save": null,
+        "damage": {
+          "onSave": "none",
+          "parts": []
+        },
+        "save": {
+          "ability": [
+            "str"
+          ],
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
         "healing": null
       }
     ],
@@ -46842,6 +47804,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Circle of the Land",
         "Nature Domain",
         "Oath of the Ancients"
       ],
@@ -46886,6 +47849,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Circle of the Land",
         "Nature Domain",
         "Oath of the Ancients"
       ],
@@ -46941,7 +47905,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -46991,7 +47957,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -47113,6 +48081,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Arcana Domain",
         "Divine Soul",
         "Diviner"
       ],
@@ -47157,6 +48126,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Arcana Domain",
         "Divine Soul",
         "Diviner"
       ],
@@ -47173,7 +48143,6 @@
     "concentration": true,
     "ritual": false,
     "classes": [
-      "Artificer",
       "Bard",
       "Sorcerer",
       "Warlock",
@@ -47383,7 +48352,8 @@
     "classes": [
       "Bard",
       "Warlock",
-      "Wizard"
+      "Wizard",
+      "Artificer"
     ],
     "rules": "2024",
     "descriptionHtml": "<p>You create illusory obstacles such as rocks or spikes in an attempt to confuse up to three creatures you can see within range, affecting their ability to move. Each target makes an Intelligence saving throw. On a failed save, a target's Speed is halved, and it can't take the Dash action. A hampered target repeats the save at the end of each of its turns, ending the spell on itself on a success.</p>",
@@ -47585,8 +48555,6 @@
         "College of Lore",
         "Death Domain",
         "Eldritch Knight",
-        "Grave Domain",
-        "Grave Domain (RHW)",
         "Lunar Sorcery",
         "Warrior of the Mystic Arts"
       ],
@@ -47659,8 +48627,6 @@
         "College of Lore",
         "Death Domain",
         "Eldritch Knight",
-        "Grave Domain",
-        "Grave Domain (RHW)",
         "Lunar Sorcery",
         "Warrior of the Mystic Arts"
       ],
@@ -47859,7 +48825,7 @@
                 "formula": ""
               },
               "scaling": {
-                "mode": "whole",
+                "mode": "",
                 "number": 1,
                 "formula": ""
               }
@@ -47877,7 +48843,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -48049,7 +49017,7 @@
                 "formula": ""
               },
               "scaling": {
-                "mode": "whole",
+                "mode": "",
                 "number": 1,
                 "formula": ""
               }
@@ -48067,7 +49035,9 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -48392,6 +49362,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Arcana Domain",
         "Evoker",
         "Frost Sorcery"
       ],
@@ -48461,6 +49432,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Arcana Domain",
         "Evoker",
         "Frost Sorcery"
       ],
@@ -48494,10 +49466,39 @@
     "sourceBook": "Xanathar's Guide to Everything",
     "activities": [
       {
-        "type": "utility",
+        "type": "save",
         "attack": null,
-        "damage": null,
-        "save": null,
+        "damage": {
+          "onSave": "half",
+          "parts": [
+            {
+              "number": 4,
+              "denomination": 8,
+              "bonus": "",
+              "types": [
+                "radiant"
+              ],
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "scaling": {
+                "mode": "whole",
+                "number": 1,
+                "formula": ""
+              }
+            }
+          ]
+        },
+        "save": {
+          "ability": [
+            "con"
+          ],
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
         "healing": null
       }
     ],
@@ -48592,6 +49593,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Circle of the Land",
         "Evoker",
         "The Genie"
       ],
@@ -48640,6 +49642,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Circle of the Land",
         "Evoker",
         "The Genie"
       ],
@@ -48792,7 +49795,11 @@
     "range": "60 ft",
     "concentration": true,
     "ritual": false,
-    "classes": [],
+    "classes": [
+      "Druid",
+      "Sorcerer",
+      "Wizard"
+    ],
     "rules": "2014",
     "descriptionHtml": "<p>You create a wall of water on the ground at a point you can see within range. You can make the wall up to 30 feet long, 10 feet high, and 1 foot thick, or you can make a ringed wall up to 20 feet in diameter, 20 feet high, and 1 foot thick. The wall vanishes when the spell ends. The wall's space is 3.</p><p>Any ranged weapon attack that enters the wall's space has disadvantage on the attack roll, and fire damage is halved if the fire effect passes through the wall to reach its target. Spells that deal cold damage that pass through the wall cause the area of the wall they pass through to freeze solid (at least a 5-foot-square section is frozen). Each 5-foot-square frozen section has AC 5 and 15 hit points. Reducing a frozen section to 0 hit points destroys it. When a section is destroyed, the wall's water doesn't fill it.</p>",
     "components": {
@@ -48814,7 +49821,11 @@
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcane Trickster",
+        "Eldritch Knight",
+        "Warrior of the Mystic Arts"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -49068,6 +50079,7 @@
     "grantors": {
       "subclasses": [
         "Arcane Trickster",
+        "Circle of the Land",
         "Circle of the Sea",
         "College of Lore",
         "Eldritch Knight",
@@ -49118,6 +50130,7 @@
     "grantors": {
       "subclasses": [
         "Arcane Trickster",
+        "Circle of the Land",
         "Circle of the Sea",
         "College of Lore",
         "Eldritch Knight",
@@ -49167,6 +50180,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Circle of the Land",
         "College of Lore",
         "Divine Soul",
         "Warrior of the Mystic Arts"
@@ -49215,6 +50229,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Circle of the Land",
         "College of Lore",
         "Divine Soul",
         "Warrior of the Mystic Arts"
@@ -49252,10 +50267,21 @@
     "sourceBook": "Xanathar's Guide to Everything",
     "activities": [
       {
-        "type": "utility",
+        "type": "save",
         "attack": null,
-        "damage": null,
-        "save": null,
+        "damage": {
+          "onSave": "none",
+          "parts": []
+        },
+        "save": {
+          "ability": [
+            "str"
+          ],
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
         "healing": null
       }
     ],
@@ -49274,7 +50300,7 @@
     "level": 5,
     "school": "Necromancy",
     "time": "Bonus Action",
-    "range": "60 ft",
+    "range": "Self",
     "concentration": true,
     "ritual": false,
     "classes": [
@@ -49359,6 +50385,7 @@
     "grantors": {
       "subclasses": [
         "Arcane Trickster",
+        "Circle of the Land",
         "College of Lore",
         "Eldritch Knight",
         "Swarmkeeper",
@@ -49400,25 +50427,8 @@
         "type": "save",
         "attack": null,
         "damage": {
-          "onSave": "full",
-          "parts": [
-            {
-              "number": 2,
-              "denomination": 4,
-              "bonus": "",
-              "types": [
-                "fire"
-              ],
-              "custom": {
-                "enabled": false,
-                "formula": ""
-              },
-              "scaling": {
-                "mode": "",
-                "number": 1
-              }
-            }
-          ]
+          "onSave": "half",
+          "parts": []
         },
         "save": {
           "ability": "dex",
@@ -49433,6 +50443,7 @@
     "grantors": {
       "subclasses": [
         "Arcane Trickster",
+        "Circle of the Land",
         "College of Lore",
         "Eldritch Knight",
         "Swarmkeeper",
@@ -49473,7 +50484,7 @@
         "type": "save",
         "attack": null,
         "damage": {
-          "onSave": "half",
+          "onSave": "none",
           "parts": [
             {
               "number": 4,
@@ -49508,6 +50519,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Arcana Domain",
         "Illusionist"
       ],
       "feats": [],
@@ -49576,6 +50588,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Arcana Domain",
         "Illusionist"
       ],
       "feats": [],
@@ -49608,15 +50621,46 @@
     "sourceBook": "Xanathar's Guide to Everything",
     "activities": [
       {
-        "type": "utility",
+        "type": "save",
         "attack": null,
-        "damage": null,
-        "save": null,
+        "damage": {
+          "onSave": "half",
+          "parts": [
+            {
+              "number": 10,
+              "denomination": 6,
+              "bonus": "",
+              "types": [
+                "bludgeoning"
+              ],
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "scaling": {
+                "mode": "",
+                "number": 1,
+                "formula": ""
+              }
+            }
+          ]
+        },
+        "save": {
+          "ability": [
+            "dex"
+          ],
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
         "healing": null
       }
     ],
     "grantors": {
-      "subclasses": [],
+      "subclasses": [
+        "Arcana Domain"
+      ],
       "feats": [],
       "optionalVariantClasses": []
     }
@@ -49894,6 +50938,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Arcana Domain",
         "The Genie"
       ],
       "feats": [],
@@ -49934,6 +50979,7 @@
     ],
     "grantors": {
       "subclasses": [
+        "Arcana Domain",
         "The Genie"
       ],
       "feats": [],
@@ -50045,7 +51091,7 @@
         "damage": {
           "parts": [
             {
-              "number": 1,
+              "number": 2,
               "denomination": 12,
               "bonus": "",
               "types": [
@@ -50394,10 +51440,39 @@
     "sourceBook": "Xanathar's Guide to Everything",
     "activities": [
       {
-        "type": "utility",
+        "type": "save",
         "attack": null,
-        "damage": null,
-        "save": null,
+        "damage": {
+          "onSave": "none",
+          "parts": [
+            {
+              "number": 4,
+              "denomination": 6,
+              "bonus": "",
+              "types": [
+                "slashing"
+              ],
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "scaling": {
+                "mode": "",
+                "number": 1,
+                "formula": ""
+              }
+            }
+          ]
+        },
+        "save": {
+          "ability": [
+            "dex"
+          ],
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
         "healing": null
       }
     ],

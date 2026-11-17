@@ -2,14 +2,17 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { ABILITIES, ABILITY_LABELS, ALIGNMENTS, LANGUAGES, SKILLS } from "../schema/character";
 import { resolveClassMatches } from "../schema/resolveClassMatches";
 import { computeGrantedSpells } from "../schema/grantedSpells";
-import { computeAllowedSpellNames } from "../schema/expandedSpellPool";
+import { computeAllowedSpellNames, computeExpandedSpellPool } from "../schema/expandedSpellPool";
+import { spellProgressionForCharacter, fullListSpellPool } from "../schema/spellProgression";
 import { AbilitiesInput } from "./AbilitiesInput";
 import { SensesInput } from "./SensesInput";
 import { TagListInput } from "./TagListInput";
 import { ListEditor } from "./ListEditor";
 import { SpellBrowser } from "./SpellBrowser";
+import { PreparedSpellChecklist } from "./PreparedSpellChecklist";
 import { FeatBrowser } from "./FeatBrowser";
 import { EquipmentBrowser } from "./EquipmentBrowser";
+import { InfoTooltip } from "./InfoTooltip";
 import racesData from "../data/content/races.json";
 import classesData from "../data/content/classes.json";
 import featsData from "../data/content/feats.json";
@@ -449,16 +452,27 @@ function DetailsTab({ character, editable, onChange, originalClassMatch, totalLe
               <h4>Magias Concedidas Automaticamente</h4>
             </div>
             <ul className="foundry-item-list foundry-spell-list">
-              {grantedSpells.map((entry, index) => (
-                <li key={index}>
-                  <span className="foundry-skill-dot" aria-hidden="true" />
-                  <span className="foundry-item-name">{entry.name}</span>
-                  <span className="foundry-spell-meta">
-                    {entry.source}
-                    {!entry.unlocked && ` · a partir do nível ${entry.level}`}
-                  </span>
-                </li>
-              ))}
+              {(() => {
+                // Ícone "ⓘ" (ver schema/grantedSpells.js `note`) só na PRIMEIRA entrada de
+                // cada fonte -- Rimekin concede 3 magias com a mesma nota de Cold Fire
+                // Magic, não precisa repetir o ícone 3x.
+                const shownNoteSources = new Set();
+                return grantedSpells.map((entry, index) => {
+                  const showNote = !!entry.note && !shownNoteSources.has(entry.source);
+                  if (showNote) shownNoteSources.add(entry.source);
+                  return (
+                    <li key={index}>
+                      <span className="foundry-skill-dot" aria-hidden="true" />
+                      <span className="foundry-item-name">{entry.name}</span>
+                      <span className="foundry-spell-meta">
+                        {entry.source}
+                        {!entry.unlocked && ` · a partir do nível ${entry.level}`}
+                      </span>
+                      {showNote && <InfoTooltip text={entry.note} />}
+                    </li>
+                  );
+                });
+              })()}
             </ul>
             <p className="field-hint">
               O Foundry adiciona essas magias sozinho ao sincronizar — não aparecem na aba Magias.
@@ -968,7 +982,11 @@ function SpellRollActions({ spell, character, totalLevel }) {
 // `SpellRollActions`, calculadas uma vez só pra classe conjuradora
 // encontrada. Sem classe conjuradora, mostra "—" em vez de esconder o
 // cabeçalho (decisão do usuário) -- nunca inventa um número.
-function SpellStatsHeader({ character, totalLevel }) {
+// `extra` (opcional): conteúdo extra ancorado à direita do cabeçalho (hoje só
+// o ícone-toggle do Mechagrimório, Tecnomancer) -- posicionado via `position:
+// absolute` dentro do wrapper, pra NUNCA deslocar os dois badges normais de
+// nenhuma outra classe/subclasse (só ocupa espaço quando existe).
+function SpellStatsHeader({ character, totalLevel, extra }) {
   const atkMod = spellAttackMod(character, totalLevel, { equipmentData });
   const dc = spellSaveDC(character, totalLevel, { equipmentData });
   return (
@@ -987,15 +1005,16 @@ function SpellStatsHeader({ character, totalLevel }) {
         </div>
         <span className="spell-stat-badge-label">CD de Resistência</span>
       </div>
+      {extra}
     </div>
   );
 }
 
-function SpellsTab({ character, editable, onChange, classMatches, totalLevel }) {
-  const entries = (character.spells ?? []).map((s) => ({
-    ...s,
-    match: findSpellMatch(s.name, character.rulesMode),
-  }));
+// Bloco de listagem (agrupado por nível) extraído de `SpellsTab` pra poder
+// renderizar tanto a lista normal de magias conhecidas quanto a do
+// Mechagrimório (Tecnomancer) com o MESMO layout/visual -- só muda quais
+// `entries` entram.
+function SpellListGroups({ entries, character, totalLevel }) {
   const byLevel = new Map();
   for (const entry of entries) {
     const level = entry.match?.level ?? 0;
@@ -1003,57 +1022,8 @@ function SpellsTab({ character, editable, onChange, classMatches, totalLevel }) 
     byLevel.get(level).push(entry);
   }
   const levels = [...byLevel.keys()].sort((a, b) => a - b);
-
-  const [browserOpen, setBrowserOpen] = useState(false);
-
-  function addSpell(name) {
-    if (!(character.spells ?? []).some((s) => s.name === name)) {
-      onChange({ spells: [...(character.spells ?? []), { name, prepared: false }] });
-    }
-    setBrowserOpen(false);
-  }
-
-  if (editable) {
-    const allowedSpellNames = computeAllowedSpellNames({ character, classMatches, spellsData });
-    return (
-      <div className="foundry-spells-tab">
-        <SpellStatsHeader character={character} totalLevel={totalLevel} />
-        <div className="foundry-box">
-          <h4>Magias Conhecidas/Preparadas</h4>
-          <ListEditor
-            items={character.spells ?? []}
-            onChange={(items) => onChange({ spells: items })}
-            allowAdd={false}
-            fields={[
-              { key: "name", label: "Nome" },
-              { key: "prepared", label: "Preparada", type: "checkbox" },
-            ]}
-          />
-          <button type="button" onClick={() => setBrowserOpen(true)}>
-            Adicionar magia
-          </button>
-          {browserOpen && (
-            <BrowserModal title="Magias" onClose={() => setBrowserOpen(false)}>
-              <SpellBrowser spells={spellsData} rulesMode={character.rulesMode} allowedNames={allowedSpellNames} onAdd={addSpell} />
-            </BrowserModal>
-          )}
-        </div>
-      </div>
-    );
-  }
-
-  if (!entries.length) {
-    return (
-      <div className="foundry-spells-tab">
-        <SpellStatsHeader character={character} totalLevel={totalLevel} />
-        <EmptyRow />
-      </div>
-    );
-  }
-
   return (
-    <div className="foundry-spells-tab">
-      <SpellStatsHeader character={character} totalLevel={totalLevel} />
+    <>
       {levels.map((level) => (
         <div className="foundry-box" key={level}>
           <div className="foundry-box-header-row">
@@ -1084,6 +1054,128 @@ function SpellsTab({ character, editable, onChange, classMatches, totalLevel }) 
           </ul>
         </div>
       ))}
+    </>
+  );
+}
+
+function SpellsTab({ character, editable, onChange, classMatches, totalLevel }) {
+  const entries = (character.spells ?? []).map((s) => ({
+    ...s,
+    match: findSpellMatch(s.name, character.rulesMode),
+  }));
+
+  // Mechagrimório (Tecnomancer, Artificer): não é uma lista própria guardada
+  // à parte -- as magias escolhidas pelo jogador já entram em
+  // `character.spells` normalmente (o SpellBrowser já libera a lista de
+  // Wizard pra essa subclasse via `computeExpandedSpellPool`/`spellGrants.
+  // expanded`). O toggle só FILTRA, dentro do que o personagem já tem, quais
+  // nomes vieram dessa expansão (`source === "Tecnomancer"`) -- é a mesma
+  // lista de sempre, só que mostrando apenas a fatia do grimório.
+  const hasMechagrimorio = Object.values(classMatches ?? {}).some((m) => m?.subclassData?.name === "Tecnomancer");
+  const [showMechagrimorio, setShowMechagrimorio] = useState(false);
+  const mechagrimorioNames = hasMechagrimorio
+    ? new Set(
+        computeExpandedSpellPool({ character, classMatches, spellsData })
+          .filter((p) => p.source === "Tecnomancer")
+          .map((p) => p.name),
+      )
+    : null;
+  const visibleEntries = showMechagrimorio ? entries.filter((e) => mechagrimorioNames.has(e.name)) : entries;
+  const headerExtra = hasMechagrimorio && (
+    <button
+      type="button"
+      className={`mechagrimorio-toggle${showMechagrimorio ? " active" : ""}`}
+      onClick={() => setShowMechagrimorio((v) => !v)}
+      title="Mechagrimório"
+    >
+      <img src="/spell-icons/mechagrimorio-icon.png" alt="Mechagrimório" />
+    </button>
+  );
+
+  const [browserOpen, setBrowserOpen] = useState(false);
+
+  function addSpell(name) {
+    if (!(character.spells ?? []).some((s) => s.name === name)) {
+      onChange({ spells: [...(character.spells ?? []), { name, prepared: false }] });
+    }
+    setBrowserOpen(false);
+  }
+
+  if (editable) {
+    // Classe "sabe a lista toda" (Clérigo/Druida/Paladino/Patrulheiro 2014/Artífice) não
+    // "adiciona" magia -- já tem acesso à lista inteira (até o círculo que já conjura), só
+    // marca quais preparar (ver schema/spellProgression.js `fullListSpellPool`, mesma
+    // mudança já feita em StepMagias.jsx). Essas saem do buscador/`ListEditor` genérico e
+    // ganham o checklist próprio abaixo; truque e magia de classe "conhece fixo"/grimório
+    // continuam no fluxo de sempre.
+    const spellCaps = spellProgressionForCharacter(character, classMatches);
+    const fullPool = fullListSpellPool(character, classMatches, spellsData, spellCaps);
+    const fullPoolNames = new Set(fullPool.map((s) => s.name));
+    const checklistSpells = (character.spells ?? []).filter((s) => fullPoolNames.has(s.name));
+    const otherSpells = (character.spells ?? []).filter((s) => !fullPoolNames.has(s.name));
+
+    const allowedSpellNames = computeAllowedSpellNames({ character, classMatches, spellsData });
+    for (const name of fullPoolNames) allowedSpellNames.delete(name);
+
+    function toggleFullListSpell(name, checked) {
+      if (checked) {
+        if ((character.spells ?? []).some((s) => s.name === name)) return;
+        onChange({ spells: [...(character.spells ?? []), { name, prepared: true }] });
+      } else {
+        onChange({ spells: (character.spells ?? []).filter((s) => s.name !== name) });
+      }
+    }
+
+    return (
+      <div className="foundry-spells-tab">
+        <SpellStatsHeader character={character} totalLevel={totalLevel} />
+        {fullPool.length > 0 && (
+          <div className="foundry-box">
+            <h4>Magias que já tem acesso (marque as preparadas)</h4>
+            <PreparedSpellChecklist pool={fullPool} activeNames={new Set(checklistSpells.map((s) => s.name))} atCap={false} onToggle={toggleFullListSpell} />
+          </div>
+        )}
+        <div className="foundry-box">
+          <h4>Magias Conhecidas/Preparadas</h4>
+          <ListEditor
+            items={otherSpells}
+            onChange={(items) => onChange({ spells: [...items, ...checklistSpells] })}
+            allowAdd={false}
+            fields={[
+              { key: "name", label: "Nome" },
+              { key: "prepared", label: "Preparada", type: "checkbox" },
+            ]}
+          />
+          <button type="button" onClick={() => setBrowserOpen(true)}>
+            Adicionar magia
+          </button>
+          {browserOpen && (
+            <BrowserModal title="Magias" onClose={() => setBrowserOpen(false)}>
+              <SpellBrowser spells={spellsData} rulesMode={character.rulesMode} allowedNames={allowedSpellNames} onAdd={addSpell} />
+            </BrowserModal>
+          )}
+        </div>
+      </div>
+    );
+  }
+
+  if (!entries.length) {
+    return (
+      <div className="foundry-spells-tab">
+        <SpellStatsHeader character={character} totalLevel={totalLevel} extra={headerExtra} />
+        <EmptyRow />
+      </div>
+    );
+  }
+
+  return (
+    <div className="foundry-spells-tab">
+      <SpellStatsHeader character={character} totalLevel={totalLevel} extra={headerExtra} />
+      {showMechagrimorio && !visibleEntries.length ? (
+        <p className="field-hint">Nenhuma magia do Mechagrimório conhecida ainda.</p>
+      ) : (
+        <SpellListGroups entries={visibleEntries} character={character} totalLevel={totalLevel} />
+      )}
     </div>
   );
 }

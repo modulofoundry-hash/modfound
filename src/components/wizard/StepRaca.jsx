@@ -31,7 +31,46 @@ const COLUMNS = [
   { key: "rules", label: "Edição", render: (item) => item.rules || "—" },
 ];
 
-export function StepRaca({ items, value, selectedRules, rulesMode, matched, onPick, sizeValue, senses, onChangeSenses, appliers }) {
+// "Variable Trait" (Custom Lineage, TCE) -- escolha entre 2 opções
+// HETEROGÊNEAS (Visão no Escuro OU perícia à escolha), nunca as duas (ver
+// `race.variableTrait` no banco). Reaproveita a mesma classe CSS de
+// `SizeChoice` (OriginSuggestions.jsx) pro grupo de botões -- visualmente
+// idêntico, sem precisar de CSS novo.
+function VariableTraitPicker({ variableTrait, value, onPick }) {
+  if (!variableTrait) return null;
+  return (
+    <div className="size-choice">
+      <p>{variableTrait.label ?? "Escolha"}:</p>
+      <div className="size-choice-options">
+        {variableTrait.options.map((option) => (
+          <button
+            key={option.key}
+            type="button"
+            className={value === option.key ? "size-choice-selected" : ""}
+            onClick={() => onPick(option.key)}
+          >
+            {option.label}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export function StepRaca({
+  items,
+  value,
+  selectedRules,
+  rulesMode,
+  matched,
+  onPick,
+  sizeValue,
+  senses,
+  onChangeSenses,
+  variableTraitChoice,
+  onPickVariableTrait,
+  appliers,
+}) {
   const [bookFilter, setBookFilter] = useState(() => initialOriginFilter(items));
   const filteredItems = useMemo(() => filterOriginItems(items, bookFilter), [items, bookFilter]);
 
@@ -68,6 +107,12 @@ export function StepRaca({ items, value, selectedRules, rulesMode, matched, onPi
         showSkillsAndTools={false}
         showEquipment={false}
         showLanguages={false}
+      />
+      <VariableTraitPicker
+        key={matched?.name}
+        variableTrait={matched?.variableTrait}
+        value={variableTraitChoice}
+        onPick={onPickVariableTrait}
       />
       {rulesMode === "2014" && matched?.abilityBonus && (
         <AbilityBonusPicker

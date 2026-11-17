@@ -141,23 +141,31 @@ export function computeOptionalFeatureSpellChoices(character, optionalFeaturesDa
   return results;
 }
 
-// [{name, level, source, unlocked}] -- `level` é o nível em que a magia é
+// [{name, level, source, unlocked, note}] -- `level` é o nível em que a magia é
 // liberada (0 = desde o início); `unlocked` já compara com o nível certo pra
 // cada fonte (personagem inteiro pra Raça/Feat, só a classe DONA da
 // subclasse em caso de multiclasse, sempre liberada pra Escolha de Classe já
 // escolhida). `classMatches` aceita tanto array quanto objeto indexado por
 // posição (os dois wizards guardam de um jeito diferente).
+//
+// `note` (ver `spellGrantsNote` em generate-site-content.mjs) -- texto solto que só
+// existe quando a fonte tem uma regra que o schema de `spellGrants` não representa
+// sozinho (ex: Cold Fire Magic do Rimekin/LFL, "Flame Blade concedida por esse traço
+// causa Frio em vez de Fogo" -- mecânica já resolvida no módulo Foundry via
+// `damageTypeOverrides`, mas o jogador ainda precisa saber disso). Repetido em CADA
+// entrada da mesma fonte (simplicidade -- a UI que consome isso agrupa por `source` e
+// só mostra o ícone uma vez por grupo, não por magia).
 export function computeGrantedSpells({ character, raceMatch, classMatches, featsData, optionalFeaturesData }) {
   const charLevel = totalCharacterLevel(character.classes);
   const results = [];
 
-  function addFrom(spellGrants, source, level) {
+  function addFrom(spellGrants, source, level, note = null) {
     for (const grant of grantsFromRaw(spellGrants)) {
-      results.push({ name: grant.name, level: grant.level, source, unlocked: level >= grant.level });
+      results.push({ name: grant.name, level: grant.level, source, unlocked: level >= grant.level, note });
     }
   }
 
-  if (raceMatch?.spellGrants) addFrom(raceMatch.spellGrants, raceMatch.name, charLevel);
+  if (raceMatch?.spellGrants) addFrom(raceMatch.spellGrants, raceMatch.name, charLevel, raceMatch.spellGrantsNote);
 
   // `character.feats`/`classChoices` só guardam o NOME (achado ao vivo: mais
   // de uma entrada pode compartilhar nome entre edições, ex: "Gift of the
@@ -173,12 +181,14 @@ export function computeGrantedSpells({ character, raceMatch, classMatches, feats
 
   for (const featName of character.feats ?? []) {
     const feat = findByName(featsData, featName);
-    if (feat?.spellGrants) addFrom(feat.spellGrants, feat.name, charLevel);
+    if (feat?.spellGrants) addFrom(feat.spellGrants, feat.name, charLevel, feat.spellGrantsNote);
   }
 
   Object.values(classMatches ?? {}).forEach((match, index) => {
     const classLevel = character.classes?.[index]?.level ?? 0;
-    if (match?.subclassData?.spellGrants) addFrom(match.subclassData.spellGrants, match.subclassData.name, classLevel);
+    if (match?.subclassData?.spellGrants) {
+      addFrom(match.subclassData.spellGrants, match.subclassData.name, classLevel, match.subclassData.spellGrantsNote);
+    }
     // `spellGrants` de CLASSE BASE -- 2 lugares possíveis (achado revisando
     // Artificer 2024 "Tinker's Magic"/Mending): direto na raiz da classe (ex:
     // Paladin "Faithful Steed", `class.spellGrants`) OU dentro de uma feature
@@ -189,10 +199,10 @@ export function computeGrantedSpells({ character, raceMatch, classMatches, feats
     // de classe base ficava sem aviso nenhum aqui, mesmo já funcionando de
     // verdade no Foundry). Feature só conta depois do nível em que ela
     // existe (`feature.level`), mesmo critério que o resto do wizard usa.
-    if (match?.classData?.spellGrants) addFrom(match.classData.spellGrants, match.classData.name, classLevel);
+    if (match?.classData?.spellGrants) addFrom(match.classData.spellGrants, match.classData.name, classLevel, match.classData.spellGrantsNote);
     for (const feature of match?.classData?.features ?? []) {
       if (feature.spellGrants && classLevel >= (feature.level ?? 0)) {
-        addFrom(feature.spellGrants, feature.name, classLevel);
+        addFrom(feature.spellGrants, feature.name, classLevel, feature.spellGrantsNote);
       }
     }
     // Mesma ideia, feature de SUBCLASSE (ex: College of Lore "Magical
@@ -202,14 +212,14 @@ export function computeGrantedSpells({ character, raceMatch, classMatches, feats
     // de na raiz da subclasse.
     for (const feature of match?.subclassData?.features ?? []) {
       if (feature.spellGrants && classLevel >= (feature.level ?? 0)) {
-        addFrom(feature.spellGrants, feature.name, classLevel);
+        addFrom(feature.spellGrants, feature.name, classLevel, feature.spellGrantsNote);
       }
     }
   });
 
   for (const choice of character.classChoices ?? []) {
     const opt = findByName(optionalFeaturesData, choice.name);
-    if (opt?.spellGrants) addFrom(opt.spellGrants, opt.name, 0);
+    if (opt?.spellGrants) addFrom(opt.spellGrants, opt.name, 0, opt.spellGrantsNote);
   }
 
   const seen = new Set();

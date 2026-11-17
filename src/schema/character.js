@@ -91,6 +91,23 @@ export function deriveDarkvisionFeet(traits) {
   return match ? Number(match[1]) : 0;
 }
 
+// Tamanho que muda SOZINHO com o nível total do personagem (ex: Verdan — Pequeno
+// até o 4º nível, Médio a partir do 5º), sem escolha do jogador — mesmo mecanismo
+// que o Foundry já resolve nativamente via Size advancement por degrau
+// (buildRaceItem.js). `sizeProgression` é `[{level, size}]` ordenado crescente por
+// nível; devolve o tamanho do degrau mais alto cujo `level` ainda está <= o nível
+// total atual (nível 0 sempre serve de piso). `null`/vazio = raça não usa esse
+// mecanismo, chamador cai pro campo `size` normal.
+export function resolveProgressiveSize(sizeProgression, totalLevel) {
+  if (!Array.isArray(sizeProgression) || !sizeProgression.length) return null;
+  let current = sizeProgression[0].size;
+  for (const step of sizeProgression) {
+    if ((step.level ?? 0) > totalLevel) break;
+    current = step.size;
+  }
+  return current;
+}
+
 export function createEmptyCharacter() {
   return {
     name: "",
@@ -112,6 +129,35 @@ export function createEmptyCharacter() {
     // reaplicar sem dobrar (ver applyAbilityBonusFor/revertAbilityBonusFor em
     // useCharacterAppliers.js).
     raceAbilityBonusPicks: null,
+    // Escolha do traço "Variable Trait" (Custom Lineage, TCE) -- raça com
+    // `variableTrait` no banco concede UMA de duas opções heterogêneas
+    // (Visão no Escuro OU perícia à escolha), nunca as duas. `""` = ainda não
+    // escolheu; string = `key` da opção escolhida (ex: "darkvision"/"skill").
+    // Mesmo espírito de `raceAbilityBonusPicks` (ligado à RAÇA, revertido ao
+    // trocar — ver pickRace/pickRaceVariableTrait em CharacterCreationWizard.jsx),
+    // mas aqui não há bônus pra reverter, só a escolha em si — "darkvision"
+    // sobrescreve `senses.darkvision` direto (reversível, é só um número),
+    // "skill" reaproveita o `skillChoice` da opção (mesma limitação já aceita
+    // de raça/antecedente em geral: a perícia já aplicada não é desfeita
+    // sozinha ao trocar de opção, ver useCharacterAppliers.js/applySkills).
+    raceVariableTraitChoice: "",
+    // Vedalken (GGR) "Tireless Precision" (e qualquer raça futura com
+    // `checkBonusOnChoice`, mesmo padrão genérico no banco) -- qual perícia/
+    // ferramenta ESPECIFICAMENTE a raça concedeu via skillChoice/toolChoice
+    // ganha o bônus extra (`system.skills.<key>.bonuses.check`/
+    // `system.tools.<key>.bonuses.check` no Foundry, ver buildCharacter.js).
+    // Campo DEDICADO (em vez de reaproveitar skillProficiencies/
+    // toolProficiencies) porque esses dois são arrays achatados sem rastreio
+    // de fonte -- depois do jogador escolher a perícia no ChoicePicker não
+    // dava pra saber DEPOIS que foi essa escolha específica que deveria
+    // ganhar o bônus (e não outra perícia proficiente por qualquer outro
+    // motivo). `null` = raça atual não concede isso ou ainda não escolheu;
+    // `{skill, formula}`/`{tool, formula}` = escolha já aplicada (ver
+    // applyRaceSkillCheckBonus/applyRaceToolCheckBonus em
+    // useCharacterAppliers.js). Ligado à RAÇA -- revertido ao trocar, mesmo
+    // espírito de raceVariableTraitChoice acima (ver pickRace).
+    raceSkillCheckBonus: null,
+    raceToolCheckBonus: null,
     background: "",
     backgroundRules: "",
     // Mesma ideia de raceAbilityBonusPicks, mas pro Antecedente (2024).
@@ -181,6 +227,20 @@ export function createEmptyCharacter() {
     // "level1"/"level5"/"reversed", mesmo padrão de `weaponMasteryChoices`). Ver
     // StepAnimalEnhancement.jsx / utils/animalEnhancement.js.
     animalEnhancementChoices: [],
+    // "Lessons of the First Ones" (Invocação Mística, Bruxo 2024) é repetível
+    // e cada cópia concede 1 Talento de Origem À ESCOLHA (`subtype:"origin"`,
+    // regra: "choose a different Origin feat" a cada cópia) -- mecanismo
+    // DEDICADO (não `classChoices`, que só sabe "nome de 1 opção por slot",
+    // sem sub-escolha de uma categoria diferente). Lista FLAT, 1 entrada por
+    // ocorrência de "Lessons of the First Ones" em `classChoices`, na MESMA
+    // ordem em que essas ocorrências aparecem lá -- igual a
+    // `weaponMasteryChoices`/`animalEnhancementChoices`, não persiste
+    // contagem/disponibilidade, só a escolha (recalculada a cada render
+    // contra `classChoices` atual). O nome escolhido aqui é sempre espelhado
+    // em `feats[]` também (mesma convenção de `originFeatOverride`), pra
+    // `buildCharacter.js` embutir o talento sem precisar de código novo. Ver
+    // useLessonsOfTheFirstOnes.js / StepEscolhasDeClasse.jsx.
+    lessonsOfTheFirstOnesFeats: [],
     spells: [],
     // Marca um card como snapshot congelado de ANTES de um Level-Up (ver
     // LevelUpWizard.jsx) — continua um card normal (editável, sincronizável
