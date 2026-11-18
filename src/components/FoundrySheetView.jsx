@@ -26,7 +26,17 @@ import { spellAttackMod, spellDamageFormula, spellSaveDC, spellHealFormula } fro
 import { rollFormula } from "../utils/rollDice";
 import { WEAPON_MASTERY_TABLE } from "../utils/weaponMastery";
 import { CLASS_CHOICE_CATEGORY_LABELS } from "../utils/classChoiceLabels";
-import { sendRollRequest } from "../data/chatMessages";
+import { sendRollRequest, sendLocalRoll } from "../data/chatMessages";
+import {
+  rollD20,
+  rollAttack,
+  resolveUnarmedStrikeDie,
+  unarmedStrikeAbilityMod,
+  resolveSneakAttackDice,
+  resolveWeaponAttack,
+  rollDeathSaveD20,
+  ADV_MODE,
+} from "../schema/localRolls";
 
 function abilityMod(score) {
   return Math.floor((score - 10) / 2);
@@ -34,6 +44,42 @@ function abilityMod(score) {
 
 function fmtMod(mod) {
   return mod >= 0 ? `+${mod}` : `${mod}`;
+}
+
+// `rollD20`/`rollAttack` (schema/localRolls.js) devolvem `rolls` (array de
+// resultados crus do dado) -- aqui só extrai o formato que o chat espera
+// (`isCritical`/`isFumble` a partir do d20 natural, nunca do total com mod).
+function toChatD20Result(roll) {
+  return { formula: roll.formula, total: roll.total, isCritical: roll.rolls[0] === 20, isFumble: roll.rolls[0] === 1 };
+}
+
+// Ataque local (sem Foundry) pro chat geral -- usado tanto pelas Ações
+// (Ataque Desarmado/arma equipada) quanto pelo botão "⚔ Atacar" do
+// Inventário, pra não duplicar a lógica em dois componentes. `itemName`
+// continua "Unarmed Strike" (inglês) mesmo na Ação em português -- é o MESMO
+// nome mandado pro pedido pendente do Foundry (sendRollRequest, acima), que
+// precisa bater com o nome real do item lá (ou, na falta de um, pelo menos
+// ficar consistente/previsível). Devolve `null` se não for nem Unarmed
+// Strike nem um item real do catálogo (ex: homebrew digitado à mão, sem
+// dado de arma pra calcular).
+function computeLocalAttackResult(character, totalLevel, originalClassMatch, classMatches, itemName, mode = ADV_MODE.NORMAL) {
+  if (itemName === "Unarmed Strike") {
+    const unarmedDie = resolveUnarmedStrikeDie(character.classes, classMatches);
+    const abilityScoreMod = unarmedStrikeAbilityMod(character, unarmedDie?.className ?? null);
+    const prof = proficiencyBonus(totalLevel);
+    const { attack, damage } = rollAttack({
+      attackMod: abilityScoreMod + prof, // Ataque Desarmado é sempre proficiente
+      damageDice: unarmedDie ? `${unarmedDie.number}d${unarmedDie.faces}` : "1d1",
+      damageMod: abilityScoreMod,
+      damageType: "bludgeoning",
+      mode,
+    });
+    return { ...toChatD20Result(attack), damage: { formula: damage.formula, total: damage.total, type: damage.type } };
+  }
+  const equipmentEntry = equipmentData.find((e) => e.name === itemName);
+  if (!equipmentEntry) return null;
+  const { attack, damage } = resolveWeaponAttack(character, totalLevel, originalClassMatch, equipmentEntry, mode);
+  return { ...toChatD20Result(attack), damage: { formula: damage.formula, total: damage.total, type: damage.type } };
 }
 
 // Mesma fórmula usada em todo o resto do projeto (nível total → bônus de
@@ -229,17 +275,63 @@ function DetailsTab({
   raceMatch,
   classMatches,
   profileId,
+  advantageMode,
+  visibility,
 }) {
   const prof = proficiencyBonus(totalLevel);
 
-  // Clique em perícia/resistência/ação de ataque rola de verdade, mesmo
-  // mecanismo que o botão "⚔ Atacar" do Inventário já usa (sendRollRequest) --
-  // escreve em profiles/{profileId}/chatMessages, o GM ativo no Foundry
-  // resolve (liveRollBridge.js) e o resultado aparece tanto no chat da ficha
-  // (ChatPanel) quanto no chat geral (GlobalChatPanel), já que os dois leem a
-  // mesma coleção.
+  // Clique em perícia/resistência/ataque faz DUAS coisas em paralelo, pedido
+  // do usuário (nov/2026): manda o pedido pendente de sempre pro Foundry
+  // (`sendRollRequest` -- só aparece no chat da FICHA, ChatPanel, e só
+  // resolve se o Foundry estiver aberto, NUNCA usa vantagem/sussurro daqui,
+  // o Foundry tem o próprio jeito de pedir isso quando resolver de verdade)
+  // E calcula + manda uma rolagem já pronta, 100% local
+  // (`sendLocalRoll`/schema/localRolls.js), que só aparece no chat GERAL
+  // (GlobalChatPanel) -- esse nunca fica esperando ninguém, e é o único que
+  // respeita os toggles da caixa vermelha. As duas escritas são
+  // independentes, nenhuma espera a outra.
   function rollRequest(request) {
     sendRollRequest(profileId, { sourceId: character.id, authorName: character.name, request });
+    const result = computeLocalCheckResult(request);
+    if (result) {
+      sendLocalRoll(profileId, { sourceId: character.id, authorName: character.name, request, result, visibility });
+    }
+  }
+
+  function computeLocalCheckResult(request) {
+    if (request.type === "save") {
+      const proficient = savingThrowProfs.has(request.key);
+      const mod = abilityMod(character.abilities?.[request.key] ?? 10) + (proficient ? prof : 0);
+      return toChatD20Result(rollD20(mod, advantageMode));
+    }
+    if (request.type === "skill") {
+      const skill = SKILLS.find((s) => s.id === request.key);
+      if (!skill) return null;
+      const bonus = (proficientSkills.has(request.key) ? prof : 0) + (expertiseSkills.has(request.key) ? prof : 0);
+      const mod = abilityMod(character.abilities?.[skill.ability] ?? 10) + bonus;
+      return toChatD20Result(rollD20(mod, advantageMode));
+    }
+    if (request.type === "attack") {
+      return computeLocalAttackResult(character, totalLevel, originalClassMatch, classMatches, request.itemName, advantageMode);
+    }
+    return null;
+  }
+
+  // Só dano (sem acerto próprio -- Ataque Furtivo soma na rolagem de OUTRO
+  // ataque, nunca tem uma de verdade só dele; pedido do usuário foi uma
+  // ação própria na seção Ações mesmo assim, só com a rolagem de dano).
+  // Vantagem/desvantagem não se aplica -- é rolagem de DANO, não de d20.
+  function sneakAttackRoll() {
+    const sneak = resolveSneakAttackDice(character.classes, classMatches);
+    if (!sneak) return;
+    const r = rollFormula(`${sneak.number}d${sneak.faces}`);
+    sendLocalRoll(profileId, {
+      sourceId: character.id,
+      authorName: character.name,
+      request: { type: "sneakAttack" },
+      result: { formula: r.formula, total: r.total, isCritical: false, isFumble: false },
+      visibility,
+    });
   }
   const expertiseSkills = new Set(character.skillExpertise ?? []);
   const proficientSkills = new Set(character.skillProficiencies ?? []);
@@ -394,6 +486,14 @@ function DetailsTab({
                 Ataque Desarmado
               </button>
             </li>
+            {resolveSneakAttackDice(character.classes, classMatches) && (
+              <li>
+                <span className="foundry-skill-dot" aria-hidden="true" />
+                <button type="button" className="foundry-item-name foundry-rollable" onClick={sneakAttackRoll}>
+                  Ataque Furtivo
+                </button>
+              </li>
+            )}
             {(character.equipment ?? [])
               .filter((item) => item.equipped && looksAttackable(item.name))
               .map((item, index) => (
@@ -550,7 +650,18 @@ function DetailsTab({
   );
 }
 
-function InventoryTab({ character, editable, onChange, profileId, onSave }) {
+function InventoryTab({
+  character,
+  editable,
+  onChange,
+  profileId,
+  onSave,
+  originalClassMatch,
+  totalLevel,
+  classMatches,
+  advantageMode,
+  visibility,
+}) {
   const currency = character.currency ?? {};
   const [browserOpen, setBrowserOpen] = useState(false);
 
@@ -576,11 +687,12 @@ function InventoryTab({ character, editable, onChange, profileId, onSave }) {
   // item existe na ficha E tem uma ação de ataque (liveRollBridge.js), e
   // devolve erro claro no chat quando não tem (ex: poção, corda...).
   function attackWith(itemName) {
-    sendRollRequest(profileId, {
-      sourceId: character.id,
-      authorName: character.name,
-      request: { type: "attack", itemName },
-    });
+    const request = { type: "attack", itemName };
+    sendRollRequest(profileId, { sourceId: character.id, authorName: character.name, request });
+    const result = computeLocalAttackResult(character, totalLevel, originalClassMatch, classMatches, itemName, advantageMode);
+    if (result) {
+      sendLocalRoll(profileId, { sourceId: character.id, authorName: character.name, request, result, visibility });
+    }
   }
   return (
     <div className="foundry-inventory-tab">
@@ -1357,7 +1469,7 @@ function BiographyTab({ character, editable, onChange }) {
 // Assistente completo, pra não duplicar/discordar da lógica de lá.
 const EDITABLE_KEYS = [
   "name", "alignment", "inspiration", "hp", "hpAuto", "ac", "acAuto", "abilities",
-  "senses", "toolProficiencies", "languages", "skillProficiencies", "skillExpertise",
+  "senses", "size", "toolProficiencies", "languages", "skillProficiencies", "skillExpertise",
   "currency", "equipment", "feats", "spells",
   "personality", "appearance", "notes",
 ];
@@ -1372,6 +1484,24 @@ const EDITABLE_KEYS = [
 export function FoundrySheetView({ character, onSave, profileId }) {
   const [editing, setEditing] = useState(false);
   const [draft, setDraft] = useState(character);
+  // Caixa vermelha (pedido do usuário, nov/2026): toggles persistentes --
+  // ficam ligados até o jogador trocar de volta, nunca "gastam" depois de 1
+  // rolagem. Afetam só o motor LOCAL (chat geral); o pedido pendente pro
+  // Foundry (sendRollRequest, chat individual) nunca usa isso -- o Foundry
+  // já tem o próprio jeito de pedir vantagem/sussurro quando resolver de
+  // verdade. `visibility` (geral/sussurro) é só filtro VISUAL no chat, não
+  // segurança de verdade -- ver pending_whisper_not_real_privacy.
+  const [advantageMode, setAdvantageMode] = useState(ADV_MODE.NORMAL);
+  const [visibility, setVisibility] = useState("general");
+  // Janela pra digitar um ajuste de PV maior que 1 (clique no círculo de PV)
+  // -- `hpModalValue` aceita "-5" (subtrai) ou "5" (soma), mesmo delta que
+  // `quickAdjustHp` já aplica nos botões −/+.
+  const [hpModalOpen, setHpModalOpen] = useState(false);
+  const [hpModalValue, setHpModalValue] = useState("");
+  // Mensagem do botão "Atualizar" (ver `refreshFromDatabase` abaixo) --
+  // limpa sempre que a sessão de edição muda de estado, pra nunca sobrar
+  // uma mensagem de uma rodada de edição anterior.
+  const [updateFeedback, setUpdateFeedback] = useState(null);
 
   useEffect(() => {
     if (!editing) setDraft(character);
@@ -1385,18 +1515,46 @@ export function FoundrySheetView({ character, onSave, profileId }) {
 
   function startEdit() {
     setDraft(character);
+    setUpdateFeedback(null);
     setEditing(true);
   }
 
   function cancelEdit() {
     setDraft(character);
+    setUpdateFeedback(null);
     setEditing(false);
   }
 
   function save() {
     const patch = Object.fromEntries(EDITABLE_KEYS.map((key) => [key, draft[key]]));
     onSave?.(patch);
+    setUpdateFeedback(null);
     setEditing(false);
+  }
+
+  // Botão "Atualizar" (sessão editável) -- pedido do usuário (nov/2026):
+  // sincroniza só CONTEÚDO do banco (texto/mecânica/dado), nunca uma
+  // escolha do jogador nem um campo que a própria ficha já deixa editar à
+  // mão. Bônus de atributo fica de fora por completo (a habilidade
+  // escolhida é sempre do jogador, mesmo quando a quantidade vem fixa do
+  // banco) e Sentidos também (tem edição manual própria na ficha, ver
+  // SensesInput -- sobrescrever sem critério apagaria um ajuste manual do
+  // jogador). Hoje o ÚNICO campo que sobra sem nenhum desses problemas é o
+  // Tamanho da raça (`size`): é puro dado do banco, nunca uma escolha, e a
+  // ficha não tem campo pra editá-lo à mão. Qualquer campo novo que vier a
+  // se encaixar no mesmo critério entra aqui depois.
+  function refreshFromDatabase() {
+    if (!raceMatch) {
+      setUpdateFeedback("Nenhuma raça selecionada pra atualizar.");
+      return;
+    }
+    if (!raceMatch.size || raceMatch.size === view.size) {
+      setUpdateFeedback("Já está atualizado.");
+      return;
+    }
+    const from = view.size ?? "—";
+    onChange({ size: raceMatch.size });
+    setUpdateFeedback(`Tamanho atualizado: ${from} → ${raceMatch.size}.`);
   }
 
   const totalLevel = (view.classes ?? []).filter((c) => c.name).reduce((sum, c) => sum + (Number(c.level) || 0), 0);
@@ -1474,6 +1632,18 @@ export function FoundrySheetView({ character, onSave, profileId }) {
   );
   const hpAuto = view.hpAuto ?? true;
   const displayedHpMax = hpAuto ? computedHpMax : hp.max;
+  // Achado real implementando Death Saves (nov/2026): `hp.max:0` salvo no
+  // banco só acontece pra personagem cujo PV NUNCA foi tocado nem uma vez
+  // (criado antes de ter 0 real de propósito) -- é o mesmo sinal que
+  // `hp.value||displayedHpMax||0` já usa há tempos pra mostrar "cheio" em
+  // vez de "0/0" assustador. Guardado aqui (`hpInitialized`) como o sinal
+  // CONFIÁVEL de "este personagem já foi tocado de verdade" -- nenhum dos
+  // dois caminhos que escrevem `hp.value` (edição completa logo abaixo e
+  // `quickAdjustHp`) grava mais sem também preencher `max` de verdade, então
+  // a partir de agora qualquer personagem que chegar a 0 PV de propósito
+  // tem como ser distinguido de um que simplesmente nunca foi mexido.
+  const hpInitialized = (hp.max ?? 0) > 0;
+  const displayedHpValue = hpInitialized ? (hp.value ?? 0) : hp.value || displayedHpMax || 0;
   function setManualHpMax(value) {
     onChange({ hp: { ...hp, max: value }, hpAuto: false });
   }
@@ -1481,9 +1651,80 @@ export function FoundrySheetView({ character, onSave, profileId }) {
     onChange({ hp: { ...hp, max: computeHitPoints(view, { classesData }) }, hpAuto: true });
   }
 
+  // PV rápido (+/-) fora do modo de edição -- pedido do usuário (nov/2026),
+  // mesmo padrão de `quickToggleEquipmentField` (Inventário)/`useAutomaticAc`
+  // acima: grava direto via `onSave`, sem precisar entrar em "Editar ficha".
+  // Zera os Death Saves sozinho ao sair de 0 -- regra oficial (o próprio
+  // Foundry faz o mesmo: qualquer PV acima de 0 reseta os dois contadores).
+  // SEMPRE preenche `max` de verdade junto (nunca só `value` sozinho) --
+  // ver comentário de `hpInitialized` acima, é o que torna "0 de verdade"
+  // diferente de "nunca foi tocado" a partir de agora.
+  function quickAdjustHp(delta) {
+    if (editing || !onSave) return;
+    const max = displayedHpMax ?? 0;
+    const next = Math.max(0, Math.min(max, displayedHpValue + delta));
+    const patch = { hp: { ...hp, value: next, max } };
+    if (next > 0 && ((character.deathSaves?.success ?? 0) > 0 || (character.deathSaves?.failure ?? 0) > 0)) {
+      patch.deathSaves = { success: 0, failure: 0 };
+    }
+    onSave(patch);
+  }
+
+  // Mesmo ajuste de cima, só que com um delta digitado (janela aberta ao
+  // clicar no círculo de PV) em vez de sempre ±1 -- "-5" subtrai, "5" soma.
+  function applyHpModalValue() {
+    const delta = Number(hpModalValue);
+    setHpModalOpen(false);
+    if (!Number.isFinite(delta) || delta === 0) return;
+    quickAdjustHp(delta);
+  }
+
+  // Teste de Resistência contra a Morte -- d20 fixo vs CD 10 (localRolls.js),
+  // atualiza os contadores direto (sem edição) e manda o resultado só pro
+  // chat GERAL (mesma lógica de visibilidade/vantagem da caixa vermelha).
+  // Regra oficial: 20 natural = volta com 1 PV; 1 natural conta como 2
+  // falhas; 3 sucessos estabiliza (zera os dois); 3 falhas = morreu (fica
+  // nos 3, não zera sozinho -- só reseta de novo quando o PV subir).
+  function rollDeathSave() {
+    if (!onSave) return;
+    const roll = rollDeathSaveD20(advantageMode);
+    const natural = roll.rolls[0];
+    const current = character.deathSaves ?? { success: 0, failure: 0 };
+    let patch;
+    if (natural === 20) {
+      patch = { hp: { ...hp, value: 1, max: displayedHpMax ?? 0 }, deathSaves: { success: 0, failure: 0 } };
+    } else if (natural >= 10) {
+      const success = Math.min(3, current.success + 1);
+      patch = { deathSaves: success >= 3 ? { success: 0, failure: 0 } : { ...current, success } };
+    } else {
+      const failure = Math.min(3, current.failure + (natural === 1 ? 2 : 1));
+      patch = { deathSaves: { ...current, failure } };
+    }
+    onSave(patch);
+    sendLocalRoll(profileId, {
+      sourceId: character.id,
+      authorName: character.name,
+      request: { type: "deathSave" },
+      result: { formula: roll.formula, total: roll.total, isCritical: natural === 20, isFumble: natural === 1 },
+      visibility,
+    });
+  }
+
   const [tab, setTab] = useState("details");
 
-  const tabProps = { character: view, editable: editing, onChange, originalClassMatch, totalLevel, raceMatch, classMatches, profileId, onSave };
+  const tabProps = {
+    character: view,
+    editable: editing,
+    onChange,
+    originalClassMatch,
+    totalLevel,
+    raceMatch,
+    classMatches,
+    profileId,
+    onSave,
+    advantageMode,
+    visibility,
+  };
   const printTabProps = { ...tabProps, character, editable: false, onChange: () => {}, onSave: undefined };
 
   return (
@@ -1501,6 +1742,14 @@ export function FoundrySheetView({ character, onSave, profileId }) {
           <div className="foundry-sheet-toolbar-edit">
             {editing ? (
               <>
+                <button
+                  type="button"
+                  onClick={refreshFromDatabase}
+                  title="Sincroniza com o banco de dados campos que não são escolha do jogador (ex: Tamanho da raça)"
+                >
+                  ⟳ Atualizar
+                </button>
+                {updateFeedback && <span className="foundry-sheet-update-feedback">{updateFeedback}</span>}
                 <button type="button" className="foundry-sheet-save" onClick={save}>
                   Salvar
                 </button>
@@ -1639,7 +1888,13 @@ export function FoundrySheetView({ character, onSave, profileId }) {
                 <input
                   type="number"
                   value={hp.value ?? 0}
-                  onChange={(e) => onChange({ hp: { ...hp, value: Number(e.target.value) } })}
+                  // Preenche `max` de verdade junto -- ver comentário de
+                  // `hpInitialized` acima: sem isso, digitar só o PV ATUAL
+                  // aqui (deixando o máximo como está) nunca tornaria "0 de
+                  // verdade" distinguível de "nunca foi tocado".
+                  onChange={(e) =>
+                    onChange({ hp: { ...hp, value: Number(e.target.value), max: displayedHpMax ?? 0 } })
+                  }
                 />
                 /
                 <input
@@ -1649,11 +1904,31 @@ export function FoundrySheetView({ character, onSave, profileId }) {
                 />
               </span>
             ) : (
-              <span className="foundry-sheet-badge-value">
+              <span className="foundry-sheet-badge-value foundry-hp-quick-row">
+                {onSave && (
+                  <button type="button" className="foundry-hp-quick-btn" onClick={() => quickAdjustHp(-1)} title="Dano (-1)">
+                    −
+                  </button>
+                )}
                 {/* PV atual continua manual de verdade, mas parte igual ao máximo
                     enquanto ninguém mexeu nele -- sem isso, um personagem recém-criado
                     mostraria "0/12" (parece caído/inconsciente) em vez de cheio. */}
-                {hp.value || displayedHpMax || 0}/{displayedHpMax ?? 0}
+                <span
+                  className={onSave ? "foundry-hp-value-clickable" : undefined}
+                  onClick={() => {
+                    if (!onSave) return;
+                    setHpModalValue("");
+                    setHpModalOpen(true);
+                  }}
+                  title={onSave ? "Clique para somar/subtrair do PV" : undefined}
+                >
+                  {displayedHpValue}/{displayedHpMax ?? 0}
+                </span>
+                {onSave && (
+                  <button type="button" className="foundry-hp-quick-btn" onClick={() => quickAdjustHp(1)} title="Cura (+1)">
+                    +
+                  </button>
+                )}
               </span>
             )}
             <span className="foundry-sheet-badge-label">
@@ -1673,7 +1948,90 @@ export function FoundrySheetView({ character, onSave, profileId }) {
         </div>
       </header>
 
-      <div className="foundry-sheet-abilities">
+      {hpModalOpen && (
+        <div
+          className="modal-backdrop"
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) setHpModalOpen(false);
+          }}
+        >
+          <div className="modal-panel hp-adjust-modal" onMouseDown={(event) => event.stopPropagation()}>
+            <div className="modal-header">
+              <h3>Ajustar PV</h3>
+              <button type="button" onClick={() => setHpModalOpen(false)}>
+                Fechar
+              </button>
+            </div>
+            <p className="hp-adjust-modal-hint">
+              PV atual: {displayedHpValue}/{displayedHpMax ?? 0}. Digite um valor pra somar, ou com "-" na frente pra
+              subtrair.
+            </p>
+            <div className="hp-adjust-modal-row">
+              <input
+                type="number"
+                autoFocus
+                value={hpModalValue}
+                placeholder="ex: 5 ou -5"
+                onChange={(event) => setHpModalValue(event.target.value)}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter") applyHpModalValue();
+                }}
+              />
+              <button type="button" onClick={applyHpModalValue}>
+                Aplicar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <div className="foundry-ability-row">
+        <div className="foundry-roll-controls">
+          {!editing && (
+            <>
+              {/* Vantagem/Desvantagem: toggle PERSISTENTE (pedido do usuário,
+                  nov/2026) -- fica ligado em toda rolagem local até o jogador
+                  trocar de volta, nunca "gasta" depois de 1 clique. Só afeta
+                  o motor local (chat geral); o pedido pendente pro Foundry
+                  nunca usa isso. */}
+              <div className="foundry-toggle-group" role="group" aria-label="Vantagem/Desvantagem">
+                {[
+                  [ADV_MODE.NORMAL, "Normal"],
+                  [ADV_MODE.ADVANTAGE, "Vantagem"],
+                  [ADV_MODE.DISADVANTAGE, "Desvantagem"],
+                ].map(([mode, label]) => (
+                  <button
+                    key={mode}
+                    type="button"
+                    className={advantageMode === mode ? "is-active" : ""}
+                    onClick={() => setAdvantageMode(mode)}
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
+              {/* Geral/Sussurro -- filtro só VISUAL (ver sendLocalRoll/
+                  chatMessages.js), nunca privacidade de verdade. */}
+              <div className="foundry-toggle-group" role="group" aria-label="Direcionamento da mensagem">
+                {[
+                  ["general", "Geral"],
+                  ["whisper", "Sussurro"],
+                ].map(([v, label]) => (
+                  <button
+                    key={v}
+                    type="button"
+                    className={visibility === v ? "is-active" : ""}
+                    onClick={() => setVisibility(v)}
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
+            </>
+          )}
+        </div>
+
+        <div className="foundry-sheet-abilities">
         {editing ? (
           <AbilitiesInput abilities={view.abilities} onChange={(abilities) => onChange({ abilities })} />
         ) : (
@@ -1684,13 +2042,17 @@ export function FoundrySheetView({ character, onSave, profileId }) {
                 type="button"
                 key={key}
                 className="foundry-ability-badge foundry-rollable"
-                onClick={() =>
-                  sendRollRequest(profileId, {
+                onClick={() => {
+                  const request = { type: "check", key };
+                  sendRollRequest(profileId, { sourceId: character.id, authorName: character.name, request });
+                  sendLocalRoll(profileId, {
                     sourceId: character.id,
                     authorName: character.name,
-                    request: { type: "check", key },
-                  })
-                }
+                    request,
+                    result: toChatD20Result(rollD20(abilityMod(score), advantageMode)),
+                    visibility,
+                  });
+                }}
                 title={`Rolar teste de ${ABILITY_LABELS[key]}`}
               >
                 <span className="foundry-ability-label">{ABILITY_LABELS[key]}</span>
@@ -1700,6 +2062,42 @@ export function FoundrySheetView({ character, onSave, profileId }) {
             );
           })
         )}
+        </div>
+
+        <div className="foundry-deathsaves-box">
+          {/* Só aparece com PV em 0 -- mesma regra do Foundry (rollDeathSave
+              avisa "desnecessário" fora disso). Zera sozinho ao sair de 0
+              (quickAdjustHp acima cuida disso, não precisa ação própria). */}
+          {!editing && hpInitialized && displayedHpValue === 0 && (
+            <>
+              <span className="foundry-deathsaves-label">Resistência contra a Morte</span>
+              <div className="foundry-deathsaves-row">
+                <span className="foundry-deathsaves-pips">
+                  {[0, 1, 2].map((i) => (
+                    <span
+                      key={i}
+                      className={`foundry-deathsaves-pip is-success${i < (character.deathSaves?.success ?? 0) ? " is-filled" : ""}`}
+                    />
+                  ))}
+                </span>
+                <span className="foundry-deathsaves-pips">
+                  {[0, 1, 2].map((i) => (
+                    <span
+                      key={i}
+                      className={`foundry-deathsaves-pip is-failure${i < (character.deathSaves?.failure ?? 0) ? " is-filled" : ""}`}
+                    />
+                  ))}
+                </span>
+              </div>
+              {onSave && (character.deathSaves?.success ?? 0) < 3 && (character.deathSaves?.failure ?? 0) < 3 && (
+                <button type="button" className="foundry-deathsaves-roll" onClick={rollDeathSave}>
+                  Rolar
+                </button>
+              )}
+              {(character.deathSaves?.failure ?? 0) >= 3 && <span className="foundry-deathsaves-dead">Morreu</span>}
+            </>
+          )}
+        </div>
       </div>
 
       <nav className="foundry-sheet-tabs">

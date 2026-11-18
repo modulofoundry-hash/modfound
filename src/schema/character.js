@@ -264,6 +264,11 @@ export function createEmptyCharacter() {
     // (PV atual pode ficar abaixo do máximo por dano), só `hp.max` segue o automático.
     hpAuto: true,
     conditions: [],
+    // Testes de Resistência contra a Morte (regra oficial: d20 fixo vs CD 10,
+    // sem modificador nenhum) -- zera sozinho sempre que `hp.value` sobe
+    // acima de 0 (FoundrySheetView.jsx cuida disso no mesmo lugar que já
+    // muda `hp.value`, nunca precisa de ação separada do jogador).
+    deathSaves: { success: 0, failure: 0 },
     personality: { trait: "", ideal: "", bond: "", flaw: "" },
     appearance: { gender: "", age: "", height: "", weight: "", eyes: "", hair: "", skin: "", faith: "", description: "" },
     notes: "",

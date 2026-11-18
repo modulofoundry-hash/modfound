@@ -15,11 +15,21 @@ import { db } from "../firebase";
 // liveRollBridge.js e chatMirror.js) -- ordenada por createdAt (não por
 // "name" como o resto de firestoreCollection.js, por isso não reaproveita
 // subscribeToCollection direto).
+//
+// Filtra fora `engine === "site"` -- pedido do usuário (nov/2026): o chat
+// INDIVIDUAL (dentro da ficha) deve continuar só recebendo rolagem quando o
+// Foundry estiver de verdade aberto, nunca a versão instantânea calculada no
+// navegador (essa só aparece no chat GERAL, ver sendLocalRoll/
+// subscribeToAllChatMessages). Filtro client-side de propósito -- uma
+// cláusula `where("engine","!=","site")` excluiria também qualquer
+// documento SEM esse campo (toda mensagem antiga/vinda do Foundry nunca
+// teve essa chave), quebrando o chat inteiro.
 export function subscribeToChatMessages(profileId, onData, onError) {
   const q = query(collection(db, "profiles", profileId, "chatMessages"), orderBy("createdAt"));
   return onSnapshot(
     q,
-    (snapshot) => onData(snapshot.docs.map((d) => ({ id: d.id, ...d.data() }))),
+    (snapshot) =>
+      onData(snapshot.docs.filter((d) => d.data().engine !== "site").map((d) => ({ id: d.id, ...d.data() }))),
     onError,
   );
 }
@@ -95,5 +105,33 @@ export function sendRollRequest(profileId, { sourceId, authorName, request }) {
     authorName,
     text: null,
     request,
+  });
+}
+
+// Rolagem já resolvida no navegador (schema/localRolls.js) -- `engine:"site"`
+// marca pra `subscribeToChatMessages` (chat individual) esconder; o chat
+// GERAL (subscribeToAllChatMessages) não filtra nada, mostra tudo. `result`
+// já vem pronto de quem chamou (ver localRolls.js pros formatos de check/
+// save/skill vs. ataque com `result.damage`).
+//
+// `visibility` ("general"|"whisper") -- pedido do usuário (nov/2026): toggle
+// na ficha. IMPORTANTE, documentado também pro usuário: isso NÃO é
+// privacidade de verdade. Toda a família loga com a MESMA conta do
+// Firebase (ver AuthContext.jsx) -- o Firestore não distingue "pessoas"
+// diferentes, só "família" vs. "visitante". `visibility:"whisper"` é só um
+// filtro VISUAL (quem não está marcado como GM não vê a mensagem na tela,
+// ver useGmPresence.js), qualquer um com acesso ao banco consegue ler o
+// documento de qualquer jeito.
+export function sendLocalRoll(profileId, { sourceId, authorName, request, result, visibility = "general" }) {
+  return sendChatMessage(profileId, {
+    kind: "rollRequest",
+    status: "done",
+    engine: "site",
+    sourceId,
+    authorName,
+    text: null,
+    request,
+    result,
+    visibility,
   });
 }

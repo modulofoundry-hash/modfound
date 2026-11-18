@@ -35,6 +35,10 @@ function describeRequest(request) {
       return SKILLS.find((s) => s.id === request.key)?.label ?? request.key;
     case "attack":
       return `Ataque: ${request.itemName}`;
+    case "sneakAttack":
+      return "Ataque Furtivo";
+    case "deathSave":
+      return "Resistência contra a Morte";
     case "formula":
       return request.formula;
     default:
@@ -58,7 +62,10 @@ export function ChatMessageCard({ message }) {
   return (
     <div className={`chat-message${isRoll ? ` ${resultClass}` : ""}`}>
       <div className="chat-message-header">
-        <span className="chat-message-author">{message.authorName}</span>
+        <span className="chat-message-header-left">
+          <span className="chat-message-author">{message.authorName}</span>
+          {message.visibility === "whisper" && <span className="chat-message-whisper-tag">sussurro pro GM</span>}
+        </span>
         <span className="chat-message-time">{formatTime(message.createdAt)}</span>
       </div>
       {!isRoll && <p className="chat-message-text">{message.text}</p>}
@@ -75,6 +82,18 @@ export function ChatMessageCard({ message }) {
               <span className="chat-message-roll-formula">{message.result.formula}</span>
             </span>
           )}
+        </div>
+      )}
+      {/* Dano separado do acerto -- só existe em `result.damage` (rolagem
+          local de ataque, ver schema/localRolls.js); a ponte do Foundry
+          manda acerto e dano como mensagens distintas, nunca preenche isso. */}
+      {isRoll && message.status === "done" && message.result?.damage && (
+        <div className="chat-message-roll-body chat-message-roll-damage">
+          <span className="chat-message-roll-label">Dano{message.result.damage.type ? ` (${message.result.damage.type})` : ""}</span>
+          <span className="chat-message-roll-total">
+            {message.result.damage.total}
+            <span className="chat-message-roll-formula">{message.result.damage.formula}</span>
+          </span>
         </div>
       )}
     </div>

@@ -3,6 +3,7 @@ import { useProfiles } from "../hooks/useProfiles";
 import { GUEST_PROFILE_ID } from "../constants/profiles";
 import { useAuth } from "../auth/AuthContext";
 import { GlobalChatPanel } from "../components/GlobalChatPanel";
+import { releaseGm } from "../data/gmPresence";
 
 export function ProfileLayout() {
   const { profileId } = useParams();
@@ -10,6 +11,14 @@ export function ProfileLayout() {
   const profile = profiles.find((p) => p.id === profileId);
   const { logout, authKind } = useAuth();
   const isGuest = profileId === GUEST_PROFILE_ID;
+
+  // Libera o cargo de GM ANTES de sair, se for o perfil atual quem segura
+  // (releaseGm já confere a posse de novo, nunca derruba o GM de outra
+  // aba/pessoa por engano).
+  async function handleLogout() {
+    await releaseGm(profile.id).catch(() => {});
+    logout();
+  }
 
   // Só redireciona depois que a 1ª resposta do Firestore chegou -- um perfil
   // criado por "Criar perfil fixo" (vive em `profileRegistry`, carregado
@@ -43,7 +52,7 @@ export function ProfileLayout() {
         <div className="profile-header-actions">
           <GlobalChatPanel profile={profile} />
           <NavLink to="/perfis">Trocar perfil</NavLink>
-          <button type="button" onClick={logout}>
+          <button type="button" onClick={handleLogout}>
             Sair
           </button>
         </div>
