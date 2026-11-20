@@ -271,7 +271,12 @@ export function GlobalChatPanel({ profile }) {
             </button>
           </div>
 
-          <div className="global-chat-messages">
+          <div
+            className="global-chat-messages"
+            ref={(el) => {
+              if (el) el.scrollTop = el.scrollHeight;
+            }}
+          >
             {error && <p className="error">Erro ao carregar o chat: {error}</p>}
             {gmError && <p className="error chat-command-error">{gmError}</p>}
             {/* Sussurro só é filtro VISUAL (ver sendLocalRoll/chatMessages.js) --
