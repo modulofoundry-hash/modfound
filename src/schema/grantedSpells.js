@@ -1,3 +1,5 @@
+import { featName as getFeatName, featRules as getFeatRules } from "./character";
+
 // Deriva a lista de magias que Raça/Feat/Subclasse/Escolha de Classe concedem
 // automaticamente ao personagem (`spellGrants`, o mesmo `additionalSpells` cru
 // do 5etools que o módulo Foundry já resolve em resolveGrants.js) — usado só
@@ -103,10 +105,10 @@ export function computeSubclassSpellChoices(character, classMatches) {
 // `computeGrantedSpells` já usa pra `character.feats`.
 export function computeFeatSpellChoices(character, featsData) {
   const results = [];
-  for (const featName of character.feats ?? []) {
-    const feat =
-      featsData.find((f) => f.name === featName && f.rules === character.rulesMode) ??
-      featsData.find((f) => f.name === featName);
+  for (const entry of character.feats ?? []) {
+    const name = getFeatName(entry);
+    const rules = getFeatRules(entry) ?? character.rulesMode;
+    const feat = featsData.find((f) => f.name === name && f.rules === rules) ?? featsData.find((f) => f.name === name);
     if (!feat?.spellChoices?.length) continue;
     feat.spellChoices.forEach((choice, index) => {
       results.push({ ...choice, source: feat.name, key: `${feat.name}-${index}-${choice.pool.length}` });
@@ -175,12 +177,15 @@ export function computeGrantedSpells({ character, raceMatch, classMatches, feats
   // do personagem (`character.rulesMode`), com fallback pro primeiro nome
   // igual -- mesmo padrão de desambiguação com fallback já usado pra
   // raceRules/subclassRules em outros pontos do site.
-  function findByName(list, name) {
-    return list.find((x) => x.name === name && x.rules === character.rulesMode) ?? list.find((x) => x.name === name);
+  function findByName(list, name, rules) {
+    return list.find((x) => x.name === name && x.rules === rules) ?? list.find((x) => x.name === name);
   }
 
-  for (const featName of character.feats ?? []) {
-    const feat = findByName(featsData, featName);
+  for (const entry of character.feats ?? []) {
+    const name = getFeatName(entry);
+    // `entry.rules` (nov/2026, a entrada já sabe sua própria edição) tem
+    // prioridade sobre o `character.rulesMode` geral, que era só um palpite.
+    const feat = findByName(featsData, name, getFeatRules(entry) ?? character.rulesMode);
     if (feat?.spellGrants) addFrom(feat.spellGrants, feat.name, charLevel, feat.spellGrantsNote);
   }
 

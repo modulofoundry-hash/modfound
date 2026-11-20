@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ABILITIES, ABILITY_LABELS, ALIGNMENTS, LANGUAGES, SKILLS } from "../schema/character";
+import { ABILITIES, ABILITY_LABELS, ALIGNMENTS, LANGUAGES, SKILLS, featName, featRules, resolveCharacterResistances } from "../schema/character";
 import { resolveClassMatches } from "../schema/resolveClassMatches";
 import { computeGrantedSpells } from "../schema/grantedSpells";
 import { computeAllowedSpellNames, computeExpandedSpellPool } from "../schema/expandedSpellPool";
@@ -11,6 +11,8 @@ import { ListEditor } from "./ListEditor";
 import { SpellBrowser } from "./SpellBrowser";
 import { PreparedSpellChecklist } from "./PreparedSpellChecklist";
 import { FeatBrowser } from "./FeatBrowser";
+import { FeatGrants } from "./FeatsInput";
+import { useCharacterAppliers } from "../hooks/useCharacterAppliers";
 import { EquipmentBrowser } from "./EquipmentBrowser";
 import { InfoTooltip } from "./InfoTooltip";
 import racesData from "../data/content/races.json";
@@ -35,6 +37,9 @@ import {
   resolveSneakAttackDice,
   resolveWeaponAttack,
   rollDeathSaveD20,
+  isRangedWeapon,
+  resolveRaceMeleeBonusDamage,
+  canPowerAttack,
   ADV_MODE,
 } from "../schema/localRolls";
 
@@ -62,9 +67,28 @@ function toChatD20Result(roll) {
 // ficar consistente/previsível). Devolve `null` se não for nem Unarmed
 // Strike nem um item real do catálogo (ex: homebrew digitado à mão, sem
 // dado de arma pra calcular).
-function computeLocalAttackResult(character, totalLevel, originalClassMatch, classMatches, itemName, mode = ADV_MODE.NORMAL) {
+// `extraDamage` (dano extra de traço de raça, ex: Quills) sai separado do
+// `damage` principal -- tipos de dano diferentes (ex: contundente do
+// desarmado + perfurante do Quills), o chat mostra como 2 linhas. Devolve
+// `null`, NUNCA `undefined` -- `addDoc`/`setDoc` do Firestore rejeitam
+// campo `undefined` (erro só na escrita, quebra o roll inteiro em silêncio
+// pra QUALQUER personagem sem esse traço -- achado ao vivo testando isto).
+// Tipo de dano não tem tradução estabelecida em lugar nenhum do projeto
+// (até o chat de rolagem mostra "Dano (bludgeoning)" em inglês, sem
+// tradução) -- capitaliza a chave em vez de inventar vocabulário PT-BR novo
+// sem precedente.
+function capitalizeDamageType(type) {
+  return type.charAt(0).toUpperCase() + type.slice(1);
+}
+
+function buildExtraDamage(raceMatch, isRanged) {
+  const extra = resolveRaceMeleeBonusDamage(raceMatch, isRanged);
+  return extra ? { formula: extra.formula, total: extra.total, type: extra.type, label: extra.label } : null;
+}
+
+function computeLocalAttackResult(character, totalLevel, originalClassMatch, classMatches, itemName, mode = ADV_MODE.NORMAL, raceMatch = null, powerAttack = false) {
   if (itemName === "Unarmed Strike") {
-    const unarmedDie = resolveUnarmedStrikeDie(character.classes, classMatches);
+    const unarmedDie = resolveUnarmedStrikeDie(character.classes, classMatches, character.feats);
     const abilityScoreMod = unarmedStrikeAbilityMod(character, unarmedDie?.className ?? null);
     const prof = proficiencyBonus(totalLevel);
     const { attack, damage } = rollAttack({
@@ -74,12 +98,20 @@ function computeLocalAttackResult(character, totalLevel, originalClassMatch, cla
       damageType: "bludgeoning",
       mode,
     });
-    return { ...toChatD20Result(attack), damage: { formula: damage.formula, total: damage.total, type: damage.type } };
+    return {
+      ...toChatD20Result(attack),
+      damage: { formula: damage.formula, total: damage.total, type: damage.type },
+      extraDamage: buildExtraDamage(raceMatch, false), // desarmado é sempre corpo-a-corpo
+    };
   }
   const equipmentEntry = equipmentData.find((e) => e.name === itemName);
   if (!equipmentEntry) return null;
-  const { attack, damage } = resolveWeaponAttack(character, totalLevel, originalClassMatch, equipmentEntry, mode);
-  return { ...toChatD20Result(attack), damage: { formula: damage.formula, total: damage.total, type: damage.type } };
+  const { attack, damage } = resolveWeaponAttack(character, totalLevel, originalClassMatch, equipmentEntry, mode, powerAttack);
+  return {
+    ...toChatD20Result(attack),
+    damage: { formula: damage.formula, total: damage.total, type: damage.type },
+    extraDamage: buildExtraDamage(raceMatch, isRangedWeapon(equipmentEntry)),
+  };
 }
 
 // Mesma fórmula usada em todo o resto do projeto (nível total → bônus de
@@ -171,8 +203,13 @@ function findClassMatch(row, rulesMode) {
   );
 }
 
-function findFeatMatch(name) {
-  return featsData.find((f) => f.name === name) ?? null;
+// Recebe a entrada de `character.feats` inteira (nov/2026: `{name, rules}`,
+// antes só o nome) -- prefere a EDIÇÃO exata que o personagem tem, cai pro
+// nome sozinho só pra entrada antiga (string solta, sem `rules` guardado).
+function findFeatMatch(entry) {
+  const name = featName(entry);
+  const rules = featRules(entry);
+  return (rules && featsData.find((f) => f.name === name && f.rules === rules)) || featsData.find((f) => f.name === name) || null;
 }
 
 function findSpellMatch(name, rulesMode) {
@@ -279,6 +316,7 @@ function DetailsTab({
   visibility,
 }) {
   const prof = proficiencyBonus(totalLevel);
+  const damageResistances = resolveCharacterResistances(character, raceMatch, featsData);
 
   // Clique em perícia/resistência/ataque faz DUAS coisas em paralelo, pedido
   // do usuário (nov/2026): manda o pedido pendente de sempre pro Foundry
@@ -312,7 +350,7 @@ function DetailsTab({
       return toChatD20Result(rollD20(mod, advantageMode));
     }
     if (request.type === "attack") {
-      return computeLocalAttackResult(character, totalLevel, originalClassMatch, classMatches, request.itemName, advantageMode);
+      return computeLocalAttackResult(character, totalLevel, originalClassMatch, classMatches, request.itemName, advantageMode, raceMatch);
     }
     return null;
   }
@@ -471,6 +509,25 @@ function DetailsTab({
             })}
           </div>
           <p className="field-hint">Proficiência de resistência vem da classe original, não é editável aqui.</p>
+        </div>
+
+        <div className="foundry-box">
+          <h4>Resistência a Dano</h4>
+          {damageResistances.length > 0 ? (
+            <ul className="foundry-item-list">
+              {damageResistances.map((type) => (
+                <li key={type}>
+                  <span className="foundry-skill-dot" aria-hidden="true" />
+                  <span className="foundry-item-name">{capitalizeDamageType(type)}</span>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <EmptyRow />
+          )}
+          <p className="field-hint">
+            Concedida por Raça/Talento (fixa ou escolhida nas respectivas etapas) — não é editável aqui.
+          </p>
         </div>
 
         <div className="foundry-box">
@@ -659,11 +716,24 @@ function InventoryTab({
   originalClassMatch,
   totalLevel,
   classMatches,
+  raceMatch,
   advantageMode,
   visibility,
 }) {
   const currency = character.currency ?? {};
   const [browserOpen, setBrowserOpen] = useState(false);
+  // Ataque Poderoso (-5/+10, GWM/Sharpshooter 2014) é opcional POR ATAQUE --
+  // toggle local por nome de item, só mostrado na linha quando `canPowerAttack`
+  // confirma que o personagem tem o talento certo pro tipo da arma.
+  const [powerAttackSelections, setPowerAttackSelections] = useState(() => new Set());
+  function togglePowerAttack(itemName) {
+    setPowerAttackSelections((prev) => {
+      const next = new Set(prev);
+      if (next.has(itemName)) next.delete(itemName);
+      else next.add(itemName);
+      return next;
+    });
+  }
 
   function addEquipment(item) {
     onChange({ equipment: [...(character.equipment ?? []), { name: item.name, quantity: 1 }] });
@@ -689,7 +759,16 @@ function InventoryTab({
   function attackWith(itemName) {
     const request = { type: "attack", itemName };
     sendRollRequest(profileId, { sourceId: character.id, authorName: character.name, request });
-    const result = computeLocalAttackResult(character, totalLevel, originalClassMatch, classMatches, itemName, advantageMode);
+    const result = computeLocalAttackResult(
+      character,
+      totalLevel,
+      originalClassMatch,
+      classMatches,
+      itemName,
+      advantageMode,
+      raceMatch,
+      powerAttackSelections.has(itemName),
+    );
     if (result) {
       sendLocalRoll(profileId, { sourceId: character.id, authorName: character.name, request, result, visibility });
     }
@@ -770,11 +849,28 @@ function InventoryTab({
                     </label>
                   </span>
                 )}
-                {looksAttackable(item.name) && (
-                  <button type="button" className="foundry-item-attack" onClick={() => attackWith(item.name)}>
-                    ⚔ Atacar
-                  </button>
-                )}
+                {looksAttackable(item.name) &&
+                  (() => {
+                    const equipmentEntry = equipmentData.find((e) => e.name === item.name);
+                    const eligible = equipmentEntry && canPowerAttack(character, equipmentEntry);
+                    return (
+                      <>
+                        {eligible && (
+                          <label className="foundry-item-toggle" title="Ataque Poderoso (-5 no ataque, +10 no dano)">
+                            <input
+                              type="checkbox"
+                              checked={powerAttackSelections.has(item.name)}
+                              onChange={() => togglePowerAttack(item.name)}
+                            />
+                            Ataque Poderoso (-5/+10)
+                          </label>
+                        )}
+                        <button type="button" className="foundry-item-attack" onClick={() => attackWith(item.name)}>
+                          ⚔ Atacar
+                        </button>
+                      </>
+                    );
+                  })()}
               </li>
             ))}
           </ul>
@@ -805,7 +901,18 @@ function classFeatureGroups(character, classMatches) {
     .filter(Boolean);
 }
 
-function FeatsTab({ character, editable, onChange, raceMatch, classMatches }) {
+function FeatsTab({
+  character,
+  editable,
+  onChange,
+  raceMatch,
+  classMatches,
+  onApplySkills,
+  onApplyTools,
+  onApplyAbilityBonus,
+  onApplyResistance,
+  onRevertGrants,
+}) {
   const featureGroups = classFeatureGroups(character, classMatches);
   const classChoiceEntries = (character.classChoices ?? []).map((c) => ({ ...c, match: findClassChoiceMatch(c) }));
   const masteryEntries = (character.weaponMasteryChoices ?? []).map((c) => c.weaponKey).filter(Boolean).map(weaponLabel);
@@ -816,9 +923,19 @@ function FeatsTab({ character, editable, onChange, raceMatch, classMatches }) {
   }));
   const [browserOpen, setBrowserOpen] = useState(false);
 
-  function addFeat(name) {
-    if (!(character.feats ?? []).includes(name)) onChange({ feats: [...(character.feats ?? []), name] });
+  function addFeat(item) {
+    if (!(character.feats ?? []).some((f) => featName(f) === item.name)) {
+      onChange({ feats: [...(character.feats ?? []), { name: item.name, rules: item.rules }] });
+    }
     setBrowserOpen(false);
+  }
+
+  // Mesmo fix já aplicado no assistente de criação (FeatsInput.jsx) --
+  // remover o talento sem desfazer o que ele concedeu (perícia/ferramenta/
+  // bônus de atributo/resistência) deixava a concessão grudada pra sempre.
+  function removeFeat(entry) {
+    onChange({ feats: character.feats.filter((f) => featName(f) !== featName(entry)) });
+    onRevertGrants?.(featName(entry));
   }
 
   return (
@@ -828,17 +945,23 @@ function FeatsTab({ character, editable, onChange, raceMatch, classMatches }) {
         {editable ? (
           <>
             <ul className="foundry-feature-list">
-              {(character.feats ?? []).map((name, index) => (
+              {(character.feats ?? []).map((entry, index) => (
                 <li key={index}>
                   <div className="feats-list-item-row">
-                    <strong>{name}</strong>
-                    <button
-                      type="button"
-                      onClick={() => onChange({ feats: character.feats.filter((f) => f !== name) })}
-                    >
+                    <strong>{featName(entry)}</strong>
+                    <button type="button" onClick={() => removeFeat(entry)}>
                       Remover
                     </button>
                   </div>
+                  <FeatGrants
+                    found={findFeatMatch(entry)}
+                    skillProficiencies={character.skillProficiencies}
+                    toolProficiencies={character.toolProficiencies}
+                    onApplySkills={onApplySkills}
+                    onApplyTools={onApplyTools}
+                    onApplyAbilityBonus={onApplyAbilityBonus}
+                    onApplyResistance={onApplyResistance}
+                  />
                 </li>
               ))}
             </ul>
@@ -847,17 +970,21 @@ function FeatsTab({ character, editable, onChange, raceMatch, classMatches }) {
             </button>
             {browserOpen && (
               <BrowserModal title="Talentos" onClose={() => setBrowserOpen(false)}>
-                <FeatBrowser items={featsData} excludeNames={new Set(character.feats ?? [])} onAdd={addFeat} />
+                <FeatBrowser
+                  items={featsData}
+                  excludeNames={new Set((character.feats ?? []).map(featName))}
+                  onAdd={addFeat}
+                />
               </BrowserModal>
             )}
           </>
         ) : character.feats?.length ? (
           <ul className="foundry-feature-list">
-            {character.feats.map((name, index) => {
-              const match = findFeatMatch(name);
+            {character.feats.map((entry, index) => {
+              const match = findFeatMatch(entry);
               return (
                 <li key={index}>
-                  <strong>{name}</strong>
+                  <strong>{featName(entry)}</strong>
                   {match?.description && <p>{excerpt(match.description)}</p>}
                 </li>
               );
@@ -1472,6 +1599,12 @@ const EDITABLE_KEYS = [
   "senses", "size", "toolProficiencies", "languages", "skillProficiencies", "skillExpertise",
   "currency", "equipment", "feats", "spells",
   "personality", "appearance", "notes",
+  // Achado ao vivo portando FeatGrants pra cá (Lote 52, nov/2026): sem essas
+  // 2 chaves, escolher resistência/perícia/ferramenta de um talento aqui
+  // aplicava certo na UI mas "Salvar" descartava silenciosamente --
+  // `featGrants`/`raceResistancePicks` nunca estavam no whitelist porque
+  // nada escrevia neles a partir desta tela antes.
+  "featGrants", "raceResistancePicks",
 ];
 
 // Visual inspirado na ficha real do Foundry (cabeçalho escuro, retrato,
@@ -1512,6 +1645,16 @@ export function FoundrySheetView({ character, onSave, profileId }) {
   function onChange(patch) {
     setDraft((d) => ({ ...d, ...patch }));
   }
+
+  // Achado ao vivo testando o Lote 52 (resistência a dano, nov/2026): a
+  // ficha editável NUNCA tinha nenhum picker de concessão de talento (nem
+  // resistência, nem bônus de atributo, nem perícia/ferramenta mista do
+  // Skilled) -- `FeatsTab` só adicionava o NOME via FeatBrowser, sem jeito
+  // de aplicar o que o talento concede. Reaproveita o MESMO `FeatGrants` já
+  // testado no assistente de criação -- `setDraft` tem a mesma assinatura
+  // de setter que `useCharacterAppliers` espera (`(prev) => next`), então
+  // funciona sem adaptação.
+  const appliers = useCharacterAppliers(setDraft);
 
   function startEdit() {
     setDraft(character);
@@ -1724,6 +1867,14 @@ export function FoundrySheetView({ character, onSave, profileId }) {
     onSave,
     advantageMode,
     visibility,
+    onApplySkills: appliers.applyFeatSkills,
+    onApplyTools: appliers.applyFeatTools,
+    onApplyAbilityBonus: appliers.applyAbilityBonusFor,
+    onApplyResistance: appliers.applyFeatResistances,
+    onRevertGrants: (name) => {
+      appliers.revertFeatGrants(name);
+      appliers.revertAbilityBonusFor(`feat-${name}`);
+    },
   };
   const printTabProps = { ...tabProps, character, editable: false, onChange: () => {}, onSave: undefined };
 

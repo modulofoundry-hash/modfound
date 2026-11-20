@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { createEmptyCharacter, deriveDarkvisionFeet, resolveProgressiveSize } from "../schema/character";
+import { createEmptyCharacter, deriveDarkvisionFeet, resolveProgressiveSize, featName, featRules } from "../schema/character";
 import { RulesModeToggle } from "./RulesModeToggle";
 import { StepRaca } from "./wizard/StepRaca";
 import { StepAntecedente } from "./wizard/StepAntecedente";
@@ -24,6 +24,7 @@ import { computeArmorClass } from "../utils/computeArmorClass";
 import { computeHitPoints } from "../utils/computeHitPoints";
 import { useCharacterAppliers } from "../hooks/useCharacterAppliers";
 import { useAbilityImprovements } from "../hooks/useAbilityImprovements";
+import { computeExpertiseGrants } from "../utils/expertiseGrants";
 import { useClassChoices } from "../hooks/useClassChoices";
 import { useLessonsOfTheFirstOnes } from "../hooks/useLessonsOfTheFirstOnes";
 import { useWeaponMasteryChoices } from "../hooks/useWeaponMasteryChoices";
@@ -101,10 +102,22 @@ function openFeatChoiceSlots(character, raceMatch, backgroundMatch) {
 // (só existia condição pra busca de talento LIVRE da raça), então esse
 // picker nunca aparecia pra ninguém, mesmo depois de FeatsInput.jsx passar
 // a saber renderizar `toolChoice`/`skillChoice` de talento.
+// `abilityBonus` (nov/2026, auditoria de talentos): MESMO bug, achado ao
+// vivo escolhendo "Actor" (bônus fixo, +1 Carisma) pelo slot livre da Raça
+// (Human Variant) -- o talento que FECHA o último slot livre também é o
+// único jeito de a etapa aparecer, então o botão "Aplicar bônus nos
+// Atributos" nunca tinha chance de ser clicado (a etapa já tinha sumido no
+// mesmo render que adicionou o talento). Mesma falta de rastreio de
+// "já aplicado" que skillChoice/toolChoice já tinham antes desta correção
+// -- aceitável (mesmo padrão), a etapa só fica "grudada" mesmo depois de
+// aplicado, nunca escondendo algo que falta aplicar.
 function featsNeedGrantReview(character, featsData) {
-  return character.feats.some((name) => {
-    const found = featsData.find((f) => f.name === name);
-    return !!(found?.skillChoice || found?.toolChoice);
+  return character.feats.some((entry) => {
+    const rules = featRules(entry);
+    const found =
+      (rules && featsData.find((f) => f.name === featName(entry) && f.rules === rules)) ||
+      featsData.find((f) => f.name === featName(entry));
+    return !!(found?.skillChoice || found?.toolChoice || found?.abilityBonus || found?.mixedProficiencyChoice || found?.resistanceChoice);
   });
 }
 
@@ -222,8 +235,15 @@ function categoryCountsForFeats(character, featsData, backgroundsData) {
   // ERLW 2014 -- escolhe 1 casa dragonmarked, ganha o par -- E TAMBÉM EFA 2024
   // -- mecânica totalmente diferente, "escolha 1 ferramenta de artesão"
   // qualquer) resolve pro primeiro que `.find()` achar, edição errada incluída.
+  // MESMO cuidado agora pra `character.feats` (nov/2026): cada entrada já
+  // guarda sua própria `rules` (ver schema/character.js), usada aqui do
+  // mesmo jeito.
   const sources = [
-    ...(character.feats ?? []).map((name) => featsData.find((f) => f.name === name)),
+    ...(character.feats ?? []).map(
+      (entry) =>
+        (featRules(entry) && featsData.find((f) => f.name === featName(entry) && f.rules === featRules(entry))) ||
+        featsData.find((f) => f.name === featName(entry)),
+    ),
     backgroundsData.find((b) => b.name === character.background && b.rules === character.backgroundRules),
   ].filter(Boolean);
   for (const source of sources) {
@@ -475,7 +495,7 @@ function summaryRows(character, targetLevel, ac, hp) {
     ["Perícias", character.skillProficiencies?.length ? character.skillProficiencies.join(", ") : null],
     ["Idiomas", character.languages?.length ? character.languages.join(", ") : null],
     ["Equipamento", character.equipment?.length ? `${character.equipment.length} item(ns)` : null],
-    ["Feats", character.feats?.length ? character.feats.join(", ") : null],
+    ["Feats", character.feats?.length ? character.feats.map(featName).join(", ") : null],
     ["Escolhas de Classe", character.classChoices?.length ? character.classChoices.map((c) => c.name).join(", ") : null],
     ["Magias", character.spells?.length ? `${character.spells.length} magia(s)` : null],
     ["Nome", character.name || null],
@@ -669,6 +689,9 @@ export function CharacterCreationWizard({ initialValue, onSubmit, onCancel }) {
     // `checkBonusOnChoice`, força escolher de novo via GrantSummary).
     set("raceSkillCheckBonus", null);
     set("raceToolCheckBonus", null);
+    // Mesmo espírito dos 2 resets acima -- resistência ESCOLHIDA (Dragonborn
+    // etc.) não deve sobreviver à troca de raça (ver resolveCharacterResistances).
+    set("raceResistancePicks", []);
     // Idioma FIXO da raça (ex: "comum, anão") entra sozinho, mesmo espírito de
     // applySize/applySenses logo acima -- não é uma escolha do jogador, é
     // concessão garantida, então não faz sentido depender de um clique em
@@ -712,27 +735,35 @@ export function CharacterCreationWizard({ initialValue, onSubmit, onCancel }) {
     setCharacter((prev) => {
       const previousOriginFeat = prev.originFeatOverride || backgroundMatch?.originFeat;
       let feats = prev.feats;
-      if (previousOriginFeat) feats = feats.filter((f) => f !== previousOriginFeat);
-      if (item.originFeat && !feats.includes(item.originFeat)) feats = [...feats, item.originFeat];
+      if (previousOriginFeat) feats = feats.filter((f) => featName(f) !== previousOriginFeat);
+      // Talento de Origem só existe em regra 2024 (mecanismo "Customizing
+      // Your Origin" do PHB 2024) -- toda entrada vinda daqui é sempre
+      // `rules:"2024"` por construção, nunca precisa checar/escolher.
+      if (item.originFeat && !feats.some((f) => featName(f) === item.originFeat)) {
+        feats = [...feats, { name: item.originFeat, rules: "2024" }];
+      }
       return { ...prev, feats, originFeatOverride: null };
     });
   }
 
   // Troca o Talento de Origem pra outro (regra "Customizing Your Origin", PHB
   // 2024) -- chamado tanto pra trocar de verdade quanto pra "reverter ao
-  // padrão" (nesse caso o próprio chamador passa `backgroundMatch.originFeat`
-  // como `featName`). Remove a entrada ATIVA de `feats[]` (padrão ou já
-  // trocada antes) e põe a nova no lugar; `originFeatOverride` só fica
-  // preenchido quando o nome escolhido DIFERE do padrão do antecedente atual
-  // -- reverter pro padrão limpa o campo (mesmo estado de "nunca trocou").
-  function pickOriginFeat(featName) {
-    if (!featName) return;
+  // padrão" (nesse caso o próprio chamador passa `{name: backgroundMatch.
+  // originFeat, rules:"2024"}` como `chosen`). Remove a entrada ATIVA de
+  // `feats[]` (padrão ou já trocada antes) e põe a nova no lugar;
+  // `originFeatOverride` só fica preenchido quando o nome escolhido DIFERE
+  // do padrão do antecedente atual -- reverter pro padrão limpa o campo
+  // (mesmo estado de "nunca trocou"). Recebe `{name, rules}` (nov/2026,
+  // auditoria de talentos) -- antes só recebia o nome cru, sem jeito de
+  // saber qual edição foi escolhida na troca.
+  function pickOriginFeat(chosen) {
+    if (!chosen?.name) return;
     setCharacter((prev) => {
       const current = prev.originFeatOverride || backgroundMatch?.originFeat;
       let feats = prev.feats;
-      if (current && current !== featName) feats = feats.filter((f) => f !== current);
-      if (!feats.includes(featName)) feats = [...feats, featName];
-      return { ...prev, feats, originFeatOverride: featName === backgroundMatch?.originFeat ? null : featName };
+      if (current && current !== chosen.name) feats = feats.filter((f) => featName(f) !== current);
+      if (!feats.some((f) => featName(f) === chosen.name)) feats = [...feats, chosen];
+      return { ...prev, feats, originFeatOverride: chosen.name === backgroundMatch?.originFeat ? null : chosen.name };
     });
   }
 
@@ -1043,6 +1074,7 @@ export function CharacterCreationWizard({ initialValue, onSubmit, onCancel }) {
             onApplySkills={appliers.applyFeatSkills}
             onApplyTools={appliers.applyFeatTools}
             onApplyAbilityBonus={appliers.applyAbilityBonusFor}
+            onApplyResistance={appliers.applyFeatResistances}
           />
         );
       case "escolhas":
@@ -1105,6 +1137,7 @@ export function CharacterCreationWizard({ initialValue, onSubmit, onCancel }) {
             raceMatch={effectiveRaceMatch}
             backgroundMatch={backgroundMatch}
             classMatches={classMatches}
+            expertiseGrants={computeExpertiseGrants(character, classMatches, featsData)}
             appliers={appliers}
           />
         );
@@ -1138,6 +1171,7 @@ export function CharacterCreationWizard({ initialValue, onSubmit, onCancel }) {
             onApplySkills={appliers.applyFeatSkills}
             onApplyTools={appliers.applyFeatTools}
             onApplyAbilityBonus={appliers.applyAbilityBonusFor}
+            onApplyResistance={appliers.applyFeatResistances}
             onRevertGrants={(name) => {
               appliers.revertFeatGrants(name);
               appliers.revertAbilityBonusFor(`feat-${name}`);

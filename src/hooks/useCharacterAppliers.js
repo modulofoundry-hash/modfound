@@ -1,5 +1,11 @@
 import { SKILLS } from "../schema/character";
 
+// Mesmo critério de FoundrySheetView.jsx -- tipo de dano não tem tradução
+// estabelecida em lugar nenhum do projeto, só capitaliza a chave em inglês.
+function capitalizeDamageType(type) {
+  return type.charAt(0).toUpperCase() + type.slice(1);
+}
+
 // Extraído de CharacterForm.jsx pra ser reaproveitado pelo wizard de criação
 // também — mesma lógica, sem duplicar. `setFeedback` é opcional (o wizard
 // mostra a escolha aplicada no painel de resumo, não precisa de toast).
@@ -221,6 +227,32 @@ export function useCharacterAppliers(setCharacter, setFeedback) {
     });
   }
 
+  // Resistência a dano ESCOLHIDA por talento (ex: Boon of Energy Resistance —
+  // achado real na auditoria, Lote 52: campo existia no banco há tempos, sem
+  // NENHUM consumidor no site/app, ver resolveCharacterResistances). Mesmo
+  // padrão de rastreio de applyFeatSkills/applyFeatTools -- fica dentro de
+  // `featGrants[featName]`, que `revertFeatGrants` já limpa inteiro ao
+  // remover o talento, sem precisar de código extra aqui.
+  function applyFeatResistances(featName, typeKeys) {
+    setCharacter((prev) => {
+      const tracked = Array.from(new Set([...(prev.featGrants?.[featName]?.resistances ?? []), ...typeKeys]));
+      return {
+        ...prev,
+        featGrants: { ...prev.featGrants, [featName]: { ...prev.featGrants?.[featName], resistances: tracked } },
+      };
+    });
+    setFeedback?.(`Resistência a ${typeKeys.map(capitalizeDamageType).join(", ")} aplicada`);
+  }
+
+  // Resistência a dano ESCOLHIDA pela Raça (ex: Dragonborn — 1 de 5 tipos).
+  // Overwrite, não acumula -- só existe 1 raça por vez (mesmo espírito de
+  // applyRaceSkillCheckBonus acima). Resetada em pickRace ao trocar de raça
+  // (CharacterCreationWizard.jsx).
+  function applyRaceResistances(typeKeys) {
+    setCharacter((prev) => ({ ...prev, raceResistancePicks: Array.from(new Set(typeKeys)) }));
+    setFeedback?.(`Resistência a ${typeKeys.map(capitalizeDamageType).join(", ")} aplicada`);
+  }
+
   return {
     applySkills,
     applyTools,
@@ -238,5 +270,7 @@ export function useCharacterAppliers(setCharacter, setFeedback) {
     applyFeatSkills,
     applyFeatTools,
     revertFeatGrants,
+    applyFeatResistances,
+    applyRaceResistances,
   };
 }

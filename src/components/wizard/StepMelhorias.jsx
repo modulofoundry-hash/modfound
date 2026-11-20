@@ -127,6 +127,7 @@ function ImprovementSlotCard({
   onApplySkills,
   onApplyTools,
   onApplyAbilityBonus,
+  onApplyResistance,
   locked,
 }) {
   const choice = improvement?.choice ?? null;
@@ -194,6 +195,7 @@ function ImprovementSlotCard({
               onApplySkills={onApplySkills}
               onApplyTools={onApplyTools}
               onApplyAbilityBonus={onApplyAbilityBonus}
+              onApplyResistance={onApplyResistance}
             />
           )}
         </div>
@@ -216,6 +218,7 @@ export function StepMelhorias({
   onApplySkills,
   onApplyTools,
   onApplyAbilityBonus,
+  onApplyResistance,
   lockedKeys = new Set(),
 }) {
   return (
@@ -238,6 +241,7 @@ export function StepMelhorias({
             onApplySkills={onApplySkills}
             onApplyTools={onApplyTools}
             onApplyAbilityBonus={onApplyAbilityBonus}
+            onApplyResistance={onApplyResistance}
             locked={lockedKeys.has(`${slot.classIndex}-${slot.level}`)}
           />
         );

@@ -1,3 +1,5 @@
+import { featName } from "../schema/character";
+
 // Calcula o PV máximo seguindo a regra real do dnd5e (mesma fórmula que
 // `HitPointsAdvancement`/`getAdjustedTotal` usam no Foundry, dnd5e.mjs): nível 1 da
 // classe INICIAL sempre usa o dado de vida CHEIO; todo outro nível usa a escolha do
@@ -101,7 +103,7 @@ export function computeHitPoints(character, { classesData }) {
   });
 
   for (const bonus of FEAT_HP_BONUSES) {
-    if ((character.feats ?? []).includes(bonus.name)) total += bonus.value(totalLevel);
+    if ((character.feats ?? []).some((f) => featName(f) === bonus.name)) total += bonus.value(totalLevel);
   }
 
   for (const bonus of RACE_HP_BONUSES) {

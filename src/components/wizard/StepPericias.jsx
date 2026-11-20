@@ -20,12 +20,14 @@ function GrantSummary({
   onApplyEquipment,
   onApplySkillCheckBonus,
   onApplyToolCheckBonus,
+  onApplyResistance,
 }) {
   if (!matched) return null;
   const hasSkills = matched.skills?.length > 0 || matched.skillChoice;
   const hasTools = matched.tools?.length > 0 || matched.toolChoice;
   const hasEquipment = matched.equipmentSlots?.length > 0;
-  if (!hasSkills && !hasTools && !hasEquipment) return null;
+  const hasResistanceChoice = !!matched.resistanceChoice?.from?.length;
+  if (!hasSkills && !hasTools && !hasEquipment && !matched.resistances?.length && !hasResistanceChoice) return null;
 
   // Vedalken (GGR) "Tireless Precision" (`checkBonusOnChoice` no banco) -- a
   // escolha feita no ChoicePicker de skillChoice/toolChoice logo abaixo
@@ -97,6 +99,17 @@ function GrantSummary({
           <EquipmentSlots slots={matched.equipmentSlots} onAdd={onApplyEquipment} />
         </div>
       )}
+      {matched.resistances?.length > 0 && (
+        <p>Resistência a Dano: {matched.resistances.join(", ")} (automática, sempre ativa).</p>
+      )}
+      {hasResistanceChoice && onApplyResistance && (
+        <ChoicePicker
+          title="Resistência a Dano"
+          count={matched.resistanceChoice.count ?? 1}
+          from={matched.resistanceChoice.from}
+          onAdd={onApplyResistance}
+        />
+      )}
     </div>
   );
 }
@@ -117,8 +130,8 @@ export function StepPericias({
     <div className="wizard-step-pericias">
       {expertiseGrants?.length > 0 && (
         <p className="pericias-expertise-note">
-          Expertise concedida por: {expertiseGrants.map((g) => `${g.className} (nível ${g.level})`).join(", ")} — marque
-          abaixo em quais perícias já proficientes.
+          Expertise concedida por: {expertiseGrants.map((g) => (g.level != null ? `${g.label} (nível ${g.level})` : g.label)).join(", ")} —
+          marque abaixo em quais perícias já proficientes.
         </p>
       )}
       <GrantSummary
@@ -131,6 +144,7 @@ export function StepPericias({
         onApplyEquipment={appliers.applyEquipmentGrants}
         onApplySkillCheckBonus={appliers.applyRaceSkillCheckBonus}
         onApplyToolCheckBonus={appliers.applyRaceToolCheckBonus}
+        onApplyResistance={appliers.applyRaceResistances}
       />
       <GrantSummary
         title="Concedido pelo Antecedente"

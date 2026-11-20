@@ -34,10 +34,13 @@ function OriginFeatChoice({ background, effective, featsData, onPick }) {
   const originFeats = useMemo(() => featsData.filter((f) => f.subtype === "origin"), [featsData]);
   const isDefault = effective === background.originFeat;
 
+  // Talento de Origem só existe em regra 2024 -- `item.rules` do resultado da
+  // busca já confirma isso, mas o botão "Reverter pro padrão" (abaixo) não
+  // tem um `item` pra consultar, só o nome cru de `background.originFeat`.
   function handlePick(nextText, item) {
     setText(nextText);
     if (!item) return;
-    onPick(item.name);
+    onPick({ name: item.name, rules: item.rules ?? "2024" });
     setText("");
     setSwapping(false);
   }
@@ -56,7 +59,7 @@ function OriginFeatChoice({ background, effective, featsData, onPick }) {
             Trocar talento de origem
           </button>
           {!isDefault && (
-            <button type="button" onClick={() => onPick(background.originFeat)}>
+            <button type="button" onClick={() => onPick({ name: background.originFeat, rules: "2024" })}>
               Reverter pro padrão
             </button>
           )}

@@ -1,4 +1,5 @@
 import { CHIP_DEFS } from "../components/wizard/StepMelhorias";
+import { featName } from "../schema/character";
 
 // Extraído de CharacterCreationWizard.jsx pra ser reaproveitado pelo wizard de
 // Level-Up também -- mesma lógica de Melhoria de Atributo (ASI/Talento), sem
@@ -18,9 +19,9 @@ export function useAbilityImprovements(character, setCharacter, appliers) {
   // Desfaz TUDO que o talento de um slot concedeu (perícia/ferramenta
   // rastreada + bônus de atributo, fonte `"feat-" + nome`) -- mesmo par de
   // funções que `FeatsInput.jsx` usa na remoção direta.
-  function revertFeatOfImprovement(featName) {
-    revertFeatGrants(featName);
-    revertAbilityBonusFor(`feat-${featName}`);
+  function revertFeatOfImprovement(name) {
+    revertFeatGrants(name);
+    revertAbilityBonusFor(`feat-${name}`);
   }
 
   // Desfaz o efeito já aplicado de um slot (bônus de atributo somado ou
@@ -29,7 +30,7 @@ export function useAbilityImprovements(character, setCharacter, appliers) {
   function revertImprovement(improvement) {
     if (!improvement) return;
     if (improvement.feat) {
-      setCharacter((prev) => ({ ...prev, feats: prev.feats.filter((f) => f !== improvement.feat) }));
+      setCharacter((prev) => ({ ...prev, feats: prev.feats.filter((f) => featName(f) !== improvement.feat) }));
       revertFeatOfImprovement(improvement.feat);
     }
     const chips = CHIP_DEFS[improvement.choice] ?? [];
@@ -109,8 +110,8 @@ export function useAbilityImprovements(character, setCharacter, appliers) {
     if (improvement.feat) revertFeatOfImprovement(improvement.feat);
     setCharacter((prev) => {
       let feats = prev.feats;
-      if (improvement.feat) feats = feats.filter((f) => f !== improvement.feat);
-      if (!feats.includes(item.name)) feats = [...feats, item.name];
+      if (improvement.feat) feats = feats.filter((f) => featName(f) !== improvement.feat);
+      if (!feats.some((f) => featName(f) === item.name)) feats = [...feats, { name: item.name, rules: item.rules ?? "" }];
       return { ...prev, feats };
     });
     replaceImprovement(classIndex, level, {

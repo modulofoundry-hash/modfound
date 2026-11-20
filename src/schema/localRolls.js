@@ -1,4 +1,5 @@
 import { rollFormula } from "../utils/rollDice";
+import { featName, featRules } from "./character";
 
 // Rolagem de ataque/dano 100% local (sem Foundry) pro chat GERAL do site --
 // pedido do usuário (nov/2026): o chat geral precisa ter rolagem própria,
@@ -82,7 +83,7 @@ export function rollDeathSaveD20(mode = ADV_MODE.NORMAL) {
 // `classData.unarmedStrikeDie` (hoje só Monge e Pugilista têm isso extraído)
 // e devolve o dado certo pro NÍVEL atual naquela classe -- `progression` tem
 // só os níveis de quebra (1/5/11/17), pega o maior que já foi alcançado.
-export function resolveUnarmedStrikeDie(characterClasses, classMatches) {
+function resolveClassUnarmedStrikeDie(characterClasses, classMatches) {
   for (let i = 0; i < (characterClasses ?? []).length; i++) {
     const classData = classMatches?.[i]?.classData;
     const die = classData?.unarmedStrikeDie;
@@ -97,6 +98,35 @@ export function resolveUnarmedStrikeDie(characterClasses, classMatches) {
     return { number, faces, className: classData.name, classLevel };
   }
   return null;
+}
+
+function dieAverage({ number, faces }) {
+  return (number * (faces + 1)) / 2;
+}
+
+// Tavern Brawler (2014 "seu ataque desarmado usa 1d4"; 2024 "Enhanced Unarmed
+// Strike", mesmo 1d4+FOR trocando o dano normal) -- caso-exemplo literal que o
+// usuário deu no início desta auditoria pra explicar a regra de mecanização
+// ("adição de dano flat ou dados deve ser mecanizado"). Igual nas duas
+// edições pro que importa aqui (substituir o dado-base do Desarmado por 1d4),
+// então não precisa de `rules` pra desambiguar. Fica de fora de propósito: o
+// reroll de 1 (2024 "Damage Rerolls") -- mesma exclusão de Savage Attacker/
+// Lucky (reroll não é "adição"); empurrão e proficiência com arma
+// improvisada não são dado/dano.
+const TAVERN_BRAWLER_DIE = { number: 1, faces: 4, className: "Tavern Brawler", classLevel: null };
+
+// Combina o dado de CLASSE (Monge/Pugilista) com o de Tavern Brawler, se o
+// personagem tiver os dois -- usa o de MAIOR média (ex: Pugilist nível 1 tem
+// 1d8, sempre melhor que o 1d4 do talento; um não-conjurador marcial comum
+// com só Tavern Brawler usa o 1d4). Decisão de julgamento própria (a regra
+// oficial não cobre "e se tiver os dois" explicitamente) -- documentado como
+// tal, não uma leitura literal do livro.
+export function resolveUnarmedStrikeDie(characterClasses, classMatches, feats) {
+  const classDie = resolveClassUnarmedStrikeDie(characterClasses, classMatches);
+  const hasTavernBrawler = (feats ?? []).some((f) => featName(f) === "Tavern Brawler");
+  if (!hasTavernBrawler) return classDie;
+  if (!classDie || dieAverage(TAVERN_BRAWLER_DIE) > dieAverage(classDie)) return TAVERN_BRAWLER_DIE;
+  return classDie;
 }
 
 // Monge 2024 (Dexterous Attacks) usa o melhor entre Força e Destreza pro
@@ -134,6 +164,48 @@ function parseWeaponType(weaponType) {
   };
 }
 
+// Exportado -- quem decide se um ataque com arma é corpo-a-corpo (pra saber
+// se `resolveRaceMeleeBonusDamage` abaixo se aplica) precisa do mesmo
+// cálculo que `resolveWeaponAttack` já faz por dentro.
+export function isRangedWeapon(equipmentEntry) {
+  return !!parseWeaponType(equipmentEntry?.weaponType)?.ranged;
+}
+
+export function isHeavyWeapon(equipmentEntry) {
+  return !!equipmentEntry?.properties?.includes("hvy");
+}
+
+// Ataque Poderoso (-5 no ataque / +10 no dano), opcional por ataque --
+// Great Weapon Master (arma corpo-a-corpo PESADA) ou Sharpshooter (arma à
+// DISTÂNCIA), só a versão 2014 dos dois (auditoria de talentos, nov/2026:
+// confirmado contra o RAW real que GWM 2024 virou "Heavy Weapon Mastery"
+// -- dano extra = bônus de proficiência, SEMPRE, sem penalidade nenhuma --
+// e Sharpshooter 2024 perdeu o bônus de dano por completo, mecânica
+// totalmente diferente das de 2014). Precisa de `character.feats` guardando
+// `{name, rules}` (ver schema/character.js) pra saber QUAL edição o
+// personagem tem -- sem isso, não dava pra saber se a regra -5/+10 de fato
+// se aplica.
+export function canPowerAttack(character, equipmentEntry) {
+  const has2014Feat = (name) =>
+    (character.feats ?? []).some((f) => featName(f) === name && featRules(f) === "2014");
+  if (isRangedWeapon(equipmentEntry)) return has2014Feat("Sharpshooter");
+  return isHeavyWeapon(equipmentEntry) && has2014Feat("Great Weapon Master");
+}
+
+// Dano extra em QUALQUER ataque corpo-a-corpo bem sucedido, vindo de um
+// traço de raça (ex: Erina/Spiritfarer "Quills", estruturado em
+// `meleeDamageOnHit` -- ver generate-site-content.mjs). Não é escolha do
+// jogador nem recurso limitado -- dispara sempre que o ataque É corpo-a-corpo
+// (o site não simula distância/posição em cena, então assume "dentro de
+// alcance" sempre que a rolagem não é de arma à distância). `isRanged` vem
+// `false` pro Ataque Desarmado (sempre corpo-a-corpo) e de `isRangedWeapon`
+// pra arma equipada.
+export function resolveRaceMeleeBonusDamage(raceMatch, isRanged) {
+  const rider = raceMatch?.meleeDamageOnHit;
+  if (!rider || isRanged) return null;
+  return { ...rollFormula(rider.dice), type: rider.type, label: rider.label };
+}
+
 // Proficiente se a CATEGORIA (simples/marcial) estiver entre as proficiências
 // de arma da classe original (mesma fonte que a caixa "Armas" da aba
 // Detalhes já usa), OU se a arma específica estiver em
@@ -146,9 +218,14 @@ export function isProficientWithWeapon(character, originalClassMatch, equipmentE
 }
 
 // Acerto+dano de uma arma equipada -- SEM maestria 2024, crítico, versátil/
-// duas-mãos nem riders de feat/estilo (pendência). Força por padrão; Destreza
-// se a arma for "fin" (acuidade) e Destreza render mod maior.
-export function resolveWeaponAttack(character, totalLevel, originalClassMatch, equipmentEntry, mode = ADV_MODE.NORMAL) {
+// duas-mãos nem riders de feat/estilo (pendência, exceto o toggle -5/+10
+// abaixo). Força por padrão; Destreza se a arma for "fin" (acuidade) e
+// Destreza render mod maior. `powerAttack` (nov/2026) -- Ataque Poderoso de
+// GWM/Sharpshooter 2014, já validado por `canPowerAttack` pelo chamador
+// (não reconfere aqui o tipo de arma/talento, confia no toggle já filtrado
+// na UI) -- dobra direto em `attackMod`/`damageMod`, mesma fórmula final
+// que o Foundry mostraria (ex: "2d6+13" em vez de "2d6+3").
+export function resolveWeaponAttack(character, totalLevel, originalClassMatch, equipmentEntry, mode = ADV_MODE.NORMAL, powerAttack = false) {
   const prof = 2 + Math.floor(Math.max(totalLevel - 1, 0) / 4);
   const str = abilityMod(character.abilities?.str ?? 10);
   const dex = abilityMod(character.abilities?.dex ?? 10);
@@ -156,12 +233,13 @@ export function resolveWeaponAttack(character, totalLevel, originalClassMatch, e
   const isRanged = parseWeaponType(equipmentEntry?.weaponType)?.ranged;
   const abilityScoreMod = isRanged ? dex : isFinesse ? Math.max(str, dex) : str;
   const proficient = isProficientWithWeapon(character, originalClassMatch, equipmentEntry);
-  const attackMod = abilityScoreMod + (proficient ? prof : 0);
+  const attackMod = abilityScoreMod + (proficient ? prof : 0) - (powerAttack ? 5 : 0);
+  const damageMod = abilityScoreMod + (powerAttack ? 10 : 0);
   const damage = equipmentEntry?.damage;
   return rollAttack({
     attackMod,
     damageDice: damage ? `${damage.number}d${damage.denomination}` : "1d1",
-    damageMod: abilityScoreMod,
+    damageMod,
     damageType: damage?.type ?? null,
     mode,
   });

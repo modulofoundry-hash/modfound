@@ -1,3 +1,5 @@
+import { featName as getFeatName } from "../schema/character";
+
 // Weapon Mastery (2024, XPHB p.213-214) — tabela arma -> categoria/alcance/propriedade
 // de maestria. Porta reduzida de WEAPON_TABLE_2024 + WEAPON_MASTERY_2024
 // (module/scripts/content/dnd5eCodes.js) — o site é um app React separado, não importa
@@ -103,8 +105,8 @@ export function weaponMasterySlots(character, classMatches, featsData = []) {
   });
 
   const totalLevel = (character.classes ?? []).filter((c) => c.name).reduce((sum, c) => sum + (Number(c.level) || 0), 0);
-  for (const featName of character.feats ?? []) {
-    const feat = featsData.find((f) => f.name === featName && f.weaponMasteryChoice);
+  for (const entry of character.feats ?? []) {
+    const feat = featsData.find((f) => f.name === getFeatName(entry) && f.weaponMasteryChoice);
     if (!feat) continue;
     if (totalLevel < (feat.weaponMasteryChoice.level ?? 1)) continue;
     slots.push({ sourceKey: "feat", classIndex: "feat", className: feat.name, count: feat.weaponMasteryChoice.count, melee: false });

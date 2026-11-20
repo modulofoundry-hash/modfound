@@ -56,7 +56,7 @@ export function FeatBrowser({ items, excludeNames, onAdd }) {
             {sorted.map((item) => (
               <tr key={`${item.name}-${item.source}-${item.rules ?? ""}`}>
                 <td>
-                  <button type="button" className="spell-browser-pick" onClick={() => onAdd(item.name)}>
+                  <button type="button" className="spell-browser-pick" onClick={() => onAdd(item)}>
                     {item.name}
                   </button>
                 </td>

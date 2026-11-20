@@ -1,3 +1,5 @@
+import { featName as getFeatName } from "../schema/character";
+
 // Escolha ABERTA de proficiência com arma (Weapon Master PHB 2014, Hobgoblin VGM
 // "Martial Training") — diferente de Weapon Mastery (weaponMastery.js, 2024): aqui a
 // escolha dá PROFICIÊNCIA em si, não desbloqueia mastery de uma arma já proficiente.
@@ -75,8 +77,8 @@ export function weaponProficiencySlots(character, raceData = [], featsData = [])
   if (race?.weaponChoice) {
     slots.push({ sourceKey: "race", sourceName: race.name, count: race.weaponChoice.count, pool: resolveWeaponChoicePool(race.weaponChoice.fromFilter) });
   }
-  for (const featName of character.feats ?? []) {
-    const feat = featsData.find((f) => f.name === featName && f.weaponChoice);
+  for (const entry of character.feats ?? []) {
+    const feat = featsData.find((f) => f.name === getFeatName(entry) && f.weaponChoice);
     if (!feat) continue;
     slots.push({ sourceKey: `feat:${feat.name}`, sourceName: feat.name, count: feat.weaponChoice.count, pool: resolveWeaponChoicePool(feat.weaponChoice.fromFilter) });
   }

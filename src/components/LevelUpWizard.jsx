@@ -17,6 +17,7 @@ import { weaponMasterySlots, resolveFixedWeaponProficiency } from "../utils/weap
 import { weaponProficiencySlots } from "../utils/weaponProficiency";
 import { animalEnhancementSlots, reversedAnimalEnhancementChoices } from "../utils/animalEnhancement";
 import { resolveClassMatches } from "../schema/resolveClassMatches";
+import { computeExpertiseGrants } from "../utils/expertiseGrants";
 import { computeGrantedSpells, computeSubclassSpellChoices, computeFeatSpellChoices } from "../schema/grantedSpells";
 import { hasActiveSpellcasting } from "../schema/spellProgression";
 import { computeHitPoints } from "../utils/computeHitPoints";
@@ -46,22 +47,6 @@ function pendingHpLevels(originalLevel, newLevel, isOriginalClass) {
   const levels = [];
   for (let lvl = start; lvl <= newLevel; lvl++) levels.push(lvl);
   return levels;
-}
-
-// Mesmo mecanismo de `abilityImprovementSlots` (CharacterCreationWizard.jsx),
-// só que pra Expertise -- níveis vêm de `classData.expertiseLevels` (gerado a
-// partir da feature "Expertise" de cada classe, `generate-site-content.mjs`,
-// não hardcoded por nome de classe: Bardo/Ladino têm 2 cada, mas o Patrulheiro
-// 2024 também ganha no nível 9, achado só por ser orientado a dado).
-function expertiseSlots(character, classMatches) {
-  const slots = [];
-  character.classes.forEach((row, classIndex) => {
-    const levels = classMatches[classIndex]?.classData?.expertiseLevels ?? [];
-    for (const level of levels) {
-      if (level <= (row.level ?? 1)) slots.push({ classIndex, level, className: row.name });
-    }
-  });
-  return slots;
 }
 
 const STEP_DEFS = [
@@ -358,8 +343,19 @@ export function LevelUpWizard({ initialCharacter, onSubmit, onCancel }) {
     const improvementSlots = abilityImprovementSlots(character, classMatches);
     const hasNewImprovementSlots = improvementSlots.length > abilityImprovementSlots(beforeCharacter, classMatches).length;
 
-    const expertiseSlotsNow = expertiseSlots(character, classMatches);
-    const hasNewExpertiseSlots = expertiseSlotsNow.length > expertiseSlots(beforeCharacter, classMatches).length;
+    const expertiseSlotsNow = computeExpertiseGrants(character, classMatches, featsData);
+    // Limitação aceita (nov/2026, porte de talento pra este cálculo):
+    // `beforeCharacter` só congela o NÍVEL de classe anterior a esta sessão,
+    // não os `feats` (continuam a mesma referência de `character.feats`) --
+    // se o slot extra vier só de um talento escolhido NESTA MESMA sessão
+    // (ex: ASI trocado por Boon of Skill em StepMelhorias), a comparação não
+    // detecta como "novo" e a etapa "Perícias" pode ficar oculta nesta
+    // sessão de level-up (`visibleSteps` filtra por `conditional`) -- mesma
+    // limitação estrutural que `hasNewChoiceSlots`/`hasNewImprovementSlots`
+    // já tinham pra qualquer coisa ligada a talento recém-escolhido, não é
+    // regressão nova. Caso raro (precisa o PRÓPRIO talento de ASI já
+    // conceder Expertise sem nenhum outro gatilho de classe no mesmo nível).
+    const hasNewExpertiseSlots = expertiseSlotsNow.length > computeExpertiseGrants(beforeCharacter, classMatches, featsData).length;
 
     const choiceSlots = classChoiceSlots(character, classMatches, featsData, backgroundsData);
     const totalChoiceCount = (slots) => slots.reduce((sum, s) => sum + s.count, 0);
@@ -659,6 +655,7 @@ export function LevelUpWizard({ initialCharacter, onSubmit, onCancel }) {
             onApplySkills={appliers.applyFeatSkills}
             onApplyTools={appliers.applyFeatTools}
             onApplyAbilityBonus={appliers.applyAbilityBonusFor}
+            onApplyResistance={appliers.applyFeatResistances}
             lockedKeys={lockedImprovementKeys}
           />
         );

@@ -96,6 +96,21 @@ export function ChatMessageCard({ message }) {
           </span>
         </div>
       )}
+      {/* Dano extra de traço de raça (ex: Quills da Erina/Spiritfarer) --
+          dispara junto com QUALQUER ataque corpo-a-corpo bem sucedido, tipo
+          de dano diferente do `damage` principal, por isso linha própria. */}
+      {isRoll && message.status === "done" && message.result?.extraDamage && (
+        <div className="chat-message-roll-body chat-message-roll-damage">
+          <span className="chat-message-roll-label">
+            Dano extra{message.result.extraDamage.type ? ` (${message.result.extraDamage.type})` : ""}
+            {message.result.extraDamage.label ? ` — ${message.result.extraDamage.label}` : ""}
+          </span>
+          <span className="chat-message-roll-total">
+            {message.result.extraDamage.total}
+            <span className="chat-message-roll-formula">{message.result.extraDamage.formula}</span>
+          </span>
+        </div>
+      )}
     </div>
   );
 }

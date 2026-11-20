@@ -26,7 +26,10 @@
     "spellGrantsNote": null,
     "optionalFeatureChoices": [],
     "weaponChoice": null,
-    "weaponMasteryChoice": null
+    "weaponMasteryChoice": null,
+    "expertiseGrant": {
+      "count": 1
+    }
   },
   {
     "name": "Aberrant Dragonmark",
@@ -1478,7 +1481,20 @@
       }
     },
     "resistances": [],
-    "resistanceChoice": null,
+    "resistanceChoice": {
+      "count": 2,
+      "from": [
+        "acid",
+        "cold",
+        "fire",
+        "lightning",
+        "necrotic",
+        "poison",
+        "psychic",
+        "radiant",
+        "thunder"
+      ]
+    },
     "languages": "",
     "description": "<p>You gain the following benefits.</p><p>Energy Resistances: You gain Resistance to two of the following damage types of your choice: Acid, Cold, Fire, Lightning, Necrotic, Poison, Psychic, Radiant, or Thunder. Whenever you finish a Long Rest, you can change your choices.</p><p>Energy Redirection: When you take damage of one of the types chosen for the Energy Resistances benefit, you can take a Reaction to direct damage of the same type toward another creature you can see within 60 feet of yourself that isn't behind Total Cover. If you do so, that creature must succeed on a Dexterity saving throw (8 plus your Constitution modifier and Proficiency Bonus) or take damage equal to 2d12 plus your Constitution modifier.</p>",
     "spellChoices": [],
@@ -2177,7 +2193,10 @@
     "spellGrantsNote": null,
     "optionalFeatureChoices": [],
     "weaponChoice": null,
-    "weaponMasteryChoice": null
+    "weaponMasteryChoice": null,
+    "expertiseGrant": {
+      "count": 1
+    }
   },
   {
     "name": "Boon of Speed",
@@ -2292,7 +2311,10 @@
     "spellGrantsNote": null,
     "optionalFeatureChoices": [],
     "weaponChoice": null,
-    "weaponMasteryChoice": null
+    "weaponMasteryChoice": null,
+    "expertiseGrant": {
+      "count": 1
+    }
   },
   {
     "name": "Boon of the Bright Sun",
@@ -3950,7 +3972,10 @@
     "spellGrantsNote": null,
     "optionalFeatureChoices": [],
     "weaponChoice": null,
-    "weaponMasteryChoice": null
+    "weaponMasteryChoice": null,
+    "expertiseGrant": {
+      "count": 1
+    }
   },
   {
     "name": "Eldritch Adept",
@@ -10020,7 +10045,10 @@
     "spellGrantsNote": null,
     "optionalFeatureChoices": [],
     "weaponChoice": null,
-    "weaponMasteryChoice": null
+    "weaponMasteryChoice": null,
+    "expertiseGrant": {
+      "count": 1
+    }
   },
   {
     "name": "Protection",
@@ -11377,7 +11405,10 @@
     "spellGrantsNote": null,
     "optionalFeatureChoices": [],
     "weaponChoice": null,
-    "weaponMasteryChoice": null
+    "weaponMasteryChoice": null,
+    "expertiseGrant": {
+      "count": 1
+    }
   },
   {
     "name": "Skill Expert",
@@ -11421,7 +11452,10 @@
     "spellGrantsNote": null,
     "optionalFeatureChoices": [],
     "weaponChoice": null,
-    "weaponMasteryChoice": null
+    "weaponMasteryChoice": null,
+    "expertiseGrant": {
+      "count": 1
+    }
   },
   {
     "name": "Skilled",

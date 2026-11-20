@@ -108,6 +108,54 @@ export function resolveProgressiveSize(sizeProgression, totalLevel) {
   return current;
 }
 
+// `character.feats` guardava só o NOME (string) -- sem jeito de saber a
+// EDIÇÃO quando o mesmo nome existe em 2014 e 2024 com mecânica DIFERENTE
+// (achado na auditoria de talentos, nov/2026: Great Weapon Master e
+// Sharpshooter mudaram de mecânica inteira entre as edições, mas o site não
+// tinha como saber qual delas o personagem tinha de verdade). Agora cada
+// entrada é `{name, rules}`; estas duas funções aceitam TAMBÉM o formato
+// antigo (string solta) pra não quebrar personagem já salvo no Firestore --
+// nunca precisou de migração retroativa de dado, só leitura tolerante aos
+// dois formatos daqui pra frente.
+export function featName(entry) {
+  return typeof entry === "string" ? entry : (entry?.name ?? "");
+}
+export function featRules(entry) {
+  return typeof entry === "string" ? undefined : entry?.rules;
+}
+
+// Resistência a dano (achado na auditoria de talentos, Lote 52, nov/2026):
+// `resistances`/`resistanceChoice` existem no banco de Raça e Talento há
+// tempos (ex: Dwarf "poison" fixo; Dragonborn escolhe 1 de 5), o módulo
+// Foundry já resolve certo via Trait Advancement nativo
+// (buildRaceItem.js/buildFeatItem.js) -- mas NINGUÉM no site/app lia esse
+// campo pro personagem JOGADOR (só NPC tinha resistência, texto livre). Fixo
+// nunca precisa de escolha (sempre concedido) -- computado direto da
+// Raça/Talento batido, sem gravar nada em `character`. Escolha vem de
+// `character.raceResistancePicks` (raça, overwrite -- só existe 1 raça por
+// vez) e `character.featGrants[nome].resistances` (talento, mesmo rastreio
+// de fonte que já existe pra perícia/ferramenta -- limpa sozinho ao remover
+// o talento, ver revertFeatGrants).
+export function resolveCharacterResistances(character, raceMatch, featsData) {
+  const types = new Set();
+  for (const t of raceMatch?.resistances ?? []) types.add(t);
+  if (raceMatch?.resistanceChoice) {
+    for (const t of character.raceResistancePicks ?? []) types.add(t);
+  }
+  for (const entry of character.feats ?? []) {
+    const name = featName(entry);
+    const rules = featRules(entry);
+    const found =
+      (rules && featsData.find((f) => f.name === name && f.rules === rules)) ||
+      featsData.find((f) => f.name === name);
+    for (const t of found?.resistances ?? []) types.add(t);
+    if (found?.resistanceChoice) {
+      for (const t of character.featGrants?.[name]?.resistances ?? []) types.add(t);
+    }
+  }
+  return Array.from(types).sort();
+}
+
 export function createEmptyCharacter() {
   return {
     name: "",
@@ -158,6 +206,10 @@ export function createEmptyCharacter() {
     // espírito de raceVariableTraitChoice acima (ver pickRace).
     raceSkillCheckBonus: null,
     raceToolCheckBonus: null,
+    // Escolha de resistência a dano da Raça (ex: Dragonborn — 1 de 5 tipos),
+    // ver resolveCharacterResistances acima. Ligada à RAÇA — resetada ao
+    // trocar, mesmo espírito de raceSkillCheckBonus/raceToolCheckBonus.
+    raceResistancePicks: [],
     background: "",
     backgroundRules: "",
     // Mesma ideia de raceAbilityBonusPicks, mas pro Antecedente (2024).

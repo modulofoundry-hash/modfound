@@ -1,7 +1,21 @@
 import { useEffect, useRef, useState } from "react";
-import { subscribeToAllChatMessages, sendChatText } from "../data/chatMessages";
+import { subscribeToAllChatMessages, sendChatText, sendLocalRoll } from "../data/chatMessages";
 import { subscribeToGmPresence, claimGm, releaseGm, heartbeatGm, GM_HEARTBEAT_INTERVAL_MS } from "../data/gmPresence";
+import { rollFormula } from "../utils/rollDice";
 import { ChatMessageCard } from "./ChatPanel";
+
+// Comando "/roll"/"/r" -- só fórmula crua (NdM+B), resolvida 100% local (ver
+// rollFormula/utils/rollDice.js), já que o chat geral não tem um personagem
+// vinculado (só o perfil) pra suportar os comandos de teste/resistência/
+// ataque do chat individual (ChatPanel.jsx). Devolve a fórmula ou null.
+function parseRollCommand(raw) {
+  const body = raw.slice(1).trim();
+  if (!body) return null;
+  const [head, ...rest] = body.split(/\s+/);
+  if (!["roll", "r"].includes(head.toLowerCase())) return null;
+  const formula = rest.join(" ");
+  return formula || null;
+}
 
 // Chat geral do site -- ao lado de "Trocar perfil" (ProfileLayout.jsx), visível
 // em qualquer perfil. Mostra a MESMA coleção "chatMessages" que a ficha de
@@ -168,12 +182,35 @@ export function GlobalChatPanel({ profile }) {
   }
 
   async function handleSend() {
-    const text = input.trim();
-    if (!text) return;
+    const raw = input.trim();
+    if (!raw) return;
     setInput("");
     setSendError(null);
+    if (raw.startsWith("/")) {
+      const formula = parseRollCommand(raw);
+      if (!formula) {
+        setSendError(`Comando não reconhecido: ${raw}`);
+        return;
+      }
+      const rolled = rollFormula(formula);
+      if (!rolled) {
+        setSendError(`Fórmula inválida: ${formula} (use o formato NdM+B, ex: /roll 2d6+3)`);
+        return;
+      }
+      try {
+        await sendLocalRoll(profile.id, {
+          sourceId: profile.id,
+          authorName: profile.name,
+          request: { type: "formula", formula },
+          result: rolled,
+        });
+      } catch (err) {
+        setSendError(err.message);
+      }
+      return;
+    }
     try {
-      await sendChatText(profile.id, { sourceId: profile.id, authorName: profile.name, text });
+      await sendChatText(profile.id, { sourceId: profile.id, authorName: profile.name, text: raw });
     } catch (err) {
       setSendError(err.message);
     }
@@ -252,7 +289,7 @@ export function GlobalChatPanel({ profile }) {
             <input
               type="text"
               value={input}
-              placeholder="Mensagem"
+              placeholder="Mensagem ou /roll 2d6+3"
               onChange={(event) => setInput(event.target.value)}
               onKeyDown={(event) => {
                 if (event.key === "Enter") handleSend();

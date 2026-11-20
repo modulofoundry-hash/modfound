@@ -28,7 +28,32 @@ function distributionsFor(abilityBonus) {
   return null;
 }
 
+// Bônus FIXO, sem escolha nenhuma (ex: Actor "+1 Carisma" sempre) -- achado
+// na auditoria de talentos (nov/2026): `distributionsFor` só reconhecia
+// `.choice`/`.points`, então um talento só com `.fixed` nunca mostrava
+// NENHUM jeito de aplicar o bônus (21 talentos afetados no banco inteiro).
+// Sem distribuição pra escolher -- só confirma a aplicação direto, mesmo
+// botão/idempotência de sempre (`applyAbilityBonusFor` já reverte+reaplica
+// com segurança em clique duplo).
+function FixedAbilityBonus({ label, fixed, onApply }) {
+  const labels = Object.entries(fixed).map(([key, amount]) => `+${amount} ${ABILITY_LABELS[key] ?? key.toUpperCase()}`);
+  return (
+    <div className="ability-bonus-picker">
+      <p>
+        {label}: {labels.join(", ")} (fixo, sem escolha de atributo).
+      </p>
+      <button type="button" onClick={() => onApply(fixed)}>
+        Aplicar bônus nos Atributos
+      </button>
+    </div>
+  );
+}
+
 export function FeatAbilityBonusPicker({ label, abilityBonus, onApply }) {
+  if (abilityBonus?.fixed && !abilityBonus.choice && typeof abilityBonus.points !== "number") {
+    return <FixedAbilityBonus label={label} fixed={abilityBonus.fixed} onApply={onApply} />;
+  }
+
   const config = abilityBonus && distributionsFor(abilityBonus);
   const modeKeys = config ? Object.keys(config.modes) : [];
   const [mode, setMode] = useState(modeKeys[0]);

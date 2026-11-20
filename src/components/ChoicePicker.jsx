@@ -8,8 +8,11 @@ import equipmentData from "../data/content/equipment.json";
 // `flatten-equipment-entry.mjs`, `raw.type==="tool"` agora vira `foundryType:"tool"`
 // em vez de cair no fallback genérico sem categoria). Dedupe por nome (mesmo item
 // pode existir em edição 2014 E 2024 no catálogo).
-const TOOLS = [...new Set(equipmentData.filter((e) => e.foundryType === "tool").map((e) => e.name))].sort((a, b) =>
-  a.localeCompare(b)
+// Exportada: FeatsInput.jsx reaproveita pra montar o pool MISTO de
+// perícia+ferramenta do talento Skilled (`mixedProficiencyChoice`), em vez
+// de duplicar a mesma extração do banco de equipamento.
+export const TOOLS = [...new Set(equipmentData.filter((e) => e.foundryType === "tool").map((e) => e.name))].sort(
+  (a, b) => a.localeCompare(b)
 );
 
 // `from` normalmente é array de rótulo (perícia/ferramenta) — mas o banco também usa

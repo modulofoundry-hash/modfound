@@ -7,17 +7,22 @@
 // certa ANTES de remover a entrada de `classChoices` (ver
 // StepEscolhasDeClasse.jsx, que calcula isso contra o estado atual antes de
 // chamar `onClear`).
+import { featName as getFeatName } from "../schema/character";
+
 export function useLessonsOfTheFirstOnes(setCharacter) {
-  function pickFeat(index, featName) {
-    if (!featName) return;
+  // `rules` sempre "2024" na prática (Talento de Origem só existe nessa
+  // edição), mas recebido do chamador (nov/2026) em vez de hardcoded aqui --
+  // mesma `{name, rules}` que `feats[]` já guarda em todo outro lugar.
+  function pickFeat(index, name, rules) {
+    if (!name) return;
     setCharacter((prev) => {
       const list = [...(prev.lessonsOfTheFirstOnesFeats ?? [])];
       const previous = list[index];
-      if (previous === featName) return prev;
-      list[index] = featName;
+      if (previous === name) return prev;
+      list[index] = name;
       let feats = prev.feats;
-      if (previous) feats = feats.filter((f) => f !== previous);
-      if (!feats.includes(featName)) feats = [...feats, featName];
+      if (previous) feats = feats.filter((f) => getFeatName(f) !== previous);
+      if (!feats.some((f) => getFeatName(f) === name)) feats = [...feats, { name, rules: rules ?? "2024" }];
       return { ...prev, feats, lessonsOfTheFirstOnesFeats: list };
     });
   }
@@ -32,7 +37,7 @@ export function useLessonsOfTheFirstOnes(setCharacter) {
       const removed = list[index];
       if (!removed) return prev;
       list[index] = undefined;
-      return { ...prev, feats: prev.feats.filter((f) => f !== removed), lessonsOfTheFirstOnesFeats: list };
+      return { ...prev, feats: prev.feats.filter((f) => getFeatName(f) !== removed), lessonsOfTheFirstOnesFeats: list };
     });
   }
 
@@ -45,7 +50,11 @@ export function useLessonsOfTheFirstOnes(setCharacter) {
     setCharacter((prev) => {
       const list = [...(prev.lessonsOfTheFirstOnesFeats ?? [])];
       const [removed] = list.splice(index, 1);
-      return { ...prev, feats: removed ? prev.feats.filter((f) => f !== removed) : prev.feats, lessonsOfTheFirstOnesFeats: list };
+      return {
+        ...prev,
+        feats: removed ? prev.feats.filter((f) => getFeatName(f) !== removed) : prev.feats,
+        lessonsOfTheFirstOnesFeats: list,
+      };
     });
   }
 

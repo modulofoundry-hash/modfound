@@ -4,6 +4,8 @@
 // Bladesinging fica de fora de propósito: é bônus de ATIVAÇÃO (bônus action, dura 1
 // minuto), não defesa passiva sempre ligada como os outros -- automatizar como "sempre
 // ativo" mostraria CA errada na maior parte do tempo.
+import { featName, featRules } from "../schema/character";
+
 const ABILITIES = ["str", "dex", "con", "int", "wis", "cha"];
 
 function abilityMods(abilities) {
@@ -55,6 +57,24 @@ const CLASS_CHOICE_AC_BONUSES = [
     category: "fightingStyle",
     names: ["Defense", "Defense Style"],
     condition: ({ armor }) => !!armor,
+    value: () => 1,
+  },
+];
+
+// Bônus fixo concedido por TALENTO (`character.feats`, não `classChoices`) --
+// achado na auditoria de talentos, Lote 69 (nov/2026): Dual Wielder 2014 tem
+// "+1 CA enquanto empunhando uma arma corpo-a-corpo SEPARADA em cada mão",
+// mesmo molde do Defense Style acima (nunca tinha tabela equivalente pra
+// talento), só que a condição aqui é "2+ armas corpo-a-corpo de uma mão só
+// equipadas" em vez de "armadura equipada". SÓ a versão 2014 tem esse bônus
+// -- a 2024 trocou a mecânica inteira (ataque extra de bônus action), por
+// isso `rules` aqui filtra a edição, diferente de CLASS_CHOICE_AC_BONUSES
+// (que não precisa, fighting styles não duplicam nome entre edições).
+const FEAT_AC_BONUSES = [
+  {
+    name: "Dual Wielder",
+    rules: "2014",
+    condition: ({ oneHandedMeleeWeaponsEquipped }) => oneHandedMeleeWeaponsEquipped >= 2,
     value: () => 1,
   },
 ];
@@ -123,7 +143,22 @@ function findEquipped(character, equipmentData) {
       hasShield = true;
     }
   }
-  return { armor, hasShield };
+  // Conta QUANTAS armas corpo-a-corpo de uma mão só (sem "two" em `properties`)
+  // estão equipadas -- só usado pela condição de Dual Wielder 2014 (achado na
+  // auditoria de talentos, Lote 69). Soma `quantity` (não só presença por
+  // NOME, diferente de armor/hasShield acima) -- dual wielding é comum com
+  // DUAS CÓPIAS da mesma arma (ex: "2x Adaga"), que `equippedNames` (Set)
+  // nunca distinguiria de 1 cópia só.
+  const equipmentByName = new Map((equipmentData ?? []).map((item) => [(item.name ?? "").toLowerCase(), item]));
+  let oneHandedMeleeWeaponsEquipped = 0;
+  for (const entry of character.equipment ?? []) {
+    if (!entry.equipped || !entry.name) continue;
+    const item = equipmentByName.get(entry.name.trim().toLowerCase());
+    if (item?.foundryType === "weapon" && item.weaponType?.endsWith("M") && !(item.properties ?? []).includes("two")) {
+      oneHandedMeleeWeaponsEquipped += Math.max(1, entry.quantity ?? 1);
+    }
+  }
+  return { armor, hasShield, oneHandedMeleeWeaponsEquipped };
 }
 
 // Bônus de CA de item mágico "avulso" (soma em cima de QUALQUER armadura, ex: Anel de
@@ -172,7 +207,7 @@ function armorFormula(armor, mods) {
 // `.total`, mesma assinatura de sempre pros chamadores que só querem o número.
 export function computeArmorClassBreakdown(character, { equipmentData }) {
   const mods = abilityMods(character.abilities);
-  const { armor, hasShield } = findEquipped(character, equipmentData);
+  const { armor, hasShield, oneHandedMeleeWeaponsEquipped } = findEquipped(character, equipmentData);
   const classOverride = findClassOverride(character);
   const raceOverride = findRaceOverride(character);
   const raceAddon = findRaceAddon(character);
@@ -203,12 +238,18 @@ export function computeArmorClassBreakdown(character, { equipmentData }) {
   if (hasShield) parts.push({ label: "Escudo (base)", value: 2 });
   if (raceAddon) parts.push({ label: `Traço racial: ${character.race}`, value: raceAddon.value(mods) });
 
-  const equipped = { armor, hasShield };
+  const equipped = { armor, hasShield, oneHandedMeleeWeaponsEquipped };
   const chosenNames = new Set((character.classChoices ?? []).map((c) => c.name));
   for (const bonus of CLASS_CHOICE_AC_BONUSES) {
     if (!bonus.names.some((n) => chosenNames.has(n))) continue;
     if (!bonus.condition(equipped)) continue;
     parts.push({ label: bonus.names[0], value: bonus.value(mods) });
+  }
+
+  for (const bonus of FEAT_AC_BONUSES) {
+    const has = (character.feats ?? []).some((f) => featName(f) === bonus.name && featRules(f) === bonus.rules);
+    if (!has || !bonus.condition(equipped)) continue;
+    parts.push({ label: bonus.name, value: bonus.value(mods) });
   }
 
   const enhancementNames = new Set((character.animalEnhancementChoices ?? []).map((c) => c.name));

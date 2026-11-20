@@ -27,7 +27,9 @@ function LessonsOfTheFirstOnesChoice({ index, chosenName, originFeats, otherChos
   function handleChange(nextText, item) {
     setText(nextText);
     if (!item) return;
-    onPick(index, item.name);
+    // Talento de Origem só existe em regra 2024 -- `item.rules` já confirma
+    // isso, mas sempre "2024" por construção de qualquer forma.
+    onPick(index, item.name, item.rules ?? "2024");
     setText("");
   }
 
